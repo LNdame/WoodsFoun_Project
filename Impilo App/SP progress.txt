@@ -1,6 +1,18 @@
 ﻿Required SPs
 
-AddChow            - Wynand - Already coded: "RegisterChow"
-ViewChow           - Wynand - Done
-AddClient          - Wynand - Already coded: "RegisterUser"
-SelectClient       - Wynand - Done
+Wynand
+AddChow            - Already coded: "RegisterChow"
+ViewChow           - Done
+AddClient          - Already coded: "RegisterUser"
+SelectClient       - Done
+Add Screening      -
+SelectScreening	   -
+AddDiabetes
+SelectDiabetes
+AddHIV
+SelectHIV
+AddHypertention
+SelectHypertention
+
+
+Leon
