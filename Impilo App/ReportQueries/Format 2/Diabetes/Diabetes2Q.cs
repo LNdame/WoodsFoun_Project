@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+
 namespace Impilo_App.ReportQueries.Format_2.Diabetes
 {
     class Diabetes2Q
