@@ -19,7 +19,7 @@
                 <GradientStop Color="White" Offset="1" />
             </LinearGradientBrush>
         </Border.BorderBrush>
-        <Grid x:Name="grid1" Margin="0,0,0.2,-7.8">
+        <Grid x:Name="grid1" Margin="0,2,0,-10">
 
             <Border BorderThickness="4" Height="416" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="border4" VerticalAlignment="Top" Width="971" CornerRadius="8">
                 <Border.BorderBrush>
@@ -28,26 +28,39 @@
                         <GradientStop Color="#FFEBE8E8" Offset="1" />
                     </LinearGradientBrush>
                 </Border.BorderBrush>
-                <Grid x:Name="grid4" Margin="6,6,6.2,18">
-                    <Label Content="GPS Latitute" Height="28" HorizontalAlignment="Left" Margin="20,174,0,0" x:Name="label1_Copy1" VerticalAlignment="Top" FontWeight="Bold" />
-                    <Label Content="GPS Longitude" Height="28" HorizontalAlignment="Left" Margin="20,221,0,0" x:Name="label2_Copy1" VerticalAlignment="Top" FontWeight="Bold" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,174,0,0" x:Name="txtLatitude" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,221,0,0" x:Name="txtLongitude" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                    <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="21,276,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
-                    <Label Content="Clinic used" Height="28" HorizontalAlignment="Left" Margin="487,27,0,0" x:Name="label2_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,276,0,0" x:Name="txtIDNo" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                    <Label Content="Date of birth" Height="28" HorizontalAlignment="Left" Margin="487,80,0,0" x:Name="label1_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
-                    <Label Content="Gender" Height="28" HorizontalAlignment="Left" Margin="487,127,0,0" x:Name="label2_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="644,81,0,0" x:Name="txtDateofBirth" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                    <RadioButton Content="Male" HorizontalAlignment="Left" Name="radioMale" Margin="644,133,0,0" GroupName="gender" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <RadioButton Content="Female" HorizontalAlignment="Left" Name="radioFemale" Margin="732,133,0,0" GroupName="gender" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Currently attending school?" Height="28" HorizontalAlignment="Left" Margin="487,179,0,0" x:Name="label1_Copy4" VerticalAlignment="Top" FontWeight="Bold" />
-                    <Label Content="Name of school" Height="28" HorizontalAlignment="Left" Margin="487,221,0,0" x:Name="label2_Copy4" VerticalAlignment="Top" FontWeight="Bold" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="658,179,0,0" x:Name="txtAttendingSchool" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                    <Label Content="Grade" Height="28" HorizontalAlignment="Left" Margin="487,276,0,0" x:Name="label1_Copy5" VerticalAlignment="Top" FontWeight="Bold" />
-                    <ComboBox HorizontalAlignment="Left" Margin="644,282,0,0" VerticalAlignment="Top" Name="Grade" Width="253" FontWeight="Bold">
+                <Grid x:Name="grid4" Margin="6,18,6,6">
+                    <Label Content="Head of household" Height="28" HorizontalAlignment="Left" Margin="21,60,0,0" x:Name="label12_Copy" VerticalAlignment="Top" FontWeight="Bold" />
+                    <Label Content="Biographical Details" Height="49" HorizontalAlignment="Left" Margin="21,-9,0,0" x:Name="label1_Copy" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" />
+                    <Label Content="Name" Height="28" HorizontalAlignment="Left" Margin="21,106,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontWeight="Bold" />
+                    <Label Content="Surname" Height="28" HorizontalAlignment="Left" Margin="21,146,0,0" x:Name="label3_Copy" VerticalAlignment="Top" FontWeight="Bold" />
+
+                    <RadioButton Content="Yes" HorizontalAlignment="Left" Name="radioHHYes" Margin="146,65,0,0" GroupName="Head" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <RadioButton Content="No" HorizontalAlignment="Left" Name="radioHHNo" Margin="240,65,0,0" GroupName="Head" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,106,0,0" x:Name="txtFirstName" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,146,0,0" x:Name="txtLastName" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                    <Label Content="GPS Latitute" Height="28" HorizontalAlignment="Left" Margin="20,183,0,0" x:Name="label1_Copy1" VerticalAlignment="Top" FontWeight="Bold" />
+                    <Label Content="GPS Longitude" Height="28" HorizontalAlignment="Left" Margin="20,230,0,0" x:Name="label2_Copy1" VerticalAlignment="Top" FontWeight="Bold" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,183,0,0" x:Name="txtLatitude" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,230,0,0" x:Name="txtLongitude" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                    <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="21,280,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
+                    <Label Content="Clinic used" Height="28" HorizontalAlignment="Left" Margin="487,53,0,0" x:Name="label2_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,280,0,0" x:Name="txtIDNo" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                    <Label Content="Date of birth" Height="28" HorizontalAlignment="Left" Margin="487,101,0,0" x:Name="label1_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
+                    <Label Content="Gender" Height="28" HorizontalAlignment="Left" Margin="487,136,0,0" x:Name="label2_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
+
+                    <DatePicker  x:Name="txtDateofBirth" VerticalAlignment="Top" Height="23" Width="253" FontWeight="Bold" HorizontalAlignment="Left" Margin="658,106,0,0" />
+                    <RadioButton Content="Male" HorizontalAlignment="Left" Name="radioMale" Margin="658,141,0,0" GroupName="gender" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <RadioButton Content="Female" HorizontalAlignment="Left" Name="radioFemale" Margin="751,144,0,0" GroupName="gender" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="Currently attending school?" Height="28" HorizontalAlignment="Left" Margin="487,188,0,0" x:Name="label1_Copy4" VerticalAlignment="Top" FontWeight="Bold" />
+                    <Label Content="Name of school" Height="28" HorizontalAlignment="Left" Margin="487,230,0,0" x:Name="label2_Copy4" VerticalAlignment="Top" FontWeight="Bold" />
+                    <RadioButton Content="Yes" HorizontalAlignment="Left" Name="radioAttYes" Margin="658,195,0,0" GroupName="attendance" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <RadioButton Content="No" HorizontalAlignment="Left" Name="radioAttNo" Margin="774,198,0,0" GroupName="attendance" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                    <Label Content="Grade" Height="28" HorizontalAlignment="Left" Margin="487,280,0,0" x:Name="label1_Copy5" VerticalAlignment="Top" FontWeight="Bold" />
+                    <ComboBox HorizontalAlignment="Left" Margin="658,284,0,0" VerticalAlignment="Top" Name="Grade" Width="253" FontWeight="Bold">
                         <ComboBoxItem ContentStringFormat="Name"/>
-                        
+
                         <ComboBoxItem Name="gr">Grade R</ComboBoxItem>
                         <ComboBoxItem Name="g1">Grade 1</ComboBoxItem>
                         <ComboBoxItem Name="g2">Grade 2</ComboBoxItem>
@@ -63,8 +76,8 @@
                         <ComboBoxItem Name="g12">Grade 12</ComboBoxItem>
                         <ComboBoxItem Name="gother">Other</ComboBoxItem>
                     </ComboBox>
-                    
-                    <ComboBox HorizontalAlignment="Left" Margin="644,227,0,0" Name="NameofSchool" VerticalAlignment="Top" Width="253" FontWeight="Bold">
+
+                    <ComboBox HorizontalAlignment="Left" Margin="658,234,0,0" Name="NameofSchool" VerticalAlignment="Top" Width="253" FontWeight="Bold">
                         <ComboBoxItem ContentStringFormat="Name"/>
                         <ComboBoxItem Name="s1">Elliotdale Tech SSS</ComboBoxItem>
                         <ComboBoxItem Name="s2">Ngonyama JP</ComboBoxItem>
@@ -77,7 +90,7 @@
                         <ComboBoxItem Name="s9">Other</ComboBoxItem>
 
                     </ComboBox>
-                    <Button Content="Add" Height="36" HorizontalAlignment="Left" Margin="715,331,0,0" x:Name="btnAddCountry" VerticalAlignment="Top" Width="182" FontSize="16" FontWeight="Bold" Click="btnAddCountry_Click" >
+                    <Button Content="Add" Height="36" HorizontalAlignment="Left" Margin="729,328,0,0" x:Name="btnAddCountry" VerticalAlignment="Top" Width="182" FontSize="16" FontWeight="Bold" Click="btnAddCountry_Click" >
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#82000000" Offset="0.035" />
@@ -89,7 +102,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <ComboBox HorizontalAlignment="Left" Margin="644,27,0,0" Name="ClinicUsed" VerticalAlignment="Top" Width="253" FontWeight="Bold">
+                    <ComboBox HorizontalAlignment="Left" Margin="658,57,0,0" Name="ClinicUsed" VerticalAlignment="Top" Width="253" FontWeight="Bold">
                         <ComboBoxItem ContentStringFormat="Name"/>
                         <ComboBoxItem Name="cb1">Hobeni</ComboBoxItem>
                         <ComboBoxItem Name="cb2">Bomvana</ComboBoxItem>
@@ -101,14 +114,10 @@
                         <ComboBoxItem Name="cb8">Private</ComboBoxItem>
                         <ComboBoxItem Name="cb9">Other</ComboBoxItem>
                     </ComboBox>
+
                 </Grid>
             </Border>
-            <Label Content="Head of household" Height="28" HorizontalAlignment="Left" Margin="40,51,0,0" x:Name="label1_Copy" VerticalAlignment="Top" FontWeight="Bold" />
-            <Label Content="Name" Height="28" HorizontalAlignment="Left" Margin="40,97,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontWeight="Bold" />
-            <Label Content="Surname" Height="28" HorizontalAlignment="Left" Margin="40,139,0,0" x:Name="label3_Copy" VerticalAlignment="Top" FontWeight="Bold" />
-            <TextBox Height="23" HorizontalAlignment="Left" Margin="166,51,0,0" x:Name="txtHouseofHousehold" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-            <TextBox Height="23" HorizontalAlignment="Left" Margin="166,97,0,0" x:Name="txtFirstName" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-            <TextBox Height="23" HorizontalAlignment="Left" Margin="166,139,0,0" x:Name="txtLastName" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+
         </Grid>
     </Border>
 </UserControl>

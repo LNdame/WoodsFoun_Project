@@ -36,7 +36,7 @@ namespace Impilo_App.Views.Client
             Users user = new Users();
             user.FirstName = txtFirstName.Text;
             user.LastName = txtLastName.Text;
-            user.HeadOfHousehold = txtHouseofHousehold.Text;
+            user.HeadOfHousehold = (radioHHYes.IsChecked == true) ? "yes" : "no";
             user.GPSLatitude = txtLatitude.Text;
             user.GPSLongitude = txtLongitude.Text;
             user.IdentityNo = txtIDNo.Text;
@@ -54,7 +54,9 @@ namespace Impilo_App.Views.Client
                 gender = "female";
             }
             user.Gender = gender;
-            user.AttendingSchool = txtAttendingSchool.Text;
+
+           
+            user.AttendingSchool = (radioAttYes.IsChecked == true) ? "yes" : "no";
             user.Grade = ((ComboBoxItem)Grade.SelectedItem).Content.ToString();
             
 
@@ -63,11 +65,11 @@ namespace Impilo_App.Views.Client
 
             txtFirstName.Text = "";
             txtLastName.Text = "";
-            txtHouseofHousehold.Text = "";
+           
             txtLatitude.Text = "";
             txtLongitude.Text = "";
             txtIDNo.Text = "";
-            txtAttendingSchool.Text = "";
+            
         }
 
        

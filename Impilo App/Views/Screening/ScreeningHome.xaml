@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:Impilo_App.Views.Screening"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Margin="-87,-133,-910,-290">
-        <Grid Margin="94,165,-57,-164">
+    <Grid Margin="-87,-100,-910,-290">
+        <Grid Margin="94,90,-57,-164">
              <!--<Label Content="HIV" Height="42" HorizontalAlignment="Left" Margin="42,18,0,0" x:Name="label16" VerticalAlignment="Top" Width="181" FontWeight="Bold" />-->
                                         
             <TabControl Height="602" HorizontalAlignment="Left" Margin="0" x:Name="RugbyTabControl" VerticalAlignment="Top" Width="1205" Background="{x:Null}" BorderThickness="0" >
@@ -68,7 +68,7 @@
                     </LinearGradientBrush>
                 </TabItem.Background>-->
                 </TabItem>
-                <TabItem Header="Environmental" x:Name="tabCountry2" Width="100">
+                <TabItem Header="Environmental" x:Name="tabCountry2" Width="110">
                     <Border BorderThickness="8" HorizontalAlignment="Left" Margin="0,10,0,89.2" x:Name="border1_Copy" Width="1033" CornerRadius="10">
                         <!--<Border.Background>
                             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
