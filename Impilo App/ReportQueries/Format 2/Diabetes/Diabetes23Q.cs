@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace Impilo_App.ReportQueries.Format_2.Diabetes
 {
-    class Diabetes1Q
+    class Diabetes23Q
     {
         public static string Query()
         {
