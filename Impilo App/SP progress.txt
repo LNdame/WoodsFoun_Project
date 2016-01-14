@@ -3,4 +3,4 @@
 AddChow            - Wynand - Already coded: "RegisterChow"
 ViewChow           - Wynand - Done
 AddClient          - Wynand - Already coded: "RegisterUser"
-SelectClient       - Wynand
+SelectClient       - Wynand - Done
