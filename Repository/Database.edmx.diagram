@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a049fb46cad849b89da2aa1b8a233c5f" Name="Diagram1">
         <EntityTypeShape EntityType="impiloModel.BloodSuger" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="impiloModel.BPReading" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="impiloModel.BPReading" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="impiloModel.ChildHealth" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="impiloModel.ClientOld" Width="1.5" PointX="0.75" PointY="20.375" />
         <EntityTypeShape EntityType="impiloModel.Clinic" Width="1.5" PointX="0.75" PointY="7.75" />

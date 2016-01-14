@@ -1,0 +1,6 @@
+﻿Required SPs
+
+AddChow            - Wynand
+ViewChow           - Wynand
+AddClient          - Leon
+SelectClient       - Leon

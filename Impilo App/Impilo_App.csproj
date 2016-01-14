@@ -104,6 +104,37 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="LocalModels\BloodSuger.cs" />
+    <Compile Include="LocalModels\BPReading.cs" />
+    <Compile Include="LocalModels\ChildHealth.cs" />
+    <Compile Include="LocalModels\Chow.cs" />
+    <Compile Include="LocalModels\Client.cs" />
+    <Compile Include="LocalModels\ClientOld.cs" />
+    <Compile Include="LocalModels\Clinic.cs" />
+    <Compile Include="LocalModels\CurrentMedications.cs" />
+    <Compile Include="LocalModels\Diabetes.cs" />
+    <Compile Include="LocalModels\Disease.cs" />
+    <Compile Include="LocalModels\ElderlyCareAssessment.cs" />
+    <Compile Include="LocalModels\Environmental.cs" />
+    <Compile Include="LocalModels\EnvironmentalExtra.cs" />
+    <Compile Include="LocalModels\Epilepsy.cs" />
+    <Compile Include="LocalModels\FollowUp.cs" />
+    <Compile Include="LocalModels\General.cs" />
+    <Compile Include="LocalModels\HealthWorker.cs" />
+    <Compile Include="LocalModels\HIV.cs" />
+    <Compile Include="LocalModels\HIV_Tab.cs" />
+    <Compile Include="LocalModels\Hut.cs" />
+    <Compile Include="LocalModels\Hypertension.cs" />
+    <Compile Include="LocalModels\Medication.cs" />
+    <Compile Include="LocalModels\MentalHealth.cs" />
+    <Compile Include="LocalModels\OtherCondition.cs" />
+    <Compile Include="LocalModels\Other_Tab.cs" />
+    <Compile Include="LocalModels\Pregnancy.cs" />
+    <Compile Include="LocalModels\School.cs" />
+    <Compile Include="LocalModels\Screening.cs" />
+    <Compile Include="LocalModels\Table_1.cs" />
+    <Compile Include="LocalModels\TBContactTracing.cs" />
+    <Compile Include="LocalModels\Tubercolosis.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -233,6 +264,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SP progress.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
