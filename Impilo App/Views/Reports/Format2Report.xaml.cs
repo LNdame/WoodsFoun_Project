@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using NPOI.XSSF.UserModel;
+using NPOI.SS.UserModel;
 
 namespace Impilo_App.Views.Reports
 {
@@ -23,6 +26,27 @@ namespace Impilo_App.Views.Reports
         public Format2Report()
         {
             InitializeComponent();
+        }
+
+        private void btnGenerate_Click(object sender, RoutedEventArgs e)
+        {
+            XSSFWorkbook MyWorkbook;
+            
+            if (radDiabetes.IsChecked == true)
+            {
+                using (FileStream file = new FileStream(Directory.GetCurrentDirectory() + "\\Templates\\Format2Diabetes.xlsx", FileMode.Open, FileAccess.Read))
+                {
+                    MyWorkbook = new XSSFWorkbook(file);
+                }
+            }
+
+            if (radHypertension.IsChecked == true)
+            {
+                using (FileStream file = new FileStream(Directory.GetCurrentDirectory() + "\\Templates\\Format2Hypertension.xlsx", FileMode.Open, FileAccess.Read))
+                {
+                    MyWorkbook = new XSSFWorkbook(file);
+                }
+            }
         }
     }
 }
