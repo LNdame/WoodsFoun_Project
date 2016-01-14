@@ -156,6 +156,9 @@
     <Compile Include="Views\Home\ListClients.xaml.cs">
       <DependentUpon>ListClients.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Reports\Format2Report.xaml.cs">
+      <DependentUpon>Format2Report.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Screening\ScreeningHome.xaml.cs">
       <DependentUpon>ScreeningHome.xaml</DependentUpon>
     </Compile>
@@ -196,6 +199,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Home\ListClients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Reports\Format2Report.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

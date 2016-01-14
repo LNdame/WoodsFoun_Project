@@ -83,10 +83,14 @@
                 <MenuItem Name="AddChow" Click="AddChow_Click" Header="Add a CHOW" HorizontalAlignment="Left" Width="165" Margin="0,0,-25.8,0"/>
                 <MenuItem Name="ViewChow" Click="ViewChow_Click" Header="View CHOW" HorizontalAlignment="Left" Width="158" Margin="0,0,-18.8,0"/>
             </MenuItem>
-            <MenuItem Header="Visits" Height="20" Width="71">
+            <MenuItem Header="Visits" Height="20">
                 <MenuItem Header="Screening" Name="Screening" HorizontalAlignment="Left" Width="139.2"/>
                 <MenuItem Header="Follow-Up" Name="FollowUp" HorizontalAlignment="Left" Width="139.2"/>
                 <MenuItem Header="Clinic Visit" Name="Clinic" HorizontalAlignment="Left" Width="139.2"/>
+                <MenuItem Header="Reports" Name="Reports" HorizontalAlignment="Left" Width="139.2"/>
+            </MenuItem>
+            <MenuItem Header="Reports" Height="20">
+                <MenuItem Header="Format 2" Name="Format2" Click="Format2_Click" HorizontalAlignment="Left" Width="139.2"/>
             </MenuItem>
         </Menu>
 
