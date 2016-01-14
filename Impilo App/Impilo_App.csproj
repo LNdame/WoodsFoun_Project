@@ -119,6 +119,7 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="Hypertension46Q.cs" />
     <Compile Include="LocalModels\BloodSuger.cs" />
     <Compile Include="LocalModels\BPReading.cs" />
     <Compile Include="LocalModels\ChildHealth.cs" />
@@ -269,6 +270,7 @@
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes4Q.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes3Q .cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes2Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension1Q.cs" />
     <Compile Include="Views\CHOW\AddChow.xaml.cs">
       <DependentUpon>AddChow.xaml</DependentUpon>
     </Compile>
