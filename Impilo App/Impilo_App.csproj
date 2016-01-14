@@ -154,6 +154,7 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes1Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes2Q.cs" />
     <Compile Include="Views\CHOW\AddChow.xaml.cs">
       <DependentUpon>AddChow.xaml</DependentUpon>
     </Compile>
