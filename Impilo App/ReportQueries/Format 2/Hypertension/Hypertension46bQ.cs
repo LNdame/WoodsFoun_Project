@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Impilo_App.ReportQueries.Format_2.Hypertension
 {
-    class Hypertension1Q
+    class Hypertension46bQ
     {
         public static string Query()
         {
