@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impilo_App", "Impilo App\Impilo_App.csproj", "{F7BCA5B5-D7AF-4EA4-832E-6A4D76147F8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{117D074B-15BD-4227-84F9-A5825C1809B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfPageTransitions", "WpfPageTransitions\WpfPageTransitions.csproj", "{22A46D61-1D40-43A9-802C-B9D43DADD9EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{3A6A6940-7F81-4CA4-98BC-436E07A4E338}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://kipson4u.visualstudio.com/defaultcollection
+		SccProjectUniqueName0 = Impilo\u0020App\\Impilo_App.csproj
+		SccProjectName0 = Impilo\u0020App
+		SccAuxPath0 = https://kipson4u.visualstudio.com/defaultcollection
+		SccLocalPath0 = Impilo\u0020App
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = Models\\Models.csproj
+		SccProjectName1 = Models
+		SccAuxPath1 = https://kipson4u.visualstudio.com/defaultcollection
+		SccLocalPath1 = Models
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = WpfPageTransitions\\WpfPageTransitions.csproj
+		SccProjectName2 = WpfPageTransitions
+		SccAuxPath2 = https://kipson4u.visualstudio.com/defaultcollection
+		SccLocalPath2 = WpfPageTransitions
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7BCA5B5-D7AF-4EA4-832E-6A4D76147F8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7BCA5B5-D7AF-4EA4-832E-6A4D76147F8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7BCA5B5-D7AF-4EA4-832E-6A4D76147F8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7BCA5B5-D7AF-4EA4-832E-6A4D76147F8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{117D074B-15BD-4227-84F9-A5825C1809B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{117D074B-15BD-4227-84F9-A5825C1809B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{117D074B-15BD-4227-84F9-A5825C1809B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{117D074B-15BD-4227-84F9-A5825C1809B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22A46D61-1D40-43A9-802C-B9D43DADD9EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22A46D61-1D40-43A9-802C-B9D43DADD9EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22A46D61-1D40-43A9-802C-B9D43DADD9EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22A46D61-1D40-43A9-802C-B9D43DADD9EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6A6940-7F81-4CA4-98BC-436E07A4E338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6A6940-7F81-4CA4-98BC-436E07A4E338}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6A6940-7F81-4CA4-98BC-436E07A4E338}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6A6940-7F81-4CA4-98BC-436E07A4E338}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

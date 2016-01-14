@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Impilo_App.Views.Home.ListClients"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Impilo_App.Views.Home"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <AlternationConverter x:Key="AlternationConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid Margin="10,34,109,184">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="59*"/>
+                <ColumnDefinition Width="122*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid AutoGenerateColumns="True" Height="359" HorizontalAlignment="Left" Margin="-8,0,-900,-277" Name="mydatagrid" VerticalAlignment="Top" Width="1089" Grid.ColumnSpan="2" SelectionChanged="mydatagrid_SelectionChanged" />
+            <!--<DataGrid x:Name="mydatagrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="181" Height="82"/>-->
+        </Grid>
+        <Label Content="List of clients" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+    </Grid>
+</UserControl>

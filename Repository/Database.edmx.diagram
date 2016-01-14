@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a049fb46cad849b89da2aa1b8a233c5f" Name="Diagram1">
+        <EntityTypeShape EntityType="impiloModel.BloodSuger" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="impiloModel.BPReading" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="impiloModel.ChildHealth" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="impiloModel.ClientOld" Width="1.5" PointX="0.75" PointY="20.375" />
+        <EntityTypeShape EntityType="impiloModel.Clinic" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="impiloModel.CurrentMedications" Width="1.5" PointX="5.25" PointY="23.75" />
+        <EntityTypeShape EntityType="impiloModel.Diabetes" Width="1.5" PointX="5.25" PointY="19.625" />
+        <EntityTypeShape EntityType="impiloModel.Disease" Width="1.5" PointX="7.75" PointY="7.75" />
+        <EntityTypeShape EntityType="impiloModel.ElderlyCareAssessment" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="impiloModel.Environmental" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="impiloModel.EnvironmentalExtra" Width="1.5" PointX="9.75" PointY="7.75" />
+        <EntityTypeShape EntityType="impiloModel.Epilepsy" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="impiloModel.General" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="impiloModel.HIV" Width="1.5" PointX="5.25" PointY="32.5" />
+        <EntityTypeShape EntityType="impiloModel.HIV_Tab" Width="1.5" PointX="5.25" PointY="35.625" />
+        <EntityTypeShape EntityType="impiloModel.Hut" Width="1.5" PointX="11.75" PointY="3.75" />
+        <EntityTypeShape EntityType="impiloModel.Hypertension" Width="1.5" PointX="5.25" PointY="15.75" />
+        <EntityTypeShape EntityType="impiloModel.Medication" Width="1.5" PointX="11.75" PointY="7.75" />
+        <EntityTypeShape EntityType="impiloModel.MentalHealth" Width="1.5" PointX="5.25" PointY="26.875" />
+        <EntityTypeShape EntityType="impiloModel.Other_Tab" Width="1.5" PointX="5.25" PointY="2.75" />
+        <EntityTypeShape EntityType="impiloModel.OtherCondition" Width="1.5" PointX="5.25" PointY="5.75" />
+        <EntityTypeShape EntityType="impiloModel.Pregnancy" Width="1.5" PointX="5.25" PointY="12.5" />
+        <EntityTypeShape EntityType="impiloModel.Screening" Width="1.5" PointX="3" PointY="20.625" />
+        <EntityTypeShape EntityType="impiloModel.sysdiagrams" Width="1.5" PointX="11.75" PointY="10.75" />
+        <EntityTypeShape EntityType="impiloModel.TBContactTracing" Width="1.5" PointX="7.75" PointY="12.75" />
+        <EntityTypeShape EntityType="impiloModel.Tubercolosis" Width="1.5" PointX="5.25" PointY="38.875" />
+        <EntityTypeShape EntityType="impiloModel.Chow" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="impiloModel.Client" Width="1.5" PointX="13.75" PointY="4.75" />
+        <AssociationConnector Association="impiloModel.FK_Screening_Client" />
+        <AssociationConnector Association="impiloModel.FK_CurrentMedications_Screening" />
+        <AssociationConnector Association="impiloModel.FK_Diabetes_Screening" />
+        <AssociationConnector Association="impiloModel.FK_HIV_Screening" />
+        <AssociationConnector Association="impiloModel.FK_HIV_Tab_Screening" />
+        <AssociationConnector Association="impiloModel.FK_Hypertension_Screening" />
+        <AssociationConnector Association="impiloModel.FK_MentalHealth_Screening" />
+        <AssociationConnector Association="impiloModel.FK_Other_Tab_Screening" />
+        <AssociationConnector Association="impiloModel.FK_OtherCondition_Screening" />
+        <AssociationConnector Association="impiloModel.FK_Pregnancy_Screening" />
+        <AssociationConnector Association="impiloModel.FK_Tubercolosis_Screening" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

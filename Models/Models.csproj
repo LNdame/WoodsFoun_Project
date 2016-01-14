@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{117D074B-15BD-4227-84F9-A5825C1809B6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Models</RootNamespace>
+    <AssemblyName>Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\BloodSuger.cs" />
+    <Compile Include="Common\BPReading.cs" />
+    <Compile Include="Common\ChildHealth.cs" />
+    <Compile Include="Common\Client.cs" />
+    <Compile Include="Common\Clinic.cs" />
+    <Compile Include="Common\CurrentMedications.cs" />
+    <Compile Include="Common\Database.cs" />
+    <Compile Include="Common\Diabetes.cs" />
+    <Compile Include="Common\Disease.cs" />
+    <Compile Include="Common\ElderlyCareAssessment.cs" />
+    <Compile Include="Common\Environmental.cs" />
+    <Compile Include="Common\EnvironmentalExtra.cs" />
+    <Compile Include="Common\Epilepsy.cs" />
+    <Compile Include="Common\General.cs" />
+    <Compile Include="Common\HIV.cs" />
+    <Compile Include="Common\HIV_Tab.cs" />
+    <Compile Include="Common\Hut.cs" />
+    <Compile Include="Common\Hypertension.cs" />
+    <Compile Include="Common\Medication.cs" />
+    <Compile Include="Common\MentalHealth.cs" />
+    <Compile Include="Common\OtherCondition.cs" />
+    <Compile Include="Common\Other_Tab.cs" />
+    <Compile Include="Common\Pregnancy.cs" />
+    <Compile Include="Common\Screening.cs" />
+    <Compile Include="Common\sysdiagrams.cs" />
+    <Compile Include="Common\TBContactTracing.cs" />
+    <Compile Include="Common\Tubercolosis.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

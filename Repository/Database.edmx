@@ -1,0 +1,1737 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="impiloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BloodSuger">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnMeds" Type="bit" />
+          <Property Name="NotOnMedsBSReadings" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferToCHOWs" Type="bit" />
+          <Property Name="ReferToClinic" Type="bit" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BPReading">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnMedsSytolic" Type="bit" />
+          <Property Name="OnMedsDiastolic" Type="bit" />
+          <Property Name="Diastolic" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferToCHOWs" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferToClinic" Type="bit" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ChildHealth">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameOfMother" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChildWithRTHC" Type="bit" />
+          <Property Name="ReferToClinic" Type="bit" />
+          <Property Name="ReferalNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ListConcernsReChild" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferToClinic2" Type="bit" />
+          <Property Name="ReferToOVC" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferralNo2" Type="nchar" MaxLength="10" />
+          <Property Name="MotherHIVPlus" Type="bit" />
+          <Property Name="ChildBreastFed" Type="bit" />
+          <Property Name="Howlong" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChildEverOnNevirapine" Type="bit" />
+          <Property Name="PCRDone" Type="bit" />
+          <Property Name="PCRResults" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferToClinic3" Type="bit" />
+          <Property Name="ReferalNo3" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImmunisationUpToDate" Type="bit" />
+          <Property Name="WhichImmunisatationsOutStanding" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferToClinic4" Type="bit" />
+          <Property Name="ReferralNo4" Type="nvarchar" MaxLength="50" />
+          <Property Name="VITAandWarmMedsGivenEachMonth" Type="bit" />
+          <Property Name="WalkAppropriateForAge" Type="bit" />
+          <Property Name="TalkAppropriateForAge" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'impilo.dbo.Chow' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Chow">
+          <Key>
+            <PropertyRef Name="ChowID" />
+          </Key>
+          <Property Name="ChowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="CellNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'impilo.dbo.Client' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HeadOfHousehold" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="GPSLatitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="GPSLongitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClinicUsed" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttendingSchool" Type="nvarchar" MaxLength="50" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameofSchool" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ClientOld">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDNumber" Type="nchar" MaxLength="13" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" />
+          <Property Name="isHeadOfHousehold" Type="bit" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="isAttendingSchool" Type="bit" />
+          <Property Name="Grade" Type="nchar" MaxLength="10" />
+          <Property Name="NameOfSchool" Type="int" />
+          <Property Name="LastSyncDateFromServer" Type="datetime" />
+          <Property Name="LastSyncDateToServer" Type="datetime" />
+          <Property Name="LastDateUpdated" Type="datetime" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Clinic">
+          <Key>
+            <PropertyRef Name="ClinicID" />
+          </Key>
+          <Property Name="ClinicID" Type="int" Nullable="false" />
+          <Property Name="ClinicName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Logitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateLastSnycFromServer" Type="datetime" />
+          <Property Name="DateLastSnycToServer" Type="datetime" />
+          <Property Name="LastDayUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CurrentMedications">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+            <PropertyRef Name="DiseaseID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiseaseID" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="Defaulting" Type="bit" />
+          <Property Name="ReferToClinic" Type="bit" />
+          <Property Name="ReferralID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Diabetes">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="YearOfDiagonosis" Type="nchar" MaxLength="10" />
+          <Property Name="regularlyThirsty" Type="bit" />
+          <Property Name="WeightLoss" Type="bit" />
+          <Property Name="BlurredVision" Type="bit" />
+          <Property Name="UrinatingMore" Type="bit" />
+          <Property Name="NauseaOrVomitting" Type="bit" />
+          <Property Name="FootExamResult" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferralToClinic" Type="bit" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="FamilyMemberWith" Type="bit" />
+        </EntityType>
+        <EntityType Name="Disease">
+          <Key>
+            <PropertyRef Name="DiseaseID" />
+          </Key>
+          <Property Name="DiseaseID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ElderlyCareAssessment">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LegFootArmHanAmputation" Type="nchar" MaxLength="10" />
+          <Property Name="PassVisionTest" Type="nchar" MaxLength="10" />
+          <Property Name="Bedridden" Type="nchar" MaxLength="10" />
+          <Property Name="UseAidToMove" Type="nchar" MaxLength="10" />
+          <Property Name="WashYourself" Type="nchar" MaxLength="10" />
+          <Property Name="DressYourSelf" Type="nchar" MaxLength="10" />
+          <Property Name="ReferToClinic" Type="nchar" MaxLength="10" />
+          <Property Name="ReferralNo" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Environmental">
+          <Key>
+            <PropertyRef Name="ScreeningId" />
+          </Key>
+          <Property Name="ScreeningId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NoOfHouseholdCurrent" Type="int" />
+          <Property Name="NoOfHouseholdAway" Type="int" />
+          <Property Name="ListWhere" Type="nvarchar" MaxLength="50" />
+          <Property Name="WhenLastClinicVisit" Type="datetime" />
+          <Property Name="WhichClinic" Type="int" />
+        </EntityType>
+        <EntityType Name="EnvironmentalExtra">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NoOfPeopleInOneRoomMainHut" Type="int" />
+          <Property Name="NoOfStructuresInHomeStead" Type="int" />
+          <Property Name="RainWaterCollection" Type="bit" />
+          <Property Name="WaterSupply" Type="nvarchar" MaxLength="50" />
+          <Property Name="WalkingDistanceFromWhaterSupply" Type="bit" />
+          <Property Name="TreatWaterBeforeDrinking" Type="bit" />
+          <Property Name="ElectricityInAnyHut" Type="bit" />
+          <Property Name="HaveWorkingFridge" Type="bit" />
+          <Property Name="UseForCooking" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeOfToilet" Type="nvarchar" MaxLength="50" />
+          <Property Name="DisposeWaste" Type="nvarchar" MaxLength="50" />
+          <Property Name="SourceOfIncome" Type="nvarchar" MaxLength="50" />
+          <Property Name="RecievedFoodPacelIn6Month" Type="bit" />
+        </EntityType>
+        <EntityType Name="Epilepsy">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FitsInLastMonth" Type="bit" />
+          <Property Name="ReferToClinic" Type="bit" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="General">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="Height" Type="int" />
+          <Property Name="BMI" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'impilo.dbo.HealthWorker' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="HealthWorker">
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" />
+          <Property Name="DateLastUpated" Type="datetime" />
+          <Property Name="DateLastSnycFromServer" Type="datetime" />
+          <Property Name="DateLastSnycToSeverServer" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>-->
+        <EntityType Name="HIV">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KnownHIVPosStatus" Type="bit" />
+          <Property Name="HIVTestDone" Type="bit" />
+          <Property Name="Result" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferToClinic" Type="bit" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HIV_Tab">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnMeds" Type="bit" />
+          <Property Name="ListMeds" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdherenceOK" Type="bit" />
+          <Property Name="ReferToClinic" Type="bit" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ARVFileNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Hut">
+          <Key>
+            <PropertyRef Name="HutId" />
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="HutId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HutStracture" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeOfRoof" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ventilation" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalNoOfRooms" Type="int" />
+          <Property Name="isMainHut" Type="bit" />
+          <Property Name="DateLastSnycFromServer" Type="datetime" />
+          <Property Name="DateLastSnycToServer" Type="datetime" />
+          <Property Name="LastDateUpdated" Type="datetime" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Hypertension">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="YearOfDiagnosis" Type="nvarchar" MaxLength="50" />
+          <Property Name="Headache" Type="bit" />
+          <Property Name="BlurredVision" Type="bit" />
+          <Property Name="ChestPain" Type="bit" />
+          <Property Name="ReferralToClinic" Type="bit" />
+          <Property Name="ReferalNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EverHadStroke" Type="bit" />
+          <Property Name="YearOfStroke" Type="nvarchar" MaxLength="50" />
+          <Property Name="AnyOneInFamilyHadStroke" Type="bit" />
+        </EntityType>
+        <EntityType Name="Medication">
+          <Key>
+            <PropertyRef Name="MedicationID" />
+          </Key>
+          <Property Name="MedicationID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MentalHealth">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PregnantBefore" Type="bit" />
+          <Property Name="NoOfPregnancies" Type="nvarchar" MaxLength="50" />
+          <Property Name="HowManySuccessful" Type="nvarchar" MaxLength="50" />
+          <Property Name="WhereDeliveredLasBaby" Type="nvarchar" MaxLength="50" />
+          <Property Name="Caesarian" Type="nvarchar" MaxLength="50" />
+          <Property Name="BabyUnder2_5Kgs" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChildrenDiedUnder1Year" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChildrenDiedBetween1to5Years" Type="nvarchar" MaxLength="50" />
+          <Property Name="PAPSmearInLast5Years" Type="bit" />
+          <Property Name="LastBloodTestResult" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfFirstANC" Type="date" />
+          <Property Name="DateOfLastANC" Type="date" />
+          <Property Name="ReferredToClinic" Type="bit" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfNextANC" Type="date" />
+          <Property Name="ExtectedDateOfDelivery" Type="date" />
+          <Property Name="IntendFormulaFeed" Type="bit" />
+          <Property Name="RegisteredOnMomConnect" Type="bit" />
+        </EntityType>
+        <EntityType Name="Other_Tab">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+            <PropertyRef Name="OtherID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OtherID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OtherConditionFound" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferToClinic" Type="bit" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OtherCondition">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BloodInUrine" Type="bit" />
+          <Property Name="ReferToClinic" Type="bit" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Smoking" Type="bit" />
+          <Property Name="DrinkAlchoholUnitsPerWeek" Type="bit" />
+          <Property Name="DiarrhoeaOver3Days" Type="bit" />
+          <Property Name="ReferToClinic2" Type="bit" />
+          <Property Name="ReferralNo2" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttendedInitiationSchool" Type="bit" />
+          <Property Name="LagCrampsOver2Weeks" Type="bit" />
+          <Property Name="LagNumbnessOver2Weeks" Type="bit" />
+          <Property Name="FootUlcer" Type="bit" />
+          <Property Name="ReferToClinic3" Type="bit" />
+          <Property Name="ReferalNo3" Type="nvarchar" MaxLength="50" />
+          <Property Name="FamilyPlanningAdviceGiven" Type="bit" />
+          <Property Name="Amputation" Type="bit" />
+          <Property Name="PassVisionTest" Type="bit" />
+          <Property Name="Bedridden" Type="bit" />
+          <Property Name="UseAidToMove" Type="bit" />
+          <Property Name="WashYourSelf" Type="bit" />
+          <Property Name="DressYourSelf" Type="bit" />
+          <Property Name="ReferToClinic4" Type="bit" />
+          <Property Name="ReferalNo4" Type="nvarchar" MaxLength="50" />
+          <Property Name="FamilyPlanningAdvice" Type="bit" />
+        </EntityType>
+        <EntityType Name="Pregnancy">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CurrentlyPregnant" Type="bit" />
+          <Property Name="PossiblePregnant" Type="bit" />
+          <Property Name="PregnancyTestDone" Type="bit" />
+          <Property Name="Results" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferToClinic" Type="bigint" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'impilo.dbo.School' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="School">
+          <Property Name="SchoolID" Type="nchar" MaxLength="10" />
+          <Property Name="SchoolName" Type="nchar" MaxLength="10" />
+        </EntityType>-->
+        <EntityType Name="Screening">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ScreeningDate" Type="datetime" />
+          <Property Name="ClientId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'impilo.dbo.Table_1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Table_1">
+          <Property Name="TV" Type="nchar" MaxLength="10" />
+        </EntityType>-->
+        <EntityType Name="TBContactTracing">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HouseHoldOnTBMeds" Type="bit" />
+          <Property Name="ReferToClinic" Type="bit" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tubercolosis">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HaveTubercolosis" Type="bit" />
+          <Property Name="WhatMedsAreYouOn" Type="nvarchar" MaxLength="50" />
+          <Property Name="Defaulting" Type="bit" />
+          <Property Name="LossWeight" Type="bit" />
+          <Property Name="SweatingAtNight" Type="bit" />
+          <Property Name="FeverOver2Weeks" Type="bit" />
+          <Property Name="CoughMoreThan2Weeks" Type="bit" />
+          <Property Name="LossOfApetite" Type="bit" />
+          <Property Name="ReferToClinic" Type="bit" />
+          <Property Name="ReferralNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CurrentMedications_Screening">
+          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
+          <End Role="CurrentMedications" Type="Self.CurrentMedications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="CurrentMedications">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diabetes_Screening">
+          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
+          <End Role="Diabetes" Type="Self.Diabetes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="Diabetes">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HIV_Screening">
+          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
+          <End Role="HIV" Type="Self.HIV" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="HIV">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HIV_Tab_Screening">
+          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
+          <End Role="HIV_Tab" Type="Self.HIV_Tab" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="HIV_Tab">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hypertension_Screening">
+          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
+          <End Role="Hypertension" Type="Self.Hypertension" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="Hypertension">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MentalHealth_Screening">
+          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
+          <End Role="MentalHealth" Type="Self.MentalHealth" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="MentalHealth">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Other_Tab_Screening">
+          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
+          <End Role="Other_Tab" Type="Self.Other_Tab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="Other_Tab">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtherCondition_Screening">
+          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
+          <End Role="OtherCondition" Type="Self.OtherCondition" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="OtherCondition">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pregnancy_Screening">
+          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
+          <End Role="Pregnancy" Type="Self.Pregnancy" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="Pregnancy">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Screening_Client">
+          <End Role="ClientOld" Type="Self.ClientOld" Multiplicity="0..1" />
+          <End Role="Screening" Type="Self.Screening" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientOld">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Screening">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tubercolosis_Screening">
+          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
+          <End Role="Tubercolosis" Type="Self.Tubercolosis" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="Tubercolosis">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="impiloModelStoreContainer">
+          <EntitySet Name="BloodSuger" EntityType="Self.BloodSuger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BPReading" EntityType="Self.BPReading" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChildHealth" EntityType="Self.ChildHealth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientOld" EntityType="Self.ClientOld" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clinic" EntityType="Self.Clinic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrentMedications" EntityType="Self.CurrentMedications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diabetes" EntityType="Self.Diabetes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disease" EntityType="Self.Disease" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ElderlyCareAssessment" EntityType="Self.ElderlyCareAssessment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Environmental" EntityType="Self.Environmental" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnvironmentalExtra" EntityType="Self.EnvironmentalExtra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Epilepsy" EntityType="Self.Epilepsy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="General" EntityType="Self.General" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HIV" EntityType="Self.HIV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HIV_Tab" EntityType="Self.HIV_Tab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hut" EntityType="Self.Hut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hypertension" EntityType="Self.Hypertension" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medication" EntityType="Self.Medication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MentalHealth" EntityType="Self.MentalHealth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Other_Tab" EntityType="Self.Other_Tab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtherCondition" EntityType="Self.OtherCondition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pregnancy" EntityType="Self.Pregnancy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Screening" EntityType="Self.Screening" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBContactTracing" EntityType="Self.TBContactTracing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tubercolosis" EntityType="Self.Tubercolosis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chow" EntityType="Self.Chow" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Chow].[ChowID] AS [ChowID], 
+    [Chow].[FirstName] AS [FirstName], 
+    [Chow].[LastName] AS [LastName], 
+    [Chow].[Gender] AS [Gender], 
+    [Chow].[Email] AS [Email], 
+    [Chow].[Password] AS [Password], 
+    [Chow].[CellNumber] AS [CellNumber]
+    FROM [dbo].[Chow] AS [Chow]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Client" EntityType="Self.Client" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Client].[UserID] AS [UserID], 
+    [Client].[HeadOfHousehold] AS [HeadOfHousehold], 
+    [Client].[FirstName] AS [FirstName], 
+    [Client].[LastName] AS [LastName], 
+    [Client].[GPSLatitude] AS [GPSLatitude], 
+    [Client].[GPSLongitude] AS [GPSLongitude], 
+    [Client].[IDNo] AS [IDNo], 
+    [Client].[ClinicUsed] AS [ClinicUsed], 
+    [Client].[DateOfBirth] AS [DateOfBirth], 
+    [Client].[Gender] AS [Gender], 
+    [Client].[AttendingSchool] AS [AttendingSchool], 
+    [Client].[Grade] AS [Grade], 
+    [Client].[NameofSchool] AS [NameofSchool]
+    FROM [dbo].[Client] AS [Client]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CurrentMedications_Screening" Association="Self.FK_CurrentMedications_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="CurrentMedications" EntitySet="CurrentMedications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diabetes_Screening" Association="Self.FK_Diabetes_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="Diabetes" EntitySet="Diabetes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HIV_Screening" Association="Self.FK_HIV_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="HIV" EntitySet="HIV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HIV_Tab_Screening" Association="Self.FK_HIV_Tab_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="HIV_Tab" EntitySet="HIV_Tab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hypertension_Screening" Association="Self.FK_Hypertension_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="Hypertension" EntitySet="Hypertension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MentalHealth_Screening" Association="Self.FK_MentalHealth_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="MentalHealth" EntitySet="MentalHealth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Other_Tab_Screening" Association="Self.FK_Other_Tab_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="Other_Tab" EntitySet="Other_Tab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtherCondition_Screening" Association="Self.FK_OtherCondition_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="OtherCondition" EntitySet="OtherCondition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pregnancy_Screening" Association="Self.FK_Pregnancy_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="Pregnancy" EntitySet="Pregnancy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Screening_Client" Association="Self.FK_Screening_Client">
+            <End Role="ClientOld" EntitySet="ClientOld" />
+            <End Role="Screening" EntitySet="Screening" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tubercolosis_Screening" Association="Self.FK_Tubercolosis_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="Tubercolosis" EntitySet="Tubercolosis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="impiloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="impiloEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BloodSuger" EntityType="impiloModel.BloodSuger" />
+          <EntitySet Name="BPReading" EntityType="impiloModel.BPReading" />
+          <EntitySet Name="ChildHealth" EntityType="impiloModel.ChildHealth" />
+          <EntitySet Name="ClientOld" EntityType="impiloModel.ClientOld" />
+          <EntitySet Name="Clinic" EntityType="impiloModel.Clinic" />
+          <EntitySet Name="CurrentMedications" EntityType="impiloModel.CurrentMedications" />
+          <EntitySet Name="Diabetes" EntityType="impiloModel.Diabetes" />
+          <EntitySet Name="Disease" EntityType="impiloModel.Disease" />
+          <EntitySet Name="ElderlyCareAssessment" EntityType="impiloModel.ElderlyCareAssessment" />
+          <EntitySet Name="Environmental" EntityType="impiloModel.Environmental" />
+          <EntitySet Name="EnvironmentalExtra" EntityType="impiloModel.EnvironmentalExtra" />
+          <EntitySet Name="Epilepsy" EntityType="impiloModel.Epilepsy" />
+          <EntitySet Name="General" EntityType="impiloModel.General" />
+          <EntitySet Name="HIV" EntityType="impiloModel.HIV" />
+          <EntitySet Name="HIV_Tab" EntityType="impiloModel.HIV_Tab" />
+          <EntitySet Name="Hut" EntityType="impiloModel.Hut" />
+          <EntitySet Name="Hypertension" EntityType="impiloModel.Hypertension" />
+          <EntitySet Name="Medication" EntityType="impiloModel.Medication" />
+          <EntitySet Name="MentalHealth" EntityType="impiloModel.MentalHealth" />
+          <EntitySet Name="Other_Tab" EntityType="impiloModel.Other_Tab" />
+          <EntitySet Name="OtherCondition" EntityType="impiloModel.OtherCondition" />
+          <EntitySet Name="Pregnancy" EntityType="impiloModel.Pregnancy" />
+          <EntitySet Name="Screening" EntityType="impiloModel.Screening" />
+          <EntitySet Name="sysdiagrams" EntityType="impiloModel.sysdiagrams" />
+          <EntitySet Name="TBContactTracing" EntityType="impiloModel.TBContactTracing" />
+          <EntitySet Name="Tubercolosis" EntityType="impiloModel.Tubercolosis" />
+          <EntitySet Name="Chow" EntityType="impiloModel.Chow" />
+          <EntitySet Name="Client" EntityType="impiloModel.Client" />
+          <AssociationSet Name="FK_Screening_Client" Association="impiloModel.FK_Screening_Client">
+            <End Role="ClientOld" EntitySet="ClientOld" />
+            <End Role="Screening" EntitySet="Screening" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrentMedications_Screening" Association="impiloModel.FK_CurrentMedications_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="CurrentMedications" EntitySet="CurrentMedications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diabetes_Screening" Association="impiloModel.FK_Diabetes_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="Diabetes" EntitySet="Diabetes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HIV_Screening" Association="impiloModel.FK_HIV_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="HIV" EntitySet="HIV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HIV_Tab_Screening" Association="impiloModel.FK_HIV_Tab_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="HIV_Tab" EntitySet="HIV_Tab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hypertension_Screening" Association="impiloModel.FK_Hypertension_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="Hypertension" EntitySet="Hypertension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MentalHealth_Screening" Association="impiloModel.FK_MentalHealth_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="MentalHealth" EntitySet="MentalHealth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Other_Tab_Screening" Association="impiloModel.FK_Other_Tab_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="Other_Tab" EntitySet="Other_Tab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtherCondition_Screening" Association="impiloModel.FK_OtherCondition_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="OtherCondition" EntitySet="OtherCondition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pregnancy_Screening" Association="impiloModel.FK_Pregnancy_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="Pregnancy" EntitySet="Pregnancy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tubercolosis_Screening" Association="impiloModel.FK_Tubercolosis_Screening">
+            <End Role="Screening" EntitySet="Screening" />
+            <End Role="Tubercolosis" EntitySet="Tubercolosis" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BloodSuger">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnMeds" Type="Boolean" />
+          <Property Name="NotOnMedsBSReadings" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferToCHOWs" Type="Boolean" />
+          <Property Name="ReferToClinic" Type="Boolean" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BPReading">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnMedsSytolic" Type="Boolean" />
+          <Property Name="OnMedsDiastolic" Type="Boolean" />
+          <Property Name="Diastolic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferToCHOWs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferToClinic" Type="Boolean" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ChildHealth">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameOfMother" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChildWithRTHC" Type="Boolean" />
+          <Property Name="ReferToClinic" Type="Boolean" />
+          <Property Name="ReferalNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ListConcernsReChild" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferToClinic2" Type="Boolean" />
+          <Property Name="ReferToOVC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferralNo2" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MotherHIVPlus" Type="Boolean" />
+          <Property Name="ChildBreastFed" Type="Boolean" />
+          <Property Name="Howlong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChildEverOnNevirapine" Type="Boolean" />
+          <Property Name="PCRDone" Type="Boolean" />
+          <Property Name="PCRResults" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferToClinic3" Type="Boolean" />
+          <Property Name="ReferalNo3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImmunisationUpToDate" Type="Boolean" />
+          <Property Name="WhichImmunisatationsOutStanding" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferToClinic4" Type="Boolean" />
+          <Property Name="ReferralNo4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VITAandWarmMedsGivenEachMonth" Type="Boolean" />
+          <Property Name="WalkAppropriateForAge" Type="Boolean" />
+          <Property Name="TalkAppropriateForAge" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ClientOld">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDNumber" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="isHeadOfHousehold" Type="Boolean" />
+          <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="isAttendingSchool" Type="Boolean" />
+          <Property Name="Grade" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NameOfSchool" Type="Int32" />
+          <Property Name="LastSyncDateFromServer" Type="DateTime" Precision="3" />
+          <Property Name="LastSyncDateToServer" Type="DateTime" Precision="3" />
+          <Property Name="LastDateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+          <NavigationProperty Name="Screening" Relationship="impiloModel.FK_Screening_Client" FromRole="ClientOld" ToRole="Screening" />
+        </EntityType>
+        <EntityType Name="Clinic">
+          <Key>
+            <PropertyRef Name="ClinicID" />
+          </Key>
+          <Property Name="ClinicID" Type="Int32" Nullable="false" />
+          <Property Name="ClinicName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Logitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateLastSnycFromServer" Type="DateTime" Precision="3" />
+          <Property Name="DateLastSnycToServer" Type="DateTime" Precision="3" />
+          <Property Name="LastDayUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CurrentMedications">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+            <PropertyRef Name="DiseaseID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiseaseID" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="Defaulting" Type="Boolean" />
+          <Property Name="ReferToClinic" Type="Boolean" />
+          <Property Name="ReferralID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Screening" Relationship="impiloModel.FK_CurrentMedications_Screening" FromRole="CurrentMedications" ToRole="Screening" />
+        </EntityType>
+        <EntityType Name="Diabetes">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YearOfDiagonosis" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="regularlyThirsty" Type="Boolean" />
+          <Property Name="WeightLoss" Type="Boolean" />
+          <Property Name="BlurredVision" Type="Boolean" />
+          <Property Name="UrinatingMore" Type="Boolean" />
+          <Property Name="NauseaOrVomitting" Type="Boolean" />
+          <Property Name="FootExamResult" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferralToClinic" Type="Boolean" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FamilyMemberWith" Type="Boolean" />
+          <NavigationProperty Name="Screening" Relationship="impiloModel.FK_Diabetes_Screening" FromRole="Diabetes" ToRole="Screening" />
+        </EntityType>
+        <EntityType Name="Disease">
+          <Key>
+            <PropertyRef Name="DiseaseID" />
+          </Key>
+          <Property Name="DiseaseID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ElderlyCareAssessment">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LegFootArmHanAmputation" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PassVisionTest" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Bedridden" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="UseAidToMove" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WashYourself" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DressYourSelf" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ReferToClinic" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ReferralNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Environmental">
+          <Key>
+            <PropertyRef Name="ScreeningId" />
+          </Key>
+          <Property Name="ScreeningId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoOfHouseholdCurrent" Type="Int32" />
+          <Property Name="NoOfHouseholdAway" Type="Int32" />
+          <Property Name="ListWhere" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WhenLastClinicVisit" Type="DateTime" Precision="3" />
+          <Property Name="WhichClinic" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EnvironmentalExtra">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoOfPeopleInOneRoomMainHut" Type="Int32" />
+          <Property Name="NoOfStructuresInHomeStead" Type="Int32" />
+          <Property Name="RainWaterCollection" Type="Boolean" />
+          <Property Name="WaterSupply" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WalkingDistanceFromWhaterSupply" Type="Boolean" />
+          <Property Name="TreatWaterBeforeDrinking" Type="Boolean" />
+          <Property Name="ElectricityInAnyHut" Type="Boolean" />
+          <Property Name="HaveWorkingFridge" Type="Boolean" />
+          <Property Name="UseForCooking" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeOfToilet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DisposeWaste" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SourceOfIncome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RecievedFoodPacelIn6Month" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Epilepsy">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FitsInLastMonth" Type="Boolean" />
+          <Property Name="ReferToClinic" Type="Boolean" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="General">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="BMI" Type="Int32" />
+        </EntityType>
+        <EntityType Name="HIV">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KnownHIVPosStatus" Type="Boolean" />
+          <Property Name="HIVTestDone" Type="Boolean" />
+          <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferToClinic" Type="Boolean" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Screening" Relationship="impiloModel.FK_HIV_Screening" FromRole="HIV" ToRole="Screening" />
+        </EntityType>
+        <EntityType Name="HIV_Tab">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnMeds" Type="Boolean" />
+          <Property Name="ListMeds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdherenceOK" Type="Boolean" />
+          <Property Name="ReferToClinic" Type="Boolean" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ARVFileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Screening" Relationship="impiloModel.FK_HIV_Tab_Screening" FromRole="HIV_Tab" ToRole="Screening" />
+        </EntityType>
+        <EntityType Name="Hut">
+          <Key>
+            <PropertyRef Name="HutId" />
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="HutId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HutStracture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeOfRoof" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ventilation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalNoOfRooms" Type="Int32" />
+          <Property Name="isMainHut" Type="Boolean" />
+          <Property Name="DateLastSnycFromServer" Type="DateTime" Precision="3" />
+          <Property Name="DateLastSnycToServer" Type="DateTime" Precision="3" />
+          <Property Name="LastDateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Hypertension">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YearOfDiagnosis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Headache" Type="Boolean" />
+          <Property Name="BlurredVision" Type="Boolean" />
+          <Property Name="ChestPain" Type="Boolean" />
+          <Property Name="ReferralToClinic" Type="Boolean" />
+          <Property Name="ReferalNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EverHadStroke" Type="Boolean" />
+          <Property Name="YearOfStroke" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AnyOneInFamilyHadStroke" Type="Boolean" />
+          <NavigationProperty Name="Screening" Relationship="impiloModel.FK_Hypertension_Screening" FromRole="Hypertension" ToRole="Screening" />
+        </EntityType>
+        <EntityType Name="Medication">
+          <Key>
+            <PropertyRef Name="MedicationID" />
+          </Key>
+          <Property Name="MedicationID" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MentalHealth">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PregnantBefore" Type="Boolean" />
+          <Property Name="NoOfPregnancies" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HowManySuccessful" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WhereDeliveredLasBaby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Caesarian" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BabyUnder2_5Kgs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChildrenDiedUnder1Year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChildrenDiedBetween1to5Years" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PAPSmearInLast5Years" Type="Boolean" />
+          <Property Name="LastBloodTestResult" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfFirstANC" Type="DateTime" Precision="0" />
+          <Property Name="DateOfLastANC" Type="DateTime" Precision="0" />
+          <Property Name="ReferredToClinic" Type="Boolean" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfNextANC" Type="DateTime" Precision="0" />
+          <Property Name="ExtectedDateOfDelivery" Type="DateTime" Precision="0" />
+          <Property Name="IntendFormulaFeed" Type="Boolean" />
+          <Property Name="RegisteredOnMomConnect" Type="Boolean" />
+          <NavigationProperty Name="Screening" Relationship="impiloModel.FK_MentalHealth_Screening" FromRole="MentalHealth" ToRole="Screening" />
+        </EntityType>
+        <EntityType Name="Other_Tab">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+            <PropertyRef Name="OtherID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OtherID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OtherConditionFound" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferToClinic" Type="Boolean" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Screening" Relationship="impiloModel.FK_Other_Tab_Screening" FromRole="Other_Tab" ToRole="Screening" />
+        </EntityType>
+        <EntityType Name="OtherCondition">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BloodInUrine" Type="Boolean" />
+          <Property Name="ReferToClinic" Type="Boolean" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Smoking" Type="Boolean" />
+          <Property Name="DrinkAlchoholUnitsPerWeek" Type="Boolean" />
+          <Property Name="DiarrhoeaOver3Days" Type="Boolean" />
+          <Property Name="ReferToClinic2" Type="Boolean" />
+          <Property Name="ReferralNo2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AttendedInitiationSchool" Type="Boolean" />
+          <Property Name="LagCrampsOver2Weeks" Type="Boolean" />
+          <Property Name="LagNumbnessOver2Weeks" Type="Boolean" />
+          <Property Name="FootUlcer" Type="Boolean" />
+          <Property Name="ReferToClinic3" Type="Boolean" />
+          <Property Name="ReferalNo3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FamilyPlanningAdviceGiven" Type="Boolean" />
+          <Property Name="Amputation" Type="Boolean" />
+          <Property Name="PassVisionTest" Type="Boolean" />
+          <Property Name="Bedridden" Type="Boolean" />
+          <Property Name="UseAidToMove" Type="Boolean" />
+          <Property Name="WashYourSelf" Type="Boolean" />
+          <Property Name="DressYourSelf" Type="Boolean" />
+          <Property Name="ReferToClinic4" Type="Boolean" />
+          <Property Name="ReferalNo4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FamilyPlanningAdvice" Type="Boolean" />
+          <NavigationProperty Name="Screening" Relationship="impiloModel.FK_OtherCondition_Screening" FromRole="OtherCondition" ToRole="Screening" />
+        </EntityType>
+        <EntityType Name="Pregnancy">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentlyPregnant" Type="Boolean" />
+          <Property Name="PossiblePregnant" Type="Boolean" />
+          <Property Name="PregnancyTestDone" Type="Boolean" />
+          <Property Name="Results" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferToClinic" Type="Int64" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Screening" Relationship="impiloModel.FK_Pregnancy_Screening" FromRole="Pregnancy" ToRole="Screening" />
+        </EntityType>
+        <EntityType Name="Screening">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScreeningDate" Type="DateTime" Precision="3" />
+          <Property Name="ClientId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClientOld" Relationship="impiloModel.FK_Screening_Client" FromRole="Screening" ToRole="ClientOld" />
+          <NavigationProperty Name="CurrentMedications" Relationship="impiloModel.FK_CurrentMedications_Screening" FromRole="Screening" ToRole="CurrentMedications" />
+          <NavigationProperty Name="Diabetes" Relationship="impiloModel.FK_Diabetes_Screening" FromRole="Screening" ToRole="Diabetes" />
+          <NavigationProperty Name="HIV" Relationship="impiloModel.FK_HIV_Screening" FromRole="Screening" ToRole="HIV" />
+          <NavigationProperty Name="HIV_Tab" Relationship="impiloModel.FK_HIV_Tab_Screening" FromRole="Screening" ToRole="HIV_Tab" />
+          <NavigationProperty Name="Hypertension" Relationship="impiloModel.FK_Hypertension_Screening" FromRole="Screening" ToRole="Hypertension" />
+          <NavigationProperty Name="MentalHealth" Relationship="impiloModel.FK_MentalHealth_Screening" FromRole="Screening" ToRole="MentalHealth" />
+          <NavigationProperty Name="Other_Tab" Relationship="impiloModel.FK_Other_Tab_Screening" FromRole="Screening" ToRole="Other_Tab" />
+          <NavigationProperty Name="OtherCondition" Relationship="impiloModel.FK_OtherCondition_Screening" FromRole="Screening" ToRole="OtherCondition" />
+          <NavigationProperty Name="Pregnancy" Relationship="impiloModel.FK_Pregnancy_Screening" FromRole="Screening" ToRole="Pregnancy" />
+          <NavigationProperty Name="Tubercolosis" Relationship="impiloModel.FK_Tubercolosis_Screening" FromRole="Screening" ToRole="Tubercolosis" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBContactTracing">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HouseHoldOnTBMeds" Type="Boolean" />
+          <Property Name="ReferToClinic" Type="Boolean" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tubercolosis">
+          <Key>
+            <PropertyRef Name="ScreeningID" />
+          </Key>
+          <Property Name="ScreeningID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HaveTubercolosis" Type="Boolean" />
+          <Property Name="WhatMedsAreYouOn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Defaulting" Type="Boolean" />
+          <Property Name="LossWeight" Type="Boolean" />
+          <Property Name="SweatingAtNight" Type="Boolean" />
+          <Property Name="FeverOver2Weeks" Type="Boolean" />
+          <Property Name="CoughMoreThan2Weeks" Type="Boolean" />
+          <Property Name="LossOfApetite" Type="Boolean" />
+          <Property Name="ReferToClinic" Type="Boolean" />
+          <Property Name="ReferralNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Screening" Relationship="impiloModel.FK_Tubercolosis_Screening" FromRole="Tubercolosis" ToRole="Screening" />
+        </EntityType>
+        <EntityType Name="Chow">
+          <Key>
+            <PropertyRef Name="ChowID" />
+          </Key>
+          <Property Name="ChowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CellNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HeadOfHousehold" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GPSLatitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GPSLongitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClinicUsed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AttendingSchool" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameofSchool" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Screening_Client">
+          <End Type="impiloModel.ClientOld" Role="ClientOld" Multiplicity="0..1" />
+          <End Type="impiloModel.Screening" Role="Screening" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientOld">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Screening">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrentMedications_Screening">
+          <End Type="impiloModel.Screening" Role="Screening" Multiplicity="1" />
+          <End Type="impiloModel.CurrentMedications" Role="CurrentMedications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="CurrentMedications">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diabetes_Screening">
+          <End Type="impiloModel.Screening" Role="Screening" Multiplicity="1" />
+          <End Type="impiloModel.Diabetes" Role="Diabetes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="Diabetes">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HIV_Screening">
+          <End Type="impiloModel.Screening" Role="Screening" Multiplicity="1" />
+          <End Type="impiloModel.HIV" Role="HIV" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="HIV">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HIV_Tab_Screening">
+          <End Type="impiloModel.Screening" Role="Screening" Multiplicity="1" />
+          <End Type="impiloModel.HIV_Tab" Role="HIV_Tab" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="HIV_Tab">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hypertension_Screening">
+          <End Type="impiloModel.Screening" Role="Screening" Multiplicity="1" />
+          <End Type="impiloModel.Hypertension" Role="Hypertension" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="Hypertension">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MentalHealth_Screening">
+          <End Type="impiloModel.Screening" Role="Screening" Multiplicity="1" />
+          <End Type="impiloModel.MentalHealth" Role="MentalHealth" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="MentalHealth">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Other_Tab_Screening">
+          <End Type="impiloModel.Screening" Role="Screening" Multiplicity="1" />
+          <End Type="impiloModel.Other_Tab" Role="Other_Tab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="Other_Tab">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtherCondition_Screening">
+          <End Type="impiloModel.Screening" Role="Screening" Multiplicity="1" />
+          <End Type="impiloModel.OtherCondition" Role="OtherCondition" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="OtherCondition">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pregnancy_Screening">
+          <End Type="impiloModel.Screening" Role="Screening" Multiplicity="1" />
+          <End Type="impiloModel.Pregnancy" Role="Pregnancy" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="Pregnancy">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tubercolosis_Screening">
+          <End Type="impiloModel.Screening" Role="Screening" Multiplicity="1" />
+          <End Type="impiloModel.Tubercolosis" Role="Tubercolosis" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Screening">
+              <PropertyRef Name="ScreeningID" />
+            </Principal>
+            <Dependent Role="Tubercolosis">
+              <PropertyRef Name="ScreeningID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="impiloModelStoreContainer" CdmEntityContainer="impiloEntities">
+          <EntitySetMapping Name="BloodSuger">
+            <EntityTypeMapping TypeName="impiloModel.BloodSuger">
+              <MappingFragment StoreEntitySet="BloodSuger">
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="ReferToCHOWs" ColumnName="ReferToCHOWs" />
+                <ScalarProperty Name="NotOnMedsBSReadings" ColumnName="NotOnMedsBSReadings" />
+                <ScalarProperty Name="OnMeds" ColumnName="OnMeds" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BPReading">
+            <EntityTypeMapping TypeName="impiloModel.BPReading">
+              <MappingFragment StoreEntitySet="BPReading">
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="ReferToCHOWs" ColumnName="ReferToCHOWs" />
+                <ScalarProperty Name="Diastolic" ColumnName="Diastolic" />
+                <ScalarProperty Name="OnMedsDiastolic" ColumnName="OnMedsDiastolic" />
+                <ScalarProperty Name="OnMedsSytolic" ColumnName="OnMedsSytolic" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChildHealth">
+            <EntityTypeMapping TypeName="impiloModel.ChildHealth">
+              <MappingFragment StoreEntitySet="ChildHealth">
+                <ScalarProperty Name="TalkAppropriateForAge" ColumnName="TalkAppropriateForAge" />
+                <ScalarProperty Name="WalkAppropriateForAge" ColumnName="WalkAppropriateForAge" />
+                <ScalarProperty Name="VITAandWarmMedsGivenEachMonth" ColumnName="VITAandWarmMedsGivenEachMonth" />
+                <ScalarProperty Name="ReferralNo4" ColumnName="ReferralNo4" />
+                <ScalarProperty Name="ReferToClinic4" ColumnName="ReferToClinic4" />
+                <ScalarProperty Name="WhichImmunisatationsOutStanding" ColumnName="WhichImmunisatationsOutStanding" />
+                <ScalarProperty Name="ImmunisationUpToDate" ColumnName="ImmunisationUpToDate" />
+                <ScalarProperty Name="ReferalNo3" ColumnName="ReferalNo3" />
+                <ScalarProperty Name="ReferToClinic3" ColumnName="ReferToClinic3" />
+                <ScalarProperty Name="PCRResults" ColumnName="PCRResults" />
+                <ScalarProperty Name="PCRDone" ColumnName="PCRDone" />
+                <ScalarProperty Name="ChildEverOnNevirapine" ColumnName="ChildEverOnNevirapine" />
+                <ScalarProperty Name="Howlong" ColumnName="Howlong" />
+                <ScalarProperty Name="ChildBreastFed" ColumnName="ChildBreastFed" />
+                <ScalarProperty Name="MotherHIVPlus" ColumnName="MotherHIVPlus" />
+                <ScalarProperty Name="ReferralNo2" ColumnName="ReferralNo2" />
+                <ScalarProperty Name="ReferToOVC" ColumnName="ReferToOVC" />
+                <ScalarProperty Name="ReferToClinic2" ColumnName="ReferToClinic2" />
+                <ScalarProperty Name="ListConcernsReChild" ColumnName="ListConcernsReChild" />
+                <ScalarProperty Name="ReferalNo" ColumnName="ReferalNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="ChildWithRTHC" ColumnName="ChildWithRTHC" />
+                <ScalarProperty Name="NameOfMother" ColumnName="NameOfMother" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientOld">
+            <EntityTypeMapping TypeName="impiloModel.ClientOld">
+              <MappingFragment StoreEntitySet="ClientOld">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="LastDateUpdated" ColumnName="LastDateUpdated" />
+                <ScalarProperty Name="LastSyncDateToServer" ColumnName="LastSyncDateToServer" />
+                <ScalarProperty Name="LastSyncDateFromServer" ColumnName="LastSyncDateFromServer" />
+                <ScalarProperty Name="NameOfSchool" ColumnName="NameOfSchool" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="isAttendingSchool" ColumnName="isAttendingSchool" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="isHeadOfHousehold" ColumnName="isHeadOfHousehold" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clinic">
+            <EntityTypeMapping TypeName="impiloModel.Clinic">
+              <MappingFragment StoreEntitySet="Clinic">
+                <ScalarProperty Name="LastDayUpdated" ColumnName="LastDayUpdated" />
+                <ScalarProperty Name="DateLastSnycToServer" ColumnName="DateLastSnycToServer" />
+                <ScalarProperty Name="DateLastSnycFromServer" ColumnName="DateLastSnycFromServer" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Logitude" ColumnName="Logitude" />
+                <ScalarProperty Name="ClinicName" ColumnName="ClinicName" />
+                <ScalarProperty Name="ClinicID" ColumnName="ClinicID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrentMedications">
+            <EntityTypeMapping TypeName="impiloModel.CurrentMedications">
+              <MappingFragment StoreEntitySet="CurrentMedications">
+                <ScalarProperty Name="ReferralID" ColumnName="ReferralID" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="Defaulting" ColumnName="Defaulting" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="DiseaseID" ColumnName="DiseaseID" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diabetes">
+            <EntityTypeMapping TypeName="impiloModel.Diabetes">
+              <MappingFragment StoreEntitySet="Diabetes">
+                <ScalarProperty Name="FamilyMemberWith" ColumnName="FamilyMemberWith" />
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferralToClinic" ColumnName="ReferralToClinic" />
+                <ScalarProperty Name="FootExamResult" ColumnName="FootExamResult" />
+                <ScalarProperty Name="NauseaOrVomitting" ColumnName="NauseaOrVomitting" />
+                <ScalarProperty Name="UrinatingMore" ColumnName="UrinatingMore" />
+                <ScalarProperty Name="BlurredVision" ColumnName="BlurredVision" />
+                <ScalarProperty Name="WeightLoss" ColumnName="WeightLoss" />
+                <ScalarProperty Name="regularlyThirsty" ColumnName="regularlyThirsty" />
+                <ScalarProperty Name="YearOfDiagonosis" ColumnName="YearOfDiagonosis" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disease">
+            <EntityTypeMapping TypeName="impiloModel.Disease">
+              <MappingFragment StoreEntitySet="Disease">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DiseaseID" ColumnName="DiseaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ElderlyCareAssessment">
+            <EntityTypeMapping TypeName="impiloModel.ElderlyCareAssessment">
+              <MappingFragment StoreEntitySet="ElderlyCareAssessment">
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="DressYourSelf" ColumnName="DressYourSelf" />
+                <ScalarProperty Name="WashYourself" ColumnName="WashYourself" />
+                <ScalarProperty Name="UseAidToMove" ColumnName="UseAidToMove" />
+                <ScalarProperty Name="Bedridden" ColumnName="Bedridden" />
+                <ScalarProperty Name="PassVisionTest" ColumnName="PassVisionTest" />
+                <ScalarProperty Name="LegFootArmHanAmputation" ColumnName="LegFootArmHanAmputation" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Environmental">
+            <EntityTypeMapping TypeName="impiloModel.Environmental">
+              <MappingFragment StoreEntitySet="Environmental">
+                <ScalarProperty Name="WhichClinic" ColumnName="WhichClinic" />
+                <ScalarProperty Name="WhenLastClinicVisit" ColumnName="WhenLastClinicVisit" />
+                <ScalarProperty Name="ListWhere" ColumnName="ListWhere" />
+                <ScalarProperty Name="NoOfHouseholdAway" ColumnName="NoOfHouseholdAway" />
+                <ScalarProperty Name="NoOfHouseholdCurrent" ColumnName="NoOfHouseholdCurrent" />
+                <ScalarProperty Name="ScreeningId" ColumnName="ScreeningId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnvironmentalExtra">
+            <EntityTypeMapping TypeName="impiloModel.EnvironmentalExtra">
+              <MappingFragment StoreEntitySet="EnvironmentalExtra">
+                <ScalarProperty Name="RecievedFoodPacelIn6Month" ColumnName="RecievedFoodPacelIn6Month" />
+                <ScalarProperty Name="SourceOfIncome" ColumnName="SourceOfIncome" />
+                <ScalarProperty Name="DisposeWaste" ColumnName="DisposeWaste" />
+                <ScalarProperty Name="TypeOfToilet" ColumnName="TypeOfToilet" />
+                <ScalarProperty Name="UseForCooking" ColumnName="UseForCooking" />
+                <ScalarProperty Name="HaveWorkingFridge" ColumnName="HaveWorkingFridge" />
+                <ScalarProperty Name="ElectricityInAnyHut" ColumnName="ElectricityInAnyHut" />
+                <ScalarProperty Name="TreatWaterBeforeDrinking" ColumnName="TreatWaterBeforeDrinking" />
+                <ScalarProperty Name="WalkingDistanceFromWhaterSupply" ColumnName="WalkingDistanceFromWhaterSupply" />
+                <ScalarProperty Name="WaterSupply" ColumnName="WaterSupply" />
+                <ScalarProperty Name="RainWaterCollection" ColumnName="RainWaterCollection" />
+                <ScalarProperty Name="NoOfStructuresInHomeStead" ColumnName="NoOfStructuresInHomeStead" />
+                <ScalarProperty Name="NoOfPeopleInOneRoomMainHut" ColumnName="NoOfPeopleInOneRoomMainHut" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Epilepsy">
+            <EntityTypeMapping TypeName="impiloModel.Epilepsy">
+              <MappingFragment StoreEntitySet="Epilepsy">
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="FitsInLastMonth" ColumnName="FitsInLastMonth" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="General">
+            <EntityTypeMapping TypeName="impiloModel.General">
+              <MappingFragment StoreEntitySet="General">
+                <ScalarProperty Name="BMI" ColumnName="BMI" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HIV">
+            <EntityTypeMapping TypeName="impiloModel.HIV">
+              <MappingFragment StoreEntitySet="HIV">
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="HIVTestDone" ColumnName="HIVTestDone" />
+                <ScalarProperty Name="KnownHIVPosStatus" ColumnName="KnownHIVPosStatus" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HIV_Tab">
+            <EntityTypeMapping TypeName="impiloModel.HIV_Tab">
+              <MappingFragment StoreEntitySet="HIV_Tab">
+                <ScalarProperty Name="ARVFileNo" ColumnName="ARVFileNo" />
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="AdherenceOK" ColumnName="AdherenceOK" />
+                <ScalarProperty Name="ListMeds" ColumnName="ListMeds" />
+                <ScalarProperty Name="OnMeds" ColumnName="OnMeds" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hut">
+            <EntityTypeMapping TypeName="impiloModel.Hut">
+              <MappingFragment StoreEntitySet="Hut">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="LastDateUpdated" ColumnName="LastDateUpdated" />
+                <ScalarProperty Name="DateLastSnycToServer" ColumnName="DateLastSnycToServer" />
+                <ScalarProperty Name="DateLastSnycFromServer" ColumnName="DateLastSnycFromServer" />
+                <ScalarProperty Name="isMainHut" ColumnName="isMainHut" />
+                <ScalarProperty Name="TotalNoOfRooms" ColumnName="TotalNoOfRooms" />
+                <ScalarProperty Name="Ventilation" ColumnName="Ventilation" />
+                <ScalarProperty Name="TypeOfRoof" ColumnName="TypeOfRoof" />
+                <ScalarProperty Name="HutStracture" ColumnName="HutStracture" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="HutId" ColumnName="HutId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hypertension">
+            <EntityTypeMapping TypeName="impiloModel.Hypertension">
+              <MappingFragment StoreEntitySet="Hypertension">
+                <ScalarProperty Name="AnyOneInFamilyHadStroke" ColumnName="AnyOneInFamilyHadStroke" />
+                <ScalarProperty Name="YearOfStroke" ColumnName="YearOfStroke" />
+                <ScalarProperty Name="EverHadStroke" ColumnName="EverHadStroke" />
+                <ScalarProperty Name="ReferalNo" ColumnName="ReferalNo" />
+                <ScalarProperty Name="ReferralToClinic" ColumnName="ReferralToClinic" />
+                <ScalarProperty Name="ChestPain" ColumnName="ChestPain" />
+                <ScalarProperty Name="BlurredVision" ColumnName="BlurredVision" />
+                <ScalarProperty Name="Headache" ColumnName="Headache" />
+                <ScalarProperty Name="YearOfDiagnosis" ColumnName="YearOfDiagnosis" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medication">
+            <EntityTypeMapping TypeName="impiloModel.Medication">
+              <MappingFragment StoreEntitySet="Medication">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MentalHealth">
+            <EntityTypeMapping TypeName="impiloModel.MentalHealth">
+              <MappingFragment StoreEntitySet="MentalHealth">
+                <ScalarProperty Name="RegisteredOnMomConnect" ColumnName="RegisteredOnMomConnect" />
+                <ScalarProperty Name="IntendFormulaFeed" ColumnName="IntendFormulaFeed" />
+                <ScalarProperty Name="ExtectedDateOfDelivery" ColumnName="ExtectedDateOfDelivery" />
+                <ScalarProperty Name="DateOfNextANC" ColumnName="DateOfNextANC" />
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferredToClinic" ColumnName="ReferredToClinic" />
+                <ScalarProperty Name="DateOfLastANC" ColumnName="DateOfLastANC" />
+                <ScalarProperty Name="DateOfFirstANC" ColumnName="DateOfFirstANC" />
+                <ScalarProperty Name="LastBloodTestResult" ColumnName="LastBloodTestResult" />
+                <ScalarProperty Name="PAPSmearInLast5Years" ColumnName="PAPSmearInLast5Years" />
+                <ScalarProperty Name="ChildrenDiedBetween1to5Years" ColumnName="ChildrenDiedBetween1to5Years" />
+                <ScalarProperty Name="ChildrenDiedUnder1Year" ColumnName="ChildrenDiedUnder1Year" />
+                <ScalarProperty Name="BabyUnder2_5Kgs" ColumnName="BabyUnder2_5Kgs" />
+                <ScalarProperty Name="Caesarian" ColumnName="Caesarian" />
+                <ScalarProperty Name="WhereDeliveredLasBaby" ColumnName="WhereDeliveredLasBaby" />
+                <ScalarProperty Name="HowManySuccessful" ColumnName="HowManySuccessful" />
+                <ScalarProperty Name="NoOfPregnancies" ColumnName="NoOfPregnancies" />
+                <ScalarProperty Name="PregnantBefore" ColumnName="PregnantBefore" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Other_Tab">
+            <EntityTypeMapping TypeName="impiloModel.Other_Tab">
+              <MappingFragment StoreEntitySet="Other_Tab">
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="OtherConditionFound" ColumnName="OtherConditionFound" />
+                <ScalarProperty Name="OtherID" ColumnName="OtherID" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtherCondition">
+            <EntityTypeMapping TypeName="impiloModel.OtherCondition">
+              <MappingFragment StoreEntitySet="OtherCondition">
+                <ScalarProperty Name="FamilyPlanningAdvice" ColumnName="FamilyPlanningAdvice" />
+                <ScalarProperty Name="ReferalNo4" ColumnName="ReferalNo4" />
+                <ScalarProperty Name="ReferToClinic4" ColumnName="ReferToClinic4" />
+                <ScalarProperty Name="DressYourSelf" ColumnName="DressYourSelf" />
+                <ScalarProperty Name="WashYourSelf" ColumnName="WashYourSelf" />
+                <ScalarProperty Name="UseAidToMove" ColumnName="UseAidToMove" />
+                <ScalarProperty Name="Bedridden" ColumnName="Bedridden" />
+                <ScalarProperty Name="PassVisionTest" ColumnName="PassVisionTest" />
+                <ScalarProperty Name="Amputation" ColumnName="Amputation" />
+                <ScalarProperty Name="FamilyPlanningAdviceGiven" ColumnName="FamilyPlanningAdviceGiven" />
+                <ScalarProperty Name="ReferalNo3" ColumnName="ReferalNo3" />
+                <ScalarProperty Name="ReferToClinic3" ColumnName="ReferToClinic3" />
+                <ScalarProperty Name="FootUlcer" ColumnName="FootUlcer" />
+                <ScalarProperty Name="LagNumbnessOver2Weeks" ColumnName="LagNumbnessOver2Weeks" />
+                <ScalarProperty Name="LagCrampsOver2Weeks" ColumnName="LagCrampsOver2Weeks" />
+                <ScalarProperty Name="AttendedInitiationSchool" ColumnName="AttendedInitiationSchool" />
+                <ScalarProperty Name="ReferralNo2" ColumnName="ReferralNo2" />
+                <ScalarProperty Name="ReferToClinic2" ColumnName="ReferToClinic2" />
+                <ScalarProperty Name="DiarrhoeaOver3Days" ColumnName="DiarrhoeaOver3Days" />
+                <ScalarProperty Name="DrinkAlchoholUnitsPerWeek" ColumnName="DrinkAlchoholUnitsPerWeek" />
+                <ScalarProperty Name="Smoking" ColumnName="Smoking" />
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="BloodInUrine" ColumnName="BloodInUrine" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pregnancy">
+            <EntityTypeMapping TypeName="impiloModel.Pregnancy">
+              <MappingFragment StoreEntitySet="Pregnancy">
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="Results" ColumnName="Results" />
+                <ScalarProperty Name="PregnancyTestDone" ColumnName="PregnancyTestDone" />
+                <ScalarProperty Name="PossiblePregnant" ColumnName="PossiblePregnant" />
+                <ScalarProperty Name="CurrentlyPregnant" ColumnName="CurrentlyPregnant" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Screening">
+            <EntityTypeMapping TypeName="impiloModel.Screening">
+              <MappingFragment StoreEntitySet="Screening">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ScreeningDate" ColumnName="ScreeningDate" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="impiloModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBContactTracing">
+            <EntityTypeMapping TypeName="impiloModel.TBContactTracing">
+              <MappingFragment StoreEntitySet="TBContactTracing">
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="HouseHoldOnTBMeds" ColumnName="HouseHoldOnTBMeds" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tubercolosis">
+            <EntityTypeMapping TypeName="impiloModel.Tubercolosis">
+              <MappingFragment StoreEntitySet="Tubercolosis">
+                <ScalarProperty Name="ReferralNo" ColumnName="ReferralNo" />
+                <ScalarProperty Name="ReferToClinic" ColumnName="ReferToClinic" />
+                <ScalarProperty Name="LossOfApetite" ColumnName="LossOfApetite" />
+                <ScalarProperty Name="CoughMoreThan2Weeks" ColumnName="CoughMoreThan2Weeks" />
+                <ScalarProperty Name="FeverOver2Weeks" ColumnName="FeverOver2Weeks" />
+                <ScalarProperty Name="SweatingAtNight" ColumnName="SweatingAtNight" />
+                <ScalarProperty Name="LossWeight" ColumnName="LossWeight" />
+                <ScalarProperty Name="Defaulting" ColumnName="Defaulting" />
+                <ScalarProperty Name="WhatMedsAreYouOn" ColumnName="WhatMedsAreYouOn" />
+                <ScalarProperty Name="HaveTubercolosis" ColumnName="HaveTubercolosis" />
+                <ScalarProperty Name="ScreeningID" ColumnName="ScreeningID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chow">
+            <EntityTypeMapping TypeName="impiloModel.Chow">
+              <MappingFragment StoreEntitySet="Chow">
+                <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ChowID" ColumnName="ChowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="impiloModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="NameofSchool" ColumnName="NameofSchool" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="AttendingSchool" ColumnName="AttendingSchool" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="ClinicUsed" ColumnName="ClinicUsed" />
+                <ScalarProperty Name="IDNo" ColumnName="IDNo" />
+                <ScalarProperty Name="GPSLongitude" ColumnName="GPSLongitude" />
+                <ScalarProperty Name="GPSLatitude" ColumnName="GPSLatitude" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="HeadOfHousehold" ColumnName="HeadOfHousehold" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
