@@ -19,6 +19,7 @@ using Impilo_App.Views.Screening;
 using Impilo_App.Views.ClinicData;
 using Impilo_App.Views.FollowUpVisit;
 using Impilo_App.Views.CHOW;
+using Impilo_App.Views.Reports;
 
 namespace Impilo_App
 {
@@ -80,6 +81,12 @@ namespace Impilo_App
         {
             ListClients newPage = new ListClients();
             pageTransitionControl.ShowPage(newPage);
+        }
+
+        private void Format2_Click(object sender, RoutedEventArgs e)
+        {
+            Format2Report format2Report = new Format2Report();
+            pageTransitionControl.ShowPage(format2Report);
         }
 
       
