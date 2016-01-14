@@ -209,539 +209,539 @@ namespace Impilo_App.Views.Reports
         }
         public string Diabetes2()
         {
-            return Diabetes1Q.Query();
+            return Diabetes2Q.Query();
         }
 
         public string Diabetes3()
         {
-            return Diabetes1Q.Query();
+            return Diabetes3Q.Query();
         }
 
         public string Diabetes4()
         {
-            return Diabetes1Q.Query();
+            return Diabetes4Q.Query();
         }
 
         public string Diabetes5()
         {
-            return Diabetes1Q.Query();
+            return Diabetes5Q.Query();
         }
 
         public string Diabetes6()
         {
-            return Diabetes1Q.Query();
+            return Diabetes6Q.Query();
         }
 
         public string Diabetes7()
         {
-            return Diabetes1Q.Query();
+            return Diabetes7Q.Query();
         }
 
         public string Diabetes7a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes7aQ.Query();
         }
 
         public string Diabetes7b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes7bQ.Query();
         }
 
         public string Diabetes8()
         {
-            return Diabetes1Q.Query();
+            return Diabetes8Q.Query();
         }
         public string Diabetes9()
         {
-            return Diabetes1Q.Query();
+            return Diabetes9Q.Query();
         }
         public string Diabetes9a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes9aQ.Query();
         }
         public string Diabetes9b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes9bQ.Query();
         }
         public string Diabetes9c()
         {
-            return Diabetes1Q.Query();
+            return Diabetes9cQ.Query();
         }
         public string Diabetes9d()
         {
-            return Diabetes1Q.Query();
+            return Diabetes9dQ.Query();
         }
 
         public string Diabetes10()
         {
-            return Diabetes1Q.Query();
+            return Diabetes10Q.Query();
         }
         public string Diabetes10a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes10aQ.Query();
         }
         public string Diabetes10b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes10bQ.Query();
         }
 
         public string Diabetes11()
         {
-            return Diabetes1Q.Query();
+            return Diabetes11Q.Query();
         }
         public string Diabetes11a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes11aQ.Query();
         }
         public string Diabetes11b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes11bQ.Query();
         }
 
         public string Diabetes12()
         {
-            return Diabetes1Q.Query();
+            return Diabetes12Q.Query();
         }
         public string Diabetes12a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes12aQ.Query();
         }
         public string Diabetes12b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes12bQ.Query();
         }
 
         public string Diabetes13()
         {
-            return Diabetes1Q.Query();
+            return Diabetes13Q.Query();
         }
 
         public string Diabetes14()
         {
-            return Diabetes1Q.Query();
+            return Diabetes14Q.Query();
         }
 
         public string Diabetes14a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes14aQ.Query();
         }
         public string Diabetes14b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes14bQ.Query();
         }
 
         public string Diabetes15()
         {
-            return Diabetes1Q.Query();
+            return Diabetes15Q.Query();
         }
         public string Diabetes15a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes15aQ.Query();
         }
         public string Diabetes15b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes15bQ.Query();
         }
 
         public string Diabetes16()
         {
-            return Diabetes1Q.Query();
+            return Diabetes16Q.Query();
         }
         public string Diabetes16a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes16aQ.Query();
         }
         public string Diabetes16b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes616bQ.Query();
         }
 
         public string Diabetes17()
         {
-            return Diabetes1Q.Query();
+            return Diabetes17Q.Query();
         }
         public string Diabetes17a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes17aQ.Query();
         }
         public string Diabetes17b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes17bQ.Query();
         }
 
         public string Diabetes18()
         {
-            return Diabetes1Q.Query();
+            return Diabetes18Q.Query();
         }
         public string Diabetes18a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes18aQ.Query();
         }
         public string Diabetes18b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes18bQ.Query();
         }
 
         public string Diabetes19()
         {
-            return Diabetes1Q.Query();
+            return Diabetes19Q.Query();
         }
         public string Diabetes19a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes19aQ.Query();
         }
         public string Diabetes19b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes19bQ.Query();
         }
 
         public string Diabetes20()
         {
-            return Diabetes1Q.Query();
+            return Diabetes20Q.Query();
         }
 
         public string Diabetes21()
         {
-            return Diabetes1Q.Query();
+            return Diabetes21Q.Query();
         }
 
         public string Diabetes22()
         {
-            return Diabetes1Q.Query();
+            return Diabetes22Q.Query();
         }
 
         public string Diabetes22a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes22aQ.Query();
         }
         public string Diabetes22b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes22bQ.Query();
         }
 
         public string Diabetes23()
         {
-            return Diabetes1Q.Query();
+            return Diabetes23Q.Query();
         }
 
         public string Diabetes24()
         {
-            return Diabetes1Q.Query();
+            return Diabetes24Q.Query();
         }
 
         public string Diabetes24a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes24aQ.Query();
         }
         public string Diabetes24b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes24bQ.Query();
         }
         public string Diabetes24c()
         {
-            return Diabetes1Q.Query();
+            return Diabetes24cQ.Query();
         }
         public string Diabetes24d()
         {
-            return Diabetes1Q.Query();
+            return Diabetes24dQ.Query();
         }
 
         public string Diabetes25()
         {
-            return Diabetes1Q.Query();
+            return Diabetes25Q.Query();
         }
 
         public string Diabetes25a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes25aQ.Query();
         }
 
         public string Diabetes25b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes25bQ.Query();
         }
 
         public string Diabetes26()
         {
-            return Diabetes1Q.Query();
+            return Diabetes26Q.Query();
         }
 
         public string Diabetes26a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes26aQ.Query();
         }
 
         public string Diabetes26b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes26bQ.Query();
         }
 
         public string Diabetes27()
         {
-            return Diabetes1Q.Query();
+            return Diabetes27Q.Query();
         }
 
         public string Diabetes27a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes27aQ.Query();
         }
 
         public string Diabetes27b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes27bQ.Query();
         }
 
         public string Diabetes28()
         {
-            return Diabetes1Q.Query();
+            return Diabetes28Q.Query();
         }
 
         public string Diabetes28a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes28aQ.Query();
         }
 
         public string Diabetes28b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes28bQ.Query();
         }
 
         public string Diabetes29()
         {
-            return Diabetes1Q.Query();
+            return Diabetes29Q.Query();
         }
 
         public string Diabetes29a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes29aQ.Query();
         }
 
         public string Diabetes29b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes29bQ.Query();
         }
 
         public string Diabetes30()
         {
-            return Diabetes1Q.Query();
+            return Diabetes30Q.Query();
         }
 
         public string Diabetes30a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes30aQ.Query();
         }
 
         public string Diabetes30b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes30bQ.Query();
         }
 
         public string Diabetes31()
         {
-            return Diabetes1Q.Query();
+            return Diabetes31Q.Query();
         }
 
         public string Diabetes31a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes31aQ.Query();
         }
 
         public string Diabetes31b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes31bQ.Query();
         }
 
         public string Diabetes32()
         {
-            return Diabetes1Q.Query();
+            return Diabetes32Q.Query();
         }
 
         public string Diabetes32a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes32aQ.Query();
         }
 
         public string Diabetes32b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes32bQ.Query();
         }
 
         public string Diabetes33()
         {
-            return Diabetes1Q.Query();
+            return Diabetes33Q.Query();
         }
 
         public string Diabetes33a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes33aQ.Query();
         }
 
         public string Diabetes33b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes33bQ.Query();
         }
 
         public string Diabetes34()
         {
-            return Diabetes1Q.Query();
+            return Diabetes34Q.Query();
         }
 
         public string Diabetes35()
         {
-            return Diabetes1Q.Query();
+            return Diabetes35Q.Query();
         }
         public string Diabetes36()
         {
-            return Diabetes1Q.Query();
+            return Diabetes36Q.Query();
         }
         public string Diabetes37()
         {
-            return Diabetes1Q.Query();
+            return Diabetes37Q.Query();
         }
 
         public string Diabetes38()
         {
-            return Diabetes1Q.Query();
+            return Diabetes38Q.Query();
         }
 
         public string Diabetes38a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes38aQ.Query();
         }
 
         public string Diabetes38b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes38bQ.Query();
         }
         public string Diabetes39()
         {
-            return Diabetes1Q.Query();
+            return Diabetes39Q.Query();
         }
 
         public string Diabetes39a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes39aQ.Query();
         }
 
         public string Diabetes39b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes39bQ.Query();
         }
         public string Diabetes40()
         {
-            return Diabetes1Q.Query();
+            return Diabetes40Q.Query();
         }
         public string Diabetes40a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes40aQ.Query();
         }
 
         public string Diabetes40b()
         {
-            return Diabetes1Q.Query();
+            return Diabete40b1Q.Query();
         }
 
         public string Diabetes41()
         {
-            return Diabetes1Q.Query();
+            return Diabetes41Q.Query();
         }
 
         public string Diabetes41a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes41aQ.Query();
         }
 
         public string Diabetes41b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes41bQ.Query();
         }
 
         public string Diabetes42()
         {
-            return Diabetes1Q.Query();
+            return Diabetes42Q.Query();
         }
         public string Diabetes43()
         {
-            return Diabetes1Q.Query();
+            return Diabetes43Q.Query();
         }
 
         public string Diabetes43a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes43aQ.Query();
         }
 
         public string Diabetes43b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes43bQ.Query();
         }
 
         public string Diabetes44()
         {
-            return Diabetes1Q.Query();
+            return Diabetes44Q.Query();
         }
 
         public string Diabetes44a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes44aQ.Query();
         }
 
         public string Diabetes44b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes44bQ.Query();
         }
         public string Diabetes45()
         {
-            return Diabetes1Q.Query();
+            return Diabetes45Q.Query();
         }
         public string Diabetes45a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes45aQ.Query();
         }
 
         public string Diabetes45b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes45bQ.Query();
         }
         public string Diabetes46()
         {
-            return Diabetes1Q.Query();
+            return Diabetes46Q.Query();
         }
 
         public string Diabetes46a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes46aQ.Query();
         }
 
         public string Diabetes46b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes46bQ.Query();
         }
         public string Diabetes47()
         {
-            return Diabetes1Q.Query();
+            return Diabetes47Q.Query();
         }
 
         public string Diabetes47a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes47aQ.Query();
         }
 
         public string Diabetes47b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes47bQ.Query();
         }
         public string Diabetes48()
         {
-            return Diabetes1Q.Query();
+            return Diabetes48Q.Query();
         }
         public string Diabetes48a()
         {
-            return Diabetes1Q.Query();
+            return Diabetes48aQ.Query();
         }
 
         public string Diabetes48b()
         {
-            return Diabetes1Q.Query();
+            return Diabetes49bQ.Query();
         }
 
         #endregion
