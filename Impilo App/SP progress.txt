@@ -2,5 +2,5 @@
 
 AddChow            - Wynand - Already coded: "RegisterChow"
 ViewChow           - Wynand - Done
-AddClient          - Leon - Already coded: "RegisterUser"
-SelectClient       - Leon
+AddClient          - Wynand - Already coded: "RegisterUser"
+SelectClient       - Wynand
