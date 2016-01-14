@@ -1,6 +1,6 @@
 ﻿Required SPs
 
-AddChow            - Wynand
-ViewChow           - Wynand
-AddClient          - Leon
-SelectClient       - Leon
+AddChow            - Wynand - Already coded: "RegisterChow"
+ViewChow           - Wynand - Done
+AddClient          - Wynand - Already coded: "RegisterUser"
+SelectClient       - Wynand - Done
