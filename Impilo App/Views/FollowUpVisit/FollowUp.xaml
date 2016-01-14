@@ -317,13 +317,13 @@
                         </Grid>
                     </Border>
                     <Label Content="Already on treatment ?"
-                    	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,367,0,0" FontWeight="Bold"/>
-                    <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="236,370,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <RadioButton Content="No" HorizontalAlignment="Left" Margin="301,370,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,367,0,0" FontWeight="Bold"/>
+                    <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="227,370,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <RadioButton Content="No" HorizontalAlignment="Left" Margin="292,370,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="Door to door visit ?"
-                    	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,402,0,0" FontWeight="Bold"/>
-                    <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="236,405,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <RadioButton Content="No" HorizontalAlignment="Left" Margin="301,405,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,402,0,0" FontWeight="Bold"/>
+                    <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="227,405,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <RadioButton Content="No" HorizontalAlignment="Left" Margin="292,405,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                 </Grid>
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
