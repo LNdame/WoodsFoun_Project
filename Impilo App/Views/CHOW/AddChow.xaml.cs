@@ -1,4 +1,4 @@
-﻿using Repository;
+﻿//using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace Impilo_App.Views.CHOW
     /// </summary>
     public partial class AddChow : UserControl
     {
-        DAL da = new DAL();
+        //DAL da = new DAL();
         public AddChow()
         {
             InitializeComponent();
@@ -29,32 +29,32 @@ namespace Impilo_App.Views.CHOW
 
         private void btnAddCountry_Click(object sender, RoutedEventArgs e)
         {
-            Users user = new Users();
-            user.FirstName = txtFirstName.Text;
-            user.LastName = txtLastName.Text;
+            //Users user = new Users();
+            //user.FirstName = txtFirstName.Text;
+            //user.LastName = txtLastName.Text;
            
         
-            string gender;
-            if (radioMale.IsChecked == true)
-            {
-                gender = "male";
-            }
-            else
-            {
-                gender = "female";
-            }
-            user.Gender = gender;
-            user.Email = txtEmail.Text;
-            user.Password = txtPassword.Text;
-            user.CellNumber = txtCellNumber.Text;
+            //string gender;
+            //if (radioMale.IsChecked == true)
+            //{
+            //    gender = "male";
+            //}
+            //else
+            //{
+            //    gender = "female";
+            //}
+            //user.Gender = gender;
+            //user.Email = txtEmail.Text;
+            //user.Password = txtPassword.Text;
+            //user.CellNumber = txtCellNumber.Text;
 
-            da.RegisterChow(user);
-            MessageBoxResult result = MessageBox.Show("CHOW successful added", "Confirmation");
-            txtEmail.Text = "";
-            txtPassword.Text = "";
-            txtCellNumber.Text = "";
-            txtFirstName.Text = "";
-            txtLastName.Text = "";
+            //da.RegisterChow(user);
+            //MessageBoxResult result = MessageBox.Show("CHOW successful added", "Confirmation");
+            //txtEmail.Text = "";
+            //txtPassword.Text = "";
+            //txtCellNumber.Text = "";
+            //txtFirstName.Text = "";
+            //txtLastName.Text = "";
         }
     }
 }
