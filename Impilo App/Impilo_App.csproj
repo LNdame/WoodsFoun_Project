@@ -70,13 +70,6 @@
     <ApplicationIcon>Logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\..\..\Downloads\NPOI 2.2.0.0\dotnet4\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -94,9 +87,6 @@
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats">
       <HintPath>..\..\..\..\Downloads\NPOI 2.2.0.0\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
-    </Reference>
-    <Reference Include="Repository">
-      <HintPath>..\Repository\bin\Debug\Repository.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -119,7 +109,9 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Compile Include="Hypertension46Q.cs" />
+    <Compile Include="DataImport\ClinicImport.cs" />
+    <Compile Include="DataImport\FollowUpImport.cs" />
+    <Compile Include="DataImport\ScreeningImport.cs" />
     <Compile Include="LocalModels\BloodSuger.cs" />
     <Compile Include="LocalModels\BPReading.cs" />
     <Compile Include="LocalModels\ChildHealth.cs" />
