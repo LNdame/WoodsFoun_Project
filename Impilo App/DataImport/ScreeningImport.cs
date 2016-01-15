@@ -340,6 +340,23 @@ namespace Impilo_App.DataImport
                         string CHReferNo4 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(27).StringCellValue;
                         #endregion
 
+                        #region Other
+                        string OCondition1 = MyWorkbook.GetSheet("Other").GetRow(2).GetCell(1).StringCellValue;
+                        string OReferClinic1 = MyWorkbook.GetSheet("Other").GetRow(2).GetCell(2).StringCellValue;
+                        string OReferNo1 = MyWorkbook.GetSheet("Other").GetRow(2).GetCell(2).StringCellValue;
+                        string OCondition2 = MyWorkbook.GetSheet("Other").GetRow(3).GetCell(1).StringCellValue;
+                        string OReferClinic2 = MyWorkbook.GetSheet("Other").GetRow(3).GetCell(2).StringCellValue;
+                        string OReferNo2 = MyWorkbook.GetSheet("Other").GetRow(3).GetCell(2).StringCellValue;
+                        string OCondition3 = MyWorkbook.GetSheet("Other").GetRow(4).GetCell(1).StringCellValue;
+                        string OReferClinic3 = MyWorkbook.GetSheet("Other").GetRow(4).GetCell(2).StringCellValue;
+                        string OReferNo3 = MyWorkbook.GetSheet("Other").GetRow(4).GetCell(2).StringCellValue;
+                        string OCondition4 = MyWorkbook.GetSheet("Other").GetRow(5).GetCell(1).StringCellValue;
+                        string OReferClinic4 = MyWorkbook.GetSheet("Other").GetRow(5).GetCell(2).StringCellValue;
+                        string OReferNo4 = MyWorkbook.GetSheet("Other").GetRow(5).GetCell(2).StringCellValue;
+                        string OCondition5 = MyWorkbook.GetSheet("Other").GetRow(6).GetCell(1).StringCellValue;
+                        string OReferClinic5 = MyWorkbook.GetSheet("Other").GetRow(6).GetCell(2).StringCellValue;
+                        string OReferNo5 = MyWorkbook.GetSheet("Other").GetRow(6).GetCell(2).StringCellValue;
+                        #endregion
                         // Queries here
 
 
