@@ -119,6 +119,9 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="DataImport\ClinicImport.cs" />
+    <Compile Include="DataImport\FollowUpImport.cs" />
+    <Compile Include="DataImport\ScreeningImport.cs" />
     <Compile Include="Hypertension46Q.cs" />
     <Compile Include="LocalModels\BloodSuger.cs" />
     <Compile Include="LocalModels\BPReading.cs" />

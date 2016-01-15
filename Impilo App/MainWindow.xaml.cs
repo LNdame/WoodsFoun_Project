@@ -89,6 +89,21 @@ namespace Impilo_App
             pageTransitionControl.ShowPage(format2Report);
         }
 
+        private void ScreeningImport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FollowupImport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClinicImport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
       
 
       

@@ -92,6 +92,11 @@
             <MenuItem Header="Reports" Height="20">
                 <MenuItem Header="Format 2" Name="Format2" Click="Format2_Click" HorizontalAlignment="Left" Width="139.2"/>
             </MenuItem>
+            <MenuItem Header="Data Import" Height="20">
+                <MenuItem Header="Screening" Name="ScreeningImport" Click="ScreeningImport_Click" HorizontalAlignment="Left" Width="139.2"/>
+                <MenuItem Header="Follow-up" Name="FollowupImport" Click="FollowupImport_Click" HorizontalAlignment="Left" Width="139.2"/>
+                <MenuItem Header="Clinic" Name="ClinicImport" Click="ClinicImport_Click" HorizontalAlignment="Left" Width="139.2"/>
+            </MenuItem>
         </Menu>
 
         <!--<TextBlock Height="68" HorizontalAlignment="Left" Margin="205,10,0,0" Name="textBlock3" Text="Impilo Client Management System" VerticalAlignment="Top" FontSize="48" Width="802" FontWeight="Bold">
