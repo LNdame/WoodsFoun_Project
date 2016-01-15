@@ -28,7 +28,12 @@ namespace Impilo_App.DataImport
                     {
                         MyWorkbook = new XSSFWorkbook(file);
 
-                        string BiographicalChowName = MyWorkbook.GetSheetAt(0).GetRow(5).GetCell(0).StringCellValue;
+                        // Read file values here
+
+                        string BioChowName = MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(0).StringCellValue;
+                        string BioUniqueID = MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(1).StringCellValue;
+
+                        // Queries here
                     }
                 }
                 catch(Exception ex)

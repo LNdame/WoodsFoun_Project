@@ -106,7 +106,7 @@ namespace Impilo_App
 
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                //DataImport.FollowUpImport.Import(dlg.SelectedPath);
+                DataImport.FollowUpImport.Import(dlg.SelectedPath);
             }
         }
 
@@ -116,7 +116,7 @@ namespace Impilo_App
 
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                //DataImport.ClinicImport.Import(dlg.SelectedPath);
+                DataImport.ClinicImport.Import(dlg.SelectedPath);
             }
         }
 
