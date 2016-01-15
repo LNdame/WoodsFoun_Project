@@ -257,6 +257,19 @@ namespace Impilo_App.DataImport
                         string HypFamilyStroke = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(14).StringCellValue;
                         #endregion
 
+                        #region Diabetes
+                        string DYear = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(1).StringCellValue;
+                        string DThirsty = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(3).StringCellValue;
+                        string DWeightloss = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(4).StringCellValue;
+                        string DVision = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(5).StringCellValue;
+                        string DUrinate = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(6).StringCellValue;
+                        string DNausea = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(7).StringCellValue;
+                        string DFoot = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(8).StringCellValue;
+                        string DReferClinic = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(9).StringCellValue;
+                        string DReferNo = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(10).StringCellValue;
+                        string DFamilyMember = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(12).StringCellValue;
+                        #endregion
+
                         // Queries here
 
 
