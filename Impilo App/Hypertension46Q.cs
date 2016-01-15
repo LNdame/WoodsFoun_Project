@@ -7,9 +7,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace Impilo_App.ReportQueries.Format_2.Diabetes
+namespace Impilo_App.ReportQueries.Format_2.Hypertension
 {
-    class Hyper1Q
+    class Hypertension46Q
     {
         public static string Query()
         {
