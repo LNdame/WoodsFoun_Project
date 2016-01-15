@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Repository;
+//using Repository;
 //using Models;
 namespace Impilo_App.Views.Screening
 {
@@ -25,32 +25,32 @@ namespace Impilo_App.Views.Screening
         {
             InitializeComponent();
         }
-        DAL dataAccess;
+        //DAL dataAccess;
         public ScreeningHome(string ID)
         {
            
             InitializeComponent();
-            dataAccess = new DAL();
-            var client = dataAccess.GetClient(ID);
-            txtName.Text = client.FirstName;
-            txtLastName.Text = client.LastName;
-            txtIDNumber.Text = client.IDNo;
-            txtDateOfScreening.Text = DateTime.Now.ToString("dd MMMM yyyy h:mm");
+            //dataAccess = new DAL();
+            //var client = dataAccess.GetClient(ID);
+            //txtName.Text = client.FirstName;
+            //txtLastName.Text = client.LastName;
+            //txtIDNumber.Text = client.IDNo;
+            //txtDateOfScreening.Text = DateTime.Now.ToString("dd MMMM yyyy h:mm");
 
-            if (client.Gender == "Male")
-            {
-                rdoMale.IsChecked = true;
-            }
-            else
-            {
-                rdoFemale.IsChecked = true;
-            }
+            //if (client.Gender == "Male")
+            //{
+            //    rdoMale.IsChecked = true;
+            //}
+            //else
+            //{
+            //    rdoFemale.IsChecked = true;
+            //}
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Repository.Screening screen = new Repository.Screening();
-            screen.ScreeningID = "";
+            //Repository.Screening screen = new Repository.Screening();
+            //screen.ScreeningID = "";
 
            
         }

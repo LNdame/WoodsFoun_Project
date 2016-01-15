@@ -20,6 +20,7 @@ using Impilo_App.Views.ClinicData;
 using Impilo_App.Views.FollowUpVisit;
 using Impilo_App.Views.CHOW;
 using Impilo_App.Views.Reports;
+using Impilo_App.DataImport;
 
 namespace Impilo_App
 {
@@ -91,17 +92,32 @@ namespace Impilo_App
 
         private void ScreeningImport_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.Forms.FolderBrowserDialog dlg = new System.Windows.Forms.FolderBrowserDialog();
 
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                DataImport.ScreeningImport.Import(dlg.SelectedPath);
+            }
         }
 
         private void FollowupImport_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.Forms.FolderBrowserDialog dlg = new System.Windows.Forms.FolderBrowserDialog();
 
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                //DataImport.FollowUpImport.Import(dlg.SelectedPath);
+            }
         }
 
         private void ClinicImport_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.Forms.FolderBrowserDialog dlg = new System.Windows.Forms.FolderBrowserDialog();
 
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                //DataImport.ClinicImport.Import(dlg.SelectedPath);
+            }
         }
 
       

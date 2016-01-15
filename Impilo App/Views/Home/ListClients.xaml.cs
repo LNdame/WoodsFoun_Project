@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Repository;
+//using Repository;
 using WpfPageTransitions;
 using Impilo_App.Views.Screening;
 using System.Configuration;
@@ -27,7 +27,7 @@ namespace Impilo_App.Views.Home
     /// </summary>
     public partial class ListClients : UserControl
     { 
-        DAL da = new DAL();
+        //DAL da = new DAL();
         static string sconn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         //SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=impilo;Integrated Security=True;");
         SqlConnection conn = new SqlConnection(sconn);
