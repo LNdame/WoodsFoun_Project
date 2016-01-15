@@ -106,6 +106,257 @@ namespace Impilo_App.DataImport
                         string EnFoodParcel = MyWorkbook.GetSheet("Environmental").GetRow(4).GetCell(22).StringCellValue;
                         #endregion
 
+                        #region General
+                        string GenWeight = MyWorkbook.GetSheet("General").GetRow(4).GetCell(1).StringCellValue;
+                        string GenHeight = MyWorkbook.GetSheet("General").GetRow(4).GetCell(2).StringCellValue;
+                        string GenBMI = MyWorkbook.GetSheet("General").GetRow(4).GetCell(3).StringCellValue;
+                        string GenCurrentOnMeds = MyWorkbook.GetSheet("General").GetRow(4).GetCell(5).StringCellValue;
+                        string GenCurrentNotOnMeds = MyWorkbook.GetSheet("General").GetRow(4).GetCell(6).StringCellValue;
+                        string GenCurrentHPT = MyWorkbook.GetSheet("General").GetRow(4).GetCell(8).StringCellValue;
+                        string GenCurrentHPTListMeds1 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(9).StringCellValue;
+                        string GenCurrentHPTListMeds2 = MyWorkbook.GetSheet("General").GetRow(5).GetCell(9).StringCellValue;
+                        string GenCurrentHPTListMeds3 = MyWorkbook.GetSheet("General").GetRow(6).GetCell(9).StringCellValue;
+                        string GenCurrentHPTListMeds4 = MyWorkbook.GetSheet("General").GetRow(7).GetCell(9).StringCellValue;
+                        string GenCurrentHPTListMeds5 = MyWorkbook.GetSheet("General").GetRow(8).GetCell(9).StringCellValue;
+                        string GenCurrentHPTStartDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(10).StringCellValue;
+                        string GenCurrentHPTDefaulting = MyWorkbook.GetSheet("General").GetRow(4).GetCell(11).StringCellValue;
+                        string GenCurrentHPTReferClinic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(12).StringCellValue;
+                        string GenCurrentHPTReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(13).StringCellValue;
+                        string GenCurrentDiabetes = MyWorkbook.GetSheet("General").GetRow(4).GetCell(15).StringCellValue;
+                        string GenCurrentDiabetesListMeds1 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(16).StringCellValue;
+                        string GenCurrentDiabetesListMeds2 = MyWorkbook.GetSheet("General").GetRow(5).GetCell(16).StringCellValue;
+                        string GenCurrentDiabetesListMeds3 = MyWorkbook.GetSheet("General").GetRow(6).GetCell(16).StringCellValue;
+                        string GenCurrentDiabetesListMeds4 = MyWorkbook.GetSheet("General").GetRow(7).GetCell(16).StringCellValue;
+                        string GenCurrentDiabetesListMeds5 = MyWorkbook.GetSheet("General").GetRow(8).GetCell(16).StringCellValue;
+                        string GenCurrentDiabetesStartDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(17).StringCellValue;
+                        string GenCurrentDiabetesDefaulting = MyWorkbook.GetSheet("General").GetRow(4).GetCell(18).StringCellValue;
+                        string GenCurrentDiabetesReferClinic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(19).StringCellValue;
+                        string GenCurrentDiabetesReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(20).StringCellValue;
+                        string GenCurrentEpilepsy = MyWorkbook.GetSheet("General").GetRow(4).GetCell(22).StringCellValue;
+                        string GenCurrentEpilepsyListMeds1 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(23).StringCellValue;
+                        string GenCurrentEpilepsyListMeds2 = MyWorkbook.GetSheet("General").GetRow(5).GetCell(23).StringCellValue;
+                        string GenCurrentEpilepsyListMeds3 = MyWorkbook.GetSheet("General").GetRow(6).GetCell(23).StringCellValue;
+                        string GenCurrentEpilepsyListMeds4 = MyWorkbook.GetSheet("General").GetRow(7).GetCell(23).StringCellValue;
+                        string GenCurrentEpilepsyListMeds5 = MyWorkbook.GetSheet("General").GetRow(8).GetCell(23).StringCellValue;
+                        string GenCurrentEpilepsyStartDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(24).StringCellValue;
+                        string GenCurrentEpilepsyDefaulting = MyWorkbook.GetSheet("General").GetRow(4).GetCell(25).StringCellValue;
+                        string GenCurrentEpilepsyReferClinic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(26).StringCellValue;
+                        string GenCurrentEpilepsyReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(27).StringCellValue;
+                        string GenCurrentAsthma = MyWorkbook.GetSheet("General").GetRow(4).GetCell(29).StringCellValue;
+                        string GenCurrentAsthmaListMeds1 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(30).StringCellValue;
+                        string GenCurrentAsthmaListMeds2 = MyWorkbook.GetSheet("General").GetRow(5).GetCell(30).StringCellValue;
+                        string GenCurrentAsthmaListMeds3 = MyWorkbook.GetSheet("General").GetRow(6).GetCell(30).StringCellValue;
+                        string GenCurrentAsthmaListMeds4 = MyWorkbook.GetSheet("General").GetRow(7).GetCell(30).StringCellValue;
+                        string GenCurrentAsthmaListMeds5 = MyWorkbook.GetSheet("General").GetRow(8).GetCell(30).StringCellValue;
+                        string GenCurrentAsthmaStartDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(31).StringCellValue;
+                        string GenCurrentAsthmaDefaulting = MyWorkbook.GetSheet("General").GetRow(4).GetCell(32).StringCellValue;
+                        string GenCurrentAsthmaReferClinic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(33).StringCellValue;
+                        string GenCurrentAsthmaReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(34).StringCellValue;
+                        string GenCurrentOther = MyWorkbook.GetSheet("General").GetRow(4).GetCell(36).StringCellValue;
+                        string GenCurrentOtherListMeds1 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(37).StringCellValue;
+                        string GenCurrentOtherListMeds2 = MyWorkbook.GetSheet("General").GetRow(5).GetCell(37).StringCellValue;
+                        string GenCurrentOtherListMeds3 = MyWorkbook.GetSheet("General").GetRow(6).GetCell(37).StringCellValue;
+                        string GenCurrentOtherListMeds4 = MyWorkbook.GetSheet("General").GetRow(7).GetCell(37).StringCellValue;
+                        string GenCurrentOtherListMeds5 = MyWorkbook.GetSheet("General").GetRow(8).GetCell(37).StringCellValue;
+                        string GenCurrentOtherStartDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(38).StringCellValue;
+                        string GenCurrentOtherDefaulting = MyWorkbook.GetSheet("General").GetRow(4).GetCell(39).StringCellValue;
+                        string GenCurrentOtherReferClinic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(40).StringCellValue;
+                        string GenCurrentOtherReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(41).StringCellValue;
+                        
+                        string GenBPOnMedsSystolic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(43).StringCellValue;
+                        string GenBPOnMedsDiatolic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(44).StringCellValue;
+                        string GenBPNotOnMedsSystolic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(45).StringCellValue;
+                        string GenBPNotOnMedsDiatolic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(46).StringCellValue;
+                        string GenBPReferCHOW = MyWorkbook.GetSheet("General").GetRow(4).GetCell(47).StringCellValue;
+                        string GenBPReferClinic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(48).StringCellValue;
+                        string GenBPReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(49).StringCellValue;
+
+                        string GenBSOnMeds = MyWorkbook.GetSheet("General").GetRow(4).GetCell(51).StringCellValue;
+                        string GenBSNotOnMeds = MyWorkbook.GetSheet("General").GetRow(4).GetCell(52).StringCellValue;
+                        string GenBSReferChow = MyWorkbook.GetSheet("General").GetRow(4).GetCell(53).StringCellValue;
+                        string GenBSReferClinic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(54).StringCellValue;
+                        string GenBSReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(55).StringCellValue;
+
+                        string GenEPFitsMonth = MyWorkbook.GetSheet("General").GetRow(4).GetCell(57).StringCellValue;
+                        string GenEPReferClinic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(58).StringCellValue;
+                        string GenEPReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(59).StringCellValue;
+
+                        string GenHIVPosStatus = MyWorkbook.GetSheet("General").GetRow(4).GetCell(61).StringCellValue;
+                        string GenHIVNegStatus = MyWorkbook.GetSheet("General").GetRow(4).GetCell(62).StringCellValue;
+                        string GenHIVTestDone = MyWorkbook.GetSheet("General").GetRow(4).GetCell(63).StringCellValue;
+                        string GenHIVResult = MyWorkbook.GetSheet("General").GetRow(4).GetCell(64).StringCellValue;
+                        string GenHIVReferClinic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(65).StringCellValue;
+                        string GenHIVReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(66).StringCellValue;
+
+                        string GenPregCurrently = MyWorkbook.GetSheet("General").GetRow(4).GetCell(68).StringCellValue;
+                        string GenPregPossible = MyWorkbook.GetSheet("General").GetRow(4).GetCell(69).StringCellValue;
+                        string GenPregTestDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(70).StringCellValue;
+                        string GenPregResult = MyWorkbook.GetSheet("General").GetRow(4).GetCell(71).StringCellValue;
+                        string GenPregReferClinic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(72).StringCellValue;
+                        string GenPregReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(73).StringCellValue;
+
+                        string GenTBCurrentHave = MyWorkbook.GetSheet("General").GetRow(4).GetCell(75).StringCellValue;
+                        string GenTBCurrentMeds1 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(76).StringCellValue;
+                        string GenTBCurrentMeds2 = MyWorkbook.GetSheet("General").GetRow(5).GetCell(76).StringCellValue;
+                        string GenTBCurrentMeds3 = MyWorkbook.GetSheet("General").GetRow(6).GetCell(76).StringCellValue;
+                        string GenTBCurrentMeds4 = MyWorkbook.GetSheet("General").GetRow(7).GetCell(76).StringCellValue;
+                        string GenTBCurrentMeds5 = MyWorkbook.GetSheet("General").GetRow(8).GetCell(76).StringCellValue;
+                        string GenTBCurrentDefaulting = MyWorkbook.GetSheet("General").GetRow(4).GetCell(77).StringCellValue;
+                        string GenTBSymtomWeightLoss = MyWorkbook.GetSheet("General").GetRow(4).GetCell(78).StringCellValue;
+                        string GenTBSymtomSweat = MyWorkbook.GetSheet("General").GetRow(4).GetCell(79).StringCellValue;
+                        string GenTBSymtomFeaver = MyWorkbook.GetSheet("General").GetRow(4).GetCell(80).StringCellValue;
+                        string GenTBSymtomCough = MyWorkbook.GetSheet("General").GetRow(4).GetCell(81).StringCellValue;
+                        string GenTBSymtomApetite = MyWorkbook.GetSheet("General").GetRow(4).GetCell(82).StringCellValue;
+                        string GenTBSymtomReferClininc = MyWorkbook.GetSheet("General").GetRow(4).GetCell(83).StringCellValue;
+                        string GenTBSymtomReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(84).StringCellValue;
+                        string GenTBTraceHousholdOnMeds = MyWorkbook.GetSheet("General").GetRow(4).GetCell(85).StringCellValue;
+                        string GenTBTraceReferClininc = MyWorkbook.GetSheet("General").GetRow(4).GetCell(86).StringCellValue;
+                        string GenTBTraceReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(87).StringCellValue;
+
+                        string GenOtherBloodUrine = MyWorkbook.GetSheet("General").GetRow(4).GetCell(89).StringCellValue;
+                        string GenOtherReferClinic1 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(90).StringCellValue;
+                        string GenOtherReferNo1 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(91).StringCellValue;
+                        string GenOtherSmoking = MyWorkbook.GetSheet("General").GetRow(4).GetCell(93).StringCellValue;
+                        string GenOtherAlcohol = MyWorkbook.GetSheet("General").GetRow(4).GetCell(94).StringCellValue;
+                        string GenOtherDiarrhoea = MyWorkbook.GetSheet("General").GetRow(4).GetCell(96).StringCellValue;
+                        string GenOtherReferClinic2 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(97).StringCellValue;
+                        string GenOtherReferNo2 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(98).StringCellValue;
+                        string GenOtherInitiationSchool = MyWorkbook.GetSheet("General").GetRow(4).GetCell(100).StringCellValue;
+                        string GenOtherLegCramps = MyWorkbook.GetSheet("General").GetRow(4).GetCell(102).StringCellValue;
+                        string GenOtherLegNumb = MyWorkbook.GetSheet("General").GetRow(4).GetCell(103).StringCellValue;
+                        string GenOtherFootUlcer = MyWorkbook.GetSheet("General").GetRow(4).GetCell(104).StringCellValue;
+                        string GenOtherReferClinic3 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(105).StringCellValue;
+                        string GenOtherReferNo3 = MyWorkbook.GetSheet("General").GetRow(4).GetCell(106).StringCellValue;
+
+                        string GenElderAmputation = MyWorkbook.GetSheet("General").GetRow(4).GetCell(108).StringCellValue;
+                        string GenElderVision = MyWorkbook.GetSheet("General").GetRow(4).GetCell(109).StringCellValue;
+                        string GenElderBedridden = MyWorkbook.GetSheet("General").GetRow(4).GetCell(110).StringCellValue;
+                        string GenElderMovingAid = MyWorkbook.GetSheet("General").GetRow(4).GetCell(111).StringCellValue;
+                        string GenElderWash = MyWorkbook.GetSheet("General").GetRow(4).GetCell(112).StringCellValue;
+                        string GenElderFeed = MyWorkbook.GetSheet("General").GetRow(4).GetCell(113).StringCellValue;
+                        string GenElderDress = MyWorkbook.GetSheet("General").GetRow(4).GetCell(114).StringCellValue;
+                        string GenElderReferClinic = MyWorkbook.GetSheet("General").GetRow(4).GetCell(115).StringCellValue;
+                        string GenElderReferNo = MyWorkbook.GetSheet("General").GetRow(4).GetCell(116).StringCellValue;
+
+                        string GenFamilyPlan = MyWorkbook.GetSheet("General").GetRow(4).GetCell(118).StringCellValue;
+
+                        #endregion
+
+                        #region Hypertention
+                        string HypYear = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(1).StringCellValue;
+                        string HypHeadache = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(3).StringCellValue;
+                        string HypVision = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(4).StringCellValue;
+                        string HypShortBreath = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(5).StringCellValue;
+                        string HypConfusion = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(6).StringCellValue;
+                        string HypChestPain = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(7).StringCellValue;
+                        string HypReferClinic = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(8).StringCellValue;
+                        string HypReferNo = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(9).StringCellValue;
+                        string HypHadStroke = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(11).StringCellValue;
+                        string HypHadStrokeYear = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(12).StringCellValue;
+                        string HypFamilyOnMeds = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(13).StringCellValue;
+                        string HypFamilyStroke = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(14).StringCellValue;
+                        #endregion
+
+                        #region Diabetes
+                        string DYear = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(1).StringCellValue;
+                        string DThirsty = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(3).StringCellValue;
+                        string DWeightloss = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(4).StringCellValue;
+                        string DVision = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(5).StringCellValue;
+                        string DUrinate = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(6).StringCellValue;
+                        string DNausea = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(7).StringCellValue;
+                        string DFoot = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(8).StringCellValue;
+                        string DReferClinic = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(9).StringCellValue;
+                        string DReferNo = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(10).StringCellValue;
+                        string DFamilyMember = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(12).StringCellValue;
+                        #endregion
+                        
+                        #region HIV
+                        string HIVYear = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(1).StringCellValue;
+                        string HIVOnMeds = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(2).StringCellValue;
+                        string HIVListMeds1 = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(3).StringCellValue;
+                        string HIVListMeds2 = MyWorkbook.GetSheet("HIV").GetRow(3).GetCell(3).StringCellValue;
+                        string HIVListMeds3 = MyWorkbook.GetSheet("HIV").GetRow(4).GetCell(3).StringCellValue;
+                        string HIVListMeds4 = MyWorkbook.GetSheet("HIV").GetRow(5).GetCell(3).StringCellValue;
+                        string HIVListMeds5 = MyWorkbook.GetSheet("HIV").GetRow(6).GetCell(3).StringCellValue;
+                        string HIVAdherence = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(4).StringCellValue;
+                        string HIVReferClinic = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(5).StringCellValue;
+                        string HIVReferNo = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(6).StringCellValue;
+                        string HIVARVNo = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(7).StringCellValue;
+                        #endregion
+
+                        #region Maternal Health
+                        string MHPregnantBefore = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(1).StringCellValue;
+                        string MHNoPregnant = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(2).StringCellValue;
+                        string MHNOSuccessful = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(3).StringCellValue;
+                        string MHWhereDeliveredLast = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(4).StringCellValue;
+                        string MHCaesarian = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(5).StringCellValue;
+                        string MHBabyUnder25 = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(6).StringCellValue;
+                        string MHChildrenDied1 = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(8).StringCellValue;
+                        string MHChildrenDied15 = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(9).StringCellValue;
+                        string MHPAPSmear = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(10).StringCellValue;
+                        string MHBloodResult = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(11).StringCellValue;
+                        string MHFirstANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(13).StringCellValue;
+                        string MHLastANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(14).StringCellValue;
+                        string MHReferClinic = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(15).StringCellValue;
+                        string MHReferNo = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(16).StringCellValue;
+                        string MHNextANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(17).StringCellValue;
+                        string MHExpectedDeliverDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(18).StringCellValue;
+                        string MHBreastfeed = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(19).StringCellValue;
+                        string MHFormula = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(20).StringCellValue;
+                        string MHRegisteredMomConnect = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(21).StringCellValue;
+                        #endregion
+
+                        #region Child Health
+                        string CHNameMother = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(1).StringCellValue;
+                        string CHChildRTHC = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(3).StringCellValue;
+                        string CHReferClinic1 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(4).StringCellValue;
+                        string CHReferNo1 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(5).StringCellValue;
+                        string CHMotherHIV = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(7).StringCellValue;
+                        string CHChildBreastfeed = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(8).StringCellValue;
+                        string CHHowLong = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(9).StringCellValue;
+                        string CHChildOnNevirapine = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(10).StringCellValue;
+                        string CHPCR = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(11).StringCellValue;
+                        string CHPCRResult = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(12).StringCellValue;
+                        string CHReferClininc2 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(13).StringCellValue;
+                        string CHReferNo2 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(14).StringCellValue;
+                        string CHImmunisationUpToDate = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(15).StringCellValue;
+                        string CHImmunisationOutstanding1 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(16).StringCellValue;
+                        string CHImmunisationOutstanding2 = MyWorkbook.GetSheet("Child health").GetRow(3).GetCell(16).StringCellValue;
+                        string CHImmunisationOutstanding3 = MyWorkbook.GetSheet("Child health").GetRow(4).GetCell(16).StringCellValue;
+                        string CHImmunisationOutstanding4 = MyWorkbook.GetSheet("Child health").GetRow(5).GetCell(16).StringCellValue;
+                        string CHImmunisationOutstanding5 = MyWorkbook.GetSheet("Child health").GetRow(6).GetCell(16).StringCellValue;
+                        string CHReferClinic3 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(17).StringCellValue;
+                        string CHReferNo3 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(18).StringCellValue;
+                        string CHMedsGiven = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(19).StringCellValue;
+                        string CHWalkAppropriate = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(21).StringCellValue;
+                        string CHTalkAppropriate = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(22).StringCellValue;
+                        string CHChildConcerns1 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(24).StringCellValue;
+                        string CHChildConcerns2 = MyWorkbook.GetSheet("Child health").GetRow(3).GetCell(24).StringCellValue;
+                        string CHChildConcerns3 = MyWorkbook.GetSheet("Child health").GetRow(4).GetCell(24).StringCellValue;
+                        string CHChildConcerns4 = MyWorkbook.GetSheet("Child health").GetRow(5).GetCell(24).StringCellValue;
+                        string CHChildConcerns5 = MyWorkbook.GetSheet("Child health").GetRow(6).GetCell(24).StringCellValue;
+                        string CHReferClinic4 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(25).StringCellValue;
+                        string CHReferOVC = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(26).StringCellValue;
+                        string CHReferNo4 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(27).StringCellValue;
+                        #endregion
+
+                        #region Other
+                        string OCondition1 = MyWorkbook.GetSheet("Other").GetRow(2).GetCell(1).StringCellValue;
+                        string OReferClinic1 = MyWorkbook.GetSheet("Other").GetRow(2).GetCell(2).StringCellValue;
+                        string OReferNo1 = MyWorkbook.GetSheet("Other").GetRow(2).GetCell(2).StringCellValue;
+                        string OCondition2 = MyWorkbook.GetSheet("Other").GetRow(3).GetCell(1).StringCellValue;
+                        string OReferClinic2 = MyWorkbook.GetSheet("Other").GetRow(3).GetCell(2).StringCellValue;
+                        string OReferNo2 = MyWorkbook.GetSheet("Other").GetRow(3).GetCell(2).StringCellValue;
+                        string OCondition3 = MyWorkbook.GetSheet("Other").GetRow(4).GetCell(1).StringCellValue;
+                        string OReferClinic3 = MyWorkbook.GetSheet("Other").GetRow(4).GetCell(2).StringCellValue;
+                        string OReferNo3 = MyWorkbook.GetSheet("Other").GetRow(4).GetCell(2).StringCellValue;
+                        string OCondition4 = MyWorkbook.GetSheet("Other").GetRow(5).GetCell(1).StringCellValue;
+                        string OReferClinic4 = MyWorkbook.GetSheet("Other").GetRow(5).GetCell(2).StringCellValue;
+                        string OReferNo4 = MyWorkbook.GetSheet("Other").GetRow(5).GetCell(2).StringCellValue;
+                        string OCondition5 = MyWorkbook.GetSheet("Other").GetRow(6).GetCell(1).StringCellValue;
+                        string OReferClinic5 = MyWorkbook.GetSheet("Other").GetRow(6).GetCell(2).StringCellValue;
+                        string OReferNo5 = MyWorkbook.GetSheet("Other").GetRow(6).GetCell(2).StringCellValue;
+                        #endregion
                         // Queries here
 
 
