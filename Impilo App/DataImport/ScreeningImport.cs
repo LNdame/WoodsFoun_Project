@@ -242,8 +242,20 @@ namespace Impilo_App.DataImport
 
                         #endregion
 
-
-
+                        #region Hypertention
+                        string HypYear = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(1).StringCellValue;
+                        string HypHeadache = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(3).StringCellValue;
+                        string HypVision = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(4).StringCellValue;
+                        string HypShortBreath = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(5).StringCellValue;
+                        string HypConfusion = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(6).StringCellValue;
+                        string HypChestPain = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(7).StringCellValue;
+                        string HypReferClinic = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(8).StringCellValue;
+                        string HypReferNo = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(9).StringCellValue;
+                        string HypHadStroke = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(11).StringCellValue;
+                        string HypHadStrokeYear = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(12).StringCellValue;
+                        string HypFamilyOnMeds = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(13).StringCellValue;
+                        string HypFamilyStroke = MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(14).StringCellValue;
+                        #endregion
 
                         // Queries here
 
