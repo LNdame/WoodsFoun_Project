@@ -269,7 +269,20 @@ namespace Impilo_App.DataImport
                         string DReferNo = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(10).StringCellValue;
                         string DFamilyMember = MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(12).StringCellValue;
                         #endregion
-
+                        
+                        #region HIV
+                        string HIVYear = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(1).StringCellValue;
+                        string HIVOnMeds = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(2).StringCellValue;
+                        string HIVListMeds1 = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(3).StringCellValue;
+                        string HIVListMeds2 = MyWorkbook.GetSheet("HIV").GetRow(3).GetCell(3).StringCellValue;
+                        string HIVListMeds3 = MyWorkbook.GetSheet("HIV").GetRow(4).GetCell(3).StringCellValue;
+                        string HIVListMeds4 = MyWorkbook.GetSheet("HIV").GetRow(5).GetCell(3).StringCellValue;
+                        string HIVListMeds5 = MyWorkbook.GetSheet("HIV").GetRow(6).GetCell(3).StringCellValue;
+                        string HIVAdherence = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(4).StringCellValue;
+                        string HIVReferClinic = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(5).StringCellValue;
+                        string HIVReferNo = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(6).StringCellValue;
+                        string HIVARVNo = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(7).StringCellValue;
+                        #endregion
                         // Queries here
 
 
