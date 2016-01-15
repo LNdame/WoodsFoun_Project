@@ -16,6 +16,7 @@ using System.IO;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 using Impilo_App.ReportQueries.Format_2.Diabetes;
+using Impilo_App.ReportQueries.Format_2.Hypertension;
 
 
 namespace Impilo_App.Views.Reports
