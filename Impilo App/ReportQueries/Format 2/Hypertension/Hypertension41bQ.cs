@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using System.Data.SqlClient;
-using System.Configuration;
 
-namespace Impilo_App.ReportQueries.Format_2.Diabetes
+namespace Impilo_App.ReportQueries.Format_2.Hypertension
 {
-    class Hyper1Q
+    class Hypertension41bQ
     {
         public static string Query()
         {

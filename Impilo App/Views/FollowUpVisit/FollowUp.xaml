@@ -98,14 +98,17 @@
                                             <Label Content="Outcome" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" Height="28" FontWeight="Bold"/>
                                             <Label Content="HPT" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
                                             <Label Content="Diabetes" HorizontalAlignment="Right" Margin="0,165,768,0" VerticalAlignment="Top" Height="38" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="147,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" FontWeight="Bold"/>
-                                            <ComboBox HorizontalAlignment="Left" Margin="147,73,0,0" VerticalAlignment="Top" Width="226" FontWeight="Bold"/>
+                                            <ComboBox x:Name="cboListOutcome" HorizontalAlignment="Left" Margin="147,73,0,0" VerticalAlignment="Top" Width="226" FontWeight="Bold">
+                                                <ComboBoxItem ContentStringFormat="Name"/>
+                                                <ComboBoxItem Name="o1">Away</ComboBoxItem>
+                                                <ComboBoxItem Name="o2">Deceased</ComboBoxItem>
+                                            </ComboBox>
                                             <Label Content="Epilepsy" HorizontalAlignment="Left" Margin="10,208,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <Label Content="HIV" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <Label Content="TB" HorizontalAlignment="Left" Margin="10,306,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <Label Content="Mat Health" HorizontalAlignment="Left" Margin="468,15,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <Label Content="Other" HorizontalAlignment="Left" Margin="468,125,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <Label Content="Door-door" HorizontalAlignment="Left" Margin="471,168,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="6.089,-0.665"/>
+                                            <Label Content="Door-door" HorizontalAlignment="Left" Margin="470,168,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="6.089,-0.665"/>
                                             <Label Content="Child Health" HorizontalAlignment="Left" Margin="468,73,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton GroupName="vi" Content="Yes" HorizontalAlignment="Left" Margin="147,128,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
                                             <RadioButton GroupName="vi" Content="No" HorizontalAlignment="Left" Margin="212,128,0,0" VerticalAlignment="Top"/>
@@ -124,6 +127,7 @@
                                             <RadioButton GroupName="vi7" Content="Yes" HorizontalAlignment="Left" Margin="585,171,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
                                             <RadioButton GroupName="vi7" Content="No" HorizontalAlignment="Left" Margin="650,171,0,0" VerticalAlignment="Top"/>
                                             <TextBox HorizontalAlignment="Left" Height="23" Margin="585,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230"/>
+                                            <DatePicker HorizontalAlignment="Left" Margin="147,20,0,0" VerticalAlignment="Top" Width="226"/>
                                         </Grid>
                                     </GroupBox>
                                 </Grid>
@@ -160,7 +164,7 @@
                                 <GradientStop Color="White" Offset="1" />
                             </LinearGradientBrush>
                         </Border.BorderBrush>
-                        <Grid x:Name="gridgenerals" Margin="0,0,0.2,-104">
+                        <Grid x:Name="gridgenerals" Margin="0,0,-0.2,0">
 
                             <Border BorderThickness="4" Height="430" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="border41s" VerticalAlignment="Top" Width="971" CornerRadius="8">
                                 <Border.BorderBrush>
@@ -176,13 +180,13 @@
                 							Width="451" Margin="10,10,-2.6,5.8">
                                             <Label Content="Went to clinic"
                 								HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontWeight="Bold"/>
-                                            <Label Content="TODAY Test reading" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
-                                            <Label Content="BP reading " HorizontalAlignment="Left" Margin="10,211,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
+                                            <Label Content="BP reading (Today)" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
+                                            <Label Content="BP reading (Screening)" HorizontalAlignment="Left" Margin="10,211,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
                                             <Label Content="Currently on meds" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.843" FontWeight="Bold"/>
                                             <TextBox HorizontalAlignment="Left" Height="23" Margin="180,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
+                                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="180,170,0,0"  VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
                                             <Label Content="Start date" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.508,2.12"/>
-                                            <Label Content="re-refer to clinic" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
+                                            <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
                                             <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,13,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,13,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -190,46 +194,43 @@
                                             <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,50,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,130,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,130,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
-                                            <Label Content="re-refer to clinic" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
-                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
-                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,317,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,317,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="261,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="638,46,-443,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
+                                            <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="468,7,-121,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
+                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="468,46,-93,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
+                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="638,13,-221,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="703,13,-284,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="240,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="379,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57"/>
+                                            <Label Content="Systolic" HorizontalAlignment="Left" Margin="175,271,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <Label Content="Diastolic" HorizontalAlignment="Left" Margin="316,271,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="240,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="379,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57"/>
+                                            <Label Content="Systolic" HorizontalAlignment="Left" Margin="175,211,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <Label Content="Diastolic" HorizontalAlignment="Left" Margin="316,211,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <Label Content="Already on treatment ?"
+                                            	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,313,0,0" FontWeight="Bold"/>
+                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,316,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,316,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <Label Content="Door to door visit ?"
+                                            	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,348,0,-0.8" FontWeight="Bold"/>
+                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,351,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,351,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         </Grid>
                                     </GroupBox>
-                                    <GroupBox Header="Clinic Referral" HorizontalAlignment="Left"
-                						VerticalAlignment="Top" Height="104" Width="465" Margin="476,205,0,0">
-                                        <Grid HorizontalAlignment="Left" Height="78" VerticalAlignment="Top"
-                							Width="445" Margin="10,0,-3,0">
-                                            <Label Content="Re-fer to clinic"
-                								HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,4,0,0" FontWeight="Bold"/>
-                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
-                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="212,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="147,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" FontWeight="Bold"/>
-                                        </Grid>
-                                    </GroupBox>
-                                    <GroupBox Header="Already on trestment" HorizontalAlignment="Left"
-                						VerticalAlignment="Top" Height="97" Width="465" Margin="476,314,0,0">
-                                        <Grid HorizontalAlignment="Left" Height="77" VerticalAlignment="Top"
-                							Width="445" Margin="10,10,-3,-12.6">
-                                            <Label Content="Follow-up Test reading"
-                								HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,24,0,0" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="154,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" FontWeight="Bold"/>
-                                        </Grid>
-                                    </GroupBox>
-                                    <GroupBox Header="Door-to-door reading" HorizontalAlignment="Left"
+                                    <GroupBox Header="Clinic referral" HorizontalAlignment="Left"
                 						VerticalAlignment="Top" Height="167" Width="465" Margin="476,10,0,0">
                                         <Grid HorizontalAlignment="Left" Height="133" VerticalAlignment="Top"
                 							Width="445" Margin="10,0,-3,0">
-                                            <Label Content="Check reading"
-                								HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,10,0,0" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="148,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263" FontWeight="Bold"/>
-                                            <Label Content="Medication" HorizontalAlignment="Left" Margin="26,61,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <ComboBox HorizontalAlignment="Left" Margin="148,64,0,0" VerticalAlignment="Top" Width="263"/>
+                                            <Label Content="Medication" HorizontalAlignment="Left" Margin="-8,97,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <ComboBox HorizontalAlignment="Left" Margin="159,100,0,0" VerticalAlignment="Top" Width="263">
+                                            <ComboBoxItem ContentStringFormat="Name"/>
+                                                <ComboBoxItem Name="m1">HCTZ, Ridaq</ComboBoxItem>
+                                                <ComboBoxItem Name="m2">Perindopril, Coversyl</ComboBoxItem>
+                                                <ComboBoxItem Name="m3">Enalapril</ComboBoxItem>
+                                                <ComboBoxItem Name="m4">Adalat</ComboBoxItem>
+                                                <ComboBoxItem Name="m5">Amlodipine</ComboBoxItem>
+                                                <ComboBoxItem Name="m6">Soluble asprin, ASA</ComboBoxItem>
+                                            </ComboBox>
                                         </Grid>
                                     </GroupBox>
                                 </Grid>
@@ -244,7 +245,7 @@
                 <Grid Margin="0,0,-0.2,0">
                     <Border BorderThickness="8" Height="427" HorizontalAlignment="Left" Margin="14,18,0,0" x:Name="bordes2r1" VerticalAlignment="Top" Width="416" CornerRadius="10"/>
                     <Border BorderThickness="8" Height="427" HorizontalAlignment="Left" Margin="445,18,0,0" x:Name="borsde2r5" VerticalAlignment="Top" Width="608" CornerRadius="10"/>
-                    <Border BorderThickness="8" Height="458" HorizontalAlignment="Left" Margin="0,10,0,0" x:Name="border1_Copy3" VerticalAlignment="Top" Width="1012" CornerRadius="10">
+                    <Border BorderThickness="8" Height="458" HorizontalAlignment="Left" Margin="2,10,0,0" x:Name="border1_Copy3" VerticalAlignment="Top" Width="1012" CornerRadius="10">
                         <!--<Border.Background>
                             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                 <GradientStop Color="#4D000000" Offset="0" />
@@ -257,7 +258,7 @@
                                 <GradientStop Color="White" Offset="1" />
                             </LinearGradientBrush>
                         </Border.BorderBrush>
-                        <Grid x:Name="grid9" Margin="0,0,0.2,-7.8">
+                        <Grid x:Name="grid9" Margin="0,0,-0.2,0">
                             <Border BorderThickness="4" Height="453" HorizontalAlignment="Left" Margin="10,10,0,-13.6" x:Name="border41s_Copy" VerticalAlignment="Top" Width="971" CornerRadius="8">
                                 <Border.BorderBrush>
                                     <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
@@ -272,10 +273,10 @@
                         					Width="451" Margin="10,10,-2.6,-12.2">
                                             <Label Content="Went to clinic"
                         						HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontWeight="Bold"/>
-                                            <Label Content="Follow-Up Test reading" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
+                                            <Label Content="Screening Test reading" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
                                             <Label Content="Currently on meds" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.843" FontWeight="Bold"/>
                                             <TextBox HorizontalAlignment="Left" Height="23" Margin="180,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
+                                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="180,170,0,0" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
                                             <Label Content="Start date" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.508,2.12"/>
                                             <Label Content="re-refer to clinic" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
@@ -285,50 +286,44 @@
                                             <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,50,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,130,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,130,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,354,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
-                                            <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,321,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
-                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,354,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
-                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,321,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,321,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256"/>
+                                            <Label Content="Follow-Up Test reading" HorizontalAlignment="Left" Margin="10,253,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256"/>
                                         </Grid>
                                     </GroupBox>
-                                    <GroupBox Header="Clinic Referral" HorizontalAlignment="Left"
-                        				VerticalAlignment="Top" Height="104" Width="465" Margin="476,205,0,0">
-                                        <Grid HorizontalAlignment="Left" Height="78" VerticalAlignment="Top"
-                        					Width="445" Margin="10,0,-3,0">
-                                            <Label Content="Re-fer to clinic"
-                        						HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,4,0,0" FontWeight="Bold"/>
-                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
-                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="212,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="147,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" FontWeight="Bold"/>
-                                        </Grid>
-                                    </GroupBox>
-                                    <GroupBox Header="Already on trestment" HorizontalAlignment="Left"
-                        				VerticalAlignment="Top" Height="97" Width="465" Margin="476,314,0,0">
-                                        <Grid HorizontalAlignment="Left" Height="77" VerticalAlignment="Top"
-                        					Width="445" Margin="10,10,-3,-12.6">
-                                            <Label Content="Follow-up Test reading"
-                        						HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,24,0,0" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="154,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" FontWeight="Bold"/>
-                                        </Grid>
-                                    </GroupBox>
-                                    <GroupBox Header="Door-to-door reading" HorizontalAlignment="Left"
-                        				VerticalAlignment="Top" Height="167" Width="465" Margin="476,10,0,0">
+                                    <GroupBox Header="Clinic referral" HorizontalAlignment="Left"
+                                    	VerticalAlignment="Top" Height="167" Width="465" Margin="476,10,0,0">
                                         <Grid HorizontalAlignment="Left" Height="133" VerticalAlignment="Top"
-                        					Width="445" Margin="10,0,-3,0">
-                                            <Label Content="Check reading"
-                        						HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,10,0,0" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="148,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263" FontWeight="Bold"/>
-                                            <Label Content="Medication" HorizontalAlignment="Left" Margin="26,61,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <ComboBox HorizontalAlignment="Left" Margin="148,64,0,0" VerticalAlignment="Top" Width="263"/>
+                                    		Width="445" Margin="10,0,-3,0">
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="159,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
+                                            <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
+                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
+                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="159,13,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="224,13,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <Label Content="Medication" HorizontalAlignment="Left" Margin="2,97,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <ComboBox HorizontalAlignment="Left" Margin="159,100,0,0" VerticalAlignment="Top" Width="263">
+                                                <ComboBoxItem ContentStringFormat="Name"/>
+                                                <ComboBoxItem x:Name="m7" Content="HCTZ, Ridaq"/>
+                                                <ComboBoxItem x:Name="m8" Content="Perindopril, Coversyl"/>
+                                                <ComboBoxItem x:Name="m9" Content="Enalapril"/>
+                                                <ComboBoxItem x:Name="m10" Content="Adalat"/>
+                                                <ComboBoxItem x:Name="m11" Content="Amlodipine"/>
+                                                <ComboBoxItem x:Name="m12" Content="Soluble asprin, ASA"/>
+                                            </ComboBox>
                                         </Grid>
                                     </GroupBox>
                                 </Grid>
                             </Border>
                         </Grid>
                     </Border>
+                    <Label Content="Already on treatment ?"
+                    	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,367,0,0" FontWeight="Bold"/>
+                    <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="227,370,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <RadioButton Content="No" HorizontalAlignment="Left" Margin="292,370,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="Door to door visit ?"
+                    	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,402,0,0" FontWeight="Bold"/>
+                    <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="227,405,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <RadioButton Content="No" HorizontalAlignment="Left" Margin="292,405,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                 </Grid>
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

@@ -383,7 +383,7 @@ namespace Impilo_App.Views.Reports
         }
         public string Diabetes9()
         {
-            return Diabetes9Q.Query();
+            return Hyper1Q.Query();
         }
         public string Diabetes9a()
         {
