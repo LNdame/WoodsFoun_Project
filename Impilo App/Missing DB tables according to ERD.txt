@@ -1,0 +1,12 @@
+﻿The following tables are missing in the DB according to the ERD (impilo_erd.pdf)
+
+Asthma
+Elderly_care
+Maternal_health
+Condition
+Vitals
+Health
+Encounter
+Client_encounter (patient_encounter)
+
+Table names differ and additional tables are added in DB
