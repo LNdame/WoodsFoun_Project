@@ -283,6 +283,31 @@ namespace Impilo_App.DataImport
                         string HIVReferNo = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(6).StringCellValue;
                         string HIVARVNo = MyWorkbook.GetSheet("HIV").GetRow(2).GetCell(7).StringCellValue;
                         #endregion
+
+                        #region Maternal Health
+                        string MHPregnantBefore = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(1).StringCellValue;
+                        string MHNoPregnant = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(2).StringCellValue;
+                        string MHNOSuccessful = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(3).StringCellValue;
+                        string MHWhereDeliveredLast = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(4).StringCellValue;
+                        string MHCaesarian = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(5).StringCellValue;
+                        string MHBabyUnder25 = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(6).StringCellValue;
+                        string MHChildrenDied1 = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(8).StringCellValue;
+                        string MHChildrenDied15 = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(9).StringCellValue;
+                        string MHPAPSmear = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(10).StringCellValue;
+                        string MHBloodResult = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(11).StringCellValue;
+                        string MHFirstANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(13).StringCellValue;
+                        string MHLastANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(14).StringCellValue;
+                        string MHReferClinic = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(15).StringCellValue;
+                        string MHReferNo = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(16).StringCellValue;
+                        string MHNextANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(17).StringCellValue;
+                        string MHExpectedDeliverDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(18).StringCellValue;
+                        string MHBreastfeed = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(19).StringCellValue;
+                        string MHFormula = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(20).StringCellValue;
+                        string MHRegisteredMomConnect = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(21).StringCellValue;
+                        #endregion
+
+
+
                         // Queries here
 
 
