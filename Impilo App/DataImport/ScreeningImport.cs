@@ -306,7 +306,39 @@ namespace Impilo_App.DataImport
                         string MHRegisteredMomConnect = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(21).StringCellValue;
                         #endregion
 
-
+                        #region Child Health
+                        string CHNameMother = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(1).StringCellValue;
+                        string CHChildRTHC = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(3).StringCellValue;
+                        string CHReferClinic1 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(4).StringCellValue;
+                        string CHReferNo1 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(5).StringCellValue;
+                        string CHMotherHIV = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(7).StringCellValue;
+                        string CHChildBreastfeed = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(8).StringCellValue;
+                        string CHHowLong = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(9).StringCellValue;
+                        string CHChildOnNevirapine = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(10).StringCellValue;
+                        string CHPCR = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(11).StringCellValue;
+                        string CHPCRResult = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(12).StringCellValue;
+                        string CHReferClininc2 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(13).StringCellValue;
+                        string CHReferNo2 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(14).StringCellValue;
+                        string CHImmunisationUpToDate = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(15).StringCellValue;
+                        string CHImmunisationOutstanding1 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(16).StringCellValue;
+                        string CHImmunisationOutstanding2 = MyWorkbook.GetSheet("Child health").GetRow(3).GetCell(16).StringCellValue;
+                        string CHImmunisationOutstanding3 = MyWorkbook.GetSheet("Child health").GetRow(4).GetCell(16).StringCellValue;
+                        string CHImmunisationOutstanding4 = MyWorkbook.GetSheet("Child health").GetRow(5).GetCell(16).StringCellValue;
+                        string CHImmunisationOutstanding5 = MyWorkbook.GetSheet("Child health").GetRow(6).GetCell(16).StringCellValue;
+                        string CHReferClinic3 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(17).StringCellValue;
+                        string CHReferNo3 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(18).StringCellValue;
+                        string CHMedsGiven = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(19).StringCellValue;
+                        string CHWalkAppropriate = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(21).StringCellValue;
+                        string CHTalkAppropriate = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(22).StringCellValue;
+                        string CHChildConcerns1 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(24).StringCellValue;
+                        string CHChildConcerns2 = MyWorkbook.GetSheet("Child health").GetRow(3).GetCell(24).StringCellValue;
+                        string CHChildConcerns3 = MyWorkbook.GetSheet("Child health").GetRow(4).GetCell(24).StringCellValue;
+                        string CHChildConcerns4 = MyWorkbook.GetSheet("Child health").GetRow(5).GetCell(24).StringCellValue;
+                        string CHChildConcerns5 = MyWorkbook.GetSheet("Child health").GetRow(6).GetCell(24).StringCellValue;
+                        string CHReferClinic4 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(25).StringCellValue;
+                        string CHReferOVC = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(26).StringCellValue;
+                        string CHReferNo4 = MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(27).StringCellValue;
+                        #endregion
 
                         // Queries here
 
