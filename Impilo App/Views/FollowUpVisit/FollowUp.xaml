@@ -10,7 +10,13 @@
 
             <TabItem Header="Biography" x:Name="tabCountry" Width="100">
                 <Grid Margin="0,0,-0.2,0">
-                    <Border BorderThickness="8" Height="458" HorizontalAlignment="Left" Margin="0,10,0,0" x:Name="border1" VerticalAlignment="Top" Width="1007" CornerRadius="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="67*"/>
+                        <ColumnDefinition Width="94*"/>
+                        <ColumnDefinition Width="79*"/>
+                        <ColumnDefinition Width="961*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderThickness="8" Height="458" HorizontalAlignment="Left" Margin="0,10,0,0" x:Name="border1" VerticalAlignment="Top" Width="1007" CornerRadius="10" Grid.ColumnSpan="4">
                         <!--<Border.Background>
                             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                 <GradientStop Color="#4D000000" Offset="0" />
@@ -151,7 +157,7 @@
                 </TabItem.Background>-->
 
                 <TabControl Height="535" HorizontalAlignment="Left" Margin="0,0,-13.2,-57.4" x:Name="GeneralTabControl" VerticalAlignment="Top" Width="1214" Background="{x:Null}" BorderThickness="0" >
-                    <Border BorderThickness="8" Height="459" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="borders" VerticalAlignment="Top" Width="1007" CornerRadius="10">
+                    <Border BorderThickness="8" Height="459" HorizontalAlignment="Left" x:Name="borders" VerticalAlignment="Top" Width="1007" CornerRadius="10">
                         <!--<Border.Background>
                             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                 <GradientStop Color="#4D000000" Offset="0" />
