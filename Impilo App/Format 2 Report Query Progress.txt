@@ -1,7 +1,8 @@
 ﻿
+
 Busy with
 -------------------------
-Bertram:  Diabetes and Hypertension 3
+Bertram:  Diabetes and Hypertension 5
 
 Wynand:
 
@@ -11,3 +12,13 @@ Done
 -------------------------
 Diabetes		1,2,
 Hypertension	1,2,
+
+Done but unsure
+-------------------------
+Diabetes		3
+Hypertension	3
+
+Skipped for now
+-------------------------
+Diabetes		4
+Hypertension	4
