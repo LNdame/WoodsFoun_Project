@@ -26,6 +26,9 @@ namespace Impilo_App.Views.Reports
     /// </summary>
     public partial class Format2Report : UserControl
     {
+        public static DateTime StartDate = new DateTime(1900, 1, 1);
+        public static DateTime EndDate = DateTime.Now;
+
         public Format2Report()
         {
             InitializeComponent();
@@ -328,9 +331,11 @@ namespace Impilo_App.Views.Reports
                 FileStream xfile = new FileStream(dlg.FileName, FileMode.Create, System.IO.FileAccess.Write);
                 MyWorkbook.Write(xfile);
                 xfile.Close();
-            }
 
-            MessageBox.Show("The report has been generated successfully", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);           
+                MessageBox.Show("The report has been generated successfully", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);           
+
+                System.Diagnostics.Process.Start(dlg.FileName);
+            }
         }
 
         #region Diabetes

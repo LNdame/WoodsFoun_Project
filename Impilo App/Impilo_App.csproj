@@ -71,22 +71,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\..\Program Files\Visual Studion 2013\NPOI 2.2.0.0\dotnet4\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\NPOI 2.2.0.0\dotnet4\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Models">
       <HintPath>..\Models\bin\Debug\Models.dll</HintPath>
     </Reference>
     <Reference Include="NPOI">
-      <HintPath>..\..\..\..\..\..\Program Files\Visual Studion 2013\NPOI 2.2.0.0\dotnet4\NPOI.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\NPOI 2.2.0.0\dotnet4\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OOXML">
-      <HintPath>..\..\..\..\..\..\Program Files\Visual Studion 2013\NPOI 2.2.0.0\dotnet4\NPOI.OOXML.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\NPOI 2.2.0.0\dotnet4\NPOI.OOXML.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>..\..\..\..\..\..\Program Files\Visual Studion 2013\NPOI 2.2.0.0\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\NPOI 2.2.0.0\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>..\..\..\..\..\..\Program Files\Visual Studion 2013\NPOI 2.2.0.0\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\NPOI 2.2.0.0\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -551,6 +551,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Format 2 Report Query Progress.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
