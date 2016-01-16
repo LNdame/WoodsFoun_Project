@@ -116,7 +116,7 @@ namespace Impilo_App.DataImport
               
 #endregion
 
-#region Diabetes
+#region Epilepsy
                         //HiEHRef = HiEH Referral
                         //CurrentRef = Current Referral
                         //OT = On Treatment
