@@ -10,13 +10,13 @@ Leon:
 
 Done
 -------------------------
-Diabetes		1,2,
-Hypertension	1,2,
+Diabetes		1,2,3
+Hypertension	1,2,3
 
 Done but unsure
 -------------------------
-Diabetes		3
-Hypertension	3
+Diabetes		
+Hypertension	
 
 Skipped for now
 -------------------------
