@@ -403,6 +403,7 @@
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension9cQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension9dQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension9Q.cs" />
+    <Compile Include="Utilities.cs" />
     <Compile Include="Views\CHOW\AddChow.xaml.cs">
       <DependentUpon>AddChow.xaml</DependentUpon>
     </Compile>

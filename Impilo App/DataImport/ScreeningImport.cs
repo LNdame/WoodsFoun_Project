@@ -30,6 +30,8 @@ namespace Impilo_App.DataImport
 
                         // Read file values here
 
+                        
+
                         #region Biographical
                         //Notes:  Did not make provisions for multiple Clinics, Schools or Grades - Client must confirm if it is necessary
                         string BioChowName = MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(0).StringCellValue;
@@ -49,6 +51,8 @@ namespace Impilo_App.DataImport
                         string BioSchoolName = MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(14).StringCellValue;
                         string BioGrade = MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(15).StringCellValue;
                         #endregion
+
+                        string ScreeningID = Utilities.GenerateScreeningID(BioName, BioSurname);
 
                         #region Environmental
                         //Notes:  Did not make provisions for multiple Clinics,  - Client must confirm if it is necessary
