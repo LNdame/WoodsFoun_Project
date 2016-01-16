@@ -366,7 +366,7 @@
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension39bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension39Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension3Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension40aQ.csClass1.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension40aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension40bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension40Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension41aQ.cs" />
