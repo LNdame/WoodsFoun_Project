@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 //using Repository;
+using Impilo_App.LocalModels;
 
 namespace Impilo_App.Views.Client
 {
@@ -33,6 +34,23 @@ namespace Impilo_App.Views.Client
 
         private void btnAddCountry_Click(object sender, RoutedEventArgs e)
         {
+            Impilo_App.LocalModels.Client newClient = new LocalModels.Client();
+
+            newClient.FirstName = txtFirstName.Text;
+            newClient.LastName = txtLastName.Text;
+            newClient.HeadOfHousehold = (radioHHYes.IsChecked == true) ? "yes" : "no";
+            newClient.GPSLatitude = txtLatitude.Text;
+            newClient.GPSLongitude = txtLongitude.Text;
+            newClient.IDNo = txtIDNo.Text;
+            newClient.ClinicUsed = ((ComboBoxItem)ClinicUsed.SelectedItem).Content.ToString();
+            newClient.DateOfBirth = DateTime.Parse(txtDateofBirth.Text);
+            newClient.NameofSchool = ((ComboBoxItem)NameofSchool.SelectedItem).Content.ToString();
+            newClient.Gender = (radioMale.IsChecked == true) ? "Male" : "Female";
+            newClient.AttendingSchool = (radioAttYes.IsChecked == true) ? "yes" : "no";
+           
+            newClient.Grade = ((ComboBoxItem)Grade.SelectedItem).Content.ToString();
+           
+            
             //Users user = new Users();
             //user.FirstName = txtFirstName.Text;
             //user.LastName = txtLastName.Text;
