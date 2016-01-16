@@ -1,7 +1,7 @@
 ﻿
 Busy with
 -------------------------
-Bertram:  Diabetes and Hypertension 2
+Bertram:  Diabetes and Hypertension 3
 
 Wynand:
 
@@ -9,5 +9,5 @@ Leon:
 
 Done
 -------------------------
-Diabetes		1,
-Hypertension	1,
+Diabetes		1,2,
+Hypertension	1,2,
