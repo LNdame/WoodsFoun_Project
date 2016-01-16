@@ -71,22 +71,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\Desktop\Temp\NPOI 2.2.0.0\dotnet4\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Visual Studion 2013\NPOI 2.2.0.0\dotnet4\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Models">
       <HintPath>..\Models\bin\Debug\Models.dll</HintPath>
     </Reference>
     <Reference Include="NPOI">
-      <HintPath>..\..\..\..\Desktop\Temp\NPOI 2.2.0.0\dotnet4\NPOI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Visual Studion 2013\NPOI 2.2.0.0\dotnet4\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OOXML">
-      <HintPath>..\..\..\..\Desktop\Temp\NPOI 2.2.0.0\dotnet4\NPOI.OOXML.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Visual Studion 2013\NPOI 2.2.0.0\dotnet4\NPOI.OOXML.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>..\..\..\..\Desktop\Temp\NPOI 2.2.0.0\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Visual Studion 2013\NPOI 2.2.0.0\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>..\..\..\..\Desktop\Temp\NPOI 2.2.0.0\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Visual Studion 2013\NPOI 2.2.0.0\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
