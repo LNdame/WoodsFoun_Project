@@ -6,14 +6,14 @@ Bertram:  Diabetes and Hypertension 5
 
 Wynand:
 
-Leon: 6
+Leon: 7
 
 Done
 -------------------------
 Diabetes		1,2,
 Hypertension	1,2,
 
-Done but unsure
+Done but unsure 6
 -------------------------
 Diabetes		3
 Hypertension	3
