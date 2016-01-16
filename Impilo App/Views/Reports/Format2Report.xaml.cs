@@ -26,6 +26,9 @@ namespace Impilo_App.Views.Reports
     /// </summary>
     public partial class Format2Report : UserControl
     {
+        public static DateTime StartDate = new DateTime(1900, 1, 1);
+        public static DateTime EndDate = DateTime.Now;
+
         public Format2Report()
         {
             InitializeComponent();
