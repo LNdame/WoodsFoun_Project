@@ -2,7 +2,7 @@
 
 Busy with
 -------------------------
-Bertram:  Diabetes and Hypertension 7
+Bertram:  Diabetes and Hypertension 8
 
 Wynand:
 
@@ -20,5 +20,5 @@ Hypertension
 
 Skipped for now
 -------------------------
-Diabetes		4
-Hypertension	4
+Diabetes		4,7,7a,7b
+Hypertension	4,7,7a,7b
