@@ -29,5 +29,9 @@ namespace Impilo_App.LocalModels
         public bool ReferToClinic { get; set; }
 
         public string ReferralNo { get; set; }
+
+        public bool HouseholdMemberONTBMeds { get; set; }
+
+
     }
 }

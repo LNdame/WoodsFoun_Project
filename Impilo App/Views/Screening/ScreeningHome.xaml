@@ -285,9 +285,9 @@
                                                 <Label Content="Weight (kg)" HorizontalAlignment="Left" Margin="34,53,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <Label Content="Height (m)" HorizontalAlignment="Left" Margin="34,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.37,0.203" FontWeight="Bold"/>
                                                 <Label Content="BMI" HorizontalAlignment="Left" Margin="34,146,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                <TextBox HorizontalAlignment="Left" Height="23" Margin="112,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" RenderTransformOrigin="0.195,-0.643" FontWeight="Bold"/>
-                                                <TextBox HorizontalAlignment="Left" Height="23" Margin="112,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" RenderTransformOrigin="0.235,-0.539" FontWeight="Bold"/>
-                                                <TextBox HorizontalAlignment="Left" Height="23" Margin="112,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontWeight="Bold"/>
+                                                <TextBox x:Name="txtWeight" HorizontalAlignment="Left" Height="23" Margin="112,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" RenderTransformOrigin="0.195,-0.643" FontWeight="Bold"/>
+                                                <TextBox  x:Name="txtheight" HorizontalAlignment="Left" Height="23" Margin="112,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" RenderTransformOrigin="0.235,-0.539" FontWeight="Bold"/>
+                                                <TextBox  x:Name="txtBMI" HorizontalAlignment="Left" Height="23" Margin="112,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontWeight="Bold"/>
                                             </Grid>
                                         </Border>
 
@@ -306,9 +306,10 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="151*"/>
                                     <ColumnDefinition Width="99*"/>
-                                    <ColumnDefinition Width="1050*"/>
+                                    <ColumnDefinition Width="32*"/>
+                                    <ColumnDefinition Width="1018*"/>
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="8" Height="481" HorizontalAlignment="Left" Margin="6,7,0,0" x:Name="borders" VerticalAlignment="Top" Width="1007" CornerRadius="10" Grid.ColumnSpan="3">
+                                <Border BorderThickness="8" Height="481" HorizontalAlignment="Left" Margin="6,7,0,0" x:Name="borders" VerticalAlignment="Top" Width="1007" CornerRadius="10" Grid.ColumnSpan="4">
                                     <!--<Border.Background>
                             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                 <GradientStop Color="#4D000000" Offset="0" />
@@ -598,14 +599,14 @@
                                                         <Label Content="Diastolic (mm Hg)" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
                                                         <Label Content="Systolic (mm Hg)" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
                                                         <Label Content="Refer to CHOWs" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.843" FontWeight="Bold"/>
-                                                        <TextBox HorizontalAlignment="Left" Height="23" Margin="119,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                                                        <TextBox x:Name="txtrefBP" HorizontalAlignment="Left" Height="23" Margin="119,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="redCurMedsBP" Content="Yes" HorizontalAlignment="Left" Margin="120,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,169,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radrefBP" Content="Yes" HorizontalAlignment="Left" Margin="120,169,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,169,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <ComboBox HorizontalAlignment="Left" Margin="120,88,0,0" VerticalAlignment="Top" Width="131" FontWeight="Bold">
+                                                        <ComboBox x:Name="cboDiasto" HorizontalAlignment="Left" Margin="120,88,0,0" VerticalAlignment="Top" Width="131" FontWeight="Bold">
                                                             <ComboBoxItem ContentStringFormat="Name"/>
                                                             <ComboBoxItem Name="Di1">under 60</ComboBoxItem>
                                                             <ComboBoxItem Name="Di2">60-79</ComboBoxItem>
@@ -615,9 +616,9 @@
                                                             <ComboBoxItem Name="Di6">under 110</ComboBoxItem>
                                                             <ComboBoxItem Name="Di7">over 90</ComboBoxItem>
                                                         </ComboBox>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,125,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radrefCHowBP" Content="Yes" HorizontalAlignment="Left" Margin="120,125,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,125,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <ComboBox HorizontalAlignment="Left" Margin="120,48,0,0" VerticalAlignment="Top" Width="131" FontWeight="Bold">
+                                                        <ComboBox x:Name="cbosys" HorizontalAlignment="Left" Margin="120,48,0,0" VerticalAlignment="Top" Width="131" FontWeight="Bold">
                                                             <ComboBoxItem ContentStringFormat="Name"/>
                                                             <ComboBoxItem Name="si1">under 90</ComboBoxItem>
                                                             <ComboBoxItem Name="si2">90-119</ComboBoxItem>
@@ -640,20 +641,20 @@
                             								HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,4,0,0" FontWeight="Bold"/>
                                                         <Label Content="Not on meds-BS &#xD;&#xA;Readings" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
                                                         <Label Content="Refer to CHOWs" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.843" FontWeight="Bold"/>
-                                                        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                                                        <TextBox x:Name="txtrefBS" HorizontalAlignment="Left" Height="23" Margin="120,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton  x:Name="redCurMedsBs" Content="Yes" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,75,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radrefCHowBS" Content="Yes" HorizontalAlignment="Left" Margin="120,75,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,75,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,112,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radrefBS" Content="Yes" HorizontalAlignment="Left" Margin="120,112,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,112,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
-                                                        <ComboBox HorizontalAlignment="Left" Margin="120,47,0,0" VerticalAlignment="Top" Width="131" FontWeight="Bold">
+                                                        <ComboBox x:Name="cboBSreading" HorizontalAlignment="Left" Margin="120,47,0,0" VerticalAlignment="Top" Width="131" FontWeight="Bold">
                                                             <ComboBoxItem ContentStringFormat="Name"/>
                                                             <ComboBoxItem Name="bs1">under 4.0 mmol/l</ComboBoxItem>
-                                                           
+
                                                             <ComboBoxItem Name="bs3">4.0-6.1 mmol/l</ComboBoxItem>
                                                             <ComboBoxItem Name="bs4">6.1-6.9 mmol/l</ComboBoxItem>
                                                             <ComboBoxItem Name="bs5">6.9-7.8 mmol/l</ComboBoxItem>
@@ -668,12 +669,12 @@
                             							Width="258" Margin="10,0,0,0">
                                                         <Label Content="Fits in last month"
                             								HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,4,0,0" FontWeight="Bold"/>
-                                                        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                                                        <TextBox x:Name="txtrefEpi" HorizontalAlignment="Left" Height="23" Margin="120,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="11,76,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radlastfit" Content="Yes" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,48,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radrefepi" Content="Yes" HorizontalAlignment="Left" Margin="120,48,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,48,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                     </Grid>
                                                 </GroupBox>
@@ -686,21 +687,21 @@
                                                         <Label Content="HIV test done" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
                                                         <Label Content="Result" HorizontalAlignment="Left" Margin="11,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.843" FontWeight="Bold"/>
 
-                                                        <ComboBox HorizontalAlignment="Left" Margin="120,65,0,0" VerticalAlignment="Top" Width="131" FontWeight="Bold">
+                                                        <ComboBox x:Name="cboHIVres" HorizontalAlignment="Left" Margin="120,65,0,0" VerticalAlignment="Top" Width="131" FontWeight="Bold">
                                                             <ComboBoxItem ContentStringFormat="Name"/>
                                                             <ComboBoxItem Name="hv1">Reactive</ComboBoxItem>
                                                             <ComboBoxItem Name="hv2">Non-reactive</ComboBoxItem>
                                                             <ComboBoxItem Name="hv3">Not clear</ComboBoxItem>
 
                                                         </ComboBox>
-                                                        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                                                        <TextBox x:Name="txtrefHIV" HorizontalAlignment="Left" Height="23" Margin="120,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="11,133,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radhivknown" Content="Yes" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,105,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radrefHIV" Content="Yes" HorizontalAlignment="Left" Margin="120,105,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,105,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,37,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radhivtest" Content="Yes" HorizontalAlignment="Left" Margin="120,37,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,37,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                     </Grid>
                                                 </GroupBox>
@@ -711,7 +712,7 @@
                                                         <Label Content="Is it possible you &#xD;&#xA;are pregnant?" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
                                                         <Label Content="Pregnancy test&#xD;&#xA; done" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.843" FontWeight="Bold"/>
 
-                                                        <ComboBox HorizontalAlignment="Left" Margin="123,102,0,0" VerticalAlignment="Top" Width="131" FontWeight="Bold">
+                                                        <ComboBox x:Name="cboPreres" HorizontalAlignment="Left" Margin="123,102,0,0" VerticalAlignment="Top" Width="131" FontWeight="Bold">
                                                             <ComboBoxItem ContentStringFormat="Name"/>
                                                             <ComboBoxItem Name="pg1">Reactive</ComboBoxItem>
                                                             <ComboBoxItem Name="pg2">Non-reactive</ComboBoxItem>
@@ -722,11 +723,11 @@
                                                         <Label Content="Result" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="11,152,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="135,68,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radpretest" Content="Yes" HorizontalAlignment="Left" Margin="135,68,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="200,68,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="135,130,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radrefpreg" Content="Yes" HorizontalAlignment="Left" Margin="135,130,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="200,130,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="135,32,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radpregpos" Content="Yes" HorizontalAlignment="Left" Margin="135,32,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="200,32,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                     </Grid>
                                                 </GroupBox>
@@ -775,21 +776,21 @@
                                                         <Label Content="Fever over 2 weeks" HorizontalAlignment="Left" Margin="8,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
                                                         <Label Content="Excessive sweating&#xD;&#xA;at night" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
                                                         <Label Content="Cough more than&#xD;&#xA;2 week" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.843" FontWeight="Bold"/>
-                                                        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                                                        <TextBox x:Name="txtRefTBsymp" HorizontalAlignment="Left" Height="23" Margin="120,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="8,206,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.443,-1.21" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="128,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radlosweight" Content="Yes" HorizontalAlignment="Left" Margin="128,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="193,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="128,58,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radExcSweat" Content="Yes" HorizontalAlignment="Left" Margin="128,58,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="193,58,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="128,216,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radrefTBSymp" Content="Yes" HorizontalAlignment="Left" Margin="128,216,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="193,216,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Loss of apetite" HorizontalAlignment="Left" Margin="8,167,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="128,105,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radFever2" Content="Yes" HorizontalAlignment="Left" Margin="128,105,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="193,105,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="128,139,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radCough2" Content="Yes" HorizontalAlignment="Left" Margin="128,139,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="193,139,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="128,177,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radlossapp" Content="Yes" HorizontalAlignment="Left" Margin="128,177,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="193,177,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                     </Grid>
                                                 </GroupBox>
@@ -801,11 +802,11 @@
                                             				HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,20,0,0" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.843" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="138,26,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radhouseTb" Content="Yes" HorizontalAlignment="Left" Margin="138,26,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="203,26,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="138,89,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radrefTbCon" Content="Yes" HorizontalAlignment="Left" Margin="138,89,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="203,89,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                                                        <TextBox x:Name="txtTBContract" HorizontalAlignment="Left" Height="23" Margin="120,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
                                                     </Grid>
                                                 </GroupBox>
                                                 <GroupBox Header="Current TB" HorizontalAlignment="Left"
@@ -816,9 +817,9 @@
                                             				HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,4,0,0" FontWeight="Bold"/>
                                                         <Label Content="What medications &#xD;&#xA;are you on?" HorizontalAlignment="Left" Margin="11,63,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Defaulting?" HorizontalAlignment="Left" Margin="11,137,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radhasTB" Content="Yes" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="120,143,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.511,-0.026" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radDefaulting" Content="Yes" HorizontalAlignment="Left" Margin="120,143,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.511,-0.026" FontWeight="Bold"/>
                                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="185,143,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <ComboBox xmlns:sys ="clr-namespace:System;assembly=mscorlib"  x:Name="cboTBMeds" HorizontalAlignment="Left" Margin="120,72,0,0" VerticalAlignment="Top" Width="120" FontWeight="Bold">
                                                             <ComboBox.Resources>
@@ -1477,7 +1478,7 @@
                                                         <ComboBoxItem Name="hl3">3-6 month</ComboBoxItem>
                                                         <ComboBoxItem Name="hl4">6-12 month</ComboBoxItem>
                                                         <ComboBoxItem Name="hl5">over 12 month</ComboBoxItem>
-                                                        
+
                                                     </ComboBox>
 
                                                     <RadioButton x:Name="radMohiv" Content="Yes" GroupName="par4" HorizontalAlignment="Left" Margin="125,15,0,0" VerticalAlignment="Top" FontWeight="Bold"/>

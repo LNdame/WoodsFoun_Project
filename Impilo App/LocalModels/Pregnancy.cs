@@ -18,7 +18,7 @@ namespace Impilo_App.LocalModels
 
         public string Results { get; set; }
 
-        public long ReferToClinic { get; set; }
+        public bool ReferToClinic { get; set; }
 
         public string ReferralNo { get; set; }
     }

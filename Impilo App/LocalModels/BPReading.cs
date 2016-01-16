@@ -10,13 +10,13 @@ namespace Impilo_App.LocalModels
     {
         public string ScreeningID { get; set; }
 
-        public bool OnMedsSytolic { get; set; }
+        public string Systolic { get; set; }
 
-        public bool OnMedsDiastolic { get; set; }
+        public bool OnMeds { get; set; }
 
         public string Diastolic { get; set; }
 
-        public string ReferToCHOWs { get; set; }
+        public bool ReferToCHOWs { get; set; }
 
         public bool ReferToClinic { get; set; }
 

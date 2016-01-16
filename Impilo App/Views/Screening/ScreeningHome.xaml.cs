@@ -299,20 +299,176 @@ namespace Impilo_App.Views.Screening
             #region General
 
             #region Measurement
+            General genMeasurement = new General
+            {
+                ScreeningID = scrID,
+                Weight= int.Parse( txtWeight.Text),
+                Height = int.Parse(txtheight.Text)
 
+            };
             #endregion
 
 
             #region CurrentMedications
+            //HPT
+            CurrentMedications curhpt = new CurrentMedications {
+                ScreeningID = scrID,
+                DiseaseID =1,
+                StartDate = (DateTime)txtDateNextANC.SelectedDate,
+                Defaulting = false,
+                ReferToClinic=false,
+                ReferralID= ""
+
+
+            };
+
+            //epilepsy
+            CurrentMedications curEpi = new CurrentMedications
+            {
+                ScreeningID = scrID,
+                DiseaseID = 1,
+                StartDate = (DateTime)txtDateNextANC.SelectedDate,
+                Defaulting = false,
+                ReferToClinic = false,
+                ReferralID = ""
+
+
+            };
+
+
+            //Diabetes
+            CurrentMedications curDiabetes = new CurrentMedications
+            {
+                ScreeningID = scrID,
+                DiseaseID = 1,
+                StartDate = (DateTime)txtDateNextANC.SelectedDate,
+                Defaulting = false,
+                ReferToClinic = false,
+                ReferralID = ""
+
+
+            };
+
+            //Asthma
+            CurrentMedications curAsthma = new CurrentMedications
+            {
+                ScreeningID = scrID,
+                DiseaseID = 1,
+                StartDate = (DateTime)txtDateNextANC.SelectedDate,
+                Defaulting = false,
+                ReferToClinic = false,
+                ReferralID = ""
+
+
+            };
+
+            //oral thrush
+            CurrentMedications curOther = new CurrentMedications
+            {
+                ScreeningID = scrID,
+                DiseaseID = 1,
+                StartDate = (DateTime)txtDateNextANC.SelectedDate,
+                Defaulting = false,
+                ReferToClinic = false,
+                ReferralID = ""
+
+
+            };
 
             #endregion
 
             #region CurrentConditons
+            //BP Reading
+            BPReading bpr = new BPReading {
+                ScreeningID = scrID,
+                OnMeds = (redCurMedsBP.IsChecked == true) ? true : false,
+                Systolic = ((ComboBoxItem)cbosys.SelectedItem).Content.ToString(),
+                Diastolic = ((ComboBoxItem)cboDiasto.SelectedItem).Content.ToString(),
+                ReferToCHOWs = (radrefCHowBP.IsChecked == true) ? true : false,
+                ReferToClinic= (radrefBP.IsChecked == true) ? true : false,
+                ReferralNo=txtrefBP.Text,
+            };
+
+
+            //Blood sugar
+            BloodSuger bs = new BloodSuger {
+                ScreeningID = scrID,
+                OnMeds = (redCurMedsBs.IsChecked == true) ? true : false,
+                NotOnMedsBSReadings = ((ComboBoxItem)cboBSreading.SelectedItem).Content.ToString(),
+               
+                ReferToCHOWs = (radrefCHowBS.IsChecked == true) ? true : false,
+                ReferToClinic = (radrefBS.IsChecked == true) ? true : false,
+                ReferralNo = txtrefBS.Text,
+            
+            };
+            //Epilepsy
+            Epilepsy ep = new Epilepsy {
+                ScreeningID = scrID,
+                FitsInLastMonth = (radlastfit.IsChecked == true) ? true : false,
+                ReferToClinic = (radrefepi.IsChecked == true) ? true : false,
+                ReferralNo = txtrefEpi.Text,
+            };
+            //HIV
+            HIV hiv = new HIV {
+                ScreeningID = scrID,
+                KnownHIVPosStatus = (radhivknown.IsChecked == true) ? true : false,
+                HIVTestDone = (radhivtest.IsChecked == true) ? true : false,
+                Result = ((ComboBoxItem)cboHIVres.SelectedItem).Content.ToString(),
+                ReferToClinic = (radrefHIV.IsChecked == true) ? true : false,
+                ReferralNo = txtrefHIV.Text,
+            };
+            //Pregnancy
+            Pregnancy preg = new Pregnancy {
+                ScreeningID = scrID,
+               CurrentlyPregnant = (radpregpos.IsChecked == true) ? true : false,
+                PregnancyTestDone = (radpretest.IsChecked == true) ? true : false,
+                Results = ((ComboBoxItem)cboPreres.SelectedItem).Content.ToString(),
+                ReferToClinic = (radrefHIV.IsChecked == true) ? true : false,
+                ReferralNo = txtrefHIV.Text,
+            };
+
 
             #endregion
 
             #region Tuberculosis
 
+            Tubercolosis tb = new Tubercolosis {
+                ScreeningID = scrID,
+                HaveTubercolosis = (radhasTB.IsChecked == true) ? true : false,
+                LossWeight = (radhasTB.IsChecked == true) ? true : false,
+                SweatingAtNight = (radhasTB.IsChecked == true) ? true : false,
+                Defaulting = (radDefaulting.IsChecked == true) ? true : false,
+                FeverOver2Weeks = (radFever2.IsChecked == true) ? true : false,
+                CoughMoreThan2Weeks = (radCough2.IsChecked == true) ? true : false,
+                LossOfApetite = (radlossapp.IsChecked == true) ? true : false,
+                HouseholdMemberONTBMeds = (radlossapp.IsChecked == true) ? true : false,
+                ReferToClinic = (radhouseTb.IsChecked == true) ? true : false,
+                ReferralNo = txtRefTBsymp.Text,
+            };
+            tb.WhatMedsAreYouOn = "";
+
+
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+
+                com.Parameters.AddWithValue("@", hyper.ScreeningID);//param
+
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
             #endregion
 
             #endregion
