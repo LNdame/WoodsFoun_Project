@@ -215,6 +215,27 @@ namespace Impilo_App.Views.Screening
         
             };
 
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+
+                com.Parameters.AddWithValue("@", hyper.ScreeningID);//param
+
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
 
             #endregion
 
@@ -249,6 +270,56 @@ namespace Impilo_App.Views.Screening
             };
 
             childh.WhichImmunisatationsOutStanding = "";
+
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+
+                com.Parameters.AddWithValue("@", hyper.ScreeningID);//param
+
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            #endregion
+
+            //start of general
+            #region General
+
+            #region Measurement
+
+            #endregion
+
+
+            #region CurrentMedications
+
+            #endregion
+
+            #region CurrentConditons
+
+            #endregion
+
+            #region Tuberculosis
+
+            #endregion
+
+            #endregion
+
+            //end of general
+
+            #region Environmental
 
             #endregion
 
