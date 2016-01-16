@@ -6,7 +6,7 @@ Bertram:  Diabetes and Hypertension 5
 
 Wynand:
 
-Leon:
+Leon: 6
 
 Done
 -------------------------
