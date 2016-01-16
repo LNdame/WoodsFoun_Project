@@ -10,20 +10,22 @@ namespace Impilo_App.LocalModels
     {
         public string ScreeningID { get; set; }
 
-        public char LegFootArmHanAmputation { get; set; }
+        public bool LegFootArmHanAmputation { get; set; }
 
-        public char PassVisionTest { get; set; }
+        public bool PassVisionTest { get; set; }
 
-        public char Bedridden { get; set; }
+        public bool Bedridden { get; set; }
 
-        public char UseAidToMove { get; set; }
+        public bool UseAidToMove { get; set; }
 
-        public char WashYourself { get; set; }
+        public bool WashYourself { get; set; }
 
-        public char DressYourSelf { get; set; }
+        public bool DressYourSelf { get; set; }
 
-        public char ReferToClinic { get; set; }
+        public bool FeedYourSelf { get; set; }
 
-        public char ReferralNo { get; set; }
+        public bool ReferToClinic { get; set; }
+
+        public string ReferralNo { get; set; }
     }
 }

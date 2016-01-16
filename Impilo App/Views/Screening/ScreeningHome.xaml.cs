@@ -441,12 +441,19 @@ namespace Impilo_App.Views.Screening
                 FeverOver2Weeks = (radFever2.IsChecked == true) ? true : false,
                 CoughMoreThan2Weeks = (radCough2.IsChecked == true) ? true : false,
                 LossOfApetite = (radlossapp.IsChecked == true) ? true : false,
-                HouseholdMemberONTBMeds = (radlossapp.IsChecked == true) ? true : false,
-                ReferToClinic = (radhouseTb.IsChecked == true) ? true : false,
+               
+                ReferToClinic = (radrefTBSymp.IsChecked == true) ? true : false,
                 ReferralNo = txtRefTBsymp.Text,
             };
             tb.WhatMedsAreYouOn = "";
 
+            TBContactTracing tbc = new TBContactTracing
+            {
+                ScreeningID = scrID,
+                HouseHoldOnTBMeds = (radhouseTb.IsChecked == true) ? true : false,
+                ReferToClinic = (radrefTbCon.IsChecked == true) ? true : false,
+                 ReferralNo = txtTBContract.Text,
+            };
 
             //sp place
             //connection
@@ -469,6 +476,47 @@ namespace Impilo_App.Views.Screening
             {
                 conn.Close();
             }
+            #endregion
+
+
+            #region Other Conditon and eldery care
+
+            OtherCondition otc = new OtherCondition {
+                ScreeningID = scrID,
+               BloodInUrine = (radelpassvision.IsChecked == true) ? true : false,
+                ReferToClinic = (radotref.IsChecked == true) ? true : false,
+                ReferralNo = txtRefOtc.Text,
+                Smoking = (radotsmoke.IsChecked == true) ? true : false,
+               Drinking = (radotdrink.IsChecked == true) ? true : false,
+                DrinkAlchoholUnitsPerWeek = ((ComboBoxItem)cboBeerUnit.SelectedItem).Content.ToString(),
+                DiarrhoeaOver3Days = (radotdiarhoea.IsChecked == true) ? true : false,
+                ReferToClinic2 = (radotref2.IsChecked == true) ? true : false,
+                AttendedInitiationSchool = (radotinit.IsChecked == true) ? true : false,
+               LagCrampsOver2Weeks = (radotcramps.IsChecked == true) ? true : false,
+               LagNumbnessOver2Weeks = (radotnumb.IsChecked == true) ? true : false,
+                FootUlcer = (radotulcer.IsChecked == true) ? true : false,
+                ReferToClinic3 = (radotref3.IsChecked == true) ? true : false,
+               
+                FamilyPlanningAdvice = (radotFam.IsChecked == true) ? true : false,
+                ReferralNo2 = txtRefOtc2.Text,
+                ReferalNo3 = txtRefOtc3.Text
+             };
+            
+            
+            ElderlyCareAssessment eld = new ElderlyCareAssessment {
+                 ScreeningID = scrID,
+                LegFootArmHanAmputation = (radelamp.IsChecked == true) ? true : false,
+                 PassVisionTest = (radelpassvision.IsChecked == true) ? true : false,
+                 Bedridden = (radelBed.IsChecked == true) ? true : false,
+                 UseAidToMove = (radelmove.IsChecked == true) ? true : false,
+                 WashYourself = (radelwash.IsChecked == true) ? true : false,
+                 FeedYourSelf = (radelfeed.IsChecked == true) ? true : false,
+                 DressYourSelf = (radeldress.IsChecked == true) ? true : false,
+                 ReferToClinic = (radelref.IsChecked == true) ? true : false,
+                 ReferralNo = txtRefEld.Text
+
+            };
+            
             #endregion
 
             #endregion

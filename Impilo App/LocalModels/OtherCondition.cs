@@ -18,7 +18,8 @@ namespace Impilo_App.LocalModels
 
         public bool Smoking { get; set; }
 
-        public bool DrinkAlchoholUnitsPerWeek { get; set; }
+        public bool Drinking { get; set; }
+        public string DrinkAlchoholUnitsPerWeek { get; set; }
 
         public bool DiarrhoeaOver3Days { get; set; }
 
