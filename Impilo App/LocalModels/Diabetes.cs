@@ -10,7 +10,7 @@ namespace Impilo_App.LocalModels
     {
         public string ScreeningID { get; set; }
 
-        public char YearOfDiagonosis { get; set; }
+        public string YearOfDiagnosis { get; set; }
 
         public bool regularlyThirsty { get; set; }
 

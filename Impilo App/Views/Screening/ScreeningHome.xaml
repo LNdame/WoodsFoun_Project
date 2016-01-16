@@ -1042,7 +1042,7 @@
 
                                         <Label Content="Refer to clinic" Height="28" HorizontalAlignment="Left" Margin="19,295,0,0" x:Name="label1_Copy18" VerticalAlignment="Top" FontWeight="Bold" />
                                         <Label Content="Referral no." Height="28" HorizontalAlignment="Left" Margin="19,337,0,-11" x:Name="label2_Copy15" VerticalAlignment="Top" FontWeight="Bold" />
-                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="145,342,0,-11" x:Name="txtCountryName_Copy9" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="145,342,0,-11" x:Name="txthyperRef" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
                                         <Label Content="Ever had a stroke?" Height="28" HorizontalAlignment="Left" Margin="487,57,0,0" x:Name="label1_Copy19" VerticalAlignment="Top" FontWeight="Bold" />
                                         <Label Content="Year of stroke" Height="28" HorizontalAlignment="Left" Margin="487,104,0,0" x:Name="label2_Copy16" VerticalAlignment="Top" FontWeight="Bold" />
 
@@ -1061,19 +1061,25 @@
                                         <Label Content="How many in family&#xA;on medications for &#xD;&#xA;HPT" Height="64" HorizontalAlignment="Left" Margin="487,137,0,0" x:Name="label1_Copy20" VerticalAlignment="Top" Width="135" FontWeight="Bold" />
                                         <Label Content="Anyone in family had stroke" Height="28" HorizontalAlignment="Left" Margin="487,202,0,0" x:Name="label2_Copy17" VerticalAlignment="Top" FontWeight="Bold" />
                                         <xctk:IntegerUpDown x:Name="numHPT" Height="30" Margin="644,149,189.2,212.4"  Increment="1" Minimum="0" Maximum="20" />
-                                        <RadioButton Content="Yes" GroupName="hype" HorizontalAlignment="Left" Margin="145,110,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                        <RadioButton x:Name="headYes" Content="Yes" GroupName="hype" HorizontalAlignment="Left" Margin="145,110,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="hype" HorizontalAlignment="Left" Margin="203,112,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="hype4" HorizontalAlignment="Left" Margin="145,156,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                                        <RadioButton x:Name="blurYes" Content="Yes" GroupName="hype4" HorizontalAlignment="Left" Margin="145,156,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="hype4" HorizontalAlignment="Left" Margin="203,156,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="hype3" HorizontalAlignment="Left" Margin="145,202,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                                        <RadioButton x:Name="shortYes" Content="Yes" GroupName="hype3" HorizontalAlignment="Left" Margin="145,202,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="hype3" HorizontalAlignment="Left" Margin="203,202,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="hype2" HorizontalAlignment="Left" Margin="145,250,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                                        <RadioButton x:Name="chestYes" Content="Yes" GroupName="hype2" HorizontalAlignment="Left" Margin="145,250,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="hype2" HorizontalAlignment="Left" Margin="203,250,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="hype1" HorizontalAlignment="Left" Margin="145,300,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                                        <RadioButton x:Name="refYes" Content="Yes" GroupName="hype1" HorizontalAlignment="Left" Margin="145,300,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="hype1" HorizontalAlignment="Left" Margin="203,300,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="hype6" HorizontalAlignment="Left" Margin="644,62,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                                        <RadioButton x:Name="stroYes" Content="Yes" GroupName="hype6" HorizontalAlignment="Left" Margin="644,62,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="hype6" HorizontalAlignment="Left" Margin="717,62,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="hype5" HorizontalAlignment="Left" Margin="661,207,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                                        <RadioButton x:Name="anyYes" Content="Yes" GroupName="hype5" HorizontalAlignment="Left" Margin="661,207,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="hype5" HorizontalAlignment="Left" Margin="717,207,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <Label Content="Blurred vision" Height="28" HorizontalAlignment="Left" Margin="19,151,0,0" x:Name="label1_Copy23" VerticalAlignment="Top" FontWeight="Bold" />
                                         <Label Content="Shortness of breath" Height="28" HorizontalAlignment="Left" Margin="19,197,0,0" x:Name="label2_Copy19" VerticalAlignment="Top" FontWeight="Bold" />
@@ -1145,21 +1151,21 @@
 
                                         <Label Content="Refer to clinic" Height="28" HorizontalAlignment="Left" Margin="487,57,0,0" x:Name="label1_Copy25" VerticalAlignment="Top" FontWeight="Bold" />
                                         <Label Content="Referral no" Height="28" HorizontalAlignment="Left" Margin="487,107,0,0" x:Name="label2_Copy21" VerticalAlignment="Top" FontWeight="Bold" />
-                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="654,105,0,0" x:Name="txtCountryName_Copy13" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="654,105,0,0" x:Name="txtdiaRef" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
                                         <Label Content="Family member &#xD;&#xA;with diabetes" Height="49" HorizontalAlignment="Left" Margin="487,150,0,0" x:Name="label1_Copy26" VerticalAlignment="Top" RenderTransformOrigin="0.542,-0.131" FontWeight="Bold" />
-                                        <RadioButton Content="Yes" GroupName="reg" HorizontalAlignment="Left" Margin="152,113,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                        <RadioButton x:Name="regYes" Content="Yes" GroupName="reg" HorizontalAlignment="Left" Margin="152,113,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="reg" HorizontalAlignment="Left" Margin="215,113,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="reg1" HorizontalAlignment="Left" Margin="152,165,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                        <RadioButton x:Name="lossYes"  Content="Yes" GroupName="reg1" HorizontalAlignment="Left" Margin="152,165,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="reg1" HorizontalAlignment="Left" Margin="215,165,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="reg2" HorizontalAlignment="Left" Margin="152,209,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                        <RadioButton x:Name="blurvYes"  Content="Yes" GroupName="reg2" HorizontalAlignment="Left" Margin="152,209,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="reg2" HorizontalAlignment="Left" Margin="215,209,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.597,0.566" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="reg3" HorizontalAlignment="Left" Margin="152,261,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                        <RadioButton x:Name="uriYes"  Content="Yes" GroupName="reg3" HorizontalAlignment="Left" Margin="152,261,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="reg3" HorizontalAlignment="Left" Margin="215,261,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="reg4" HorizontalAlignment="Left" Margin="152,301,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                        <RadioButton x:Name="nauYes"  Content="Yes" GroupName="reg4" HorizontalAlignment="Left" Margin="152,301,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="reg4" HorizontalAlignment="Left" Margin="215,301,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="reg5" HorizontalAlignment="Left" Margin="654,62,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                        <RadioButton x:Name="refdiaYes"  Content="Yes" GroupName="reg5" HorizontalAlignment="Left" Margin="654,62,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="reg5" HorizontalAlignment="Left" Margin="716,63,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="reg6" HorizontalAlignment="Left" Margin="654,168,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                        <RadioButton x:Name="famYes"  Content="Yes" GroupName="reg6" HorizontalAlignment="Left" Margin="654,168,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="reg6" HorizontalAlignment="Left" Margin="716,165,0,0" VerticalAlignment="Top" Width="45" FontWeight="Bold"/>
                                     </Grid>
                                 </Border>
@@ -1229,8 +1235,8 @@
                                             <ComboBoxItem Name="yh8">2015</ComboBoxItem>
                                         </ComboBox>
 
-                                        <TextBox HorizontalAlignment="Left" Height="23" Margin="200,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="hiv" HorizontalAlignment="Left" Margin="200,124,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                        <TextBox x:Name="txtHIVRef" HorizontalAlignment="Left" Height="23" Margin="200,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" FontWeight="Bold"/>
+                                        <RadioButton x:Name="radonMeds" Content="Yes" GroupName="hiv" HorizontalAlignment="Left" Margin="200,124,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="hiv" HorizontalAlignment="Left" Margin="267,124,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <ComboBox xmlns:sys ="clr-namespace:System;assembly=mscorlib"  HorizontalAlignment="Left" Margin="200,152,0,0" VerticalAlignment="Top" Width="246" FontWeight="Bold">
                                             <ComboBox.Resources>
@@ -1257,11 +1263,11 @@
                                             <sys:String>Tribuss Atroiza, Odimune</sys:String>
 
                                         </ComboBox>
-                                        <RadioButton Content="Yes" GroupName="hiv1" HorizontalAlignment="Left" Margin="200,197,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                        <RadioButton x:Name="radadh" Content="Yes" GroupName="hiv1" HorizontalAlignment="Left" Margin="200,197,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="hiv1" HorizontalAlignment="Left" Margin="267,197,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <RadioButton Content="Yes" GroupName="hiv2" HorizontalAlignment="Left" Margin="200,237,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                        <RadioButton x:Name="hivref" Content="Yes" GroupName="hiv2" HorizontalAlignment="Left" Margin="200,237,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                         <RadioButton Content="No" GroupName="hiv2" HorizontalAlignment="Left" Margin="267,237,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                        <TextBox HorizontalAlignment="Left" Height="23" Margin="200,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" FontWeight="Bold"/>
+                                        <TextBox x:Name="txtARVFile" HorizontalAlignment="Left" Height="23" Margin="200,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" FontWeight="Bold"/>
                                         <!--<RadioButton Content="Yes" HorizontalAlignment="Left" Margin="150,65,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked" RenderTransformOrigin="1.34,0.667"/>-->
                                     </Grid>
                                 </Border>

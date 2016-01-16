@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Impilo_App.LocalModels
 {
-    class Client
+   public class Client
     {
         public int UserID { get; set; }
 

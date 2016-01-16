@@ -35,8 +35,6 @@ namespace Impilo_App.ReportQueries.Format_2.Hypertension
             }
 
             return Result;
-
-            return Result;
         }
     }
 }

@@ -331,9 +331,11 @@ namespace Impilo_App.Views.Reports
                 FileStream xfile = new FileStream(dlg.FileName, FileMode.Create, System.IO.FileAccess.Write);
                 MyWorkbook.Write(xfile);
                 xfile.Close();
-            }
 
-            MessageBox.Show("The report has been generated successfully", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);           
+                MessageBox.Show("The report has been generated successfully", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);           
+
+                System.Diagnostics.Process.Start(dlg.FileName);
+            }
         }
 
         #region Diabetes
