@@ -164,7 +164,7 @@ namespace Impilo_App.Views.Screening
 
             };
 
-
+            //missing the list of meds
 
             //sp place
             //connection
@@ -190,10 +190,65 @@ namespace Impilo_App.Views.Screening
             #endregion
 
             #region Maternal Health
-            MentalHealth materHealth = new MentalHealth();
+            MentalHealth materHealth = new MentalHealth {
+                ScreeningID = scrID,
+                PregnantBefore =false,
+                NoOfPregnancies =numPregnacies.Text,
+                HowManySuccessful =numPregnSuc.Text,
+                WhereDeliveredLasBaby =txtdelplace.Text,
+                Caesarian = (radcae.IsChecked == true) ? "yes" : "no",
+                BabyUnder2_5Kgs = txtbaby2.Text,
+                ChildrenDiedUnder1Year =numchild1died.Text,
+                ChildrenDiedBetween1to5Years = numchild5died.Text,
+                PAPSmearInLast5Years = (radpap.IsChecked == true) ? true : false,
+                LastBloodTestResult = ((ComboBoxItem)cboBloodExam.SelectedItem).Content.ToString(),
+                DateOfFirstANC =(DateTime) txtDate1ANC.SelectedDate,
+                DateOfLastANC = (DateTime)txtDatelastANC.SelectedDate,
+                ReferredToClinic = (refMatyes.IsChecked == true) ? true : false,
+                ReferralNo = txtMatref.Text,
+                DateOfNextANC = (DateTime)txtDateNextANC.SelectedDate,
+                ExpectedDateOfDelivery = (DateTime)txtDateDelivery.SelectedDate,
+                IntendFormulaFeed = (radintformula.IsChecked == true) ? true : false,
+                IntendBreastFeed = (radintbreas.IsChecked == true) ? true : false,
+                RegisteredOnMomConnect=(radintbreas.IsChecked == true) ? true : false
+
+        
+            };
+
+
             #endregion
 
             #region Child Health
+
+            ChildHealth childh = new ChildHealth {
+                ScreeningID = scrID,
+                NameOfMother =txtNaMother.Text,
+                ChildWithRTHC = (radrthc.IsChecked == true) ? true : false,
+                ReferToClinic = (radref.IsChecked == true) ? true : false,
+                ReferalNo = txtref.Text,
+                ListConcernsReChild = txtConRechild.Text,
+                ReferToClinic2=(radref1.IsChecked == true) ? true : false,
+                ReferToOVC = (radrefovc.IsChecked == true) ? "yes" : "No",
+                ReferralNo2 = txtref1.Text,
+                MotherHIVPlus = (radMohiv.IsChecked == true) ? true : false,
+                ChildBreastFed=(radbreast.IsChecked == true) ? true : false,
+                Howlong = ((ComboBoxItem)cbolong.SelectedItem).Content.ToString(),
+                ChildEverOnNevirapine=false,
+                PCRDone=(radpcr.IsChecked == true) ? true : false,
+                PCRResults = ((ComboBoxItem)cboPCR.SelectedItem).Content.ToString(),
+                ReferToClinic3=(radref2.IsChecked == true) ? true : false,
+                ReferalNo3 = txtref2.Text,
+                ImmunisationUpToDate=(radimm.IsChecked == true) ? true : false,
+               
+                ReferToClinic4=(radref3.IsChecked == true) ? true : false,
+                ReferralNo4 = txtref3.Text,
+                WalkAppropriateForAge = (radwalk.IsChecked == true) ? true : false,
+                TalkAppropriateForAge = (radtalk.IsChecked == true) ? true : false,
+                VITAandWarmMedsGivenEachMonth=false
+
+            };
+
+            childh.WhichImmunisatationsOutStanding = "";
 
             #endregion
 
