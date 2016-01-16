@@ -225,7 +225,7 @@
                 							Width="445" Margin="10,0,-3,0">
                                             <Label Content="Medication" HorizontalAlignment="Left" Margin="-8,97,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <ComboBox HorizontalAlignment="Left" Margin="159,100,0,0" VerticalAlignment="Top" Width="263">
-                                            <ComboBoxItem ContentStringFormat="Name"/>
+                                                <ComboBoxItem ContentStringFormat="Name"/>
                                                 <ComboBoxItem Name="m1">HCTZ, Ridaq</ComboBoxItem>
                                                 <ComboBoxItem Name="m2">Perindopril, Coversyl</ComboBoxItem>
                                                 <ComboBoxItem Name="m3">Enalapril</ComboBoxItem>
@@ -410,7 +410,7 @@
                                                 <ComboBoxItem x:Name="m15" Content="Phenobarbitone, phenobarb, Lethyl"/>
                                                 <ComboBoxItem x:Name="m16" Content="Carbamazepine, Tegretol, Degranol"/>
                                                 <ComboBoxItem x:Name="m17" Content="Lamotrigine"/>
-                                                </ComboBox>
+                                            </ComboBox>
                                         </Grid>
                                     </GroupBox>
                                 </Grid>
@@ -685,10 +685,10 @@
                                         </Grid>
                                     </GroupBox>
                                     <GroupBox Header="Clinic referral" HorizontalAlignment="Left"
-                                    	VerticalAlignment="Top" Height="167" Width="465" Margin="476,10,0,0">
+                                    	VerticalAlignment="Top" Height="167" Width="465" Margin="476,94,0,0">
                                         <Grid HorizontalAlignment="Left" Height="133" VerticalAlignment="Top"
                                     		Width="445" Margin="10,0,-3,0">
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="159,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="159,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold" TextChanged="TextBox_TextChanged"/>
                                             <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
                                             <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="159,13,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -705,6 +705,8 @@
                                             </ComboBox>
                                         </Grid>
                                     </GroupBox>
+                                    <TextBox HorizontalAlignment="Left" Height="23" Margin="636,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
+                                    <Label Content="TB Result" HorizontalAlignment="Left" Margin="476,19,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
                                 </Grid>
                             </Border>
                         </Grid>
@@ -822,8 +824,8 @@
                                             <Label Content="Referred to clinic" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
                                             <ComboBox HorizontalAlignment="Left" Name="comboMatResult" Margin="214,114,0,0" VerticalAlignment="Top" Width="210">
                                                 <ComboBoxItem Name="matresults1">Pending</ComboBoxItem>
-                                                <ComboBoxItem Name="matresults2">Non-Reactive</ComboBoxItem>
-                                                <ComboBoxItem Name="matresults3">Reactive</ComboBoxItem>
+                                                <ComboBoxItem Name="matresults2">Preganant</ComboBoxItem>
+                                                <ComboBoxItem Name="matresults3">Not Pregnant</ComboBoxItem>
                                             </ComboBox>
                                             <Label Content="Results" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton Content="Yes" Name="MatIsItPosibleYouArePregnent1" HorizontalAlignment="Left" Margin="214,32,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -848,7 +850,7 @@
                                             <DatePicker HorizontalAlignment="Left" Height="23" Name="txtMatDateOfLastANC" Margin="180,36,0,0" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
                                             <RadioButton GroupName="ep1" Name="MatRegisteredForMoMConnect1" Content="Yes" HorizontalAlignment="Left" Margin="185,150,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton GroupName="ep1" Name="MatRegisteredForMoMConnect2" Content="No" HorizontalAlignment="Left" Margin="250,150,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <Label Content="Registered for MomConnect" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
+                                            <Label Content="Registered for MomConnect" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
                                             <Label Content="Expected date of delivery" HorizontalAlignment="Left" Margin="10,276,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <Label Content="Intend breastfeed" HorizontalAlignment="Left" Margin="10,310,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <Label Content="Intend formula feed" HorizontalAlignment="Left" Margin="10,341,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -911,7 +913,7 @@
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
                                             <RadioButton Content="Yes" Name="ChildARVsConcern1" HorizontalAlignment="Left" Margin="180,36,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton Content="No" Name="ChildARVsConcern2" HorizontalAlignment="Left" Margin="245,36,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Name="txtChildDateOfVisit" Height="23" Margin="170,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182" FontWeight="Bold"/>
+                                            <DatePicker HorizontalAlignment="Left" Name="txtChildDateOfVisit" Height="23" Margin="170,4,0,0" VerticalAlignment="Top" Width="182" FontWeight="Bold"/>
                                             <Label Content="Date of visit" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
                                         </Grid>
                                     </GroupBox>
