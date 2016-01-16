@@ -24,7 +24,7 @@ namespace Impilo_App.LocalModels
 
         public string ReferToOVC { get; set; }
 
-        public char ReferralNo2 { get; set; }
+        public string ReferralNo2 { get; set; }
 
         public bool MotherHIVPlus { get; set; }
 

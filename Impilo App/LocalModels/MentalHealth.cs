@@ -40,10 +40,11 @@ namespace Impilo_App.LocalModels
 
         public DateTime DateOfNextANC { get; set; }
 
-        public DateTime ExtectedDateOfDelivery { get; set; }
+        public DateTime ExpectedDateOfDelivery { get; set; }
 
         public bool IntendFormulaFeed { get; set; }
 
+        public bool IntendBreastFeed { get; set; }
         public bool RegisteredOnMomConnect { get; set; }
     }
 }
