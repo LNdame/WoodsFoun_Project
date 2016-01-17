@@ -23,7 +23,8 @@ namespace Impilo_App.ReportQueries.Format_2.Diabetes
                 SqlCommand tempCommand = new SqlCommand("ReportFormat2-6",tempConnection);
                 tempCommand.CommandType = CommandType.StoredProcedure;
                 // Parameters
-                
+                tempCommand.Parameters.AddWithValue("@StartDate", Views.Reports.Format2Report.StartDate);
+                tempCommand.Parameters.AddWithValue("@EndDate", Views.Reports.Format2Report.EndDate);
                 tempCommand.Parameters.AddWithValue("@Type", 1);
 
                 Result = ((int)tempCommand.ExecuteScalar()).ToString();
