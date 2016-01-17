@@ -16,31 +16,31 @@ namespace Impilo_App.LocalModels
 
     public string VisitOutCome { get; set; }
 
-    public string VisitHPT { get; set; }
+    public bool VisitHPT { get; set; }
 
-    public string VisitDiabetes { get; set; }
+    public bool VisitDiabetes { get; set; }
 
-    public string VisitEpilepsy { get; set; }
+    public bool VisitEpilepsy { get; set; }
 
-    public string VisitHIV { get; set; }
+    public bool VisitHIV { get; set; }
 
-    public string VisitTB { get; set; }
+    public bool VisitTB { get; set; }
 
-    public string VisitMatHealth { get; set; }
+    public bool VisitMatHealth { get; set; }
 
-    public string VisitChildHealth { get; set; }
+    public bool VisitChildHealth { get; set; }
 
-    public string VisitOther { get; set; }
+    public bool VisitOther { get; set; }
 
-    public string VisitDooortoDoor { get; set; }
+    public bool VisitDooortoDoor { get; set; }
 
-    public string HyperWentToClinic1 { get; set; }
+    public bool HyperWentToClinic1 { get; set; }
 
-    public string HyperReReferToClinic1 { get; set; }
+    public bool HyperReReferToClinic1 { get; set; }
 
     public string HyperReferralNo1 { get; set; }
 
-    public string HyperCurrentlyOnMeds { get; set; }
+    public bool HyperCurrentlyOnMeds { get; set; }
 
     public string HyperStartDate { get; set; }
 
@@ -56,65 +56,69 @@ namespace Impilo_App.LocalModels
 
         // public string HyperTodayTestReading { get; set; } ..kevin
 
-    public string HyperReReferToClinic2 { get; set; }
+    public bool HyperAlreadyOnTreatment { get; set; }
+
+    public bool HyperReReferToClinic2 { get; set; }
 
     public string HyperReferralNo2 { get; set; }
 
-    public string HyperCheckReading { get; set; }
+    //public string HyperCheckReading { get; set; }
 
     public string HyperMedication { get; set; }
 
-    public string HyperReReferToClinic3 { get; set; }
+    //public string HyperReReferToClinic3 { get; set; }
 
-    public string HyperReferralNo3 { get; set; }
+    //public string HyperReferralNo3 { get; set; }
 
-    public string HyperFollowUpTestReading { get; set; }
+    //public string HyperFollowUpTestReading { get; set; }
 
-    public string HyperScreenTestReading { get; set; }
+    //public string HyperScreenTestReading { get; set; }
 
-    public string DaiWentToClinic { get; set; }
+    public bool DaiWentToClinic { get; set; }
 
-    public string DiaReReferToClinic1 { get; set; }
+    public bool DiaReReferToClinic1 { get; set; }
 
     public string DiaReferralNo1 { get; set; }
 
-    public string DiaCurrentlyOnMeds { get; set; }
+    public bool DiaCurrentlyOnMeds { get; set; }
 
     public string DiaStartDate { get; set; }
 
+    public string DiaScreenTestReading1 { get; set; }
+
     public string DiaFollowUpTestReading1 { get; set; }
 
-    public string DiaReferToClinic2 { get; set; }
+    public bool DiaReferToClinic2 { get; set; }
 
     public string DiaReferralNo2 { get; set; }
 
-    public string DiaCheckReading { get; set; }
+    //public string DiaCheckReading { get; set; }
 
     public string DiaMedication { get; set; }
 
-    public string DiaReReferToClinic3 { get; set; }
+    //public string DiaReReferToClinic3 { get; set; }
 
-    public string DiaReferralNo3 { get; set; }
+    //public string DiaReferralNo3 { get; set; }
 
-    public string DiaFollowUpTestReading3 { get; set; }
+    //public string DiaFollowUpTestReading3 { get; set; }
 
-    public string EpiWentToClinic { get; set; }
+    public bool EpiWentToClinic { get; set; }
 
-    public string EpiReReferToClinic1 { get; set; }
+    public bool EpiReReferToClinic1 { get; set; }
 
     public string EpiReferralNo1 { get; set; }
 
-    public string EpiFitInLastMonth { get; set; }
+    public bool EpiFitInLastMonth { get; set; }
 
-    public string EpiReferToClinic { get; set; }
+    public bool EpiReferToClinic { get; set; }
 
-    public string EpiCurrentlyOnMeds { get; set; }
+    public bool EpiCurrentlyOnMeds { get; set; }
 
     public string EpiStartDate { get; set; }
 
-    public string EpiMoreThan3FitsInLastMonth { get; set; }
+    public bool EpiMoreThan3FitsInLastMonth { get; set; }
 
-    public string EpiReReferToClinic2 { get; set; }
+    public bool EpiReReferToClinic2 { get; set; }
 
     public string EpiReferralNo2 { get; set; }
 
@@ -334,7 +338,7 @@ namespace Impilo_App.LocalModels
 
     public string HIVReferralNo3 { get; set; }
 
-    public string HIVARVsConsern { get; set; }
+    public string HIVARVsConcern { get; set; }
 
     public string HIVReferToClinic3 { get; set; }
 
