@@ -675,8 +675,20 @@ namespace Impilo_App.Views.Screening
                 storedProcedure = "";// name of sp
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
-
-                com.Parameters.AddWithValue("@", hyper.ScreeningID);//param
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ScreeningID", tb.ScreeningID);//param
+                com.Parameters.AddWithValue("@", tb.HaveTubercolosis);//param
+                com.Parameters.AddWithValue("@", tb.WhatMedsAreYouOn);//param
+                com.Parameters.AddWithValue("@", tb.Defaulting);//param
+                com.Parameters.AddWithValue("@", tb.LossWeight);//param
+                com.Parameters.AddWithValue("@", tb.SweatingAtNight);//param
+                com.Parameters.AddWithValue("@", tb.FeverOver2Weeks);//param
+                com.Parameters.AddWithValue("@", tb.CoughMoreThan2Weeks);//param
+                com.Parameters.AddWithValue("@", tb.LossOfApetite);//param
+                com.Parameters.AddWithValue("@", tb.ReferToClinic);//param
+                com.Parameters.AddWithValue("@", tb.ReferralNo);//param
+                com.Parameters.AddWithValue("@", tb.HouseholdMemberONTBMeds);//param
+                
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -714,7 +726,45 @@ namespace Impilo_App.Views.Screening
                 ReferralNo2 = txtRefOtc2.Text,
                 ReferalNo3 = txtRefOtc3.Text
              };
-            
+
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ScreeningID", otc.ScreeningID);//param
+                com.Parameters.AddWithValue("@", otc.BloodInUrine);//param
+                com.Parameters.AddWithValue("@", otc.ReferToClinic);//param
+                com.Parameters.AddWithValue("@", otc.ReferralNo);//param
+                com.Parameters.AddWithValue("@", otc.Smoking);//param
+                com.Parameters.AddWithValue("@", otc.Drinking);//param
+                com.Parameters.AddWithValue("@", otc.DrinkAlchoholUnitsPerWeek);//param
+                com.Parameters.AddWithValue("@", otc.DiarrhoeaOver3Days);//param
+                com.Parameters.AddWithValue("@", otc.ReferToClinic2);//param
+                com.Parameters.AddWithValue("@", otc.AttendedInitiationSchool);//param
+                com.Parameters.AddWithValue("@", otc.LagCrampsOver2Weeks);//param
+                com.Parameters.AddWithValue("@", otc.LagNumbnessOver2Weeks);//param
+                com.Parameters.AddWithValue("@", otc.FootUlcer);//param
+                com.Parameters.AddWithValue("@", otc.ReferToClinic3);//param
+                com.Parameters.AddWithValue("@", otc.FamilyPlanningAdvice);//param
+                com.Parameters.AddWithValue("@", otc.ReferralNo2);//param
+
+                com.Parameters.AddWithValue("@", otc.ReferalNo3);//param
+                
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
             
             ElderlyCareAssessment eld = new ElderlyCareAssessment {
                  ScreeningID = scrID,
@@ -729,7 +779,36 @@ namespace Impilo_App.Views.Screening
                  ReferralNo = txtRefEld.Text
 
             };
-            
+
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@", eld.ScreeningID);//param
+                com.Parameters.AddWithValue("@", eld.LegFootArmHanAmputation);//param
+                com.Parameters.AddWithValue("@", eld.Bedridden);//param
+                com.Parameters.AddWithValue("@", eld.UseAidToMove);//param
+                com.Parameters.AddWithValue("@", eld.WashYourself);//param
+                com.Parameters.AddWithValue("@", eld.FeedYourSelf);//param
+                com.Parameters.AddWithValue("@", eld.DressYourSelf);//param
+                com.Parameters.AddWithValue("@", eld.ReferToClinic);//param
+                com.Parameters.AddWithValue("@", eld.ReferralNo);//param
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             #endregion
 
             #endregion
@@ -746,6 +825,30 @@ namespace Impilo_App.Views.Screening
             
             };
 
+
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ScreeningID", ottab.ScreeningID);//param
+                com.Parameters.AddWithValue("@", ottab.ReferToClinic);//param
+                com.Parameters.AddWithValue("@", ottab.ReferralNo);//param
+                com.Parameters.AddWithValue("@", ottab.OtherConditionFound);//param
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
             #endregion
 
             #region Environmental
