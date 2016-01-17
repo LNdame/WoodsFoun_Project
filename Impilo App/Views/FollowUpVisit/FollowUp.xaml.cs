@@ -37,17 +37,20 @@ namespace Impilo_App.Views.FollowUpVisit
         
 private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            FollowUp fol = new FollowUp();
+            Impilo_App.LocalModels.FollowUp fol = new Impilo_App.LocalModels.FollowUp();
+            string storedProcedure = "";
+            string folID = ""; // 
+
 
             #region Visit Detaisl
-            fol.FollowUpID = folID;
-            fol.DateofScreen =
-            fol.VisitNextVisit =
-            fol.VisitOutCome =
+            fol.FollowUpIDNumber = folID;
+            //fol.DateofScreen = scrDate;
+            fol.VisitNextVisit = dpNextVisit.Text.ToString();
+            fol.VisitOutCome = ((ComboBoxItem)cboListOutcome.SelectedItem).Content.ToString();
             fol.VisitHPT = (radVisHptYes.IsChecked == true) ? true : false;
-            fol.VisitDiabetes = (radVisHptYes.IsChecked == true) ? true : false;
-            fol.VisitEpilepsy = (radVisHptYes.IsChecked == true) ? true : false;
-            fol.Visitfol.HIV = (radVisHptYes.IsChecked == true) ? true : false;
+            fol.VisitDiabetes = (radVisDiaYes.IsChecked == true) ? true : false;
+            fol.VisitEpilepsy = (radVisEpiYes.IsChecked == true) ? true : false;
+            fol.VisitHIV = (radVisHivYes.IsChecked == true) ? true : false;
             fol.VisitTB = (radVisHptYes.IsChecked == true) ? true : false;
             fol.VisitMatHealth = (radVisHptYes.IsChecked == true) ? true : false;
             fol.VisitChildHealth = (radVisHptYes.IsChecked == true) ? true : false;
@@ -99,7 +102,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
 
-                com.Parameters.AddWithValue("@", fol.ScreeningID);//param
+                com.Parameters.AddWithValue("@");//param
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -153,16 +156,16 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
 
             #region Epilepsy
 
-            EpiWentToClinic = (radEpiClinYes.IsChecked == true) ? true : false; ;
-            EpiReReferToClinic1 = (radEpiReRefClinYes.IsChecked == true) ? true : false; ;
-            EpiReferralNo1 = txtEpiRefNo1.Text;
-            EpiFitInLastMonth = (radEpiFitsLastMonthYes.IsChecked == true) ? true : false; ;
-            EpiCurrentlyOnMeds = (radEpiCurMedsYes.IsChecked == true) ? true : false;
-            EpiStartDate = dpEpiStartDt.Text.ToString();
-            EpiMoreThan3FitsInLastMonth = (radEpi3FitsLastMonthYes.IsChecked == true) ? true : false; ;
-            EpiReReferToClinic2 = (radEpiRefClin2Yes.IsChecked == true) ? true : false; ;
-            EpiReferralNo2 = txtEpiRefNo2.Text;
-            EpiMedication = ((ComboBoxItem)cboEpiMeds.SelectedItem).Content.ToString();
+            fol.EpiWentToClinic = (radEpiClinYes.IsChecked == true) ? true : false; ;
+            fol.EpiReReferToClinic1 = (radEpiReRefClinYes.IsChecked == true) ? true : false; ;
+            fol.EpiReferralNo1 = txtEpiRefNo1.Text;
+            fol.EpiFitInLastMonth = (radEpiFitsLastMonthYes.IsChecked == true) ? true : false; ;
+            fol.EpiCurrentlyOnMeds = (radEpiCurMedsYes.IsChecked == true) ? true : false;
+            fol.EpiStartDate = dpEpiStartDt.Text.ToString();
+            fol.EpiMoreThan3FitsInLastMonth = (radEpi3FitsLastMonthYes.IsChecked == true) ? true : false; ;
+            fol.EpiReReferToClinic2 = (radEpiRefClin2Yes.IsChecked == true) ? true : false; ;
+            fol.EpiReferralNo2 = txtEpiRefNo2.Text;
+            fol.EpiMedication = ((ComboBoxItem)cboEpiMeds.SelectedItem).Content.ToString();
 
                 //sp place
                 //connection
@@ -187,7 +190,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             }
             #endregion
 
-            #region Asthma
+ /*           #region Asthma
         fol.AsDateOfVisit 
         fol.AsWentToClinic 
         fol.AsReReferToClinic1 
@@ -225,26 +228,26 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             }
             #endregion
 
-            #region fol.HIV
-            fol.HIVDateOfVisit
+            #region HIV
+            fol.HIVDateOfVisit =
 
-         fol.HIVWentToClinic
+            fol.HIVWentToClinic =
 
-         fol.HIVRereferToClinic
+            fol.HIVRereferToClinic =
 
-         fol.HIVReferralNo1
+            fol.HIVReferralNo1 = txtHivRefNo1.Text;
 
-         fol.HIVReferToClinic1
+         //fol.HIVReferToClinic1
 
-         fol.HIVReferralNo2
+         //fol.HIVReferralNo2
 
          fol.HIVStatus
 
-         fol.HIVOnARVs
+         fol.HIVOnARVs = (radHivOnARVYes.IsChecked == true) ? true : false;
 
-         fol.HIVStartDate1
+         fol.HIVStartDate1 = dpARVStartDT.Text.ToString();
 
-         fol.HIVAdherenceOK
+         fol.HIVAdherenceOK = (radHivAdhereYes.IsChecked == true) ? true : false;
 
          fol.HIVConcerns
 
@@ -252,11 +255,11 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
 
          fol.HIVReferralNo3
 
-         fol.HIVARVsConsern
+         fol.HIVARVsConcern
 
-         fol.HIVReferToClinic3
+         //fol.HIVReferToClinic3
 
-         fol.HIVReferralNo4
+         //fol.HIVReferralNo4
 
          fol.HIVTestingDone
 
@@ -457,7 +460,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
 
 
 
-    }
+    }*/
     }
 	        
 

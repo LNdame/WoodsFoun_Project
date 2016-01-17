@@ -117,22 +117,22 @@
                                             <Label Content="Door-door" HorizontalAlignment="Left" Margin="470,168,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="6.089,-0.665"/>
                                             <Label Content="Child Health" HorizontalAlignment="Left" Margin="468,73,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton GroupName="vi" Content="Yes" HorizontalAlignment="Left" Margin="147,128,0,0" Name="radVisHptYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                            <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="147,171,0,0" Name="radVisEpiYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                            <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="212,171,0,0" Name="radVisHivYes" VerticalAlignment="Top"/>
-                                            <RadioButton GroupName="vi2" Content="Yes" HorizontalAlignment="Left" Margin="147,213,0,0" Name="radVisTbYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                            <RadioButton GroupName="vi2" Content="No" HorizontalAlignment="Left" Margin="212,213,0,0" Name="radVisMatHYes" VerticalAlignment="Top"/>
-                                            <RadioButton GroupName="vi3" Content="Yes" HorizontalAlignment="Left" Margin="147,262,0,0" Name="radVisChHYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                            <RadioButton GroupName="vi3" Content="No" HorizontalAlignment="Left" Margin="212,262,0,0" Name="radVisOthYes" VerticalAlignment="Top"/>
-                                            <RadioButton GroupName="vi4" Content="Yes" HorizontalAlignment="Left" Margin="147,306,0,0" Name="radVisDtDYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                            <RadioButton GroupName="vi4" Content="No" HorizontalAlignment="Left" Margin="212,306,0,0" VerticalAlignment="Top"/>
-                                            <RadioButton GroupName="vi5" Content="Yes" HorizontalAlignment="Left" Margin="585,21,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                            <RadioButton GroupName="vi5" Content="No" HorizontalAlignment="Left" Margin="650,21,0,0" VerticalAlignment="Top"/>
-                                            <RadioButton GroupName="vi6" Content="Yes" HorizontalAlignment="Left" Margin="585,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                            <RadioButton GroupName="vi6" Content="No" HorizontalAlignment="Left" Margin="650,79,0,0" VerticalAlignment="Top"/>
-                                            <RadioButton GroupName="vi7" Content="Yes" HorizontalAlignment="Left" Margin="585,171,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                            <RadioButton GroupName="vi7" Content="No" HorizontalAlignment="Left" Margin="650,171,0,0" VerticalAlignment="Top"/>
+                                            <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="147,171,0,0" Name="radVisDiaYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                            <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="212,171,0,0" Name="radVisDiaNo" VerticalAlignment="Top"/>
+                                            <RadioButton GroupName="vi2" Content="Yes" HorizontalAlignment="Left" Margin="147,213,0,0" Name="radVisEpiYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                            <RadioButton GroupName="vi2" Content="No" HorizontalAlignment="Left" Margin="212,213,0,0" Name="radVisEpiNo" VerticalAlignment="Top"/>
+                                            <RadioButton GroupName="vi3" Content="Yes" HorizontalAlignment="Left" Margin="147,262,0,0" Name="radVisHivYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                            <RadioButton GroupName="vi3" Content="No" HorizontalAlignment="Left" Margin="212,262,0,0" Name="radVisHivNo" VerticalAlignment="Top"/>
+                                            <RadioButton GroupName="vi4" Content="Yes" HorizontalAlignment="Left" Margin="147,306,0,0" Name="radVisTbYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                            <RadioButton GroupName="vi4" Content="No" HorizontalAlignment="Left" Margin="212,306,0,0" Name="radVisTbNo" VerticalAlignment="Top"/>
+                                            <RadioButton GroupName="vi5" Content="Yes" HorizontalAlignment="Left" Margin="585,21,0,0" Name="radVisMatHYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                            <RadioButton GroupName="vi5" Content="No" HorizontalAlignment="Left" Margin="650,21,0,0" Name="radVisMatHNo" VerticalAlignment="Top"/>
+                                            <RadioButton GroupName="vi6" Content="Yes" HorizontalAlignment="Left" Margin="585,79,0,0" Name="radVisChHYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                            <RadioButton GroupName="vi6" Content="No" HorizontalAlignment="Left" Margin="650,79,0,0" Name="radVisChHNoYes" VerticalAlignment="Top"/>
+                                            <RadioButton GroupName="vi7" Content="Yes" HorizontalAlignment="Left" Margin="585,171,0,0" Name="radVisDtDYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                            <RadioButton GroupName="vi7" Content="No" HorizontalAlignment="Left" Margin="650,171,0,0" Name="radVisDtDNo" VerticalAlignment="Top"/>
                                             <TextBox HorizontalAlignment="Left" Height="23" Margin="585,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230"/>
-                                            <DatePicker HorizontalAlignment="Left" Margin="147,20,0,0" VerticalAlignment="Top" Width="226"/>
+                                            <DatePicker HorizontalAlignment="Left" Margin="147,20,0,0" Name="dpNextVisit" VerticalAlignment="Top" Width="226"/>
                                         </Grid>
                                     </GroupBox>
                                 </Grid>
@@ -372,37 +372,37 @@
                                             <Label Content="Went to clinic"
                         						HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontWeight="Bold"/>
                                             <Label Content="Fit in last month" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,91,0,0" TextWrapping="Wrap" Name="txtEpiRefNo1" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
                                             <Label Content="re-refer to clinic" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
-                                            <RadioButton GroupName="ep" Content="Yes" HorizontalAlignment="Left" Margin="180,13,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep" Content="No" HorizontalAlignment="Left" Margin="245,13,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep1" Content="Yes" HorizontalAlignment="Left" Margin="180,50,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep1" Content="No" HorizontalAlignment="Left" Margin="245,50,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,215,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,215,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep" Content="Yes" HorizontalAlignment="Left" Margin="180,13,0,0" Name="radEpiClinYes" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep" Content="No" HorizontalAlignment="Left" Margin="245,13,0,0" Name="radEpiClinNo" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep1" Content="Yes" HorizontalAlignment="Left" Margin="180,50,0,0" Name="radEpiReRefClinYes" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep1" Content="No" HorizontalAlignment="Left" Margin="245,50,0,0" Name="radEpiReReferClinNo" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,215,0,0" Name="radEpiFitsLastMonthYes" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,215,0,0" Name="radEpiFitsLastMonthNo" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <Label Content="Currently on meds"
                                             	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,127,0,0" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep4" Content="Yes" HorizontalAlignment="Left" Margin="181,133,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep4" Content="No" HorizontalAlignment="Left" Margin="246,133,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="181,166,0,0" VerticalAlignment="Top" Width="263" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep4" Content="Yes" HorizontalAlignment="Left" Margin="181,133,0,0" Name="radEpiCurMedsYes" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep4" Content="No" HorizontalAlignment="Left" Margin="246,133,0,0" Name="radEpiCurMedsNo" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="181,166,0,0" Name="dpEpiStartDt" VerticalAlignment="Top" Width="263" FontWeight="Bold"/>
                                             <Label Content="Start date" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <Label Content="More than 3 fits&#xA; in last month" HorizontalAlignment="Left" Margin="8,245,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep5" Content="Yes" HorizontalAlignment="Left" Margin="178,251,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep5" Content="No" HorizontalAlignment="Left" Margin="243,251,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep5" Content="Yes" HorizontalAlignment="Left" Margin="178,251,0,0" Name="radEpi3FitsLastMonthYes" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep5" Content="No" HorizontalAlignment="Left" Margin="243,251,0,0" Name="radEpi3FitsLastMonthNo" VerticalAlignment="Top" FontWeight="Bold"/>
                                         </Grid>
                                     </GroupBox>
                                     <GroupBox Header="Clinic referral" HorizontalAlignment="Left"
                                     	VerticalAlignment="Top" Height="167" Width="465" Margin="476,10,0,0">
                                         <Grid HorizontalAlignment="Left" Height="133" VerticalAlignment="Top"
                                     		Width="445" Margin="10,0,-3,0">
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="159,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="159,45,0,0" Name="txtEpiRefNo2" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
                                             <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
-                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="159,13,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="224,13,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="159,13,0,0" Name="radEpiRefClin2Yes" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="224,13,0,0" Name="radEpiRefClin2No" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <Label Content="Medication" HorizontalAlignment="Left" Margin="2,97,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <ComboBox HorizontalAlignment="Left" Margin="159,100,0,0" VerticalAlignment="Top" Width="263">
+                                            <ComboBox HorizontalAlignment="Left" Margin="159,100,0,0" Name="cboEpiMeds" VerticalAlignment="Top" Width="263">
                                                 <ComboBoxItem ContentStringFormat="Name"/>
                                                 <ComboBoxItem x:Name="m13" Content="Epilim, Valproate"/>
                                                 <ComboBoxItem x:Name="m14" Content="Phenytoin"/>
@@ -546,48 +546,55 @@
                     						Width="451" Margin="10,10,-2.6,14.8">
                                             <Label Content="Start Date"
                     							HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,44,0,0" FontWeight="Bold"/>
-                                            <Label Content="ARVs concern" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
+                                            <Label Content="ARVs concern" HorizontalAlignment="Left" Margin="472,9,-108,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
                                             <Label Content="Adherence OK" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
                                             <Label Content="Concerns" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
-                                            <RadioButton GroupName="ep" Content="Yes" HorizontalAlignment="Left" Margin="180,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep" Content="No" HorizontalAlignment="Left" Margin="245,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep1" Content="Yes" HorizontalAlignment="Left" Margin="180,84,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep1" Content="No" HorizontalAlignment="Left" Margin="245,84,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,219,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,219,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep" Content="Yes" HorizontalAlignment="Left" Margin="180,16,0,0" Name="radHivOnARVYes" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep" Content="No" HorizontalAlignment="Left" Margin="245,16,0,0" Name="radHivOnARVNo" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep1" Content="Yes" HorizontalAlignment="Left" Margin="180,84,0,0" Name="radHivAdhereYes" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep1" Content="No" HorizontalAlignment="Left" Margin="245,84,0,0" Name="radHivAdhereNo" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="642,15,-228,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="709,20,-294,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <Label Content="On ARVs"
                     							HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontWeight="Bold"/>
-                                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="180,44,0,0" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep1" Content="Yes" HorizontalAlignment="Left" Margin="180,128,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton GroupName="ep1" Content="No" HorizontalAlignment="Left" Margin="245,128,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="170,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
-                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
+                                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="180,44,0,0" Name="dpARVStartDT" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep1" Content="Yes" HorizontalAlignment="Left" Margin="180,128,0,0" Name="radHivConcernsYes" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton GroupName="ep1" Content="No" HorizontalAlignment="Left" Margin="245,128,0,0" Name="radHivConcernsNo" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="180,226,0,0" TextWrapping="Wrap" Name="txtHivRe" VerticalAlignment="Top" Width="246" FontWeight="Bold"/>
+                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
                                             <Grid HorizontalAlignment="Left" Height="56" VerticalAlignment="Top"
-                                            	Width="445" Margin="-1,176,0,0">
+                                            	Width="445" Margin="465,120,-459,0">
                                                 <Label Content="HIV test done"
-                                            		HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,103,0,-73" FontWeight="Bold"/>
-                                                <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="183,109,0,-69" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                <RadioButton Content="No" HorizontalAlignment="Left" Margin="248,109,0,-69" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            		HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,-45,0,0" FontWeight="Bold"/>
+                                                <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="179,-39,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                <RadioButton Content="No" HorizontalAlignment="Left" Margin="244,-39,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             </Grid>
                                             <Grid HorizontalAlignment="Left" Height="63" VerticalAlignment="Top"
-                                            	Width="445" Margin="0,255,0,0">
-                                                <RadioButton GroupName="ep" Content="Positive" HorizontalAlignment="Left" Margin="181,61,0,-14" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                <RadioButton GroupName="ep" Content="Negative" HorizontalAlignment="Left" Margin="246,61,0,-14" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            	Width="445" Margin="466,255,-460,0">
+                                                <RadioButton GroupName="ep" Content="Positive" HorizontalAlignment="Left" Margin="177,-143,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                <RadioButton GroupName="ep" Content="Negative" HorizontalAlignment="Left" Margin="242,-143,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <Label Content="HIV Status"
-                                            		HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,55,0,-18" FontWeight="Bold"/>
+                                            		HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,-149,0,0" FontWeight="Bold"/>
                                             </Grid>
                                             <Label Content="HIV staus known?"
-                                            	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,250,0,0" FontWeight="Bold"/>
-                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="182,256,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="247,256,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="471,46,-130,0" FontWeight="Bold"/>
+                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="644,52,-230,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="709,52,-294,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <Label Content="Went to clinic"
+                                            	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,194,0,0" FontWeight="Bold"/>
+                                            <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
+                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,197,0,0" x:Name="radHyClinYes_Copy" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,197,0,0" x:Name="radHyClinNo_Copy" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="180,166,0,0" x:Name="radHyRefClin1Yes_Copy" VerticalAlignment="Top" FontWeight="Bold"/>
+                                            <RadioButton Content="No" HorizontalAlignment="Left" Margin="245,166,0,0" x:Name="radHyRefClin1No_Copy" VerticalAlignment="Top" FontWeight="Bold"/>
                                         </Grid>
                                     </GroupBox>
                                     <GroupBox Header="Clinic referral" HorizontalAlignment="Left"
-                                    	VerticalAlignment="Top" Height="167" Width="465" Margin="476,10,0,0">
+                                    	VerticalAlignment="Top" Height="167" Width="465" Margin="476,190,0,0">
                                         <Grid HorizontalAlignment="Left" Height="133" VerticalAlignment="Top"
                                     		Width="445" Margin="10,0,-3,0">
                                             <TextBox HorizontalAlignment="Left" Height="23" Margin="159,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontWeight="Bold"/>
-                                            <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
+                                            <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26"/>
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
                                             <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="159,13,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton Content="No" HorizontalAlignment="Left" Margin="224,13,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -743,7 +750,7 @@
                             </Border.BorderBrush>
                             <Grid x:Name="grid22" Margin="6,6,14.4,18">
                                 <Label Content="Finish screening" Height="28" HorizontalAlignment="Left" Margin="289,10,0,0" x:Name="label29" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="-1.286,-0.543" />
-                                <Button Content="Save" Height="36" HorizontalAlignment="Left" Margin="243,52,0,0" x:Name="btnEditCountry" VerticalAlignment="Top" Width="182" FontSize="16" FontWeight="Bold" Click="btnEditCountry_Click" >
+                                <Button Content="Save" Height="36" HorizontalAlignment="Left" Margin="243,52,0,0" x:Name="btnSave" VerticalAlignment="Top" Width="182" FontSize="16" FontWeight="Bold" Click="btnEditCountry_Click" >
                                     <Button.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                             <GradientStop Color="#82000000" Offset="0.035" />
