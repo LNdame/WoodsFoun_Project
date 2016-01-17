@@ -33,8 +33,9 @@ namespace Impilo_App.DataImport
 
                         // Read file values here
 
-
+                        // Biographical Data goes into client table
                         #region Biographical
+                        // dbo.client table
                         string BioChowName = MyWorkbook.GetSheet("Biographical").GetRow(2).GetCell(0).StringCellValue;
                         string BioUniqueID = MyWorkbook.GetSheet("Biographical").GetRow(2).GetCell(1).StringCellValue;
                         string BioFirstName = MyWorkbook.GetSheet("Biographical").GetRow(2).GetCell(2).StringCellValue;
@@ -46,21 +47,24 @@ namespace Impilo_App.DataImport
                         string BioClinic = MyWorkbook.GetSheet("Biographical").GetRow(2).GetCell(8).StringCellValue;
                         #endregion
 
+
+                        //The rest of these go into the followup table
+
                         #region VisitDetails
                         // VD prefix used to identify variables associated with Visit Details tab
-                        string VDVisitNum = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(0).StringCellValue;
-                        string VDVisitDate = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(1).StringCellValue;
-                        string VDNextVisitDate = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(2).StringCellValue;
-                        string VDOutcome = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(4).StringCellValue;
-                        string VDHPT = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(5).StringCellValue;
-                        string VDDiabetes = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(6).StringCellValue;
-                        string VDEpilepsy = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(7).StringCellValue;
-                        string VDHIV = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(8).StringCellValue;
-                        string VDTB = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(9).StringCellValue;
-                        string VDMatHealth = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(10).StringCellValue;
-                        string VDChildHealth = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(11).StringCellValue;
-                        string VDOther = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(12).StringCellValue;
-                        string VDODoorToDoor = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(13).StringCellValue;
+                        string VDVisitNum = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(0).StringCellValue; //count generated from counting visits unique to a client ID
+                        string VDVisitDate = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(1).StringCellValue; //dateTimeNow, No real need to enter manually
+                        string VDNextVisitDate = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(2).StringCellValue; //good
+                        string VDOutcome = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(4).StringCellValue;//good
+                        string VDHPT = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(5).StringCellValue;//good
+                        string VDDiabetes = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(6).StringCellValue;//good
+                        string VDEpilepsy = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(7).StringCellValue;//good
+                        string VDHIV = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(8).StringCellValue;//good
+                        string VDTB = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(9).StringCellValue;//good
+                        string VDMatHealth = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(10).StringCellValue;//good
+                        string VDChildHealth = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(11).StringCellValue;//good
+                        string VDOther = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(12).StringCellValue;//good
+                        string VDODoorToDoor = MyWorkbook.GetSheet("Visit details").GetRow(2).GetCell(13).StringCellValue;//good
                         #endregion
 
                         #region HyperTension
@@ -71,25 +75,26 @@ namespace Impilo_App.DataImport
                         //AOT = Already On Treatment
                         string HyperDateOfVisit = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(0).StringCellValue;
                         
-                        string Hyper_HiEHRef_WentToClinic = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(1).StringCellValue;
-                        string Hyper_HiEHRef_ReReferToClinic = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(2).StringCellValue;
-                        string Hyper_HiEHRef_ReRefNum = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(3).StringCellValue;
-                        string Hyper_HiEHRef_OnMeds = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(4).StringCellValue;
-                        string Hyper_HiEHRef_StartDate = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(5).StringCellValue;
+                        string Hyper_HiEHRef_WentToClinic = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(1).StringCellValue; //good
+                        string Hyper_HiEHRef_ReReferToClinic = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(2).StringCellValue; //good
+                        string Hyper_HiEHRef_ReRefNum = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(3).StringCellValue; //good
+                        string Hyper_HiEHRef_OnMeds = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(4).StringCellValue; //good
+                        string Hyper_HiEHRef_StartDate = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(5).StringCellValue; //good
+                        //need to separate BP reading to systolic and diastolic for the next two rows
                         string Hyper_HiEHRef_BPReading = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(6).StringCellValue;
                         string Hyper_HiEHRef_TodayReadingTop = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(7).StringCellValue;
-                        string Hyper_HiEHRef_TodayReadingBottom = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(8).StringCellValue;
+                        string Hyper_HiEHRef_TodayReadingBottom = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(8).StringCellValue;//not in form
                         string Hyper_HiEHRef_ReferToClinic = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(9).StringCellValue;
                         string Hyper_HiEHRef_RefNum = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(10).StringCellValue;
                         
-                        string Hyper_ClinicRef_ReReferToClinic = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(12).StringCellValue;
-                        string Hyper_ClinicRef_ReRefNum = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(13).StringCellValue;
-                        
-                        string Hyper_AOT_FollowUpReading = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(15).StringCellValue;
-                        
-                        string Hyper_DoorToDoorReading_CheckReading = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(17).StringCellValue;
+                        string Hyper_ClinicRef_ReReferToClinic = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(12).StringCellValue; //I think all referrals are to the clinic this may not be needed
+                        string Hyper_ClinicRef_ReRefNum = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(13).StringCellValue;//I think all referrals are to the clinic - this may not be needed
 
-                        string Hyper_Medication = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(18).StringCellValue;
+                        string Hyper_AOT_FollowUpReading = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(15).StringCellValue; //this is the same as the Todays reading
+                        
+                        string Hyper_DoorToDoorReading_CheckReading = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(17).StringCellValue; //Visit info will already indicate is this is a door to door visit - this may be redundant
+
+                        string Hyper_Medication = MyWorkbook.GetSheet("Hypertension").GetRow(5).GetCell(18).StringCellValue; //good
                         #endregion
 
                         #region Diabetes
