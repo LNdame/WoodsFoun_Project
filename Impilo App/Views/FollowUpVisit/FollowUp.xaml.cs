@@ -38,9 +38,12 @@ namespace Impilo_App.Views.FollowUpVisit
 private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             Impilo_App.LocalModels.FollowUp fol = new Impilo_App.LocalModels.FollowUp();
+            string storedProcedure = "";
+            string folID = ""; // 
+
 
             #region Visit Detaisl
-            //fol.FollowUpID = folID;
+            fol.FollowUpIDNumber = folID;
             //fol.DateofScreen = scrDate;
             fol.VisitNextVisit = dpNextVisit.Text.ToString();
             fol.VisitOutCome = ((ComboBoxItem)cboListOutcome.SelectedItem).Content.ToString();
@@ -99,7 +102,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
 
-                com.Parameters.AddWithValue("@", fol.ScreeningID);//param
+                com.Parameters.AddWithValue("@");//param
 
                 com.ExecuteNonQuery();//execute command
             }
