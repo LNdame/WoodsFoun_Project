@@ -1603,13 +1603,13 @@
                                     <Grid x:Name="grid20" Margin="6,6,-3.4,18">
                                         <Label Content="Other condition found that &#xD;&#xA;required referral" Height="53" HorizontalAlignment="Left" Margin="19,57,0,0" x:Name="label18" VerticalAlignment="Top" FontWeight="Bold" />
                                         <Label Content="Referred to clinic " Height="28" HorizontalAlignment="Left" Margin="19,110,0,0" x:Name="label28" VerticalAlignment="Top" FontWeight="Bold" />
-                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="181,67,0,0" x:Name="txtCountryName5" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                                        <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="181,116,0,0" VerticalAlignment="Top" GroupName="ref" FontWeight="Bold"/>
+                                        <TextBox x:Name="txtOtherCon" Height="23" HorizontalAlignment="Left" Margin="181,67,0,0" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                                        <RadioButton x:Name="radOtherRef" Content="Yes" HorizontalAlignment="Left" Margin="181,116,0,0" VerticalAlignment="Top" GroupName="ref" FontWeight="Bold"/>
                                         <RadioButton Content="No" HorizontalAlignment="Left" Margin="270,116,0,0" VerticalAlignment="Top" GroupName="ref" FontWeight="Bold"/>
+                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="181,162,0,0" x:Name="txtOtherRef" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
                                     </Grid>
                                 </Border>
                                 <Label Content="Referral no." Height="28" HorizontalAlignment="Left" Margin="40,177,0,0" x:Name="label1_Copy30" VerticalAlignment="Top" FontWeight="Bold" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="200,177,0,0" x:Name="txtCountryId_Copy15" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
                             </Grid>
                         </Border>
                     </Grid>

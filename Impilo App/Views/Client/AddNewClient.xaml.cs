@@ -27,6 +27,10 @@ namespace Impilo_App.Views.Client
     {
         //SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\MyDatabase.mdf;Integrated Security=True;User Instance=True");
        // DAL da = new DAL();
+
+        static string sconn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+       
+        SqlConnection conn = new SqlConnection(sconn);
         public AddNewClient()
         {
             InitializeComponent();
@@ -49,8 +53,48 @@ namespace Impilo_App.Views.Client
             newClient.AttendingSchool = (radioAttYes.IsChecked == true) ? "yes" : "no";
            
             newClient.Grade = ((ComboBoxItem)Grade.SelectedItem).Content.ToString();
+
+
+
+            string storedProcedure = "RegisterUser";
+
+
+              try
+            {
+                storedProcedure = "RegisterUser";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+
+                com.Parameters.AddWithValue("@FirstName", newClient.FirstName);//param
+                com.Parameters.AddWithValue("@LastName", newClient.LastName);//param
+                com.Parameters.AddWithValue("@HeadOfHousehold", newClient.HeadOfHousehold);//param
+                com.Parameters.AddWithValue("@GPSLatitude", newClient.GPSLatitude);//param
+                com.Parameters.AddWithValue("@GPSLongitude", newClient.GPSLongitude);//param
+                com.Parameters.AddWithValue("@IDNo", newClient.IDNo);//param
+                com.Parameters.AddWithValue("@ClinicUsed", newClient.ClinicUsed);//param
+                com.Parameters.AddWithValue("@DateOfBirth", newClient.DateOfBirth);//param
+                com.Parameters.AddWithValue("@Gender", newClient.Gender);//param
+                com.Parameters.AddWithValue("@AttendingSchool", newClient.AttendingSchool);//param
+                com.Parameters.AddWithValue("@Grade", newClient.Grade);//param
+                com.Parameters.AddWithValue("@NameofSchool", newClient.NameofSchool);//param
+
+              int i =  com.ExecuteNonQuery();//execute command
+              if (i>=1)
+              {
+                  MessageBox.Show("New Client Added Successfully");
+              }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
            
-            
             //Users user = new Users();
             //user.FirstName = txtFirstName.Text;
             //user.LastName = txtLastName.Text;
