@@ -63,7 +63,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
 
-                com.Parameters.AddWithValue("@", fol.ScreeningID);//param
+                com.Parameters.AddWithValue("@", fol.FollowUpID);//param
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -85,7 +85,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             fol.HyperReReferToClinic1 = (radHyRefClin1Yes.IsChecked == true) ? true : false;
             fol.HyperReferralNo1 = txtHyRefNo1.Text;
             fol.HyperCurrentlyOnMeds = (radHyCurMedsYes.IsChecked == true) ? true : false; 
-            fol.HyperStartDate =  ;
+            fol.HyperStartDate = dpHyStartDt.Text.ToString();
             fol.HyperScreenBPReadingSystolic = txtHyScrSys.Text;
             fol.HyperScreenBPReadingDiastolic = txtHyScrDia.Text;
             fol.HyperTodayTestReadingSystolic = txtHyTodSys.Text; 
@@ -102,7 +102,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
 
-                com.Parameters.AddWithValue("@");//param
+                //com.Parameters.AddWithValue("@");//param
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -138,7 +138,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
 
-                com.Parameters.AddWithValue("@", dia.ScreeningID);//param
+                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -175,7 +175,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
 
-                com.Parameters.AddWithValue("@", dia.ScreeningID);//param
+                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -190,23 +190,24 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             }
             #endregion
 
- /*           #region Asthma
-        fol.AsDateOfVisit 
-        fol.AsWentToClinic 
-        fol.AsReReferToClinic1 
-        fol.AsReferralNo1 
-        fol.AsFitInLastMonth 
-        fol.AsReferToClinic 
-        fol.AsReferralNo2 
-        fol.AsCurrentlyOnMeds 
-        fol.AsStartDate 
-        fol.AsIncreasedNoOfAsthmaAttacks 
-        fol.AsReReferToClinic2 
-        fol.AsReferralNo3 
-        fol.AsMedication
+            #region Asthma
+            fol.AsDateOfVisit = dpAstVisitDt.Text.ToString();
+            fol.AsWentToClinic = (radAstClinYes.IsChecked == true) ? true : false;
+            fol.AsReReferToClinic1 = (radAstReRefClinYes.IsChecked == true) ? true : false;
+            fol.AsReferralNo1 = txtAstRefNo1.Text;
+            //fol.AsFitInLastMonth 
+            fol.AsReferToClinic = (radAsthClinRefYes.IsChecked == true) ? true : false;
+            fol.AsReferralNo2 = txtAsthRefNo2.Text;
+            fol.AsCurrentlyOnMeds = (radAstCurMedsYes.IsChecked == true) ? true : false;
+            fol.AsStartDate =
+            fol.AsIncreasedNoOfAsthmaAttacks = (radAstIncrAttacksYes.IsChecked == true) ? true : false;
+            fol.AsReReferToClinic2 = 
+            fol.AsReferralNo3 
+            fol.AsMedication
 
                     //sp place
                     //connection
+                    /*
             try
             {
                 storedProcedure = "";// name of sp
@@ -462,7 +463,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
 
     }*/
     }
-	        
+
 
     }
 }

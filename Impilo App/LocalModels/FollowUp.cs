@@ -126,27 +126,27 @@ namespace Impilo_App.LocalModels
 
     public string AsDateOfVisit { get; set; }
 
-    public string AsWentToClinic { get; set; }
+    public bool AsWentToClinic { get; set; }
 
-    public string AsReReferToClinic1 { get; set; }
+    public bool AsReReferToClinic1 { get; set; }
 
     public string AsReferralNo1 { get; set; }
 
-    public string AsFitInLastMonth { get; set; }
+    //public string AsFitInLastMonth { get; set; }
 
-    public string AsReferToClinic { get; set; }
+    public bool AsReferToClinic { get; set; }
 
-    public string AsReferralNo2 { get; set; }
+    //public string AsReferralNo2 { get; set; }
 
-    public string AsCurrentlyOnMeds { get; set; }
+    public bool AsCurrentlyOnMeds { get; set; }
 
     public string AsStartDate { get; set; }
 
-    public string AsIncreasedNoOfAsthmaAttacks { get; set; }
+    public bool AsIncreasedNoOfAsthmaAttacks { get; set; }
 
-    public string AsReReferToClinic2 { get; set; }
+    public bool AsReReferToClinic2 { get; set; }
 
-    public string AsReferralNo3 { get; set; }
+    public string AsReferralNo2 { get; set; }
 
     public string AsMedication { get; set; }
 
