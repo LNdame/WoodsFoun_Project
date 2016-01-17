@@ -337,6 +337,8 @@ namespace Impilo_App.DataImport
 
 
                         // Queries here
+                        string ScreeningID = Utilities.GenerateScreeningID(BioFirstName, BioSecondName);
+
                         #region Biographical
                         SqlConnection tempConnectionBio = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
@@ -345,6 +347,7 @@ namespace Impilo_App.DataImport
                             tempConnectionBio.Open();
                             SqlCommand tempCommand = new SqlCommand("FollowUpImportInsertBiographical", tempConnectionBio);
                             tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@BioChowName", BioChowName);
                             tempCommand.Parameters.AddWithValue("@BioUniqueID", BioUniqueID);
                             tempCommand.Parameters.AddWithValue("@BioFirstName", BioFirstName);
@@ -372,6 +375,7 @@ namespace Impilo_App.DataImport
                             tempConnectionVisit.Open();
                             SqlCommand tempCommand = new SqlCommand("FollowUpImportInsertVisitDetails", tempConnectionVisit);
                             tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@VDVisitNum", VDVisitNum);
                             tempCommand.Parameters.AddWithValue("@VDVisitDate", VDVisitDate);
                             tempCommand.Parameters.AddWithValue("@VDNextVisitDate", VDNextVisitDate);
@@ -403,6 +407,7 @@ namespace Impilo_App.DataImport
                             tempConnectionHyper.Open();
                             SqlCommand tempCommand = new SqlCommand("FollowUpImportHypertention", tempConnectionHyper);
                             tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@HyperDateOfVisit", HyperDateOfVisit);
                             tempCommand.Parameters.AddWithValue("@Hyper_HiEHRef_WentToClinic", Hyper_HiEHRef_WentToClinic);
                             tempCommand.Parameters.AddWithValue("@Hyper_HiEHRef_ReReferToClinic", Hyper_HiEHRef_ReReferToClinic);
@@ -437,6 +442,7 @@ namespace Impilo_App.DataImport
                             tempConnectionDia.Open();
                             SqlCommand tempCommand = new SqlCommand("FollowUpImportDiabetes", tempConnectionDia);
                             tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@DiabetesDateOfVisit", DiabetesDateOfVisit);
                             tempCommand.Parameters.AddWithValue("@Diabetes_HiEHRef_WentToClinic", Diabetes_HiEHRef_WentToClinic);
                             tempCommand.Parameters.AddWithValue("@Diabetes_HiEHRef_ReReferToClinic", Diabetes_HiEHRef_ReReferToClinic);
@@ -469,6 +475,7 @@ namespace Impilo_App.DataImport
                             tempConnectionEpi.Open();
                             SqlCommand tempCommand = new SqlCommand("FollowUpImportEpilepsy", tempConnectionEpi);
                             tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@EpilepsyDateOfVisit", EpilepsyDateOfVisit);
                             tempCommand.Parameters.AddWithValue("@Epilepsy_HiEHRef_WentToClinic", Epilepsy_HiEHRef_WentToClinic);
                             tempCommand.Parameters.AddWithValue("@Epilepsy_HiEHRef_ReReferToClinic", Epilepsy_HiEHRef_ReReferToClinic);
@@ -500,6 +507,7 @@ namespace Impilo_App.DataImport
                             tempConnectionAst.Open();
                             SqlCommand tempCommand = new SqlCommand("FollowUpImportAsthma", tempConnectionAst);
                             tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@AsthmaDateOfVisit", AsthmaDateOfVisit);
                             tempCommand.Parameters.AddWithValue("@Asthma_HiEHRef_WentToClinic", Asthma_HiEHRef_WentToClinic);
                             tempCommand.Parameters.AddWithValue("@Asthma_HiEHRef_ReReferToClinic", Asthma_HiEHRef_ReReferToClinic);
@@ -531,6 +539,7 @@ namespace Impilo_App.DataImport
                             tempConnectionHIV.Open();
                             SqlCommand tempCommand = new SqlCommand("FollowUpImportHIV", tempConnectionHIV);
                             tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@HIVDateOfVisit", HIVDateOfVisit);
                             tempCommand.Parameters.AddWithValue("@HIV_HiEHRef_WentToClinic", HIV_HiEHRef_WentToClinic);
                             tempCommand.Parameters.AddWithValue("@HIV_HiEHRef_ReReferToClinic", HIV_HiEHRef_ReReferToClinic);
@@ -571,6 +580,7 @@ namespace Impilo_App.DataImport
                             tempConnectionTB.Open();
                             SqlCommand tempCommand = new SqlCommand("FollowUpImportTB", tempConnectionTB);
                             tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@TBDateOfVisit", TBDateOfVisit);
                             tempCommand.Parameters.AddWithValue("@TB_HiEHRef_WentToClinic", TB_HiEHRef_WentToClinic);
                             tempCommand.Parameters.AddWithValue("@TB_HiEHRef_ReReferToClinic", TB_HiEHRef_ReReferToClinic);
@@ -610,6 +620,7 @@ namespace Impilo_App.DataImport
                             tempConnectionMat.Open();
                             SqlCommand tempCommand = new SqlCommand("FollowUpImportMaternal", tempConnectionMat);
                             tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@MatHealthDateOfVisit", MatHealthDateOfVisit);
                             tempCommand.Parameters.AddWithValue("@MatHealth_HiEHRef_WentToClinic", MatHealth_HiEHRef_WentToClinic);
                             tempCommand.Parameters.AddWithValue("@MatHealth_HiEHRef_ReRefToClinic", MatHealth_HiEHRef_ReRefToClinic);
@@ -648,6 +659,7 @@ namespace Impilo_App.DataImport
                             tempConnectionChild.Open();
                             SqlCommand tempCommand = new SqlCommand("FollowUpImportChild", tempConnectionChild);
                             tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@ChildHealthDateOfVisit", ChildHealthDateOfVisit);
                             tempCommand.Parameters.AddWithValue("@ChildHealth_HiEHRef_WentToClinic", ChildHealth_HiEHRef_WentToClinic);
                             tempCommand.Parameters.AddWithValue("@ChildHealth_HiEHRef_ReRefToClinic", ChildHealth_HiEHRef_ReRefToClinic);
@@ -698,6 +710,7 @@ namespace Impilo_App.DataImport
                             tempConnectionOther.Open();
                             SqlCommand tempCommand = new SqlCommand("FollowUpImportOther", tempConnectionOther);
                             tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@OCDateOfVisit", OCDateOfVisit);
                             tempCommand.Parameters.AddWithValue("@OC_HiEHRef_WentToClinic", OC_HiEHRef_WentToClinic);
                             tempCommand.Parameters.AddWithValue("@OC_HiEHRef_ReRefToClinic", OC_HiEHRef_ReRefToClinic);
