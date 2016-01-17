@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using System.IO;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Impilo_App.DataImport
 {
@@ -30,39 +33,56 @@ namespace Impilo_App.DataImport
                         int Row = 0;
 
                         MyWorkbook = new XSSFWorkbook(file);
+                        string BioUniqueID = "";
+                        string BioClinic = "";
+                        string BioFileNo = "";
+                        string BioContactNo = "";
+                        string BioNextOfKinRelationship = "";
+                        string BioNextOfKinName ="";
+                        string BioNextOfKinTelephone = "";
+                        string BioHPT = "";
+                        string BioDiabetes = "";
+                        string BioEpilepsy = "";
+                        string BioAsthma = "";
+                        string BioHIV = "";
+                        string BioTB = "";
+                        string BioMaternalHealth = "";
+                        string BioChildHealth = "";
+                        string BioEpilepsy2 = "";
+                        string BioOther = "";
 
                         // Read file values here
 
-                        #region Biographical
+                        #region Biographical and Encounters Insert
 
                         try
                         {
                             string BioDataCapturer = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(0).StringCellValue;
-                            string BioUniqueID = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(1).NumericCellValue.ToString();
+                            BioUniqueID = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(1).NumericCellValue.ToString();
                             string BioName = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(2).StringCellValue;
                             string BioSurname = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(3).StringCellValue;
                             string BioLatitude = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(4).StringCellValue;
                             string BioLongitude = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(5).StringCellValue;
                             string BioIDNumber = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(6).StringCellValue;
-                            string BioClinic = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(7).StringCellValue;
+                            BioClinic = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(7).StringCellValue;
                             string BioDateOfBirth = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(8).DateCellValue.ToString();
                             string BioMale = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(9).StringCellValue;
                             string BioFemale = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(10).StringCellValue;
-                            string BioContactNo = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(11).NumericCellValue.ToString();
-                            string BioFileNo = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(12).StringCellValue;
-                            string BioNextOfKinRelationship = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(13).StringCellValue;
-                            string BioNextOfKinName = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(14).StringCellValue;
-                            string BioNextOfKinTelephone = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(15).NumericCellValue.ToString();
-                            string BioHPT = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(17).StringCellValue;
-                            string BioDiabetes = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(18).StringCellValue;
-                            string BioEpilepsy = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(19).StringCellValue;
-                            string BioAsthma = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(20).StringCellValue;
-                            string BioHIV = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(21).StringCellValue;
-                            string BioTB = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(22).StringCellValue;
-                            string BioMaternalHealth = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(23).StringCellValue;
-                            string BioChildHealth = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(24).StringCellValue;
-                            string BioEpilepsy2 = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(25).StringCellValue;
-                            string BioOther = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(26).StringCellValue;
+                            BioContactNo = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(11).NumericCellValue.ToString();
+                            BioFileNo = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(12).StringCellValue;
+                            BioNextOfKinRelationship = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(13).StringCellValue;
+                            BioNextOfKinName = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(14).StringCellValue;
+                            BioNextOfKinTelephone = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(15).NumericCellValue.ToString();
+                            BioHPT = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(17).StringCellValue;
+                            BioDiabetes = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(18).StringCellValue;
+                            BioEpilepsy = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(19).StringCellValue;
+                            BioAsthma = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(20).StringCellValue;
+                            BioHIV = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(21).StringCellValue;
+                            BioTB = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(22).StringCellValue;
+                            BioMaternalHealth = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(23).StringCellValue;
+                            BioChildHealth = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(24).StringCellValue;
+                            BioEpilepsy2 = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(25).StringCellValue;
+                            BioOther = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(26).StringCellValue;
                         }
                         catch (Exception ex)
                         {
@@ -526,6 +546,526 @@ namespace Impilo_App.DataImport
                         #endregion
 
                         // Queries here
+
+                        SqlConnection tempConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        int EncounterID = -1;
+                        int ccbID = -1;
+
+                        #region Encounters
+
+                        try
+                        {
+                            tempConnection.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddEncounter", tempConnection);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@EncounterDate", DateTime.Now);
+                            tempCommand.Parameters.AddWithValue("@ClientID", BioUniqueID);
+                            tempCommand.Parameters.AddWithValue("@EncounterType", 3);
+
+                            EncounterID = int.Parse((string)tempCommand.ExecuteScalar());
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnection.Close();
+                        }
+
+                        #endregion
+
+                        #region ClinicClientBio
+
+                        try
+                        {
+                            tempConnection.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddClinicClientBiographical", tempConnection);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ClinicID", BioClinic);
+                            tempCommand.Parameters.AddWithValue("@ClientID", BioUniqueID);
+                            tempCommand.Parameters.AddWithValue("@FileNo", BioFileNo);
+                            tempCommand.Parameters.AddWithValue("@ContactNo", BioContactNo);
+                            tempCommand.Parameters.AddWithValue("@NextOfKinRelationship", BioNextOfKinRelationship);
+                            tempCommand.Parameters.AddWithValue("@NextOfKinName", BioNextOfKinName);
+                            tempCommand.Parameters.AddWithValue("@NextOfKinTelNo", BioNextOfKinTelephone);
+                            tempCommand.Parameters.AddWithValue("@DoDHypertension", DateTime.Parse(BioHPT));
+                            tempCommand.Parameters.AddWithValue("@DoDEpilepsy", DateTime.Parse(BioEpilepsy)); 
+                            tempCommand.Parameters.AddWithValue("@DoDAsthma", DateTime.Parse(BioAsthma));
+                            tempCommand.Parameters.AddWithValue("@DoDHIV", DateTime.Parse(BioHIV));
+                            tempCommand.Parameters.AddWithValue("@DoDTB", DateTime.Parse(BioTB));
+                            tempCommand.Parameters.AddWithValue("@DoDMaternalHealth", DateTime.Parse(BioMaternalHealth));
+                            tempCommand.Parameters.AddWithValue("@DoDChildHealth", DateTime.Parse(BioChildHealth));
+                            tempCommand.Parameters.AddWithValue("@DoDOther", DateTime.Parse(BioOther));
+
+
+                            ccbID = int.Parse((string)tempCommand.ExecuteScalar());
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnection.Close();
+                        }
+
+                        #endregion
+
+                        #region EncountersBridgeClinicClientBiographical
+
+                        try
+                        {
+                            tempConnection.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddEncountersBridgeClinicClientBiographical", tempConnection);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                            tempCommand.Parameters.AddWithValue("@ccbioID", ccbID);
+                            
+                            tempCommand.ExecuteNonQuery();
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnection.Close();
+                        }
+                        
+                        #endregion
+
+
+                        #region Visit Data
+
+                        // Index
+                        // 0 - Date of Visit
+                        // 1 - Weight
+                        // 2 - Height
+                        // 3 - BMI
+                        // 4 - Next Visit Date
+                        // 5 - HPT
+                        // 6 - Diabetes	
+                        // 7 - Epilepsy
+                        // 8 - Asthma
+                        // 9 - HIV
+                        // 10 - TB
+                        // 11 - Mat Hlth
+                        // 12 - Child Hlth
+                        // 13 - Epilepsy
+                        // 14 - Other
+
+                        foreach (ArrayList Current in VisitDataEntries)
+                        {
+                            try
+                            {
+                                tempConnection.Open();
+                                SqlCommand tempCommand = new SqlCommand("AddClinicVisitData", tempConnection);
+                                tempCommand.CommandType = CommandType.StoredProcedure;
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                                tempCommand.Parameters.AddWithValue("@Weight", decimal.Parse((string)Current[1]));
+                                tempCommand.Parameters.AddWithValue("@Height", decimal.Parse((string)Current[2]));
+                                tempCommand.Parameters.AddWithValue("@BMI", decimal.Parse((string)Current[3]));
+                                tempCommand.Parameters.AddWithValue("@NextVisitDate", DateTime.Parse((string)Current[4]));
+                                tempCommand.Parameters.AddWithValue("@Hypertension", (string)Current[5] == "Yes"||(string)Current[5] == "1"?true:false);
+                                tempCommand.Parameters.AddWithValue("@Epilepsy", (string)Current[5] == "Yes" || (string)Current[6] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@Asthma", (string)Current[5] == "Yes" || (string)Current[7] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@HIV", (string)Current[5] == "Yes" || (string)Current[8] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@TB", (string)Current[5] == "Yes" || (string)Current[9] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@MaternalHealth", (string)Current[5] == "Yes" || (string)Current[10] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@ChildHealth", (string)Current[5] == "Yes" || (string)Current[11] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@Other", (string)Current[5] == "Yes" || (string)Current[13] == "1" ? true : false);
+
+                                tempCommand.ExecuteNonQuery();
+                            }
+                            catch { }
+                            finally
+                            {
+                                tempConnection.Close();
+                            }
+                        }
+
+                        #endregion
+
+                        #region Hypertension
+
+                        // Index
+                        // 0 - Visit date
+                        // 1 - DWF Referral
+                        // 2 - Diagnosed and given treatment systolic
+                        // 3 - Diagnosed and given treatment diastolic
+                        // 4 - Not put on meds systolic
+                        // 5 - Not put on meds diastolic
+                        // 6 - Next review date
+                        // 7 - On meds systolic
+                        // 8 - On meds diastolic
+                        // 9 - Blood sugar level
+                        // 10 - Results Creatinine
+                        // 11 - Results Cholesterol
+                        // 12 - Treatment
+
+                        foreach (ArrayList Current in HypertensionEntries)
+                        {
+                            try
+                            {
+                                tempConnection.Open();
+                                SqlCommand tempCommand = new SqlCommand("AddClinicHypertension", tempConnection);
+                                tempCommand.CommandType = CommandType.StoredProcedure;
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[10] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@DiagAndTreatSystolic", decimal.Parse((string)Current[2]));
+                                tempCommand.Parameters.AddWithValue("@DiagAndTreatDiastolic", decimal.Parse((string)Current[3]));
+                                tempCommand.Parameters.AddWithValue("@NotOnMedsSystolic", decimal.Parse((string)Current[4]));
+                                tempCommand.Parameters.AddWithValue("@NotOnMedsDiastolic", DateTime.Parse((string)Current[5]));
+                                tempCommand.Parameters.AddWithValue("@NextReviewDate", DateTime.Parse((string)Current[6]));
+                                tempCommand.Parameters.AddWithValue("@OnMedsDiastolic", decimal.Parse((string)Current[7]));
+                                tempCommand.Parameters.AddWithValue("@OnMedsSystolic", decimal.Parse((string)Current[8]));
+                                tempCommand.Parameters.AddWithValue("@BloodSugarLevel", (string)Current[9]);
+                                tempCommand.Parameters.AddWithValue("@Creatinine", (string)Current[9]);
+                                tempCommand.Parameters.AddWithValue("@Cholesterol", (string)Current[9]);
+                                tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[12]);
+
+                                tempCommand.ExecuteNonQuery();
+                            }
+                            catch { }
+                            finally
+                            {
+                                tempConnection.Close();
+                            }
+                        }
+
+                        #endregion
+
+                        #region Diabetes
+
+                        // Index
+                        // 0 - Visit date
+                        // Blood sugar levels
+                        // 1 - DWF referral	
+                        // 2 - Diagnosed & given treatment	
+                        // 3 - Not on meds Blood Sugar level
+                        // 4 - Next review date
+                        // 5 - On meds Blood Sugar level
+                        // BP Reading
+                        // 6 - Systolic	
+                        // 7 - Diastolic
+                        // Results
+                        // 8 - HbA1C	
+                        // 9 - Creatinine
+                        // 10 - Cholesterol
+                        // 11 - Foot exam
+                        // 12 - Eye test
+                        //
+                        // 13 - Refer to clinic
+                        // 14 - Referral No.
+                        //
+                        // 15 - Treatment
+
+                        foreach (ArrayList Current in DiabetesEntries)
+                        {
+                            try
+                            {
+                                tempConnection.Open();
+                                SqlCommand tempCommand = new SqlCommand("AddClinicDiabetes", tempConnection);
+                                tempCommand.CommandType = CommandType.StoredProcedure;
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@DiagnosedAndGivenTreatment", (string)Current[1] == "Yes" || (string)Current[2] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@NotOnMedsBSLevel", decimal.Parse((string)Current[3]));
+                                tempCommand.Parameters.AddWithValue("@NextReviewDate", DateTime.Parse((string)Current[4]));
+                                tempCommand.Parameters.AddWithValue("@OnMedsBSLevel", (string)Current[5]);
+                                tempCommand.Parameters.AddWithValue("@BPSystolic",  decimal.Parse((string)Current[6]));
+                                tempCommand.Parameters.AddWithValue("@BPDiastolic",  decimal.Parse((string)Current[7]));
+                                tempCommand.Parameters.AddWithValue("@HbA1C",  (string)Current[8]);
+                                tempCommand.Parameters.AddWithValue("@Creatinine",  (string)Current[9]);
+                                tempCommand.Parameters.AddWithValue("@Cholesterol",  (string)Current[10]);
+                                tempCommand.Parameters.AddWithValue("@FootExam",  (string)Current[11]);
+                                tempCommand.Parameters.AddWithValue("@EyeTest",  (string)Current[12]);
+                                tempCommand.Parameters.AddWithValue("@ReferToClinic", (string)Current[13] == "Yes" || (string)Current[13] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@ReferralNo",  (string)Current[14]);
+                                tempCommand.Parameters.AddWithValue("@Treatment",  (string)Current[15]);
+
+                                tempCommand.ExecuteNonQuery();
+                            }
+                            catch { }
+                            finally
+                            {
+                                tempConnection.Close();
+                            }
+                        }
+
+                        #endregion
+
+                        #region Epilepsy
+
+                        // Index
+                        // 0 - Visit date
+                        // Checks
+                        // 1 - DWF referral	
+                        // 2 - No. of fits in last month
+                        // 3 - Drug side-effects if any
+                        // BP Reading
+                        // 4 - Systolic	
+                        // 5 - Diastolic                                
+                        //
+                        // 6 - Treatment
+
+                        foreach (ArrayList Current in EpilepsyEntries)
+                        {
+                            try
+                            {
+                                tempConnection.Open();
+                                SqlCommand tempCommand = new SqlCommand("AddClinicEpilepsy", tempConnection);
+                                tempCommand.CommandType = CommandType.StoredProcedure;
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@NoOfFitsInLastMonth", int.Parse((string)Current[2]));
+                                tempCommand.Parameters.AddWithValue("@DrugSideEffectsIfAny", (string)Current[3]);
+                                tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.Parse((string)Current[4]));
+                                tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.Parse((string)Current[5]));                               
+                                tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[6]);
+
+                                tempCommand.ExecuteNonQuery();
+                            }
+                            catch { }
+                            finally
+                            {
+                                tempConnection.Close();
+                            }
+                        }
+
+                        #endregion
+
+                        #region Asthma
+
+                        // Index
+                        // 0 - Visit date
+                        // Results
+                        // 1 - DWF referral	
+                        // 2 - Peak Expiratory Flow Rate
+                        // BP Reading
+                        // 3 - Systolic	
+                        // 4 - Diastolic                                
+                        //
+                        // 5 - Treatment
+
+                        foreach (ArrayList Current in AsthmaEntries)
+                        {
+                            try
+                            {
+                                tempConnection.Open();
+                                SqlCommand tempCommand = new SqlCommand("AddClinicAsthma", tempConnection);
+                                tempCommand.CommandType = CommandType.StoredProcedure;
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@PeakExpiratoryFlowRate", int.Parse((string)Current[2]));
+                                tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.Parse((string)Current[3]));
+                                tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.Parse((string)Current[4]));
+                                tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[5]);
+
+                                tempCommand.ExecuteNonQuery();
+                            }
+                            catch { }
+                            finally
+                            {
+                                tempConnection.Close();
+                            }
+                        }
+
+                        #endregion
+
+                        #region HIV
+
+                        // Index
+                        // 0 - Visit date
+                        // Results
+                        // 1 - DWF referral	
+                        // 2 - CD4
+                        // 3 - Viral Load                                                              
+                        //
+                        // 4 - Treatment
+                        // BP Reading
+                        // 5 - Systolic	
+                        // 6 - Diastolic  
+
+                        foreach (ArrayList Current in HIVEntries)
+                        {
+                            try
+                            {
+                                tempConnection.Open();
+                                SqlCommand tempCommand = new SqlCommand("AddClinicHIV", tempConnection);
+                                tempCommand.CommandType = CommandType.StoredProcedure;
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@CD4", decimal.Parse((string)Current[2]));
+                                tempCommand.Parameters.AddWithValue("@ViralLoad", decimal.Parse((string)Current[3]));
+                                tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[4]);
+                                tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.Parse((string)Current[5]));
+                                tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.Parse((string)Current[6]));
+
+                                tempCommand.ExecuteNonQuery();
+                            }
+                            catch { }
+                            finally
+                            {
+                                tempConnection.Close();
+                            }
+                        }
+
+                        #endregion
+
+                        #region TB
+
+                        // Index
+                        // 0 - Visit date
+                        // 1 - DWF referral	
+                        // Check
+                        // 2 - Sputum Taken
+                        // Test Results Review
+                        // 3 - Date                                                              
+                        // Results
+                        // 4 - Genexpert
+                        // 5 - AFB	
+                        // 6 - Treatment  
+
+                        foreach (ArrayList Current in TBEntries)
+                        {
+                            try
+                            {
+                                tempConnection.Open();
+                                SqlCommand tempCommand = new SqlCommand("AddClinicTB", tempConnection);
+                                tempCommand.CommandType = CommandType.StoredProcedure;
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@SputumTaken", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@TestResultsReviewDate", DateTime.Parse((string)Current[3]));
+                                tempCommand.Parameters.AddWithValue("@ResultsGenexpert", (string)Current[4]);
+                                tempCommand.Parameters.AddWithValue("@ResultsAFB", (string)Current[5]);
+                                tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[6]);
+
+                                tempCommand.ExecuteNonQuery();
+                            }
+                            catch { }
+                            finally
+                            {
+                                tempConnection.Close();
+                            }
+                        }
+
+                        #endregion
+
+                        #region MaternalHealth
+
+                        // Index
+                        // 0 - Visit date
+                        // 1 - DWF referral	
+                        // 2 - Mom Connect Registered
+                        // Monthly ANC visit                                
+                        // 3 - ANC visit no                                                              
+                        // PNC Visits
+                        // 4 - PNC 1-week
+                        // 5 - PCR done	
+                        // 6 - PNC 6-weeks 
+
+                        foreach (ArrayList Current in MatHealthEntries)
+                        {
+                            try
+                            {
+                                tempConnection.Open();
+                                SqlCommand tempCommand = new SqlCommand("AddClinicMaternalHealth", tempConnection);
+                                tempCommand.CommandType = CommandType.StoredProcedure;
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@MomConnectRegistered", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@ANCVisitNo", (string)Current[3]);
+                                tempCommand.Parameters.AddWithValue("@PNC1Week", decimal.Parse((string)Current[4]));
+                                tempCommand.Parameters.AddWithValue("@PCRDone", (string)Current[5] == "Yes" || (string)Current[5] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@PNC6Week", (string)Current[6]);
+
+                                tempCommand.ExecuteNonQuery();
+                            }
+                            catch { }
+                            finally
+                            {
+                                tempConnection.Close();
+                            }
+                        }
+
+                        #endregion
+
+                        #region Child Health
+
+                        // Index
+                        // 0 - Visit date
+                        // 1 - DWF referral	
+                        // 2 - PCR done	
+                        // 3 - Current RTHC?
+                        // 4 - Vaccinations up to date
+
+                        foreach (ArrayList Current in ChildHealthEntries)
+                        {
+                            try
+                            {
+                                tempConnection.Open();
+                                SqlCommand tempCommand = new SqlCommand("AddClinicChildHealth", tempConnection);
+                                tempCommand.CommandType = CommandType.StoredProcedure;
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@PCRDone", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@CurrentRTHC", (string)Current[3] == "Yes" || (string)Current[3] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@VaccinationsUpToDate", (string)Current[4] == "Yes" || (string)Current[4] == "1" ? true : false);
+
+                                tempCommand.ExecuteNonQuery();
+                            }
+                            catch { }
+                            finally
+                            {
+                                tempConnection.Close();
+                            }
+                        }
+
+                        #endregion
+
+                        #region Other
+
+                        // Index
+                        // 0 - Visit date
+                        // 1 - DWF referral	
+                        // Other Condition
+                        // 2 - Condition that required referral
+                        // 3 - Outcome
+                        // BP Reading
+                        // 4 - Systolic	
+                        // 5 - Diastolic   
+
+                        foreach (ArrayList Current in OtherEntries)
+                        {
+                            try
+                            {
+                                tempConnection.Open();
+                                SqlCommand tempCommand = new SqlCommand("AddClinicOther", tempConnection);
+                                tempCommand.CommandType = CommandType.StoredProcedure;
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                tempCommand.Parameters.AddWithValue("@Condition", (string)Current[2]);
+                                tempCommand.Parameters.AddWithValue("@Outcome", (string)Current[3]);
+                                tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.Parse((string)Current[4]));
+                                tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.Parse((string)Current[5]));
+
+                                tempCommand.ExecuteNonQuery();
+                            }
+                            catch { }
+                            finally
+                            {
+                                tempConnection.Close();
+                            }
+                        }
+
+                        #endregion
+
+
                     }
                 }
                 catch (Exception ex)
