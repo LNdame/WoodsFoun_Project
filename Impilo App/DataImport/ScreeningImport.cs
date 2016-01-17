@@ -371,7 +371,7 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionBio.Open();
-                            SqlCommand tempCommand = new SqlCommand("InsertBiographical", tempConnectionBio);
+                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertBiographical", tempConnectionBio);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@BioChowName", BioChowName);
@@ -406,7 +406,7 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionEnv.Open();
-                            SqlCommand tempCommand = new SqlCommand("InsertEnvironmental", tempConnectionEnv);
+                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertEnvironmental", tempConnectionEnv);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@EnNoOfPeople", EnNoOfPeople);
@@ -475,7 +475,7 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionGen.Open();
-                            SqlCommand tempCommand = new SqlCommand("InsertGeneral", tempConnectionGen);
+                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertGeneral", tempConnectionGen);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@GenWeight", GenWeight);
@@ -626,7 +626,7 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionHyp.Open();
-                            SqlCommand tempCommand = new SqlCommand("InsertHypertention", tempConnectionHyp);
+                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertHypertention", tempConnectionHyp);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@HypYear", HypYear);
@@ -657,7 +657,7 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionDia.Open();
-                            SqlCommand tempCommand = new SqlCommand("InsertDiabetes", tempConnectionDia);
+                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertDiabetes", tempConnectionDia);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@DYear", DYear);
@@ -686,7 +686,7 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionHIV.Open();
-                            SqlCommand tempCommand = new SqlCommand("InsertHIV", tempConnectionHIV);
+                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertHIV", tempConnectionHIV);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@HIVYear", HIVYear);
@@ -716,7 +716,7 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionMat.Open();
-                            SqlCommand tempCommand = new SqlCommand("InsertMaternalHealth", tempConnectionMat);
+                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertMaternalHealth", tempConnectionMat);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@MHPregnantBefore", MHPregnantBefore);
@@ -754,7 +754,7 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionChild.Open();
-                            SqlCommand tempCommand = new SqlCommand("InsertChildHealth", tempConnectionChild);
+                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertChildHealth", tempConnectionChild);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@CHNameMother", CHNameMother);
@@ -804,7 +804,7 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionOther.Open();
-                            SqlCommand tempCommand = new SqlCommand("InsertBiographical", tempConnectionOther);
+                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertOther", tempConnectionOther);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@OCondition1", OCondition1);
