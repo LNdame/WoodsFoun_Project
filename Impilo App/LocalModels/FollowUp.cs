@@ -44,9 +44,17 @@ namespace Impilo_App.LocalModels
 
     public string HyperStartDate { get; set; }
 
-    public string HyperBPReading { get; set; }
+    public string HyperScreenBPReadingSystolic { get; set; }
 
-    public string HyperTodayTestReading { get; set; }
+    public string HyperScreenBPReadingDiastolic { get; set; }
+
+    public string HyperTodayTestReadingSystolic { get; set; }
+
+    public string HyperTodayTestReadingDiastolic { get; set; }
+
+        //public string HyperBPReading { get; set; } ..kevin
+
+        // public string HyperTodayTestReading { get; set; } ..kevin
 
     public string HyperReReferToClinic2 { get; set; }
 
@@ -61,6 +69,8 @@ namespace Impilo_App.LocalModels
     public string HyperReferralNo3 { get; set; }
 
     public string HyperFollowUpTestReading { get; set; }
+
+    public string HyperScreenTestReading { get; set; }
 
     public string DaiWentToClinic { get; set; }
 

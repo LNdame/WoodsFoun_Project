@@ -35,11 +35,11 @@ namespace Impilo_App.Views.FollowUpVisit
         }
 
         
-private void btnEditCountry_Click(object sender, RoutedEventArgs e)
+private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             FollowUp fol = new FollowUp();
 
-            #region
+            #region Visit Detaisl
             fol.FollowUpID = folID;
             fol.DateofScreen =
             fol.VisitNextVisit =
@@ -47,7 +47,7 @@ private void btnEditCountry_Click(object sender, RoutedEventArgs e)
             fol.VisitHPT = (radVisHptYes.IsChecked == true) ? true : false;
             fol.VisitDiabetes = (radVisHptYes.IsChecked == true) ? true : false;
             fol.VisitEpilepsy = (radVisHptYes.IsChecked == true) ? true : false;
-            fol.VisitHIV = (radVisHptYes.IsChecked == true) ? true : false;
+            fol.Visitfol.HIV = (radVisHptYes.IsChecked == true) ? true : false;
             fol.VisitTB = (radVisHptYes.IsChecked == true) ? true : false;
             fol.VisitMatHealth = (radVisHptYes.IsChecked == true) ? true : false;
             fol.VisitChildHealth = (radVisHptYes.IsChecked == true) ? true : false;
@@ -73,6 +73,8 @@ private void btnEditCountry_Click(object sender, RoutedEventArgs e)
             {
                 conn.Close();
             }
+
+            #endregion
 
             #region Hypertension
 
@@ -113,25 +115,17 @@ private void btnEditCountry_Click(object sender, RoutedEventArgs e)
             #endregion
 
             #region Diabetes
-
-            Diabetes dia = new Diabetes
-            {
-                ScreeningID = scrID,
-
-                fol.DiaReReferToClinic1 = (radDiaReRefClinYes.IsChecked == true) ? true : false;
-                fol.DiaReferralNo1 = txtDiaRefNo1.Text;
-                fol.DiaCurrentlyOnMeds = (radDiaCurMedsYes.IsChecked == true) ? true : false;
-            fol.DiaStartDate =
-           fol.DiaScreenTestReading1 = txtDiaScrReading.Text;
+                      
+            fol.DiaReReferToClinic1 = (radDiaReRefClinYes.IsChecked == true) ? true : false; ;
+            fol.DiaReferralNo1 = txtDiaRefNo1.Text;
+            fol.DiaCurrentlyOnMeds = (radDiaCurMedsYes.IsChecked == true) ? true : false; ;
+            fol.DiaStartDate = dpDiaStartDt.Text.ToString();
+            fol.DiaScreenTestReading1 = txtDiaScrReading.Text;
             fol.DiaFollowUpTestReading1 = txtDiaFolReading.Text;
-            fol.DiaReferToClinic2 = (radDiaRefClinYes.IsChecked == true) ? true : false;
-
+            fol.DiaReferToClinic2 = (radDiaRefClinYes.IsChecked == true) ? true : false; ;
             fol.DiaReferralNo2 = txtDiaRefNo2.Text;
-                 fol.DiaCheckReading
-                 fol.DiaMedication
-                 fol.DiaFollowUpTestReading3
-
-            };
+            fol.DiaMedication = ((ComboBoxItem)cboDiaMeds.SelectedItem).Content.ToString();
+            
 
             //sp place
             //connection
@@ -156,19 +150,19 @@ private void btnEditCountry_Click(object sender, RoutedEventArgs e)
             }
             #endregion
 
+
             #region Epilepsy
 
-                 EpiWentToClinic
-                 EpiReReferToClinic1
-                 EpiReferralNo1
-                 EpiFitInLastMonth
-                 EpiReferToClinic
-                 EpiCurrentlyOnMeds
-                 EpiStartDate
-                 EpiMoreThan3FitsInLastMonth
-                 EpiReReferToClinic2
-                 EpiReferralNo2
-                 EpiMedication
+            EpiWentToClinic = (radEpiClinYes.IsChecked == true) ? true : false; ;
+            EpiReReferToClinic1 = (radEpiReRefClinYes.IsChecked == true) ? true : false; ;
+            EpiReferralNo1 = txtEpiRefNo1.Text;
+            EpiFitInLastMonth = (radEpiFitsLastMonthYes.IsChecked == true) ? true : false; ;
+            EpiCurrentlyOnMeds = (radEpiCurMedsYes.IsChecked == true) ? true : false;
+            EpiStartDate = dpEpiStartDt.Text.ToString();
+            EpiMoreThan3FitsInLastMonth = (radEpi3FitsLastMonthYes.IsChecked == true) ? true : false; ;
+            EpiReReferToClinic2 = (radEpiRefClin2Yes.IsChecked == true) ? true : false; ;
+            EpiReferralNo2 = txtEpiRefNo2.Text;
+            EpiMedication = ((ComboBoxItem)cboEpiMeds.SelectedItem).Content.ToString();
 
                 //sp place
                 //connection
@@ -231,18 +225,50 @@ private void btnEditCountry_Click(object sender, RoutedEventArgs e)
             }
             #endregion
 
-            #region HIV
-            HIV_Tab hivTab = new HIV_Tab
-            {
-                ScreeningID = scrID,
-                YearOfDiagnosis = ((ComboBoxItem)cboDiabeYear.SelectedItem).Content.ToString(),
-                OnMeds = (radonMeds.IsChecked == true) ? true : false,
-                AdherenceOK = (radadh.IsChecked == true) ? true : false,
-                ReferToClinic = (hivref.IsChecked == true) ? true : false,
-                ReferralNo = txtHIVRef.Text,
-                ARVFileNo = txtARVFile.Text,
+            #region fol.HIV
+            fol.HIVDateOfVisit
 
-            };
+         fol.HIVWentToClinic
+
+         fol.HIVRereferToClinic
+
+         fol.HIVReferralNo1
+
+         fol.HIVReferToClinic1
+
+         fol.HIVReferralNo2
+
+         fol.HIVStatus
+
+         fol.HIVOnARVs
+
+         fol.HIVStartDate1
+
+         fol.HIVAdherenceOK
+
+         fol.HIVConcerns
+
+         fol.HIVReferToClinic2
+
+         fol.HIVReferralNo3
+
+         fol.HIVARVsConsern
+
+         fol.HIVReferToClinic3
+
+         fol.HIVReferralNo4
+
+         fol.HIVTestingDone
+
+         fol.HIVTestDone
+
+         fol.HIVTestResults
+
+         fol.HIVReferToClinic4
+
+         fol.HIVReferralNo5
+
+         fol.HIVMedication
 
 
 
@@ -269,10 +295,10 @@ private void btnEditCountry_Click(object sender, RoutedEventArgs e)
             }
             #endregion
 
-        
-        
-         
-         TBDateOfVisit 
+
+            #region TB
+
+            TBDateOfVisit
          TBARVsConcern 
          TBReferToClinic1 
          TBReferralNo1 
@@ -292,8 +318,13 @@ private void btnEditCountry_Click(object sender, RoutedEventArgs e)
          TBConcerns 
          TBReferToClinic3 
          TBReferralNo3 
-         TBMedication 
-         MatDateOfVisit 
+         TBMedication
+
+            #endregion
+
+
+            #region Maternal health
+         MatDateOfVisit
          MatWentToClinic 
 
          MatReReferToClinic1 
@@ -330,9 +361,14 @@ private void btnEditCountry_Click(object sender, RoutedEventArgs e)
 
          MatIntendBreastfeed 
 
-         MatIntendFormulaFeed 
+         MatIntendFormulaFeed
 
-         ChildDateOfVisit 
+            #endregion
+
+
+            #region Child health
+
+         ChildDateOfVisit
 
          ChildARVsConcern 
 
@@ -394,9 +430,14 @@ private void btnEditCountry_Click(object sender, RoutedEventArgs e)
 
          ChildReferToClinic7 
 
-         ChildReferralNo8 
+         ChildReferralNo8
 
-         OtherDateOfVisit 
+            #endregion Child health
+
+
+            #region Other
+
+         OtherDateOfVisit
 
          OtherWentToClinic 
 
@@ -408,53 +449,13 @@ private void btnEditCountry_Click(object sender, RoutedEventArgs e)
 
          OtherReferToClinic1 
 
-         OtherReferralNo2 
+         OtherReferralNo2
 
-         FollowUpIDNumber 
+         #endregion Other
 
-         HIVDateOfVisit 
+           
 
-         HIVWentToClinic 
 
-         HIVRereferToClinic 
-
-         HIVReferralNo1 
-
-         HIVReferToClinic1 
-
-         HIVReferralNo2 
-
-         HIVStatus 
-
-         HIVOnARVs 
-
-         HIVStartDate1 
-
-         HIVAdherenceOK 
-
-         HIVConcerns 
-
-         HIVReferToClinic2 
-
-         HIVReferralNo3 
-
-         HIVARVsConsern 
-
-         HIVReferToClinic3 
-
-         HIVReferralNo4 
-
-         HIVTestingDone 
-
-         HIVTestDone 
-
-         HIVTestResults 
-
-         HIVReferToClinic4 
-
-         HIVReferralNo5 
-
-         HIVMedication 
 
     }
     }
