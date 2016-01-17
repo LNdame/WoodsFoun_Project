@@ -41,7 +41,6 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             string storedProcedure = "";
             string folID = ""; // 
 
-
             #region Visit Detaisl
             fol.FollowUpIDNumber = folID;
             //fol.DateofScreen = scrDate;
@@ -84,12 +83,12 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             fol.HyperWentToClinic1 = (radHyClinYes.IsChecked == true) ? true : false;
             fol.HyperReReferToClinic1 = (radHyRefClin1Yes.IsChecked == true) ? true : false;
             fol.HyperReferralNo1 = txtHyRefNo1.Text;
-            fol.HyperCurrentlyOnMeds = (radHyCurMedsYes.IsChecked == true) ? true : false; 
+            fol.HyperCurrentlyOnMeds = (radHyCurMedsYes.IsChecked == true) ? true : false;
             fol.HyperStartDate = dpHyStartDt.Text.ToString();
             fol.HyperScreenBPReadingSystolic = txtHyScrSys.Text;
             fol.HyperScreenBPReadingDiastolic = txtHyScrDia.Text;
-            fol.HyperTodayTestReadingSystolic = txtHyTodSys.Text; 
-            fol.HyperTodayTestReadingDiastolic = txtHyTodSys.Text; 
+            fol.HyperTodayTestReadingSystolic = txtHyTodSys.Text;
+            fol.HyperTodayTestReadingDiastolic = txtHyTodSys.Text;
             fol.HyperAlreadyOnTreatment = (radHyCurTreYes.IsChecked == true) ? true : false;
             fol.HyperReReferToClinic2 = (radHyRefClin2Yes.IsChecked == true) ? true : false; ;
             fol.HyperReferralNo2 = txtHyRefNo2.Text;
@@ -118,7 +117,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             #endregion
 
             #region Diabetes
-                      
+
             fol.DiaReReferToClinic1 = (radDiaReRefClinYes.IsChecked == true) ? true : false; ;
             fol.DiaReferralNo1 = txtDiaRefNo1.Text;
             fol.DiaCurrentlyOnMeds = (radDiaCurMedsYes.IsChecked == true) ? true : false; ;
@@ -128,7 +127,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             fol.DiaReferToClinic2 = (radDiaRefClinYes.IsChecked == true) ? true : false; ;
             fol.DiaReferralNo2 = txtDiaRefNo2.Text;
             fol.DiaMedication = ((ComboBoxItem)cboDiaMeds.SelectedItem).Content.ToString();
-            
+
 
             //sp place
             //connection
@@ -153,7 +152,6 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             }
             #endregion
 
-
             #region Epilepsy
 
             fol.EpiWentToClinic = (radEpiClinYes.IsChecked == true) ? true : false; ;
@@ -167,8 +165,8 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             fol.EpiReferralNo2 = txtEpiRefNo2.Text;
             fol.EpiMedication = ((ComboBoxItem)cboEpiMeds.SelectedItem).Content.ToString();
 
-                //sp place
-                //connection
+            //sp place
+            //connection
             try
             {
                 storedProcedure = "";// name of sp
@@ -199,15 +197,15 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             fol.AsReferToClinic = (radAsthClinRefYes.IsChecked == true) ? true : false;
             fol.AsReferralNo2 = txtAsthRefNo2.Text;
             fol.AsCurrentlyOnMeds = (radAstCurMedsYes.IsChecked == true) ? true : false;
-            fol.AsStartDate ="";
+            fol.AsStartDate = "";
             fol.AsIncreasedNoOfAsthmaAttacks = (radAstIncrAttacksYes.IsChecked == true) ? true : false;
             fol.AsReReferToClinic2 = (radAsthClinRefYes.IsChecked == true) ? true : false;
             fol.AsReferralNo2 = txtAsthRefNo2.Text;
             fol.AsMedication = ((ComboBoxItem)cboAsthMeds.SelectedItem).Content.ToString();
 
-                    //sp place
-                    //connection
-                    
+            //sp place
+            //connection
+
             try
             {
                 storedProcedure = "";// name of sp
@@ -228,53 +226,51 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Close();
             }
             #endregion
-/*
+
             #region HIV
-            fol.HIVDateOfVisit =
+            //fol.HIVDateOfVisit =
 
-            fol.HIVWentToClinic =
+            //fol.HIVWentToClinic =
 
-            fol.HIVRereferToClinic =
+            //fol.HIVRereferToClinic =
 
-            fol.HIVReferralNo1 = txtHivRefNo1.Text;
+            fol.HIVReferralNo1 = txtHivRe.Text;
 
-         //fol.HIVReferToClinic1
+            fol.HIVReferToClinic1 = (radHyRefClin1Yes_Copy.IsChecked == true) ? true : false;
 
-         //fol.HIVReferralNo2
+            //fol.HIVReferralNo2 = txtHivRe2.Text;
 
-         fol.HIVStatus
+            //fol.HIVStatus
 
-         fol.HIVOnARVs = (radHivOnARVYes.IsChecked == true) ? true : false;
+            fol.HIVOnARVs = (radHivOnARVYes.IsChecked == true) ? true : false;
 
-         fol.HIVStartDate1 = dpARVStartDT.Text.ToString();
+            fol.HIVStartDate1 = dpARVStartDT.Text.ToString();
 
-         fol.HIVAdherenceOK = (radHivAdhereYes.IsChecked == true) ? true : false;
+            fol.HIVAdherenceOK = (radHivAdhereYes.IsChecked == true) ? true : false;
 
-         fol.HIVConcerns
+            fol.HIVConcerns = (radHivConcernsYes.IsChecked == true) ? true : false;
 
-         fol.HIVReferToClinic2
+            fol.HIVReferToClinic2 = (radHyRefClin4Yes_Copy.IsChecked == true) ? true : false;
 
-         fol.HIVReferralNo3
+            //fol.HIVReferralNo3 = 
 
-         fol.HIVARVsConcern
+            fol.HIVARVsConcern = (radHivARVsConcernYes.IsChecked == true) ? true : false;
 
-         //fol.HIVReferToClinic3
+            //fol.HIVReferToClinic3
 
-         //fol.HIVReferralNo4
+            //fol.HIVReferralNo4
 
-         fol.HIVTestingDone
+            fol.HIVTestingDone = (radHivStatusKnownYes.IsChecked == true) ? true : false;
 
-         fol.HIVTestDone
+            fol.HIVTestDone = (radHivTestDoneYes.IsChecked == true) ? true : false;
 
-         fol.HIVTestResults
+            fol.HIVTestResults = (radHivPos.IsChecked == true) ? true : false;
 
-         fol.HIVReferToClinic4
+            fol.HIVReferToClinic4 = (radHyRefClin4Yes_Copy.IsChecked == true) ? true : false;
 
-         fol.HIVReferralNo5
+            fol.HIVReferralNo5 = txtHivRe2.Text;
 
-         fol.HIVMedication
-
-
+            fol.HIVMedication = ((ComboBoxItem)cboListMeds.SelectedItem).Content.ToString();
 
             //sp place
             //connection
@@ -284,7 +280,57 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
 
-                com.Parameters.AddWithValue("@", dia.ScreeningID);//param
+                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
+
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            #endregion
+
+            #region TB
+            //fol.TBARVsConcern 
+            //fol.TBStartDate 
+
+            fol.TBDateOfVisit = dpTBDateOfVisit.Text.ToString();
+            fol.TBReferToClinic1 = (radTBReferToClinic1Yes.IsChecked == true) ? true : false;
+            fol.TBReferralNo1 = txtTBReferralNo1.Text;
+            fol.TBRecentUnplannedLoseOfWeight = (radTBRecWeightLostYes.IsChecked == true) ? true : false;
+            fol.TBExcessiveSweatingAtNight = (radTBExcessSweatYes.IsChecked == true) ? true : false;
+            fol.TBFeverOver2Weeks = (radTBFeverYes.IsChecked == true) ? true : false;
+            fol.TBCoughMoreThan2Week = (radTBCoughYes.IsChecked == true) ? true : false;
+            fol.TBLossOfApetite = (radTBApetiteYes.IsChecked == true) ? true : false;
+            fol.TBPreviouslyOnMeds = (radTBPrevMedsYes.IsChecked == true) ? true : false;
+            fol.TBFinishDate = dpTBFinishDates.Text.ToString();
+            fol.TBConcerns = (radTBConcernsYes.IsChecked == true) ? true : false;
+
+            fol.TBResult = txtTBResults.Text;
+            fol.TBReferredToClinic2 = (radTBReferToClinic2Yes.IsChecked == true) ? true : false;
+            fol.TBReferralNo2 = txtTBReferralNo2.Text;
+            fol.TBMedication = ((ComboBoxItem)cboTBMedicaiton.SelectedItem).Content.ToString();
+
+            //fol.TBNewlyDiagnosed 
+            //fol.TBReferTBContactsToClinic         
+            //fol.TBReferToClinic3 
+            //fol.TBReferralNo3 
+
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+
+                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -299,169 +345,198 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             }
             #endregion
 
+            #region Mat Health
+            fol.MatDateOfVisit = txtMatDateOfVisit.Text.ToString();
+            fol.MatWentToClinic = (MatWentToClinic1.IsChecked == true) ? true : false;
 
-            #region TB
+            fol.MatReReferToClinic1 = (MatReReferToClinic11.IsChecked == true) ? true : false;
 
-            TBDateOfVisit
-         TBARVsConcern 
-         TBReferToClinic1 
-         TBReferralNo1 
-         TBRecentUnplannedLoseOfWeight 
-         TBExcessiveSweatingAtNight 
-         TBFeverOver2Weeks 
-         TBCoughMoreThan2Week 
-         TBLossOfApetite 
-         TBReferredToClinic2 
-         TBReferralNo2 
-         TBResult 
-         TBNewlyDiagnosed 
-         TBStartDate 
-         TBReferTBContactsToClinic 
-         TBPreviouslyOnMeds 
-         TBFinishDate 
-         TBConcerns 
-         TBReferToClinic3 
-         TBReferralNo3 
-         TBMedication
+            fol.MatReferralNo1 = txtMatReferralNo1.Text;
 
+            fol.MatIsItPosibleYouArePregnent = (MatIsItPosibleYouArePregnent1.IsChecked == true) ? true : false;
+
+            fol.MatPregnancyTestDone = (MatPregnancyTestDone1.IsChecked == true) ? true : false;
+
+            fol.MatResult = ((ComboBoxItem)comboMatResult.SelectedItem).Content.ToString();
+
+            fol.MatReferredToClinic2 = (MatReferredToClinic21.IsChecked == true) ? true : false;
+
+            fol.MatReferralNo2 = txtMatReferralNo2.Text;
+
+            fol.MatDateOf1stANC = txtMatDateOf1stANC.Text.ToString();
+
+            fol.MatDateOfLastANC = txtMatDateOfLastANC.Text.ToString();
+
+            fol.MatReferredToClinic3 = (MatReferredToClinic31.IsChecked == true) ? true : false;
+
+            //fol.MatReferralNo3 
+
+            fol.MatRegisteredForMoMConnect = (MatRegisteredForMoMConnect1.IsChecked == true) ? true : false;
+
+            fol.MatDateOfNextANC = txtMatDateOfNextANC.Text.ToString();
+
+            fol.MatReferToClinic = (MatReferToClinic1.IsChecked == true) ? true : false;
+
+            //fol.MatReferralNo4 
+
+            fol.MatExpectedDateOfDelivery = txtMatExpectedDateOfDelivery.Text.ToString();
+
+            fol.MatIntendBreastfeed = (MatIntendBreastfeed1.IsChecked == true) ? true : false;
+
+            fol.MatIntendFormulaFeed = (MatIntendFormulaFeed1.IsChecked == true) ? true : false;
+
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+
+                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
+
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
             #endregion
 
+            #region Child Health
+            fol.ChildDateOfVisit = txtChildDateOfVisit.Text.ToString();
 
-            #region Maternal health
-         MatDateOfVisit
-         MatWentToClinic 
+            fol.ChildARVsConcern = (ChildARVsConcern1.IsChecked == true) ? true : false;
 
-         MatReReferToClinic1 
+            fol.ChildReferToClinic1 = (ChildReferToClinic11.IsChecked == true) ? true : false;
 
-         MatReferralNo1 
+            fol.ChildReferralNo1 = txtChildReferralNo1.Text;
 
-         MatIsItPosibleYouArePregnent 
+            fol.ChildWalkAppropriateForAge = (ChildWalkAppropriateForAge1.IsChecked == true) ? true : false;
 
-         MatPregnancyTestDone 
+            fol.ChildTalkAppropriateForAge = (ChildTalkAppropriateForAge1.IsChecked == true) ? true : false;
 
-         MatResult 
+            fol.ChildReferToClinic2 = (ChildReferToClinic21.IsChecked == true) ? true : false;
 
-         MatReferredToClinic2 
+            fol.ChildReferralNo2 = txtChildReferralNo2.Text;
 
-         MatReferralNo2 
+            fol.ChildChildAssisted = (ChildChildAssisted1.IsChecked == true) ? true : false;
 
-         MatDateOf1stANC 
+            fol.ChildReReferToSD = (ChildReReferToSD1.IsChecked == true) ? true : false;
 
-         MatDateOfLastANC 
+            fol.ChildReferralNo3 = txtChildReferralNo3.Text;
 
-         MatReferredToClinic3 
+            fol.ChildListConcernsReChild = txtChildListConcernsReChild.Text;
 
-         MatReferralNo3 
+            fol.ChildReferToClinic3 = (ChildReferToClinic31.IsChecked == true) ? true : false;
 
-         MatRegisteredForMoMConnect 
+            fol.ChildreferToSD = (ChildReReferToSD1.IsChecked == true) ? true : false;
 
-         MatDateOfNextANC 
+            fol.ChildReferralNo4 = txtChildReferralNo4.Text;
 
-         MatReferToClinic 
+            fol.ChildChildWithRTHC = (ChildChildWithRTHC1.IsChecked == true) ? true : false;
 
-         MatReferralNo4 
+            fol.ChildReferToClinic4 = (ChildReferToClinic41.IsChecked == true) ? true : false;
 
-         MatExpectedDateOfDelivery 
+            fol.ChildReferralNo5 = txtChildReferralNo5.Text;
 
-         MatIntendBreastfeed 
+            fol.ChildMotherTHVPositive = (ChildMotherTHVPositive1.IsChecked == true) ? true : false;
 
-         MatIntendFormulaFeed
+            fol.ChildChildBreastfed = (ChildChildBreastfed1.IsChecked == true) ? true : false;
 
+            fol.ChildHowLong = txtChildHowLong.Text;
+
+            fol.ChildClildEverOnNevirapine = (ChildClildEverOnNevirapine1.IsChecked == true) ? true : false;
+
+            fol.ChildReferToClinic5 = (ChildReferToClinic51.IsChecked == true) ? true : false;
+
+            fol.ChildReferralNo6 = txtChildReferralNo6.Text;
+
+            fol.ChildHowPCRHasDone = (ChildHowPCRHasDone1.IsChecked == true) ? true : false;
+
+            fol.ChildReferToClinic6 = (ChildReferToClinic61.IsChecked == true) ? true : false;
+
+            fol.ChildReferralNo7 = txtChildReferralNo7.Text;
+
+            fol.ChildImmunisationUpToDate = (ChildImmunisationUpToDate1.IsChecked == true) ? true : false;
+
+            fol.ChildWhichImmunisationsOutStanding = ((ComboBoxItem)comboChildWhichImmunisationsOutStanding.SelectedItem).Content.ToString();
+
+            fol.ChildVITAandWormMedsGivenEachMonth = (ChildVITAandWormMedsGivenEachMonth1.IsChecked == true) ? true : false;
+
+
+            fol.ChildReferToClinic7 = (ChildReferToClinic71.IsChecked == true) ? true : false;
+
+            fol.ChildReferralNo8 = txtChildReferralNo8.Text;
+
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+
+                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
+
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
             #endregion
-
-
-            #region Child health
-
-         ChildDateOfVisit
-
-         ChildARVsConcern 
-
-         ChildReferToClinic1 
-
-         ChildReferralNo1 
-
-         ChildWalkAppropriateForAge 
-
-         ChildTalkAppropriateForAge 
-
-         ChildReferToClinic2 
-
-         ChildReferralNo2 
-
-         ChildChildAssisted 
-
-         ChildReReferToSD 
-
-         ChildReferralNo3 
-
-         ChildListConcernsReChild 
-
-         ChildReferToClinic3 
-
-         ChildreferToSD 
-
-         ChildReferralNo4 
-
-         ChildChildWithRTHC 
-
-         ChildReferToClinic4 
-
-         ChildReferralNo5 
-
-         ChildMotherTHVPositive 
-
-         ChildChildBreastfed 
-
-         ChildHowLong 
-
-         ChildClildEverOnNevirapine 
-
-         ChildReferToClinic5 
-
-         ChildReferralNo6 
-
-         ChildHowPCRHasDone 
-
-         ChildReferToClinic6 
-
-         ChildReferralNo7 
-
-         ChildImmunisationUpToDate 
-
-         ChildWhichImmunisationsOutStanding 
-
-         ChildVITAandWormMedsGivenEachMonth 
-
-         ChildReferToClinic7 
-
-         ChildReferralNo8
-
-            #endregion Child health
-
 
             #region Other
+            fol.OtherDateOfVisit = txtOtherDateOfVisit.Text;
 
-         OtherDateOfVisit
+            fol.OtherWentToClinic = (OtherWentToClinic1.IsChecked == true) ? true : false;
 
-         OtherWentToClinic 
+            fol.OtherReReferToClinic = (OtherReferToClinic11.IsChecked == true) ? true : false;
 
-         OtherReReferToClinic 
+            fol.OtherReferralNo1 = txtOtherReferralNo1.Text;
 
-         OtherReferralNo1 
+            fol.OtherConditionTha = txtOtherConditionTha.Text;
 
-         OtherConditionTha 
+            fol.OtherReferToClinic1 = (OtherReferToClinic11.IsChecked == true) ? true : false;
 
-         OtherReferToClinic1 
+            fol.OtherReferralNo2 = txtOtherReferralNo2.Text;
 
-         OtherReferralNo2
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
 
-         #endregion Other
+                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
 
-           
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+            #endregion
+    
 
 
-
-    }*/
     }
 
 
