@@ -356,7 +356,7 @@ namespace Impilo_App.LocalModels
 
         public string HIVMedication { get; set; }
 
-        public string VisitNextVisit { get; set; }
+      
 
 
     }

@@ -29,6 +29,7 @@ namespace Impilo_App.Views.Screening
         static string sconn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         //SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=impilo;Integrated Security=True;");
         SqlConnection conn = new SqlConnection(sconn);
+        int HutCounter = 1;
         public ScreeningHome()
         {
             InitializeComponent();
@@ -363,8 +364,8 @@ namespace Impilo_App.Views.Screening
             {
                 ScreeningID = scrID,
                 Weight= int.Parse( txtWeight.Text),
-                Height = int.Parse(txtheight.Text)
-
+                Height = int.Parse(txtheight.Text),
+                BMI = int.Parse(txtBMI.Text)
             };
 
             //sp place
@@ -376,7 +377,9 @@ namespace Impilo_App.Views.Screening
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@", genMeasurement.ScreeningID);//param
-
+                com.Parameters.AddWithValue("@", genMeasurement.Weight);//param
+                com.Parameters.AddWithValue("@", genMeasurement.Height);//param
+                com.Parameters.AddWithValue("@", genMeasurement.BMI);//param
                 com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
@@ -470,7 +473,31 @@ namespace Impilo_App.Views.Screening
                 ReferToClinic= (radrefBP.IsChecked == true) ? true : false,
                 ReferralNo=txtrefBP.Text,
             };
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ScreeningID", bpr.ScreeningID);//param
+                com.Parameters.AddWithValue("@", bpr.Systolic);//param
+                com.Parameters.AddWithValue("@", bpr.Diastolic);//param
+                com.Parameters.AddWithValue("@", bpr.ReferToCHOWs);//param
+                com.Parameters.AddWithValue("@", bpr.ReferToClinic);//param
+                com.Parameters.AddWithValue("@", bpr.ReferralNo);//param
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
 
             //Blood sugar
             BloodSuger bs = new BloodSuger {
@@ -483,6 +510,32 @@ namespace Impilo_App.Views.Screening
                 ReferralNo = txtrefBS.Text,
             
             };
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ScreeningID", bs.ScreeningID);//param
+                com.Parameters.AddWithValue("@", bs.OnMeds);//param
+                com.Parameters.AddWithValue("@", bs.NotOnMedsBSReadings);//param
+                com.Parameters.AddWithValue("@", bs.ReferToCHOWs);//param
+                com.Parameters.AddWithValue("@", bs.ReferToClinic);//param
+                com.Parameters.AddWithValue("@", bs.ReferralNo);//param
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             //Epilepsy
             Epilepsy ep = new Epilepsy {
                 ScreeningID = scrID,
@@ -490,6 +543,31 @@ namespace Impilo_App.Views.Screening
                 ReferToClinic = (radrefepi.IsChecked == true) ? true : false,
                 ReferralNo = txtrefEpi.Text,
             };
+
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ScreeningID", ep.ScreeningID);//param
+                com.Parameters.AddWithValue("@", ep.FitsInLastMonth);//param
+                com.Parameters.AddWithValue("@", ep.ReferToClinic);//param
+                com.Parameters.AddWithValue("@", ep.ReferralNo);//param
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             //HIV
             HIV hiv = new HIV {
                 ScreeningID = scrID,
@@ -499,6 +577,33 @@ namespace Impilo_App.Views.Screening
                 ReferToClinic = (radrefHIV.IsChecked == true) ? true : false,
                 ReferralNo = txtrefHIV.Text,
             };
+
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "AddHIV";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ScreeningID", hiv.ScreeningID);//param
+                com.Parameters.AddWithValue("@KnownHIVPosStatus", hiv.KnownHIVPosStatus);//param
+                com.Parameters.AddWithValue("@HIVTestDone", hiv.HIVTestDone);//param
+                com.Parameters.AddWithValue("@Result", hiv.Result);//param
+                com.Parameters.AddWithValue("@ReferToClinic", hiv.ReferToClinic);//param
+                com.Parameters.AddWithValue("@ReferralNo", hiv.ReferralNo);//param
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             //Pregnancy
             Pregnancy preg = new Pregnancy {
                 ScreeningID = scrID,
@@ -509,6 +614,32 @@ namespace Impilo_App.Views.Screening
                 ReferralNo = txtrefHIV.Text,
             };
 
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ScreeningID", preg.ScreeningID);//param
+                com.Parameters.AddWithValue("@", preg.ScreeningID);//param
+                com.Parameters.AddWithValue("@", preg.ScreeningID);//param
+                com.Parameters.AddWithValue("@", preg.ScreeningID);//param
+                com.Parameters.AddWithValue("@", preg.ScreeningID);//param
+                com.Parameters.AddWithValue("@", preg.ScreeningID);//param
+               
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
 
             #endregion
 
@@ -618,12 +749,154 @@ namespace Impilo_App.Views.Screening
             #endregion
 
             #region Environmental
+            Environmental environment = new Environmental();
+            environment.ScreeningId = scrID;
+            environment.NoOfHouseholdCurrent = int.Parse(txtCurrentHousehold.Text);
+            environment.NoOfHouseholdAway = int.Parse(txtAwayHousehold.Text);
+            environment.ListWhere = ((ComboBoxItem)cboListWhere.SelectedItem).Content.ToString();
+            environment.WhenLastClinicVisit = DateTime.Parse(((ComboBoxItem)cboLastVisit.SelectedItem).Content.ToString());
+            environment.WhichClinic = int.Parse(((ComboBoxItem)cboClinic.SelectedItem).Content.ToString());
+
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+
+                com.Parameters.AddWithValue("@", environment.ScreeningId);//param
+
+                com.ExecuteNonQuery();//execute command
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+
+
+
+            EnvironmentalExtra environmentExtra = new EnvironmentalExtra();
+            environmentExtra.ScreeningID = scrID;
+            environmentExtra.NoOfPeopleInOneRoomMainHut = int.Parse(((ComboBoxItem)cboNoPeople.SelectedItem).Content.ToString());
+            environmentExtra.NoOfStructuresInHomeStead = int.Parse(((ComboBoxItem)cboNoStructure.SelectedItem).Content.ToString());
+            environmentExtra.RainWaterCollection = (rdoYesRain.IsChecked == true) ? true : false;
+            environmentExtra.WaterSupply = ((ComboBoxItem)cboWaterSupply.SelectedItem).Content.ToString();
+            //environmentExtra.WalkingDistanceFromWhaterSupply = txtDistanceFrmWater.Text;
+            environmentExtra.TreatWaterBeforeDrinking = (rdoYesRain.IsChecked == true) ? true : false;
+            environmentExtra.ElectricityInAnyHut = (rdoElectricityYes.IsChecked == true) ? true : false;
+            environmentExtra.HaveWorkingFridge = (rdoYesFridge.IsChecked == true) ? true : false;
+            environmentExtra.UseForCooking = ((ComboBoxItem)cboUseForCooking.SelectedItem).Content.ToString();
+            environmentExtra.TypeOfToilet = ((ComboBoxItem)cboTypeOfToilet.SelectedItem).Content.ToString();
+            environmentExtra.DisposeWaste = ((ComboBoxItem)cboDisposeWaste.SelectedItem).Content.ToString();
+            environmentExtra.SourceOfIncome = ((ComboBoxItem)cboSourceOfIncome.SelectedItem).Content.ToString();
+            environmentExtra.RecievedFoodPacelIn6Month = (cboFoodParcel.IsChecked == true) ? true : false;
+
+            try
+            {
+                storedProcedure = "";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+
+                com.Parameters.AddWithValue("@", environmentExtra.ScreeningID);//param
+
+                com.ExecuteNonQuery();//execute command
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+
 
             #endregion
 
 
 
         }
-      
+
+        private void btnSaveHut_Click(object sender, RoutedEventArgs e)
+        {
+            string scrID = ""; // 
+            string storedProcedure = "";
+
+            if (int.Parse(cboNoOfHuts.SelectedItem.ToString()) > 1)
+            {
+                int MaxNoHuts = int.Parse(cboNoOfHuts.SelectedItem.ToString());
+
+                while (HutCounter <= MaxNoHuts)
+                {
+                    Hut hut = new Hut();
+                    hut.HutId = HutCounter;
+                    hut.HutStracture = ((ComboBoxItem)cboHutStructure.SelectedItem).Content.ToString();
+                    hut.TypeOfRoof = ((ComboBoxItem)cboTypeOfRoof.SelectedItem).Content.ToString();
+                    hut.Ventilation = ((ComboBoxItem)cboVentilation.SelectedItem).Content.ToString();
+                    hut.TotalNoOfRooms = int.Parse(((ComboBoxItem)cboNoRooms.SelectedItem).Content.ToString());
+
+                    try
+                    {
+                        storedProcedure = "";// name of sp
+                        conn.Open();
+                        SqlCommand com = new SqlCommand(storedProcedure, conn);
+
+                        com.Parameters.AddWithValue("@", hut.HutId);//param
+
+                        com.ExecuteNonQuery();//execute command
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+
+                    finally
+                    {
+                        conn.Close();
+                    }
+
+                    HutCounter++;
+                }
+            }
+
+            else
+            {
+                Hut hut = new Hut();
+                hut.HutId = 1;
+                hut.HutStracture = ((ComboBoxItem)cboHutStructure.SelectedItem).Content.ToString();
+                hut.TypeOfRoof = ((ComboBoxItem)cboTypeOfRoof.SelectedItem).Content.ToString();
+                hut.Ventilation = ((ComboBoxItem)cboVentilation.SelectedItem).Content.ToString();
+                hut.TotalNoOfRooms = int.Parse(((ComboBoxItem)cboNoRooms.SelectedItem).Content.ToString());
+
+                try
+                {
+                    storedProcedure = "";// name of sp
+                    conn.Open();
+                    SqlCommand com = new SqlCommand(storedProcedure, conn);
+
+                    com.Parameters.AddWithValue("@", hut.HutId);//param
+
+                    com.ExecuteNonQuery();//execute command
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }

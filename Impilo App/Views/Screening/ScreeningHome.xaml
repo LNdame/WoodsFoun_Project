@@ -73,8 +73,9 @@
                     </LinearGradientBrush>
                 </TabItem.Background>-->
                 </TabItem>
+
                 <TabItem Header="Environmental" x:Name="tabCountry2" Width="110">
-                    <Border BorderThickness="8" HorizontalAlignment="Left" Margin="0,10,0,89.2" x:Name="border1_Copy" Width="1033" CornerRadius="10">
+                    <Border BorderThickness="8" HorizontalAlignment="Left" Margin="0,2,0,21" x:Name="border1_Copy" Width="1033" CornerRadius="10">
                         <!--<Border.Background>
                             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                 <GradientStop Color="#4D000000" Offset="0" />
@@ -87,33 +88,33 @@
                                 <GradientStop Color="White" Offset="1" />
                             </LinearGradientBrush>
                         </Border.BorderBrush>
-                        <Grid x:Name="grid2" Margin="0,0,0.2,-7.8">
+                        <Grid x:Name="grid2" Margin="0,0,0,-40">
 
-                            <Border BorderThickness="4" Height="441" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="border2" VerticalAlignment="Top" Width="989" CornerRadius="8">
+                            <Border BorderThickness="4" Height="516" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="border2" VerticalAlignment="Top" Width="989" CornerRadius="8">
                                 <Border.BorderBrush>
                                     <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                         <GradientStop Color="#82000000" Offset="0" />
                                         <GradientStop Color="#FFEBE8E8" Offset="1" />
                                     </LinearGradientBrush>
                                 </Border.BorderBrush>
-                                <Grid x:Name="grid3" Margin="6,6,-54.4,17.6">
+                                <Grid x:Name="grid3" Margin="6,6,-54,-23">
                                     <!--<WrapPanel HorizontalAlignment="Left" Height="70" Margin="19,15,0,0" VerticalAlignment="Top" Width="357">
                                             <Label Content="Name of mother" Height="28" HorizontalAlignment="Left" x:Name="label22" VerticalAlignment="Top" RenderTransformOrigin="2.961,3.464" />
                                             <Label Content="Referral no. " Height="28" HorizontalAlignment="Left" x:Name="label1_Copy47" VerticalAlignment="Top" />
                                             <Label Content="Refer to clinic" Height="28" HorizontalAlignment="Left" x:Name="label24" VerticalAlignment="Top" />
                                             <Label Content="Child with RTHC" Height="28" HorizontalAlignment="Left" x:Name="label23" VerticalAlignment="Top" />
                                         </WrapPanel>-->
-                                    <Grid Margin="0,0,160.6,-0.4">
-                                        <GroupBox Header="" HorizontalAlignment="Left" Margin="10,0,0,0"
-                							VerticalAlignment="Top" Height="216" Width="316">
+                                    <Grid Margin="0,0,161,-51">
+                                        <GroupBox Header="" HorizontalAlignment="Left" Margin="10,-5,0,0"
+                							VerticalAlignment="Top" Height="226" Width="316">
                                             <Grid HorizontalAlignment="Left" Height="196" VerticalAlignment="Top"
                 								Width="289" Margin="10,0,0,0">
                                                 <Label Content="No. of people living &#xD;&#xA;in household currently"
-                									HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,-1,0,0" Height="42" FontWeight="Bold"/>
-                                                <Label Content="No. living away from&#xD;&#xA;household long tern" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" Height="41" FontWeight="Bold"/>
-                                                <Label Content="List Where?" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
-                                                <Label Content="When did you or &#xD;&#xA;member of your family&#xD;&#xA; last visit the clinic" HorizontalAlignment="Right" Margin="0,108,148,0" VerticalAlignment="Top" Height="61" FontWeight="Bold"/>
-                                                <TextBox HorizontalAlignment="Left" Height="23" Margin="147,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                									HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,0" Height="42" FontWeight="Bold"/>
+                                                <Label Content="No. living away from&#xD;&#xA;household long tern" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" Height="41" FontWeight="Bold"/>
+                                                <Label Content="List Where" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
+                                                <Label Content="When did you or &#xD;&#xA;household member &#xD;&#xA;last visit the clinic" HorizontalAlignment="Right" Margin="0,108,148,0" VerticalAlignment="Top" Height="61" FontWeight="Bold" Width="141"/>
+                                                <TextBox Name="txtCurrentHousehold" HorizontalAlignment="Left" Height="23" Margin="147,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
                                                 <ComboBox x:Name="cboListWhere" HorizontalAlignment="Left" Margin="147,85,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
                                                     <ComboBoxItem ContentStringFormat="Name"/>
                                                     <ComboBoxItem Name="s1">Gauteng</ComboBoxItem>
@@ -134,8 +135,8 @@
                                                     <ComboBoxItem >In Over 2 Years ago</ComboBoxItem>
                                                     <ComboBoxItem >Never</ComboBoxItem>
                                                 </ComboBox>
-                                                <TextBox HorizontalAlignment="Left" Height="23" Margin="147,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
-                                                <Label Content="Which clinic?" HorizontalAlignment="Left" Margin="10,169,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                <TextBox Name="txtAwayHousehold" HorizontalAlignment="Left" Height="23" Margin="147,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                                                <Label Content="Which clinic did you/they&#xD;&#xA; visit?" HorizontalAlignment="Left" Margin="0,169,0,-12" VerticalAlignment="Top" FontWeight="Bold" Height="39" FontSize="10.667"/>
                                                 <ComboBox x:Name="cboClinic" HorizontalAlignment="Left" Margin="147,169,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
                                                     <ComboBoxItem ContentStringFormat="Name"/>
                                                     <ComboBoxItem Name="cb1">Hobeni</ComboBoxItem>
@@ -150,24 +151,76 @@
                                                 </ComboBox>
                                             </Grid>
                                         </GroupBox>
-                                        <GroupBox Header="Main hut" HorizontalAlignment="Left" Margin="10,226,0,0"
-                							VerticalAlignment="Top" Height="174" Width="316">
-                                            <Grid HorizontalAlignment="Left" Height="141" VerticalAlignment="Top"
-                								Width="289" Margin="10,10,0,0">
+                                        <GroupBox Header="Main hut" HorizontalAlignment="Left" Margin="10,221,0,0"
+                							VerticalAlignment="Top" Height="268" Width="316">
+                                            <Grid HorizontalAlignment="Left" Height="228" VerticalAlignment="Top"
+                								Width="289" Margin="10,10,0,-12">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="55*"/>
+                                                    <RowDefinition Height="3*"/>
+                                                </Grid.RowDefinitions>
                                                 <Label Content="Hut structure"
-                                                	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" FontWeight="Bold"/>
-                                                <Label Content="Type of roof" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
-                                                <Label Content="Ventilation" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
-                                                <Label Content="Total no. of&#xD;&#xA; rooms" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.843" FontWeight="Bold"/>
-                                                <TextBox x:Name="txtHutStructure" HorizontalAlignment="Left" Height="23" Margin="147,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
-                                                <TextBox x:Name="txtRoofType" HorizontalAlignment="Left" Height="23" Margin="147,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" RenderTransformOrigin="1.041,0.774" FontWeight="Bold"/>
-                                                <TextBox x:Name="txtVebtilation" HorizontalAlignment="Left" Height="23" Margin="147,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
-                                                <TextBox x:Name="txtNoOfRooms" HorizontalAlignment="Left" Height="23" Margin="147,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                                                	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,41,0,0" FontWeight="Bold"/>
+                                                <Label Content="Type of roof" HorizontalAlignment="Left" Margin="0,78,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
+                                                <Label Content="Ventilation" HorizontalAlignment="Left" Margin="0,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
+                                                <Label Content="Total no. of&#xD;&#xA; rooms" HorizontalAlignment="Left" Margin="0,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.843" FontWeight="Bold"/>
+                                                <ComboBox x:Name="cboHutStructure" HorizontalAlignment="Left" Margin="147,45,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
+                                                    <ComboBoxItem ContentStringFormat="Name"/>
+                                                    <ComboBoxItem >Wood</ComboBoxItem>
+                                                    <ComboBoxItem >Cement</ComboBoxItem>
+                                                    <ComboBoxItem >Brick (mud/cement)</ComboBoxItem>
+                                                    <ComboBoxItem >Brick (cement)</ComboBoxItem>
+                                                    <ComboBoxItem >Clay/Mud</ComboBoxItem>
+                                                    <ComboBoxItem >Other</ComboBoxItem>
+                                                </ComboBox>
+                                                <ComboBox x:Name="cboTypeOfRoof" HorizontalAlignment="Left" Margin="147,82,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
+                                                    <ComboBoxItem ContentStringFormat="Name"/>
+                                                    <ComboBoxItem >Reed/Grass</ComboBoxItem>
+                                                    <ComboBoxItem >Tiles</ComboBoxItem>
+                                                    <ComboBoxItem >Tin</ComboBoxItem>
+
+                                                </ComboBox>
+                                                <ComboBox x:Name="cboVentilation" HorizontalAlignment="Left" Margin="147,119,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
+                                                    <ComboBoxItem ContentStringFormat="Name"/>
+                                                    <ComboBoxItem >Door</ComboBoxItem>
+                                                    <ComboBoxItem >Door/Windows</ComboBoxItem>
+                                                </ComboBox>
+                                                <ComboBox x:Name="cboNoRooms" HorizontalAlignment="Left" Margin="147,161,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
+                                                    <ComboBoxItem ContentStringFormat="Name"/>
+                                                    <ComboBoxItem >1</ComboBoxItem>
+                                                    <ComboBoxItem >2</ComboBoxItem>
+                                                    <ComboBoxItem >3</ComboBoxItem>
+                                                    <ComboBoxItem >4</ComboBoxItem>
+                                                    <ComboBoxItem >5</ComboBoxItem>
+                                                    <ComboBoxItem >6</ComboBoxItem>
+                                                    <ComboBoxItem >7</ComboBoxItem>
+                                                    <ComboBoxItem >8</ComboBoxItem>
+                                                    <ComboBoxItem >9</ComboBoxItem>
+                                                    <ComboBoxItem >10</ComboBoxItem>
+
+                                                </ComboBox>
+                                                <Button x:Name="btnSaveHut" Content="Save Information For This Hut" HorizontalAlignment="Left" Margin="111,199,0,0" VerticalAlignment="Top" Width="168" Height="25" Grid.RowSpan="2" Click="btnSaveHut_Click"/>
+                                                <Label Content="No. of huts you own?"
+                                                	HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" FontWeight="Bold"/>
+                                                <ComboBox x:Name="cboNoOfHuts" HorizontalAlignment="Left" Margin="147,9,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
+                                                    <ComboBoxItem ContentStringFormat="Name"/>
+                                                    <ComboBoxItem Content="1" />
+                                                    <ComboBoxItem Content="2" />
+                                                    <ComboBoxItem Content="3" />
+                                                    <ComboBoxItem Content="4" />
+                                                    <ComboBoxItem Content="5" />
+                                                    <ComboBoxItem Content="6" />
+                                                    <ComboBoxItem Content="7" />
+                                                    <ComboBoxItem Content="8" />
+                                                    <ComboBoxItem Content="9" />
+                                                    <ComboBoxItem Content="10" />
+
+                                                </ComboBox>
                                             </Grid>
                                         </GroupBox>
-                                        <GroupBox Header="" Margin="326,0,-114.8,0"
-                							VerticalAlignment="Top" Height="400">
-                                            <Grid Height="379" VerticalAlignment="Top" Margin="0,0,37.4,-0.6">
+                                        <GroupBox Header="" Margin="326,-5,-87,0"
+                							VerticalAlignment="Top" Height="494">
+                                            <Grid Height="379" VerticalAlignment="Top" Margin="0,0,10,0">
                                                 <Label Content="Total no. of people sleeping&#xD;&#xA;in one room in main hut" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <Label Content="Total no. of structures in&#xD;&#xA;homestead" HorizontalAlignment="Left" Margin="0,52,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <Label Content="Rain water collection" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -181,9 +234,7 @@
                                                 <Label Content="Sources of income&#xD;&#xA;for household " HorizontalAlignment="Left" Margin="338,102,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <Label Content="Have you received a &#xD;&#xA;food parcel in the &#xD;&#xA;last 6 months " HorizontalAlignment="Left" Margin="338,159,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <Label Content="How do you dispose&#xD;&#xA;of waste" HorizontalAlignment="Left" Margin="338,57,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                <TextBox x:Name="txtNoSleepingInOneRoom" HorizontalAlignment="Left" Height="23" Margin="164,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
-                                                <TextBox x:Name="txtNoOfStructureInHouseHold" HorizontalAlignment="Left" Height="23" Margin="164,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
-                                                <ComboBox HorizontalAlignment="Left" Margin="164,125,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
+                                                <ComboBox Name="cboWaterSupply" HorizontalAlignment="Left" Margin="164,125,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
                                                     <ComboBoxItem ContentStringFormat="Name"/>
                                                     <ComboBoxItem >River</ComboBoxItem>
                                                     <ComboBoxItem >Community Tap</ComboBoxItem>
@@ -192,10 +243,9 @@
                                                 </ComboBox>
                                                 <RadioButton x:Name="rdoYesRain" Content="Yes" GroupName="env" HorizontalAlignment="Left" Margin="172,94,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <RadioButton Content="No" GroupName="env" HorizontalAlignment="Left" Margin="226,94,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                <TextBox HorizontalAlignment="Left" Height="23" Margin="164,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
                                                 <RadioButton Content="Yes" GroupName="env1" HorizontalAlignment="Left" Margin="172,209,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <RadioButton x:Name="rdoNoRain" Content="No" GroupName="env1" HorizontalAlignment="Left" Margin="226,209,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                <RadioButton x:Name="txtYesTotalNoStructure" Content="Yes" GroupName="env2" HorizontalAlignment="Left" Margin="172,256,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                <RadioButton x:Name="rdoElectricityYes" Content="Yes" GroupName="env2" HorizontalAlignment="Left" Margin="172,256,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <RadioButton x:Name="txtNoTotalNoStructure" Content="No" GroupName="env2" HorizontalAlignment="Left" Margin="226,256,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <RadioButton x:Name="rdoYesFridge" Content="Yes" GroupName="env3" HorizontalAlignment="Left" Margin="172,302,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <RadioButton x:Name="rdoNoFridge" Content="No" GroupName="env3" HorizontalAlignment="Left" Margin="226,302,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -229,6 +279,43 @@
                                                 </ComboBox>
                                                 <RadioButton x:Name="cboFoodParcel" Content="Yes" GroupName="env4" HorizontalAlignment="Left" Margin="478,170,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                 <RadioButton x:Name="cboNoFoodParcel" Content="No" GroupName="env4" HorizontalAlignment="Left" Margin="532,170,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                <ComboBox x:Name="cboNoPeople" HorizontalAlignment="Left" Margin="164,11,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
+                                                    <ComboBoxItem ContentStringFormat="Name"/>
+                                                    <ComboBoxItem Content="1" />
+                                                    <ComboBoxItem Content="2" />
+                                                    <ComboBoxItem Content="3" />
+                                                    <ComboBoxItem Content="4" />
+                                                    <ComboBoxItem Content="5" />
+                                                    <ComboBoxItem Content="6" />
+                                                    <ComboBoxItem Content="7" />
+                                                    <ComboBoxItem Content="8" />
+                                                    <ComboBoxItem Content="9" />
+                                                    <ComboBoxItem Content="10" />
+
+                                                </ComboBox>
+                                                <ComboBox x:Name="cboNoStructure" HorizontalAlignment="Left" Margin="164,57,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
+                                                    <ComboBoxItem ContentStringFormat="Name"/>
+                                                    <ComboBoxItem Content="1" />
+                                                    <ComboBoxItem Content="2" />
+                                                    <ComboBoxItem Content="3" />
+                                                    <ComboBoxItem Content="4" />
+                                                    <ComboBoxItem Content="5" />
+                                                    <ComboBoxItem Content="6" />
+                                                    <ComboBoxItem Content="7" />
+                                                    <ComboBoxItem Content="8" />
+                                                    <ComboBoxItem Content="9" />
+                                                    <ComboBoxItem Content="10" />
+
+                                                </ComboBox>
+                                                <ComboBox x:Name="cboWalkingDistanceWater" HorizontalAlignment="Left" Margin="164,163,0,0" VerticalAlignment="Top" Width="132" FontWeight="Bold">
+                                                    <ComboBoxItem ContentStringFormat="Name"/>
+                                                    <ComboBoxItem Content="5 min" />
+                                                    <ComboBoxItem Content="10 min" />
+                                                    <ComboBoxItem Content="15 min" />
+                                                    <ComboBoxItem Content="20 min" />
+                                                    <ComboBoxItem Content="25 min" />
+                                                    <ComboBoxItem Content="30 min" />
+                                                </ComboBox>
                                             </Grid>
                                         </GroupBox>
                                     </Grid>
@@ -243,6 +330,10 @@
                     </LinearGradientBrush>
                 </TabItem.Background>-->
                 </TabItem>
+
+
+
+
                 <TabItem Header="General" x:Name="tabCountry3" Width="100">
                     <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
