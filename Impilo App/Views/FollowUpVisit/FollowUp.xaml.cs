@@ -63,7 +63,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
 
-                com.Parameters.AddWithValue("@", fol.FollowUpID);//param
+                //com.Parameters.AddWithValue("@", fol.FollowUpID);//param
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -199,22 +199,22 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             fol.AsReferToClinic = (radAsthClinRefYes.IsChecked == true) ? true : false;
             fol.AsReferralNo2 = txtAsthRefNo2.Text;
             fol.AsCurrentlyOnMeds = (radAstCurMedsYes.IsChecked == true) ? true : false;
-            fol.AsStartDate =
+            fol.AsStartDate ="";
             fol.AsIncreasedNoOfAsthmaAttacks = (radAstIncrAttacksYes.IsChecked == true) ? true : false;
-            fol.AsReReferToClinic2 = 
-            fol.AsReferralNo3 
-            fol.AsMedication
+            fol.AsReReferToClinic2 = (radAsthClinRefYes.IsChecked == true) ? true : false;
+            fol.AsReferralNo2 = txtAsthRefNo2.Text;
+            fol.AsMedication = ((ComboBoxItem)cboAsthMeds.SelectedItem).Content.ToString();
 
                     //sp place
                     //connection
-                    /*
+                    
             try
             {
                 storedProcedure = "";// name of sp
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
 
-                com.Parameters.AddWithValue("@", dia.ScreeningID);//param
+                //com.Parameters.AddWithValue("@");//param
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -228,7 +228,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Close();
             }
             #endregion
-
+/*
             #region HIV
             fol.HIVDateOfVisit =
 
