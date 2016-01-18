@@ -442,7 +442,7 @@
                                                         <Label Content="Defaulting" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,201,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" GroupName="cmrad1" HorizontalAlignment="Left" Margin="120,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton x:Name="radOnMedsHPT" Content="Yes" GroupName="cmrad1" HorizontalAlignment="Left" Margin="120,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" GroupName="cmrad1" HorizontalAlignment="Left" Margin="185,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="Yes" GroupName="cmrad2" HorizontalAlignment="Left" Margin="120,47,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" GroupName="cmrad2" HorizontalAlignment="Left" Margin="185,47,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -488,7 +488,7 @@
                                                         <Label Content="Defaulting" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="11,152,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" GroupName="cmrad5" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton  x:Name="radOnMedsDia" Content="Yes" GroupName="cmrad5" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" GroupName="cmrad5" HorizontalAlignment="Left" Margin="185,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="Yes" GroupName="cmrad6" HorizontalAlignment="Left" Margin="120,93,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" GroupName="cmrad6" HorizontalAlignment="Left" Margin="185,93,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -531,7 +531,7 @@
                                                         <Label Content="Defaulting" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="11,152,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" GroupName="cmrad8" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton  x:Name="radOnMedsEpi" Content="Yes" GroupName="cmrad8" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" GroupName="cmrad8" HorizontalAlignment="Left" Margin="185,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="Yes" GroupName="cmrad9" HorizontalAlignment="Left" Margin="120,93,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" GroupName="cmrad9" HorizontalAlignment="Left" Margin="185,93,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -574,7 +574,7 @@
                                                         <Label Content="Defaulting" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="11,152,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Content="Yes" GroupName="cmrad11" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <RadioButton  x:Name="radOnMedsAsth" Content="Yes" GroupName="cmrad11" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" GroupName="cmrad11" HorizontalAlignment="Left" Margin="185,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="Yes" GroupName="cmrad12" HorizontalAlignment="Left" Margin="120,93,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton Content="No" GroupName="cmrad12" HorizontalAlignment="Left" Margin="185,93,0,0" VerticalAlignment="Top" FontWeight="Bold"/>

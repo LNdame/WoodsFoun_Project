@@ -25,7 +25,7 @@ namespace Impilo_App.LocalModels
         public bool EverHadStroke { get; set; }
 
         public string YearOfStroke { get; set; }
-
+        public int HowManyInFamilyOnMedsForHypertension { get; set; }
         public bool AnyOneInFamilyHadStroke { get; set; }
     }
 }

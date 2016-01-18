@@ -17,6 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 //using Repository;
 using Impilo_App.LocalModels;
+using WpfPageTransitions;
+using Impilo_App.Views.Screening;
 
 namespace Impilo_App.Views.Client
 {
@@ -83,6 +85,7 @@ namespace Impilo_App.Views.Client
               if (i>=1)
               {
                   MessageBox.Show("New Client Added Successfully");
+                  JumptoScreening(newClient);
               }
             }
             catch (Exception ex)
@@ -134,8 +137,13 @@ namespace Impilo_App.Views.Client
             
         }
 
-       
 
+        private void JumptoScreening(LocalModels.Client addedClient)
+        {
+            ScreeningHome newPage = new ScreeningHome(addedClient.IDNo, addedClient);
+            var a = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
+            a.ShowPage(newPage);
+        }
        
     }
 }
