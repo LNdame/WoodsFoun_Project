@@ -45,7 +45,7 @@
                                     </Border.BorderBrush>
                                     <Grid x:Name="grid4" Margin="6,6,6.6,18">
                                         <Label Content="Unique Identifier" Height="28" HorizontalAlignment="Left" Margin="21,33,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" />
-                                        <Label Content="XXXXXXXXXXXXXXXX" Height="28" HorizontalAlignment="Left" Margin="170,33,0,0" x:Name="label1_Copy" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" />
+                                        <Label Content="XXXXXXXXXXXXXXXX" Height="28" HorizontalAlignment="Left" Margin="170,33,0,0" x:Name="lblIdentity" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" />
                                         <Label Content="Date of screen" Height="28" HorizontalAlignment="Left" Margin="19,155,0,0" x:Name="label3" VerticalAlignment="Top" FontWeight="Bold" />
                                         <TextBox TabIndex="1" Height="23" HorizontalAlignment="Left" Margin="145,160,0,0" x:Name="txtDateOfScreening" VerticalAlignment="Top" Width="253" FontWeight="Bold" IsEnabled="False" />
                                         <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="21,102,0,0" x:Name="label1_Copy22" VerticalAlignment="Top" FontWeight="Bold" />

@@ -66,7 +66,28 @@ namespace Impilo_App.Views.Home
             if (i >= 0 && i < mydatagrid.Items.Count - 1)
             {
                 var id = dt.Rows[i]["IDNo"].ToString();
-                ScreeningHome newPage = new ScreeningHome(id);
+
+                Impilo_App.LocalModels.Client selectClient = new Impilo_App.LocalModels.Client
+                {
+                    ClientID = dt.Rows[i]["ClientID"].ToString(),
+                    HeadOfHousehold = dt.Rows[i]["HeadOfHousehold"].ToString(),
+                    FirstName = dt.Rows[i]["FirstName"].ToString(),
+                    LastName = dt.Rows[i]["LastName"].ToString(),
+                    GPSLatitude = dt.Rows[i]["GPSLatitude"].ToString(),
+                    GPSLongitude = dt.Rows[i]["GPSLongitude"].ToString(),
+                    IDNo = dt.Rows[i]["IDNo"].ToString(),
+                    ClinicUsed = dt.Rows[i]["ClinicUsed"].ToString(),
+                   // DateOfBirth = DateTime.Parse( dt.Rows[i]["IDNo"].ToString()),
+                    Gender = dt.Rows[i]["Gender"].ToString(),
+                    AttendingSchool = dt.Rows[i]["AttendingSchool"].ToString(),
+                    Grade = dt.Rows[i]["Grade"].ToString(),
+                    NameofSchool = dt.Rows[i]["NameofSchool"].ToString()
+                };
+
+
+
+
+                ScreeningHome newPage = new ScreeningHome(id,selectClient);
                 var a = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
                 a.ShowPage(newPage);
             }

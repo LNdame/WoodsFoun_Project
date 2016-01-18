@@ -8,7 +8,7 @@ namespace Impilo_App.LocalModels
 {
    public class Client
     {
-        public int UserID { get; set; }
+        public string ClientID { get; set; }
 
         public string HeadOfHousehold { get; set; }
 
