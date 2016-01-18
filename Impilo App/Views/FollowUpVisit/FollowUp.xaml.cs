@@ -62,7 +62,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
 
-                //com.Parameters.AddWithValue("@", fol.FollowUpID);//param
+                com.Parameters.AddWithValue("@", fol.FollowUpID);//param
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -97,13 +97,23 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             //connection
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddHypertention";// name of sp
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
-
-                //com.Parameters.AddWithValue("@");//param
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ScreeningID", hyper.ScreeningID);//param
+                com.Parameters.AddWithValue("@YearOfDiagnosis", hyper.YearOfDiagnosis);//param
+                com.Parameters.AddWithValue("@Headache", hyper.Headache);//param
+                com.Parameters.AddWithValue("@BlurredVision", hyper.BlurredVision);//param
+                com.Parameters.AddWithValue("@ChestPain", hyper.ChestPain);//param
+                com.Parameters.AddWithValue("@ReferralToClinic", hyper.ReferralToClinic);//param
+                com.Parameters.AddWithValue("@ReferalNo", hyper.ReferalNo);//param
+                com.Parameters.AddWithValue("@EverHadStroke", hyper.EverHadStroke);//param
+                com.Parameters.AddWithValue("@YearOfStroke", hyper.YearOfStroke);//param
+                com.Parameters.AddWithValue("@AnyOneInFamilyHadStroke", hyper.AnyOneInFamilyHadStroke);//param
 
                 com.ExecuteNonQuery();//execute command
+	        }
             }
             catch (Exception ex)
             {
