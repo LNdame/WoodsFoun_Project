@@ -48,17 +48,16 @@
                                 </Border.BorderBrush>
                                 <Grid x:Name="grid4" Margin="6,6,6.6,18">
                                     <Label Content="Date of Birth" Height="28" HorizontalAlignment="Left" Margin="17,326,0,0" x:Name="label3" VerticalAlignment="Top" FontWeight="Bold" />
-                                    <DatePicker Height="23" HorizontalAlignment="Left" Margin="143,331,0,0" x:Name="dpDOB" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                                    <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="19,252,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
+                                    <DatePicker Height="23" HorizontalAlignment="Left" Margin="143,331,0,0" x:Name="dpBioDOB" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                                    <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="19,246,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
                                     <Label Content="Gender" Height="28" HorizontalAlignment="Left" Margin="19,366,0,-10" x:Name="label2_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
-                                    <RadioButton Content="Male" HorizontalAlignment="Left" Margin="145,372,0,-4" VerticalAlignment="Top" FontWeight="Bold"/>
-                                    <RadioButton Content="Female" HorizontalAlignment="Left" Margin="226,372,0,-4" VerticalAlignment="Top" RenderTransformOrigin="-8.546,9.539" FontWeight="Bold"/>
-                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="147,60,0,0" x:Name="txtCountryId_Copy4" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                                    <ComboBox HorizontalAlignment="Left" Margin="145,252,0,0" VerticalAlignment="Top" Width="253" FontWeight="Bold">
-                                        <ComboBoxItem ContentStringFormat="Name"/>
-                                    </ComboBox>
+                                    <RadioButton Content="Male" HorizontalAlignment="Left" Margin="145,372,0,-4" Name="radGendMale" VerticalAlignment="Top" FontWeight="Bold"/>
+                                    <RadioButton Content="Female" HorizontalAlignment="Left" Margin="226,372,0,-4" Name="radGendFemale" VerticalAlignment="Top" RenderTransformOrigin="-8.546,9.539" FontWeight="Bold"/>
+                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="147,60,0,0" x:Name="txtBioName" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                                    <TextBox HorizontalAlignment="Left" Margin="145,246,0,0" Name="txtBioIDNo" VerticalAlignment="Top" Width="253" FontWeight="Bold"/>
+                                        
                                     <Label Content="Surname" Height="28" HorizontalAlignment="Left" Margin="19,98,0,0" x:Name="label3_Copy5" VerticalAlignment="Top" FontWeight="Bold" />
-                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="145,104,0,0" x:Name="txtTeamName_Copy" VerticalAlignment="Top" Width="253" />
+                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="145,104,0,0" x:Name="txtBioSurname" VerticalAlignment="Top" Width="253" />
                                 </Grid>
                             </Border>
                             <Label Content="Name" Height="28" HorizontalAlignment="Left" Margin="42,76,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontWeight="Bold" />
@@ -68,16 +67,16 @@
                             <TextBox Height="23" HorizontalAlignment="Left" Margin="164,223,0,0" x:Name="txtBioLongitude" VerticalAlignment="Top" Width="253" />
                             <Label Content="Data Capturer" Height="28" HorizontalAlignment="Left" Margin="39,30,0,0" x:Name="label3_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
                             <ComboBox Height="23" HorizontalAlignment="Left" Margin="167,36,0,0" x:Name="txtBioCapturer" VerticalAlignment="Top" Width="253" />
-                            <Label Content="Clinic" Height="28" HorizontalAlignment="Left" Margin="37,309,0,0" x:Name="label3_Copy7" VerticalAlignment="Top" FontWeight="Bold" />
-                            <ComboBox Height="23" HorizontalAlignment="Left" Margin="165,311,0,0" x:Name="txtBioCapturer_Copy" VerticalAlignment="Top" Width="253" />
+                            <Label Content="Clinic" Height="28" HorizontalAlignment="Left" Margin="37,305,0,0" x:Name="label3_Copy7" VerticalAlignment="Top" FontWeight="Bold" />
+                            <ComboBox Height="23" HorizontalAlignment="Left" Margin="165,307,0,0" x:Name="cboBioClinic" VerticalAlignment="Top" Width="253" />
                             <Label Content="Contact Number" Height="28" HorizontalAlignment="Left" Margin="473,30,0,0" x:Name="label3_Copy8" VerticalAlignment="Top" FontWeight="Bold" />
-                            <ComboBox Height="23" HorizontalAlignment="Left" Margin="630,36,0,0" x:Name="txtBioCapturer_Copy1" VerticalAlignment="Top" Width="253" />
+                            <TextBox Height="23" HorizontalAlignment="Left" Margin="630,36,0,0" x:Name="txtBioContactNo" VerticalAlignment="Top" Width="253" />
                             <Label Content="Next of Kin Tel. Number" Height="28" HorizontalAlignment="Left" Margin="473,170,0,0" x:Name="label3_Copy12" VerticalAlignment="Top" FontWeight="Bold" />
-                            <ComboBox Height="23" HorizontalAlignment="Left" Margin="630,176,0,0" x:Name="txtBioCapturer_Copy5" VerticalAlignment="Top" Width="253" />
+                            <TextBox Height="23" HorizontalAlignment="Left" Margin="630,176,0,0" x:Name="txtBioKinContactNo" VerticalAlignment="Top" Width="253" />
                             <Label Content="Next Of Kin Relationship" Height="28" HorizontalAlignment="Left" Margin="473,120,0,0" x:Name="label3_Copy13" VerticalAlignment="Top" FontWeight="Bold" />
-                            <ComboBox Height="23" HorizontalAlignment="Left" Margin="630,126,0,0" x:Name="txtBioCapturer_Copy6" VerticalAlignment="Top" Width="253" />
+                            <TextBox Height="23" HorizontalAlignment="Left" Margin="630,126,0,0" x:Name="txtBioKinRelation" VerticalAlignment="Top" Width="253" />
                             <Label Content="File Number" Height="28" HorizontalAlignment="Left" Margin="473,79,0,0" x:Name="label3_Copy14" VerticalAlignment="Top" FontWeight="Bold" />
-                            <ComboBox Height="23" HorizontalAlignment="Left" Margin="630,85,0,0" x:Name="txtBioCapturer_Copy7" VerticalAlignment="Top" Width="253" />
+                            <TextBox Height="23" HorizontalAlignment="Left" Margin="630,85,0,0" x:Name="txtBioFileNo" VerticalAlignment="Top" Width="253" />
                             <Label Content="HPT" HorizontalAlignment="Left" Margin="470,259,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
                             <Label Content="Diabetes" HorizontalAlignment="Right" Margin="0,302,462,0" VerticalAlignment="Top" Height="38" FontWeight="Bold"/>
                             <Label Content="Epilepsy" HorizontalAlignment="Left" Margin="470,345,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -86,14 +85,14 @@
                             <Label Content="Other" HorizontalAlignment="Left" Margin="698,344,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                             <Label Content="Door-door" HorizontalAlignment="Left" Margin="698,394,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="6.089,-0.665"/>
                             <Label Content="Child Health" HorizontalAlignment="Left" Margin="698,304,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="785,344,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="541,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="541,393,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="541,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="541,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="785,392,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="785,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="785,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"/>
+                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="785,344,0,0" x:Name="dpBioOtherDiagDate" VerticalAlignment="Top" Width="126"/>
+                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="541,263,0,0" x:Name="dpBioHptDiagDate" VerticalAlignment="Top" Width="126"/>
+                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="541,393,0,0" x:Name="dpBioHivDiagDate" VerticalAlignment="Top" Width="126"/>
+                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="541,349,0,0" x:Name="dpBioEpiDiagDate" VerticalAlignment="Top" Width="126"/>
+                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="541,305,0,0" x:Name="dpBioDiaDiagDate" VerticalAlignment="Top" Width="126"/>
+                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="785,392,0,0" x:Name="dpBioDtDDiagDate" VerticalAlignment="Top" Width="126"/>
+                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="785,307,0,0" x:Name="dpBioChDiagDate" VerticalAlignment="Top" Width="126"/>
+                            <DatePicker HorizontalAlignment="Left" Height="23" Margin="785,264,0,0" x:Name="dpBioMatDiagDate" VerticalAlignment="Top" Width="126"/>
                         </Grid>
                     </Border>
                 </Grid>
@@ -128,34 +127,34 @@
                                 </LinearGradientBrush>
                             </Border.BorderBrush>
                             <Grid x:Name="grid3" Margin="6,6,6.6,18">
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="147,55,0,0" x:Name="txtCountryId_Copy1" VerticalAlignment="Top" Width="134" FontWeight="Bold" />
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="147,55,0,0" x:Name="txtVdWeight" VerticalAlignment="Top" Width="134" FontWeight="Bold" />
                                 <Label Content="Height" Height="28" HorizontalAlignment="Left" Margin="19,85,0,0" x:Name="label3_Copy9" VerticalAlignment="Top" FontWeight="Bold" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="145,91,0,0" x:Name="txtTeamName_Copy1" VerticalAlignment="Top" Width="136" />
-                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="82,243,0,0" x:Name="radVisDiaYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="147,243,0,0" x:Name="radVisDiaNo" VerticalAlignment="Top"/>
-                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="296,249,0,0" x:Name="radVisDiaYes_Copy1" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="361,249,0,0" x:Name="radVisDiaNo_Copy1" VerticalAlignment="Top"/>
-                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="82,371,0,-3" x:Name="radVisDiaYes_Copy2" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="147,371,0,-3" x:Name="radVisDiaNo_Copy2" VerticalAlignment="Top"/>
-                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="82,327,0,0" x:Name="radVisDiaYes_Copy3" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="147,327,0,0" x:Name="radVisDiaNo_Copy3" VerticalAlignment="Top"/>
-                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="82,284,0,0" x:Name="radVisDiaYes_Copy4" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="147,284,0,0" x:Name="radVisDiaNo_Copy4" VerticalAlignment="Top"/>
-                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="296,287,0,0" x:Name="radVisDiaYes_Copy5" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="361,287,0,0" x:Name="radVisDiaNo_Copy5" VerticalAlignment="Top"/>
-                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="296,332,0,0" x:Name="radVisDiaYes_Copy6" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="361,332,0,0" x:Name="radVisDiaNo_Copy6" VerticalAlignment="Top"/>
-                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="296,372,0,-4" x:Name="radVisDiaYes_Copy7" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
-                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="361,372,0,-4" x:Name="radVisDiaNo_Copy7" VerticalAlignment="Top"/>
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="145,91,0,0" x:Name="txtVDHeight" VerticalAlignment="Top" Width="136" />
+                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="82,243,0,0" x:Name="radVdHptYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="147,243,0,0" x:Name="radVdHptNo" VerticalAlignment="Top"/>
+                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="296,249,0,0" x:Name="radVdMatYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="361,249,0,0" x:Name="radVdMatNo" VerticalAlignment="Top"/>
+                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="82,371,0,-3" x:Name="radVdHivYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="147,371,0,-3" x:Name="radVdHivNo" VerticalAlignment="Top"/>
+                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="82,327,0,0" x:Name="radVdEpiYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="147,327,0,0" x:Name="radVdEpiNo" VerticalAlignment="Top"/>
+                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="82,284,0,0" x:Name="radVdDiaYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="147,284,0,0" x:Name="radVdDiaNo" VerticalAlignment="Top"/>
+                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="296,287,0,0" x:Name="radVdChYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="361,287,0,0" x:Name="radVdChNo" VerticalAlignment="Top"/>
+                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="296,332,0,0" x:Name="radVdOthYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="361,332,0,0" x:Name="radVdOthNo" VerticalAlignment="Top"/>
+                                <RadioButton GroupName="vi1" Content="Yes" HorizontalAlignment="Left" Margin="296,372,0,-4" x:Name="radVisDtDYes" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.425"/>
+                                <RadioButton GroupName="vi1" Content="No" HorizontalAlignment="Left" Margin="361,372,0,-4" x:Name="radVisDtDNo" VerticalAlignment="Top"/>
                             </Grid>
                         </Border>
                         <Label Content="Weight" Height="28" HorizontalAlignment="Left" Margin="40,71,0,0" x:Name="label2_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
                         <Label Content="BMI" Height="28" HorizontalAlignment="Left" Margin="38,144,0,0" x:Name="label3_Copy10" VerticalAlignment="Top" FontWeight="Bold" />
-                        <TextBox Height="23" HorizontalAlignment="Left" Margin="164,150,0,0" x:Name="txtBioLatitude1" VerticalAlignment="Top" Width="131" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="164,150,0,0" x:Name="txtVdBmi" VerticalAlignment="Top" Width="131" />
                         <Label Content="Next Visit Date" Height="28" HorizontalAlignment="Left" Margin="38,184,0,0" x:Name="label3_Copy11" VerticalAlignment="Top" FontWeight="Bold" />
-                        <DatePicker Height="23" HorizontalAlignment="Left" Margin="164,190,0,0" x:Name="txtBioLongitude1" VerticalAlignment="Top" Width="253" />
+                        <DatePicker Height="23" HorizontalAlignment="Left" Margin="164,190,0,0" x:Name="dpVdNextVisDt" VerticalAlignment="Top" Width="253" />
                         <Label Content="Date of Visit" Height="28" HorizontalAlignment="Left" Margin="39,30,0,0" x:Name="label3_Copy15" VerticalAlignment="Top" FontWeight="Bold" />
-                        <DatePicker Height="23" HorizontalAlignment="Left" Margin="167,36,0,0" x:Name="txtBioCapturer1" VerticalAlignment="Top" Width="253" />
+                        <DatePicker Height="23" HorizontalAlignment="Left" Margin="167,36,0,0" x:Name="dpVdVisDt" VerticalAlignment="Top" Width="253" />
                         <Label Content="HPT" HorizontalAlignment="Left" Margin="40,257,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
                         <Label Content="Diabetes" HorizontalAlignment="Right" Margin="0,298,892,0" VerticalAlignment="Top" Height="38" FontWeight="Bold"/>
                         <Label Content="Epilepsy" HorizontalAlignment="Left" Margin="40,341,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
