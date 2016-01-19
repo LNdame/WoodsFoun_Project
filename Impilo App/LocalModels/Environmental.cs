@@ -16,7 +16,7 @@ namespace Impilo_App.LocalModels
 
         public string ListWhere { get; set; }
 
-        public DateTime WhenLastClinicVisit { get; set; }
+        public string WhenLastClinicVisit { get; set; }
 
         public int WhichClinic { get; set; }
     }

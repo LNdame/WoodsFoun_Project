@@ -11,6 +11,9 @@ namespace Impilo_App.LocalModels
         public string ScreeningID { get; set; }
 
         public int DiseaseID { get; set; }
+        public bool OnMeds { get; set; }
+
+        public bool IsSick { get; set; }
 
         public DateTime StartDate { get; set; }
 
@@ -18,6 +21,6 @@ namespace Impilo_App.LocalModels
 
         public bool ReferToClinic { get; set; }
 
-        public string ReferralID { get; set; }
+        public string ReferralNo { get; set; }
     }
 }

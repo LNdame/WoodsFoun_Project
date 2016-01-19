@@ -18,7 +18,7 @@ namespace Impilo_App.LocalModels
 
         public string WaterSupply { get; set; }
 
-        public bool WalkingDistanceFromWhaterSupply { get; set; }
+        public string WalkingDistanceFromWhaterSupply { get; set; }
 
         public bool TreatWaterBeforeDrinking { get; set; }
 

@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Impilo_App.LocalModels
+{
+    class FollowUpDiabetes
+    {
+        public int fudID { get; set; }
+
+        public int EncounterID { get; set; }
+
+        public DateTime fudDateOfVisit { get; set; }
+
+        public bool fudHiEHWentToClinic { get; set; }
+
+        public bool fudHiEHReReferToClinic { get; set; }
+
+        public string fudHiEHRefNo { get; set; }
+
+        public bool fudHiEHCurrentlyOnMeds { get; set; }
+
+        public DateTime fudHiEHStartDate { get; set; }
+
+        public decimal fudHiEHFollowUpTestReading { get; set; }
+
+        public bool fudHiEHReferToClinic2 { get; set; }
+
+        public string fudHiEHRefNo2 { get; set; }
+
+        public bool fudClinicRefReferToClinic { get; set; }
+
+        public string fudClinicRefRefNo { get; set; }
+
+        public decimal fudAlreadyOnTreatmentFollowUpTestReading { get; set; }
+
+        public bool fudDoorDoor { get; set; }
+    }
+}
