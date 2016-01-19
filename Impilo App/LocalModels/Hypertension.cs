@@ -14,10 +14,12 @@ namespace Impilo_App.LocalModels
 
         public bool Headache { get; set; }
 
+        public bool ShortnessOfBreath { get; set; }
         public bool BlurredVision { get; set; }
 
         public bool ChestPain { get; set; }
 
+        public bool Confusion { get; set; }
         public bool ReferralToClinic { get; set; }
 
         public string ReferalNo { get; set; }
