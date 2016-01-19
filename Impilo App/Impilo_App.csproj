@@ -145,6 +145,17 @@
     <Compile Include="LocalModels\ClientOld.cs" />
     <Compile Include="LocalModels\Clinic.cs" />
     <Compile Include="LocalModels\ClinicAsthma.cs" />
+    <Compile Include="LocalModels\ClinicChildHealth.cs" />
+    <Compile Include="LocalModels\ClinicClientBiographical.cs" />
+    <Compile Include="LocalModels\ClinicConditionTreatment.cs" />
+    <Compile Include="LocalModels\ClinicDiabetes.cs" />
+    <Compile Include="LocalModels\ClinicEpilepsy.cs" />
+    <Compile Include="LocalModels\ClinicHIV.cs" />
+    <Compile Include="LocalModels\ClinicHypertension.cs" />
+    <Compile Include="LocalModels\ClinicMaternalHealth.cs" />
+    <Compile Include="LocalModels\ClinicOther.cs" />
+    <Compile Include="LocalModels\ClinicTB.cs" />
+    <Compile Include="LocalModels\ClinicVisitData.cs" />
     <Compile Include="LocalModels\CurrentMedications.cs" />
     <Compile Include="LocalModels\Diabetes.cs" />
     <Compile Include="LocalModels\Disease.cs" />
