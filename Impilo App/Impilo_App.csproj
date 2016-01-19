@@ -144,6 +144,7 @@
     <Compile Include="LocalModels\Client.cs" />
     <Compile Include="LocalModels\ClientOld.cs" />
     <Compile Include="LocalModels\Clinic.cs" />
+    <Compile Include="LocalModels\ClinicAsthma.cs" />
     <Compile Include="LocalModels\CurrentMedications.cs" />
     <Compile Include="LocalModels\Diabetes.cs" />
     <Compile Include="LocalModels\Disease.cs" />
