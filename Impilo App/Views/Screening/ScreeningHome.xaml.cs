@@ -120,15 +120,17 @@ namespace Impilo_App.Views.Screening
 
 
            
-            #region Hypertension -
+            #region Hypertension ++
 
             Hypertension hyper = new Hypertension();
             hyper.ScreeningID = scrID;
             hyper.YearOfDiagnosis = ((ComboBoxItem)cboDiaYear.SelectedItem).Content.ToString();
             hyper.Headache =  (headYes.IsChecked == true) ? true : false;
-            hyper.BlurredVision = (headYes.IsChecked == true) ? true : false; ;
-            hyper.ChestPain = (headYes.IsChecked == true) ? true : false; ;
-            hyper.ReferralToClinic = (chestYes.IsChecked == true) ? true : false; ;
+            hyper.BlurredVision = (blurvYes.IsChecked == true) ? true : false;
+            hyper.ShortnessOfBreath = (shortYes.IsChecked == true) ? true : false; 
+            hyper.ChestPain = (chestYes.IsChecked == true) ? true : false;
+            hyper.Confusion = (confYes.IsChecked == true) ? true : false;
+            hyper.ReferralToClinic = (refYes.IsChecked == true) ? true : false; ;
             hyper.ReferalNo = txthyperRef.Text;
             hyper.EverHadStroke = (stroYes.IsChecked == true) ? true : false; ;
             hyper.YearOfStroke = ((ComboBoxItem)cboStrokeYear.SelectedItem).Content.ToString();
@@ -137,8 +139,8 @@ namespace Impilo_App.Views.Screening
             //sp place
              //connection 
             try 
-	        {	        
-		    storedProcedure = "AddScreeningHypertention";// name of sp
+	        {
+                storedProcedure = "AddScreeningHypertension";// name of sp
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
@@ -146,13 +148,15 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@shYearOfDiagnosis", hyper.YearOfDiagnosis);//param
                 com.Parameters.AddWithValue("@shHeadache", hyper.Headache);//param
                 com.Parameters.AddWithValue("@shBlurredVision", hyper.BlurredVision);//param
+                com.Parameters.AddWithValue("@shShortnessOfBreath", hyper.ShortnessOfBreath);//param
+                com.Parameters.AddWithValue("@shConfusion", hyper.Confusion);//param
                 com.Parameters.AddWithValue("@shChestPain", hyper.ChestPain);//param
                 com.Parameters.AddWithValue("@shReferralToClinic", hyper.ReferralToClinic);//param
                 com.Parameters.AddWithValue("@shRefNo", hyper.ReferalNo);//param
                 com.Parameters.AddWithValue("@shEverHadStroke", hyper.EverHadStroke);//param
                 com.Parameters.AddWithValue("@shYearOfStroke", hyper.YearOfStroke);//param
                 com.Parameters.AddWithValue("@shHowManyInFamilyOnMedsForHypertension", hyper.HowManyInFamilyOnMedsForHypertension);//param
-                com.Parameters.AddWithValue("@shAnyOneInFamilyHadStroke", hyper.AnyOneInFamilyHadStroke);//param
+                com.Parameters.AddWithValue("@shAnyoneInFamilyHadStroke", hyper.AnyOneInFamilyHadStroke);//param
 
                 int i = com.ExecuteNonQuery();//execute command
 	        }
@@ -199,10 +203,11 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@EncounterID", dia.ScreeningID);//param
                 com.Parameters.AddWithValue("@sdYearOfDiagnosis", dia.YearOfDiagnosis);//param
                 com.Parameters.AddWithValue("@sdRegularlyThirsty", dia.regularlyThirsty);//param
-                com.Parameters.AddWithValue("@sdWeightLoss", dia.WeightLoss);//param
+                com.Parameters.AddWithValue("@sdWeightLost", dia.WeightLoss);//param
                 com.Parameters.AddWithValue("@sdUrinatingMore", dia.UrinatingMore);//param
-                com.Parameters.AddWithValue("@sdNauseaOrVomitting", dia.NauseaOrVomitting);//param
-                //com.Parameters.AddWithValue("@sdFootExamResult", dia.FootExamResult);//param
+                com.Parameters.AddWithValue("@sdNauseaOrVomiting", dia.NauseaOrVomitting);//param
+                //com.Parameters.AddWithValue("@sdFootExamResult", dia.FootExamResult);//param-
+                //com.Parameters.AddWithValue("@sdBlurredVision", dia.BlurredVision);//param-
                 com.Parameters.AddWithValue("@sdReferralToClinic", dia.ReferralToClinic);//param
                 com.Parameters.AddWithValue("@sdRefNo", dia.ReferralNo);//param
                 com.Parameters.AddWithValue("@sdFamilyMemberWith", dia.FamilyMemberWith);//param
@@ -220,7 +225,7 @@ namespace Impilo_App.Views.Screening
             }
             #endregion
 
-            #region HIV +
+            #region HIV ++
             HIV_Tab hivTab = new HIV_Tab
             {
                 ScreeningID = scrID,
@@ -248,7 +253,7 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@shivOnMeds", hivTab.OnMeds);//param
                 com.Parameters.AddWithValue("@shivAdherenceOK", hivTab.AdherenceOK);//param
                 com.Parameters.AddWithValue("@shivReferToClinic", hivTab.ReferToClinic);//param
-                com.Parameters.AddWithValue("@shivReferralNo", hivTab.ReferralNo);//param
+                com.Parameters.AddWithValue("@shivRefNo", hivTab.ReferralNo);//param
                 com.Parameters.AddWithValue("@shivARVFileNo", hivTab.ARVFileNo);//param
                 com.ExecuteNonQuery();//execute command
             }
@@ -263,7 +268,7 @@ namespace Impilo_App.Views.Screening
             }
             #endregion
 
-            #region Maternal Health +
+            #region Maternal Health ++
 
             MentalHealth materHealth = new MentalHealth {
                 ScreeningID = scrID,
@@ -300,21 +305,23 @@ namespace Impilo_App.Views.Screening
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@EncounterID", materHealth.ScreeningID);//param
                 com.Parameters.AddWithValue("@smhPregnantBefore", materHealth.PregnantBefore);//param
+                com.Parameters.AddWithValue("@smhNoOfPregnancies", materHealth.NoOfPregnancies);//param
                 com.Parameters.AddWithValue("@smhHowManySuccessful", materHealth.HowManySuccessful);//param
-                com.Parameters.AddWithValue("@smhWhereDeliveredLasBaby", materHealth.WhereDeliveredLasBaby);//param
+                com.Parameters.AddWithValue("@smhWhereDeliveredLastBaby", materHealth.WhereDeliveredLasBaby);//param
                 com.Parameters.AddWithValue("@smhCaesarian", materHealth.Caesarian);//param
                 com.Parameters.AddWithValue("@smhBabyUnder2KG", materHealth.BabyUnder2_5Kgs);//param
                 com.Parameters.AddWithValue("@smhChildrenDiedUnder1Year", materHealth.ChildrenDiedUnder1Year);//param
-                com.Parameters.AddWithValue("@smhChildrenDiedBetween1to5Years", materHealth.ChildrenDiedBetween1to5Years);//param
+                com.Parameters.AddWithValue("@smhChildrenDiedBetween1To5Years", materHealth.ChildrenDiedBetween1to5Years);//param
                 com.Parameters.AddWithValue("@smhPAPSmearInLast5Years", materHealth.PAPSmearInLast5Years);//param
                 com.Parameters.AddWithValue("@smhLastBloodTestResult", materHealth.LastBloodTestResult);//param
-                com.Parameters.AddWithValue("@smhDateOfFirstANC", materHealth.DateOfFirstANC);//param
-                com.Parameters.AddWithValue("@smhDateOfLastANC", materHealth.DateOfLastANC);//param
+                com.Parameters.AddWithValue("@smhCurrentDateOfFirstANC", materHealth.DateOfFirstANC);//param
+                com.Parameters.AddWithValue("@smhCurrentDateOfLastANC", materHealth.DateOfLastANC);//param
                 com.Parameters.AddWithValue("@smhReferredToClinic", materHealth.ReferredToClinic);//param
                 com.Parameters.AddWithValue("@smhRefNo", materHealth.ReferralNo);//param
-                com.Parameters.AddWithValue("@smhExpectedDateOfDelivery", materHealth.ExpectedDateOfDelivery);//param
+                com.Parameters.AddWithValue("@smhDateOfNextANC", materHealth.DateOfNextANC);//param
+                com.Parameters.AddWithValue("@smhExpectedDeliveryDate", materHealth.ExpectedDateOfDelivery);//param
                 com.Parameters.AddWithValue("@smhIntendFormulaFeed", materHealth.IntendFormulaFeed);//param
-                com.Parameters.AddWithValue("@smhIntendBreastFeed", materHealth.IntendBreastFeed);//param this could superfluu
+                com.Parameters.AddWithValue("@smhIntendBreastfeed", materHealth.IntendBreastFeed);//param this could superfluu
                 com.Parameters.AddWithValue("@smhRegisteredOnMomConnect", materHealth.RegisteredOnMomConnect);//param
                
 
@@ -332,7 +339,7 @@ namespace Impilo_App.Views.Screening
 
             #endregion
 
-            #region Child Health +-
+            #region Child Health +-+
 
             ChildHealth childh = new ChildHealth {
                 ScreeningID = scrID,
@@ -382,18 +389,18 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@schReferToOVC", childh.ReferToOVC);//param
                 com.Parameters.AddWithValue("@schRefNo2", childh.ReferralNo2);//param
                 com.Parameters.AddWithValue("@schMotherHIVPos", childh.MotherHIVPlus);//param
-                com.Parameters.AddWithValue("@schChildBreastFed", childh.ChildBreastFed);//param
-                com.Parameters.AddWithValue("@schHowlong", childh.Howlong);//param
+                com.Parameters.AddWithValue("@schChildBreastfed", childh.ChildBreastFed);//param
+                com.Parameters.AddWithValue("@schHowLong", childh.Howlong);//param
                 com.Parameters.AddWithValue("@schChildEverOnNevirapine", childh.ChildEverOnNevirapine);//param
                 com.Parameters.AddWithValue("@schPCRDone", childh.PCRDone);//param
-                com.Parameters.AddWithValue("@schPCRResults", childh.PCRResults);//param
+                com.Parameters.AddWithValue("@schPCRResult", childh.PCRResults);//param
                 com.Parameters.AddWithValue("@schReferToClinic3", childh.ReferToClinic3);//param
                 com.Parameters.AddWithValue("@schRefNo3", childh.ReferalNo3);//param
                 com.Parameters.AddWithValue("@schImmunisationUpToDate", childh.ImmunisationUpToDate);//param
                 com.Parameters.AddWithValue("@WhichImmunisatationsOutStanding", childh.WhichImmunisatationsOutStanding);//param
                 com.Parameters.AddWithValue("@schReferToClinic4", childh.ReferToClinic4);//param
-                com.Parameters.AddWithValue("@schReferralNo4", childh.ReferralNo4);//param
-                com.Parameters.AddWithValue("@schVITAandWormMedsGivenEachMonth", childh.VITAandWarmMedsGivenEachMonth);//param
+                com.Parameters.AddWithValue("@schRefNo4", childh.ReferralNo4);//param
+                com.Parameters.AddWithValue("@schVitAAndWormMedsGivenEachMonth", childh.VITAandWarmMedsGivenEachMonth);//param
                 com.Parameters.AddWithValue("@schWalkAppropriateForAge", childh.WalkAppropriateForAge);//param
                 com.Parameters.AddWithValue("@schTalkAppropriateForAge", childh.TalkAppropriateForAge);//param
                 
@@ -413,7 +420,7 @@ namespace Impilo_App.Views.Screening
             #endregion
 
             //start of general
-            #region General
+            #region General +-
 
             #region Measurement
             General genMeasurement = new General
@@ -455,25 +462,23 @@ namespace Impilo_App.Views.Screening
            
             List<CurrentMedications> medsList = new List<CurrentMedications>();
 
-            if (radOnMedsHPT.IsChecked == true)
-            { 
+            
             CurrentMedications curhpt = new CurrentMedications {
                 ScreeningID = scrID,
                 DiseaseID =1,
                 StartDate = (DateTime)txtDateNextANC.SelectedDate,
                 Defaulting = false,
                 ReferToClinic=false,
-                ReferralID= ""
+                ReferralNo= ""
 
 
             };
 
-            medsList.Add(curhpt);
-            }
+           // medsList.Add(curhpt);
+            
 
             //epilepsy
-            if (radOnMedsEpi.IsChecked == true)
-            { 
+            
             CurrentMedications curEpi = new CurrentMedications
             {
                 ScreeningID = scrID,
@@ -481,16 +486,15 @@ namespace Impilo_App.Views.Screening
                 StartDate = (DateTime)txtDateNextANC.SelectedDate,
                 Defaulting = false,
                 ReferToClinic = false,
-                ReferralID = ""
+                ReferralNo = ""
 
 
             };
-            medsList.Add(curEpi);
-            }
+          //  medsList.Add(curEpi);
+            
 
             //Diabetes
-            if (radOnMedsDia.IsChecked == true)
-            {
+           
             CurrentMedications curDiabetes = new CurrentMedications
             {
                 ScreeningID = scrID,
@@ -498,15 +502,14 @@ namespace Impilo_App.Views.Screening
                 StartDate = (DateTime)txtDateNextANC.SelectedDate,
                 Defaulting = false,
                 ReferToClinic = false,
-                ReferralID = ""
+                ReferralNo = ""
 
 
             };
-            medsList.Add(curDiabetes);
-            }
+           // medsList.Add(curDiabetes);
+           
             //Asthma
-            if (radOnMedsAsth.IsChecked == true)
-            { 
+          
             CurrentMedications curAsthma = new CurrentMedications
             {
                 ScreeningID = scrID,
@@ -514,16 +517,15 @@ namespace Impilo_App.Views.Screening
                 StartDate = (DateTime)txtDateNextANC.SelectedDate,
                 Defaulting = false,
                 ReferToClinic = false,
-                ReferralID = ""
+                ReferralNo = ""
 
 
             };
-            medsList.Add(curAsthma);
-            }
+           // medsList.Add(curAsthma);
+           
 
             //oral thrush
-            if (radOnMedsHPT.IsChecked == true)
-            { 
+            
             CurrentMedications curOther = new CurrentMedications
             {
                 ScreeningID = scrID,
@@ -531,46 +533,46 @@ namespace Impilo_App.Views.Screening
                 StartDate = (DateTime)txtDateNextANC.SelectedDate,
                 Defaulting = false,
                 ReferToClinic = false,
-                ReferralID = ""
+                ReferralNo = ""
 
 
             };
-            }
 
-            if (medsList.Count >1)
-            {
-                foreach (var meds in medsList)
-                {
-                    try
-                    {
-                        storedProcedure = "";// name of sp
-                        conn.Open();
-                        SqlCommand com = new SqlCommand(storedProcedure, conn);
-                        com.CommandType = CommandType.StoredProcedure;
-                        com.Parameters.AddWithValue("@", meds.ScreeningID);//param
-                        com.Parameters.AddWithValue("@", meds.DiseaseID);//param
-                        com.Parameters.AddWithValue("@", meds.StartDate);//param
-                        com.Parameters.AddWithValue("@", meds.Defaulting);//param
-                        com.Parameters.AddWithValue("@", meds.ReferToClinic);//param
-                        com.Parameters.AddWithValue("@", meds.ReferralID);//param
+            #region commented
+            //if (medsList.Count >1)
+            //{
+            //    foreach (var meds in medsList)
+            //    {
+            //        try
+            //        {
+            //            storedProcedure = "";// name of sp
+            //            conn.Open();
+            //            SqlCommand com = new SqlCommand(storedProcedure, conn);
+            //            com.CommandType = CommandType.StoredProcedure;
+            //            com.Parameters.AddWithValue("@", meds.ScreeningID);//param
+            //            com.Parameters.AddWithValue("@", meds.DiseaseID);//param
+            //            com.Parameters.AddWithValue("@", meds.StartDate);//param
+            //            com.Parameters.AddWithValue("@", meds.Defaulting);//param
+            //            com.Parameters.AddWithValue("@", meds.ReferToClinic);//param
+            //            com.Parameters.AddWithValue("@", meds.ReferralID);//param
                        
-                        com.ExecuteNonQuery();//execute command
-                    }
-                    catch (Exception ex)
-                    {
+            //            com.ExecuteNonQuery();//execute command
+            //        }
+            //        catch (Exception ex)
+            //        {
 
-                        MessageBox.Show(ex.Message.ToString());
-                    }
-                    finally
-                    {
-                        conn.Close();
-                    }
-                }
-            }
+            //            MessageBox.Show(ex.Message.ToString());
+            //        }
+            //        finally
+            //        {
+            //            conn.Close();
+            //        }
+            //    }
+            //}
 
             //sp place
             //connection
-            
+            #endregion
 
             #endregion
 
@@ -587,29 +589,29 @@ namespace Impilo_App.Views.Screening
             };
             //sp place
             //connection
-            try
-            {
-                storedProcedure = "";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ScreeningID", bpr.ScreeningID);//param
-                com.Parameters.AddWithValue("@", bpr.Systolic);//param
-                com.Parameters.AddWithValue("@", bpr.Diastolic);//param
-                com.Parameters.AddWithValue("@", bpr.ReferToCHOWs);//param
-                com.Parameters.AddWithValue("@", bpr.ReferToClinic);//param
-                com.Parameters.AddWithValue("@", bpr.ReferralNo);//param
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    storedProcedure = "";// name of sp
+            //    conn.Open();
+            //    SqlCommand com = new SqlCommand(storedProcedure, conn);
+            //    com.CommandType = CommandType.StoredProcedure;
+            //    com.Parameters.AddWithValue("@ScreeningID", bpr.ScreeningID);//param
+            //    com.Parameters.AddWithValue("@", bpr.Systolic);//param
+            //    com.Parameters.AddWithValue("@", bpr.Diastolic);//param
+            //    com.Parameters.AddWithValue("@", bpr.ReferToCHOWs);//param
+            //    com.Parameters.AddWithValue("@", bpr.ReferToClinic);//param
+            //    com.Parameters.AddWithValue("@", bpr.ReferralNo);//param
+            //    com.ExecuteNonQuery();//execute command
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
 
             //Blood sugar
             BloodSuger bs = new BloodSuger {
@@ -624,29 +626,29 @@ namespace Impilo_App.Views.Screening
             };
             //sp place
             //connection
-            try
-            {
-                storedProcedure = "";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ScreeningID", bs.ScreeningID);//param
-                com.Parameters.AddWithValue("@", bs.OnMeds);//param
-                com.Parameters.AddWithValue("@", bs.NotOnMedsBSReadings);//param
-                com.Parameters.AddWithValue("@", bs.ReferToCHOWs);//param
-                com.Parameters.AddWithValue("@", bs.ReferToClinic);//param
-                com.Parameters.AddWithValue("@", bs.ReferralNo);//param
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    storedProcedure = "";// name of sp
+            //    conn.Open();
+            //    SqlCommand com = new SqlCommand(storedProcedure, conn);
+            //    com.CommandType = CommandType.StoredProcedure;
+            //    com.Parameters.AddWithValue("@ScreeningID", bs.ScreeningID);//param
+            //    com.Parameters.AddWithValue("@", bs.OnMeds);//param
+            //    com.Parameters.AddWithValue("@", bs.NotOnMedsBSReadings);//param
+            //    com.Parameters.AddWithValue("@", bs.ReferToCHOWs);//param
+            //    com.Parameters.AddWithValue("@", bs.ReferToClinic);//param
+            //    com.Parameters.AddWithValue("@", bs.ReferralNo);//param
+            //    com.ExecuteNonQuery();//execute command
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
 
             //Epilepsy
             Epilepsy ep = new Epilepsy {
@@ -658,27 +660,27 @@ namespace Impilo_App.Views.Screening
 
             //sp place
             //connection
-            try
-            {
-                storedProcedure = "";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ScreeningID", ep.ScreeningID);//param
-                com.Parameters.AddWithValue("@", ep.FitsInLastMonth);//param
-                com.Parameters.AddWithValue("@", ep.ReferToClinic);//param
-                com.Parameters.AddWithValue("@", ep.ReferralNo);//param
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    storedProcedure = "";// name of sp
+            //    conn.Open();
+            //    SqlCommand com = new SqlCommand(storedProcedure, conn);
+            //    com.CommandType = CommandType.StoredProcedure;
+            //    com.Parameters.AddWithValue("@ScreeningID", ep.ScreeningID);//param
+            //    com.Parameters.AddWithValue("@", ep.FitsInLastMonth);//param
+            //    com.Parameters.AddWithValue("@", ep.ReferToClinic);//param
+            //    com.Parameters.AddWithValue("@", ep.ReferralNo);//param
+            //    com.ExecuteNonQuery();//execute command
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
 
             //HIV
             HIV hiv = new HIV {
@@ -692,29 +694,29 @@ namespace Impilo_App.Views.Screening
 
             //sp place
             //connection
-            try
-            {
-                storedProcedure = "AddHIV";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ScreeningID", hiv.ScreeningID);//param
-                com.Parameters.AddWithValue("@KnownHIVPosStatus", hiv.KnownHIVPosStatus);//param
-                com.Parameters.AddWithValue("@HIVTestDone", hiv.HIVTestDone);//param
-                com.Parameters.AddWithValue("@Result", hiv.Result);//param
-                com.Parameters.AddWithValue("@ReferToClinic", hiv.ReferToClinic);//param
-                com.Parameters.AddWithValue("@ReferralNo", hiv.ReferralNo);//param
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    storedProcedure = "AddHIV";// name of sp
+            //    conn.Open();
+            //    SqlCommand com = new SqlCommand(storedProcedure, conn);
+            //    com.CommandType = CommandType.StoredProcedure;
+            //    com.Parameters.AddWithValue("@ScreeningID", hiv.ScreeningID);//param
+            //    com.Parameters.AddWithValue("@KnownHIVPosStatus", hiv.KnownHIVPosStatus);//param
+            //    com.Parameters.AddWithValue("@HIVTestDone", hiv.HIVTestDone);//param
+            //    com.Parameters.AddWithValue("@Result", hiv.Result);//param
+            //    com.Parameters.AddWithValue("@ReferToClinic", hiv.ReferToClinic);//param
+            //    com.Parameters.AddWithValue("@ReferralNo", hiv.ReferralNo);//param
+            //    com.ExecuteNonQuery();//execute command
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
 
             //Pregnancy
             Pregnancy preg = new Pregnancy {
@@ -728,30 +730,30 @@ namespace Impilo_App.Views.Screening
 
             //sp place
             //connection
-            try
-            {
-                storedProcedure = "";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ScreeningID", preg.ScreeningID);//param
-                com.Parameters.AddWithValue("@", preg.ScreeningID);//param
-                com.Parameters.AddWithValue("@", preg.ScreeningID);//param
-                com.Parameters.AddWithValue("@", preg.ScreeningID);//param
-                com.Parameters.AddWithValue("@", preg.ScreeningID);//param
-                com.Parameters.AddWithValue("@", preg.ScreeningID);//param
+            //try
+            //{
+            //    storedProcedure = "";// name of sp
+            //    conn.Open();
+            //    SqlCommand com = new SqlCommand(storedProcedure, conn);
+            //    com.CommandType = CommandType.StoredProcedure;
+            //    com.Parameters.AddWithValue("@ScreeningID", preg.ScreeningID);//param
+            //    com.Parameters.AddWithValue("@", preg.CurrentlyPregnant);//param
+            //    com.Parameters.AddWithValue("@", preg.PregnancyTestDone);//param
+            //    com.Parameters.AddWithValue("@", preg.Results);//param
+            //    com.Parameters.AddWithValue("@", preg.ReferToClinic);//param
+            //    com.Parameters.AddWithValue("@", preg.ReferralNo);//param
                
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
+            //    com.ExecuteNonQuery();//execute command
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
 
             #endregion
 
@@ -782,37 +784,37 @@ namespace Impilo_App.Views.Screening
 
             //sp place
             //connection
-            try
-            {
-                storedProcedure = "";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ScreeningID", tb.ScreeningID);//param
-                com.Parameters.AddWithValue("@", tb.HaveTubercolosis);//param
-                com.Parameters.AddWithValue("@", tb.WhatMedsAreYouOn);//param
-                com.Parameters.AddWithValue("@", tb.Defaulting);//param
-                com.Parameters.AddWithValue("@", tb.LossWeight);//param
-                com.Parameters.AddWithValue("@", tb.SweatingAtNight);//param
-                com.Parameters.AddWithValue("@", tb.FeverOver2Weeks);//param
-                com.Parameters.AddWithValue("@", tb.CoughMoreThan2Weeks);//param
-                com.Parameters.AddWithValue("@", tb.LossOfApetite);//param
-                com.Parameters.AddWithValue("@", tb.ReferToClinic);//param
-                com.Parameters.AddWithValue("@", tb.ReferralNo);//param
-                com.Parameters.AddWithValue("@", tb.HouseholdMemberONTBMeds);//param
+            //try
+            //{
+            //    storedProcedure = "";// name of sp
+            //    conn.Open();
+            //    SqlCommand com = new SqlCommand(storedProcedure, conn);
+            //    com.CommandType = CommandType.StoredProcedure;
+            //    com.Parameters.AddWithValue("@ScreeningID", tb.ScreeningID);//param
+            //    com.Parameters.AddWithValue("@", tb.HaveTubercolosis);//param
+            //    com.Parameters.AddWithValue("@", tb.WhatMedsAreYouOn);//param
+            //    com.Parameters.AddWithValue("@", tb.Defaulting);//param
+            //    com.Parameters.AddWithValue("@", tb.LossWeight);//param
+            //    com.Parameters.AddWithValue("@", tb.SweatingAtNight);//param
+            //    com.Parameters.AddWithValue("@", tb.FeverOver2Weeks);//param
+            //    com.Parameters.AddWithValue("@", tb.CoughMoreThan2Weeks);//param
+            //    com.Parameters.AddWithValue("@", tb.LossOfApetite);//param
+            //    com.Parameters.AddWithValue("@", tb.ReferToClinic);//param
+            //    com.Parameters.AddWithValue("@", tb.ReferralNo);//param
+            //    com.Parameters.AddWithValue("@", tb.HouseholdMemberONTBMeds);//param
                 
 
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
+            //    com.ExecuteNonQuery();//execute command
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
             #endregion
 
 
@@ -841,42 +843,42 @@ namespace Impilo_App.Views.Screening
 
             //sp place
             //connection
-            try
-            {
-                storedProcedure = "";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ScreeningID", otc.ScreeningID);//param
-                com.Parameters.AddWithValue("@", otc.BloodInUrine);//param
-                com.Parameters.AddWithValue("@", otc.ReferToClinic);//param
-                com.Parameters.AddWithValue("@", otc.ReferralNo);//param
-                com.Parameters.AddWithValue("@", otc.Smoking);//param
-                com.Parameters.AddWithValue("@", otc.Drinking);//param
-                com.Parameters.AddWithValue("@", otc.DrinkAlchoholUnitsPerWeek);//param
-                com.Parameters.AddWithValue("@", otc.DiarrhoeaOver3Days);//param
-                com.Parameters.AddWithValue("@", otc.ReferToClinic2);//param
-                com.Parameters.AddWithValue("@", otc.AttendedInitiationSchool);//param
-                com.Parameters.AddWithValue("@", otc.LagCrampsOver2Weeks);//param
-                com.Parameters.AddWithValue("@", otc.LagNumbnessOver2Weeks);//param
-                com.Parameters.AddWithValue("@", otc.FootUlcer);//param
-                com.Parameters.AddWithValue("@", otc.ReferToClinic3);//param
-                com.Parameters.AddWithValue("@", otc.FamilyPlanningAdvice);//param
-                com.Parameters.AddWithValue("@", otc.ReferralNo2);//param
+            //try
+            //{
+            //    storedProcedure = "";// name of sp
+            //    conn.Open();
+            //    SqlCommand com = new SqlCommand(storedProcedure, conn);
+            //    com.CommandType = CommandType.StoredProcedure;
+            //    com.Parameters.AddWithValue("@ScreeningID", otc.ScreeningID);//param
+            //    com.Parameters.AddWithValue("@", otc.BloodInUrine);//param
+            //    com.Parameters.AddWithValue("@", otc.ReferToClinic);//param
+            //    com.Parameters.AddWithValue("@", otc.ReferralNo);//param
+            //    com.Parameters.AddWithValue("@", otc.Smoking);//param
+            //    com.Parameters.AddWithValue("@", otc.Drinking);//param
+            //    com.Parameters.AddWithValue("@", otc.DrinkAlchoholUnitsPerWeek);//param
+            //    com.Parameters.AddWithValue("@", otc.DiarrhoeaOver3Days);//param
+            //    com.Parameters.AddWithValue("@", otc.ReferToClinic2);//param
+            //    com.Parameters.AddWithValue("@", otc.AttendedInitiationSchool);//param
+            //    com.Parameters.AddWithValue("@", otc.LagCrampsOver2Weeks);//param
+            //    com.Parameters.AddWithValue("@", otc.LagNumbnessOver2Weeks);//param
+            //    com.Parameters.AddWithValue("@", otc.FootUlcer);//param
+            //    com.Parameters.AddWithValue("@", otc.ReferToClinic3);//param
+            //    com.Parameters.AddWithValue("@", otc.FamilyPlanningAdvice);//param
+            //    com.Parameters.AddWithValue("@", otc.ReferralNo2);//param
 
-                com.Parameters.AddWithValue("@", otc.ReferalNo3);//param
+            //    com.Parameters.AddWithValue("@", otc.ReferalNo3);//param
                 
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
+            //    com.ExecuteNonQuery();//execute command
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
             
             ElderlyCareAssessment eld = new ElderlyCareAssessment {
                  ScreeningID = scrID,
@@ -894,21 +896,168 @@ namespace Impilo_App.Views.Screening
 
             //sp place
             //connection
+            //try
+            //{
+            //    storedProcedure = "";// name of sp
+            //    conn.Open();
+            //    SqlCommand com = new SqlCommand(storedProcedure, conn);
+            //    com.CommandType = CommandType.StoredProcedure;
+            //    com.Parameters.AddWithValue("@", eld.ScreeningID);//param
+            //    com.Parameters.AddWithValue("@", eld.LegFootArmHanAmputation);//param
+            //    com.Parameters.AddWithValue("@", eld.Bedridden);//param
+            //    com.Parameters.AddWithValue("@", eld.UseAidToMove);//param
+            //    com.Parameters.AddWithValue("@", eld.WashYourself);//param
+            //    com.Parameters.AddWithValue("@", eld.FeedYourSelf);//param
+            //    com.Parameters.AddWithValue("@", eld.DressYourSelf);//param
+            //    com.Parameters.AddWithValue("@", eld.ReferToClinic);//param
+            //    com.Parameters.AddWithValue("@", eld.ReferralNo);//param
+            //    com.ExecuteNonQuery();//execute command
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
+
+            #endregion
+
+
+
+
+            //sp place this is a massive store pro cross finger
+            //connection
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddScreeningGeneral";// name of sp
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@", eld.ScreeningID);//param
-                com.Parameters.AddWithValue("@", eld.LegFootArmHanAmputation);//param
-                com.Parameters.AddWithValue("@", eld.Bedridden);//param
-                com.Parameters.AddWithValue("@", eld.UseAidToMove);//param
-                com.Parameters.AddWithValue("@", eld.WashYourself);//param
-                com.Parameters.AddWithValue("@", eld.FeedYourSelf);//param
-                com.Parameters.AddWithValue("@", eld.DressYourSelf);//param
-                com.Parameters.AddWithValue("@", eld.ReferToClinic);//param
-                com.Parameters.AddWithValue("@", eld.ReferralNo);//param
+                //measurement+
+                com.Parameters.AddWithValue("@EncounterID", genMeasurement.ScreeningID);//param
+                com.Parameters.AddWithValue("@sgWeight", genMeasurement.Weight);//param
+                com.Parameters.AddWithValue("@sgHeight", genMeasurement.Height);//param
+                com.Parameters.AddWithValue("@sgBMI", genMeasurement.BMI);//param
+             
+                //Current Medication HPT+
+                com.Parameters.AddWithValue("@sgOnMeds", curhpt.OnMeds);//param
+                com.Parameters.AddWithValue("@sgNotOnMeds", curhpt.OnMeds);//param
+                com.Parameters.AddWithValue("@sgHypertension", curhpt.IsSick);//param
+                com.Parameters.AddWithValue("@sgHypertensionStartDate", curhpt.StartDate);//param
+                com.Parameters.AddWithValue("@sgHypertensionDefaulting", curhpt.Defaulting);//param
+                com.Parameters.AddWithValue("@sgHypertensionReferToClinic", curhpt.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgHypertensionRefNo", curhpt.ReferralNo);//param
+
+                    //Diabetes+
+                com.Parameters.AddWithValue("@sgDiabetes", curDiabetes.IsSick);//param
+                com.Parameters.AddWithValue("@sgDiabetesStartDate", curDiabetes.StartDate);//param
+                com.Parameters.AddWithValue("@sgDiabetesDefaulting", curDiabetes.Defaulting);//param
+                com.Parameters.AddWithValue("@sgDiabetesReferToClinic", curDiabetes.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgDiabetesRefNo", curDiabetes.ReferralNo);//param
+
+                    //Epilepsy+
+                com.Parameters.AddWithValue("@sgEpilepsy", curEpi.IsSick);//param
+                com.Parameters.AddWithValue("@sgEpilepsyStartDate", curEpi.StartDate);//param
+                com.Parameters.AddWithValue("@sgEpilepsyDefaulting", curEpi.Defaulting);//param
+                com.Parameters.AddWithValue("@sgEpilepsyReferToClinic", curEpi.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgEpilepsyRefNo", curEpi.ReferralNo);//param
+
+                    //Asthma +   
+                com.Parameters.AddWithValue("@sgAsthma", curAsthma.IsSick);//param
+                com.Parameters.AddWithValue("@sgAsthmaStartDate", curAsthma.StartDate);//param
+                com.Parameters.AddWithValue("@sgAsthmaDefaulting", curAsthma.Defaulting);//param
+                com.Parameters.AddWithValue("@sgAsthmaReferToClinic", curAsthma.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgAsthmaRefNo", curAsthma.ReferralNo);//param
+
+                     //Other   +
+                com.Parameters.AddWithValue("@sgOther", curOther.IsSick);//param
+                com.Parameters.AddWithValue("@sgOtherStartDate", curOther.StartDate);//param
+                com.Parameters.AddWithValue("@sgOtherDefaulting", curOther.Defaulting);//param
+                com.Parameters.AddWithValue("@sgOtherReferToClinic", curOther.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgOtherRefNo", curOther.ReferralNo);//param
+              
+                //Current Condition
+                        //Bp Reading+-
+                com.Parameters.AddWithValue("@sgBPOnMedsSystolic", bpr.Systolic);//param
+                com.Parameters.AddWithValue("@sgBPOnMedsDiastolic", bpr.Diastolic);//param
+                com.Parameters.AddWithValue("@sgBPNotOnMedsSystolic", bpr.Systolic);//param-
+                com.Parameters.AddWithValue("@sgBPNotOnMedsDiastolic", bpr.Diastolic);//param-
+                com.Parameters.AddWithValue("@sgBPReferToCHOW", bpr.ReferToCHOWs);//param
+                com.Parameters.AddWithValue("@sgBPReferToClinic", bpr.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgBPRefNo", bpr.ReferralNo);//param
+                        //Blood Sugar Reading+
+                com.Parameters.AddWithValue("@sgBSOnMeds", bs.OnMeds);//param
+                com.Parameters.AddWithValue("@sgBSNotOnMedsBSReading", bs.NotOnMedsBSReadings);//param
+                com.Parameters.AddWithValue("@sgBSReferToChow", bs.ReferToCHOWs);//param
+                com.Parameters.AddWithValue("@sgBSReferToClinic", bs.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgBSRefNo", bs.ReferralNo);//param
+                        //Epilepsy+
+                com.Parameters.AddWithValue("@sgEpilepsyFitsInLastMonth", ep.FitsInLastMonth);//param
+                com.Parameters.AddWithValue("@sgEpilepsyReferToClinic2", ep.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgEpilepsyRefNo2", ep.ReferralNo);//param
+                     //HIV+-
+                com.Parameters.AddWithValue("@sgHIVKnownPosStatus", hiv.KnownHIVPosStatus);//param
+                com.Parameters.AddWithValue("@sgHIVKnownNegStatus", hiv.KnownHIVPosStatus);//param-
+                com.Parameters.AddWithValue("@sgHIVTestDone", hiv.HIVTestDone);//param
+                com.Parameters.AddWithValue("@sgHIVResult", hiv.Result);//param
+                com.Parameters.AddWithValue("@sgHIVReferToClinic", hiv.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgHIVRefNo", hiv.ReferralNo);//param
+                    //Pregnacy+-
+                com.Parameters.AddWithValue("@sgPregnancyCurrentlyPregnant", preg.CurrentlyPregnant);//param
+                com.Parameters.AddWithValue("@sgPregnancyPossibleThatPregnant", preg.CurrentlyPregnant);//param-
+                com.Parameters.AddWithValue("@sgPregnancyTestDone", preg.PregnancyTestDone);//param
+                com.Parameters.AddWithValue("@sgPregnancyResult", preg.Results);//param
+                com.Parameters.AddWithValue("@sgPregnancyReferToClinic", preg.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgPregancyRefNo", preg.ReferralNo);//param
+                    //Tuberculosis+-
+                com.Parameters.AddWithValue("@sgTBCurrentlyHaveTB", tb.HaveTubercolosis);//param
+                //com.Parameters.AddWithValue("@", tb.WhatMedsAreYouOn);//param
+                com.Parameters.AddWithValue("@sgTBDefaulting", tb.Defaulting);//param
+                com.Parameters.AddWithValue("@sgTBRecentUnplannedWeightLoss", tb.LossWeight);//param
+                com.Parameters.AddWithValue("@sgTBExcessiveSweatingAtNight", tb.SweatingAtNight);//param
+                com.Parameters.AddWithValue("@sgTBFeverOver2Weeks", tb.FeverOver2Weeks);//param
+                com.Parameters.AddWithValue("@sgTBCoughMoreThan2Weeks", tb.CoughMoreThan2Weeks);//param
+                com.Parameters.AddWithValue("@sgTBLossOfApetite", tb.LossOfApetite);//param
+                com.Parameters.AddWithValue("@sgTBReferToClinic", tb.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgTBRefNo", tb.ReferralNo);//param
+              //  com.Parameters.AddWithValue("@", tb.HouseholdMemberONTBMeds);//param
+
+                com.Parameters.AddWithValue("@sgTBContactTracingHouseholdMemberOnMeds", tbc.HouseHoldOnTBMeds);//param
+                com.Parameters.AddWithValue("@sgTBContactTracingReferToClinic", tbc.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgTBContactTracingRefNo", tbc.ReferralNo);//param
+
+                //other+-
+                com.Parameters.AddWithValue("@sgOtherBloodInUrine", otc.BloodInUrine);//param
+                com.Parameters.AddWithValue("@sgOtherReferToClinic2", otc.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgOtherRefNo2", otc.ReferralNo);//param
+                com.Parameters.AddWithValue("@sgOtherSmoking", otc.Smoking);//param
+              //  com.Parameters.AddWithValue("@sgOtherAlcoholUnitsPerWeek", otc.Drinking);//param
+                com.Parameters.AddWithValue("@sgOtherAlcoholUnitsPerWeek", otc.DrinkAlchoholUnitsPerWeek);//param
+                com.Parameters.AddWithValue("@sgOtherDiarrhoeaOver3Days", otc.DiarrhoeaOver3Days);//param
+                com.Parameters.AddWithValue("@sgOtherReferToClinic3", otc.ReferToClinic2);//param
+                com.Parameters.AddWithValue("@sgOtherRefNo3", otc.ReferralNo2);//param
+                com.Parameters.AddWithValue("@sgOtherAttendedInitiationSchool", otc.AttendedInitiationSchool);//param
+                com.Parameters.AddWithValue("@sgOtherLegCrampsOver2Weeks", otc.LagCrampsOver2Weeks);//param
+                com.Parameters.AddWithValue("@sgOtherLegNumbnessOver2Weeks", otc.LagNumbnessOver2Weeks);//param
+                com.Parameters.AddWithValue("@sgOtherFootUlcer", otc.FootUlcer);//param
+                com.Parameters.AddWithValue("@sgOtherReferToClinic4", otc.ReferToClinic3);//param
+                com.Parameters.AddWithValue("@sgFamilyPlanningAdviceGiven", otc.FamilyPlanningAdvice);//param
+                com.Parameters.AddWithValue("@sgOtherRefNo4", otc.ReferalNo3);//param
+
+                //Eldery+
+                com.Parameters.AddWithValue("@sgElderlyAmputation", eld.LegFootArmHanAmputation);//param
+                com.Parameters.AddWithValue("@sgElderlyBedridden", eld.Bedridden);//param
+                com.Parameters.AddWithValue("@sgElderlyUseAidToMove", eld.UseAidToMove);//param
+                com.Parameters.AddWithValue("@sgElderlyWashYourself", eld.WashYourself);//param
+                com.Parameters.AddWithValue("@sgElderlyFeedYourself", eld.FeedYourSelf);//param
+                com.Parameters.AddWithValue("@sgElderlyDressYourself", eld.DressYourSelf);//param
+                com.Parameters.AddWithValue("@sgElderlyReferToClinic", eld.ReferToClinic);//param
+                com.Parameters.AddWithValue("@sgElderlyRefNo", eld.ReferralNo);//param
+
+                //Fiiirrred
                 com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
@@ -920,14 +1069,13 @@ namespace Impilo_App.Views.Screening
             {
                 conn.Close();
             }
-
-            #endregion
+           
 
             #endregion
 
             //end of general
 
-            #region otherTab
+            #region otherTab +
 
             Other_Tab ottab = new Other_Tab {
                 ScreeningID = scrID,
@@ -942,14 +1090,14 @@ namespace Impilo_App.Views.Screening
             //connection
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddScreeningOther";// name of sp
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ScreeningID", ottab.ScreeningID);//param
-                com.Parameters.AddWithValue("@", ottab.ReferToClinic);//param
-                com.Parameters.AddWithValue("@", ottab.ReferralNo);//param
-                com.Parameters.AddWithValue("@", ottab.OtherConditionFound);//param
+                com.Parameters.AddWithValue("@EncounterID", ottab.ScreeningID);//param
+                com.Parameters.AddWithValue("@schReferredToClinic", ottab.ReferToClinic);//param
+                com.Parameters.AddWithValue("@schRefNo", ottab.ReferralNo);//param
+                com.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", ottab.OtherConditionFound);//param
                 com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
@@ -963,52 +1111,31 @@ namespace Impilo_App.Views.Screening
             }
             #endregion
 
-            #region Environmental
+            #region Environmental +-
+
             Environmental environment = new Environmental();
             environment.ScreeningId = scrID;
-            environment.NoOfHouseholdCurrent = int.Parse(txtCurrentHousehold.Text);
-            environment.NoOfHouseholdAway = int.Parse(txtAwayHousehold.Text);
-            environment.ListWhere = ((ComboBoxItem)cboListWhere.SelectedItem).Content.ToString();
-            environment.WhenLastClinicVisit = DateTime.Parse(((ComboBoxItem)cboLastVisit.SelectedItem).Content.ToString());
+            environment.NoOfHouseholdCurrent = int.Parse(numCurrentHousehold.Text);
+            environment.NoOfHouseholdAway = int.Parse(numAwayHousehold.Text);
+            environment.ListWhere = ((ComboBoxItem)cboListWhere.SelectedItem).Content.ToString(); //----ListWhere missing from the db
+            environment.WhenLastClinicVisit = ((ComboBoxItem)cboLastVisit.SelectedItem).Content.ToString();
             environment.WhichClinic = int.Parse(((ComboBoxItem)cboClinic.SelectedItem).Content.ToString());
 
-            try
-            {
-                storedProcedure = "";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-
-                com.Parameters.AddWithValue("@", environment.ScreeningId);//param
-
-                com.ExecuteNonQuery();//execute command
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-
-            finally
-            {
-                conn.Close();
-            }
-
-
-
+           
             EnvironmentalExtra environmentExtra = new EnvironmentalExtra();
             environmentExtra.ScreeningID = scrID;
             environmentExtra.NoOfPeopleInOneRoomMainHut = int.Parse(((ComboBoxItem)cboNoPeople.SelectedItem).Content.ToString());
             environmentExtra.NoOfStructuresInHomeStead = int.Parse(((ComboBoxItem)cboNoStructure.SelectedItem).Content.ToString());
             environmentExtra.RainWaterCollection = (rdoYesRain.IsChecked == true) ? true : false;
             environmentExtra.WaterSupply = ((ComboBoxItem)cboWaterSupply.SelectedItem).Content.ToString();
-            //environmentExtra.WalkingDistanceFromWhaterSupply = txtDistanceFrmWater.Text;
-            environmentExtra.TreatWaterBeforeDrinking = (rdoYesRain.IsChecked == true) ? true : false;
+           environmentExtra.WalkingDistanceFromWhaterSupply = ((ComboBoxItem)cboWalkingDistanceWater.SelectedItem).Content.ToString();
+            environmentExtra.TreatWaterBeforeDrinking = (rdoTreatWater.IsChecked == true) ? true : false;
             environmentExtra.ElectricityInAnyHut = (rdoElectricityYes.IsChecked == true) ? true : false;
             environmentExtra.HaveWorkingFridge = (rdoYesFridge.IsChecked == true) ? true : false;
             environmentExtra.UseForCooking = ((ComboBoxItem)cboUseForCooking.SelectedItem).Content.ToString();
             environmentExtra.TypeOfToilet = ((ComboBoxItem)cboTypeOfToilet.SelectedItem).Content.ToString();
             environmentExtra.DisposeWaste = ((ComboBoxItem)cboDisposeWaste.SelectedItem).Content.ToString();
-            environmentExtra.SourceOfIncome = ((ComboBoxItem)cboSourceOfIncome.SelectedItem).Content.ToString();
+            environmentExtra.SourceOfIncome = ((ComboBoxItem)cboSourceOfIncome.SelectedItem).Content.ToString(); //----SourceOfIncome missing from the db
             environmentExtra.RecievedFoodPacelIn6Month = (cboFoodParcel.IsChecked == true) ? true : false;
 
             try
@@ -1016,8 +1143,28 @@ namespace Impilo_App.Views.Screening
                 storedProcedure = "";// name of sp
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
 
-                com.Parameters.AddWithValue("@", environmentExtra.ScreeningID);//param
+                com.Parameters.AddWithValue("@EncounterID", environment.ScreeningId);//param
+                com.Parameters.AddWithValue("@seNoPeopleInHousehold", environment.NoOfHouseholdCurrent);//param
+                com.Parameters.AddWithValue("@seNoLivingAwayFromHousehold", environment.NoOfHouseholdAway);//param
+                com.Parameters.AddWithValue("@seWhenDidYouOrMemberLastVisit", environment.WhenLastClinicVisit);//param
+                com.Parameters.AddWithValue("@cID", environment.WhichClinic);//param
+
+                com.Parameters.AddWithValue("@seTotalNumberSleepingInOneRoomInMainHut", environmentExtra.NoOfPeopleInOneRoomMainHut);//param
+                com.Parameters.AddWithValue("@seTotalNoStructures", environmentExtra.NoOfStructuresInHomeStead);//param
+                com.Parameters.AddWithValue("@seRainWaterCollection", environmentExtra.RainWaterCollection);//param
+                com.Parameters.AddWithValue("@seWaterSupply", environmentExtra.WaterSupply);//param
+                com.Parameters.AddWithValue("@seWatlkingDistanceFromWaterSupply", environmentExtra.WalkingDistanceFromWhaterSupply);//param
+                com.Parameters.AddWithValue("@seTreatWaterBeforeDrinking", environmentExtra.TreatWaterBeforeDrinking);//param
+                com.Parameters.AddWithValue("@seElectricityInAnyHut", environmentExtra.ElectricityInAnyHut);//param
+                com.Parameters.AddWithValue("@seWorkingFridge", environmentExtra.HaveWorkingFridge);//param
+                com.Parameters.AddWithValue("@seCookingMethod", environmentExtra.UseForCooking);//param
+                com.Parameters.AddWithValue("@seToiletType", environmentExtra.TypeOfToilet);//param
+                com.Parameters.AddWithValue("@seWasteDisposalType", environmentExtra.DisposeWaste);//param
+               // com.Parameters.AddWithValue("@seSourceOfIncome", environmentExtra.SourceOfIncome);//param
+                com.Parameters.AddWithValue("@seFoodParcelInLast6Months", environmentExtra.RecievedFoodPacelIn6Month);//param
+
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -1036,13 +1183,14 @@ namespace Impilo_App.Views.Screening
             #endregion
 
 
-
         }
 
+        #region SaveHut
         private void btnSaveHut_Click(object sender, RoutedEventArgs e)
         {
             string scrID = ""; // 
             string storedProcedure = "";
+            //this thing is missing encouter id so it doesnt reflect to the client
 
             if (int.Parse(cboNoOfHuts.SelectedItem.ToString()) > 1)
             {
@@ -1056,15 +1204,19 @@ namespace Impilo_App.Views.Screening
                     hut.TypeOfRoof = ((ComboBoxItem)cboTypeOfRoof.SelectedItem).Content.ToString();
                     hut.Ventilation = ((ComboBoxItem)cboVentilation.SelectedItem).Content.ToString();
                     hut.TotalNoOfRooms = int.Parse(((ComboBoxItem)cboNoRooms.SelectedItem).Content.ToString());
-
+                    hut.isMainHut = false;
                     try
                     {
-                        storedProcedure = "";// name of sp
+                        storedProcedure = "AddScreeningEnvironmentHuts";// name of sp
                         conn.Open();
                         SqlCommand com = new SqlCommand(storedProcedure, conn);
-
-                        com.Parameters.AddWithValue("@", hut.HutId);//param
-
+                        com.CommandType = CommandType.StoredProcedure;
+                        com.Parameters.AddWithValue("@seID", hut.HutId);//param
+                        com.Parameters.AddWithValue("@sehutStructure", hut.HutStracture);//param
+                        com.Parameters.AddWithValue("@sehutTypeOfRoof", hut.TypeOfRoof);//param
+                        com.Parameters.AddWithValue("@sehutVentilation", hut.Ventilation);//param
+                        com.Parameters.AddWithValue("@sehutNumberOfRooms", hut.TotalNoOfRooms);//param
+                        com.Parameters.AddWithValue("@sehutMain", hut.isMainHut);//param
                         com.ExecuteNonQuery();//execute command
                     }
 
@@ -1113,5 +1265,7 @@ namespace Impilo_App.Views.Screening
                 }
             }
         }
+
+        #endregion
     }
 }
