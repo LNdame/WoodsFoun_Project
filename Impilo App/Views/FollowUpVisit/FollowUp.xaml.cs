@@ -44,7 +44,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             #region Visit Detaisl
             fol.FollowUpIDNumber = folID;
             //fol.DateofScreen = scrDate;
-            fol.VisitNextVisit = dpNextVisit.Text.ToString();
+            fol.VisitNextVisit = DateTime.Parse( dpNextVisit.Text.ToString());
             fol.VisitOutCome = ((ComboBoxItem)cboListOutcome.SelectedItem).Content.ToString();
             fol.VisitHPT = (radVisHptYes.IsChecked == true) ? true : false;
             fol.VisitDiabetes = (radVisDiaYes.IsChecked == true) ? true : false;
@@ -84,7 +84,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             fol.HyperReReferToClinic1 = (radHyRefClin1Yes.IsChecked == true) ? true : false;
             fol.HyperReferralNo1 = txtHyRefNo1.Text;
             fol.HyperCurrentlyOnMeds = (radHyCurMedsYes.IsChecked == true) ? true : false;
-            fol.HyperStartDate = dpHyStartDt.Text.ToString();
+            fol.HyperStartDate = DateTime.Parse(dpHyStartDt.Text.ToString());
             fol.HyperScreenBPReadingSystolic = txtHyScrSys.Text;
             fol.HyperScreenBPReadingDiastolic = txtHyScrDia.Text;
             fol.HyperTodayTestReadingSystolic = txtHyTodSys.Text;
@@ -100,21 +100,21 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 storedProcedure = "AddHypertention";// name of sp
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ScreeningID", hyper.ScreeningID);//param
-                com.Parameters.AddWithValue("@YearOfDiagnosis", hyper.YearOfDiagnosis);//param
-                com.Parameters.AddWithValue("@Headache", hyper.Headache);//param
-                com.Parameters.AddWithValue("@BlurredVision", hyper.BlurredVision);//param
-                com.Parameters.AddWithValue("@ChestPain", hyper.ChestPain);//param
-                com.Parameters.AddWithValue("@ReferralToClinic", hyper.ReferralToClinic);//param
-                com.Parameters.AddWithValue("@ReferalNo", hyper.ReferalNo);//param
-                com.Parameters.AddWithValue("@EverHadStroke", hyper.EverHadStroke);//param
-                com.Parameters.AddWithValue("@YearOfStroke", hyper.YearOfStroke);//param
-                com.Parameters.AddWithValue("@AnyOneInFamilyHadStroke", hyper.AnyOneInFamilyHadStroke);//param
+               com.CommandType = CommandType.StoredProcedure;
+                //com.Parameters.AddWithValue("@ScreeningID", hyper.ScreeningID);//param  you copy element and did not modified then
+                //com.Parameters.AddWithValue("@YearOfDiagnosis", hyper.YearOfDiagnosis);//param
+                //com.Parameters.AddWithValue("@Headache", hyper.Headache);//param
+                //com.Parameters.AddWithValue("@BlurredVision", hyper.BlurredVision);//param
+                //com.Parameters.AddWithValue("@ChestPain", hyper.ChestPain);//param
+                //com.Parameters.AddWithValue("@ReferralToClinic", hyper.ReferralToClinic);//param
+                //com.Parameters.AddWithValue("@ReferalNo", hyper.ReferalNo);//param
+                //com.Parameters.AddWithValue("@EverHadStroke", hyper.EverHadStroke);//param
+                //com.Parameters.AddWithValue("@YearOfStroke", hyper.YearOfStroke);//param
+                //com.Parameters.AddWithValue("@AnyOneInFamilyHadStroke", hyper.AnyOneInFamilyHadStroke);//param
 
                 com.ExecuteNonQuery();//execute command
 	        }
-            }
+            
             catch (Exception ex)
             {
 
@@ -131,7 +131,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             fol.DiaReReferToClinic1 = (radDiaReRefClinYes.IsChecked == true) ? true : false; ;
             fol.DiaReferralNo1 = txtDiaRefNo1.Text;
             fol.DiaCurrentlyOnMeds = (radDiaCurMedsYes.IsChecked == true) ? true : false; ;
-            fol.DiaStartDate = dpDiaStartDt.Text.ToString();
+            fol.DiaStartDate =DateTime.Parse( dpDiaStartDt.Text.ToString());
             fol.DiaScreenTestReading1 = txtDiaScrReading.Text;
             fol.DiaFollowUpTestReading1 = txtDiaFolReading.Text;
             fol.DiaReferToClinic2 = (radDiaRefClinYes.IsChecked == true) ? true : false; ;
@@ -169,7 +169,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             fol.EpiReferralNo1 = txtEpiRefNo1.Text;
             fol.EpiFitInLastMonth = (radEpiFitsLastMonthYes.IsChecked == true) ? true : false; ;
             fol.EpiCurrentlyOnMeds = (radEpiCurMedsYes.IsChecked == true) ? true : false;
-            fol.EpiStartDate = dpEpiStartDt.Text.ToString();
+            fol.EpiStartDate =DateTime.Parse( dpEpiStartDt.Text.ToString());
             fol.EpiMoreThan3FitsInLastMonth = (radEpi3FitsLastMonthYes.IsChecked == true) ? true : false; ;
             fol.EpiReReferToClinic2 = (radEpiRefClin2Yes.IsChecked == true) ? true : false; ;
             fol.EpiReferralNo2 = txtEpiRefNo2.Text;
@@ -207,7 +207,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             fol.AsReferToClinic = (radAsthClinRefYes.IsChecked == true) ? true : false;
             fol.AsReferralNo2 = txtAsthRefNo2.Text;
             fol.AsCurrentlyOnMeds = (radAstCurMedsYes.IsChecked == true) ? true : false;
-            fol.AsStartDate = "";
+          //  fol.AsStartDate = "";
             fol.AsIncreasedNoOfAsthmaAttacks = (radAstIncrAttacksYes.IsChecked == true) ? true : false;
             fol.AsReReferToClinic2 = (radAsthClinRefYes.IsChecked == true) ? true : false;
             fol.AsReferralNo2 = txtAsthRefNo2.Text;
@@ -310,7 +310,7 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             //fol.TBARVsConcern 
             //fol.TBStartDate 
 
-            fol.TBDateOfVisit = dpTBDateOfVisit.Text.ToString();
+            fol.TBDateOfVisit =DateTime.Parse( dpTBDateOfVisit.Text.ToString());
             fol.TBReferToClinic1 = (radTBReferToClinic1Yes.IsChecked == true) ? true : false;
             fol.TBReferralNo1 = txtTBReferralNo1.Text;
             fol.TBRecentUnplannedLoseOfWeight = (radTBRecWeightLostYes.IsChecked == true) ? true : false;

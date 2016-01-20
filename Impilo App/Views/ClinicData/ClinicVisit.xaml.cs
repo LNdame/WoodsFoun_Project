@@ -45,8 +45,8 @@ namespace Impilo_App.Views.ClinicData
 
             Impilo_App.LocalModels.ClinicClientBiographical clinBio = new Impilo_App.LocalModels.ClinicClientBiographical();
 
-            clinBio.ccbioID = "";
-            clinBio.ClinicID = "";
+            clinBio.ccbioID = 0;
+            clinBio.ClinicID = 0;
             clinBio.ClientID = "";
             clinBio.ccbioContactNo = txtBioContactNo.Text;
             clinBio.ccbioFileNo = txtBioFileNo.Text;
@@ -107,11 +107,11 @@ namespace Impilo_App.Views.ClinicData
 
             Impilo_App.LocalModels.ClinicVisitData clinVD = new Impilo_App.LocalModels.ClinicVisitData();
 
-            clinVD.cvdID = "";
-            clinVD.EncounterID = "";
-            clinVD.cvdHeight = txtVDHeight;
-            clinVD.cvdWeight = txtVdWeight.Text;
-            clinVD.cvdBMI = txtVdBmi.Text;
+            clinVD.cvdID = 0;
+            clinVD.EncounterID = 0;
+           
+            clinVD.cvdWeight =decimal.Parse( txtVdWeight.Text);
+            clinVD.cvdBMI = decimal.Parse(txtVdBmi.Text);
             clinVD.cvdNextVisitDate = (DateTime)dpVdNextVisDt.SelectedDate;
             clinVD.cvdHypertension = (radVdHptYes.IsChecked == true) ? true : false; 
             clinVD.cvdDiabetes = (radVdDiaYes.IsChecked == true) ? true : false;
@@ -165,8 +165,8 @@ namespace Impilo_App.Views.ClinicData
             #region Hypertension
 
             Impilo_App.LocalModels.ClinicHypertension clinHyp = new Impilo_App.LocalModels.ClinicHypertension();
-            clinHyp.chID =;
-            clinHyp.EncounterID =;
+            clinHyp.chID =0;
+            clinHyp.EncounterID =0;
             clinHyp.chDWFReferral = (radHypDwfRefYes.IsChecked == true) ? true : false; 
             clinHyp.chDiagAndTreatSystolic = decimal.Parse(txtHypDiagnosedOnTreatmentSys.Text);
             clinHyp.chDiagAndTreatDiastolic = decimal.Parse(txtHypDiagnosedOnTreatmentDia.Text);
@@ -222,8 +222,8 @@ namespace Impilo_App.Views.ClinicData
 
             Impilo_App.LocalModels.ClinicDiabetes clinDia = new Impilo_App.LocalModels.ClinicDiabetes();
 
-            clinDia.cdID =;
-            clinDia.EncounterID =;
+            clinDia.cdID =1;//random assign number
+            clinDia.EncounterID =1;
             clinDia.cdDWFReferral = (radDiaDwfRefYes.IsChecked == true) ? true : false;
             clinDia.cdNotOnMedsBSLevel = txtDiaNoMedsBS.Text;
             clinDia.cdNextReviewDate = (DateTime) dpDiaNextRevDt.SelectedDate;
@@ -281,8 +281,8 @@ namespace Impilo_App.Views.ClinicData
 
             Impilo_App.LocalModels.ClinicEpilepsy clinEpi = new Impilo_App.LocalModels.ClinicEpilepsy();
 
-            clinEpi.ceID = ;
-            clinEpi.EncounterID = ;
+            clinEpi.ceID = 0;
+            clinEpi.EncounterID =0 ;
             clinEpi.ceDWFReferral = (radEpiDwfRefYes.IsChecked == true) ? true : false;
             clinEpi.ceNoFitsInLastMonth = int .Parse(txtEpiFitsLastMonth.Text);
             clinEpi.ceDrugSideEffects = txtEpiDrugSideEffects.Text;
@@ -326,8 +326,8 @@ namespace Impilo_App.Views.ClinicData
 
             Impilo_App.LocalModels.ClinicAsthma clinAst = new Impilo_App.LocalModels.ClinicAsthma();
 
-            clinAst.caID =;
-            clinAst.EncounterID =;
+            clinAst.caID =0;
+            clinAst.EncounterID =0;
             clinAst.caDWFReferral = (radAstDwfRefYes.IsChecked == true) ? true : false;
             clinAst.caPeakRespiratoryFlowRate = txtAstPeakExFlRt.Text;
             clinAst.caBPSystolic = decimal.Parse(txtAstBpSys.Text);
@@ -369,8 +369,8 @@ namespace Impilo_App.Views.ClinicData
 
             Impilo_App.LocalModels.ClinicHIV clinHiv = new Impilo_App.LocalModels.ClinicHIV();
 
-            clinHiv.chivID =;
-            clinHiv.EncounterID =;
+            clinHiv.chivID =0;
+            clinHiv.EncounterID =0;
             clinHiv.chivDWFReferral = (radHivDwfRefYes.IsChecked == true) ? true : false;
             clinHiv.chivCD4 = decimal.Parse(txtHivCD4count.Text);
             clinHiv.chivViralLoad = decimal.Parse(txtHivViralLoad.Text);
@@ -415,8 +415,8 @@ namespace Impilo_App.Views.ClinicData
             //fol.TBStartDate 
             Impilo_App.LocalModels.ClinicTB clinTb = new Impilo_App.LocalModels.ClinicTB();
 
-            clinTb.ctbID =;
-            clinTb.EncounterID =;
+            clinTb.ctbID =0;
+            clinTb.EncounterID =0;
             clinTb.ctbDWFReferral = (radTbDwfRefYes.IsChecked == true) ? true : false;
             clinTb.ctbSputumTaken = (radTbSpatumTakenYes.IsChecked == true) ? true : false;
             clinTb.ctbTestResultsReviewDate = (DateTime)dpTbResultRevDt.SelectedDate;
@@ -459,14 +459,14 @@ namespace Impilo_App.Views.ClinicData
 
             Impilo_App.LocalModels.ClinicMaternalHealth clinMat = new Impilo_App.LocalModels.ClinicMaternalHealth();
 
-            clinMat.cmhID =;
-            clinMat.EncounterID =;
+            clinMat.cmhID =0;
+            clinMat.EncounterID =0;
             clinMat.cmhDWFReferral = (radMatDwfRefYes.IsChecked == true) ? true : false;
             clinMat.cmhMomConnectRegistered = (radMatMomConnYes.IsChecked == true) ? true : false;
             clinMat.cmhANCVisitNo = txtMatAncVisNo.Text;
-            clinMat.cmhPNC1Week = (radMatPNC1Yes.IsChecked == true) ? true : false;
+            clinMat.cmhPNC1Week = (radMatPNC1Yes.IsChecked == true) ? "Yes" : "No";
             clinMat.cmhPCRDone = (radMatPCRYes.IsChecked == true) ? true : false;
-            clinMat.cmhPNC6Week = (radMatPNC6Yes.IsChecked == true) ? true : false;
+            clinMat.cmhPNC6Week = (radMatPNC6Yes.IsChecked == true) ? "Yes" : "No";
             clinMat.cmhDateOfVisit = (DateTime) dpMatVisDt.SelectedDate;
 
 
@@ -504,13 +504,13 @@ namespace Impilo_App.Views.ClinicData
 
             Impilo_App.LocalModels.ClinicChildHealth clinCh = new Impilo_App.LocalModels.ClinicChildHealth();
 
-            clinCh.cchID =;
-            clinCh.EncounterID =;
-            clinCh.cchDWFReferral = (radChiDwfRefYes.IsChecked == true) ? true : false;
-            clinCh.cchPCRDone = (radChiPCRYes.IsChecked == true) ? true : false;
-            clinCh.cchCurrentRTHC = (radChiCurrRTHCYes.IsChecked == true) ? true : false;
-            clinCh.cchVaccinationsUpToDate = (radChiVaccUpToDtNo.IsChecked == true) ? true : false;
-            clinCh.cchDateOfVisit = (DateTime) dpChiVisDt.SelectedDate;
+            clinCh.cchID =0;
+            clinCh.EncounterID =0; //Kevin bellow those field do not exist
+            //clinCh.cchDWFReferral = (radChiDwfRefYes.IsChecked == true) ? true : false;
+            //clinCh.cchPCRDone = (radChiPCRYes.IsChecked == true) ? true : false;
+            //clinCh.cchCurrentRTHC = (radChiCurrRTHCYes.IsChecked == true) ? true : false;
+            //clinCh.cchVaccinationsUpToDate = (radChiVaccUpToDtNo.IsChecked == true) ? true : false;
+            //clinCh.cchDateOfVisit = (DateTime) dpChiVisDt.SelectedDate;
 
 
 
@@ -546,8 +546,8 @@ namespace Impilo_App.Views.ClinicData
 
             Impilo_App.LocalModels.ClinicOther clinOth = new Impilo_App.LocalModels.ClinicOther();
 
-            clinOth.coID =;
-            clinOth.EncounterID =;
+            clinOth.coID =0;
+            clinOth.EncounterID =0;
             clinOth.coDWFReferral = (radOthDwfRefYes.IsChecked == true) ? true : false;
             clinOth.coCondition = txtOthCondition.Text;
             clinOth.coOutcome = txtOthOutcome.Text;
@@ -586,4 +586,6 @@ namespace Impilo_App.Views.ClinicData
             }
             #endregion
 
-
+        }
+    }//end of class
+}
