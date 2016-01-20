@@ -1050,6 +1050,7 @@
                                                         <TextBox  x:Name="txtRefOtc" HorizontalAlignment="Left" Height="23" Margin="148,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
                                                         <RadioButton x:Name="radotdiarhoea" Content="Yes" GroupName="otrad5" HorizontalAlignment="Left" Margin="148,234,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.511,-0.026" FontWeight="Bold"/>
                                                         <RadioButton Content="No" GroupName="otrad5" HorizontalAlignment="Left" Margin="221,234,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                        <Button Content="&gt;&gt;" HorizontalAlignment="Left" Margin="108,75,0,0" VerticalAlignment="Top" Width="35"/>
                                                     </Grid>
                                                 </GroupBox>
                                                 <GroupBox Header="Elderly care assessment" HorizontalAlignment="Left"
