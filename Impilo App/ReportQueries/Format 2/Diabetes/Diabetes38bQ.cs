@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace Impilo_App.ReportQueries.Format_2.Diabetes
 {
-    class Diabetes39bQ
+    class Diabetes38bQ
     {
         public static string Query()
         {
@@ -20,7 +20,7 @@ namespace Impilo_App.ReportQueries.Format_2.Diabetes
             try
             {
                 tempConnection.Open();
-                SqlCommand tempCommand = new SqlCommand("ReportFormat2-39b", tempConnection);
+                SqlCommand tempCommand = new SqlCommand("ReportFormat2-38b", tempConnection);
                 tempCommand.CommandType = CommandType.StoredProcedure;
                 tempCommand.Parameters.AddWithValue("@StartDate", Views.Reports.Format2Report.StartDate);
                 tempCommand.Parameters.AddWithValue("@EndDate", Views.Reports.Format2Report.EndDate);

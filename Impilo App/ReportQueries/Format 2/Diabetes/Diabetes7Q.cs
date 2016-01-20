@@ -20,7 +20,7 @@ namespace Impilo_App.ReportQueries.Format_2.Diabetes
             try
             {
                 tempConnection.Open();
-                SqlCommand tempCommand = new SqlCommand("ReportFormat2-7b", tempConnection);
+                SqlCommand tempCommand = new SqlCommand("ReportFormat2-7", tempConnection);
                 tempCommand.CommandType = CommandType.StoredProcedure;
                 tempCommand.Parameters.AddWithValue("@StartDate", Views.Reports.Format2Report.StartDate);
                 tempCommand.Parameters.AddWithValue("@EndDate", Views.Reports.Format2Report.EndDate);
