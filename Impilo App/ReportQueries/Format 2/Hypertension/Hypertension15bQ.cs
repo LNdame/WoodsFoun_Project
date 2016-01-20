@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace Impilo_App.ReportQueries.Format_2.Hypertension
 {
-    class Hypertension15aQb
+    class Hypertension15bQ
     {
         public static string Query()
         {

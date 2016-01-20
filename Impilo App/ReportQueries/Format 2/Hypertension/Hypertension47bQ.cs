@@ -20,7 +20,7 @@ namespace Impilo_App.ReportQueries.Format_2.Hypertension
             try
             {
                 tempConnection.Open();
-                SqlCommand tempCommand = new SqlCommand("ReportFormat2-46b", tempConnection);
+                SqlCommand tempCommand = new SqlCommand("ReportFormat2-47b", tempConnection);
                 tempCommand.CommandType = CommandType.StoredProcedure;
                 tempCommand.Parameters.AddWithValue("@StartDate", Views.Reports.Format2Report.StartDate);
                 tempCommand.Parameters.AddWithValue("@EndDate", Views.Reports.Format2Report.EndDate);
