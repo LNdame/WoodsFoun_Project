@@ -15,22 +15,24 @@ namespace Impilo_App.ReportQueries.Format_2.Diabetes
         {
             string Result = "x";
 
-            //SqlConnection tempConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;);
+            SqlConnection tempConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
-            //try
-            //{
-            //    tempConnection.Open();
-            //    SqlCommand tempCommand = new SqlCommand("SPName",tempConnection);
-            //    tempCommand.CommandType = CommandType.StoredProcedure;
-            //    // Parameters
+            try
+            {
+                tempConnection.Open();
+                SqlCommand tempCommand = new SqlCommand("ReportFormat2-24b", tempConnection);
+                tempCommand.CommandType = CommandType.StoredProcedure;
+                tempCommand.Parameters.AddWithValue("@StartDate", Views.Reports.Format2Report.StartDate);
+                tempCommand.Parameters.AddWithValue("@EndDate", Views.Reports.Format2Report.EndDate);
+                tempCommand.Parameters.AddWithValue("@Type", 1);
 
-            //    Result = ((int)tempCommand.ExecuteScalar()).ToString();
-            //}
-            //catch{}
-            //finally
-            //{
-            //    tempConnection.Close();
-            //}
+                Result = ((int)tempCommand.ExecuteScalar()).ToString();
+            }
+            catch { }
+            finally
+            {
+                tempConnection.Close();
+            }
 
             return Result;
         }

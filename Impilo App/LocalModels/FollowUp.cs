@@ -8,11 +8,12 @@ namespace Impilo_App.LocalModels
 {
     class FollowUp
     {
+        #region Visit Info
         public int FollowUpID { get; set; }
 
-        public string DateofScreen { get; set; }
+        public DateTime DateofScreen { get; set; }
 
-        public string VisitNextVisit { get; set; }
+        public DateTime VisitNextVisit { get; set; }
 
         public string VisitOutCome { get; set; }
 
@@ -33,7 +34,9 @@ namespace Impilo_App.LocalModels
         public bool VisitOther { get; set; }
 
         public bool VisitDooortoDoor { get; set; }
+        #endregion
 
+        #region Hypertension
         public bool HyperWentToClinic1 { get; set; }
 
         public bool HyperReReferToClinic1 { get; set; }
@@ -42,7 +45,7 @@ namespace Impilo_App.LocalModels
 
         public bool HyperCurrentlyOnMeds { get; set; }
 
-        public string HyperStartDate { get; set; }
+        public DateTime HyperStartDate { get; set; }
 
         public string HyperScreenBPReadingSystolic { get; set; }
 
@@ -73,6 +76,9 @@ namespace Impilo_App.LocalModels
         //public string HyperFollowUpTestReading { get; set; }
 
         //public string HyperScreenTestReading { get; set; }
+        #endregion
+
+        #region Diabetes
 
         public bool DaiWentToClinic { get; set; }
 
@@ -82,7 +88,7 @@ namespace Impilo_App.LocalModels
 
         public bool DiaCurrentlyOnMeds { get; set; }
 
-        public string DiaStartDate { get; set; }
+        public DateTime DiaStartDate { get; set; }
 
         public string DiaScreenTestReading1 { get; set; }
 
@@ -101,7 +107,9 @@ namespace Impilo_App.LocalModels
         //public string DiaReferralNo3 { get; set; }
 
         //public string DiaFollowUpTestReading3 { get; set; }
+        #endregion
 
+        #region Epilepsy
         public bool EpiWentToClinic { get; set; }
 
         public bool EpiReReferToClinic1 { get; set; }
@@ -114,7 +122,7 @@ namespace Impilo_App.LocalModels
 
         public bool EpiCurrentlyOnMeds { get; set; }
 
-        public string EpiStartDate { get; set; }
+        public DateTime EpiStartDate { get; set; }
 
         public bool EpiMoreThan3FitsInLastMonth { get; set; }
 
@@ -123,7 +131,9 @@ namespace Impilo_App.LocalModels
         public string EpiReferralNo2 { get; set; }
 
         public string EpiMedication { get; set; }
+        #endregion
 
+        #region Asthma
         public string AsDateOfVisit { get; set; }
 
         public bool AsWentToClinic { get; set; }
@@ -140,7 +150,7 @@ namespace Impilo_App.LocalModels
 
         public bool AsCurrentlyOnMeds { get; set; }
 
-        public string AsStartDate { get; set; }
+        public DateTime AsStartDate { get; set; }
 
         public bool AsIncreasedNoOfAsthmaAttacks { get; set; }
 
@@ -149,8 +159,11 @@ namespace Impilo_App.LocalModels
         public string AsReferralNo2 { get; set; }
 
         public string AsMedication { get; set; }
+        #endregion
 
-        public string TBDateOfVisit { get; set; }
+        #region TB
+
+        public DateTime TBDateOfVisit { get; set; }
 
         public string TBARVsConcern { get; set; }
 
@@ -176,7 +189,7 @@ namespace Impilo_App.LocalModels
 
         public string TBNewlyDiagnosed { get; set; }
 
-        public string TBStartDate { get; set; }
+        public DateTime TBStartDate { get; set; }
 
         public string TBReferTBContactsToClinic { get; set; }
 
@@ -191,6 +204,10 @@ namespace Impilo_App.LocalModels
         public string TBReferralNo3 { get; set; }
 
         public string TBMedication { get; set; }
+
+        #endregion
+
+        #region Maternal
 
         public string MatDateOfVisit { get; set; }
 
@@ -231,6 +248,9 @@ namespace Impilo_App.LocalModels
         public bool MatIntendBreastfeed { get; set; }
 
         public bool MatIntendFormulaFeed { get; set; }
+        #endregion
+
+        #region Child Health 
 
         public string ChildDateOfVisit { get; set; }
 
@@ -295,6 +315,9 @@ namespace Impilo_App.LocalModels
         public bool ChildReferToClinic7 { get; set; }
 
         public string ChildReferralNo8 { get; set; }
+        #endregion
+
+        #region Other
 
         public string OtherDateOfVisit { get; set; }
 
@@ -310,7 +333,11 @@ namespace Impilo_App.LocalModels
 
         public string OtherReferralNo2 { get; set; }
 
+        #endregion
+
         public string FollowUpIDNumber { get; set; }
+
+        #region HIV
 
         public string HIVDateOfVisit { get; set; }
 
@@ -356,7 +383,9 @@ namespace Impilo_App.LocalModels
 
         public string HIVMedication { get; set; }
 
-      
+        #endregion
+
+
 
 
     }
