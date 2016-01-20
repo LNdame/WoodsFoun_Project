@@ -37,11 +37,14 @@ namespace Impilo_App.Views.ClinicData
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
-            Impilo_App.LocalModels.ClinicClientBiographical clinBio = new Impilo_App.LocalModels.ClinicClientBiographical();
+            
             string storedProcedure = "";
-           
+
 
             #region Biographical
+
+            Impilo_App.LocalModels.ClinicClientBiographical clinBio = new Impilo_App.LocalModels.ClinicClientBiographical();
+
             clinBio.ccbioID = "";
             clinBio.ClinicID = "";
             clinBio.ClientID = "";
@@ -60,6 +63,42 @@ namespace Impilo_App.Views.ClinicData
             clinBio.ccbioDoDChildHealth = (DateTime)dpBioChDiagDate.SelectedDate;
             clinBio.ccbioOther = (DateTime)dpBioOtherDiagDate.SelectedDate;
 
+
+            try
+            {
+                storedProcedure = "AddClinicClientBiographical";
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ccbioID", clinBio.ccbioID);
+                com.Parameters.AddWithValue("@ClinicID", clinBio.ClinicID );
+                com.Parameters.AddWithValue("@ClientID", clinBio.ClientID);
+                com.Parameters.AddWithValue("@ccbioContactNo", clinBio.ccbioContactNo);
+                com.Parameters.AddWithValue("@ccbioFileNo", clinBio.ccbioFileNo );
+                com.Parameters.AddWithValue("@ccbioNextOfKinRelationship", clinBio.ccbioNextOfKinRelationship );
+                com.Parameters.AddWithValue("@ccbioNextOfKinName", clinBio.ccbioNextOfKinName);
+                com.Parameters.AddWithValue("@ccbioNextOfKinTelNo", clinBio.ccbioNextOfKinTelNo);
+                com.Parameters.AddWithValue("@ccbioDoDHypertension", clinBio.ccbioDoDHypertension);
+                com.Parameters.AddWithValue("@ccbioDoDDiabetes", clinBio.ccbioDoDDiabetes);
+                com.Parameters.AddWithValue("@ccbioDoDEpilepsy", clinBio.ccbioDoDEpilepsy);
+                com.Parameters.AddWithValue("@ccbioDoDAsthma", clinBio.ccbioDoDAsthma);
+                com.Parameters.AddWithValue("@ccbioDoDHIV", clinBio.ccbioDoDHIV);
+                com.Parameters.AddWithValue("@ccbioDoDTB", clinBio.ccbioDoDTB);
+                com.Parameters.AddWithValue("@ccbioDoDMaternalHealth", clinBio.ccbioDoDMaternalHealth);
+                com.Parameters.AddWithValue("@ccbioDoDChildHealth", clinBio.ccbioDoDChildHealth);
+                com.Parameters.AddWithValue("@ccbioOther", clinBio.ccbioOther);
+                
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
 
             #endregion
 
@@ -84,14 +123,30 @@ namespace Impilo_App.Views.ClinicData
             clinVD.cvdChildHealth = (radVdChYes.IsChecked == true) ? true : false;
             clinVD.cvdOther = (radVdOthYes.IsChecked == true) ? true : false;
             clinVD.cvdDateOfVisit = (DateTime)dpVdVisDt.SelectedDate;
-            
+
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddClinicVisitData";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
-
-                com.Parameters.AddWithValue("@", fol.FollowUpID);//param
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@cvdID", clinVD.cvdID);
+                com.Parameters.AddWithValue("@EncounterID", clinVD.EncounterID);
+                com.Parameters.AddWithValue("@cvdHeight", clinVD.cvdHeight);
+                com.Parameters.AddWithValue("@cvdWeight", clinVD.cvdWeight);
+                com.Parameters.AddWithValue("@cvdBMI", clinVD.cvdBMI);
+                com.Parameters.AddWithValue("@cvdNextVisitDate", clinVD.cvdNextVisitDate);
+                com.Parameters.AddWithValue("@cvdHypertension", clinVD.cvdHypertension);
+                com.Parameters.AddWithValue("@cvdDiabetes", clinVD.cvdDiabetes);
+                com.Parameters.AddWithValue("@cvdEpilepsy", clinVD.cvdEpilepsy);
+                com.Parameters.AddWithValue("@cvdAsthma", clinVD.cvdAsthma);
+                com.Parameters.AddWithValue("@cvdHIV", clinVD.cvdHIV);
+                com.Parameters.AddWithValue("@cvdTB", clinVD.cvdTB);
+                com.Parameters.AddWithValue("@cvdMaternalHealth", clinVD.cvdMaternalHealth);
+                com.Parameters.AddWithValue("@cvdChildHealth", clinVD.cvdChildHealth);
+                com.Parameters.AddWithValue("@cvdOther", clinVD.cvdOther);
+                com.Parameters.AddWithValue("@cvdDateOfVisit", clinVD.cvdDateOfVisit);
+                
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -111,9 +166,7 @@ namespace Impilo_App.Views.ClinicData
 
             Impilo_App.LocalModels.ClinicHypertension clinHyp = new Impilo_App.LocalModels.ClinicHypertension();
             clinHyp.chID =;
-
             clinHyp.EncounterID =;
-
             clinHyp.chDWFReferral = (radHypDwfRefYes.IsChecked == true) ? true : false; 
             clinHyp.chDiagAndTreatSystolic = decimal.Parse(txtHypDiagnosedOnTreatmentSys.Text);
             clinHyp.chDiagAndTreatDiastolic = decimal.Parse(txtHypDiagnosedOnTreatmentDia.Text);
@@ -126,28 +179,31 @@ namespace Impilo_App.Views.ClinicData
             clinHyp.chCreatinine = txtHypCreatinine.Text;
             clinHyp.chCholesterol = txtHypCholesterol.Text;
             clinHyp.chDateOfVisit = (DateTime)dpHypVisDt.SelectedDate;
-            //sp place
-            //connection
+            
+            
             try
             {
-                storedProcedure = "AddHypertention";// name of sp
+                storedProcedure = "AddClinicHypertension";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ScreeningID", hyper.ScreeningID);//param
-                com.Parameters.AddWithValue("@YearOfDiagnosis", hyper.YearOfDiagnosis);//param
-                com.Parameters.AddWithValue("@Headache", hyper.Headache);//param
-                com.Parameters.AddWithValue("@BlurredVision", hyper.BlurredVision);//param
-                com.Parameters.AddWithValue("@ChestPain", hyper.ChestPain);//param
-                com.Parameters.AddWithValue("@ReferralToClinic", hyper.ReferralToClinic);//param
-                com.Parameters.AddWithValue("@ReferalNo", hyper.ReferalNo);//param
-                com.Parameters.AddWithValue("@EverHadStroke", hyper.EverHadStroke);//param
-                com.Parameters.AddWithValue("@YearOfStroke", hyper.YearOfStroke);//param
-                com.Parameters.AddWithValue("@AnyOneInFamilyHadStroke", hyper.AnyOneInFamilyHadStroke);//param
-
+                com.Parameters.AddWithValue("@chID", clinHyp.chID);
+                com.Parameters.AddWithValue("@EncounterID", clinHyp.EncounterID);
+                com.Parameters.AddWithValue("@chDWFReferral", clinHyp.chDWFReferral);
+                com.Parameters.AddWithValue("@chDiagAndTreatSystolic", clinHyp.chDiagAndTreatSystolic);
+                com.Parameters.AddWithValue("@chDiagAndTreatDiastolic", clinHyp.chDiagAndTreatDiastolic);
+                com.Parameters.AddWithValue("@chNotOnMedsSystolic", clinHyp.chNotOnMedsSystolic);
+                com.Parameters.AddWithValue("@chNotOnMedsDiastolic", clinHyp.chNotOnMedsDiastolic);
+                com.Parameters.AddWithValue("@chNextReviewDate", clinHyp.chNextReviewDate);
+                com.Parameters.AddWithValue("@chOnMedsSystolic", clinHyp.chOnMedsSystolic);
+                com.Parameters.AddWithValue("@chOnMedsDiastolic", clinHyp.chOnMedsDiastolic);
+                com.Parameters.AddWithValue("@chBloodSugarLevel", clinHyp.chBloodSugarLevel);
+                com.Parameters.AddWithValue("@chCreatinine", clinHyp.chCreatinine);
+                com.Parameters.AddWithValue("@chCholesterol", clinHyp.chCholesterol);
+                com.Parameters.AddWithValue("@chDateOfVisit", clinHyp.chDateOfVisit);
+                
                 com.ExecuteNonQuery();//execute command
             }
-            
             catch (Exception ex)
             {
 
@@ -157,11 +213,14 @@ namespace Impilo_App.Views.ClinicData
             {
                 conn.Close();
             }
+
             #endregion
+
+
 
             #region Diabetes
 
-        Impilo_App.LocalModels.ClinicDiabetes clinDia = new Impilo_App.LocalModels.ClinicDiabetes();
+            Impilo_App.LocalModels.ClinicDiabetes clinDia = new Impilo_App.LocalModels.ClinicDiabetes();
 
             clinDia.cdID =;
             clinDia.EncounterID =;
@@ -181,17 +240,31 @@ namespace Impilo_App.Views.ClinicData
             clinDia.cdDateOfVisit = (DateTime)dpDiaVisitDt.SelectedDate;
             clinDia.cdDiagnosedAndGivenTreatment = (radDiaDiagOnTreatmentYes.IsChecked == true) ? true : false;
 
-            //sp place
-            //connection
+            
+            
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddClinicDiabetes";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@cdID", clinDia.cdID);
+                com.Parameters.AddWithValue("@EncounterID", clinDia.EncounterID);
+                com.Parameters.AddWithValue("@cdDWFReferral", clinDia.cdDWFReferral);
+                com.Parameters.AddWithValue("@cdNotOnMedsBSLevel", clinDia.cdNotOnMedsBSLevel);
+                com.Parameters.AddWithValue("@cdNextReviewDate", clinDia.cdNextReviewDate);
+                com.Parameters.AddWithValue("@cdOnMedsBSLevel", clinDia.cdOnMedsBSLevel);
+                com.Parameters.AddWithValue("@cdHbA1C", clinDia.cdHbA1C);
+                com.Parameters.AddWithValue("@cdCreatinine", clinDia.cdCreatinine);
+                com.Parameters.AddWithValue("@cdCholesterol", clinDia.cdCholesterol);
+                com.Parameters.AddWithValue("@cdFootExam", clinDia.cdFootExam);
+                com.Parameters.AddWithValue("@cdEyeTest", clinDia.cdEyeTest);
+                com.Parameters.AddWithValue("@cdBPDiastolic", clinDia.cdBPDiastolic);
+                com.Parameters.AddWithValue("cdBPSystolic", clinDia.cdBPSystolic);
+                com.Parameters.AddWithValue("@cdDateOfVisit", clinDia.cdDateOfVisit);
+                com.Parameters.AddWithValue("@cdDiagnosedAndGivenTreatment", clinDia.cdDiagnosedAndGivenTreatment);
 
-            //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
-
-            com.ExecuteNonQuery();//execute command
+                com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
             {
@@ -208,26 +281,34 @@ namespace Impilo_App.Views.ClinicData
 
             Impilo_App.LocalModels.ClinicEpilepsy clinEpi = new Impilo_App.LocalModels.ClinicEpilepsy();
 
-            clinEpi.ceID 
-            clinEpi.EncounterID 
-            clinEpi.ceDWFReferral 
-            clinEpi.ceNoFitsInLastMonth 
-            clinEpi.ceDrugSideEffects 
-            clinEpi.ceBPSystolic 
-            clinEpi.ceBPDiastolic 
-            clinEpi.ceDateOfVisit 
-   
-            //sp place
-            //connection
+            clinEpi.ceID = ;
+            clinEpi.EncounterID = ;
+            clinEpi.ceDWFReferral = (radEpiDwfRefYes.IsChecked == true) ? true : false;
+            clinEpi.ceNoFitsInLastMonth = int .Parse(txtEpiFitsLastMonth.Text);
+            clinEpi.ceDrugSideEffects = txtEpiDrugSideEffects.Text;
+            clinEpi.ceBPSystolic = decimal.Parse(txtEpiBpSys.Text);
+            clinEpi.ceBPDiastolic = decimal.Parse(txtEpiBpDia.Text);
+            clinEpi.ceDateOfVisit = (DateTime) dpEpiVisDt.SelectedDate;
+
+            
+            
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddClinicEpilepsy";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ceID", clinEpi.ceID);
+                com.Parameters.AddWithValue("@EncounterID", clinEpi.EncounterID);
+                com.Parameters.AddWithValue("@ceDWFReferral", clinEpi.ceDWFReferral);
+                com.Parameters.AddWithValue("@ceNoFitsInLastMonth", clinEpi.ceNoFitsInLastMonth);
+                com.Parameters.AddWithValue("@ceDrugSideEffects", clinEpi.ceDrugSideEffects);
+                com.Parameters.AddWithValue("@ceBPSystolic", clinEpi.ceBPSystolic);
+                com.Parameters.AddWithValue("@ceBPDiastolic", clinEpi.ceBPDiastolic);
+                com.Parameters.AddWithValue("@ceDateOfVisit", clinEpi.ceDateOfVisit);
+               
 
-            //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
-
-            com.ExecuteNonQuery();//execute command
+                com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
             {
@@ -239,6 +320,7 @@ namespace Impilo_App.Views.ClinicData
                 conn.Close();
             }
             #endregion
+           
 
             #region Asthma
 
@@ -252,18 +334,25 @@ namespace Impilo_App.Views.ClinicData
             clinAst.caBPDiastolic = decimal.Parse(txtAstBpDia.Text);
             clinAst.caDateOfVisit = (DateTime)dpAstVisDt.SelectedDate;
 
-            //sp place
-            //connection
+            
+            
 
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddClinicAsthma";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@caID", clinAst.caID);
+                com.Parameters.AddWithValue("@EncounterID", clinAst.EncounterID);
+                com.Parameters.AddWithValue("@caDWFReferral", clinAst.caDWFReferral);
+                com.Parameters.AddWithValue("@caPeakRespiratoryFlowRate", clinAst.caPeakRespiratoryFlowRate);
+                com.Parameters.AddWithValue("@caBPSystolic", clinAst.caBPSystolic);
+                com.Parameters.AddWithValue("@caBPDiastolic", clinAst.caBPDiastolic);
+                com.Parameters.AddWithValue("@caDateOfVisit", clinAst.caDateOfVisit);
 
-             //com.Parameters.AddWithValue("@");//param
 
-            com.ExecuteNonQuery();//execute command
+                com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
             {
@@ -278,28 +367,36 @@ namespace Impilo_App.Views.ClinicData
 
             #region HIV
 
-            Impilo_App.LocalModels.ClinicHIV clinHiv = new Impilo_App.LocalModels.ClinicHiv();
+            Impilo_App.LocalModels.ClinicHIV clinHiv = new Impilo_App.LocalModels.ClinicHIV();
 
             clinHiv.chivID =;
             clinHiv.EncounterID =;
             clinHiv.chivDWFReferral = (radHivDwfRefYes.IsChecked == true) ? true : false;
-            clinHiv.chivCD4 = txtHivCD4count.Text;
-            clinHiv.chivViralLoad = txtHivViralLoad.Text;
-            clinHiv.chivBPSystolic = txtHivBpSys.Text;
-            clinHiv.chivBPDiastolic = txtHivBpDia.Text;
-            clinHiv.chivDateOfVisit = dpHivVisDt.Text;
+            clinHiv.chivCD4 = decimal.Parse(txtHivCD4count.Text);
+            clinHiv.chivViralLoad = decimal.Parse(txtHivViralLoad.Text);
+            clinHiv.chivBPSystolic = decimal.Parse(txtHivBpSys.Text);
+            clinHiv.chivBPDiastolic = decimal.Parse(txtHivBpDia.Text);
+            clinHiv.chivDateOfVisit = (DateTime) dpHivVisDt.SelectedDate;
 
-            //sp place
-            //connection
+            
+            
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddClinicHIV";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@chivID", clinHiv.chivID);
+                com.Parameters.AddWithValue("@EncounterID", clinHiv.EncounterID);
+                com.Parameters.AddWithValue("@chivDWFReferral", clinHiv.chivDWFReferral);
+                com.Parameters.AddWithValue("@chivCD4", clinHiv.chivCD4);
+                com.Parameters.AddWithValue("@chivViralLoad", clinHiv.chivViralLoad);
+                com.Parameters.AddWithValue("@chivBPSystolic", clinHiv.chivBPSystolic);
+                com.Parameters.AddWithValue("@chivBPDiastolic", clinHiv.chivBPDiastolic);
+                com.Parameters.AddWithValue("@chivDateOfVisit", clinHiv.chivDateOfVisit);
 
-//com.Parameters.AddWithValue("@", dia.ScreeningID);//param
 
-com.ExecuteNonQuery();//execute command
+                com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
             {
@@ -327,17 +424,25 @@ com.ExecuteNonQuery();//execute command
             clinTb.ctbResultsAFB = txtTbAfb.Text;
             clinTb.ctbDateOfVisit = (DateTime)dpTbVisDt.SelectedDate;
 
-            //sp place
-            //connection
+
+
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddClinicTB";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ctbID", clinTb.ctbID);
+                com.Parameters.AddWithValue("@EncounterID", clinTb.EncounterID);
+                com.Parameters.AddWithValue("@ctbDWFReferral", clinTb.ctbDWFReferral);
+                com.Parameters.AddWithValue("@ctbSputumTaken", clinTb.ctbSputumTaken);
+                com.Parameters.AddWithValue("@ctbTestResultsReviewDate", clinTb.ctbTestResultsReviewDate);
+                com.Parameters.AddWithValue("@ctbResultsGenexpert", clinTb.ctbResultsGenexpert);
+                com.Parameters.AddWithValue("@ctbResultsAFB", clinTb.ctbResultsAFB);
+                com.Parameters.AddWithValue("@ctbDateOfVisit", clinTb.ctbDateOfVisit);
 
-//com.Parameters.AddWithValue("@", dia.ScreeningID);//param
 
-com.ExecuteNonQuery();//execute command
+                com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
             {
@@ -355,33 +460,34 @@ com.ExecuteNonQuery();//execute command
             Impilo_App.LocalModels.ClinicMaternalHealth clinMat = new Impilo_App.LocalModels.ClinicMaternalHealth();
 
             clinMat.cmhID =;
-
             clinMat.EncounterID =;
-
             clinMat.cmhDWFReferral = (radMatDwfRefYes.IsChecked == true) ? true : false;
-
             clinMat.cmhMomConnectRegistered = (radMatMomConnYes.IsChecked == true) ? true : false;
-
             clinMat.cmhANCVisitNo = txtMatAncVisNo.Text;
-
             clinMat.cmhPNC1Week = (radMatPNC1Yes.IsChecked == true) ? true : false;
-
             clinMat.cmhPCRDone = (radMatPCRYes.IsChecked == true) ? true : false;
-
             clinMat.cmhPNC6Week = (radMatPNC6Yes.IsChecked == true) ? true : false;
-
             clinMat.cmhDateOfVisit = (DateTime) dpMatVisDt.SelectedDate;
-            //sp place
-            //connection
+
+
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddClinicMaternalHealth";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@cmhID", clinMat.cmhID);
+                com.Parameters.AddWithValue("@EncounterID", clinMat.EncounterID);
+                com.Parameters.AddWithValue("@cmhDWFReferral", clinMat.cmhDWFReferral);
+                com.Parameters.AddWithValue("@cmhMomConnectRegistered", clinMat.cmhMomConnectRegistered);
+                com.Parameters.AddWithValue("@cmhANCVisitNo", clinMat.cmhANCVisitNo);
+                com.Parameters.AddWithValue("@cmhPNC1Week", clinMat.cmhPNC1Week);
+                com.Parameters.AddWithValue("@cmhPCRDone", clinMat.cmhPCRDone);
+                com.Parameters.AddWithValue("@cmhPNC6Week", clinMat.cmhPNC6Week);
+                com.Parameters.AddWithValue("@cmhDateOfVisit", clinMat.cmhDateOfVisit);
 
-            //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
 
-            com.ExecuteNonQuery();//execute command
+                com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
             {
@@ -399,30 +505,31 @@ com.ExecuteNonQuery();//execute command
             Impilo_App.LocalModels.ClinicChildHealth clinCh = new Impilo_App.LocalModels.ClinicChildHealth();
 
             clinCh.cchID =;
-
             clinCh.EncounterID =;
-
             clinCh.cchDWFReferral = (radChiDwfRefYes.IsChecked == true) ? true : false;
-            
             clinCh.cchPCRDone = (radChiPCRYes.IsChecked == true) ? true : false;
-
             clinCh.cchCurrentRTHC = (radChiCurrRTHCYes.IsChecked == true) ? true : false;
-
             clinCh.cchVaccinationsUpToDate = (radChiVaccUpToDtNo.IsChecked == true) ? true : false;
-
             clinCh.cchDateOfVisit = (DateTime) dpChiVisDt.SelectedDate;
 
-            //sp place
-            //connection
+
+
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddClinicChildHealth";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@cchID", clinCh.cchID);
+                com.Parameters.AddWithValue("@EncounterID", clinCh.EncounterID);
+                com.Parameters.AddWithValue("@cchDWFReferral", clinCh.cchDWFReferral);
+                com.Parameters.AddWithValue("@cchPCRDone", clinCh.cchPCRDone);
+                com.Parameters.AddWithValue("@cchCurrentRTHC", clinCh.cchCurrentRTHC);
+                com.Parameters.AddWithValue("@cchVaccinationsUpToDate", clinCh.cchVaccinationsUpToDate);
+                com.Parameters.AddWithValue("@cchDateOfVisit", clinCh.cchDateOfVisit);
+                
 
-            //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
-
-            com.ExecuteNonQuery();//execute command
+                com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
             {
@@ -448,17 +555,25 @@ com.ExecuteNonQuery();//execute command
             clinOth.coBPDiastolic =decimal.Parse(txtOthBpDia.Text);
             clinOth.coDateOfVisit = (DateTime)dpOthVisDt.SelectedDate;
 
-            //sp place
-            //connection
+
+
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddClinicOther";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@coID", clinOth.coID);
+                com.Parameters.AddWithValue("@EncounterID", clinOth.EncounterID);
+                com.Parameters.AddWithValue("@coDWFReferral", clinOth.coDWFReferral);
+                com.Parameters.AddWithValue("@coCondition", clinOth.coCondition);
+                com.Parameters.AddWithValue("@coOutcome", clinOth.coOutcome);
+                com.Parameters.AddWithValue("@coBPSystolic", clinOth.coBPSystolic);
+                com.Parameters.AddWithValue("@coBPDiastolic", clinOth.coBPDiastolic);
+                com.Parameters.AddWithValue("@coDateOfVisit", clinOth.coDateOfVisit);
 
-            //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
 
-            com.ExecuteNonQuery();//execute command
+                com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
             {
@@ -470,5 +585,5 @@ com.ExecuteNonQuery();//execute command
                 conn.Close();
             }
             #endregion
-    
+
 
