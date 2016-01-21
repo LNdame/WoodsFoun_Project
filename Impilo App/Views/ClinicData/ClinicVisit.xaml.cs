@@ -506,11 +506,11 @@ namespace Impilo_App.Views.ClinicData
 
             clinCh.cchID =0;
             clinCh.EncounterID =0; //Kevin bellow those field do not exist
-            //clinCh.cchDWFReferral = (radChiDwfRefYes.IsChecked == true) ? true : false;
-            //clinCh.cchPCRDone = (radChiPCRYes.IsChecked == true) ? true : false;
-            //clinCh.cchCurrentRTHC = (radChiCurrRTHCYes.IsChecked == true) ? true : false;
-            //clinCh.cchVaccinationsUpToDate = (radChiVaccUpToDtNo.IsChecked == true) ? true : false;
-            //clinCh.cchDateOfVisit = (DateTime) dpChiVisDt.SelectedDate;
+            clinCh.cchDWFReferral = (radChiDwfRefYes.IsChecked == true) ? true : false;
+            clinCh.cchPCRDone = (radChiPCRDoneYes.IsChecked == true) ? true : false;
+            clinCh.cchCurrentRTHC = (radChiCurrRTHCYes.IsChecked == true) ? true : false;
+            clinCh.cchVaccinationsUpToDate = (radChiVaccUpToDateYes.IsChecked == true) ? true : false;
+            clinCh.cchDateOfVisit = (DateTime) dpChiVisDt.SelectedDate;
 
 
 
