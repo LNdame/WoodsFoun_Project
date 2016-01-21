@@ -1608,8 +1608,8 @@
                                           
                                                             IsCreateNewEnabled="False"
                                                              DisplaySeparator=", "
-                                                             ItemsSource="{Binding HIVMeds}"
-                                                             SelectedItems="{Binding SelectedHIVMeds}">
+                                                             ItemsSource="{Binding ImmunisationOut}"
+                                                             SelectedItems="{Binding SelectedImmunisationOut}">
 
                                                     </src:MultiComboBox>
 

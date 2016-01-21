@@ -84,62 +84,48 @@ namespace Impilo_App.Views.Screening
         #endregion
 
 
+        #region ChildImmunisation
+        private ObservableCollection<string> _immunisationout = new ObservableCollection<string> { "BCG", "Polio 1", "Polio 2", "Polio 3", "Polio 4", "Polio 5", "DPT1", "DPT2", "DPT3", "DPT4", "Hib 1", "Hib 2", "Hib 3", "Hep B1", "Hep B 2", "Hep B 3", "Measles 1", "Measles 2", "DPT1/Hip 1", "DPT2/Hip 2", "DPT3/Hip 3" };
 
-        private ObservableCollection<string> _animals = new ObservableCollection<string> 
-        { "Cat", "Dog", "Bear", "Lion", "Mouse", "Horse", "Rat", "Elephant", "Kangaroo", "Lizard", "Snake", "Frog", "Fish", "Butterfly", "Human", "Cow", "Bumble Bee" };
-        
-        public ObservableCollection<string> Animals
+        public ObservableCollection<string> ImmunisationOut
         {
-            get { return _animals; }
-        }
-        
-        private string _selectedAnimal = "Cat";
-        public string SelectedAnimal
-        {
-            get { return _selectedAnimal; }
-            set 
-            { 
-                _selectedAnimal = value;
-                OnPropertyChanged("SelectedAnimal");
-            }
+            get { return _immunisationout; }
         }
 
-        private ObservableCollection<string> _selectedAnimals;
-        public ObservableCollection<string> SelectedAnimals
+        private ObservableCollection<string> _selectedImmunisationout;
+
+        public ObservableCollection<string> SelectedImmunisationOut
         {
             get
             {
-                if (_selectedAnimals == null)
+                if (_selectedImmunisationout == null)
                 {
-                    _selectedAnimals = new ObservableCollection<string> { "Dog", "Lion", "Lizard" };
-                    SelectedAnimalsText = WriteSelectedAnimalsString(_selectedAnimals);
-                    _selectedAnimals.CollectionChanged +=
-                        (s, e) =>
-                        {
-                            SelectedAnimalsText = WriteSelectedAnimalsString(_selectedAnimals);
-                            OnPropertyChanged("SelectedAnimals");
-                        };
+                    _selectedImmunisationout = new ObservableCollection<string> { "BCG" };
+                    SelectedImmunisationOutText = WriteSelectedImmunisationOutString(_selectedImmunisationout);
+                    _selectedImmunisationout.CollectionChanged += (s, e) =>
+                    {
+                        SelectedImmunisationOutText = WriteSelectedImmunisationOutString(_selectedImmunisationout);
+                        OnPropertyChanged("SelectedImmunisationOut");
+                    };
                 }
-                return _selectedAnimals;
+                return _selectedImmunisationout;
             }
-            set
-            {
-                _selectedAnimals = value;
-            }
+            set { _selectedImmunisationout = value; }
         }
 
-        public string SelectedAnimalsText
+
+        public string SelectedImmunisationOutText
         {
-            get { return _selectedAnimalsText; }
-            set 
-            { 
-                _selectedAnimalsText = value;
-                OnPropertyChanged("SelectedAnimalsText");
+            get { return _selectedImmunisationOutText; }
+            set
+            {
+                _selectedImmunisationOutText = value;
+                OnPropertyChanged("SelectedImmunisationOutText");
             }
-        } string _selectedAnimalsText;
+        } string _selectedImmunisationOutText;
 
 
-        private static string WriteSelectedAnimalsString(IList<string> list)
+        private static string WriteSelectedImmunisationOutString(IList<string> list)
         {
             if (list.Count == 0)
                 return String.Empty;
@@ -154,5 +140,23 @@ namespace Impilo_App.Views.Screening
 
             return builder.ToString();
         }
+
+
+        #endregion
+
+
+
+        #region listofMeds Hyperten
+
+        #endregion
+
+        #region listofMeds Diabetes
+
+        #endregion
+
+        #region listofMeds Asthma
+
+        #endregion
+
     }
 }
