@@ -13,5 +13,10 @@ namespace Impilo_App
         {
             return DateTime.Now.Year.ToString("D2") + DateTime.Now.Month.ToString("D2") + DateTime.Now.Day.ToString("D2") + Name + Surname + randomGenerator.Next(1000, 10000);
         }
+
+        public static string GenerateClientID()
+        {
+            return DateTime.Now.Year.ToString("D2") + DateTime.Now.Month.ToString("D2") + DateTime.Now.Day.ToString("D2") + DateTime.Now.Hour.ToString("D2") + DateTime.Now.Minute.ToString("D2") + DateTime.Now.Second.ToString("D2") + DateTime.Now.Millisecond.ToString("D2") + randomGenerator.Next(0, 10).ToString();
+        }
     }
 }
