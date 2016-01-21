@@ -32,15 +32,20 @@ namespace Impilo_App.Views.Screening
         int HutCounter = 1;
         int encounterID = 0;
         Impilo_App.LocalModels.Client currentClient;
+        DataSource datasource = null;
         public ScreeningHome()
         {
             InitializeComponent();
+            datasource = new DataSource();
+            this.DataContext = datasource;
         }
         //DAL dataAccess;
         public ScreeningHome(string ID, Impilo_App.LocalModels.Client cl)
         {
             InitializeComponent();
-          
+
+            datasource = new DataSource();
+            this.DataContext = datasource;
             //Filling the currently screening tab
             currentClient = cl;
 
@@ -64,7 +69,8 @@ namespace Impilo_App.Views.Screening
         {
            
             InitializeComponent();
-
+            datasource = new DataSource();
+            this.DataContext = datasource;
            
         }
 
@@ -1029,5 +1035,64 @@ namespace Impilo_App.Views.Screening
         }
 
         #endregion
+
+        private void DuplicateRefNo_Click(object sender, RoutedEventArgs e)
+        {
+
+            Button btn = null;
+            btn = (Button)sender;
+
+
+            //current medication
+            if (btn.Name == "btnCurRef")
+            {
+                txtCurDiaRef.Text = txtCurHPTRef.Text;
+                txtCurEpiRef.Text = txtCurHPTRef.Text;
+                txtCurAstRef.Text = txtCurHPTRef.Text;
+                txtCurOthRef.Text = txtCurHPTRef.Text;
+            }
+
+
+            if (btn.Name == "btnCCRef")
+            {
+                //curr condition
+              
+                txtrefBS.Text = txtrefBP.Text;
+                txtrefEpi.Text = txtrefBP.Text;
+                txtrefHIV.Text = txtrefBP.Text;
+                txtCCpregref.Text = txtrefBP.Text;
+
+            }
+            //tb
+            if (btn.Name == "btnTBRef")
+            {
+         
+                txtTBContract.Text = txtRefTBsymp.Text;
+            }
+
+
+            //other
+            if (btn.Name == "btnOthRef")
+            {
+           
+                txtRefOtc2.Text= txtRefOtc.Text;
+                txtRefOtc3.Text= txtRefOtc.Text;
+                txtRefEld.Text = txtRefOtc.Text;
+            }
+            //child health
+            if (btn.Name == "btnChRef")
+            {
+                
+                txtref1.Text = txtref.Text;
+                txtref2.Text = txtref.Text;
+                txtref3.Text = txtref.Text;
+            }
+        }
+
+        private void btnCCmsb_Click(object sender, RoutedEventArgs e)
+        {
+            string msg = datasource.SelectedHivMedsText;
+            MessageBox.Show(msg);
+        }
     }
 }

@@ -233,7 +233,7 @@
                         </Border>
                         <Label Content="DWF Referral" Height="28" HorizontalAlignment="Left" Margin="40,71,0,0" x:Name="label2_Copy1" VerticalAlignment="Top" FontWeight="Bold" />
                         <Label Content="Diastolic" Height="28" HorizontalAlignment="Left" Margin="324,123,0,0" x:Name="label3_Copy16" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="2" />
-                        <TextBox Height="23" HorizontalAlignment="Left" Margin="33.5,127,0,0" x:Name="txtHypDiagnosedOnTreatmentDia" VerticalAlignment="Top" Width="49" TextChanged="txtBioLatitude2_TextChanged" Grid.Column="1" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="33.5,127,0,0" x:Name="txtHypDiagnosedOnTreatmentDia" VerticalAlignment="Top" Width="49"  Grid.Column="1" />
                         <Label Content="RESULTS" Height="28" HorizontalAlignment="Left" Margin="40,335,0,0" x:Name="label3_Copy17" VerticalAlignment="Top" FontWeight="Bold" />
                         <Label Content="Date of Visit" Height="28" HorizontalAlignment="Left" Margin="39,30,0,0" x:Name="label3_Copy18" VerticalAlignment="Top" FontWeight="Bold" />
                         <DatePicker Height="23" HorizontalAlignment="Left" Margin="167,36,0,0" x:Name="dpHypVisDt" VerticalAlignment="Top" Width="253" Grid.ColumnSpan="2" />

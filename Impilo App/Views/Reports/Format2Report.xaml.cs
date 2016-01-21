@@ -389,7 +389,7 @@ namespace Impilo_App.Views.Reports
         }
         public string Diabetes9()
         {
-            return Hyper1Q.Query();
+           return Diabetes9aQ.Query(); // Flagged for review  Please LEon Check
         }
         public string Diabetes9a()
         {
@@ -548,7 +548,7 @@ namespace Impilo_App.Views.Reports
 
         public string Diabetes22a()
         {
-            return Diabetes22aQ.Query();
+            return Impilo_App.ReportQueries.Format_2.Diabetes.Diabete22aQ.Query();
         }
         public string Diabetes22b()
         {
@@ -669,7 +669,7 @@ namespace Impilo_App.Views.Reports
 
         public string Diabetes30b()
         {
-            return Diabetes30bQ.Query();
+            return Impilo_App.ReportQueries.Format_2.Diabetes.Diabetes130bQ.Query();
         }
 
         public string Diabetes31()
