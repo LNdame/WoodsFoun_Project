@@ -29,41 +29,1665 @@ namespace Impilo_App.Views.FollowUpVisit
         //SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=impilo;Integrated Security=True;");
         SqlConnection conn = new SqlConnection(sconn);
 
+        //DAL da = new DAL();
         public FollowUp()
         {
             InitializeComponent();
         }
-
-        
-private void btnSave_Click(object sender, RoutedEventArgs e)
+      
+        private void btnCreateFollowUp_Click(object sender, RoutedEventArgs e)
         {
-            Impilo_App.LocalModels.FollowUp fol = new Impilo_App.LocalModels.FollowUp();
-            string storedProcedure = "";
-            string folID = ""; // 
+            #region old code
+            //Follow follow = new Follow();
+            ////Bio
+            //follow.FollowUpIDNumber = ((ComboBoxItem)comboFollowUpIDNumber.SelectedItem).Content.ToString();
+            //follow.DateofScreen = txtDateofScreen.Text;
 
-            #region Visit Detaisl
-            fol.FollowUpIDNumber = folID;
-            //fol.DateofScreen = scrDate;
-            fol.VisitNextVisit = DateTime.Parse( dpNextVisit.Text.ToString());
-            fol.VisitOutCome = ((ComboBoxItem)cboListOutcome.SelectedItem).Content.ToString();
-            fol.VisitHPT = (radVisHptYes.IsChecked == true) ? true : false;
-            fol.VisitDiabetes = (radVisDiaYes.IsChecked == true) ? true : false;
-            fol.VisitEpilepsy = (radVisEpiYes.IsChecked == true) ? true : false;
-            fol.VisitHIV = (radVisHivYes.IsChecked == true) ? true : false;
-            fol.VisitTB = (radVisHptYes.IsChecked == true) ? true : false;
-            fol.VisitMatHealth = (radVisHptYes.IsChecked == true) ? true : false;
-            fol.VisitChildHealth = (radVisHptYes.IsChecked == true) ? true : false;
-            fol.VisitOther = (radVisHptYes.IsChecked == true) ? true : false;
-            fol.VisitDooortoDoor = (radVisHptYes.IsChecked == true) ? true : false;
+            ////Visit Details
+            //follow.VisitNextVisit = txtVisitNextVisit.Text;
+            //follow.VisitOutCome = ((ComboBoxItem)comboVisitOutCome.SelectedItem).Content.ToString();
+            //string VisitHPT;
+            //if (VisitHPT1.IsChecked == true)
+            //{
+            //    VisitHPT = "yes";
+            //}
+            //else if (VisitHPT2.IsChecked == true)
+            //{
+            //    VisitHPT = "no";
+            //}
+            //else
+            //{
+            //     VisitHPT = "no data";
+            //}
+
+            //follow.VisitHPT = VisitHPT;
+
+            //string VisitDiabetes;
+            //if (VisitDiabetes1.IsChecked == true)
+            //{
+            //    VisitDiabetes = "yes";
+            //}
+            //else if (VisitDiabetes2.IsChecked == true)
+            //{
+            //    VisitDiabetes = "no";
+            //}
+            //else
+            //{
+            //    VisitDiabetes = "no data";
+            //}
+            //follow.VisitDiabetes = VisitDiabetes;
+
+            //string VisitEpilepsy;
+            //if (VisitEpilepsy1.IsChecked == true)
+            //{
+            //    VisitEpilepsy = "yes";
+            //}
+            //else if (VisitEpilepsy2.IsChecked == true)
+            //{
+            //    VisitEpilepsy = "no";
+            //}
+            //else
+            //{
+            //    VisitEpilepsy = "no data";
+            //}
+            //follow.VisitEpilepsy = VisitEpilepsy;
+
+
+            //string VisitHIV;
+            //if (VisitHIV1.IsChecked == true)
+            //{
+            //    VisitHIV = "yes";
+            //}
+            //else if (VisitHIV2.IsChecked == true)
+            //{
+            //    VisitHIV = "no";
+            //}
+            //else
+            //{
+            //    VisitHIV = "no data";
+            //}
+
+            //follow.VisitHIV = VisitHIV;
+
+
+            //string VisitTB;
+            //if (VisitTB1.IsChecked == true)
+            //{
+            //    VisitTB = "yes";
+            //}
+            //else if (VisitTB2.IsChecked == true)
+            //{
+            //    VisitTB = "no";
+            //}
+            //else
+            //{
+            //    VisitTB = "no data";
+            //}
+
+            //follow.VisitTB = VisitTB;
+
+            //string VisitMatHealth;
+            //if (VisitMatHealth1.IsChecked == true)
+            //{
+            //    VisitMatHealth = "yes";
+            //}
+            //else if (VisitMatHealth2.IsChecked == true)
+            //{
+            //    VisitMatHealth = "no";
+            //}
+            //else
+            //{
+            //    VisitMatHealth = "no data";
+            //}
+
+            //follow.VisitMatHealth = VisitMatHealth;
+
+            //string VisitChildHealth;
+            //if (VisitChildHealth1.IsChecked == true)
+            //{
+            //    VisitChildHealth = "yes";
+            //}
+            //else if (VisitChildHealth2.IsChecked == true)
+            //{
+            //    VisitChildHealth = "no";
+            //}
+            //else
+            //{
+            //    VisitChildHealth = "no data";
+            //}
+
+            //follow.VisitChildHealth = VisitChildHealth;
+            //follow.VisitOther = txtVisitOther.Text;
+
+            //string VisitDooortoDoor;
+            //if (VisitDooortoDoor1.IsChecked == true)
+            //{
+            //    VisitDooortoDoor = "yes";
+            //}
+            //else if (VisitDooortoDoor2.IsChecked == true)
+            //{
+            //    VisitDooortoDoor = "no";
+            //}
+            //else
+            //{
+            //    VisitDooortoDoor = "no data";
+            //}
+
+            //follow.VisitDooortoDoor = VisitDooortoDoor;
+
+            ////Hypertension
+            //string HyperWentToClinic;
+            //if (HyperWentToClinic11.IsChecked == true)
+            //{
+            //    HyperWentToClinic = "yes";
+            //}
+            //else if (HyperWentToClinic12.IsChecked == true)
+            //{
+            //    HyperWentToClinic = "no";
+            //}
+            //else
+            //{
+            //    HyperWentToClinic = "no data";
+            //}
+
+            //follow.HyperWentToClinic1 = HyperWentToClinic;
+
+            //string HyperReReferToClinic;
+            //if (HyperReReferToClinic11.IsChecked == true)
+            //{
+            //    HyperReReferToClinic = "yes";
+            //}
+            //else if (HyperReReferToClinic12.IsChecked == true)
+            //{
+            //    HyperReReferToClinic = "no";
+            //}
+            //else
+            //{
+            //    HyperReReferToClinic = "no data";
+            //}
+
+            //follow.HyperReReferToClinic1 = HyperReReferToClinic;
+            //follow.HyperReferralNo1 = txtHyperReferralNo1.Text;
+
+            //string HyperCurrentlyOnMeds;
+            //if (HyperCurrentlyOnMeds1.IsChecked == true)
+            //{
+            //    HyperCurrentlyOnMeds = "yes";
+            //}
+            //else if (HyperCurrentlyOnMeds2.IsChecked == true)
+            //{
+            //    HyperCurrentlyOnMeds = "no";
+            //}
+            //else
+            //{
+            //    HyperCurrentlyOnMeds = "no data";
+            //}
+            //follow.HyperCurrentlyOnMeds = HyperCurrentlyOnMeds;
+            //follow.HyperStartDate = txtHyperStartDate.Text;
+            //follow.HyperBPReading = txtHyperBPReading.Text;
+            //follow.HyperTodayTestReading = txtHyperFollowUpTestReading.Text;
+
+            //string HyperReReferToClinic2;
+            //if (HyperReReferToClinic21.IsChecked == true)
+            //{
+            //    HyperReReferToClinic2 = "yes";
+            //}
+            //else if (HyperReReferToClinic22.IsChecked == true)
+            //{
+            //    HyperReReferToClinic2 = "no";
+            //}
+            //else
+            //{
+            //    HyperReReferToClinic2 = "no data";
+            //}
+            //follow.HyperReReferToClinic2 = HyperReReferToClinic2;
+            //follow.HyperReferralNo2 = txtHyperReferralNo2.Text;
+            //follow.HyperCheckReading = txtHyperCheckReading.Text;
+            //follow.HyperMedication = ((ComboBoxItem)comboHyperMedication.SelectedItem).Content.ToString();
+            //string HyperReReferToClinic3;
+            //if (HyperReReferToClinic31.IsChecked == true)
+            //{
+            //    HyperReReferToClinic3 = "yes";
+            //}
+            //else if (HyperReReferToClinic32.IsChecked == true)
+            //{
+            //    HyperReReferToClinic3 = "no";
+            //}
+            //else
+            //{
+            //    HyperReReferToClinic3 = "no data";
+            //}
+            //follow.HyperReReferToClinic3 = HyperReReferToClinic3;
+            //follow.HyperReferralNo3 = txtHyperReferralNo3.Text;
+            //follow.HyperFollowUpTestReading = txtHyperFollowUpTestReading.Text;
+
+            ////Diabetes
+            //string DiaWentToClinic;
+            //if (DaiWentToClinic1.IsChecked == true)
+            //{
+            //    DiaWentToClinic = "yes";
+            //}
+            //else if (DaiWentToClinic2.IsChecked == true)
+            //{
+            //    DiaWentToClinic = "no";
+            //}
+            //else
+            //{
+            //    DiaWentToClinic = "no data";
+            //}
+            //follow.DiaWentToClinic = DiaWentToClinic;
+
+            //string DiaReReferToClinic;
+            //if (DiaReReferToClinic11.IsChecked == true)
+            //{
+            //    DiaReReferToClinic = "yes";
+            //}
+            //else if (DiaReReferToClinic12.IsChecked == true)
+            //{
+            //    DiaReReferToClinic = "no";
+            //}
+            //else
+            //{
+            //    DiaReReferToClinic = "no data";
+            //}
+            //follow.DiaReReferToClinic1 = DiaReReferToClinic;
+            //follow.DiaReferralNo1 = txtDiaReferralNo1.Text;
+
+            //string DiaCurrentlyOnMeds;
+            //if (DiaCurrentlyOnMeds1.IsChecked == true)
+            //{
+            //    DiaCurrentlyOnMeds = "yes";
+            //}
+            //else if (DiaCurrentlyOnMeds2.IsChecked == true)
+            //{
+            //    DiaCurrentlyOnMeds = "no";
+            //}
+            //else
+            //{
+            //    DiaCurrentlyOnMeds = "no data";
+            //}
+            //follow.DiaCurrentlyOnMeds = DiaCurrentlyOnMeds;
+            //follow.DiaStartDate = txtDiaStartDate.Text;
+            //follow.DiaFollowUpTestReading1 = txtDiaFollowUpTestReading1.Text;
+
+            //string DiaReferToClinic;
+            //if (DiaReferToClinic21.IsChecked == true)
+            //{
+            //    DiaReferToClinic = "yes";
+            //}
+            //else if (DiaReferToClinic22.IsChecked == true)
+            //{
+            //    DiaReferToClinic = "no";
+            //}
+            //else
+            //{
+            //    DiaReferToClinic = "no data";
+            //}
+            //follow.DiaReferToClinic2 = DiaReferToClinic;
+            //follow.DiaReferralNo2 = txtDiaReferralNo2.Text;
+            //follow.DiaCheckReading = txtDiaCheckReading.Text;
+            //follow.DiaMedication = ((ComboBoxItem)comboDiaMedication.SelectedItem).Content.ToString();
+            //string DiaReReferToClinics;
+            //if (DiaReReferToClinic31.IsChecked == true)
+            //{
+            //    DiaReReferToClinics = "yes";
+            //}
+            //else if (DiaReReferToClinic32.IsChecked == true)
+            //{
+            //    DiaReReferToClinics = "no";
+            //}
+            //else
+            //{
+            //    DiaReReferToClinics = "no data";
+            //}
+            //follow.DiaReReferToClinic3 = DiaReReferToClinics;
+            //follow.DiaReferralNo3 = txtDiaReferralNo3.Text;
+            //follow.DiaFollowUpTestReading3 = txtDiaFollowUpTestReading3.Text;
+
+            ////Epilepsy
+            //string EpiWentToClinic;
+            //if (EpiWentToClinic1.IsChecked == true)
+            //{
+            //    EpiWentToClinic = "yes";
+            //}
+            //else if (EpiWentToClinic2.IsChecked == true)
+            //{
+            //    EpiWentToClinic = "no";
+            //}
+            //else
+            //{
+            //    EpiWentToClinic = "no data";
+            //}
+
+            //follow.EpiWentToClinic = EpiWentToClinic;
+
+            //string EpiReReferToClinic1;
+            //if (EpiReReferToClinic11.IsChecked == true)
+            //{
+            //    EpiReReferToClinic1 = "yes";
+            //}
+            //else if (EpiReReferToClinic12.IsChecked == true)
+            //{
+            //    EpiReReferToClinic1 = "no";
+            //}
+            //else
+            //{
+            //    EpiReReferToClinic1 = "no data";
+            //}
+
+            //follow.EpiReReferToClinic1 = EpiReReferToClinic1;
+            //follow.EpiReferralNo1 = txtEpiReferralNo1.Text;
+
+            //string EpiFitInLastMonth;
+            //if (EpiFitInLastMonth1.IsChecked == true)
+            //{
+            //    EpiFitInLastMonth = "yes";
+            //}
+            //else if (EpiFitInLastMonth2.IsChecked == true)
+            //{
+            //    EpiFitInLastMonth = "no";
+            //}
+            //else
+            //{
+            //    EpiFitInLastMonth = "no data";
+            //}
+
+            //follow.EpiFitInLastMonth = EpiFitInLastMonth;
+
+            //string EpiReferToClinic;
+            //if (EpiReferToClinic1.IsChecked == true)
+            //{
+            //    EpiReferToClinic = "yes";
+            //}
+            //else if (EpiReferToClinic2.IsChecked == true)
+            //{
+            //    EpiReferToClinic = "no";
+            //}
+            //else
+            //{
+            //    EpiReferToClinic = "no data";
+            //}
+
+            //follow.EpiReferToClinic = EpiReferToClinic;
+
+
+            //string EpiCurrentlyOnMeds;
+            //if (EpiCurrentlyOnMeds1.IsChecked == true)
+            //{
+            //    EpiCurrentlyOnMeds = "yes";
+            //}
+            //else if (EpiCurrentlyOnMeds2.IsChecked == true)
+            //{
+            //    EpiCurrentlyOnMeds = "no";
+            //}
+            //else
+            //{
+            //    EpiCurrentlyOnMeds = "no data";
+            //}
+
+            //follow.EpiCurrentlyOnMeds = EpiCurrentlyOnMeds;
+            //follow.EpiStartDate = txtEpiStartDate.Text;
+
+            //string EpiMoreThan3FitsInLastMonth;
+            //if (EpiMoreThan3FitsInLastMonth1.IsChecked == true)
+            //{
+            //    EpiMoreThan3FitsInLastMonth = "yes";
+            //}
+            //else if (EpiMoreThan3FitsInLastMonth2.IsChecked == true)
+            //{
+            //    EpiMoreThan3FitsInLastMonth = "no";
+            //}
+            //else
+            //{
+            //    EpiMoreThan3FitsInLastMonth = "no data";
+            //}
+
+            //follow.EpiMoreThan3FitsInLastMonth = EpiMoreThan3FitsInLastMonth;
+
+
+            //string EpiReReferToClinic2;
+            //if (EpiReReferToClinic21.IsChecked == true)
+            //{
+            //    EpiReReferToClinic2 = "yes";
+            //}
+            //else if (EpiReReferToClinic22.IsChecked == true)
+            //{
+            //    EpiReReferToClinic2 = "no";
+            //}
+            //else
+            //{
+            //    EpiReReferToClinic2 = "no data";
+            //}
+
+            //follow.EpiReReferToClinic2 = EpiReReferToClinic2;
+            //follow.EpiReferralNo2 = txtEpiReferralNo2.Text;
+            //follow.EpiMedication = ((ComboBoxItem)comboEpiMedication.SelectedItem).Content.ToString();
+            ////Asthma
+
+            //follow.AsDateOfVisit = txtAsDateOfVisit.Text;
+            //string AsWentToClinic;
+            //if (AsWentToClinic1.IsChecked == true)
+            //{
+            //    AsWentToClinic = "yes";
+            //}
+            //else if (AsWentToClinic2.IsChecked == true)
+            //{
+            //    AsWentToClinic = "no";
+            //}
+            //else
+            //{
+            //    AsWentToClinic = "no data";
+            //}
+
+            //follow.AsWentToClinic = AsWentToClinic;
+
+            //string AsReReferToClinic1;
+            //if (AsReReferToClinic11.IsChecked == true)
+            //{
+            //    AsReReferToClinic1 = "yes";
+            //}
+            //else if (AsReReferToClinic12.IsChecked == true)
+            //{
+            //    AsReReferToClinic1 = "no";
+            //}
+            //else
+            //{
+            //    AsReReferToClinic1 = "no data";
+            //}
+
+            //follow.AsReReferToClinic1 = AsReReferToClinic1;
+            //follow.AsReferralNo1 = txtAsReferralNo1.Text;
+
+            //string AsFitInLastMonth;
+            //if (AsFitInLastMonth1.IsChecked == true)
+            //{
+            //    AsFitInLastMonth = "yes";
+            //}
+            //else if (AsFitInLastMonth2.IsChecked == true)
+            //{
+            //    AsFitInLastMonth = "no";
+            //}
+            //else
+            //{
+            //    AsFitInLastMonth = "no data";
+            //}
+
+            //follow.AsFitInLastMonth = AsFitInLastMonth;
+
+            //string AsReferToClinic;
+            //if (AsReferToClinic1.IsChecked == true)
+            //{
+            //    AsReferToClinic = "yes";
+            //}
+            //else if (AsReferToClinic2.IsChecked == true)
+            //{
+            //    AsReferToClinic = "no";
+            //}
+            //else
+            //{
+            //    AsReferToClinic = "no data";
+            //}
+
+            //follow.AsReferToClinic = AsReferToClinic;
+            //follow.AsReferralNo2 = txtAsReferralNo2.Text;
+
+            //string AsCurrentlyOnMeds;
+            //if (AsCurrentlyOnMeds1.IsChecked == true)
+            //{
+            //    AsCurrentlyOnMeds = "yes";
+            //}
+            //else if (AsCurrentlyOnMeds2.IsChecked == true)
+            //{
+            //    AsCurrentlyOnMeds = "no";
+            //}
+            //else
+            //{
+            //    AsCurrentlyOnMeds = "no data";
+            //}
+
+            //follow.AsCurrentlyOnMeds = AsCurrentlyOnMeds;
+            //follow.AsStartDate = txtAsStartDate.Text;
+
+            //string AsIncreasedNoOfAsthmaAttacks;
+            //if (AsIncreasedNoOfAsthmaAttacks1.IsChecked == true)
+            //{
+            //    AsIncreasedNoOfAsthmaAttacks = "yes";
+            //}
+            //else if (AsIncreasedNoOfAsthmaAttacks2.IsChecked == true)
+            //{
+            //    AsIncreasedNoOfAsthmaAttacks = "no";
+            //}
+            //else
+            //{
+            //    AsIncreasedNoOfAsthmaAttacks = "no data";
+            //}
+
+            //follow.AsIncreasedNoOfAsthmaAttacks = AsIncreasedNoOfAsthmaAttacks;
+
+            //string AsReReferToClinic2;
+            //if (AsReReferToClinic21.IsChecked == true)
+            //{
+            //    AsReReferToClinic2 = "yes";
+            //}
+            //else if (AsReReferToClinic22.IsChecked == true)
+            //{
+            //    AsReReferToClinic2 = "no";
+            //}
+            //else
+            //{
+            //    AsReReferToClinic2 = "no data";
+            //}
+
+            //follow.AsReReferToClinic2 = AsReReferToClinic2;
+            //follow.AsReferralNo3 = txtAsReferralNo3.Text;
+            //follow.AsMedication = ((ComboBoxItem)comboAsMedication.SelectedItem).Content.ToString();
+
+            ////HIV
+            //follow.HIVDateOfVisit = txtHIVDateOfVisit.Text;
+            //follow.HIVReferralNo1 = txtHIVReferralNo1.Text;
+            //string HIVWentToClinic;
+            //if (HIVWentToClinic1.IsChecked == true)
+            //{
+            //    HIVWentToClinic = "yes";
+            //}
+            //else if (HIVWentToClinic2.IsChecked == true)
+            //{
+            //    HIVWentToClinic = "no";
+            //}
+            //else
+            //{
+            //    HIVWentToClinic = "no data";
+            //}
+
+            //follow.HIVWentToClinic = HIVWentToClinic;
+
+            //string HIVRereferToClinic;
+            //if (HIVReReferToClinic1.IsChecked == true)
+            //{
+            //    HIVRereferToClinic = "yes";
+            //}
+            //else if (HIVReReferToClinic2.IsChecked == true)
+            //{
+            //    HIVRereferToClinic = "no";
+            //}
+            //else
+            //{
+            //    HIVRereferToClinic = "no data";
+            //}
+
+            //follow.HIVRereferToClinic = HIVRereferToClinic;
+
+            //string HIVReferToClinic1;
+            //if (HIVReferToClinic11.IsChecked == true)
+            //{
+            //    HIVReferToClinic1 = "yes";
+            //}
+            //else if (HIVReferToClinic12.IsChecked == true)
+            //{
+            //    HIVReferToClinic1 = "no";
+            //}
+            //else
+            //{
+            //    HIVReferToClinic1 = "no data";
+            //}
+
+            //follow.HIVReferToClinic1 = HIVReferToClinic1;
+
+            //follow.HIVReferralNo2 = txtHIVReferralNo2.Text;
+            //follow.HIVStatus = ((ComboBoxItem)comboHIVStatus.SelectedItem).Content.ToString();
+
+            //string HIVOnARVs;
+            //if (HIVOnARVs1.IsChecked == true)
+            //{
+            //    HIVOnARVs = "yes";
+            //}
+            //else if (HIVOnARVs2.IsChecked == true)
+            //{
+            //    HIVOnARVs = "no";
+            //}
+            //else
+            //{
+            //    HIVOnARVs = "no data";
+            //}
+
+            //follow.HIVOnARVs = HIVOnARVs;
+            //follow.HIVStartDate1 = txtHIVStartDate1.Text;
+            //string HIVAdherenceOK;
+            //if (HIVAdherenceOK1.IsChecked == true)
+            //{
+            //    HIVAdherenceOK = "yes";
+            //}
+            //else if (HIVAdherenceOK2.IsChecked == true)
+            //{
+            //    HIVAdherenceOK = "no";
+            //}
+            //else
+            //{
+            //    HIVAdherenceOK = "no data";
+            //}
+
+            //follow.HIVAdherenceOK = HIVAdherenceOK;
+
+            //string HIVConcerns;
+            //if (HIVConcerns1.IsChecked == true)
+            //{
+            //    HIVConcerns = "yes";
+            //}
+            //else if (HIVConcerns2.IsChecked == true)
+            //{
+            //    HIVConcerns = "no";
+            //}
+            //else
+            //{
+            //    HIVConcerns = "no data";
+            //}
+
+            //follow.HIVConcerns = HIVConcerns;
+
+            //string HIVReferToClinic2;
+            //if (HIVReferToClinic21.IsChecked == true)
+            //{
+            //    HIVReferToClinic2 = "yes";
+            //}
+            //else if (HIVReferToClinic22.IsChecked == true)
+            //{
+            //    HIVReferToClinic2 = "no";
+            //}
+            //else
+            //{
+            //    HIVReferToClinic2 = "no data";
+            //}
+
+            //follow.HIVReferToClinic2 = HIVReferToClinic2;
+            //follow.HIVReferralNo3 = txtHIVReferralNo3.Text;
+
+            //string HIVARVsConsern;
+            //if (HIVARVsConcerns1.IsChecked == true)
+            //{
+            //    HIVARVsConsern = "yes";
+            //}
+            //else if (HIVARVsConcerns2.IsChecked == true)
+            //{
+            //    HIVARVsConsern = "no";
+            //}
+            //else
+            //{
+            //    HIVARVsConsern = "no data";
+            //}
+
+            //follow.HIVARVsConsern = HIVARVsConsern;
+
+            //string HIVReferToClinic3;
+            //if (HIVReferToClinic31.IsChecked == true)
+            //{
+            //    HIVReferToClinic3 = "yes";
+            //}
+            //else if (HIVReferToClinic32.IsChecked == true)
+            //{
+            //    HIVReferToClinic3 = "no";
+            //}
+            //else
+            //{
+            //    HIVReferToClinic3 = "no data";
+            //}
+
+            //follow.HIVReferToClinic3 = HIVReferToClinic3;
+            //follow.HIVReferralNo4 = txtHIVReferralNo4.Text;
+
+            //string HIVTestingDone;
+            //if (HIVTestingDone1.IsChecked == true)
+            //{
+            //    HIVTestingDone = "yes";
+            //}
+            //else if (HIVTestingDone2.IsChecked == true)
+            //{
+            //    HIVTestingDone = "no";
+            //}
+            //else
+            //{
+            //    HIVTestingDone = "no data";
+            //}
+
+            //follow.HIVTestingDone = HIVTestingDone;
+
+            //string HIVTestDone;
+            //if (HIVHIVTestDone1.IsChecked == true)
+            //{
+            //    HIVTestDone = "yes";
+            //}
+            //else if (HIVHIVTestDone2.IsChecked == true)
+            //{
+            //    HIVTestDone = "no";
+            //}
+            //else
+            //{
+            //    HIVTestDone = "no data";
+            //}
+
+            //follow.HIVTestDone = HIVTestDone;
+            //follow.HIVTestResults = txtHIVTestResults.Text;
+
+            //string HIVReferToClinic4;
+            //if (HIVReferToClinic41.IsChecked == true)
+            //{
+            //    HIVReferToClinic4 = "yes";
+            //}
+            //else if (HIVReferToClinic42.IsChecked == true)
+            //{
+            //    HIVReferToClinic4 = "no";
+            //}
+            //else
+            //{
+            //    HIVReferToClinic4 = "no data";
+            //}
+
+            //follow.HIVReferToClinic4 = HIVReferToClinic4;
+            //follow.HIVReferralNo5 = txtHIVReferralNo5.Text;
+            //follow.HIVMedication = ((ComboBoxItem)HIVMedication.SelectedItem).Content.ToString();
+
+            ////TB
+            //follow.TBDateOfVisit = txtTBDateOfVisit.Text;
+            //string TBARVsConcern;
+            //if (TBARVsConcern1.IsChecked == true)
+            //{
+            //    TBARVsConcern = "yes";
+            //}
+            //else if (TBARVsConcern2.IsChecked == true)
+            //{
+            //    TBARVsConcern = "no";
+            //}
+            //else
+            //{
+            //    TBARVsConcern = "no data";
+            //}
+
+            //follow.TBARVsConcern = TBARVsConcern;
+
+            //string TBReferToClinic1;
+            //if (TBReferToClinic11.IsChecked == true)
+            //{
+            //    TBReferToClinic1 = "yes";
+            //}
+            //else if (TBReferToClinic12.IsChecked == true)
+            //{
+            //    TBReferToClinic1 = "no";
+            //}
+            //else
+            //{
+            //    TBReferToClinic1 = "no data";
+            //}
+
+            //follow.TBReferToClinic1 = TBReferToClinic1;
+            //follow.TBReferralNo1 = txtTBReferralNo1.Text;
+
+            //string TBRecentUnplannedLoseOfWeight;
+            //if (TBRecentUnplannedLoseOfWeight1.IsChecked == true)
+            //{
+            //    TBRecentUnplannedLoseOfWeight = "yes";
+            //}
+            //else if (TBRecentUnplannedLoseOfWeight2.IsChecked == true)
+            //{
+            //    TBRecentUnplannedLoseOfWeight = "no";
+            //}
+            //else
+            //{
+            //    TBRecentUnplannedLoseOfWeight = "no data";
+            //}
+
+            //follow.TBRecentUnplannedLoseOfWeight = TBRecentUnplannedLoseOfWeight;
+
+            //string TBExcessiveSweatingAtNight;
+            //if (TBExcessiveSweatingAtNight1.IsChecked == true)
+            //{
+            //    TBExcessiveSweatingAtNight = "yes";
+            //}
+            //else if (TBExcessiveSweatingAtNight2.IsChecked == true)
+            //{
+            //    TBExcessiveSweatingAtNight = "no";
+            //}
+            //else
+            //{
+            //    TBExcessiveSweatingAtNight = "no data";
+            //}
+
+            //follow.TBExcessiveSweatingAtNight = TBExcessiveSweatingAtNight;
+
+            //string TBFeverOver2Weeks;
+            //if (TBFeverOver2Weeks1.IsChecked == true)
+            //{
+            //    TBFeverOver2Weeks = "yes";
+            //}
+            //else if (TBFeverOver2Weeks2.IsChecked == true)
+            //{
+            //    TBFeverOver2Weeks = "no";
+            //}
+            //else
+            //{
+            //    TBFeverOver2Weeks = "no data";
+            //}
+
+            //follow.TBFeverOver2Weeks = TBFeverOver2Weeks;
+
+            //string TBCoughMoreThan2Week;
+            //if (TBCoughMoreThan2Week1.IsChecked == true)
+            //{
+            //    TBCoughMoreThan2Week = "yes";
+            //}
+            //else if (TBCoughMoreThan2Week2.IsChecked == true)
+            //{
+            //    TBCoughMoreThan2Week = "no";
+            //}
+            //else
+            //{
+            //    TBCoughMoreThan2Week = "no data";
+            //}
+
+            //follow.TBCoughMoreThan2Week = TBCoughMoreThan2Week;
+
+            //string TBLossOfApetite;
+            //if (TBLossOfApetite1.IsChecked == true)
+            //{
+            //    TBLossOfApetite = "yes";
+            //}
+            //else if (TBLossOfApetite2.IsChecked == true)
+            //{
+            //    TBLossOfApetite = "no";
+            //}
+            //else
+            //{
+            //    TBLossOfApetite = "no data";
+            //}
+
+            //follow.TBLossOfApetite = TBLossOfApetite;
+
+            //string TBReferredToClinic2;
+            //if (TBReferredToClinic21.IsChecked == true)
+            //{
+            //    TBReferredToClinic2 = "yes";
+            //}
+            //else if (TBReferredToClinic22.IsChecked == true)
+            //{
+            //    TBReferredToClinic2 = "no";
+            //}
+            //else
+            //{
+            //    TBReferredToClinic2 = "no data";
+            //}
+
+            //follow.TBReferredToClinic2 = TBReferredToClinic2;
+            //follow.TBReferralNo2 = txtTBReferralNo2.Text;
+            //follow.TBResult = ((ComboBoxItem)comboTBResult.SelectedItem).Content.ToString();
+
+            //string TBNewlyDiagnosed;
+            //if (TBNewlyDiagnosed1.IsChecked == true)
+            //{
+            //    TBNewlyDiagnosed = "yes";
+            //}
+            //else if (TBNewlyDiagnosed2.IsChecked == true)
+            //{
+            //    TBNewlyDiagnosed = "no";
+            //}
+            //else
+            //{
+            //    TBNewlyDiagnosed = "no data";
+            //}
+
+            //follow.TBNewlyDiagnosed = TBNewlyDiagnosed;
+            //follow.TBStartDate = txtTBStartDate.Text;
+
+            //string TBReferTBContactsToClinic;
+            //if (TBReferTBContactsToClinic1.IsChecked == true)
+            //{
+            //    TBReferTBContactsToClinic = "yes";
+            //}
+            //else if (TBReferTBContactsToClinic2.IsChecked == true)
+            //{
+            //    TBReferTBContactsToClinic = "no";
+            //}
+            //else
+            //{
+            //    TBReferTBContactsToClinic = "no data";
+            //}
+
+            //follow.TBReferTBContactsToClinic = TBReferTBContactsToClinic;
+
+            //string TBPreviouslyOnMeds;
+            //if (TBPreviouslyOnMeds1.IsChecked == true)
+            //{
+            //    TBPreviouslyOnMeds = "yes";
+            //}
+            //else if (TBPreviouslyOnMeds2.IsChecked == true)
+            //{
+            //    TBPreviouslyOnMeds = "no";
+            //}
+            //else
+            //{
+            //    TBPreviouslyOnMeds = "no data";
+            //}
+
+            //follow.TBPreviouslyOnMeds = TBPreviouslyOnMeds;
+            //follow.TBFinishDate = txtTBFinishDate.Text;
+
+            //string TBConcerns;
+            //if (TBConcerns1.IsChecked == true)
+            //{
+            //    TBConcerns = "yes";
+            //}
+            //else if (TBConcerns2.IsChecked == true)
+            //{
+            //    TBConcerns = "no";
+            //}
+            //else
+            //{
+            //    TBConcerns = "no data";
+            //}
+
+            //follow.TBConcerns = TBConcerns;
+
+            //string TBReferToClinic3;
+            //if (TBReferToClinic31.IsChecked == true)
+            //{
+            //    TBReferToClinic3 = "yes";
+            //}
+            //else if (TBReferToClinic32.IsChecked == true)
+            //{
+            //    TBReferToClinic3 = "no";
+            //}
+            //else
+            //{
+            //    TBReferToClinic3 = "no data";
+            //}
+
+            //follow.TBReferToClinic3 = TBReferToClinic3;
+            //follow.TBReferralNo3 = txtTBReferralNo3.Text;
+            //follow.TBMedication = ((ComboBoxItem)comboTBMedication.SelectedItem).Content.ToString();
+
+            ////MatHealth
+            //follow.MatDateOfVisit = txtMatDateOfVisit.Text;
+            //string MatReReferToClinic1;
+            //if (MatReReferToClinic11.IsChecked == true)
+            //{
+            //    MatReReferToClinic1 = "yes";
+            //}
+            //else if (MatReReferToClinic12.IsChecked == true)
+            //{
+            //    MatReReferToClinic1 = "no";
+            //}
+            //else
+            //{
+            //    MatReReferToClinic1 = "no data";
+            //}
+
+            //follow.MatReReferToClinic1 = MatReReferToClinic1;
+            //follow.AsReferralNo1 = txtMatReferralNo1.Text;
+
+            //string MatIsItPosibleYouArePregnent;
+            //if (MatIsItPosibleYouArePregnent1.IsChecked == true)
+            //{
+            //    MatIsItPosibleYouArePregnent = "yes";
+            //}
+            //else if (MatIsItPosibleYouArePregnent2.IsChecked == true)
+            //{
+            //    MatIsItPosibleYouArePregnent = "no";
+            //}
+            //else
+            //{
+            //    MatIsItPosibleYouArePregnent = "no data";
+            //}
+
+            //follow.MatIsItPosibleYouArePregnent = MatIsItPosibleYouArePregnent;
+
+            //string MatPregnancyTestDone;
+            //if (MatPregnancyTestDone1.IsChecked == true)
+            //{
+            //    MatPregnancyTestDone = "yes";
+            //}
+            //else if (MatPregnancyTestDone2.IsChecked == true)
+            //{
+            //    MatPregnancyTestDone = "no";
+            //}
+            //else
+            //{
+            //    MatPregnancyTestDone = "no data";
+            //}
+
+            //follow.MatPregnancyTestDone = MatPregnancyTestDone;
+
+            //string MatWentToClinic;
+            //if (MatWentToClinic1.IsChecked == true)
+            //{
+            //    MatWentToClinic = "yes";
+            //}
+            //else if (MatWentToClinic2.IsChecked == true)
+            //{
+            //    MatWentToClinic = "no";
+            //}
+            //else
+            //{
+            //    MatWentToClinic = "no data";
+            //}
+
+            //follow.MatWentToClinic = MatWentToClinic;
+            //follow.MatReferralNo1 = txtMatReferralNo1.Text;
+
+            //follow.MatResult = ((ComboBoxItem)comboMatResult.SelectedItem).Content.ToString();
+
+            //string MatReferredToClinic2;
+            //if (MatReferredToClinic21.IsChecked == true)
+            //{
+            //    MatReferredToClinic2 = "yes";
+            //}
+            //else if (MatReferredToClinic22.IsChecked == true)
+            //{
+            //    MatReferredToClinic2 = "no";
+            //}
+            //else
+            //{
+            //    MatReferredToClinic2 = "no data";
+            //}
+
+            //follow.MatReferredToClinic2 = MatReferredToClinic2;
+            //follow.MatReferralNo2 = txtMatReferralNo2.Text;
+            //follow.MatDateOf1stANC = txtMatDateOf1stANC.Text;
+            //follow.MatDateOfLastANC = txtMatDateOfLastANC.Text;
+
+            //string MatReferredToClinic3;
+            //if (MatReferredToClinic31.IsChecked == true)
+            //{
+            //    MatReferredToClinic3 = "yes";
+            //}
+            //else if (MatReferredToClinic32.IsChecked == true)
+            //{
+            //    MatReferredToClinic3 = "no";
+            //}
+            //else
+            //{
+            //    MatReferredToClinic3 = "no data";
+            //}
+
+            //follow.MatReferredToClinic3 = MatReferredToClinic3;
+            //follow.MatReferralNo3 = txtMatReferralNo3.Text;
+            //string MatRegisteredForMoMConnect;
+            //if (MatRegisteredForMoMConnect1.IsChecked == true)
+            //{
+            //    MatRegisteredForMoMConnect = "yes";
+            //}
+            //else if (MatRegisteredForMoMConnect2.IsChecked == true)
+            //{
+            //    MatRegisteredForMoMConnect = "no";
+            //}
+            //else
+            //{
+            //    MatRegisteredForMoMConnect = "no data";
+            //}
+
+            //follow.MatRegisteredForMoMConnect = MatRegisteredForMoMConnect;
+            //follow.MatDateOfNextANC = txtMatDateOfNextANC.Text;
+
+            //string MatReferToClinic;
+            //if (MatReferToClinic1.IsChecked == true)
+            //{
+            //    MatReferToClinic = "yes";
+            //}
+            //else if (MatReferToClinic2.IsChecked == true)
+            //{
+            //    MatReferToClinic = "no";
+            //}
+            //else
+            //{
+            //    MatReferToClinic = "no data";
+            //}
+
+            //follow.MatReferToClinic = MatReferToClinic;
+            //follow.MatReferralNo4 = txtMatReferralNo4.Text;
+            //follow.MatExpectedDateOfDelivery = txtMatExpectedDateOfDelivery.Text;
+
+            //string MatIntendBreastfeed;
+            //if (MatIntendBreastfeed1.IsChecked == true)
+            //{
+            //    MatIntendBreastfeed = "yes";
+            //}
+            //else if (MatIntendBreastfeed2.IsChecked == true)
+            //{
+            //    MatIntendBreastfeed = "no";
+            //}
+            //else
+            //{
+            //    MatIntendBreastfeed = "no data";
+            //}
+
+            //follow.MatIntendBreastfeed = MatIntendBreastfeed;
+
+            //string MatIntendFormulaFeed;
+            //if (MatIntendFormulaFeed1.IsChecked == true)
+            //{
+            //    MatIntendFormulaFeed = "yes";
+            //}
+            //else if (MatIntendFormulaFeed2.IsChecked == true)
+            //{
+            //    MatIntendFormulaFeed = "no";
+            //}
+            //else
+            //{
+            //    MatIntendFormulaFeed = "no data";
+            //}
+
+            //follow.MatIntendFormulaFeed = MatIntendFormulaFeed;
+
+            ////Child Health 
+
+            //follow.ChildDateOfVisit = txtChildDateOfVisit.Text;
+
+            //string ChildARVsConcern;
+            //if (ChildARVsConcern1.IsChecked == true)
+            //{
+            //    ChildARVsConcern = "yes";
+            //}
+            //else if (ChildARVsConcern2.IsChecked == true)
+            //{
+            //    ChildARVsConcern = "no";
+            //}
+            //else
+            //{
+            //    ChildARVsConcern = "no data";
+            //}
+
+            //follow.ChildARVsConcern = ChildARVsConcern;
+
+            //string ChildReferToClinic1;
+            //if (ChildReferToClinic11.IsChecked == true)
+            //{
+            //    ChildReferToClinic1 = "yes";
+            //}
+            //else if (ChildReferToClinic12.IsChecked == true)
+            //{
+            //    ChildReferToClinic1 = "no";
+            //}
+            //else
+            //{
+            //    ChildReferToClinic1 = "no data";
+            //}
+
+            //follow.ChildReferToClinic1 = ChildReferToClinic1;
+            //follow.ChildReferralNo1 = txtChildReferralNo1.Text;
+
+            //string ChildWalkAppropriateForAge;
+            //if (ChildWalkAppropriateForAge1.IsChecked == true)
+            //{
+            //    ChildWalkAppropriateForAge = "yes";
+            //}
+            //else if (ChildWalkAppropriateForAge2.IsChecked == true)
+            //{
+            //    ChildWalkAppropriateForAge = "no";
+            //}
+            //else
+            //{
+            //    ChildWalkAppropriateForAge = "no data";
+            //}
+
+            //follow.ChildWalkAppropriateForAge = ChildWalkAppropriateForAge;
+
+            //string ChildTalkAppropriateForAge;
+            //if (ChildTalkAppropriateForAge1.IsChecked == true)
+            //{
+            //    ChildTalkAppropriateForAge = "yes";
+            //}
+            //else if (ChildTalkAppropriateForAge2.IsChecked == true)
+            //{
+            //    ChildTalkAppropriateForAge = "no";
+            //}
+            //else
+            //{
+            //    ChildTalkAppropriateForAge = "no data";
+            //}
+
+            //follow.ChildTalkAppropriateForAge = ChildTalkAppropriateForAge;
+
+            //string ChildReferToClinic2;
+            //if (ChildReferToClinic21.IsChecked == true)
+            //{
+            //    ChildReferToClinic2 = "yes";
+            //}
+            //else if (ChildReferToClinic22.IsChecked == true)
+            //{
+            //    ChildReferToClinic2 = "no";
+            //}
+            //else
+            //{
+            //    ChildReferToClinic2 = "no data";
+            //}
+
+            //follow.ChildReferToClinic2 = ChildReferToClinic2;
+            //follow.ChildReferralNo2 = txtChildReferralNo2.Text;
+
+            //string ChildChildAssisted;
+            //if (ChildChildAssisted1.IsChecked == true)
+            //{
+            //    ChildChildAssisted = "yes";
+            //}
+            //else if (ChildChildAssisted2.IsChecked == true)
+            //{
+            //    ChildChildAssisted = "no";
+            //}
+            //else
+            //{
+            //    ChildChildAssisted = "no data";
+            //}
+
+            //follow.ChildChildAssisted = ChildChildAssisted;
+
+            //string ChildReReferToSD;
+            //if (ChildReReferToSD1.IsChecked == true)
+            //{
+            //    ChildReReferToSD = "yes";
+            //}
+            //else if (ChildReReferToSD2.IsChecked == true)
+            //{
+            //    ChildReReferToSD = "no";
+            //}
+            //else
+            //{
+            //    ChildReReferToSD = "no data";
+            //}
+
+            //follow.ChildReReferToSD = ChildReReferToSD;
+            //follow.ChildReferralNo3 = txtChildReferralNo3.Text;
+            //follow.ChildListConcernsReChild = txtChildListConcernsReChild.Text;
+
+            //string ChildReferToClinic3;
+            //if (ChildReferToClinic31.IsChecked == true)
+            //{
+            //    ChildReferToClinic3 = "yes";
+            //}
+            //else if (ChildReferToClinic32.IsChecked == true)
+            //{
+            //    ChildReferToClinic3 = "no";
+            //}
+            //else
+            //{
+            //    ChildReferToClinic3 = "no data";
+            //}
+
+            //follow.ChildReferToClinic3 = ChildReferToClinic3;
+
+            //string ChildreferToSD;
+            //if (ChildreferToSD1.IsChecked == true)
+            //{
+            //    ChildreferToSD = "yes";
+            //}
+            //else if (ChildreferToSD2.IsChecked == true)
+            //{
+            //    ChildreferToSD = "no";
+            //}
+            //else
+            //{
+            //    ChildreferToSD = "no data";
+            //}
+
+            //follow.ChildreferToSD = ChildreferToSD;
+            //follow.ChildReferralNo4 = txtChildReferralNo4.Text;
+
+            //string ChildChildWithRTHC;
+            //if (ChildChildWithRTHC1.IsChecked == true)
+            //{
+            //    ChildChildWithRTHC = "yes";
+            //}
+            //else if (ChildChildWithRTHC2.IsChecked == true)
+            //{
+            //    ChildChildWithRTHC = "no";
+            //}
+            //else
+            //{
+            //    ChildChildWithRTHC = "no data";
+            //}
+
+            //follow.ChildChildWithRTHC = ChildChildWithRTHC;
+
+            //string ChildReferToClinic4;
+            //if (ChildReferToClinic41.IsChecked == true)
+            //{
+            //    ChildReferToClinic4 = "yes";
+            //}
+            //else if (ChildReferToClinic42.IsChecked == true)
+            //{
+            //    ChildReferToClinic4 = "no";
+            //}
+            //else
+            //{
+            //    ChildReferToClinic4 = "no data";
+            //}
+
+            //follow.ChildReferToClinic4 = ChildReferToClinic4;
+            //follow.ChildReferralNo5 = txtChildReferralNo5.Text;
+
+            //string ChildMotherTHVPositive;
+            //if (ChildMotherTHVPositive1.IsChecked == true)
+            //{
+            //    ChildMotherTHVPositive = "yes";
+            //}
+            //else if (ChildMotherTHVPositive2.IsChecked == true)
+            //{
+            //    ChildMotherTHVPositive = "no";
+            //}
+            //else
+            //{
+            //    ChildMotherTHVPositive = "no data";
+            //}
+
+            //follow.ChildMotherTHVPositive = ChildMotherTHVPositive;
+
+            //string ChildChildBreastfed;
+            //if (ChildChildBreastfed1.IsChecked == true)
+            //{
+            //    ChildChildBreastfed = "yes";
+            //}
+            //else if (ChildChildBreastfed2.IsChecked == true)
+            //{
+            //    ChildChildBreastfed = "no";
+            //}
+            //else
+            //{
+            //    ChildChildBreastfed = "no data";
+            //}
+
+            //follow.ChildChildBreastfed = ChildChildBreastfed;
+            //follow.ChildHowLong = txtChildHowLong.Text;
+
+            //string ChildClildEverOnNevirapine;
+            //if (ChildClildEverOnNevirapine1.IsChecked == true)
+            //{
+            //    ChildClildEverOnNevirapine = "yes";
+            //}
+            //else if (ChildClildEverOnNevirapine2.IsChecked == true)
+            //{
+            //    ChildClildEverOnNevirapine = "no";
+            //}
+            //else
+            //{
+            //    ChildClildEverOnNevirapine = "no data";
+            //}
+
+            //follow.ChildClildEverOnNevirapine = ChildClildEverOnNevirapine;
+
+            //string ChildReferToClinic5;
+            //if (ChildReferToClinic51.IsChecked == true)
+            //{
+            //    ChildReferToClinic5 = "yes";
+            //}
+            //else if (ChildReferToClinic52.IsChecked == true)
+            //{
+            //    ChildReferToClinic5 = "no";
+            //}
+            //else
+            //{
+            //    ChildReferToClinic5 = "no data";
+            //}
+
+            //follow.ChildReferToClinic5 = ChildReferToClinic5;
+            //follow.ChildReferralNo6 = txtChildReferralNo6.Text;
+
+            //string ChildHowPCRHasDone;
+            //if (ChildHowPCRHasDone1.IsChecked == true)
+            //{
+            //    ChildHowPCRHasDone = "yes";
+            //}
+            //else if (ChildHowPCRHasDone2.IsChecked == true)
+            //{
+            //    ChildHowPCRHasDone = "no";
+            //}
+            //else
+            //{
+            //    ChildHowPCRHasDone = "no data";
+            //}
+
+            //follow.ChildHowPCRHasDone = ChildHowPCRHasDone;
+
+            //string ChildReferToClinic6;
+            //if (ChildReferToClinic61.IsChecked == true)
+            //{
+            //    ChildReferToClinic6 = "yes";
+            //}
+            //else if (ChildReferToClinic62.IsChecked == true)
+            //{
+            //    ChildReferToClinic6 = "no";
+            //}
+            //else
+            //{
+            //    ChildReferToClinic6 = "no data";
+            //}
+
+            //follow.ChildReferToClinic6 = ChildReferToClinic6;
+            //follow.ChildReferralNo7 = txtChildReferralNo7.Text;
+
+            //string ChildImmunisationUpToDate;
+            //if (ChildImmunisationUpToDate1.IsChecked == true)
+            //{
+            //    ChildImmunisationUpToDate = "yes";
+            //}
+            //else if (ChildImmunisationUpToDate2.IsChecked == true)
+            //{
+            //    ChildImmunisationUpToDate = "no";
+            //}
+            //else
+            //{
+            //    ChildImmunisationUpToDate = "no data";
+            //}
+
+            //follow.ChildImmunisationUpToDate = ChildImmunisationUpToDate;
+            //follow.ChildWhichImmunisationsOutStanding = ((ComboBoxItem)comboChildWhichImmunisationsOutStanding.SelectedItem).Content.ToString();
+
+            //string ChildVITAandWormMedsGivenEachMonth;
+            //if (ChildVITAandWormMedsGivenEachMonth1.IsChecked == true)
+            //{
+            //    ChildVITAandWormMedsGivenEachMonth = "yes";
+            //}
+            //else if (ChildVITAandWormMedsGivenEachMonth2.IsChecked == true)
+            //{
+            //    ChildVITAandWormMedsGivenEachMonth = "no";
+            //}
+            //else
+            //{
+            //    ChildVITAandWormMedsGivenEachMonth = "no data";
+            //}
+
+            //follow.ChildVITAandWormMedsGivenEachMonth = ChildVITAandWormMedsGivenEachMonth;
+
+            //string ChildReferToClinic7;
+            //if (ChildReferToClinic71.IsChecked == true)
+            //{
+            //    ChildReferToClinic7 = "yes";
+            //}
+            //else if (ChildReferToClinic72.IsChecked == true)
+            //{
+            //    ChildReferToClinic7 = "no";
+            //}
+            //else
+            //{
+            //    ChildReferToClinic7 = "no data";
+            //}
+
+            //follow.ChildReferToClinic7 = ChildReferToClinic7;
+            //follow.ChildReferralNo8 = txtChildReferralNo8.Text;
+
+            ////Other
+            //follow.OtherDateOfVisit = txtOtherDateOfVisit.Text;
+
+            //string OtherWentToClinic;
+            //if (OtherWentToClinic1.IsChecked == true)
+            //{
+            //    OtherWentToClinic = "yes";
+            //}
+            //else if (OtherWentToClinic2.IsChecked == true)
+            //{
+            //    OtherWentToClinic = "no";
+            //}
+            //else
+            //{
+            //    OtherWentToClinic = "no data";
+            //}
+
+            //follow.OtherWentToClinic = OtherWentToClinic;
+
+            //string OtherReReferToClinic;
+            //if (OtherReReferToClinic1.IsChecked == true)
+            //{
+            //    OtherReReferToClinic = "yes";
+            //}
+            //else if (OtherReReferToClinic2.IsChecked == true)
+            //{
+            //    OtherReReferToClinic = "no";
+            //}
+            //else
+            //{
+            //    OtherReReferToClinic = "no data";
+            //}
+
+            //follow.OtherReReferToClinic = OtherReReferToClinic;
+            //follow.OtherReferralNo1 = txtOtherReferralNo1.Text;
+            //follow.OtherConditionTha = txtOtherConditionTha.Text;
+
+            //string OtherReferToClinic1;
+            //if (OtherReferToClinic11.IsChecked == true)
+            //{
+            //    OtherReferToClinic1 = "yes";
+            //}
+            //else if (OtherReferToClinic12.IsChecked == true)
+            //{
+            //    OtherReferToClinic1 = "no";
+            //}
+            //else
+            //{
+            //    OtherReferToClinic1 = "no data";
+            //}
+
+            //follow.OtherReferToClinic1 = OtherReferToClinic1;
+            //follow.OtherReferralNo2 = txtOtherReferralNo2.Text;
+
+
+            //da.FollowUpVisit(follow);
+            //MessageBoxResult result = MessageBox.Show("A Follow-Up is successful saved", "Confirmation");
+            //user.ClinicUsed = ((ComboBoxItem)ClinicUsed.SelectedItem).Content.ToString();
+            //user.DateOfBirth = DateTime.Parse(txtDateofBirth.Text);
+            //user.NameofSchool = ((ComboBoxItem)NameofSchool.SelectedItem).Content.ToString();
+
+            //string gender;
+            //if (radioMale.IsChecked == true)
+            //{
+            //    gender = "male";
+            //}
+            //else
+            //{
+            //    gender = "female";
+            //}
+
+            #endregion
+
+            string storedProcedure = "";
+
+
+            #region Biographical
+
+            Impilo_App.LocalModels.ClinicClientBiographical clinBio = new Impilo_App.LocalModels.ClinicClientBiographical();
+
+            //clinBio.ccbioID = 0;
+            //clinBio.ClinicID = 0;
+            //clinBio.ClientID = "";
+            //clinBio.ccbioContactNo = txtBioContactNo.Text;
+            //clinBio.ccbioFileNo = txtBioFileNo.Text;
+            //clinBio.ccbioNextOfKinRelationship = txtBioKinRelation.Text;
+            //clinBio.ccbioNextOfKinName = txtBioKinName.Text;
+            //clinBio.ccbioNextOfKinTelNo = txtBioKinContactNo.Text;
+            //clinBio.ccbioDoDHypertension = (DateTime)dpBioHptDiagDate.SelectedDate;
+            //clinBio.ccbioDoDDiabetes = (DateTime)dpBioDiaDiagDate.SelectedDate;
+            //clinBio.ccbioDoDEpilepsy = (DateTime)dpBioEpiDiagDate.SelectedDate;
+            //clinBio.ccbioDoDAsthma = (DateTime)dpBioAstDiagDate.SelectedDate;
+            //clinBio.ccbioDoDHIV = (DateTime)dpBioHivDiagDate.SelectedDate;
+            //clinBio.ccbioDoDTB = (DateTime)dpBioTbDiagDate.SelectedDate;
+            //clinBio.ccbioDoDMaternalHealth = (DateTime)dpBioMatDiagDate.SelectedDate;
+            //clinBio.ccbioDoDChildHealth = (DateTime)dpBioChDiagDate.SelectedDate;
+            //clinBio.ccbioOther = (DateTime)dpBioOtherDiagDate.SelectedDate;
+
 
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddClinicClientBiographical";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ccbioID", clinBio.ccbioID);
+                com.Parameters.AddWithValue("@ClinicID", clinBio.ClinicID);
+                com.Parameters.AddWithValue("@ClientID", clinBio.ClientID);
+                com.Parameters.AddWithValue("@ccbioContactNo", clinBio.ccbioContactNo);
+                com.Parameters.AddWithValue("@ccbioFileNo", clinBio.ccbioFileNo);
+                com.Parameters.AddWithValue("@ccbioNextOfKinRelationship", clinBio.ccbioNextOfKinRelationship);
+                com.Parameters.AddWithValue("@ccbioNextOfKinName", clinBio.ccbioNextOfKinName);
+                com.Parameters.AddWithValue("@ccbioNextOfKinTelNo", clinBio.ccbioNextOfKinTelNo);
+                com.Parameters.AddWithValue("@ccbioDoDHypertension", clinBio.ccbioDoDHypertension);
+                com.Parameters.AddWithValue("@ccbioDoDDiabetes", clinBio.ccbioDoDDiabetes);
+                com.Parameters.AddWithValue("@ccbioDoDEpilepsy", clinBio.ccbioDoDEpilepsy);
+                com.Parameters.AddWithValue("@ccbioDoDAsthma", clinBio.ccbioDoDAsthma);
+                com.Parameters.AddWithValue("@ccbioDoDHIV", clinBio.ccbioDoDHIV);
+                com.Parameters.AddWithValue("@ccbioDoDTB", clinBio.ccbioDoDTB);
+                com.Parameters.AddWithValue("@ccbioDoDMaternalHealth", clinBio.ccbioDoDMaternalHealth);
+                com.Parameters.AddWithValue("@ccbioDoDChildHealth", clinBio.ccbioDoDChildHealth);
+                com.Parameters.AddWithValue("@ccbioOther", clinBio.ccbioOther);
 
-                com.Parameters.AddWithValue("@", fol.FollowUpID);//param
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            #endregion
+
+            #region Visit Details
+
+            Impilo_App.LocalModels.FollowUpVisitDetails folVD = new Impilo_App.LocalModels.FollowUpVisitDetails();
+
+            folVD.fuvdID = 0;
+            folVD.EncounterID = 0;
+            folVD.fuvdVisitDate = DateTime.Now;
+            folVD.fuvdNextVisitDate = (DateTime)dpVisitNextVisit.SelectedDate;
+            folVD.duvdOutcome = ((ComboBoxItem)comboVisitOutCome.SelectedItem).Content.ToString();
+            folVD.duvdHypertension = (VisitHPTYes.IsChecked == true) ? true : false;
+            folVD.duvdDiabetes = (VisitDiabetesYes.IsChecked == true) ? true : false;
+            folVD.duvdEpilepsy = (VisitEpilepsyYes.IsChecked == true) ? true : false;
+            //folVD.duvdAsthma = (VisitAstYes.IsChecked == true) ? true : false;
+            folVD.duvdHIV = (VisitHIVYes.IsChecked == true) ? true : false;
+            folVD.duvdTB = (VisitTBYes.IsChecked == true) ? true : false;
+            folVD.duvdMaternalHealth = (VisitMatHealthYes.IsChecked == true) ? true : false;
+            folVD.duvdChildHealth = (VisitChildHealthYes.IsChecked == true) ? true : false;
+            folVD.duvdOther = txtVisitOther.Text;
+            folVD.duvdDoorDoor = (VisitDoortoDoorYes.IsChecked == true) ? true : false;
+
+            try
+            {
+                storedProcedure = "AddFollowUpVisitData";
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@duvdID", folVD.fuvdID);
+                com.Parameters.AddWithValue("@EncounterID", folVD.EncounterID);
+                com.Parameters.AddWithValue("@fuvdVisitDate", folVD.fuvdVisitDate);
+                com.Parameters.AddWithValue("@fuvdNextVisitDate", folVD.fuvdNextVisitDate);
+                com.Parameters.AddWithValue("@duvdOutcome", folVD.duvdOutcome);
+                com.Parameters.AddWithValue("@duvdHypertension", folVD.duvdHypertension);
+                com.Parameters.AddWithValue("@duvdHypertension", folVD.duvdHypertension);
+                com.Parameters.AddWithValue("@duvdDiabetes", folVD.duvdDiabetes);
+                com.Parameters.AddWithValue("@duvdEpilepsy", folVD.duvdEpilepsy);
+                //com.Parameters.AddWithValue("@duvdAsthma", folVD.duvdAsthma);
+                com.Parameters.AddWithValue("@duvdHIV", folVD.duvdHIV);
+                com.Parameters.AddWithValue("@duvdTB", folVD.duvdTB);
+                com.Parameters.AddWithValue("@duvdMaternalHealth", folVD.duvdMaternalHealth);
+                com.Parameters.AddWithValue("@duvdChildHealth", folVD.duvdChildHealth);
+                com.Parameters.AddWithValue("@duvdOther", folVD.duvdOther);
+                com.Parameters.AddWithValue("@duvdDoorDoor", folVD.duvdDoorDoor);
                 com.ExecuteNonQuery();//execute command
             }
             catch (Exception ex)
@@ -80,41 +1704,56 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
 
             #region Hypertension
 
-            fol.HyperWentToClinic1 = (radHyClinYes.IsChecked == true) ? true : false;
-            fol.HyperReReferToClinic1 = (radHyRefClin1Yes.IsChecked == true) ? true : false;
-            fol.HyperReferralNo1 = txtHyRefNo1.Text;
-            fol.HyperCurrentlyOnMeds = (radHyCurMedsYes.IsChecked == true) ? true : false;
-            fol.HyperStartDate = DateTime.Parse(dpHyStartDt.Text.ToString());
-            fol.HyperScreenBPReadingSystolic = txtHyScrSys.Text;
-            fol.HyperScreenBPReadingDiastolic = txtHyScrDia.Text;
-            fol.HyperTodayTestReadingSystolic = txtHyTodSys.Text;
-            fol.HyperTodayTestReadingDiastolic = txtHyTodSys.Text;
-            fol.HyperAlreadyOnTreatment = (radHyCurTreYes.IsChecked == true) ? true : false;
-            fol.HyperReReferToClinic2 = (radHyRefClin2Yes.IsChecked == true) ? true : false; ;
-            fol.HyperReferralNo2 = txtHyRefNo2.Text;
-            fol.HyperMedication = ((ComboBoxItem)cboHyMeds.SelectedItem).Content.ToString();
-            //sp place
-            //connection
+            Impilo_App.LocalModels.FollowUpHypertension folHyp = new Impilo_App.LocalModels.FollowUpHypertension();
+            folHyp.fuhID = 0;
+            folHyp.EncounterID = 0;
+            folHyp.fuhHiEHWentToClinic = (HyperWentToClinic1Yes.IsChecked == true) ? true : false;
+            folHyp.fuhDateOfVisit = DateTime.Now;
+            folHyp.fuhHiEHReReferToClinic = (HyperReReferToClinic1Yes.IsChecked == true) ? true : false; 
+            folHyp.fuhHiEHRefNo = txtHyperReferralNo1.Text;
+            folHyp.fuhHiEHCurrentlyOnMeds = (HyperCurrentlyOnMedsYes.IsChecked == true) ? true : false;
+            folHyp.fuhHiEHStartDate = (DateTime)dpHyperStartDate.SelectedDate;
+            folHyp.fuhHiEHBPScreeningSystolic = txtHyperBPReadingSystolic.Text;
+            folHyp.fuhHiEHBPScreeningDiastolic = txtHyperBPReadingDiastolic.Text;
+            folHyp.fuhHiEHBPTodaySystolic = decimal.Parse(txtHyperTodayTestReadingSystolic.Text);
+            folHyp.fuhHiEHBPTodayDiastolic = decimal.Parse(txtHyperTodayTestReadingDiastolic.Text);
+            folHyp.fuhHiEHReferToClinic = (HyperReReferToClinic21.IsChecked == true) ? true : false;
+            folHyp.fuhHiEHRefNo2 = txtHyperReferralNo2.Text;
+            folHyp.fuhCRReReferToClinic = (HyperReReferToClinic31.IsChecked == true) ? true : false;
+            folHyp.fuhCRRefNo = txtHyperReferralNo3.Text;
+            folHyp.fuhAlreadyOnTreatmentFollowUpTestReading = txtHyperFollowUpTestReading.Text;
+            folHyp.fuhDoorToDoorCheckReading = txtHyperCheckReading.Text;
+            //folHyp.fuhMedication = (ComboBoxItem)comboHyperMedication.SelectedItem).Content.ToString();
+
+
             try
             {
-                storedProcedure = "AddHypertention";// name of sp
+                storedProcedure = "AddFollowUpHypertension";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
-               com.CommandType = CommandType.StoredProcedure;
-                //com.Parameters.AddWithValue("@ScreeningID", hyper.ScreeningID);//param  you copy element and did not modified then
-                //com.Parameters.AddWithValue("@YearOfDiagnosis", hyper.YearOfDiagnosis);//param
-                //com.Parameters.AddWithValue("@Headache", hyper.Headache);//param
-                //com.Parameters.AddWithValue("@BlurredVision", hyper.BlurredVision);//param
-                //com.Parameters.AddWithValue("@ChestPain", hyper.ChestPain);//param
-                //com.Parameters.AddWithValue("@ReferralToClinic", hyper.ReferralToClinic);//param
-                //com.Parameters.AddWithValue("@ReferalNo", hyper.ReferalNo);//param
-                //com.Parameters.AddWithValue("@EverHadStroke", hyper.EverHadStroke);//param
-                //com.Parameters.AddWithValue("@YearOfStroke", hyper.YearOfStroke);//param
-                //com.Parameters.AddWithValue("@AnyOneInFamilyHadStroke", hyper.AnyOneInFamilyHadStroke);//param
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@fuhID", folHyp.fuhID);
+                com.Parameters.AddWithValue("@EncounterID", folHyp.EncounterID);
+                com.Parameters.AddWithValue("@fuhHiEHWentToClinic", folHyp.fuhHiEHWentToClinic);
+                com.Parameters.AddWithValue("@fuhDateOfVisit", folHyp.fuhDateOfVisit);
+                com.Parameters.AddWithValue("@fuhHiEHReReferToClinic", folHyp.fuhHiEHReReferToClinic);
+                com.Parameters.AddWithValue("@fuhHiEHRefNo", folHyp.fuhHiEHRefNo);
+                com.Parameters.AddWithValue("@fuhHiEHCurrentlyOnMeds", folHyp.fuhHiEHCurrentlyOnMeds);
+                com.Parameters.AddWithValue("@fuhHiEHStartDate", folHyp.fuhHiEHStartDate);
+                com.Parameters.AddWithValue("@fuhHiEHBPScreeningSystolic", folHyp.fuhHiEHBPScreeningSystolic);
+                com.Parameters.AddWithValue("@fuhHiEHBPScreeningDiastolic", folHyp.fuhHiEHBPScreeningDiastolic);
+                com.Parameters.AddWithValue("@fuhHiEHBPTodaySystolic", folHyp.fuhHiEHBPTodaySystolic);
+                com.Parameters.AddWithValue("@fuhHiEHBPTodayDiastolic", folHyp.fuhHiEHBPTodayDiastolic);
+                com.Parameters.AddWithValue("@fuhHiEHReferToClinic", folHyp.fuhHiEHReferToClinic);
+                com.Parameters.AddWithValue("@fuhHiEHRefNo2", folHyp.fuhHiEHRefNo2);
+                com.Parameters.AddWithValue("@fuhCRReReferToClinic", folHyp.fuhCRReReferToClinic);
+                com.Parameters.AddWithValue("@fuhCRRefNo", folHyp.fuhCRRefNo);
+                com.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReading", folHyp.fuhAlreadyOnTreatmentFollowUpTestReading);
+                com.Parameters.AddWithValue("@fuhDoorToDoorCheckReading", folHyp.fuhDoorToDoorCheckReading);
+                com.Parameters.AddWithValue("@fuhMedication", folHyp.fuhMedication);
 
                 com.ExecuteNonQuery();//execute command
-	        }
-            
+            }
             catch (Exception ex)
             {
 
@@ -124,30 +1763,54 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             {
                 conn.Close();
             }
+
             #endregion
 
             #region Diabetes
 
-            fol.DiaReReferToClinic1 = (radDiaReRefClinYes.IsChecked == true) ? true : false; ;
-            fol.DiaReferralNo1 = txtDiaRefNo1.Text;
-            fol.DiaCurrentlyOnMeds = (radDiaCurMedsYes.IsChecked == true) ? true : false; ;
-            fol.DiaStartDate =DateTime.Parse( dpDiaStartDt.Text.ToString());
-            fol.DiaScreenTestReading1 = txtDiaScrReading.Text;
-            fol.DiaFollowUpTestReading1 = txtDiaFolReading.Text;
-            fol.DiaReferToClinic2 = (radDiaRefClinYes.IsChecked == true) ? true : false; ;
-            fol.DiaReferralNo2 = txtDiaRefNo2.Text;
-            fol.DiaMedication = ((ComboBoxItem)cboDiaMeds.SelectedItem).Content.ToString();
+            Impilo_App.LocalModels.FollowUpDiabetes folDia = new Impilo_App.LocalModels.FollowUpDiabetes();
+
+            folDia.fudID = 1;
+            folDia.EncounterID = 1;
+            folDia.fudDateOfVisit = DateTime.Now;
+            folDia.fudHiEHWentToClinic = (DaiWentToClinic1.IsChecked == true) ? true : false;
+            folDia.fudHiEHReReferToClinic = (DiaReReferToClinic11.IsChecked == true) ? true : false;
+            folDia.fudHiEHRefNo = txtDiaReferralNo1.Text;
+            folDia.fudHiEHCurrentlyOnMeds = (DiaCurrentlyOnMeds1.IsChecked == true) ? true : false;
+            folDia.fudHiEHStartDate = (DateTime)DiaStartDate.SelectedDate; 
+            folDia.fudHiEHFollowUpTestReading = decimal.Parse(txtDiaFollowUpTestReading1.Text);
+            folDia.fudHiEHReferToClinic2 = (DiaReferToClinic21.IsChecked == true) ? true : false;
+            folDia.fudHiEHRefNo2 = txtDiaReferralNo2.Text;
+            folDia.fudClinicRefReferToClinic = (DiaReReferToClinic31.IsChecked == true) ? true : false;
+            folDia.fudClinicRefRefNo = txtDiaReferralNo3.Text;
+            folDia.fudAlreadyOnTreatmentFollowUpTestReading = decimal.Parse(txtDiaFollowUpTestReading3.Text);
+            folDia.fudDoorDoor = decimal.Parse(txtDiaCheckReading.Text);
+            //folDia.fudMedication = (ComboBoxItem)comboDiaMedication.SelectedItem).Content.ToString();
 
 
-            //sp place
-            //connection
+
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddFollowUpDiabetes";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
-
-                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@fudID", folDia.fudID);
+                com.Parameters.AddWithValue("@EncounterID", folDia.EncounterID);
+                com.Parameters.AddWithValue("@fudDateOfVisit", folDia.fudDateOfVisit);
+                com.Parameters.AddWithValue("@fudHiEHWentToClinic", folDia.fudHiEHWentToClinic);
+                com.Parameters.AddWithValue("@fudHiEHReReferToClinic", folDia.fudHiEHReReferToClinic);
+                com.Parameters.AddWithValue("@fudHiEHRefNo", folDia.fudHiEHRefNo);
+                com.Parameters.AddWithValue("@fudHiEHCurrentlyOnMeds", folDia.fudHiEHCurrentlyOnMeds);
+                com.Parameters.AddWithValue("@fudHiEHStartDate", folDia.fudHiEHStartDate);
+                com.Parameters.AddWithValue("@fudHiEHFollowUpTestReading", folDia.fudHiEHFollowUpTestReading);
+                com.Parameters.AddWithValue("@fudHiEHReferToClinic2", folDia.fudHiEHReferToClinic2);
+                com.Parameters.AddWithValue("@fudHiEHRefNo2", folDia.fudHiEHRefNo2);
+                com.Parameters.AddWithValue("@fudClinicRefReferToClinic", folDia.fudClinicRefReferToClinic);
+                com.Parameters.AddWithValue("@fudClinicRefRefNo", folDia.fudClinicRefRefNo);
+                com.Parameters.AddWithValue("@fudAlreadyOnTreatmentFollowUpTestReading", folDia.fudAlreadyOnTreatmentFollowUpTestReading);
+                com.Parameters.AddWithValue("@fudDoorDoor", folDia.fudDoorDoor);
+                com.Parameters.AddWithValue("@fudMedication", folDia.fudMedication);
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -164,26 +1827,45 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
 
             #region Epilepsy
 
-            fol.EpiWentToClinic = (radEpiClinYes.IsChecked == true) ? true : false; ;
-            fol.EpiReReferToClinic1 = (radEpiReRefClinYes.IsChecked == true) ? true : false; ;
-            fol.EpiReferralNo1 = txtEpiRefNo1.Text;
-            fol.EpiFitInLastMonth = (radEpiFitsLastMonthYes.IsChecked == true) ? true : false; ;
-            fol.EpiCurrentlyOnMeds = (radEpiCurMedsYes.IsChecked == true) ? true : false;
-            fol.EpiStartDate =DateTime.Parse( dpEpiStartDt.Text.ToString());
-            fol.EpiMoreThan3FitsInLastMonth = (radEpi3FitsLastMonthYes.IsChecked == true) ? true : false; ;
-            fol.EpiReReferToClinic2 = (radEpiRefClin2Yes.IsChecked == true) ? true : false; ;
-            fol.EpiReferralNo2 = txtEpiRefNo2.Text;
-            fol.EpiMedication = ((ComboBoxItem)cboEpiMeds.SelectedItem).Content.ToString();
+            Impilo_App.LocalModels.FollowUpEpilepsy folEpi = new Impilo_App.LocalModels.FollowUpEpilepsy();
 
-            //sp place
-            //connection
+            folEpi.fueID = 0;
+            folEpi.EncounterID = 0;
+            folEpi.fueHiEHWentToClinic = (EpiWentToClinic1.IsChecked == true) ? true : false;
+            folEpi.fueHiEHReReferToClinic = (EpiReReferToClinic11.IsChecked == true) ? true : false;
+            folEpi.fueHiEHRefNo = txtEpiReferralNo1.Text;
+            folEpi.fueCRFitInLastMonth = (EpiFitInLastMonth1.IsChecked == true) ? true : false;
+            folEpi.fueCRReferToClinic = (EpiReferToClinic1.IsChecked == true) ? true : false;
+            folEpi.fueCRRefNo = txtEpiReferralNo2.Text;
+            folEpi.fueOnTreatmentCurrentlyOnMeds = (EpiCurrentlyOnMeds1.IsChecked==true) ? true : false;
+            folEpi.fueOnTreatmentStartDate = (DateTime)txtEpiStartDate.SelectedDate;
+            folEpi.fueOnTreatmentMoreThan3FitsSinceLastMonth = (EpiMoreThan3FitsInLastMonth1.IsChecked == true) ? true : false;
+            folEpi.fueOnTreatmentReReferToClinic = (EpiReReferToClinic21.IsChecked == true) ? true : false;
+            folEpi.fueOnTreatmentRefNo = txtEpiReferralNo2.Text;
+
+
+
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddClinicEpilepsy";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@fueID", folEpi.fueID);
+                com.Parameters.AddWithValue("@EncounterID", folEpi.EncounterID);
+                com.Parameters.AddWithValue("@fueHiEHWentToClinic", folEpi.fueHiEHWentToClinic);
+                com.Parameters.AddWithValue("@fueHiEHReReferToClinic", folEpi.fueHiEHReReferToClinic);
+                com.Parameters.AddWithValue("@fueHiEHRefNo", folEpi.fueHiEHRefNo);
+                com.Parameters.AddWithValue("@fueCRFitInLastMonth", folEpi.fueCRFitInLastMonth);
+                com.Parameters.AddWithValue("@fueCRReferToClinic", folEpi.fueCRReferToClinic);
+                com.Parameters.AddWithValue("@fueCRRefNo", folEpi.fueCRRefNo);
+                com.Parameters.AddWithValue("@fueOnTreatmentCurrentlyOnMeds", folEpi.fueOnTreatmentCurrentlyOnMeds);
+                com.Parameters.AddWithValue("@fueOnTreatmentStartDate", folEpi.fueOnTreatmentStartDate);
+                com.Parameters.AddWithValue("@fueOnTreatmentMoreThan3FitsSinceLastMonth", folEpi.fueOnTreatmentMoreThan3FitsSinceLastMonth);
+                com.Parameters.AddWithValue("@fueOnTreatmentReReferToClinic", folEpi.fueOnTreatmentReReferToClinic);
+                com.Parameters.AddWithValue("@fueOnTreatmentRefNo", folEpi.fueOnTreatmentRefNo);
 
-                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
+
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -199,30 +1881,51 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             #endregion
 
             #region Asthma
-            fol.AsDateOfVisit = dpAstVisitDt.Text.ToString();
-            fol.AsWentToClinic = (radAstClinYes.IsChecked == true) ? true : false;
-            fol.AsReReferToClinic1 = (radAstReRefClinYes.IsChecked == true) ? true : false;
-            fol.AsReferralNo1 = txtAstRefNo1.Text;
-            //fol.AsFitInLastMonth 
-            fol.AsReferToClinic = (radAsthClinRefYes.IsChecked == true) ? true : false;
-            fol.AsReferralNo2 = txtAsthRefNo2.Text;
-            fol.AsCurrentlyOnMeds = (radAstCurMedsYes.IsChecked == true) ? true : false;
-          //  fol.AsStartDate = "";
-            fol.AsIncreasedNoOfAsthmaAttacks = (radAstIncrAttacksYes.IsChecked == true) ? true : false;
-            fol.AsReReferToClinic2 = (radAsthClinRefYes.IsChecked == true) ? true : false;
-            fol.AsReferralNo2 = txtAsthRefNo2.Text;
-            fol.AsMedication = ((ComboBoxItem)cboAsthMeds.SelectedItem).Content.ToString();
 
-            //sp place
-            //connection
+            Impilo_App.LocalModels.FollowUpAsthma folAst = new Impilo_App.LocalModels.FollowUpAsthma();
+
+            folAst.fuaID = 0;
+            folAst.EncounterID = 0;
+            folAst.fuaDateOfVisit = (DateTime)txtAsDateOfVisit.SelectedDate;
+            folAst.fuaHiEHWentToClinic = (AsWentToClinic1.IsChecked == true) ? true : false;
+            folAst.fuaHiEHReReferToClinic = (AsReReferToClinic11.IsChecked == true) ? true : false;
+            folAst.fuaHiHRefNo = txtAsReferralNo1.Text;
+            folAst.fuaCRDifficultyBreathingAndWheezing = (AsFitInLastMonth1.IsChecked == true) ? true : false;
+            folAst.fuaCRReferToClinic = (AsReferToClinic1.IsChecked == true) ? true : false;
+            folAst.fuaCRRefNo = txtAsReferralNo2.Text;
+            folAst.fuaOTCurrentlyOnMeds = (AsCurrentlyOnMeds1.IsChecked == true) ? true : false;
+            folAst.fuaOTStartDate = (DateTime)txtAsStartDate.SelectedDate;
+            folAst.fuaOTIncreasedNoOfAsthmaAttacks = (AsIncreasedNoOfAsthmaAttacks1.IsChecked == true) ? true : false;
+            folAst.fuaOTReReferToClinic = (AsReReferToClinic21.IsChecked == true) ? true : false;
+            folAst.fuaOTRefNo = txtAsReferralNo3.Text;
+            //folAst.fuaMedication = (ComboBoxItem)comboAsMedication.SelectedItem.Content.ToString();
+
+
+
+
+
 
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddFollowUpAsthma";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
-
-                //com.Parameters.AddWithValue("@");//param
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@fuaID", folAst.fuaID);
+                com.Parameters.AddWithValue("@EncounterID", folAst.EncounterID);
+                com.Parameters.AddWithValue("@fuaDateOfVisit", folAst.fuaDateOfVisit);
+                com.Parameters.AddWithValue("@fuaHiEHWentToClinic", folAst.fuaHiEHWentToClinic);
+                com.Parameters.AddWithValue("@fuaHiEHReReferToClinic", folAst.fuaHiEHReReferToClinic);
+                com.Parameters.AddWithValue("@fuaHiHRefNo", folAst.fuaHiHRefNo);
+                com.Parameters.AddWithValue("@fuaCRDifficultyBreathingAndWheezing", folAst.fuaCRDifficultyBreathingAndWheezing);
+                com.Parameters.AddWithValue("@fuaCRReferToClinic", folAst.fuaCRReferToClinic);
+                com.Parameters.AddWithValue("@fuaCRRefNo", folAst.fuaCRRefNo);
+                com.Parameters.AddWithValue("@fuaOTCurrentlyOnMeds", folAst.fuaOTCurrentlyOnMeds);
+                com.Parameters.AddWithValue("@fuaOTStartDate", folAst.fuaOTStartDate);
+                com.Parameters.AddWithValue("@fuaOTIncreasedNoOfAsthmaAttacks", folAst.fuaOTIncreasedNoOfAsthmaAttacks);
+                com.Parameters.AddWithValue("@fuaOTReReferToClinic", folAst.fuaOTReReferToClinic);
+                com.Parameters.AddWithValue("@fuaOTRefNo", folAst.fuaOTRefNo);
+                com.Parameters.AddWithValue("@fuaMedication", folAst.fuaMedication);
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -238,59 +1941,66 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             #endregion
 
             #region HIV
-            //fol.HIVDateOfVisit =
 
-            //fol.HIVWentToClinic =
+            Impilo_App.LocalModels.FollowUpHIV folHiv = new Impilo_App.LocalModels.FollowUpHIV();
 
-            //fol.HIVRereferToClinic =
+            folHiv.fuhiv = 0;
+            folHiv.EncounterID = 0;
+            folHiv.fuhivDateOfVisit = (DateTime)txtHIVDateOfVisit.SelectedDate;
+            folHiv.fuhivHiEHWentToClinic = (HIVWentToClinic1.IsChecked == true) ? true : false;
+            folHiv.fuhivHiEHReReferToClinic = (HIVReReferToClinic1.IsChecked == true) ? true : false;
+            folHiv.fuhHiEHRefNo = txtHIVReferralNo1.Text;
+            folHiv.fuhCRReferToClinic = (HIVReferToClinic11.IsChecked == true) ? true : false;
+            folHiv.fuhCRRefNo = txtHIVReferralNo2.Text;
+            //folHiv.fuhHIVStatus = (ComboBoxItem)comboHIVStatus.SelectedItem.Content.ToString(); 
+            folHiv.fuhIPOnARV = (HIVOnARVs1.IsChecked == true) ? true : false;
+            folHiv.fuhIPStartDate = (DateTime)txtHIVStartDate1.SelectedDate;
+            folHiv.fuhIPAdherenceOK = (HIVAdherenceOK1.IsChecked ==true) ? true : false;
+            folHiv.fuhIPConcerns = (HIVConcerns1.IsChecked == true) ? true : false;
+            folHiv.fuhIPReferToClinic = (HIVReferToClinic21.IsChecked == true) ? true : false;
+            folHiv.fuhIPRefNo = txtHIVReferralNo3.Text;
+            folHiv.fuhIPNotOnARV = (HIVARVsConcerns1.IsChecked == true) ? true : false;
+            folHiv.fuhIPReferToClinic2 = (HIVReferToClinic31.IsChecked == true) ? true : false;
+            folHiv.fuhIPRefNo2 = txtHIVReferralNo4.Text;
+            folHiv.fuhINCounsellingDone = (HIVCounsellingDone1.IsChecked == true) ? true : false;
+            folHiv.fuhIUHIVTestDone = (HIVTestingDone1.IsChecked == true) ? true : false;
+            folHiv.fuhHIVTestResults = txtHIVTestResults.Text;
+            folHiv.fuhHIVTestReferToClinic = (HIVReferToClinic41.IsChecked == true) ? true : false;
+            folHiv.fuhHIVRefNo = txtHIVReferralNo5.Text;
+            //folHiv.fuhHIVMedication = (ComboBoxItem)HIVMedication.SelectedItem.Content.ToString();
 
-            fol.HIVReferralNo1 = txtHivRe.Text;
 
-            fol.HIVReferToClinic1 = (radHyRefClin1Yes_Copy.IsChecked == true) ? true : false;
-
-            //fol.HIVReferralNo2 = txtHivRe2.Text;
-
-            //fol.HIVStatus
-
-            fol.HIVOnARVs = (radHivOnARVYes.IsChecked == true) ? true : false;
-
-            fol.HIVStartDate1 = dpARVStartDT.Text.ToString();
-
-            fol.HIVAdherenceOK = (radHivAdhereYes.IsChecked == true) ? true : false;
-
-            fol.HIVConcerns = (radHivConcernsYes.IsChecked == true) ? true : false;
-
-            fol.HIVReferToClinic2 = (radHyRefClin4Yes_Copy.IsChecked == true) ? true : false;
-
-            //fol.HIVReferralNo3 = 
-
-            fol.HIVARVsConcern = (radHivARVsConcernYes.IsChecked == true) ? true : false;
-
-            //fol.HIVReferToClinic3
-
-            //fol.HIVReferralNo4
-
-            fol.HIVTestingDone = (radHivStatusKnownYes.IsChecked == true) ? true : false;
-
-            fol.HIVTestDone = (radHivTestDoneYes.IsChecked == true) ? true : false;
-
-            fol.HIVTestResults = (radHivPos.IsChecked == true) ? true : false;
-
-            fol.HIVReferToClinic4 = (radHyRefClin4Yes_Copy.IsChecked == true) ? true : false;
-
-            fol.HIVReferralNo5 = txtHivRe2.Text;
-
-            fol.HIVMedication = ((ComboBoxItem)cboListMeds.SelectedItem).Content.ToString();
-
-            //sp place
-            //connection
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddFollowUpHIV";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@fuhiv", folHiv.fuhiv);
+                com.Parameters.AddWithValue("@EncounterID", folHiv.EncounterID);
+                com.Parameters.AddWithValue("@fuhivDateOfVisit", folHiv.fuhivDateOfVisit);
+                com.Parameters.AddWithValue("@fuhivHiEHWentToClinic", folHiv.fuhivHiEHWentToClinic);
+                com.Parameters.AddWithValue("@fuhivHiEHReReferToClinic", folHiv.fuhivHiEHReReferToClinic);
+                com.Parameters.AddWithValue("@fuhHiEHRefNo", folHiv.fuhHiEHRefNo);
+                com.Parameters.AddWithValue("@fuhCRReferToClinic", folHiv.fuhCRReferToClinic);
+                com.Parameters.AddWithValue("@fuhCRRefNo", folHiv.fuhCRRefNo);
+                com.Parameters.AddWithValue("@fuhHIVStatus", folHiv.fuhHIVStatus);
+                com.Parameters.AddWithValue("@fuhIPOnARV", folHiv.fuhIPOnARV);
+                com.Parameters.AddWithValue("@fuhIPStartDate", folHiv.fuhIPStartDate);
+                com.Parameters.AddWithValue("@fuhIPAdherenceOK", folHiv.fuhIPAdherenceOK);
+                com.Parameters.AddWithValue("@fuhIPConcerns", folHiv.fuhIPConcerns);
+                com.Parameters.AddWithValue("@fuhIPReferToClinic", folHiv.fuhIPReferToClinic);
+                com.Parameters.AddWithValue("@fuhIPRefNo", folHiv.fuhIPRefNo);
+                com.Parameters.AddWithValue("@fuhIPNotOnARV", folHiv.fuhIPNotOnARV);
+                com.Parameters.AddWithValue("@fuhIPReferToClinic2", folHiv.fuhIPReferToClinic2);
+                com.Parameters.AddWithValue("@fuhIPRefNo2", folHiv.fuhIPRefNo2);
+                com.Parameters.AddWithValue("@fuhINCounsellingDone", folHiv.fuhINCounsellingDone);
+                com.Parameters.AddWithValue("@fuhIUHIVTestDone", folHiv.fuhIUHIVTestDone);
+                com.Parameters.AddWithValue("@fuhHIVTestResults", folHiv.fuhHIVTestResults);
+                com.Parameters.AddWithValue("@fuhHIVTestReferToClinic", folHiv.fuhHIVTestReferToClinic);
+                com.Parameters.AddWithValue("@fuhHIVRefNo", folHiv.fuhHIVRefNo);
+                com.Parameters.AddWithValue("@fuhHIVMedication", folHiv.fuhHIVMedication);
 
-                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -307,230 +2017,46 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
             #endregion
 
             #region TB
-            //fol.TBARVsConcern 
-            //fol.TBStartDate 
 
-            fol.TBDateOfVisit =DateTime.Parse( dpTBDateOfVisit.Text.ToString());
-            fol.TBReferToClinic1 = (radTBReferToClinic1Yes.IsChecked == true) ? true : false;
-            fol.TBReferralNo1 = txtTBReferralNo1.Text;
-            fol.TBRecentUnplannedLoseOfWeight = (radTBRecWeightLostYes.IsChecked == true) ? true : false;
-            fol.TBExcessiveSweatingAtNight = (radTBExcessSweatYes.IsChecked == true) ? true : false;
-            fol.TBFeverOver2Weeks = (radTBFeverYes.IsChecked == true) ? true : false;
-            fol.TBCoughMoreThan2Week = (radTBCoughYes.IsChecked == true) ? true : false;
-            fol.TBLossOfApetite = (radTBApetiteYes.IsChecked == true) ? true : false;
-            fol.TBPreviouslyOnMeds = (radTBPrevMedsYes.IsChecked == true) ? true : false;
-            fol.TBFinishDate = dpTBFinishDates.Text.ToString();
-            fol.TBConcerns = (radTBConcernsYes.IsChecked == true) ? true : false;
-
-            fol.TBResult = txtTBResults.Text;
-            fol.TBReferredToClinic2 = (radTBReferToClinic2Yes.IsChecked == true) ? true : false;
-            fol.TBReferralNo2 = txtTBReferralNo2.Text;
-            fol.TBMedication = ((ComboBoxItem)cboTBMedicaiton.SelectedItem).Content.ToString();
-
-            //fol.TBNewlyDiagnosed 
-            //fol.TBReferTBContactsToClinic         
-            //fol.TBReferToClinic3 
-            //fol.TBReferralNo3 
-
-            //sp place
-            //connection
-            try
-            {
-                storedProcedure = "";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-
-                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
-
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
             #endregion
 
-            #region Mat Health
-            fol.MatDateOfVisit = txtMatDateOfVisit.Text.ToString();
-            fol.MatWentToClinic = (MatWentToClinic1.IsChecked == true) ? true : false;
-
-            fol.MatReReferToClinic1 = (MatReReferToClinic11.IsChecked == true) ? true : false;
-
-            fol.MatReferralNo1 = txtMatReferralNo1.Text;
-
-            fol.MatIsItPosibleYouArePregnent = (MatIsItPosibleYouArePregnent1.IsChecked == true) ? true : false;
-
-            fol.MatPregnancyTestDone = (MatPregnancyTestDone1.IsChecked == true) ? true : false;
-
-            fol.MatResult = ((ComboBoxItem)comboMatResult.SelectedItem).Content.ToString();
-
-            fol.MatReferredToClinic2 = (MatReferredToClinic21.IsChecked == true) ? true : false;
-
-            fol.MatReferralNo2 = txtMatReferralNo2.Text;
-
-            fol.MatDateOf1stANC = txtMatDateOf1stANC.Text.ToString();
-
-            fol.MatDateOfLastANC = txtMatDateOfLastANC.Text.ToString();
-
-            fol.MatReferredToClinic3 = (MatReferredToClinic31.IsChecked == true) ? true : false;
-
-            //fol.MatReferralNo3 
-
-            fol.MatRegisteredForMoMConnect = (MatRegisteredForMoMConnect1.IsChecked == true) ? true : false;
-
-            fol.MatDateOfNextANC = txtMatDateOfNextANC.Text.ToString();
-
-            fol.MatReferToClinic = (MatReferToClinic1.IsChecked == true) ? true : false;
-
-            //fol.MatReferralNo4 
-
-            fol.MatExpectedDateOfDelivery = txtMatExpectedDateOfDelivery.Text.ToString();
-
-            fol.MatIntendBreastfeed = (MatIntendBreastfeed1.IsChecked == true) ? true : false;
-
-            fol.MatIntendFormulaFeed = (MatIntendFormulaFeed1.IsChecked == true) ? true : false;
-
-            //sp place
-            //connection
-            try
-            {
-                storedProcedure = "";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-
-                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
-
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            #region Maternal health
             #endregion
 
             #region Child Health
-            fol.ChildDateOfVisit = txtChildDateOfVisit.Text.ToString();
-
-            fol.ChildARVsConcern = (ChildARVsConcern1.IsChecked == true) ? true : false;
-
-            fol.ChildReferToClinic1 = (ChildReferToClinic11.IsChecked == true) ? true : false;
-
-            fol.ChildReferralNo1 = txtChildReferralNo1.Text;
-
-            fol.ChildWalkAppropriateForAge = (ChildWalkAppropriateForAge1.IsChecked == true) ? true : false;
-
-            fol.ChildTalkAppropriateForAge = (ChildTalkAppropriateForAge1.IsChecked == true) ? true : false;
-
-            fol.ChildReferToClinic2 = (ChildReferToClinic21.IsChecked == true) ? true : false;
-
-            fol.ChildReferralNo2 = txtChildReferralNo2.Text;
-
-            fol.ChildChildAssisted = (ChildChildAssisted1.IsChecked == true) ? true : false;
-
-            fol.ChildReReferToSD = (ChildReReferToSD1.IsChecked == true) ? true : false;
-
-            fol.ChildReferralNo3 = txtChildReferralNo3.Text;
-
-            fol.ChildListConcernsReChild = txtChildListConcernsReChild.Text;
-
-            fol.ChildReferToClinic3 = (ChildReferToClinic31.IsChecked == true) ? true : false;
-
-            fol.ChildreferToSD = (ChildReReferToSD1.IsChecked == true) ? true : false;
-
-            fol.ChildReferralNo4 = txtChildReferralNo4.Text;
-
-            fol.ChildChildWithRTHC = (ChildChildWithRTHC1.IsChecked == true) ? true : false;
-
-            fol.ChildReferToClinic4 = (ChildReferToClinic41.IsChecked == true) ? true : false;
-
-            fol.ChildReferralNo5 = txtChildReferralNo5.Text;
-
-            fol.ChildMotherTHVPositive = (ChildMotherTHVPositive1.IsChecked == true) ? true : false;
-
-            fol.ChildChildBreastfed = (ChildChildBreastfed1.IsChecked == true) ? true : false;
-
-            fol.ChildHowLong = txtChildHowLong.Text;
-
-            fol.ChildClildEverOnNevirapine = (ChildClildEverOnNevirapine1.IsChecked == true) ? true : false;
-
-            fol.ChildReferToClinic5 = (ChildReferToClinic51.IsChecked == true) ? true : false;
-
-            fol.ChildReferralNo6 = txtChildReferralNo6.Text;
-
-            fol.ChildHowPCRHasDone = (ChildHowPCRHasDone1.IsChecked == true) ? true : false;
-
-            fol.ChildReferToClinic6 = (ChildReferToClinic61.IsChecked == true) ? true : false;
-
-            fol.ChildReferralNo7 = txtChildReferralNo7.Text;
-
-            fol.ChildImmunisationUpToDate = (ChildImmunisationUpToDate1.IsChecked == true) ? true : false;
-
-            fol.ChildWhichImmunisationsOutStanding = ((ComboBoxItem)comboChildWhichImmunisationsOutStanding.SelectedItem).Content.ToString();
-
-            fol.ChildVITAandWormMedsGivenEachMonth = (ChildVITAandWormMedsGivenEachMonth1.IsChecked == true) ? true : false;
-
-
-            fol.ChildReferToClinic7 = (ChildReferToClinic71.IsChecked == true) ? true : false;
-
-            fol.ChildReferralNo8 = txtChildReferralNo8.Text;
-
-            //sp place
-            //connection
-            try
-            {
-                storedProcedure = "";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-
-                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
-
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
             #endregion
 
             #region Other
-            fol.OtherDateOfVisit = txtOtherDateOfVisit.Text;
 
-            fol.OtherWentToClinic = (OtherWentToClinic1.IsChecked == true) ? true : false;
+            Impilo_App.LocalModels.FollowUpOther folOth = new Impilo_App.LocalModels.FollowUpOther();
 
-            fol.OtherReReferToClinic = (OtherReferToClinic11.IsChecked == true) ? true : false;
+            folOth.fuoID = 0;
+            folOth.EncounterID = 0;
+            folOth.fuoDateOfVisit = (DateTime)txtOtherDateOfVisit.SelectedDate;
+            folOth.fuoHiEHWentToClinic = (OtherWentToClinic1.IsChecked == true) ? true : false;
+            folOth.fuoHiEHReReferToClinic = (OtherReReferToClinic1.IsChecked == true) ? true : false;
+            folOth.fuoHiEHRefNo = txtOtherReferralNo1.Text;
+            folOth.fuoOCCondition = txtOtherConditionTha.Text;
+            folOth.fuoOCReferToClinic = (OtherReferToClinic11.IsChecked == true)? true: false; 
+            folOth.fuoOCRefNo = txtOtherReferralNo2.Text;
 
-            fol.OtherReferralNo1 = txtOtherReferralNo1.Text;
 
-            fol.OtherConditionTha = txtOtherConditionTha.Text;
-
-            fol.OtherReferToClinic1 = (OtherReferToClinic11.IsChecked == true) ? true : false;
-
-            fol.OtherReferralNo2 = txtOtherReferralNo2.Text;
-
-            //sp place
-            //connection
             try
             {
-                storedProcedure = "";// name of sp
+                storedProcedure = "AddFollowUpOther";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@fuoID", folOth.fuoID);
+                com.Parameters.AddWithValue("@EncounterID", folOth.EncounterID);
+                com.Parameters.AddWithValue("@fuoDateOfVisit", folOth.fuoDateOfVisit);
+                com.Parameters.AddWithValue("@fuoHiEHWentToClinic", folOth.fuoHiEHWentToClinic);
+                com.Parameters.AddWithValue("@fuoHiEHReReferToClinic", folOth.fuoHiEHReReferToClinic);
+                com.Parameters.AddWithValue("@fuoHiEHRefNo", folOth.fuoHiEHRefNo);
+                com.Parameters.AddWithValue("@fuoOCCondition", folOth.fuoOCCondition);
+                com.Parameters.AddWithValue("@fuoOCReferToClinic", folOth.fuoOCReferToClinic);
+                com.Parameters.AddWithValue("@folOth.fuoOCRefNo", folOth.fuoOCRefNo);
 
-                //com.Parameters.AddWithValue("@", dia.ScreeningID);//param
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -544,10 +2070,10 @@ private void btnSave_Click(object sender, RoutedEventArgs e)
                 conn.Close();
             }
             #endregion
-    
 
 
-    }
+
+        }
 
 
     }

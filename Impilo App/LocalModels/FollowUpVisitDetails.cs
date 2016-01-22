@@ -32,7 +32,7 @@ namespace Impilo_App.LocalModels
 
         public bool duvdChildHealth { get; set; }
 
-        public bool duvdOther { get; set; }
+        public string duvdOther { get; set; }
 
         public bool duvdDoorDoor { get; set; }
     }

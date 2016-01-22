@@ -36,6 +36,8 @@ namespace Impilo_App.LocalModels
 
         public decimal fudAlreadyOnTreatmentFollowUpTestReading { get; set; }
 
-        public bool fudDoorDoor { get; set; }
+        public decimal fudDoorDoor { get; set; }
+
+        public string fudMedication { get; set; }
     }
 }
