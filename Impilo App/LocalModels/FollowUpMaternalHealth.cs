@@ -26,7 +26,7 @@ namespace Impilo_App.LocalModels
 
         public bool fumhCPReferToClinic { get; set; }
 
-        public bool fumhCPRefNo { get; set; }
+        public string fumhCPRefNo { get; set; }
 
         public bool fumhCPRegisteredForMomConnect { get; set; }
 
