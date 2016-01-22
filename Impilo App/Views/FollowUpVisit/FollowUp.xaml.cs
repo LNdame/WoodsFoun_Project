@@ -1945,30 +1945,30 @@ namespace Impilo_App.Views.FollowUpVisit
 
             Impilo_App.LocalModels.FollowUpHIV folHiv = new Impilo_App.LocalModels.FollowUpHIV();
 
-            folHiv.fuhiv = 0;
+            folHiv.fuhivID = 0;
             folHiv.EncounterID = 0;
             folHiv.fuhivDateOfVisit = (DateTime)txtHIVDateOfVisit.SelectedDate;
             folHiv.fuhivHiEHWentToClinic = (HIVWentToClinic1.IsChecked == true) ? true : false;
             folHiv.fuhivHiEHReReferToClinic = (HIVReReferToClinic1.IsChecked == true) ? true : false;
-            folHiv.fuhHiEHRefNo = txtHIVReferralNo1.Text;
-            folHiv.fuhCRReferToClinic = (HIVReferToClinic11.IsChecked == true) ? true : false;
-            folHiv.fuhCRRefNo = txtHIVReferralNo2.Text;
+            folHiv.fuhivHiEHRefNo = txtHIVReferralNo1.Text;
+            folHiv.fuhivCRReferToClinic = (HIVReferToClinic11.IsChecked == true) ? true : false;
+            folHiv.fuhivCRRefNo = txtHIVReferralNo2.Text;
             //folHiv.fuhHIVStatus = (ComboBoxItem)comboHIVStatus.SelectedItem.Content.ToString(); 
-            folHiv.fuhIPOnARV = (HIVOnARVs1.IsChecked == true) ? true : false;
-            folHiv.fuhIPStartDate = (DateTime)txtHIVStartDate1.SelectedDate;
-            folHiv.fuhIPAdherenceOK = (HIVAdherenceOK1.IsChecked ==true) ? true : false;
-            folHiv.fuhIPConcerns = (HIVConcerns1.IsChecked == true) ? true : false;
-            folHiv.fuhIPReferToClinic = (HIVReferToClinic21.IsChecked == true) ? true : false;
-            folHiv.fuhIPRefNo = txtHIVReferralNo3.Text;
-            folHiv.fuhIPNotOnARV = (HIVARVsConcerns1.IsChecked == true) ? true : false;
-            folHiv.fuhIPReferToClinic2 = (HIVReferToClinic31.IsChecked == true) ? true : false;
-            folHiv.fuhIPRefNo2 = txtHIVReferralNo4.Text;
-            folHiv.fuhINCounsellingDone = (HIVCounsellingDone1.IsChecked == true) ? true : false;
-            folHiv.fuhIUHIVTestDone = (HIVTestingDone1.IsChecked == true) ? true : false;
-            folHiv.fuhHIVTestResults = txtHIVTestResults.Text;
-            folHiv.fuhHIVTestReferToClinic = (HIVReferToClinic41.IsChecked == true) ? true : false;
-            folHiv.fuhHIVRefNo = txtHIVReferralNo5.Text;
-            //folHiv.fuhHIVMedication = (ComboBoxItem)HIVMedication.SelectedItem.Content.ToString();
+            folHiv.fuhivIPOnARV = (HIVOnARVs1.IsChecked == true) ? true : false;
+            folHiv.fuhivIPStartDate = (DateTime)txtHIVStartDate1.SelectedDate;
+            folHiv.fuhivIPAdherenceOK = (HIVAdherenceOK1.IsChecked ==true) ? true : false;
+            folHiv.fuhivIPConcerns = (HIVConcerns1.IsChecked == true) ? true : false;
+            folHiv.fuhivIPReferToClinic = (HIVReferToClinic21.IsChecked == true) ? true : false;
+            folHiv.fuhivIPRefNo = txtHIVReferralNo3.Text;
+            folHiv.fuhivIPNotOnARV = (HIVARVsConcerns1.IsChecked == true) ? true : false;
+            folHiv.fuhivIPReferToClinic2 = (HIVReferToClinic31.IsChecked == true) ? true : false;
+            folHiv.fuhivIPRefNo2 = txtHIVReferralNo4.Text;
+            folHiv.fuhivINCounsellingDone = (HIVCounsellingDone1.IsChecked == true) ? true : false;
+            folHiv.fuhivIUHIVTestDone = (HIVTestingDone1.IsChecked == true) ? true : false;
+            folHiv.fuhivHIVTestResults = txtHIVTestResults.Text;
+            folHiv.fuhivHIVTestReferToClinic = (HIVReferToClinic41.IsChecked == true) ? true : false;
+            folHiv.fuhivHIVRefNo = txtHIVReferralNo5.Text;
+            //folHiv.fuhivHIVMedication = (ComboBoxItem)HIVMedication.SelectedItem.Content.ToString();
 
 
             try
@@ -1977,30 +1977,30 @@ namespace Impilo_App.Views.FollowUpVisit
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@fuhiv", folHiv.fuhiv);
+                com.Parameters.AddWithValue("@fuhivID", folHiv.fuhivID);
                 com.Parameters.AddWithValue("@EncounterID", folHiv.EncounterID);
                 com.Parameters.AddWithValue("@fuhivDateOfVisit", folHiv.fuhivDateOfVisit);
                 com.Parameters.AddWithValue("@fuhivHiEHWentToClinic", folHiv.fuhivHiEHWentToClinic);
                 com.Parameters.AddWithValue("@fuhivHiEHReReferToClinic", folHiv.fuhivHiEHReReferToClinic);
-                com.Parameters.AddWithValue("@fuhHiEHRefNo", folHiv.fuhHiEHRefNo);
-                com.Parameters.AddWithValue("@fuhCRReferToClinic", folHiv.fuhCRReferToClinic);
-                com.Parameters.AddWithValue("@fuhCRRefNo", folHiv.fuhCRRefNo);
-                com.Parameters.AddWithValue("@fuhHIVStatus", folHiv.fuhHIVStatus);
-                com.Parameters.AddWithValue("@fuhIPOnARV", folHiv.fuhIPOnARV);
-                com.Parameters.AddWithValue("@fuhIPStartDate", folHiv.fuhIPStartDate);
-                com.Parameters.AddWithValue("@fuhIPAdherenceOK", folHiv.fuhIPAdherenceOK);
-                com.Parameters.AddWithValue("@fuhIPConcerns", folHiv.fuhIPConcerns);
-                com.Parameters.AddWithValue("@fuhIPReferToClinic", folHiv.fuhIPReferToClinic);
-                com.Parameters.AddWithValue("@fuhIPRefNo", folHiv.fuhIPRefNo);
-                com.Parameters.AddWithValue("@fuhIPNotOnARV", folHiv.fuhIPNotOnARV);
-                com.Parameters.AddWithValue("@fuhIPReferToClinic2", folHiv.fuhIPReferToClinic2);
-                com.Parameters.AddWithValue("@fuhIPRefNo2", folHiv.fuhIPRefNo2);
-                com.Parameters.AddWithValue("@fuhINCounsellingDone", folHiv.fuhINCounsellingDone);
-                com.Parameters.AddWithValue("@fuhIUHIVTestDone", folHiv.fuhIUHIVTestDone);
-                com.Parameters.AddWithValue("@fuhHIVTestResults", folHiv.fuhHIVTestResults);
-                com.Parameters.AddWithValue("@fuhHIVTestReferToClinic", folHiv.fuhHIVTestReferToClinic);
-                com.Parameters.AddWithValue("@fuhHIVRefNo", folHiv.fuhHIVRefNo);
-                com.Parameters.AddWithValue("@fuhHIVMedication", folHiv.fuhHIVMedication);
+                com.Parameters.AddWithValue("@fuhivHiEHRefNo", folHiv.fuhivHiEHRefNo);
+                com.Parameters.AddWithValue("@fuhivCRReferToClinic", folHiv.fuhivCRReferToClinic);
+                com.Parameters.AddWithValue("@fuhivCRRefNo", folHiv.fuhivCRRefNo);
+                com.Parameters.AddWithValue("@fuhivHIVStatus", folHiv.fuhivHIVStatus);
+                com.Parameters.AddWithValue("@fuhivIPOnARV", folHiv.fuhivIPOnARV);
+                com.Parameters.AddWithValue("@fuhivIPStartDate", folHiv.fuhivIPStartDate);
+                com.Parameters.AddWithValue("@fuhivIPAdherenceOK", folHiv.fuhivIPAdherenceOK);
+                com.Parameters.AddWithValue("@fuhivIPConcerns", folHiv.fuhivIPConcerns);
+                com.Parameters.AddWithValue("@fuhivIPReferToClinic", folHiv.fuhivIPReferToClinic);
+                com.Parameters.AddWithValue("@fuhivIPRefNo", folHiv.fuhivIPRefNo);
+                com.Parameters.AddWithValue("@fuhivIPNotOnARV", folHiv.fuhivIPNotOnARV);
+                com.Parameters.AddWithValue("@fuhivIPReferToClinic2", folHiv.fuhivIPReferToClinic2);
+                com.Parameters.AddWithValue("@fuhivIPRefNo2", folHiv.fuhivIPRefNo2);
+                com.Parameters.AddWithValue("@fuhivINCounsellingDone", folHiv.fuhivINCounsellingDone);
+                com.Parameters.AddWithValue("@fuhivIUHIVTestDone", folHiv.fuhivIUHIVTestDone);
+                com.Parameters.AddWithValue("@fuhivHIVTestResults", folHiv.fuhivHIVTestResults);
+                com.Parameters.AddWithValue("@fuhivHIVTestReferToClinic", folHiv.fuhivHIVTestReferToClinic);
+                com.Parameters.AddWithValue("@fuhivHIVRefNo", folHiv.fuhivHIVRefNo);
+                //com.Parameters.AddWithValue("@fuhivHIVMedication", folHiv.fuhivHIVMedication);
 
 
                 com.ExecuteNonQuery();//execute command
