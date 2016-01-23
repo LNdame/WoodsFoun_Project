@@ -70,23 +70,28 @@
     <ApplicationIcon>Logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\Desktop\Temp\NPOI 2.2.0.0\dotnet4\ICSharpCode.SharpZipLib.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Models">
       <HintPath>..\Models\bin\Debug\Models.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI">
-      <HintPath>..\..\..\..\Desktop\Temp\NPOI 2.2.0.0\dotnet4\NPOI.dll</HintPath>
+    <Reference Include="NPOI, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="NPOI.OOXML">
-      <HintPath>..\..\..\..\Desktop\Temp\NPOI 2.2.0.0\dotnet4\NPOI.OOXML.dll</HintPath>
+    <Reference Include="NPOI.OOXML, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>..\..\..\..\Desktop\Temp\NPOI 2.2.0.0\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>..\..\..\..\Desktop\Temp\NPOI 2.2.0.0\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -145,16 +150,22 @@
     <Compile Include="LocalModels\ClientOld.cs" />
     <Compile Include="LocalModels\Clinic.cs" />
     <Compile Include="LocalModels\ClinicAsthma.cs" />
+    <Compile Include="LocalModels\ClinicAsthmaTreatment.cs" />
     <Compile Include="LocalModels\ClinicChildHealth.cs" />
     <Compile Include="LocalModels\ClinicClientBiographical.cs" />
     <Compile Include="LocalModels\ClinicConditionTreatment.cs" />
     <Compile Include="LocalModels\ClinicDiabetes.cs" />
+    <Compile Include="LocalModels\ClinicDiabetesTreatment.cs" />
     <Compile Include="LocalModels\ClinicEpilepsy.cs" />
+    <Compile Include="LocalModels\ClinicEpilepsyTreatment.cs" />
     <Compile Include="LocalModels\ClinicHIV.cs" />
+    <Compile Include="LocalModels\ClinicHIVTreatment.cs" />
     <Compile Include="LocalModels\ClinicHypertension.cs" />
+    <Compile Include="LocalModels\ClinicHypertensionTreatment.cs" />
     <Compile Include="LocalModels\ClinicMaternalHealth.cs" />
     <Compile Include="LocalModels\ClinicOther.cs" />
     <Compile Include="LocalModels\ClinicTB.cs" />
+    <Compile Include="LocalModels\ClinicTBTreatment.cs" />
     <Compile Include="LocalModels\ClinicVisitData.cs" />
     <Compile Include="LocalModels\CurrentMedications.cs" />
     <Compile Include="LocalModels\Diabetes.cs" />
@@ -165,17 +176,23 @@
     <Compile Include="LocalModels\Epilepsy.cs" />
     <Compile Include="LocalModels\FollowUp.cs" />
     <Compile Include="LocalModels\FollowUpAsthma.cs" />
+    <Compile Include="LocalModels\FollowUpAsthmaMedication.cs" />
     <Compile Include="LocalModels\FollowUpChildHealth.cs" />
     <Compile Include="LocalModels\FollowUpChildHealthConcerns.cs" />
     <Compile Include="LocalModels\FollowUpChildHealthImmunisationsOutstanding.cs" />
     <Compile Include="LocalModels\FollowUpConditionMedication.cs" />
     <Compile Include="LocalModels\FollowUpDiabetes.cs" />
+    <Compile Include="LocalModels\FollowUpDiabetesMedication.cs" />
     <Compile Include="LocalModels\FollowUpEpilepsy.cs" />
+    <Compile Include="LocalModels\FollowUpEpilepsyMedication.cs" />
     <Compile Include="LocalModels\FollowUpHIV.cs" />
+    <Compile Include="LocalModels\FollowUpHIVMedication.cs" />
     <Compile Include="LocalModels\FollowUpHypertension.cs" />
+    <Compile Include="LocalModels\FollowUpHypertensionMedication.cs" />
     <Compile Include="LocalModels\FollowUpMaternalHealth.cs" />
     <Compile Include="LocalModels\FollowUpOther.cs" />
     <Compile Include="LocalModels\FollowUpTB.cs" />
+    <Compile Include="LocalModels\FollowUpTBMedication.cs" />
     <Compile Include="LocalModels\FollowUpVisitDetails.cs" />
     <Compile Include="LocalModels\General.cs" />
     <Compile Include="LocalModels\HealthWorker.cs" />
@@ -198,62 +215,38 @@
     </Compile>
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes10bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes10aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes10cQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes10dQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes11bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes11aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes12bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes12aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes13aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes13bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes13Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes14bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes14aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes15bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes15aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes16bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes16aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes17bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes17aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes18bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes18aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes19bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes19aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes20aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes20bQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes21aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes21bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes22bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes22aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes24bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes24cQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes24dQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes24aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes25bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes25aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes26bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes26aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes27bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes27aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes28bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes28aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes29bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes29aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes30bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes30aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes31bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes31aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes32bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes32aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes32cQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes32dQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes33bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes33aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes33Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes38bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes38aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes39bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes39aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes40bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes40aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes41bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes41aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes43bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes43aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes44bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes44aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes34aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes34bQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes35aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes35bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes45bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes45aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes45cQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes45dQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes46bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes46aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes47bQ.cs" />
@@ -298,12 +291,15 @@
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes11Q.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes1Q.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes10Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes49Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes50aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes50bQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes50cQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes50Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes51Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes52Q.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes7bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes7aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes9bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes9c.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes9dQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes9aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes9Q.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes8Q.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes7Q.cs" />
@@ -312,8 +308,11 @@
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes4Q.cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes3Q .cs" />
     <Compile Include="ReportQueries\Format 2\Diabetes\Diabetes2Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Class1.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension10dQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension10aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension10bQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension10cQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension10Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension11aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension11bQ.cs" />
@@ -321,91 +320,65 @@
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension12aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension12bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension12Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension13aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension13bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension13Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension14aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension14bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension14Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension15aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension15bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension15Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension16aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension16bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension16Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension17aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension17bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension17Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension18aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension18bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension18Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension19aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension19bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension19Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension1Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension20aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension20bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension20Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension21aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension21bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension21Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension22aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension22bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension22Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension23Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension24aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension24bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension24cQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension24dQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension24Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension25aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension25bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension25Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension26aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension26bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension26Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension27aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension27bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension27Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension28aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension28bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension28Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension29aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension29bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension29Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension2Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension30aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension30bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension30Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension31aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension31bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension31Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension32aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension32bQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension32cQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension32dQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension32Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension33aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension33bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension33Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension34aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension34bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension34Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension35aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension35bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension35Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension36Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension37Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension38aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension38bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension38Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension39aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension39bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension39Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension3Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension40aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension40bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension40Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension41aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension41bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension41Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension42Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension43aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension43bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension43Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension44aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension44bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension44Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension45aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension45bQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension45cQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension45dQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension45Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension46aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension46bQ.cs" />
@@ -416,18 +389,20 @@
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension48aQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension48bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension48Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension49Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension4Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension50aQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension50bQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension50cQ.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension50Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension51Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension52Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension5Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension6Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension7aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension7bQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension7Q.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension8Q.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension9aQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension9bQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension9cQ.cs" />
-    <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension9dQ.cs" />
     <Compile Include="ReportQueries\Format 2\Hypertension\Hypertension9Q.cs" />
+    <Compile Include="ReportQueries\Format 2\Hypertension\Hytpertension12aQ.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Views\CHOW\AddChow.xaml.cs">
       <DependentUpon>AddChow.xaml</DependentUpon>

@@ -8,7 +8,7 @@ namespace Impilo_App.LocalModels
 {
     class FollowUpHIV
     {
-        public int fuhiv { get; set; }
+        public int fuhivID { get; set; }
 
         public int EncounterID { get; set; }
 
@@ -18,40 +18,40 @@ namespace Impilo_App.LocalModels
 
         public bool fuhivHiEHReReferToClinic { get; set; }
 
-        public string fuhHiEHRefNo { get; set; }
+        public string fuhivHiEHRefNo { get; set; }
 
-        public bool fuhCRReferToClinic { get; set; }
+        public bool fuhivCRReferToClinic { get; set; }
 
-        public string fuhCRRefNo { get; set; }
+        public string fuhivCRRefNo { get; set; }
 
-        public string fuhHIVStatus { get; set; }
+        public string fuhivHIVStatus { get; set; }
 
-        public bool fuhIPOnARV { get; set; }
+        public bool fuhivIPOnARV { get; set; }
 
-        public DateTime fuhIPStartDate { get; set; }
+        public DateTime fuhivIPStartDate { get; set; }
 
-        public bool fuhIPAdherenceOK { get; set; }
+        public bool fuhivIPAdherenceOK { get; set; }
 
-        public bool fuhIPConcerns { get; set; }
+        public bool fuhivIPConcerns { get; set; }
 
-        public bool fuhIPReferToClinic { get; set; }
+        public bool fuhivIPReferToClinic { get; set; }
 
-        public string fuhIPRefNo { get; set; }
+        public string fuhivIPRefNo { get; set; }
 
-        public bool fuhIPNotOnARV { get; set; }
+        public bool fuhivIPNotOnARV { get; set; }
 
-        public bool fuhIPReferToClinic2 { get; set; }
+        public bool fuhivIPReferToClinic2 { get; set; }
 
-        public string fuhIPRefNo2 { get; set; }
+        public string fuhivIPRefNo2 { get; set; }
 
-        public bool fuhINCounsellingDone { get; set; }
+        public bool fuhivINCounsellingDone { get; set; }
 
-        public bool fuhIUHIVTestDone { get; set; }
+        public bool fuhivIUHIVTestDone { get; set; }
 
-        public string fuhHIVTestResults { get; set; }
+        public string fuhivHIVTestResults { get; set; }
 
-        public bool fuhHIVTestReferToClinic { get; set; }
+        public bool fuhivHIVTestReferToClinic { get; set; }
 
-        public string fuhHIVRefNo { get; set; }
+        public string fuhivHIVRefNo { get; set; }
     }
 }
