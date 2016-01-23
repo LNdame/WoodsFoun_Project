@@ -8,7 +8,7 @@ namespace Impilo_App.LocalModels
 {
     class FollowUpTB
     {
-        public int futbID { get; set; }
+        public int futID { get; set; }
 
         public int EncounterID { get; set; }
 

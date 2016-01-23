@@ -10,10 +10,10 @@ namespace Impilo_App.LocalModels
     {
         public string ScreeningID { get; set; }
 
-        public int Weight { get; set; }
+        public decimal Weight { get; set; }
 
-        public int Height { get; set; }
+        public decimal Height { get; set; }
 
-        public int BMI { get; set; }
+        public decimal BMI { get; set; }
     }
 }

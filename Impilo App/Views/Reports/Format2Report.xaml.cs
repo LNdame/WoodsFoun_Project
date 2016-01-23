@@ -384,1092 +384,1092 @@ namespace Impilo_App.Views.Reports
             return ReturnMe;
         }
 
-        #region Diabetes
-        public string Diabetes1()
-        {
-            return Diabetes1Q.Query();
-        }
-        public string Diabetes2()
-        {
-            return Diabetes2Q.Query();
-        }
-
-        public string Diabetes3()
-        {
-            return Diabetes3Q.Query();
-        }
-
-        public string Diabetes4()
-        {
-            return Diabetes4Q.Query();
-        }
-
-        public string Diabetes5()
-        {
-            return Diabetes5Q.Query();
-        }
-
-        public string Diabetes6()
-        {
-            return Diabetes6Q.Query();
-        }
-
-        public string Diabetes7()
-        {
-            return Diabetes7Q.Query();
-        }
-
-        public string Diabetes7a()
-        {
-            return Diabetes7aQ.Query();
-        }
-
-        public string Diabetes7b()
-        {
-            return Diabetes7bQ.Query();
-        }
-
-        public string Diabetes8()
-        {
-            return Diabetes8Q.Query();
-        }
-        public string Diabetes9()
-        {
-           return Diabetes9aQ.Query(); // Flagged for review  Please LEon Check
-        }
-        public string Diabetes9a()
-        {
-            return Diabetes9aQ.Query();
-        }
-        public string Diabetes9b()
-        {
-            return Diabetes9bQ.Query();
-        }
-        public string Diabetes9c()
-        {
-            return Diabetes9cQ.Query();
-        }
-        public string Diabetes9d()
-        {
-            return Diabetes9dQ.Query();
-        }
-
-        public string Diabetes10()
-        {
-            return Diabetes10Q.Query();
-        }
-        public string Diabetes10a()
-        {
-            return Diabetes10aQ.Query();
-        }
-        public string Diabetes10b()
-        {
-            return Diabetes10bQ.Query();
-        }
-
-        public string Diabetes11()
-        {
-            return Diabetes11Q.Query();
-        }
-        public string Diabetes11a()
-        {
-            return Diabetes11aQ.Query();
-        }
-        public string Diabetes11b()
-        {
-            return Diabetes11bQ.Query();
-        }
-
-        public string Diabetes12()
-        {
-            return Diabetes12Q.Query();
-        }
-        public string Diabetes12a()
-        {
-            return Diabetes12aQ.Query();
-        }
-        public string Diabetes12b()
-        {
-            return Diabetes12bQ.Query();
-        }
-
-        public string Diabetes13()
-        {
-            return Diabetes13Q.Query();
-        }
-
-        public string Diabetes14()
-        {
-            return Diabetes14Q.Query();
-        }
-
-        public string Diabetes14a()
-        {
-            return Diabetes14aQ.Query();
-        }
-        public string Diabetes14b()
-        {
-            return Diabetes14bQ.Query();
-        }
-
-        public string Diabetes15()
-        {
-            return Diabetes15Q.Query();
-        }
-        public string Diabetes15a()
-        {
-            return Diabetes15aQ.Query();
-        }
-        public string Diabetes15b()
-        {
-            return Diabetes15bQ.Query();
-        }
-
-        public string Diabetes16()
-        {
-            return Diabetes16Q.Query();
-        }
-        public string Diabetes16a()
-        {
-            return Diabetes16aQ.Query();
-        }
-        public string Diabetes16b()
-        {
-            return Diabetes16bQ.Query();
-        }
-
-        public string Diabetes17()
-        {
-            return Diabetes17Q.Query();
-        }
-        public string Diabetes17a()
-        {
-            return Diabetes17aQ.Query();
-        }
-        public string Diabetes17b()
-        {
-            return Diabetes17bQ.Query();
-        }
-
-        public string Diabetes18()
-        {
-            return Diabetes18Q.Query();
-        }
-        public string Diabetes18a()
-        {
-            return Diabetes18aQ.Query();
-        }
-        public string Diabetes18b()
-        {
-            return Diabetes18bQ.Query();
-        }
-
-        public string Diabetes19()
-        {
-            return Diabetes19Q.Query();
-        }
-        public string Diabetes19a()
-        {
-            return Diabetes19aQ.Query();
-        }
-        public string Diabetes19b()
-        {
-            return Diabetes19bQ.Query();
-        }
-
-        public string Diabetes20()
-        {
-            return Diabetes20Q.Query();
-        }
-
-        public string Diabetes21()
-        {
-            return Diabetes21Q.Query();
-        }
-
-        public string Diabetes22()
-        {
-            return Diabetes22Q.Query();
-        }
-
-        public string Diabetes22a()
-        {
-            return Impilo_App.ReportQueries.Format_2.Diabetes.Diabete22aQ.Query();
-        }
-        public string Diabetes22b()
-        {
-            return Diabetes22bQ.Query();
-        }
-
-        public string Diabetes23()
-        {
-            return Diabetes23Q.Query();
-        }
-
-        public string Diabetes24()
-        {
-            return Diabetes24Q.Query();
-        }
-
-        public string Diabetes24a()
-        {
-            return Diabetes24aQ.Query();
-        }
-        public string Diabetes24b()
-        {
-            return Diabetes24bQ.Query();
-        }
-        public string Diabetes24c()
-        {
-            return Diabetes24cQ.Query();
-        }
-        public string Diabetes24d()
-        {
-            return Diabetes24dQ.Query();
-        }
-
-        public string Diabetes25()
-        {
-            return Diabetes25Q.Query();
-        }
-
-        public string Diabetes25a()
-        {
-            return Diabetes25aQ.Query();
-        }
-
-        public string Diabetes25b()
-        {
-            return Diabetes25bQ.Query();
-        }
-
-        public string Diabetes26()
-        {
-            return Diabetes26Q.Query();
-        }
-
-        public string Diabetes26a()
-        {
-            return Diabetes26aQ.Query();
-        }
-
-        public string Diabetes26b()
-        {
-            return Diabetes26bQ.Query();
-        }
-
-        public string Diabetes27()
-        {
-            return Diabetes27Q.Query();
-        }
-
-        public string Diabetes27a()
-        {
-            return Diabetes27aQ.Query();
-        }
-
-        public string Diabetes27b()
-        {
-            return Diabetes27bQ.Query();
-        }
-
-        public string Diabetes28()
-        {
-            return Diabetes28Q.Query();
-        }
-
-        public string Diabetes28a()
-        {
-            return Diabetes28aQ.Query();
-        }
-
-        public string Diabetes28b()
-        {
-            return Diabetes28bQ.Query();
-        }
-
-        public string Diabetes29()
-        {
-            return Diabetes29Q.Query();
-        }
-
-        public string Diabetes29a()
-        {
-            return Diabetes29aQ.Query();
-        }
-
-        public string Diabetes29b()
-        {
-            return Diabetes29bQ.Query();
-        }
-
-        public string Diabetes30()
-        {
-            return Diabetes30Q.Query();
-        }
-
-        public string Diabetes30a()
-        {
-            return Diabetes30aQ.Query();
-        }
-
-        public string Diabetes30b()
-        {
-            return Impilo_App.ReportQueries.Format_2.Diabetes.Diabetes130bQ.Query();
-        }
-
-        public string Diabetes31()
-        {
-            return Diabetes31Q.Query();
-        }
-
-        public string Diabetes31a()
-        {
-            return Diabetes31aQ.Query();
-        }
-
-        public string Diabetes31b()
-        {
-            return Diabetes31bQ.Query();
-        }
-
-        public string Diabetes32()
-        {
-            return Diabetes32Q.Query();
-        }
-
-        public string Diabetes32a()
-        {
-            return Diabetes32aQ.Query();
-        }
-
-        public string Diabetes32b()
-        {
-            return Diabetes32bQ.Query();
-        }
-
-        public string Diabetes33()
-        {
-            return Diabetes33Q.Query();
-        }
-
-        public string Diabetes33a()
-        {
-            return Diabetes33aQ.Query();
-        }
-
-        public string Diabetes33b()
-        {
-            return Diabetes33bQ.Query();
-        }
-
-        public string Diabetes34()
-        {
-            return Diabetes34Q.Query();
-        }
-
-        public string Diabetes35()
-        {
-            return Diabetes35Q.Query();
-        }
-        public string Diabetes36()
-        {
-            return Diabetes36Q.Query();
-        }
-        public string Diabetes37()
-        {
-            return Diabetes37Q.Query();
-        }
-
-        public string Diabetes38()
-        {
-            return Diabetes38Q.Query();
-        }
-
-        public string Diabetes38a()
-        {
-            return Diabetes38aQ.Query();
-        }
-
-        public string Diabetes38b()
-        {
-            return Diabetes38bQ.Query();
-        }
-        public string Diabetes39()
-        {
-            return Diabetes39Q.Query();
-        }
-
-        public string Diabetes39a()
-        {
-            return Diabetes39aQ.Query();
-        }
-
-        public string Diabetes39b()
-        {
-            return Diabetes39bQ.Query();
-        }
-        public string Diabetes40()
-        {
-            return Diabetes40Q.Query();
-        }
-        public string Diabetes40a()
-        {
-            return Diabetes40aQ.Query();
-        }
-
-        public string Diabetes40b()
-        {
-            return Diabetes40bQ.Query();
-        }
-
-        public string Diabetes41()
-        {
-            return Diabetes41Q.Query();
-        }
-
-        public string Diabetes41a()
-        {
-            return Diabetes41aQ.Query();
-        }
-
-        public string Diabetes41b()
-        {
-            return Diabetes41bQ.Query();
-        }
-
-        public string Diabetes42()
-        {
-            return Diabetes42Q.Query();
-        }
-        public string Diabetes43()
-        {
-            return Diabetes43Q.Query();
-        }
-
-        public string Diabetes43a()
-        {
-            return Diabetes43aQ.Query();
-        }
-
-        public string Diabetes43b()
-        {
-            return Diabetes43bQ.Query();
-        }
-
-        public string Diabetes44()
-        {
-            return Diabetes44Q.Query();
-        }
-
-        public string Diabetes44a()
-        {
-            return Diabetes44aQ.Query();
-        }
-
-        public string Diabetes44b()
-        {
-            return Diabetes44bQ.Query();
-        }
-        public string Diabetes45()
-        {
-            return Diabetes45Q.Query();
-        }
-        public string Diabetes45a()
-        {
-            return Diabetes45aQ.Query();
-        }
-
-        public string Diabetes45b()
-        {
-            return Diabetes45bQ.Query();
-        }
-        public string Diabetes46()
-        {
-            return Diabetes46Q.Query();
-        }
-
-        public string Diabetes46a()
-        {
-            return Diabetes46aQ.Query();
-        }
-
-        public string Diabetes46b()
-        {
-            return Diabetes46bQ.Query();
-        }
-        public string Diabetes47()
-        {
-            return Diabetes47Q.Query();
-        }
-
-        public string Diabetes47a()
-        {
-            return Diabetes47aQ.Query();
-        }
-
-        public string Diabetes47b()
-        {
-            return Diabetes47bQ.Query();
-        }
-        public string Diabetes48()
-        {
-            return Diabetes48Q.Query();
-        }
-        public string Diabetes48a()
-        {
-            return Diabetes48aQ.Query();
-        }
-
-        public string Diabetes48b()
-        {
-            return Diabetes48bQ.Query();
-        }
-
-        #endregion
-
-        #region Hypertension
-        public string Hypertension1()
-        {
-            return Hypertension1Q.Query();
-        }
-        public string Hypertension2()
-        {
-            return Hypertension2Q.Query();
-        }
-
-        public string Hypertension3()
-        {
-            return Hypertension3Q.Query();
-        }
-
-        public string Hypertension4()
-        {
-            return Hypertension4Q.Query();
-        }
-
-        public string Hypertension5()
-        {
-            return Hypertension5Q.Query();
-        }
-
-        public string Hypertension6()
-        {
-            return Hypertension6Q.Query();
-        }
-
-        public string Hypertension7()
-        {
-            return Hypertension7Q.Query();
-        }
-
-        public string Hypertension7a()
-        {
-            return Hypertension7aQ.Query();
-        }
-
-        public string Hypertension7b()
-        {
-            return Hypertension7bQ.Query();
-        }
-
-        public string Hypertension8()
-        {
-            return Hypertension8Q.Query();
-        }
-        public string Hypertension9()
-        {
-            return Hypertension9Q.Query();
-        }
-        public string Hypertension9a()
-        {
-            return Hypertension9aQ.Query();
-        }
-        public string Hypertension9b()
-        {
-            return Hypertension9bQ.Query();
-        }
-        public string Hypertension9c()
-        {
-            return Hypertension9cQ.Query();
-        }
-        public string Hypertension9d()
-        {
-            return Hypertension9dQ.Query();
-        }
-
-        public string Hypertension10()
-        {
-            return Hypertension10Q.Query();
-        }
-        public string Hypertension10a()
-        {
-            return Hypertension10aQ.Query();
-        }
-        public string Hypertension10b()
-        {
-            return Hypertension10bQ.Query();
-        }
-
-        public string Hypertension11()
-        {
-            return Hypertension11Q.Query();
-        }
-        public string Hypertension11a()
-        {
-            return Hypertension11aQ.Query();
-        }
-        public string Hypertension11b()
-        {
-            return Hypertension11bQ.Query();
-        }
-
-        public string Hypertension12()
-        {
-            return Hypertension12Q.Query();
-        }
-        public string Hypertension12a()
-        {
-            return Hypertension12aQ.Query();
-        }
-        public string Hypertension12b()
-        {
-            return Hypertension12bQ.Query();
-        }
-
-        public string Hypertension13()
-        {
-            return Hypertension13Q.Query();
-        }
-
-        public string Hypertension14()
-        {
-            return Hypertension14Q.Query();
-        }
-
-        public string Hypertension14a()
-        {
-            return Hypertension14aQ.Query();
-        }
-        public string Hypertension14b()
-        {
-            return Hypertension14bQ.Query();
-        }
-
-        public string Hypertension15()
-        {
-            return Hypertension15Q.Query();
-        }
-        public string Hypertension15a()
-        {
-            return Hypertension15aQ.Query();
-        }
-        public string Hypertension15b()
-        {
-            return Hypertension15bQ.Query();
-        }
-
-        public string Hypertension16()
-        {
-            return Hypertension16Q.Query();
-        }
-        public string Hypertension16a()
-        {
-            return Hypertension16aQ.Query();
-        }
-        public string Hypertension16b()
-        {
-            return Hypertension16bQ.Query();
-        }
-
-        public string Hypertension17()
-        {
-            return Hypertension17Q.Query();
-        }
-        public string Hypertension17a()
-        {
-            return Hypertension17aQ.Query();
-        }
-        public string Hypertension17b()
-        {
-            return Hypertension17bQ.Query();
-        }
-
-        public string Hypertension18()
-        {
-            return Hypertension18Q.Query();
-        }
-        public string Hypertension18a()
-        {
-            return Hypertension18aQ.Query();
-        }
-        public string Hypertension18b()
-        {
-            return Hypertension18bQ.Query();
-        }
-
-        public string Hypertension19()
-        {
-            return Hypertension19Q.Query();
-        }
-        public string Hypertension19a()
-        {
-            return Hypertension19aQ.Query();
-        }
-        public string Hypertension19b()
-        {
-            return Hypertension19bQ.Query();
-        }
-
-        public string Hypertension20()
-        {
-            return Hypertension20Q.Query();
-        }
-
-        public string Hypertension21()
-        {
-            return Hypertension21Q.Query();
-        }
-
-        public string Hypertension22()
-        {
-            return Hypertension22Q.Query();
-        }
-
-        public string Hypertension22a()
-        {
-            return Hypertension22aQ.Query();
-        }
-        public string Hypertension22b()
-        {
-            return Hypertension22bQ.Query();
-        }
-
-        public string Hypertension23()
-        {
-            return Hypertension23Q.Query();
-        }
-
-        public string Hypertension24()
-        {
-            return Hypertension24Q.Query();
-        }
-
-        public string Hypertension24a()
-        {
-            return Hypertension24aQ.Query();
-        }
-        public string Hypertension24b()
-        {
-            return Hypertension24bQ.Query();
-        }
-        public string Hypertension24c()
-        {
-            return Hypertension24cQ.Query();
-        }
-        public string Hypertension24d()
-        {
-            return Hypertension24dQ.Query();
-        }
-
-        public string Hypertension25()
-        {
-            return Hypertension25Q.Query();
-        }
-
-        public string Hypertension25a()
-        {
-            return Hypertension25aQ.Query();
-        }
-
-        public string Hypertension25b()
-        {
-            return Hypertension25bQ.Query();
-        }
-
-        public string Hypertension26()
-        {
-            return Hypertension26Q.Query();
-        }
-
-        public string Hypertension26a()
-        {
-            return Hypertension26aQ.Query();
-        }
-
-        public string Hypertension26b()
-        {
-            return Hypertension26bQ.Query();
-        }
-
-        public string Hypertension27()
-        {
-            return Hypertension27Q.Query();
-        }
-
-        public string Hypertension27a()
-        {
-            return Hypertension27aQ.Query();
-        }
-
-        public string Hypertension27b()
-        {
-            return Hypertension27bQ.Query();
-        }
-
-        public string Hypertension28()
-        {
-            return Hypertension28Q.Query();
-        }
-
-        public string Hypertension28a()
-        {
-            return Hypertension28aQ.Query();
-        }
-
-        public string Hypertension28b()
-        {
-            return Hypertension28bQ.Query();
-        }
-
-        public string Hypertension29()
-        {
-            return Hypertension29Q.Query();
-        }
-
-        public string Hypertension29a()
-        {
-            return Hypertension29aQ.Query();
-        }
-
-        public string Hypertension29b()
-        {
-            return Hypertension29bQ.Query();
-        }
-
-        public string Hypertension30()
-        {
-            return Hypertension30Q.Query();
-        }
-
-        public string Hypertension30a()
-        {
-            return Hypertension30aQ.Query();
-        }
-
-        public string Hypertension30b()
-        {
-            return Hypertension30bQ.Query();
-        }
-
-        public string Hypertension31()
-        {
-            return Hypertension31Q.Query();
-        }
-
-        public string Hypertension31a()
-        {
-            return Hypertension31aQ.Query();
-        }
-
-        public string Hypertension31b()
-        {
-            return Hypertension31bQ.Query();
-        }
-
-        public string Hypertension32()
-        {
-            return Hypertension32Q.Query();
-        }
-
-        public string Hypertension32a()
-        {
-            return Hypertension32aQ.Query();
-        }
-
-        public string Hypertension32b()
-        {
-            return Hypertension32bQ.Query();
-        }
-
-        public string Hypertension33()
-        {
-            return Hypertension33Q.Query();
-        }
-
-        public string Hypertension33a()
-        {
-            return Hypertension33aQ.Query();
-        }
-
-        public string Hypertension33b()
-        {
-            return Hypertension33bQ.Query();
-        }
-
-        public string Hypertension34()
-        {
-            return Hypertension34Q.Query();
-        }
-
-        public string Hypertension35()
-        {
-            return Hypertension35Q.Query();
-        }
-        public string Hypertension36()
-        {
-            return Hypertension36Q.Query();
-        }
-        public string Hypertension37()
-        {
-            return Hypertension37Q.Query();
-        }
-
-        public string Hypertension38()
-        {
-            return Hypertension38Q.Query();
-        }
-
-        public string Hypertension38a()
-        {
-            return Hypertension38aQ.Query();
-        }
-
-        public string Hypertension38b()
-        {
-            return Hypertension38bQ.Query();
-        }
-        public string Hypertension39()
-        {
-            return Hypertension39Q.Query();
-        }
-
-        public string Hypertension39a()
-        {
-            return Hypertension39aQ.Query();
-        }
-
-        public string Hypertension39b()
-        {
-            return Hypertension39bQ.Query();
-        }
-        public string Hypertension40()
-        {
-            return Hypertension40Q.Query();
-        }
-        public string Hypertension40a()
-        {
-            return Hypertension40aQ.Query();
-        }
-
-        public string Hypertension40b()
-        {
-            return Hypertension40bQ.Query();
-        }
-
-        public string Hypertension41()
-        {
-            return Hypertension41Q.Query();
-        }
-
-        public string Hypertension41a()
-        {
-            return Hypertension41aQ.Query();
-        }
-
-        public string Hypertension41b()
-        {
-            return Hypertension41bQ.Query();
-        }
-
-        public string Hypertension42()
-        {
-            return Hypertension42Q.Query();
-        }
-        public string Hypertension43()
-        {
-            return Hypertension43Q.Query();
-        }
-
-        public string Hypertension43a()
-        {
-            return Hypertension43aQ.Query();
-        }
-
-        public string Hypertension43b()
-        {
-            return Hypertension43bQ.Query();
-        }
-
-        public string Hypertension44()
-        {
-            return Hypertension44Q.Query();
-        }
-
-        public string Hypertension44a()
-        {
-            return Hypertension44aQ.Query();
-        }
-
-        public string Hypertension44b()
-        {
-            return Hypertension44bQ.Query();
-        }
-        public string Hypertension45()
-        {
-            return Hypertension45Q.Query();
-        }
-        public string Hypertension45a()
-        {
-            return Hypertension45aQ.Query();
-        }
-
-        public string Hypertension45b()
-        {
-            return Hypertension45bQ.Query();
-        }
-        public string Hypertension46()
-        {
-            return Hypertension46Q.Query();
-        }
-
-        public string Hypertension46a()
-        {
-            return Hypertension46aQ.Query();
-        }
-
-        public string Hypertension46b()
-        {
-            return Hypertension46bQ.Query();
-        }
-        public string Hypertension47()
-        {
-            return Hypertension47Q.Query();
-        }
-
-        public string Hypertension47a()
-        {
-            return Hypertension47aQ.Query();
-        }
-
-        public string Hypertension47b()
-        {
-            return Hypertension47bQ.Query();
-        }
-        public string Hypertension48()
-        {
-            return Hypertension48Q.Query();
-        }
-        public string Hypertension48a()
-        {
-            return Hypertension48aQ.Query();
-        }
-
-        public string Hypertension48b()
-        {
-            return Hypertension48bQ.Query();
-        }
-
-        #endregion
+        //#region Diabetes
+        //public string Diabetes1()
+        //{
+        //    return Diabetes1Q.Query();
+        //}
+        //public string Diabetes2()
+        //{
+        //    return Diabetes2Q.Query();
+        //}
+
+        //public string Diabetes3()
+        //{
+        //    return Diabetes3Q.Query();
+        //}
+
+        //public string Diabetes4()
+        //{
+        //    return Diabetes4Q.Query();
+        //}
+
+        //public string Diabetes5()
+        //{
+        //    return Diabetes5Q.Query();
+        //}
+
+        //public string Diabetes6()
+        //{
+        //    return Diabetes6Q.Query();
+        //}
+
+        //public string Diabetes7()
+        //{
+        //    return Diabetes7Q.Query();
+        //}
+
+        //public string Diabetes7a()
+        //{
+        //    return Diabetes7aQ.Query();
+        //}
+
+        //public string Diabetes7b()
+        //{
+        //    return Diabetes7bQ.Query();
+        //}
+
+        //public string Diabetes8()
+        //{
+        //    return Diabetes8Q.Query();
+        //}
+        //public string Diabetes9()
+        //{
+        //   return Diabetes9aQ.Query(); // Flagged for review  Please LEon Check
+        //}
+        //public string Diabetes9a()
+        //{
+        //    return Diabetes9aQ.Query();
+        //}
+        //public string Diabetes9b()
+        //{
+        //    return Diabetes9bQ.Query();
+        //}
+        //public string Diabetes9c()
+        //{
+        //    return Diabetes9cQ.Query();
+        //}
+        //public string Diabetes9d()
+        //{
+        //    return Diabetes9dQ.Query();
+        //}
+
+        //public string Diabetes10()
+        //{
+        //    return Diabetes10Q.Query();
+        //}
+        //public string Diabetes10a()
+        //{
+        //    return Diabetes10aQ.Query();
+        //}
+        //public string Diabetes10b()
+        //{
+        //    return Diabetes10bQ.Query();
+        //}
+
+        //public string Diabetes11()
+        //{
+        //    return Diabetes11Q.Query();
+        //}
+        //public string Diabetes11a()
+        //{
+        //    return Diabetes11aQ.Query();
+        //}
+        //public string Diabetes11b()
+        //{
+        //    return Diabetes11bQ.Query();
+        //}
+
+        //public string Diabetes12()
+        //{
+        //    return Diabetes12Q.Query();
+        //}
+        //public string Diabetes12a()
+        //{
+        //    return Diabetes12aQ.Query();
+        //}
+        //public string Diabetes12b()
+        //{
+        //    return Diabetes12bQ.Query();
+        //}
+
+        //public string Diabetes13()
+        //{
+        //    return Diabetes13Q.Query();
+        //}
+
+        //public string Diabetes14()
+        //{
+        //    return Diabetes14Q.Query();
+        //}
+
+        //public string Diabetes14a()
+        //{
+        //    return Diabetes14aQ.Query();
+        //}
+        //public string Diabetes14b()
+        //{
+        //    return Diabetes14bQ.Query();
+        //}
+
+        //public string Diabetes15()
+        //{
+        //    return Diabetes15Q.Query();
+        //}
+        //public string Diabetes15a()
+        //{
+        //    return Diabetes15aQ.Query();
+        //}
+        //public string Diabetes15b()
+        //{
+        //    return Diabetes15bQ.Query();
+        //}
+
+        //public string Diabetes16()
+        //{
+        //    return Diabetes16Q.Query();
+        //}
+        //public string Diabetes16a()
+        //{
+        //    return Diabetes16aQ.Query();
+        //}
+        //public string Diabetes16b()
+        //{
+        //    return Diabetes16bQ.Query();
+        //}
+
+        //public string Diabetes17()
+        //{
+        //    return Diabetes17Q.Query();
+        //}
+        //public string Diabetes17a()
+        //{
+        //    return Diabetes17aQ.Query();
+        //}
+        //public string Diabetes17b()
+        //{
+        //    return Diabetes17bQ.Query();
+        //}
+
+        //public string Diabetes18()
+        //{
+        //    return Diabetes18Q.Query();
+        //}
+        //public string Diabetes18a()
+        //{
+        //    return Diabetes18aQ.Query();
+        //}
+        //public string Diabetes18b()
+        //{
+        //    return Diabetes18bQ.Query();
+        //}
+
+        //public string Diabetes19()
+        //{
+        //    return Diabetes19Q.Query();
+        //}
+        //public string Diabetes19a()
+        //{
+        //    return Diabetes19aQ.Query();
+        //}
+        //public string Diabetes19b()
+        //{
+        //    return Diabetes19bQ.Query();
+        //}
+
+        //public string Diabetes20()
+        //{
+        //    return Diabetes20Q.Query();
+        //}
+
+        //public string Diabetes21()
+        //{
+        //    return Diabetes21Q.Query();
+        //}
+
+        //public string Diabetes22()
+        //{
+        //    return Diabetes22Q.Query();
+        //}
+
+        //public string Diabetes22a()
+        //{
+        //    return Impilo_App.ReportQueries.Format_2.Diabetes.Diabete22aQ.Query();
+        //}
+        //public string Diabetes22b()
+        //{
+        //    return Diabetes22bQ.Query();
+        //}
+
+        //public string Diabetes23()
+        //{
+        //    return Diabetes23Q.Query();
+        //}
+
+        //public string Diabetes24()
+        //{
+        //    return Diabetes24Q.Query();
+        //}
+
+        //public string Diabetes24a()
+        //{
+        //    return Diabetes24aQ.Query();
+        //}
+        //public string Diabetes24b()
+        //{
+        //    return Diabetes24bQ.Query();
+        //}
+        //public string Diabetes24c()
+        //{
+        //    return Diabetes24cQ.Query();
+        //}
+        //public string Diabetes24d()
+        //{
+        //    return Diabetes24dQ.Query();
+        //}
+
+        //public string Diabetes25()
+        //{
+        //    return Diabetes25Q.Query();
+        //}
+
+        //public string Diabetes25a()
+        //{
+        //    return Diabetes25aQ.Query();
+        //}
+
+        //public string Diabetes25b()
+        //{
+        //    return Diabetes25bQ.Query();
+        //}
+
+        //public string Diabetes26()
+        //{
+        //    return Diabetes26Q.Query();
+        //}
+
+        //public string Diabetes26a()
+        //{
+        //    return Diabetes26aQ.Query();
+        //}
+
+        //public string Diabetes26b()
+        //{
+        //    return Diabetes26bQ.Query();
+        //}
+
+        //public string Diabetes27()
+        //{
+        //    return Diabetes27Q.Query();
+        //}
+
+        //public string Diabetes27a()
+        //{
+        //    return Diabetes27aQ.Query();
+        //}
+
+        //public string Diabetes27b()
+        //{
+        //    return Diabetes27bQ.Query();
+        //}
+
+        //public string Diabetes28()
+        //{
+        //    return Diabetes28Q.Query();
+        //}
+
+        //public string Diabetes28a()
+        //{
+        //    return Diabetes28aQ.Query();
+        //}
+
+        //public string Diabetes28b()
+        //{
+        //    return Diabetes28bQ.Query();
+        //}
+
+        //public string Diabetes29()
+        //{
+        //    return Diabetes29Q.Query();
+        //}
+
+        //public string Diabetes29a()
+        //{
+        //    return Diabetes29aQ.Query();
+        //}
+
+        //public string Diabetes29b()
+        //{
+        //    return Diabetes29bQ.Query();
+        //}
+
+        //public string Diabetes30()
+        //{
+        //    return Diabetes30Q.Query();
+        //}
+
+        //public string Diabetes30a()
+        //{
+        //    return Diabetes30aQ.Query();
+        //}
+
+        //public string Diabetes30b()
+        //{
+        //    return Impilo_App.ReportQueries.Format_2.Diabetes.Diabetes130bQ.Query();
+        //}
+
+        //public string Diabetes31()
+        //{
+        //    return Diabetes31Q.Query();
+        //}
+
+        //public string Diabetes31a()
+        //{
+        //    return Diabetes31aQ.Query();
+        //}
+
+        //public string Diabetes31b()
+        //{
+        //    return Diabetes31bQ.Query();
+        //}
+
+        //public string Diabetes32()
+        //{
+        //    return Diabetes32Q.Query();
+        //}
+
+        //public string Diabetes32a()
+        //{
+        //    return Diabetes32aQ.Query();
+        //}
+
+        //public string Diabetes32b()
+        //{
+        //    return Diabetes32bQ.Query();
+        //}
+
+        //public string Diabetes33()
+        //{
+        //    return Diabetes33Q.Query();
+        //}
+
+        //public string Diabetes33a()
+        //{
+        //    return Diabetes33aQ.Query();
+        //}
+
+        //public string Diabetes33b()
+        //{
+        //    return Diabetes33bQ.Query();
+        //}
+
+        //public string Diabetes34()
+        //{
+        //    return Diabetes34Q.Query();
+        //}
+
+        //public string Diabetes35()
+        //{
+        //    return Diabetes35Q.Query();
+        //}
+        //public string Diabetes36()
+        //{
+        //    return Diabetes36Q.Query();
+        //}
+        //public string Diabetes37()
+        //{
+        //    return Diabetes37Q.Query();
+        //}
+
+        //public string Diabetes38()
+        //{
+        //    return Diabetes38Q.Query();
+        //}
+
+        //public string Diabetes38a()
+        //{
+        //    return Diabetes38aQ.Query();
+        //}
+
+        //public string Diabetes38b()
+        //{
+        //    return Diabetes38bQ.Query();
+        //}
+        //public string Diabetes39()
+        //{
+        //    return Diabetes39Q.Query();
+        //}
+
+        //public string Diabetes39a()
+        //{
+        //    return Diabetes39aQ.Query();
+        //}
+
+        //public string Diabetes39b()
+        //{
+        //    return Diabetes39bQ.Query();
+        //}
+        //public string Diabetes40()
+        //{
+        //    return Diabetes40Q.Query();
+        //}
+        //public string Diabetes40a()
+        //{
+        //    return Diabetes40aQ.Query();
+        //}
+
+        //public string Diabetes40b()
+        //{
+        //    return Diabetes40bQ.Query();
+        //}
+
+        //public string Diabetes41()
+        //{
+        //    return Diabetes41Q.Query();
+        //}
+
+        //public string Diabetes41a()
+        //{
+        //    return Diabetes41aQ.Query();
+        //}
+
+        //public string Diabetes41b()
+        //{
+        //    return Diabetes41bQ.Query();
+        //}
+
+        //public string Diabetes42()
+        //{
+        //    return Diabetes42Q.Query();
+        //}
+        //public string Diabetes43()
+        //{
+        //    return Diabetes43Q.Query();
+        //}
+
+        //public string Diabetes43a()
+        //{
+        //    return Diabetes43aQ.Query();
+        //}
+
+        //public string Diabetes43b()
+        //{
+        //    return Diabetes43bQ.Query();
+        //}
+
+        //public string Diabetes44()
+        //{
+        //    return Diabetes44Q.Query();
+        //}
+
+        //public string Diabetes44a()
+        //{
+        //    return Diabetes44aQ.Query();
+        //}
+
+        //public string Diabetes44b()
+        //{
+        //    return Diabetes44bQ.Query();
+        //}
+        //public string Diabetes45()
+        //{
+        //    return Diabetes45Q.Query();
+        //}
+        //public string Diabetes45a()
+        //{
+        //    return Diabetes45aQ.Query();
+        //}
+
+        //public string Diabetes45b()
+        //{
+        //    return Diabetes45bQ.Query();
+        //}
+        //public string Diabetes46()
+        //{
+        //    return Diabetes46Q.Query();
+        //}
+
+        //public string Diabetes46a()
+        //{
+        //    return Diabetes46aQ.Query();
+        //}
+
+        //public string Diabetes46b()
+        //{
+        //    return Diabetes46bQ.Query();
+        //}
+        //public string Diabetes47()
+        //{
+        //    return Diabetes47Q.Query();
+        //}
+
+        //public string Diabetes47a()
+        //{
+        //    return Diabetes47aQ.Query();
+        //}
+
+        //public string Diabetes47b()
+        //{
+        //    return Diabetes47bQ.Query();
+        //}
+        //public string Diabetes48()
+        //{
+        //    return Diabetes48Q.Query();
+        //}
+        //public string Diabetes48a()
+        //{
+        //    return Diabetes48aQ.Query();
+        //}
+
+        //public string Diabetes48b()
+        //{
+        //    return Diabetes48bQ.Query();
+        //}
+
+        //#endregion
+
+        //#region Hypertension
+        //public string Hypertension1()
+        //{
+        //    return Hypertension1Q.Query();
+        //}
+        //public string Hypertension2()
+        //{
+        //    return Hypertension2Q.Query();
+        //}
+
+        //public string Hypertension3()
+        //{
+        //    return Hypertension3Q.Query();
+        //}
+
+        //public string Hypertension4()
+        //{
+        //    return Hypertension4Q.Query();
+        //}
+
+        //public string Hypertension5()
+        //{
+        //    return Hypertension5Q.Query();
+        //}
+
+        //public string Hypertension6()
+        //{
+        //    return Hypertension6Q.Query();
+        //}
+
+        //public string Hypertension7()
+        //{
+        //    return Hypertension7Q.Query();
+        //}
+
+        //public string Hypertension7a()
+        //{
+        //    return Hypertension7aQ.Query();
+        //}
+
+        //public string Hypertension7b()
+        //{
+        //    return Hypertension7bQ.Query();
+        //}
+
+        //public string Hypertension8()
+        //{
+        //    return Hypertension8Q.Query();
+        //}
+        //public string Hypertension9()
+        //{
+        //    return Hypertension9Q.Query();
+        //}
+        //public string Hypertension9a()
+        //{
+        //    return Hypertension9aQ.Query();
+        //}
+        //public string Hypertension9b()
+        //{
+        //    return Hypertension9bQ.Query();
+        //}
+        //public string Hypertension9c()
+        //{
+        //    return Hypertension9cQ.Query();
+        //}
+        //public string Hypertension9d()
+        //{
+        //    return Hypertension9dQ.Query();
+        //}
+
+        //public string Hypertension10()
+        //{
+        //    return Hypertension10Q.Query();
+        //}
+        //public string Hypertension10a()
+        //{
+        //    return Hypertension10aQ.Query();
+        //}
+        //public string Hypertension10b()
+        //{
+        //    return Hypertension10bQ.Query();
+        //}
+
+        //public string Hypertension11()
+        //{
+        //    return Hypertension11Q.Query();
+        //}
+        //public string Hypertension11a()
+        //{
+        //    return Hypertension11aQ.Query();
+        //}
+        //public string Hypertension11b()
+        //{
+        //    return Hypertension11bQ.Query();
+        //}
+
+        //public string Hypertension12()
+        //{
+        //    return Hypertension12Q.Query();
+        //}
+        //public string Hypertension12a()
+        //{
+        //    return Hypertension12aQ.Query();
+        //}
+        //public string Hypertension12b()
+        //{
+        //    return Hypertension12bQ.Query();
+        //}
+
+        //public string Hypertension13()
+        //{
+        //    return Hypertension13Q.Query();
+        //}
+
+        //public string Hypertension14()
+        //{
+        //    return Hypertension14Q.Query();
+        //}
+
+        //public string Hypertension14a()
+        //{
+        //    return Hypertension14aQ.Query();
+        //}
+        //public string Hypertension14b()
+        //{
+        //    return Hypertension14bQ.Query();
+        //}
+
+        //public string Hypertension15()
+        //{
+        //    return Hypertension15Q.Query();
+        //}
+        //public string Hypertension15a()
+        //{
+        //    return Hypertension15aQ.Query();
+        //}
+        //public string Hypertension15b()
+        //{
+        //    return Hypertension15bQ.Query();
+        //}
+
+        //public string Hypertension16()
+        //{
+        //    return Hypertension16Q.Query();
+        //}
+        //public string Hypertension16a()
+        //{
+        //    return Hypertension16aQ.Query();
+        //}
+        //public string Hypertension16b()
+        //{
+        //    return Hypertension16bQ.Query();
+        //}
+
+        //public string Hypertension17()
+        //{
+        //    return Hypertension17Q.Query();
+        //}
+        //public string Hypertension17a()
+        //{
+        //    return Hypertension17aQ.Query();
+        //}
+        //public string Hypertension17b()
+        //{
+        //    return Hypertension17bQ.Query();
+        //}
+
+        //public string Hypertension18()
+        //{
+        //    return Hypertension18Q.Query();
+        //}
+        //public string Hypertension18a()
+        //{
+        //    return Hypertension18aQ.Query();
+        //}
+        //public string Hypertension18b()
+        //{
+        //    return Hypertension18bQ.Query();
+        //}
+
+        //public string Hypertension19()
+        //{
+        //    return Hypertension19Q.Query();
+        //}
+        //public string Hypertension19a()
+        //{
+        //    return Hypertension19aQ.Query();
+        //}
+        //public string Hypertension19b()
+        //{
+        //    return Hypertension19bQ.Query();
+        //}
+
+        //public string Hypertension20()
+        //{
+        //    return Hypertension20Q.Query();
+        //}
+
+        //public string Hypertension21()
+        //{
+        //    return Hypertension21Q.Query();
+        //}
+
+        //public string Hypertension22()
+        //{
+        //    return Hypertension22Q.Query();
+        //}
+
+        //public string Hypertension22a()
+        //{
+        //    return Hypertension22aQ.Query();
+        //}
+        //public string Hypertension22b()
+        //{
+        //    return Hypertension22bQ.Query();
+        //}
+
+        //public string Hypertension23()
+        //{
+        //    return Hypertension23Q.Query();
+        //}
+
+        //public string Hypertension24()
+        //{
+        //    return Hypertension24Q.Query();
+        //}
+
+        //public string Hypertension24a()
+        //{
+        //    return Hypertension24aQ.Query();
+        //}
+        //public string Hypertension24b()
+        //{
+        //    return Hypertension24bQ.Query();
+        //}
+        //public string Hypertension24c()
+        //{
+        //    return Hypertension24cQ.Query();
+        //}
+        //public string Hypertension24d()
+        //{
+        //    return Hypertension24dQ.Query();
+        //}
+
+        //public string Hypertension25()
+        //{
+        //    return Hypertension25Q.Query();
+        //}
+
+        //public string Hypertension25a()
+        //{
+        //    return Hypertension25aQ.Query();
+        //}
+
+        //public string Hypertension25b()
+        //{
+        //    return Hypertension25bQ.Query();
+        //}
+
+        //public string Hypertension26()
+        //{
+        //    return Hypertension26Q.Query();
+        //}
+
+        //public string Hypertension26a()
+        //{
+        //    return Hypertension26aQ.Query();
+        //}
+
+        //public string Hypertension26b()
+        //{
+        //    return Hypertension26bQ.Query();
+        //}
+
+        //public string Hypertension27()
+        //{
+        //    return Hypertension27Q.Query();
+        //}
+
+        //public string Hypertension27a()
+        //{
+        //    return Hypertension27aQ.Query();
+        //}
+
+        //public string Hypertension27b()
+        //{
+        //    return Hypertension27bQ.Query();
+        //}
+
+        //public string Hypertension28()
+        //{
+        //    return Hypertension28Q.Query();
+        //}
+
+        //public string Hypertension28a()
+        //{
+        //    return Hypertension28aQ.Query();
+        //}
+
+        //public string Hypertension28b()
+        //{
+        //    return Hypertension28bQ.Query();
+        //}
+
+        //public string Hypertension29()
+        //{
+        //    return Hypertension29Q.Query();
+        //}
+
+        //public string Hypertension29a()
+        //{
+        //    return Hypertension29aQ.Query();
+        //}
+
+        //public string Hypertension29b()
+        //{
+        //    return Hypertension29bQ.Query();
+        //}
+
+        //public string Hypertension30()
+        //{
+        //    return Hypertension30Q.Query();
+        //}
+
+        //public string Hypertension30a()
+        //{
+        //    return Hypertension30aQ.Query();
+        //}
+
+        //public string Hypertension30b()
+        //{
+        //    return Hypertension30bQ.Query();
+        //}
+
+        //public string Hypertension31()
+        //{
+        //    return Hypertension31Q.Query();
+        //}
+
+        //public string Hypertension31a()
+        //{
+        //    return Hypertension31aQ.Query();
+        //}
+
+        //public string Hypertension31b()
+        //{
+        //    return Hypertension31bQ.Query();
+        //}
+
+        //public string Hypertension32()
+        //{
+        //    return Hypertension32Q.Query();
+        //}
+
+        //public string Hypertension32a()
+        //{
+        //    return Hypertension32aQ.Query();
+        //}
+
+        //public string Hypertension32b()
+        //{
+        //    return Hypertension32bQ.Query();
+        //}
+
+        //public string Hypertension33()
+        //{
+        //    return Hypertension33Q.Query();
+        //}
+
+        //public string Hypertension33a()
+        //{
+        //    return Hypertension33aQ.Query();
+        //}
+
+        //public string Hypertension33b()
+        //{
+        //    return Hypertension33bQ.Query();
+        //}
+
+        //public string Hypertension34()
+        //{
+        //    return Hypertension34Q.Query();
+        //}
+
+        //public string Hypertension35()
+        //{
+        //    return Hypertension35Q.Query();
+        //}
+        //public string Hypertension36()
+        //{
+        //    return Hypertension36Q.Query();
+        //}
+        //public string Hypertension37()
+        //{
+        //    return Hypertension37Q.Query();
+        //}
+
+        //public string Hypertension38()
+        //{
+        //    return Hypertension38Q.Query();
+        //}
+
+        //public string Hypertension38a()
+        //{
+        //    return Hypertension38aQ.Query();
+        //}
+
+        //public string Hypertension38b()
+        //{
+        //    return Hypertension38bQ.Query();
+        //}
+        //public string Hypertension39()
+        //{
+        //    return Hypertension39Q.Query();
+        //}
+
+        //public string Hypertension39a()
+        //{
+        //    return Hypertension39aQ.Query();
+        //}
+
+        //public string Hypertension39b()
+        //{
+        //    return Hypertension39bQ.Query();
+        //}
+        //public string Hypertension40()
+        //{
+        //    return Hypertension40Q.Query();
+        //}
+        //public string Hypertension40a()
+        //{
+        //    return Hypertension40aQ.Query();
+        //}
+
+        //public string Hypertension40b()
+        //{
+        //    return Hypertension40bQ.Query();
+        //}
+
+        //public string Hypertension41()
+        //{
+        //    return Hypertension41Q.Query();
+        //}
+
+        //public string Hypertension41a()
+        //{
+        //    return Hypertension41aQ.Query();
+        //}
+
+        //public string Hypertension41b()
+        //{
+        //    return Hypertension41bQ.Query();
+        //}
+
+        //public string Hypertension42()
+        //{
+        //    return Hypertension42Q.Query();
+        //}
+        //public string Hypertension43()
+        //{
+        //    return Hypertension43Q.Query();
+        //}
+
+        //public string Hypertension43a()
+        //{
+        //    return Hypertension43aQ.Query();
+        //}
+
+        //public string Hypertension43b()
+        //{
+        //    return Hypertension43bQ.Query();
+        //}
+
+        //public string Hypertension44()
+        //{
+        //    return Hypertension44Q.Query();
+        //}
+
+        //public string Hypertension44a()
+        //{
+        //    return Hypertension44aQ.Query();
+        //}
+
+        //public string Hypertension44b()
+        //{
+        //    return Hypertension44bQ.Query();
+        //}
+        //public string Hypertension45()
+        //{
+        //    return Hypertension45Q.Query();
+        //}
+        //public string Hypertension45a()
+        //{
+        //    return Hypertension45aQ.Query();
+        //}
+
+        //public string Hypertension45b()
+        //{
+        //    return Hypertension45bQ.Query();
+        //}
+        //public string Hypertension46()
+        //{
+        //    return Hypertension46Q.Query();
+        //}
+
+        //public string Hypertension46a()
+        //{
+        //    return Hypertension46aQ.Query();
+        //}
+
+        //public string Hypertension46b()
+        //{
+        //    return Hypertension46bQ.Query();
+        //}
+        //public string Hypertension47()
+        //{
+        //    return Hypertension47Q.Query();
+        //}
+
+        //public string Hypertension47a()
+        //{
+        //    return Hypertension47aQ.Query();
+        //}
+
+        //public string Hypertension47b()
+        //{
+        //    return Hypertension47bQ.Query();
+        //}
+        //public string Hypertension48()
+        //{
+        //    return Hypertension48Q.Query();
+        //}
+        //public string Hypertension48a()
+        //{
+        //    return Hypertension48aQ.Query();
+        //}
+
+        //public string Hypertension48b()
+        //{
+        //    return Hypertension48bQ.Query();
+        //}
+
+        //#endregion
     }
 }

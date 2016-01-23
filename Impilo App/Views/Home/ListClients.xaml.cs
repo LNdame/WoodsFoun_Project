@@ -76,10 +76,10 @@ namespace Impilo_App.Views.Home
                     GPSLatitude = dt.Rows[i]["GPSLatitude"].ToString(),
                     GPSLongitude = dt.Rows[i]["GPSLongitude"].ToString(),
                     IDNo = dt.Rows[i]["IDNo"].ToString(),
-                    ClinicUsed = dt.Rows[i]["ClinicUsed"].ToString(),
+                    ClinicUsed = dt.Rows[i]["ClinicID"].ToString(),
                    // DateOfBirth = DateTime.Parse( dt.Rows[i]["IDNo"].ToString()),
                     Gender = dt.Rows[i]["Gender"].ToString(),
-                    AttendingSchool = dt.Rows[i]["AttendingSchool"].ToString(),
+                  //  AttendingSchool = dt.Rows[i]["AttendingSchool"].ToString(),
                     Grade = dt.Rows[i]["Grade"].ToString(),
                     NameofSchool = dt.Rows[i]["NameofSchool"].ToString()
                 };

@@ -10,11 +10,11 @@ namespace Impilo_App.LocalModels
     {
         public string ScreeningID { get; set; }
 
-        public string Systolic { get; set; }
+        public decimal Systolic { get; set; }
 
         public bool OnMeds { get; set; }
 
-        public string Diastolic { get; set; }
+        public decimal Diastolic { get; set; }
 
         public bool ReferToCHOWs { get; set; }
 

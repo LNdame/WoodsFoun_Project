@@ -8,7 +8,7 @@ namespace Impilo_App.LocalModels
 {
     class ChildHealth
     {
-        public string ScreeningID { get; set; }
+        public int EncounterID { get; set; }
 
         public string NameOfMother { get; set; }
 
@@ -22,7 +22,7 @@ namespace Impilo_App.LocalModels
 
         public bool ReferToClinic2 { get; set; }
 
-        public string ReferToOVC { get; set; }
+        public bool ReferToOVC { get; set; }
 
         public string ReferralNo2 { get; set; }
 
