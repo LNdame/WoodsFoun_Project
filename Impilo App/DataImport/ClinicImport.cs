@@ -15,6 +15,32 @@ namespace Impilo_App.DataImport
 {
     class ClinicImport
     {
+        public static string GetCellValue(ICell Target)
+        {
+            string ReturnValue = "";
+
+            
+            try
+            {                
+                ReturnValue = Target.StringCellValue;
+            }
+            catch
+            {
+                try
+                {
+                    ReturnValue = Target.NumericCellValue.ToString();
+                }
+                catch
+                {
+                    ReturnValue = Target.DateCellValue.ToString();
+                }
+            }
+
+            if (ReturnValue == "01-01-0001 12:00:00 AM")
+                ReturnValue = "";
+
+            return ReturnValue;
+        }
         public static bool Import(string TargetFolder)
         {
             bool Success = true;
@@ -50,7 +76,19 @@ namespace Impilo_App.DataImport
                         string BioChildHealth = "";
                         string BioEpilepsy2 = "";
                         string BioOther = "";
+                        string BioDataCapturer = "";
+                        string BioName ="";
+                        string BioSurname = "";
+                        string BioLatitude = "";
+                        string BioLongitude = "";
+                        string BioIDNumber = "";
+                        string BioDateOfBirth = "";
+                        string BioMale = "";
+                        string BioFemale = "";
                         List<string> Treatments = new List<string>();
+                        DateTime TestDate = DateTime.Now;
+                        bool AtLeastOneLine = false;
+                        bool bContinue = true;
 
                         // Read file values here
 
@@ -58,37 +96,40 @@ namespace Impilo_App.DataImport
 
                         try
                         {
-                            string BioDataCapturer = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(0).StringCellValue;
-                            BioUniqueID = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(1).NumericCellValue.ToString();
-                            string BioName = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(2).StringCellValue;
-                            string BioSurname = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(3).StringCellValue;
-                            string BioLatitude = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(4).StringCellValue;
-                            string BioLongitude = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(5).StringCellValue;
-                            string BioIDNumber = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(6).StringCellValue;
-                            BioClinic = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(7).StringCellValue;
-                            string BioDateOfBirth = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(8).DateCellValue.ToString();
-                            string BioMale = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(9).StringCellValue;
-                            string BioFemale = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(10).StringCellValue;
-                            BioContactNo = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(11).NumericCellValue.ToString();
-                            BioFileNo = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(12).StringCellValue;
-                            BioNextOfKinRelationship = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(13).StringCellValue;
-                            BioNextOfKinName = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(14).StringCellValue;
-                            BioNextOfKinTelephone = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(15).NumericCellValue.ToString();
-                            BioHPT = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(17).StringCellValue;
-                            BioDiabetes = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(18).StringCellValue;
-                            BioEpilepsy = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(19).StringCellValue;
-                            BioAsthma = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(20).StringCellValue;
-                            BioHIV = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(21).StringCellValue;
-                            BioTB = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(22).StringCellValue;
-                            BioMaternalHealth = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(23).StringCellValue;
-                            BioChildHealth = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(24).StringCellValue;
-                            BioEpilepsy2 = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(25).StringCellValue;
-                            BioOther = MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(26).StringCellValue;
+                            BioDataCapturer = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(0));
+                            BioUniqueID = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(1));
+                            BioName = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(2));
+                            BioSurname = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(3));
+                            BioLatitude = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(4));
+                            BioLongitude = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(5));
+                            BioIDNumber = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(6));
+                            BioClinic = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(7));
+                            BioDateOfBirth = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(8));
+                            BioMale = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(9));
+                            BioFemale = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(10));
+                            BioContactNo = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(11));
+                            BioFileNo = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(12));
+                            BioNextOfKinRelationship = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(13));
+                            BioNextOfKinName = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(14));
+                            BioNextOfKinTelephone = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(15));
+                            BioHPT = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(17));
+                            BioDiabetes = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(18));
+                            BioEpilepsy = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(19));
+                            BioAsthma = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(20));
+                            BioHIV = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(21));
+                            BioTB = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(22));
+                            BioMaternalHealth = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(23));
+                            BioChildHealth = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(24));
+                            BioEpilepsy2 = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(25));
+                            BioOther = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(5).GetCell(26));                           
                         }
                         catch (Exception ex)
                         {
-                            Success = false;
-                            ErrorList.Add(CurrentFile + " - Biographical:  " + ex.Message);
+                            if (!ex.Message.Contains("Object reference not set to an instance of an object"))
+                            {
+                                Success = false;
+                                ErrorList.Add(CurrentFile + " - Biographical:  " + ex.Message);
+                            }
                         }
 
                         # endregion
@@ -101,7 +142,7 @@ namespace Impilo_App.DataImport
 
                         try
                         {
-                            while (MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990,1,1))
+                            while (MyWorkbook.GetSheet("Visit data").GetRow(Row).Cells.Count > 0)
                             {
                                 ArrayList VisitDataEntriesCurrent = new ArrayList();
                                 // Index
@@ -121,21 +162,21 @@ namespace Impilo_App.DataImport
                                 // 13 - Epilepsy
                                 // 14 - Other
 
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(0).DateCellValue.ToString());
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(1).NumericCellValue.ToString());
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(2).NumericCellValue.ToString());
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(3).NumericCellValue.ToString());
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(5).DateCellValue.ToString());
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(7).StringCellValue);
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(8).StringCellValue);
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(9).StringCellValue);
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(10).StringCellValue);
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(11).StringCellValue);
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(12).StringCellValue);
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(13).StringCellValue);
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(14).StringCellValue);
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(15).StringCellValue);
-                                VisitDataEntriesCurrent.Add(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(16).StringCellValue);
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(0)));                                
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(1)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(2)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(3)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(5)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(7)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(8)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(9)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(10)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(11)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(12)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(13)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(14)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(15)));
+                                VisitDataEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Visit data").GetRow(Row).GetCell(16)));
                                 
                                 VisitDataEntries.Add(VisitDataEntriesCurrent);
                                 Row++;
@@ -143,8 +184,11 @@ namespace Impilo_App.DataImport
                         }
                         catch (Exception ex)
                         {
-                            Success = false;
-                            ErrorList.Add(CurrentFile + " - Visit data:  " + ex.Message);
+                            if (!ex.Message.Contains("Object reference not set to an instance of an object"))
+                            {
+                                Success = false;
+                                ErrorList.Add(CurrentFile + " - Visit data:  " + ex.Message);
+                            }
                         }
                         #endregion
 
@@ -157,9 +201,12 @@ namespace Impilo_App.DataImport
                         try
                         {
                             ArrayList HypertensionEntriesCurrent = new ArrayList();
-                            
 
-                            while (MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1) || MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(14).StringCellValue != "")
+                            AtLeastOneLine = false;
+                            bContinue = true;
+
+                            //while (bContinue && DateTime.TryParse(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(0).DateCellValue.ToString(),out TestDate) || MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(14).StringCellValue != "")
+                           while(bContinue && MyWorkbook.GetSheet("Hypertension").GetRow(Row).Cells.Count > 0)
                             {                               
                                 // Index
                                 // 0 - Visit date
@@ -175,9 +222,14 @@ namespace Impilo_App.DataImport
                                 // 10 - Results Creatinine
                                 // 11 - Results Cholesterol
                                 // ------------>12 - Treatment
+                                string TheDate = "";
 
-                                if (MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1))
+                                TheDate = GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(0));
+                               
+                                if (DateTime.TryParse(TheDate,out TestDate))
                                 {
+                                    AtLeastOneLine = true;
+
                                     if (HypertensionEntriesCurrent.Count > 0)
                                     {
                                         HypertensionEntriesCurrent.Add(Treatments);
@@ -186,28 +238,31 @@ namespace Impilo_App.DataImport
 
                                     HypertensionEntriesCurrent = new ArrayList();
                                     Treatments = new List<string>();
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(0).DateCellValue.ToString());
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(1).StringCellValue);
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(2).NumericCellValue.ToString());
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(3).NumericCellValue.ToString());
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(4).NumericCellValue.ToString());
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(5).NumericCellValue.ToString());
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(6).DateCellValue);
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(7).NumericCellValue.ToString());
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(8).NumericCellValue.ToString());
 
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(10).NumericCellValue.ToString());
-
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(12).NumericCellValue.ToString());
-                                    HypertensionEntriesCurrent.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(13).StringCellValue);
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(0)));
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(1)));
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(2)));
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(3)));
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(4)));
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(5)));
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(6)));
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(7)));
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(8)));
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(10)));
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(12)));
+                                   HypertensionEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(13)));                                  
                                 }
 
-                                Treatments.Add(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(14).StringCellValue);                            
-                               
-                                Row++;
+                                if (AtLeastOneLine)
+                                {
+                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(14)));
+                                    Row++;
+                                }
+                                else
+                                    bContinue = false;
                             }
 
-                            if (HypertensionEntriesCurrent.Count > 0)
+                            if (HypertensionEntriesCurrent.Count > 0 && AtLeastOneLine)
                             {
                                 HypertensionEntriesCurrent.Add(Treatments);
                                 HypertensionEntries.Add(HypertensionEntriesCurrent);
@@ -215,21 +270,27 @@ namespace Impilo_App.DataImport
                         }
                         catch (Exception ex)
                         {
-                            Success = false;
-                            ErrorList.Add(CurrentFile + " - Hypertension:  " + ex.Message);
+                            if (!ex.Message.Contains("Object reference not set to an instance of an object"))
+                            {
+                                Success = false;
+                                ErrorList.Add(CurrentFile + " - Hypertension:  " + ex.Message);
+                            }
                         }
                         #endregion
 
                         #region Diabetes
 
                         List<ArrayList> DiabetesEntries = new List<ArrayList>();
-                        ArrayList DiabetesEntriesCurrent = new ArrayList();
+                        ArrayList DiabetesEntriesCurrent = new ArrayList();                       
 
                         Row = 4;
+                        AtLeastOneLine = false;
+                        bContinue = true;
 
                         try
                         {
-                            while (MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1) || MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(18).StringCellValue.Trim() != "")
+                            //while (bContinue && MyWorkbook.GetSheet("Diabetes").GetRow(Row).Cells.Count > 0 && DateTime.TryParse(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(0).DateCellValue.ToString(),out TestDate) || MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(18).StringCellValue.Trim() != "")
+                            while (bContinue && MyWorkbook.GetSheet("Diabetes").GetRow(Row).Cells.Count > 0)
                             {
                                 
                                 // Index
@@ -257,8 +318,12 @@ namespace Impilo_App.DataImport
                                 //
                                 //
 
-                                if (MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1))
+                                string TheDate = GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(0));
+
+                                if (DateTime.TryParse(TheDate,out TestDate))
                                 {
+                                    AtLeastOneLine = true;
+
                                     if (DiabetesEntriesCurrent.Count > 0)
                                     {
                                         DiabetesEntriesCurrent.Add(Treatments);
@@ -266,29 +331,34 @@ namespace Impilo_App.DataImport
                                     }
                                     DiabetesEntriesCurrent = new ArrayList();
                                     Treatments = new List<string>();
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(0).DateCellValue.ToString());
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(1).StringCellValue);
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(2).StringCellValue);
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(3).StringCellValue);
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(4).DateCellValue.ToString());
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(5).StringCellValue);
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(7).DateCellValue);
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(8).NumericCellValue.ToString());
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(10).NumericCellValue.ToString());
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(11).NumericCellValue.ToString());
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(12).StringCellValue);
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(13).StringCellValue);
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(14).StringCellValue);
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(0)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(1)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(2)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(3)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(4)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(5)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(7)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(8)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(10)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(11)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(12)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(13)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(14)));
                                    
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(16).NumericCellValue.ToString());
-                                    DiabetesEntriesCurrent.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(17).StringCellValue);
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(16)));
+                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(17)));
                                 }
 
-                                Treatments.Add(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(18).StringCellValue);
-                                Row++;
+                                if (AtLeastOneLine)
+                                {
+                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(18)));
+                                    Row++;
+                                }
+                                else
+                                    bContinue = false;
                             }
 
-                            if (DiabetesEntriesCurrent.Count > 0)
+                            if (DiabetesEntriesCurrent.Count > 0 && AtLeastOneLine)
                             {
                                 DiabetesEntriesCurrent.Add(Treatments);
                                 DiabetesEntries.Add(DiabetesEntriesCurrent);
@@ -296,8 +366,17 @@ namespace Impilo_App.DataImport
                         }
                         catch (Exception ex)
                         {
-                            Success = false;
-                            ErrorList.Add(CurrentFile + " - Diabetes:  " + ex.Message);
+                            try
+                            {
+                                DateTime.TryParse(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(0).DateCellValue.ToString(), out TestDate);
+                               
+                                if (!ex.Message.Contains("Object reference not set to an instance of an object"))
+                                {
+                                    Success = false;
+                                    ErrorList.Add(CurrentFile + " - Diabetes:  " + ex.Message);
+                                }
+                            }
+                            catch { }                            
                         }
                         #endregion
 
@@ -305,12 +384,15 @@ namespace Impilo_App.DataImport
 
                         List<ArrayList> EpilepsyEntries = new List<ArrayList>();
                         ArrayList EpilepsyEntriesCurrent = new ArrayList();
+                        AtLeastOneLine = false;
+                        bContinue = true;
 
                         Row = 5;
 
                         try
                         {
-                            while (MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1) || MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(6).StringCellValue.Trim() != "")
+                            //while (MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1) || MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(6).StringCellValue.Trim() != "")
+                            while (bContinue && MyWorkbook.GetSheet("Epilepsy").GetRow(Row).Cells.Count > 0)
                             {
                                 
                                 // Index
@@ -325,8 +407,11 @@ namespace Impilo_App.DataImport
                                 //
                                 // 6 - Treatment
 
-                                if (MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1) || MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(8).StringCellValue.Trim() != "")
+                                string TheDate = GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(0));
+
+                                if (DateTime.TryParse(TheDate, out TestDate))
                                 {
+                                    AtLeastOneLine = true;
                                     if (EpilepsyEntriesCurrent.Count > 0)
                                     {
                                         EpilepsyEntriesCurrent.Add(Treatments);
@@ -334,19 +419,24 @@ namespace Impilo_App.DataImport
                                     }
                                     EpilepsyEntriesCurrent = new ArrayList();
                                     Treatments = new List<string>();
-                                    EpilepsyEntriesCurrent.Add(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(0).DateCellValue.ToString());
-                                    EpilepsyEntriesCurrent.Add(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(1).StringCellValue);
-                                    EpilepsyEntriesCurrent.Add(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(2).NumericCellValue.ToString());
-                                    EpilepsyEntriesCurrent.Add(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(3).StringCellValue);
-                                    EpilepsyEntriesCurrent.Add(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(5).NumericCellValue.ToString());
-                                    EpilepsyEntriesCurrent.Add(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(6).NumericCellValue.ToString());                                   
+                                    EpilepsyEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(0)));
+                                    EpilepsyEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(1)));
+                                    EpilepsyEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(2)));
+                                    EpilepsyEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(3)));
+                                    EpilepsyEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(5)));
+                                    EpilepsyEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(6)));                                   
 
                                 }
-                                Treatments.Add(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(8).StringCellValue);
-                                Row++;
+
+                                if (AtLeastOneLine)
+                                {
+                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(8)));
+                                    Row++;
+                                }
+                                else bContinue = false;
                             }
 
-                            if (EpilepsyEntriesCurrent.Count > 0)
+                            if (EpilepsyEntriesCurrent.Count > 0 && AtLeastOneLine)
                             {
                                 EpilepsyEntriesCurrent.Add(Treatments);
                                 EpilepsyEntries.Add(EpilepsyEntriesCurrent);
@@ -354,8 +444,11 @@ namespace Impilo_App.DataImport
                         }
                         catch (Exception ex)
                         {
-                            Success = false;
-                            ErrorList.Add(CurrentFile + " - Epilepsy:  " + ex.Message);
+                            if (!ex.Message.Contains("Object reference not set to an instance of an object"))
+                            {
+                                Success = false;
+                                ErrorList.Add(CurrentFile + " - Epilepsy:  " + ex.Message);
+                            }
                         }
                         #endregion
 
@@ -363,12 +456,15 @@ namespace Impilo_App.DataImport
 
                         List<ArrayList> AsthmaEntries = new List<ArrayList>();
                         ArrayList AsthmaEntriesCurrent = new ArrayList();
+                        AtLeastOneLine = false;
+                        bContinue = true;
 
                         Row = 5;
 
                         try
                         {
-                            while (MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1) || MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(6).StringCellValue.Trim() != "")
+                            //while (MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1) || MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(6).StringCellValue.Trim() != "")
+                            while (bContinue && MyWorkbook.GetSheet("Asthma").GetRow(Row).Cells.Count > 0)
                             {
                                 
                                 // Index
@@ -382,8 +478,11 @@ namespace Impilo_App.DataImport
                                 //
                                 // 5 - Treatment
 
-                                if (MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1))
+                                string TheDate = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(0));
+
+                                if (DateTime.TryParse(TheDate,out TestDate))
                                 {
+                                    AtLeastOneLine = true;
                                     if(AsthmaEntriesCurrent.Count > 0)
                                     {
                                         AsthmaEntriesCurrent.Add(Treatments);
@@ -392,20 +491,25 @@ namespace Impilo_App.DataImport
 
                                     AsthmaEntriesCurrent = new ArrayList();
                                     Treatments = new List<string>();
-                                    AsthmaEntriesCurrent.Add(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(0).DateCellValue.ToString());
-                                    AsthmaEntriesCurrent.Add(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(1).StringCellValue);
-                                    AsthmaEntriesCurrent.Add(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(2).StringCellValue);
-                                    AsthmaEntriesCurrent.Add(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(4).NumericCellValue.ToString());
-                                    AsthmaEntriesCurrent.Add(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(5).NumericCellValue.ToString());
-                                    
 
+                                    AsthmaEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(0)));
+                                    AsthmaEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(1)));
+                                    AsthmaEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(2)));
+                                    AsthmaEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(4)));
+                                    AsthmaEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(5)));                                  
                                 }
-                                Treatments.Add(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(6).StringCellValue);
-                                
-                                Row++;
+
+                                if (AtLeastOneLine)
+                                {
+                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(6)));
+
+                                    Row++;
+                                }
+                                else
+                                    bContinue = false;
                             }
 
-                            if (AsthmaEntriesCurrent.Count > 0)
+                            if (AsthmaEntriesCurrent.Count > 0 && AtLeastOneLine)
                             {
                                 AsthmaEntriesCurrent.Add(Treatments);
                                 AsthmaEntries.Add(AsthmaEntriesCurrent);
@@ -413,8 +517,11 @@ namespace Impilo_App.DataImport
                         }
                         catch (Exception ex)
                         {
-                            Success = false;
-                            ErrorList.Add(CurrentFile + " - Asthma:  " + ex.Message);
+                            if (!ex.Message.Contains("Object reference not set to an instance of an object"))
+                            {
+                                Success = false;
+                                ErrorList.Add(CurrentFile + " - Asthma:  " + ex.Message);
+                            }
                         }
                         #endregion
 
@@ -422,12 +529,15 @@ namespace Impilo_App.DataImport
 
                         List<ArrayList> HIVEntries = new List<ArrayList>();
                         ArrayList HIVEntriesCurrent = new ArrayList();
+                        AtLeastOneLine = false;
+                        bContinue = true;
 
                         Row = 3;
 
                         try
                         {
-                            while (MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1) || MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(4).StringCellValue.Trim() != "")
+                            //while (MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1) || MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(4).StringCellValue.Trim() != "")
+                            while(bContinue && MyWorkbook.GetSheet("HIV").GetRow(Row).Cells.Count > 0)
                             {
                                 
                                 // Index
@@ -442,8 +552,11 @@ namespace Impilo_App.DataImport
                                 // 5 - Systolic	
                                 // 6 - Diastolic  
 
-                                if (MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1))
+                                string TheData = GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(0));
+
+                                if (DateTime.TryParse(TheData,out TestDate))
                                 {
+                                    AtLeastOneLine = true;
                                     if (HIVEntriesCurrent.Count > 0)
                                     {
                                         HIVEntriesCurrent.Add(Treatments);
@@ -451,21 +564,26 @@ namespace Impilo_App.DataImport
                                     }
                                     HIVEntriesCurrent = new ArrayList();
                                     Treatments = new List<string>();
-                                    HIVEntriesCurrent.Add(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(0).DateCellValue.ToString());
-                                    HIVEntriesCurrent.Add(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(1).StringCellValue);
-                                    HIVEntriesCurrent.Add(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(2).NumericCellValue.ToString());
-                                    HIVEntriesCurrent.Add(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(3).NumericCellValue.ToString());
+                                    HIVEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(0)));
+                                    HIVEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(1)));
+                                    HIVEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(2)));
+                                    HIVEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(3)));
 
-                                    HIVEntriesCurrent.Add(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(6).NumericCellValue.ToString());
-                                    HIVEntriesCurrent.Add(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(7).NumericCellValue.ToString());
+                                    HIVEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(6)));
+                                    HIVEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(7)));
 
                                 }
 
-                                Treatments.Add(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(4).StringCellValue);
-                                Row++;
+                                if (AtLeastOneLine)
+                                {
+                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(4)));
+                                    Row++;
+                                }
+                                else
+                                    bContinue = false;
                             }
 
-                            if (HIVEntriesCurrent.Count > 0)
+                            if (HIVEntriesCurrent.Count > 0 && AtLeastOneLine)
                             {
                                 HIVEntriesCurrent.Add(Treatments);
                                 HIVEntries.Add(HIVEntriesCurrent);
@@ -473,8 +591,11 @@ namespace Impilo_App.DataImport
                         }
                         catch (Exception ex)
                         {
-                            Success = false;
-                            ErrorList.Add(CurrentFile + " - HIV:  " + ex.Message);
+                            if (!ex.Message.Contains("Object reference not set to an instance of an object"))
+                            {
+                                Success = false;
+                                ErrorList.Add(CurrentFile + " - HIV:  " + ex.Message);
+                            }
                         }
                         #endregion
 
@@ -482,12 +603,15 @@ namespace Impilo_App.DataImport
 
                         List<ArrayList> TBEntries = new List<ArrayList>();
                         ArrayList TBEntriesCurrent = new ArrayList();
+                        AtLeastOneLine = false;
+                        bContinue = true;
 
                         Row = 3;
 
                         try
                         {
-                            while (MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1) || MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(7).StringCellValue.Trim() != "")
+                            //while (MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1) || MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(7).StringCellValue.Trim() != "")
+                            while(bContinue && MyWorkbook.GetSheet("TB").GetRow(Row).Cells.Count > 0)
                             {
                                 
                                 // Index
@@ -502,8 +626,12 @@ namespace Impilo_App.DataImport
                                 // 5 - AFB	
                                 // 6 - Treatment  
 
-                                if (MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1))
+                                string TheDate = GetCellValue(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(0));
+
+                                if (DateTime.TryParse(TheDate,out TestDate))
                                 {
+                                    AtLeastOneLine = true;
+
                                     if (TBEntriesCurrent.Count > 0)
                                     {
                                         TBEntriesCurrent.Add(Treatments);
@@ -512,19 +640,24 @@ namespace Impilo_App.DataImport
 
                                     TBEntriesCurrent = new ArrayList();
                                     Treatments = new List<string>();
-                                    TBEntriesCurrent.Add(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(0).DateCellValue.ToString());
-                                    TBEntriesCurrent.Add(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(1).StringCellValue);
-                                    TBEntriesCurrent.Add(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(2).StringCellValue);
-                                    TBEntriesCurrent.Add(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(3).DateCellValue.ToString());
-                                    TBEntriesCurrent.Add(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(5).StringCellValue);
-                                    TBEntriesCurrent.Add(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(6).StringCellValue);
+                                    TBEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(0)));
+                                    TBEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(1)));
+                                    TBEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(2)));
+                                    TBEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(3)));
+                                    TBEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(5)));
+                                    TBEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(6)));
                                 }
-                                
-                                Treatments.Add(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(7).StringCellValue);
-                                Row++;
+
+                                if (AtLeastOneLine)
+                                {
+                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(7)));
+                                    Row++;
+                                }
+                                else
+                                    bContinue = false;
                             }
 
-                            if (TBEntriesCurrent.Count > 0)
+                            if (TBEntriesCurrent.Count > 0 && AtLeastOneLine)
                             {
                                 TBEntriesCurrent.Add(Treatments);
                                 TBEntries.Add(TBEntriesCurrent);
@@ -532,8 +665,11 @@ namespace Impilo_App.DataImport
                         }
                         catch (Exception ex)
                         {
-                            Success = false;
-                            ErrorList.Add(CurrentFile + " - TB:  " + ex.Message);
+                            if (!ex.Message.Contains("Object reference not set to an instance of an object"))
+                            {
+                                Success = false;
+                                ErrorList.Add(CurrentFile + " - TB:  " + ex.Message);
+                            }
                         }
                         #endregion
 
@@ -545,7 +681,8 @@ namespace Impilo_App.DataImport
 
                         try
                         {
-                            while (MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1))
+                            //while (MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1))
+                           while(MyWorkbook.GetSheet("Mat Health").GetRow(Row).Cells.Count > 0)
                             {
                                 ArrayList MatHealthEntriesCurrent = new ArrayList();
                                 // Index
@@ -557,15 +694,14 @@ namespace Impilo_App.DataImport
                                 // PNC Visits
                                 // 4 - PNC 1-week
                                 // 5 - PCR done	
-                                // 6 - PNC 6-weeks  
-
-                                MatHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(0).DateCellValue.ToString());
-                                MatHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(1).StringCellValue);
-                                MatHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(2).StringCellValue);
-                                MatHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(3).NumericCellValue.ToString());
-                                MatHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(4).StringCellValue);
-                                MatHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(5).StringCellValue);
-                                MatHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(6).StringCellValue);
+                                // 6 - PNC 6-weeks 
+                                MatHealthEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(0)));
+                                MatHealthEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(1)));
+                                MatHealthEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(2)));
+                                MatHealthEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(3)));
+                                MatHealthEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(4)));
+                                MatHealthEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(5)));
+                                MatHealthEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Mat Health").GetRow(Row).GetCell(6)));
 
                                 MatHealthEntries.Add(MatHealthEntriesCurrent);
                                 Row++;
@@ -573,84 +709,87 @@ namespace Impilo_App.DataImport
                         }
                         catch (Exception ex)
                         {
-                            Success = false;
-                            ErrorList.Add(CurrentFile + " - Mat Health:  " + ex.Message);
-                        }
-                        #endregion
-
-                        #region Child Health
-
-                        List<ArrayList> ChildHealthEntries = new List<ArrayList>();
-
-                        Row = 2;
-
-                        try
-                        {
-                            while (MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1))
+                            if (!ex.Message.Contains("Object reference not set to an instance of an object"))
                             {
-                                ArrayList ChildHealthEntriesCurrent = new ArrayList();
-                                // Index
-                                // 0 - Visit date
-                                // 1 - DWF referral	
-                                // 2 - PCR done	
-                                // 3 - Current RTHC?
-                                // 4 - Vaccinations up to date
-
-                                ChildHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(0).DateCellValue.ToString());
-                                ChildHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(1).StringCellValue);
-                                ChildHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(2).StringCellValue);
-                                ChildHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(3).StringCellValue);
-                                ChildHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(4).StringCellValue);
-
-                                ChildHealthEntries.Add(ChildHealthEntriesCurrent);
-                                Row++;
+                                Success = false;
+                                ErrorList.Add(CurrentFile + " - Mat Health:  " + ex.Message);
                             }
                         }
-                        catch (Exception ex)
-                        {
-                            Success = false;
-                            ErrorList.Add(CurrentFile + " - Child Health:  " + ex.Message);
-                        }
                         #endregion
 
-                        #region Other
+                        //#region Child Health
 
-                        List<ArrayList> OtherEntries = new List<ArrayList>();
+                        //List<ArrayList> ChildHealthEntries = new List<ArrayList>();
 
-                        Row = 5;
+                        //Row = 2;
 
-                        try
-                        {
-                            while (MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1))
-                            {
-                                ArrayList OtherEntriesCurrent = new ArrayList();
-                                // Index
-                                // 0 - Visit date
-                                // 1 - DWF referral	
-                                // Other Condition
-                                // 2 - Condition that required referral
-                                // 3 - Outcome
-                                // BP Reading
-                                // 4 - Systolic	
-                                // 5 - Diastolic   
+                        //try
+                        //{
+                        //    while (MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1))
+                        //    {
+                        //        ArrayList ChildHealthEntriesCurrent = new ArrayList();
+                        //        // Index
+                        //        // 0 - Visit date
+                        //        // 1 - DWF referral	
+                        //        // 2 - PCR done	
+                        //        // 3 - Current RTHC?
+                        //        // 4 - Vaccinations up to date
 
-                                OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(0).DateCellValue.ToString());
-                                OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(1).StringCellValue);
-                                OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(3).StringCellValue);
-                                OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(4).StringCellValue);
-                                OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(6).NumericCellValue.ToString());
-                                OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(7).NumericCellValue.ToString());
+                        //        ChildHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(0).DateCellValue.ToString());
+                        //        ChildHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(1).StringCellValue);
+                        //        ChildHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(2).StringCellValue);
+                        //        ChildHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(3).StringCellValue);
+                        //        ChildHealthEntriesCurrent.Add(MyWorkbook.GetSheet("Child Health").GetRow(Row).GetCell(4).StringCellValue);
 
-                                OtherEntries.Add(OtherEntriesCurrent);
-                                Row++;
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Success = false;
-                            ErrorList.Add(CurrentFile + " - Other:  " + ex.Message);
-                        }
-                        #endregion
+                        //        ChildHealthEntries.Add(ChildHealthEntriesCurrent);
+                        //        Row++;
+                        //    }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    Success = false;
+                        //    ErrorList.Add(CurrentFile + " - Child Health:  " + ex.Message);
+                        //}
+                        //#endregion
+
+                        //#region Other
+
+                        //List<ArrayList> OtherEntries = new List<ArrayList>();
+
+                        //Row = 5;
+
+                        //try
+                        //{
+                        //    while (MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(0).DateCellValue > new DateTime(1990, 1, 1))
+                        //    {
+                        //        ArrayList OtherEntriesCurrent = new ArrayList();
+                        //        // Index
+                        //        // 0 - Visit date
+                        //        // 1 - DWF referral	
+                        //        // Other Condition
+                        //        // 2 - Condition that required referral
+                        //        // 3 - Outcome
+                        //        // BP Reading
+                        //        // 4 - Systolic	
+                        //        // 5 - Diastolic   
+
+                        //        OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(0).DateCellValue.ToString());
+                        //        OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(1).StringCellValue);
+                        //        OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(3).StringCellValue);
+                        //        OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(4).StringCellValue);
+                        //        OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(6).NumericCellValue.ToString());
+                        //        OtherEntriesCurrent.Add(MyWorkbook.GetSheet("Other").GetRow(Row).GetCell(7).NumericCellValue.ToString());
+
+                        //        OtherEntries.Add(OtherEntriesCurrent);
+                        //        Row++;
+                        //    }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    Success = false;
+                        //    ErrorList.Add(CurrentFile + " - Other:  " + ex.Message);
+                        //}
+                        //#endregion
 
                         // Queries here
 
@@ -659,21 +798,81 @@ namespace Impilo_App.DataImport
                         int EncounterID = -1;
                         int ccbID = -1;
                         int tempID = -1;
+                        int ClinicID = -1;
+
+                        #region Find Clinic ID
+
+                        int Errors = 0;
+
+                        try
+                        {
+                            tempConnection.Open();
+                            SqlCommand tempCommand = new SqlCommand("FindClinicID", tempConnection);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ClinicName", BioClinic);
+
+                            ClinicID = (int)tempCommand.ExecuteScalar();
+                        }
+                        catch (Exception ex) {  }
+                        finally
+                        {
+                            tempConnection.Close();
+                        }
+
+                        
+
+                        #endregion
+
+
+                        #region Client
+
+                        try
+                        {
+                            tempConnection.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddClient", tempConnection);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ClientID", BioUniqueID);
+                            tempCommand.Parameters.AddWithValue("@HeadOfHousehold", "");
+                            tempCommand.Parameters.AddWithValue("@FirstName ", BioName);
+                            tempCommand.Parameters.AddWithValue("@LastName", BioSurname);
+                            tempCommand.Parameters.AddWithValue("@GPSLatitude", BioLatitude);
+                            tempCommand.Parameters.AddWithValue("@GPSLongitude", BioLongitude);
+                            tempCommand.Parameters.AddWithValue("@IDNo", BioIDNumber);
+                            tempCommand.Parameters.AddWithValue("@ClinicID", ClinicID);
+                            DateTime CurrentDate = new DateTime(1800, 1, 1);
+                            DateTime.TryParse(BioDateOfBirth, out CurrentDate);
+                            tempCommand.Parameters.AddWithValue("@DateOfBirth", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
+                            tempCommand.Parameters.AddWithValue("@Gender", BioMale.ToLower() == "yes" || BioMale == "1" ? "Male" : "Female");
+                            tempCommand.Parameters.AddWithValue("@AttendingSchool", false);
+                            tempCommand.Parameters.AddWithValue("@Grade", "");
+                            tempCommand.Parameters.AddWithValue("@NameofSchool", "");
+                            tempCommand.Parameters.AddWithValue("@Area", "");
+
+                            tempCommand.ExecuteNonQuery();
+                        }
+                        catch(Exception ex) { }
+                        finally
+                        {
+                            tempConnection.Close();
+                        }
+
+                        #endregion
 
                         #region Encounters
 
                         try
                         {
                             tempConnection.Open();
-                            SqlCommand tempCommand = new SqlCommand("AddEncounter", tempConnection);
+                            SqlCommand tempCommand = new SqlCommand("AddEncounters", tempConnection);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@EncounterDate", DateTime.Now);
                             tempCommand.Parameters.AddWithValue("@ClientID", BioUniqueID);
                             tempCommand.Parameters.AddWithValue("@EncounterType", 3);
+                            tempCommand.Parameters.AddWithValue("@EncounterCapturedBy", BioDataCapturer);
 
-                            EncounterID = int.Parse((string)tempCommand.ExecuteScalar());
+                            EncounterID = (int)((decimal)tempCommand.ExecuteScalar());
                         }
-                        catch { }
+                        catch (Exception ex) { System.Windows.MessageBox.Show(ex.ToString()); }
                         finally
                         {
                             tempConnection.Close();
@@ -688,26 +887,44 @@ namespace Impilo_App.DataImport
                             tempConnection.Open();
                             SqlCommand tempCommand = new SqlCommand("AddClinicClientBiographical", tempConnection);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@ClinicID", BioClinic);
+                            tempCommand.Parameters.AddWithValue("@ClinicID", ClinicID);
                             tempCommand.Parameters.AddWithValue("@ClientID", BioUniqueID);
                             tempCommand.Parameters.AddWithValue("@FileNo", BioFileNo);
                             tempCommand.Parameters.AddWithValue("@ContactNo", BioContactNo);
                             tempCommand.Parameters.AddWithValue("@NextOfKinRelationship", BioNextOfKinRelationship);
                             tempCommand.Parameters.AddWithValue("@NextOfKinName", BioNextOfKinName);
                             tempCommand.Parameters.AddWithValue("@NextOfKinTelNo", BioNextOfKinTelephone);
-                            tempCommand.Parameters.AddWithValue("@DoDHypertension", DateTime.Parse(BioHPT));
-                            tempCommand.Parameters.AddWithValue("@DoDEpilepsy", DateTime.Parse(BioEpilepsy)); 
-                            tempCommand.Parameters.AddWithValue("@DoDAsthma", DateTime.Parse(BioAsthma));
-                            tempCommand.Parameters.AddWithValue("@DoDHIV", DateTime.Parse(BioHIV));
-                            tempCommand.Parameters.AddWithValue("@DoDTB", DateTime.Parse(BioTB));
-                            tempCommand.Parameters.AddWithValue("@DoDMaternalHealth", DateTime.Parse(BioMaternalHealth));
-                            tempCommand.Parameters.AddWithValue("@DoDChildHealth", DateTime.Parse(BioChildHealth));
-                            tempCommand.Parameters.AddWithValue("@DoDOther", DateTime.Parse(BioOther));
+                            DateTime CurrentDate = new DateTime(1800, 1, 1);
+                            if (BioHPT != "") DateTime.TryParse(BioHPT, out CurrentDate);
+                            tempCommand.Parameters.AddWithValue("@DoDHypertension", CurrentDate);
+                            CurrentDate = new DateTime(1800, 1, 1);
+                            if (BioDiabetes != "") DateTime.TryParse(BioDiabetes, out CurrentDate);
+                            tempCommand.Parameters.AddWithValue("@DoDDiabetes", CurrentDate);
+                            CurrentDate = new DateTime(1800, 1, 1);
+                            if (BioEpilepsy != "") DateTime.TryParse(BioEpilepsy, out CurrentDate);
+                            tempCommand.Parameters.AddWithValue("@DoDEpilepsy", CurrentDate);
+                            CurrentDate = new DateTime(1800, 1, 1);
+                            if (BioAsthma != "") DateTime.TryParse(BioAsthma, out CurrentDate);
+                            tempCommand.Parameters.AddWithValue("@DoDAsthma", CurrentDate);
+                            CurrentDate = new DateTime(1800, 1, 1);
+                            if (BioHIV != "") DateTime.TryParse(BioHIV, out CurrentDate);
+                            tempCommand.Parameters.AddWithValue("@DoDHIV", CurrentDate);
+                            CurrentDate = new DateTime(1800, 1, 1);
+                            if (BioTB != "") DateTime.TryParse(BioTB, out CurrentDate);
+                            tempCommand.Parameters.AddWithValue("@DoDTB", CurrentDate);
+                            CurrentDate = new DateTime(1800, 1, 1);
+                            if (BioMaternalHealth != "") DateTime.TryParse(BioMaternalHealth, out CurrentDate);
+                            tempCommand.Parameters.AddWithValue("@DoDMaternalHealth", CurrentDate);
+                            CurrentDate = new DateTime(1800, 1, 1);
+                            if (BioChildHealth != "") DateTime.TryParse(BioChildHealth, out CurrentDate);
+                            tempCommand.Parameters.AddWithValue("@DoDChildHealth", CurrentDate);
+                            CurrentDate = new DateTime(1800, 1, 1);
+                            if (BioOther != "") DateTime.TryParse(BioOther, out CurrentDate);
+                            tempCommand.Parameters.AddWithValue("@Other", CurrentDate);
 
-
-                            ccbID = int.Parse((string)tempCommand.ExecuteScalar());
+                            ccbID = (int)((decimal)tempCommand.ExecuteScalar());
                         }
-                        catch { }
+                        catch (Exception ex) { }
                         finally
                         {
                             tempConnection.Close();
@@ -724,15 +941,15 @@ namespace Impilo_App.DataImport
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                             tempCommand.Parameters.AddWithValue("@ccbioID", ccbID);
-                            
+
                             tempCommand.ExecuteNonQuery();
                         }
-                        catch { }
+                        catch (Exception ex) {  }
                         finally
                         {
                             tempConnection.Close();
                         }
-                        
+
                         #endregion
 
 
@@ -759,27 +976,35 @@ namespace Impilo_App.DataImport
                         {
                             try
                             {
-                                tempConnection.Open();
-                                SqlCommand tempCommand = new SqlCommand("AddClinicVisitData", tempConnection);
-                                tempCommand.CommandType = CommandType.StoredProcedure;
-                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                                tempCommand.Parameters.AddWithValue("@Weight", decimal.Parse((string)Current[1]));
-                                tempCommand.Parameters.AddWithValue("@Height", decimal.Parse((string)Current[2]));
-                                tempCommand.Parameters.AddWithValue("@BMI", decimal.Parse((string)Current[3]));
-                                tempCommand.Parameters.AddWithValue("@NextVisitDate", DateTime.Parse((string)Current[4]));
-                                tempCommand.Parameters.AddWithValue("@Hypertension", (string)Current[5] == "Yes"||(string)Current[5] == "1"?true:false);
-                                tempCommand.Parameters.AddWithValue("@Epilepsy", (string)Current[5] == "Yes" || (string)Current[6] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@Asthma", (string)Current[5] == "Yes" || (string)Current[7] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@HIV", (string)Current[5] == "Yes" || (string)Current[8] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@TB", (string)Current[5] == "Yes" || (string)Current[9] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@MaternalHealth", (string)Current[5] == "Yes" || (string)Current[10] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@ChildHealth", (string)Current[5] == "Yes" || (string)Current[11] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@Other", (string)Current[5] == "Yes" || (string)Current[13] == "1" ? true : false);
+                                if (((string)Current[0]).Trim() != "")
+                                {
+                                    tempConnection.Open();
+                                    SqlCommand tempCommand = new SqlCommand("AddClinicVisitData", tempConnection);
+                                    tempCommand.CommandType = CommandType.StoredProcedure;
+                                    tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                    DateTime CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[0], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@Weight", decimal.Parse((string)Current[1]));
+                                    tempCommand.Parameters.AddWithValue("@Height", decimal.Parse((string)Current[2]));
+                                    tempCommand.Parameters.AddWithValue("@BMI", decimal.Parse((string)Current[3]));
+                                    CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[4], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@NextVisitDate", DateTime.Parse((string)Current[4]));
+                                    tempCommand.Parameters.AddWithValue("@Hypertension", (string)Current[5] == "Yes" || (string)Current[5] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@Diabetes", (string)Current[6] == "Yes" || (string)Current[6] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@Epilepsy", (string)Current[7] == "Yes" || (string)Current[7] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@Asthma", (string)Current[8] == "Yes" || (string)Current[8] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@HIV", (string)Current[9] == "Yes" || (string)Current[9] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@TB", (string)Current[10] == "Yes" || (string)Current[10] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@MaternalHealth", (string)Current[11] == "Yes" || (string)Current[11] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@ChildHealth", (string)Current[12] == "Yes" || (string)Current[12] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@Other", (string)Current[14] == "Yes" || (string)Current[14] == "1" ? 1 : 0);
 
-                                tempCommand.ExecuteNonQuery();
+                                    tempCommand.ExecuteNonQuery();
+                                }
                             }
-                            catch { }
+                            catch (Exception ex) { }
                             finally
                             {
                                 tempConnection.Close();
@@ -809,38 +1034,44 @@ namespace Impilo_App.DataImport
                         {
                             try
                             {
-                                tempConnection.Open();
-                                SqlCommand tempCommand = new SqlCommand("AddClinicHypertension", tempConnection);
-                                tempCommand.CommandType = CommandType.StoredProcedure;
-                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[10] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@DiagAndTreatSystolic", decimal.Parse((string)Current[2]));
-                                tempCommand.Parameters.AddWithValue("@DiagAndTreatDiastolic", decimal.Parse((string)Current[3]));
-                                tempCommand.Parameters.AddWithValue("@NotOnMedsSystolic", decimal.Parse((string)Current[4]));
-                                tempCommand.Parameters.AddWithValue("@NotOnMedsDiastolic", DateTime.Parse((string)Current[5]));
-                                tempCommand.Parameters.AddWithValue("@NextReviewDate", DateTime.Parse((string)Current[6]));
-                                tempCommand.Parameters.AddWithValue("@OnMedsDiastolic", decimal.Parse((string)Current[7]));
-                                tempCommand.Parameters.AddWithValue("@OnMedsSystolic", decimal.Parse((string)Current[8]));
-                                tempCommand.Parameters.AddWithValue("@BloodSugarLevel", (string)Current[9]);
-                                tempCommand.Parameters.AddWithValue("@Creatinine", (string)Current[9]);
-                                tempCommand.Parameters.AddWithValue("@Cholesterol", (string)Current[9]);
-                                //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[12]);
-
-                                tempID = int.Parse((string)tempCommand.ExecuteScalar());
-
-                                foreach (string CurrentTreatment in (List<string>)Current[12])
+                                if (((string)Current[0]).Trim() != "")
                                 {
-                                    tempCommand = new SqlCommand("AddClinicConditionTreatment", tempConnection);
+                                    decimal TheValue = -1;
+                                    tempConnection.Open();
+                                    SqlCommand tempCommand = new SqlCommand("AddClinicHypertension", tempConnection);
                                     tempCommand.CommandType = CommandType.StoredProcedure;
-                                    tempCommand.Parameters.AddWithValue("@mcID", 1);
                                     tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                    tempCommand.Parameters.AddWithValue("@cctName", CurrentTreatment);
-                                    tempCommand.ExecuteNonQuery();
-                                }
-                                
+                                    DateTime CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[0], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[10] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@DiagAndTreatSystolic", decimal.TryParse((string)Current[2],out TheValue)?TheValue:-1);
+                                    tempCommand.Parameters.AddWithValue("@DiagAndTreatDiastolic", decimal.TryParse((string)Current[3], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@NotOnMedsSystolic", decimal.TryParse((string)Current[4], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@NotOnMedsDiastolic", decimal.TryParse((string)Current[5], out TheValue) ? TheValue : -1);
+                                    CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[6], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@NextReviewDate", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
+                                    tempCommand.Parameters.AddWithValue("@OnMedsDiastolic", decimal.TryParse((string)Current[7], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@OnMedsSystolic", decimal.TryParse((string)Current[8], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@BloodSugarLevel", (string)Current[9]);
+                                    tempCommand.Parameters.AddWithValue("@Creatinine", (string)Current[10]);
+                                    tempCommand.Parameters.AddWithValue("@Cholesterol", (string)Current[11]);
+                                    //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[12]);
+
+                                    tempID = (int)((decimal)tempCommand.ExecuteScalar());
+
+                                    foreach (string CurrentTreatment in (List<string>)Current[12])
+                                    {
+                                        tempCommand = new SqlCommand("AddClinicHypertensionTreatment", tempConnection);
+                                        tempCommand.CommandType = CommandType.StoredProcedure;
+                                        tempCommand.Parameters.AddWithValue("@chID", tempID);
+                                        tempCommand.Parameters.AddWithValue("@chtName", CurrentTreatment);
+                                        tempCommand.ExecuteNonQuery();
+                                    }
+                                }     
                             }
-                            catch { }
+                            catch (Exception ex) { }
                             finally
                             {
                                 tempConnection.Close();
@@ -878,40 +1109,48 @@ namespace Impilo_App.DataImport
                         {
                             try
                             {
-                                tempConnection.Open();
-                                SqlCommand tempCommand = new SqlCommand("AddClinicDiabetes", tempConnection);
-                                tempCommand.CommandType = CommandType.StoredProcedure;
-                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@DiagnosedAndGivenTreatment", (string)Current[1] == "Yes" || (string)Current[2] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@NotOnMedsBSLevel", decimal.Parse((string)Current[3]));
-                                tempCommand.Parameters.AddWithValue("@NextReviewDate", DateTime.Parse((string)Current[4]));
-                                tempCommand.Parameters.AddWithValue("@OnMedsBSLevel", (string)Current[5]);
-                                tempCommand.Parameters.AddWithValue("@BPSystolic",  decimal.Parse((string)Current[6]));
-                                tempCommand.Parameters.AddWithValue("@BPDiastolic",  decimal.Parse((string)Current[7]));
-                                tempCommand.Parameters.AddWithValue("@HbA1C",  (string)Current[8]);
-                                tempCommand.Parameters.AddWithValue("@Creatinine",  (string)Current[9]);
-                                tempCommand.Parameters.AddWithValue("@Cholesterol",  (string)Current[10]);
-                                tempCommand.Parameters.AddWithValue("@FootExam",  (string)Current[11]);
-                                tempCommand.Parameters.AddWithValue("@EyeTest",  (string)Current[12]);
-                                tempCommand.Parameters.AddWithValue("@ReferToClinic", (string)Current[13] == "Yes" || (string)Current[13] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@ReferralNo",  (string)Current[14]);
-                                //tempCommand.Parameters.AddWithValue("@Treatment",  (string)Current[15]);
-
-                                tempID = int.Parse((string)tempCommand.ExecuteScalar());
-
-                                foreach (string CurrentTreatment in (List<string>)Current[15])
+                                if (((string)Current[0]).Trim() != "")
                                 {
-                                    tempCommand = new SqlCommand("AddClinicConditionTreatment", tempConnection);
+                                    decimal TheValue = -1;
+                                    tempConnection.Open();
+                                    SqlCommand tempCommand = new SqlCommand("AddClinicDiabetes", tempConnection);
                                     tempCommand.CommandType = CommandType.StoredProcedure;
-                                    tempCommand.Parameters.AddWithValue("@mcID", 2);
                                     tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                    tempCommand.Parameters.AddWithValue("@cctName", CurrentTreatment);
-                                    tempCommand.ExecuteNonQuery();
+                                    DateTime CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[0], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@DiagnosedAndGivenTreatment", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@NotOnMedsBSLevel", decimal.TryParse((string)Current[3], out TheValue) ? TheValue : -1);
+                                    CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[4], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@NextReviewDate", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
+                                    tempCommand.Parameters.AddWithValue("@OnMedsBSLevel", (string)Current[5]);
+                                    tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.TryParse((string)Current[6], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.TryParse((string)Current[7], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@HbA1C", (string)Current[8]);
+                                    tempCommand.Parameters.AddWithValue("@Creatinine", (string)Current[9]);
+                                    tempCommand.Parameters.AddWithValue("@Cholesterol", (string)Current[10]);
+                                    tempCommand.Parameters.AddWithValue("@FootExam", (string)Current[11]);
+                                    tempCommand.Parameters.AddWithValue("@EyeTest", (string)Current[12]);
+                                    tempCommand.Parameters.AddWithValue("@ReferToClinic", (string)Current[13] == "Yes" || (string)Current[13] == "1" ? true : false);
+                                    int TempValue = -1;                                    
+                                    tempCommand.Parameters.AddWithValue("@ReferralNo", int.TryParse((string)Current[14], out TempValue)?TempValue:-1);
+                                    //tempCommand.Parameters.AddWithValue("@Treatment",  (string)Current[15]);
+
+                                    tempID = (int)((decimal)tempCommand.ExecuteScalar());
+
+                                    foreach (string CurrentTreatment in (List<string>)Current[15])
+                                    {
+                                        tempCommand = new SqlCommand("AddClinicDiabetesTreatment", tempConnection);
+                                        tempCommand.CommandType = CommandType.StoredProcedure;
+                                        tempCommand.Parameters.AddWithValue("@cdID", tempID);
+                                        tempCommand.Parameters.AddWithValue("@cdtName", CurrentTreatment);
+                                        tempCommand.ExecuteNonQuery();
+                                    }
                                 }
                             }
-                            catch { }
+                            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
                             finally
                             {
                                 tempConnection.Close();
@@ -938,31 +1177,37 @@ namespace Impilo_App.DataImport
                         {
                             try
                             {
-                                tempConnection.Open();
-                                SqlCommand tempCommand = new SqlCommand("AddClinicEpilepsy", tempConnection);
-                                tempCommand.CommandType = CommandType.StoredProcedure;
-                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@NoOfFitsInLastMonth", int.Parse((string)Current[2]));
-                                tempCommand.Parameters.AddWithValue("@DrugSideEffectsIfAny", (string)Current[3]);
-                                tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.Parse((string)Current[4]));
-                                tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.Parse((string)Current[5]));                               
-                                //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[6]);
-
-                                tempID = int.Parse((string)tempCommand.ExecuteScalar());
-
-                                foreach (string CurrentTreatment in (List<string>)Current[6])
+                                if (((string)Current[0]).Trim() != "")
                                 {
-                                    tempCommand = new SqlCommand("AddClinicConditionTreatment", tempConnection);
+                                    decimal TheValue = -1;
+                                    int intValue = -1;
+                                    tempConnection.Open();
+                                    SqlCommand tempCommand = new SqlCommand("AddClinicEpilepsy", tempConnection);
                                     tempCommand.CommandType = CommandType.StoredProcedure;
-                                    tempCommand.Parameters.AddWithValue("@mcID", 3);
                                     tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                    tempCommand.Parameters.AddWithValue("@cctName", CurrentTreatment);
-                                    tempCommand.ExecuteNonQuery();
+                                    DateTime CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[0], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@NoOfFitsInLastMonth", int.TryParse((string)Current[2], out intValue) ? intValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@DrugSideEffectsIfAny", (string)Current[3]);
+                                    tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.TryParse((string)Current[4], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.TryParse((string)Current[5], out TheValue) ? TheValue : -1);
+                                    //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[6]);
+
+                                    tempID = (int)((decimal)tempCommand.ExecuteScalar());
+
+                                    foreach (string CurrentTreatment in (List<string>)Current[6])
+                                    {
+                                        tempCommand = new SqlCommand("AddClinicEpilepsyTreatment", tempConnection);
+                                        tempCommand.CommandType = CommandType.StoredProcedure;
+                                        tempCommand.Parameters.AddWithValue("@ceID", tempID);
+                                        tempCommand.Parameters.AddWithValue("@cetName", CurrentTreatment);
+                                        tempCommand.ExecuteNonQuery();
+                                    }
                                 }
                             }
-                            catch { }
+                            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
                             finally
                             {
                                 tempConnection.Close();
@@ -988,30 +1233,36 @@ namespace Impilo_App.DataImport
                         {
                             try
                             {
-                                tempConnection.Open();
-                                SqlCommand tempCommand = new SqlCommand("AddClinicAsthma", tempConnection);
-                                tempCommand.CommandType = CommandType.StoredProcedure;
-                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@PeakExpiratoryFlowRate", int.Parse((string)Current[2]));
-                                tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.Parse((string)Current[3]));
-                                tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.Parse((string)Current[4]));
-                                //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[5]);
-
-                                tempID = int.Parse((string)tempCommand.ExecuteScalar());
-
-                                foreach (string CurrentTreatment in (List<string>)Current[5])
+                                if (((string)Current[0]).Trim() != "")
                                 {
-                                    tempCommand = new SqlCommand("AddClinicConditionTreatment", tempConnection);
+                                    decimal TheValue = -1;
+                                    int intValue = -1;
+                                    tempConnection.Open();
+                                    SqlCommand tempCommand = new SqlCommand("AddClinicAsthma", tempConnection);
                                     tempCommand.CommandType = CommandType.StoredProcedure;
-                                    tempCommand.Parameters.AddWithValue("@mcID", 4);
                                     tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                    tempCommand.Parameters.AddWithValue("@cctName", CurrentTreatment);
-                                    tempCommand.ExecuteNonQuery();
+                                    DateTime CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[0], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@PeakExpiratoryFlowRate", (string)Current[2]);
+                                    tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.TryParse((string)Current[3], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.TryParse((string)Current[4], out TheValue) ? TheValue : -1);
+                                    //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[5]);
+
+                                    tempID = (int)((decimal)tempCommand.ExecuteScalar());
+
+                                    foreach (string CurrentTreatment in (List<string>)Current[5])
+                                    {
+                                        tempCommand = new SqlCommand("AddClinicAsthmaTreatment", tempConnection);
+                                        tempCommand.CommandType = CommandType.StoredProcedure;
+                                        tempCommand.Parameters.AddWithValue("@caID", tempID);
+                                        tempCommand.Parameters.AddWithValue("@catName", CurrentTreatment);
+                                        tempCommand.ExecuteNonQuery();
+                                    }
                                 }
                             }
-                            catch { }
+                            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
                             finally
                             {
                                 tempConnection.Close();
@@ -1038,31 +1289,37 @@ namespace Impilo_App.DataImport
                         {
                             try
                             {
-                                tempConnection.Open();
-                                SqlCommand tempCommand = new SqlCommand("AddClinicHIV", tempConnection);
-                                tempCommand.CommandType = CommandType.StoredProcedure;
-                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@CD4", decimal.Parse((string)Current[2]));
-                                tempCommand.Parameters.AddWithValue("@ViralLoad", decimal.Parse((string)Current[3]));
-                                //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[4]);
-                                tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.Parse((string)Current[5]));
-                                tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.Parse((string)Current[6]));
-
-                                tempID = int.Parse((string)tempCommand.ExecuteScalar());
-
-                                foreach (string CurrentTreatment in (List<string>)Current[4])
+                                if (((string)Current[0]).Trim() != "")
                                 {
-                                    tempCommand = new SqlCommand("AddClinicConditionTreatment", tempConnection);
+                                    decimal TheValue = -1;
+                                    int intValue = -1;
+                                    tempConnection.Open();
+                                    SqlCommand tempCommand = new SqlCommand("AddClinicHIV", tempConnection);
                                     tempCommand.CommandType = CommandType.StoredProcedure;
-                                    tempCommand.Parameters.AddWithValue("@mcID", 5);
                                     tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                    tempCommand.Parameters.AddWithValue("@cctName", CurrentTreatment);
-                                    tempCommand.ExecuteNonQuery();
+                                    DateTime CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[0], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@CD4", decimal.TryParse((string)Current[2], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@ViralLoad", decimal.TryParse((string)Current[3], out TheValue) ? TheValue : -1);
+                                    //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[4]);
+                                    tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.TryParse((string)Current[5], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.TryParse((string)Current[6], out TheValue) ? TheValue : -1);
+
+                                    tempID = (int)((decimal)tempCommand.ExecuteScalar());
+
+                                    foreach (string CurrentTreatment in (List<string>)Current[4])
+                                    {
+                                        tempCommand = new SqlCommand("AddClinicHIVTreatment", tempConnection);
+                                        tempCommand.CommandType = CommandType.StoredProcedure;
+                                        tempCommand.Parameters.AddWithValue("@chivID", tempID);
+                                        tempCommand.Parameters.AddWithValue("@chivtName", CurrentTreatment);
+                                        tempCommand.ExecuteNonQuery();
+                                    }
                                 }
                             }
-                            catch { }
+                            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
                             finally
                             {
                                 tempConnection.Close();
@@ -1089,31 +1346,39 @@ namespace Impilo_App.DataImport
                         {
                             try
                             {
-                                tempConnection.Open();
-                                SqlCommand tempCommand = new SqlCommand("AddClinicTB", tempConnection);
-                                tempCommand.CommandType = CommandType.StoredProcedure;
-                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@SputumTaken", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@TestResultsReviewDate", DateTime.Parse((string)Current[3]));
-                                tempCommand.Parameters.AddWithValue("@ResultsGenexpert", (string)Current[4]);
-                                tempCommand.Parameters.AddWithValue("@ResultsAFB", (string)Current[5]);
-                                //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[6]);
-
-                                tempID = int.Parse((string)tempCommand.ExecuteScalar());
-
-                                foreach (string CurrentTreatment in (List<string>)Current[6])
+                                if (((string)Current[0]).Trim() != "")
                                 {
-                                    tempCommand = new SqlCommand("AddClinicConditionTreatment", tempConnection);
+                                    decimal TheValue = -1;
+                                    int intValue = -1;
+                                    tempConnection.Open();
+                                    SqlCommand tempCommand = new SqlCommand("AddClinicTB", tempConnection);
                                     tempCommand.CommandType = CommandType.StoredProcedure;
-                                    tempCommand.Parameters.AddWithValue("@mcID", 6);
                                     tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                    tempCommand.Parameters.AddWithValue("@cctName", CurrentTreatment);
-                                    tempCommand.ExecuteNonQuery();
+                                    DateTime CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[0], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@SputumTaken", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
+                                    CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[3], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@TestResultsReviewDate", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
+                                    tempCommand.Parameters.AddWithValue("@ResultsGenexpert", (string)Current[4]);
+                                    tempCommand.Parameters.AddWithValue("@ResultsAFB", (string)Current[5]);
+                                    //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[6]);
+
+                                    tempID = (int)((decimal)tempCommand.ExecuteScalar());
+
+                                    foreach (string CurrentTreatment in (List<string>)Current[6])
+                                    {
+                                        tempCommand = new SqlCommand("AddClinicTBTreatment", tempConnection);
+                                        tempCommand.CommandType = CommandType.StoredProcedure;
+                                        tempCommand.Parameters.AddWithValue("@ctbID", tempID);
+                                        tempCommand.Parameters.AddWithValue("@ctbtName", CurrentTreatment);
+                                        tempCommand.ExecuteNonQuery();
+                                    }
                                 }
                             }
-                            catch { }
+                            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
                             finally
                             {
                                 tempConnection.Close();
@@ -1139,21 +1404,28 @@ namespace Impilo_App.DataImport
                         {
                             try
                             {
-                                tempConnection.Open();
-                                SqlCommand tempCommand = new SqlCommand("AddClinicMaternalHealth", tempConnection);
-                                tempCommand.CommandType = CommandType.StoredProcedure;
-                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@MomConnectRegistered", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@ANCVisitNo", (string)Current[3]);
-                                tempCommand.Parameters.AddWithValue("@PNC1Week", decimal.Parse((string)Current[4]));
-                                tempCommand.Parameters.AddWithValue("@PCRDone", (string)Current[5] == "Yes" || (string)Current[5] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@PNC6Week", (string)Current[6]);
+                                if (((string)Current[0]).Trim() != "")
+                                {
+                                    decimal TheValue = -1;
+                                    int intValue = -1;
+                                    tempConnection.Open();
+                                    SqlCommand tempCommand = new SqlCommand("AddClinicMaternalHealth", tempConnection);
+                                    tempCommand.CommandType = CommandType.StoredProcedure;
+                                    tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                    DateTime CurrentDate = new DateTime(1800, 1, 1);
+                                    DateTime.TryParse((string)Current[0], out CurrentDate);
+                                    tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@MomConnectRegistered", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@ANCVisitNo", (string)Current[3]);
+                                    tempCommand.Parameters.AddWithValue("@PNC1Week", (string)Current[4] == "Yes" || (string)Current[4] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@PCRDone", (string)Current[5] == "Yes" || (string)Current[5] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@PNC6Week", (string)Current[6] == "Yes" || (string)Current[6] == "1" ? true : false);
 
-                                tempCommand.ExecuteNonQuery();
+                                    tempCommand.ExecuteNonQuery();
+                                }
                             }
-                            catch { }
+                            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
                             finally
                             {
                                 tempConnection.Close();
@@ -1162,77 +1434,77 @@ namespace Impilo_App.DataImport
 
                         #endregion
 
-                        #region Child Health
+                        //#region Child Health
 
-                        // Index
-                        // 0 - Visit date
-                        // 1 - DWF referral	
-                        // 2 - PCR done	
-                        // 3 - Current RTHC?
-                        // 4 - Vaccinations up to date
+                        //// Index
+                        //// 0 - Visit date
+                        //// 1 - DWF referral	
+                        //// 2 - PCR done	
+                        //// 3 - Current RTHC?
+                        //// 4 - Vaccinations up to date
 
-                        foreach (ArrayList Current in ChildHealthEntries)
-                        {
-                            try
-                            {
-                                tempConnection.Open();
-                                SqlCommand tempCommand = new SqlCommand("AddClinicChildHealth", tempConnection);
-                                tempCommand.CommandType = CommandType.StoredProcedure;
-                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@PCRDone", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@CurrentRTHC", (string)Current[3] == "Yes" || (string)Current[3] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@VaccinationsUpToDate", (string)Current[4] == "Yes" || (string)Current[4] == "1" ? true : false);
+                        //foreach (ArrayList Current in ChildHealthEntries)
+                        //{
+                        //    try
+                        //    {
+                        //        tempConnection.Open();
+                        //        SqlCommand tempCommand = new SqlCommand("AddClinicChildHealth", tempConnection);
+                        //        tempCommand.CommandType = CommandType.StoredProcedure;
+                        //        tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                        //        tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                        //        tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                        //        tempCommand.Parameters.AddWithValue("@PCRDone", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
+                        //        tempCommand.Parameters.AddWithValue("@CurrentRTHC", (string)Current[3] == "Yes" || (string)Current[3] == "1" ? true : false);
+                        //        tempCommand.Parameters.AddWithValue("@VaccinationsUpToDate", (string)Current[4] == "Yes" || (string)Current[4] == "1" ? true : false);
 
-                                tempCommand.ExecuteNonQuery();
-                            }
-                            catch { }
-                            finally
-                            {
-                                tempConnection.Close();
-                            }
-                        }
+                        //        tempCommand.ExecuteNonQuery();
+                        //    }
+                        //    catch { }
+                        //    finally
+                        //    {
+                        //        tempConnection.Close();
+                        //    }
+                        //}
 
-                        #endregion
+                        //#endregion
 
-                        #region Other
+                        //#region Other
 
-                        // Index
-                        // 0 - Visit date
-                        // 1 - DWF referral	
-                        // Other Condition
-                        // 2 - Condition that required referral
-                        // 3 - Outcome
-                        // BP Reading
-                        // 4 - Systolic	
-                        // 5 - Diastolic   
+                        //// Index
+                        //// 0 - Visit date
+                        //// 1 - DWF referral	
+                        //// Other Condition
+                        //// 2 - Condition that required referral
+                        //// 3 - Outcome
+                        //// BP Reading
+                        //// 4 - Systolic	
+                        //// 5 - Diastolic   
 
-                        foreach (ArrayList Current in OtherEntries)
-                        {
-                            try
-                            {
-                                tempConnection.Open();
-                                SqlCommand tempCommand = new SqlCommand("AddClinicOther", tempConnection);
-                                tempCommand.CommandType = CommandType.StoredProcedure;
-                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                                tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                                tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                tempCommand.Parameters.AddWithValue("@Condition", (string)Current[2]);
-                                tempCommand.Parameters.AddWithValue("@Outcome", (string)Current[3]);
-                                tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.Parse((string)Current[4]));
-                                tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.Parse((string)Current[5]));
+                        //foreach (ArrayList Current in OtherEntries)
+                        //{
+                        //    try
+                        //    {
+                        //        tempConnection.Open();
+                        //        SqlCommand tempCommand = new SqlCommand("AddClinicOther", tempConnection);
+                        //        tempCommand.CommandType = CommandType.StoredProcedure;
+                        //        tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                        //        tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
+                        //        tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                        //        tempCommand.Parameters.AddWithValue("@Condition", (string)Current[2]);
+                        //        tempCommand.Parameters.AddWithValue("@Outcome", (string)Current[3]);
+                        //        tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.Parse((string)Current[4]));
+                        //        tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.Parse((string)Current[5]));
 
-                                tempCommand.ExecuteNonQuery();
-                            }
-                            catch { }
-                            finally
-                            {
-                                tempConnection.Close();
-                            }
-                        }
+                        //        tempCommand.ExecuteNonQuery();
+                        //    }
+                        //    catch { }
+                        //    finally
+                        //    {
+                        //        tempConnection.Close();
+                        //    }
+                        //}
 
-                        #endregion
+                        //#endregion
 
 
                     }
