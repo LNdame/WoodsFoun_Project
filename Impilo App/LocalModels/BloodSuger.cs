@@ -12,7 +12,7 @@ namespace Impilo_App.LocalModels
 
         public bool OnMeds { get; set; }
 
-        public string NotOnMedsBSReadings { get; set; }
+        public decimal NotOnMedsBSReadings { get; set; }
 
         public bool ReferToCHOWs { get; set; }
 

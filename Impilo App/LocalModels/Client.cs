@@ -28,7 +28,7 @@ namespace Impilo_App.LocalModels
 
         public string Gender { get; set; }
 
-        public string AttendingSchool { get; set; }
+        public bool AttendingSchool { get; set; }
 
         public string Grade { get; set; }
 

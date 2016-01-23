@@ -18,9 +18,9 @@ namespace Impilo_App.LocalModels
 
         public string WhereDeliveredLasBaby { get; set; }
 
-        public string Caesarian { get; set; }
+        public bool Caesarian { get; set; }
 
-        public string BabyUnder2_5Kgs { get; set; }
+        public bool BabyUnder2_5Kgs { get; set; }
 
         public string ChildrenDiedUnder1Year { get; set; }
 
