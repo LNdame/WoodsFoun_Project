@@ -51,7 +51,7 @@
                                     <DatePicker Height="23" HorizontalAlignment="Left" Margin="143,331,0,0" x:Name="dpBioDOB" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
                                     <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="19,246,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
                                     <Label Content="Gender" Height="28" HorizontalAlignment="Left" Margin="19,366,0,-10" x:Name="label2_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
-                                    <RadioButton Content="Male" HorizontalAlignment="Left" Margin="145,372,0,-4" Name="radGendMale" VerticalAlignment="Top" FontWeight="Bold"/>
+                                    <RadioButton Content="Male" HorizontalAlignment="Left" Margin="145,372,0,-4" Name="radGendMale" VerticalAlignment="Top"/>
                                     <RadioButton Content="Female" HorizontalAlignment="Left" Margin="226,372,0,-4" Name="radGendFemale" VerticalAlignment="Top" RenderTransformOrigin="-8.546,9.539" FontWeight="Bold"/>
                                     <TextBox Height="23" HorizontalAlignment="Left" Margin="147,60,0,0" x:Name="txtBioName" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
                                     <TextBox HorizontalAlignment="Left" Margin="145,246,0,0" Name="txtBioIDNo" VerticalAlignment="Top" Width="253" FontWeight="Bold"/>
@@ -166,14 +166,14 @@
                         <Label Content="Date of Visit" Height="28" HorizontalAlignment="Left" Margin="39,30,0,0" x:Name="label3_Copy15" VerticalAlignment="Top" FontWeight="Bold" />
                         <DatePicker Height="23" HorizontalAlignment="Left" Margin="167,36,0,0" x:Name="dpVdVisDt" VerticalAlignment="Top" Width="253" />
                         <Label Content="HPT" HorizontalAlignment="Left" Margin="40,257,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
-                        <Label Content="Diabetes" HorizontalAlignment="Right" Margin="0,283,892,0" VerticalAlignment="Top" Height="38" FontWeight="Bold"/>
+                        <Label Content="Diabetes" HorizontalAlignment="Right" Margin="0,283,968,0" VerticalAlignment="Top" Height="38" FontWeight="Bold"/>
                         <Label Content="Epilepsy" HorizontalAlignment="Left" Margin="40,341,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="HIV" HorizontalAlignment="Left" Margin="40,371,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="Mat Health" HorizontalAlignment="Left" Margin="224,259,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="Other" HorizontalAlignment="Left" Margin="224,340,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                         <Label Content="Door-door" HorizontalAlignment="Left" Margin="224,370,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="6.089,-0.665"/>
                         <Label Content="Child Health" HorizontalAlignment="Left" Margin="224,285,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                        <Label Content="TB" HorizontalAlignment="Right" Margin="0,314,925,0" VerticalAlignment="Top" Height="27" FontWeight="Bold"/>
+                        <Label Content="TB" HorizontalAlignment="Right" Margin="0,314,1001,0" VerticalAlignment="Top" Height="27" FontWeight="Bold"/>
                         <Label Content="Asthma" HorizontalAlignment="Left" Margin="224,315,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     </Grid>
                 </Border>
@@ -259,7 +259,7 @@
                     </Grid>
                 </Border>
             </TabItem>
-            <TabItem Header="Diabetes" x:Name="Diabetes" Width="88" Margin="0,0,0,-2">
+            <TabItem Header="Diabetes" x:Name="Diabetes" Width="88" Margin="6,0,-6,-2.04">
                 <Border BorderThickness="8" Height="458" HorizontalAlignment="Left" x:Name="border1_Copy3" VerticalAlignment="Top" Width="1077" CornerRadius="10">
                     <!--<Border.Background>
                             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
