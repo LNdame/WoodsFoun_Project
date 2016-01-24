@@ -19,44 +19,32 @@
                     <GradientStop Color="White" Offset="1" />
                 </LinearGradientBrush>
             </Border.BorderBrush>
-            <Grid x:Name="grid1" Margin="0,0,0.2,-7.8">
+           
 
-                <Border BorderThickness="4" Height="416" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="border4" VerticalAlignment="Top" Width="971" CornerRadius="8">
-                    <Border.BorderBrush>
-                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                            <GradientStop Color="#82000000" Offset="0" />
-                            <GradientStop Color="#FFEBE8E8" Offset="1" />
+              
+                    <Grid Margin="-439,-208,439,208">
+                <Label Content="Format 2 Report" Height="49" HorizontalAlignment="Left" Margin="470,220,0,0" x:Name="label1_Copy" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" />
+                <Label Content="Start date:" HorizontalAlignment="Left" Margin="470,281,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
+                        <DatePicker HorizontalAlignment="Left" Height="23" Margin="655,281,0,0" x:Name="dpStartDate" VerticalAlignment="Top" Width="126"/>
+                <Label Content="End date:" HorizontalAlignment="Left" Margin="470,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
+                <DatePicker HorizontalAlignment="Left" Height="23" Margin="655,311,0,0" x:Name="dpEndDate" VerticalAlignment="Top" Width="126"/>
+                <Button Content="Generate" Height="36" HorizontalAlignment="Left" Margin="599,354,0,0" x:Name="btnGenerate" VerticalAlignment="Top" Width="182" FontSize="16" FontWeight="Bold" Click="btnGenerate_Click" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#82000000" Offset="0.035" />
+                            <GradientStop Color="White" Offset="1" />
+                            <GradientStop Color="#9E393939" Offset="0.169" />
+                            <GradientStop Color="#9D373737" Offset="0.901" />
+                            <GradientStop Color="#992F2F2F" Offset="0.75" />
+                            <GradientStop Color="#E5CBCBCB" Offset="0.459" />
                         </LinearGradientBrush>
-                    </Border.BorderBrush>
-                    <Grid Margin="37,135,-37,-135">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="512*"/>
-                            <ColumnDefinition Width="451*"/>
-                        </Grid.ColumnDefinitions>
-                        <GroupBox Header="Select a Condition" HorizontalAlignment="Left"
-                        				VerticalAlignment="Top" Height="200" Width="200">
+                    </Button.Background>
+                </Button>
 
-                        </GroupBox>
-                        <RadioButton Name="radDiabetes" Content="Diabetes" Margin="10,29,284,219" FontWeight="Bold" IsChecked="True"/>
-                        <RadioButton Name="radHypertension" Content="Hypertension" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.72,-3.464" FontWeight="Bold"/>
-
-                        <Button Name="btnGenerate" Content="Generate" HorizontalAlignment="Left" Margin="351,104,0,0" VerticalAlignment="Top" Width="182" FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2" Click="btnGenerate_Click">
-                            <Button.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#82000000" Offset="0.035" />
-                                    <GradientStop Color="White" Offset="1" />
-                                    <GradientStop Color="#9E393939" Offset="0.169" />
-                                    <GradientStop Color="#9D373737" Offset="0.901" />
-                                    <GradientStop Color="#992F2F2F" Offset="0.75" />
-                                    <GradientStop Color="#E5CBCBCB" Offset="0.459" />
-                                </LinearGradientBrush>
-                            </Button.Background>
-                        </Button>
-
-                    </Grid>
-
-                </Border>
             </Grid>
+                  
+              
+           
         </Border>
     </Grid>
 </UserControl>

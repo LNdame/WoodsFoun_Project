@@ -96,7 +96,11 @@ namespace Impilo_App
 
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                Cursor = Cursors.Wait;
+                mnuMain.IsEnabled = false;
                 DataImport.ScreeningImport.Import(dlg.SelectedPath);
+                mnuMain.IsEnabled = true;
+                Cursor = Cursors.Arrow;
             }
         }
 
@@ -106,7 +110,11 @@ namespace Impilo_App
 
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                Cursor = Cursors.Wait;
+                mnuMain.IsEnabled = false;
                 DataImport.FollowUpImport.Import(dlg.SelectedPath);
+                mnuMain.IsEnabled = true;
+                Cursor = Cursors.Arrow;
             }
         }
 
@@ -116,7 +124,11 @@ namespace Impilo_App
 
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                Cursor = Cursors.Wait;
+                mnuMain.IsEnabled = false;
                 DataImport.ClinicImport.Import(dlg.SelectedPath);
+                mnuMain.IsEnabled = true;
+                Cursor = Cursors.Arrow;
             }
         }
 

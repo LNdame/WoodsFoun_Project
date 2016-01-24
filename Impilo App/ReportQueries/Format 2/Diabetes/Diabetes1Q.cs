@@ -28,7 +28,7 @@ namespace Impilo_App.ReportQueries.Format_2.Diabetes
 
                 Result = ((int)tempCommand.ExecuteScalar()).ToString();
             }
-            catch{}
+            catch {}
             finally
             {
                 tempConnection.Close();
