@@ -37,10 +37,9 @@
                                     <TextBox Height="23" HorizontalAlignment="Left" Margin="145,110,0,0" x:Name="txtDateofScreen" VerticalAlignment="Top" Width="253" />
                                     <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="19,57,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
                                     <TextBox Height="23" HorizontalAlignment="Left" Margin="145,169,0,0" x:Name="txtName" VerticalAlignment="Top" Width="253" />
-                                    <ComboBox HorizontalAlignment="Left" Margin="145,57,0,0" Name="comboFollowUpIDNumber" VerticalAlignment="Top" Width="253">
-                                        <ComboBoxItem ContentStringFormat="Name"/>
-                                        <ComboBoxItem Name="id">900989988</ComboBoxItem>
-                                    </ComboBox>
+                                    <TextBox HorizontalAlignment="Left" Margin="145,57,0,0" Name="txtFollowUpIDNumber" VerticalAlignment="Top" Width="253" Height="28" />
+
+
                                 </Grid>
                             </Border>
                             <Label Content="Name" Height="28" HorizontalAlignment="Left" Margin="40,181,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontWeight="Bold" />

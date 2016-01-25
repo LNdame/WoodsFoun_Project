@@ -28,19 +28,19 @@ namespace Impilo_App.Views.FollowUpVisit
         static string sconn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=impilo;Integrated Security=True;");
         //SqlConnection conn = new SqlConnection(sconn);
-        Impilo_App.LocalModels.Client currentClient;
-        //DAL da = new DAL();
+        
+       
         public FollowUp()
         {
             InitializeComponent();
 
-            Impilo_App.LocalModels.Client currentClient = new LocalModels.Client();
+           // Impilo_App.LocalModels.Client currentClient = new LocalModels.Client();
 
 
-            txtFollowUpIDNumber.Text = currentClient.ClientID;
-            txtDateofScreen.Text = DateTime.Now.ToString("dd MMMM yyyy h:mm");
-            txtName.Text = currentClient.FirstName;
-            txtSurname.Text = currentClient.LastName;
+            //txtFollowUpIDNumber.Text = currentClient.ClientID;
+            //txtDateofScreen.Text = DateTime.Now.ToString("dd MMMM yyyy h:mm");
+            //txtName.Text = currentClient.FirstName;
+            //txtSurname.Text = currentClient.LastName;
 
             //txtIDNumber.Text = cl.IDNo;
             //txtDateofScreen.Text = DateTime.Now.ToString("dd MMMM yyyy h:mm");
