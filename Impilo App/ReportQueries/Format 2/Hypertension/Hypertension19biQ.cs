@@ -7,9 +7,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace Impilo_App.ReportQueries.Format_2.Diabetes
+namespace Impilo_App.ReportQueries.Format_2.Hypertension
 {
-    class Diabetes11aQ
+    class Hypertension19biQ
     {
         public static string Query()
         {
@@ -20,11 +20,11 @@ namespace Impilo_App.ReportQueries.Format_2.Diabetes
             try
             {
                 tempConnection.Open();
-                SqlCommand tempCommand = new SqlCommand("ReportFormat2-11aQ", tempConnection);
+                SqlCommand tempCommand = new SqlCommand("ReportFormat2-19biQ", tempConnection);
                 tempCommand.CommandType = CommandType.StoredProcedure;
                 tempCommand.Parameters.AddWithValue("@StartDate", Views.Reports.Format2Report.StartDate);
                 tempCommand.Parameters.AddWithValue("@EndDate", Views.Reports.Format2Report.EndDate);
-                tempCommand.Parameters.AddWithValue("@Type", 1);
+                tempCommand.Parameters.AddWithValue("@Type", 2);
 
                 Result = ((int)tempCommand.ExecuteScalar()).ToString();
             }
