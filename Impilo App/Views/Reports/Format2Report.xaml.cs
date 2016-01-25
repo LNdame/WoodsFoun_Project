@@ -27,18 +27,69 @@ namespace Impilo_App.Views.Reports
     /// </summary>
     public partial class Format2Report : UserControl
     {
+        struct IndicatorSpot
+        {
+            public IndicatorSpot(int DiabetesRow, int DiabetesCell, int HypertensionRow, int HypertensionCell)
+            {
+                this.DiabetesRow = DiabetesRow;
+                this.DiabetesCell = DiabetesCell;
+                this.HypertensionRow = HypertensionRow;
+                this.HypertensionCell = HypertensionCell;
+            }
+
+            public int DiabetesRow;
+            public int DiabetesCell;
+            public int HypertensionRow;
+            public int HypertensionCell;
+        }
+
         public static DateTime StartDate = new DateTime(2015, 1, 1);
         public static DateTime EndDate = DateTime.Now;
 
-        public string [] IndicatorList = {"1","2","3","4","5","6","7","8","9","10","10a","10b","10c","10d","11","11a","11b","12","12a","12b","13","13a","13b","14","15","16","17","18","19","19a","19b","20","20a","20b","21","21a","21b","22","22a","22b","23","24","25","26","27","28","29","30","31","32","32a","32b","32c","32d","33","33a","33b","34","34a","34b","35","35a","35b","36","37","38","39","40","41","42","43","44","45","45a","45b","45c","45d","46","46a","46b","47","47a","47b","48","48a","48b","49","50","50a","50b","50c","51","52"};
+        List<IndicatorSpot> Spots = new List<IndicatorSpot>();
+        public string [] IndicatorList = {"1","2","3","4","5","6","7","8","9","10","10a","10b","10c","10d","11","11a","11b","12","12a","12b","13","13a","13b","14","15","16","17","18","19","19a","19b","20","20a","20b","21","21a","21b","22","22a","22b","23","24","25","26","27","28","29","30","31","32","32a","32b","32c","32d","33","33a","33b","34","34a","34b","35","35a","35b","36","37","38","39","40","41","42","43","44","45","45a","45b","45c","45d","46","46a","46b","47","47a","47b","48","48a","48b","49","50","50a","50b","50c","51","52","10di","32di","19bi","51a","52a"};
         public Format2Report()
         {
             InitializeComponent();
+            InitializeSpots();
 
             dpStartDate.DisplayDate = StartDate;
             dpEndDate.DisplayDate = EndDate;
             dpStartDate.SelectedDate = StartDate;
             dpEndDate.SelectedDate = EndDate;
+        }
+
+        public void InitializeSpots()
+        {
+            Spots.Add(new IndicatorSpot(10,1,11,1)); //1
+            Spots.Add(new IndicatorSpot(10, 3, 11, 3)); //2
+            Spots.Add(new IndicatorSpot(10, 4, 11, 4)); //3
+            Spots.Add(new IndicatorSpot(10, 5, 11, 5)); //4
+            Spots.Add(new IndicatorSpot(10, 6, 11, 6)); //5
+            Spots.Add(new IndicatorSpot(10, 7, 11, 7)); //6
+            Spots.Add(new IndicatorSpot(10, 8, 11, 8)); //7
+            Spots.Add(new IndicatorSpot(10, 9, 11, 9)); //8
+            Spots.Add(new IndicatorSpot(10, 11, 11, 11)); //9
+            Spots.Add(new IndicatorSpot(10, 12, 11, 12)); //10
+            Spots.Add(new IndicatorSpot(13, 12, 14, 12)); //10a
+            Spots.Add(new IndicatorSpot(13, 13, 14, 13)); //10b
+            Spots.Add(new IndicatorSpot(13, 14, 14, 14)); //10c
+            Spots.Add(new IndicatorSpot(13, 15, 14, 15)); //10d
+            Spots.Add(new IndicatorSpot(10, 16, 11, 16)); //11
+            Spots.Add(new IndicatorSpot(13, 16, 14, 16)); //11a
+            Spots.Add(new IndicatorSpot(13, 17, 14, 17)); //11b
+            Spots.Add(new IndicatorSpot(10, 18, 11, 18)); //12
+            Spots.Add(new IndicatorSpot(13, 18, 14, 18)); //12a
+            Spots.Add(new IndicatorSpot(13, 19, 14, 19)); //12b
+            Spots.Add(new IndicatorSpot(10, 20, 11, 20)); //13
+            Spots.Add(new IndicatorSpot(13, 20, 14, 20)); //13a
+            Spots.Add(new IndicatorSpot(13, 21, 14, 21)); //13b
+            Spots.Add(new IndicatorSpot(10, 22, 11, 22)); //14
+            Spots.Add(new IndicatorSpot(17, 3, 18, 3)); //15
+            Spots.Add(new IndicatorSpot(17, 4, 18, 4)); //16
+            Spots.Add(new IndicatorSpot(17, 7, 18, 7)); //17
+            Spots.Add(new IndicatorSpot(17, 11, 18, 11)); //18
+            Spots.Add(new IndicatorSpot(17, 12, 18, 12)); //19
         }
 
         private void btnGenerate_Click(object sender, RoutedEventArgs e)
@@ -51,7 +102,12 @@ namespace Impilo_App.Views.Reports
            
             Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
             dlg.DefaultExt = ".csv";
-            dlg.Filter = "CSV Files (*.csv)|*.csv";
+            dlg.Filter = "Excel Files (*.xlsx)|*.xlsx";
+
+            using (FileStream file = new FileStream(Directory.GetCurrentDirectory() + "\\Templates\\ReportFormat2.xlsx", FileMode.Open, FileAccess.Read))
+            {
+                MyWorkbook = new XSSFWorkbook(file);
+            }
             
             //if (radDiabetes.IsChecked == true)
             //{
@@ -338,16 +394,37 @@ namespace Impilo_App.Views.Reports
             List<string> Report = new List<string>();
             Report.Add("Indicator Number, Diabetes, Hypertension");
 
-            foreach (string CurrentIndicator in IndicatorList)
+            //foreach (string CurrentIndicator in IndicatorList)
+            for (int i = 0; i < IndicatorList.Length; i++)
             {
-                string Diabetes = "";
-                string Hypertension = "";
+                string CurrentIndicator = IndicatorList[i];
+                int DiabetesRow = -1;
+                int DiabetesCell = -1;
+                int HypertensionRow = -1;
+                int HypertensionCell = -1;
 
-                Type thisType = this.GetType();
-                MethodInfo theMethod = thisType.GetMethod("CallClassMethod");
-                Diabetes = (string)theMethod.Invoke(this,new object []{"Diabetes",CurrentIndicator});
-                Hypertension = (string)theMethod.Invoke(this, new object[] { "Hypertension", CurrentIndicator });
-                Report.Add(string.Format("{0},{1},{2}",CurrentIndicator,Diabetes,Hypertension));
+                try
+                {
+                    DiabetesRow = Spots[i].DiabetesRow;
+                    DiabetesCell = Spots[i].DiabetesCell;
+                    HypertensionRow = Spots[i].HypertensionRow;
+                    HypertensionCell = Spots[i].HypertensionCell;
+                }
+                catch { }
+
+                if (DiabetesRow > -1)
+                {
+                    string Diabetes = "";
+                    string Hypertension = "";
+
+                    Type thisType = this.GetType();
+                    MethodInfo theMethod = thisType.GetMethod("CallClassMethod");
+                    Diabetes = (string)theMethod.Invoke(this, new object[] { "Diabetes", CurrentIndicator });
+                    Hypertension = (string)theMethod.Invoke(this, new object[] { "Hypertension", CurrentIndicator });
+                    Report.Add(string.Format("{0},{1},{2}", CurrentIndicator, Diabetes, Hypertension));
+                    MyWorkbook.GetSheetAt(0).GetRow(DiabetesRow).GetCell(DiabetesCell).SetCellValue(Diabetes);
+                    MyWorkbook.GetSheetAt(0).GetRow(HypertensionRow).GetCell(HypertensionCell).SetCellValue(Hypertension);
+                }
             }
 
             Cursor = Cursors.Arrow;
@@ -357,11 +434,11 @@ namespace Impilo_App.Views.Reports
             {
                 // Open document 
                 string filename = dlg.FileName;
-                //FileStream xfile = new FileStream(dlg.FileName, FileMode.Create, System.IO.FileAccess.Write);
-                //MyWorkbook.Write(xfile);
-                //xfile.Close();
+                FileStream xfile = new FileStream(dlg.FileName, FileMode.Create, System.IO.FileAccess.Write);
+                MyWorkbook.Write(xfile);
+                xfile.Close();
 
-                File.WriteAllLines(dlg.FileName, Report);
+                //File.WriteAllLines(dlg.FileName, Report);
 
                 MessageBox.Show("The report has been generated successfully", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);           
 
