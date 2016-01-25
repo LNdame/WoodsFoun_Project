@@ -39,6 +39,7 @@ namespace Impilo_App
             lbTime.Content = DateTime.Now.ToString("hh:mm:ss tt");
         }
 
+        public static int launcherFlag = 0; //1 for follow up 2 for clinic visit//
         private void btnNewClient_Click(object sender, RoutedEventArgs e)
         {
              AddNewClient newPage  = new AddNewClient();
@@ -64,9 +65,11 @@ namespace Impilo_App
 
         private void button_Copy2_Click(object sender, RoutedEventArgs e)
         {
-            ClinicVisit clinic = new ClinicVisit();
+           // ClinicVisit clinic = new ClinicVisit();///that may come back
+            launcherFlag = 2;
+            ListClients newPage = new ListClients(launcherFlag);
             
-            pageTransitionControl.ShowPage(clinic);
+            pageTransitionControl.ShowPage(newPage); // to comment
             //Change Background
             btnNewClient.Background = Brushes.White;
             btnScreening.Background = Brushes.White;
@@ -76,8 +79,11 @@ namespace Impilo_App
 
         private void btnFollowUp_Click(object sender, RoutedEventArgs e)
         {
-            FollowUp follow = new FollowUp();
-            pageTransitionControl.ShowPage(follow);
+          //  FollowUp follow = new FollowUp();
+            launcherFlag = 1;
+            ListClients newPage = new ListClients(launcherFlag);
+            
+            pageTransitionControl.ShowPage(newPage); // to comment
             //Change Background
             btnNewClient.Background = Brushes.White;
             btnScreening.Background = Brushes.White;
