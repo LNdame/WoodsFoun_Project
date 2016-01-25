@@ -184,10 +184,10 @@
                                                 <TextBox TabIndex="1" Grid.Row="3" Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="5" x:Name="txtDateOfScreening" VerticalAlignment="Top" Width="253"  IsEnabled="False" Grid.ColumnSpan="2" />
                                                 <TextBox TabIndex="2" Grid.Row="4" Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="5" x:Name="txtName" VerticalAlignment="Top" Width="253"  IsEnabled="False" Grid.ColumnSpan="2" />
                                                 <TextBox TabIndex="3" Grid.Row="5" Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="5" x:Name="txtLastName" VerticalAlignment="Top" Width="253" IsEnabled="False" Grid.ColumnSpan="2" />
-                                                <RadioButton x:Name="rdoMale" Grid.Row="6" Grid.Column="1" TabIndex="4" Content="Male" HorizontalAlignment="Left" Margin="5,12.72,0,0" VerticalAlignment="Top"  Height="16" Width="44"/>
-                                                <RadioButton x:Name="rdoFemale" Grid.Row="6" Grid.Column="1" TabIndex="5" Content="Female" HorizontalAlignment="Right" Margin="0,12.72,129,0" VerticalAlignment="Top" RenderTransformOrigin="-8.546,9.539"  Height="16" Width="56" />
-                                                <RadioButton x:Name="rdoMale_Copy" Grid.Row="7" Grid.Column="1" TabIndex="4" Content="Yes" HorizontalAlignment="Left" Margin="5,12.72,0,0" VerticalAlignment="Top"  Checked="rdoMale_Copy_Checked" Height="16" Width="35"/>
-                                                <RadioButton x:Name="rdoFemale_Copy" Grid.Row="7" Grid.Column="1" TabIndex="5" Content="No" HorizontalAlignment="Right" Margin="0,12.34,152,0" VerticalAlignment="Top" RenderTransformOrigin="-8.546,9.539"  Height="16"  Width="33" />
+                                                <RadioButton x:Name="rdoMale" Grid.Row="6" GroupName="m1" Grid.Column="1" TabIndex="4" Content="Male" HorizontalAlignment="Left" Margin="5,12.72,0,0" VerticalAlignment="Top"  Height="16" Width="44"/>
+                                                <RadioButton x:Name="rdoFemale" Grid.Row="6" GroupName="m1" Grid.Column="1" TabIndex="5" Content="Female" HorizontalAlignment="Right" Margin="0,12.72,129,0" VerticalAlignment="Top" RenderTransformOrigin="-8.546,9.539"  Height="16" Width="56" />
+                                                <RadioButton x:Name="rdohYes" Grid.Row="7" GroupName="m2" Grid.Column="1" TabIndex="4" Content="Yes" HorizontalAlignment="Left" Margin="5,12.72,0,0" VerticalAlignment="Top"  Checked="rdoMale_Copy_Checked" Height="16" Width="35"/>
+                                                <RadioButton x:Name="rdoHNo" Grid.Row="7" GroupName="m2" Grid.Column="1" TabIndex="5" Content="No" HorizontalAlignment="Right" Margin="0,12.34,152,0" VerticalAlignment="Top" RenderTransformOrigin="-8.546,9.539"  Height="16"  Width="33" />
 
 
 
@@ -957,7 +957,7 @@
                                                         <Label Content="Excessive sweating&#xD;&#xA;at night" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
                                                         <Label Content="Cough more than&#xD;&#xA;2 week" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.843" FontWeight="Bold" Grid.Row="3"  Grid.Column="0"/>
                                                         <Button x:Name="btnTBRef" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="84,5.68,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.457,3.318" ToolTip="Duplicate ref no all accross"  Click="DuplicateRefNo_Click" Grid.Row="6"/>
-                                                        <TextBox x:Name="txtRefTBsymp" HorizontalAlignment="Left" Height="23" Margin="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold" Grid.Row="6" Grid.Column="1"/>
+                                                        <TextBox x:Name="txtRefTBsymp" HorizontalAlignment="Left" Height="23" Margin="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Grid.Row="6" Grid.Column="1"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="8,4,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="5"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" RenderTransformOrigin="0.443,-1.21"  Grid.Row="6" FontWeight="Bold"/>
                                                         <RadioButton x:Name="radlosweight" GroupName="tbrad3" Content="Yes" HorizontalAlignment="Left" Margin="10.119,16,0,0" VerticalAlignment="Top"  Grid.Column="1"/>
@@ -1676,13 +1676,13 @@
                                                     <Label Content="Child with RTHC" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold"/>
                                                     <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
                                                     <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                    <TextBox x:Name="txtNaMother" HorizontalAlignment="Left" Height="23" Margin="125,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontWeight="Bold"/>
+                                                    <TextBox x:Name="txtNaMother" HorizontalAlignment="Left" Height="23" Margin="125,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
                                                     <RadioButton x:Name="radrthc" Content="Yes" GroupName="par" HorizontalAlignment="Left" Margin="125,51,0,0" VerticalAlignment="Top" />
                                                     <RadioButton  x:Name="radref" Content="Yes" GroupName="par1" HorizontalAlignment="Left" Margin="125,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.165,0.329" />
                                                     <RadioButton Content="No" GroupName="par" HorizontalAlignment="Left" Margin="180,52,0,0" VerticalAlignment="Top" />
                                                     <RadioButton Content="No" GroupName="par1" HorizontalAlignment="Left" Margin="180,82,0,0" VerticalAlignment="Top" />
                                                     <Button x:Name="btnChRef" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="85,107,0,0" VerticalAlignment="Top" Width="35" ToolTip="Duplicate ref no all accross"  Click="DuplicateRefNo_Click"/>
-                                                    <TextBox x:Name="txtref" HorizontalAlignment="Left" Height="23" Margin="125,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontWeight="Bold"/>
+                                                    <TextBox x:Name="txtref" HorizontalAlignment="Left" Height="23" Margin="125,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
                                                 </Grid>
                                             </GroupBox>
                                             <GroupBox Header="" HorizontalAlignment="Left" Margin="10,199,0,0"
@@ -1744,8 +1744,8 @@
 
                                                     </ComboBox>
 
-                                                    <RadioButton x:Name="radMohiv" Content="Yes" GroupName="par4" HorizontalAlignment="Left" Margin="125,15,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                    <RadioButton Content="No" GroupName="par4" HorizontalAlignment="Left" Margin="180,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                                                    <RadioButton x:Name="radMohiv" Content="Yes" GroupName="par4" HorizontalAlignment="Left" Margin="125,15,0,0" VerticalAlignment="Top"/>
+                                                    <RadioButton Content="No" GroupName="par4" HorizontalAlignment="Left" Margin="180,16,0,0" VerticalAlignment="Top"/>
                                                     <ComboBox x:Name="cboPCR" HorizontalAlignment="Left" Margin="125,190,0,0" VerticalAlignment="Top" Width="131" >
                                                         <ComboBoxItem ContentStringFormat="Name"/>
                                                         <ComboBoxItem Name="pcr1">Positive</ComboBoxItem>
