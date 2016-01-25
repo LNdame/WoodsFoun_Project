@@ -98,8 +98,10 @@
                                             <Label Content="Diabetes" HorizontalAlignment="Right" Margin="0,165,768,0" VerticalAlignment="Top" Height="38" FontWeight="Bold"/>
                                             <DatePicker HorizontalAlignment="Left" Name="dpVisitNextVisit" Height="23" Margin="147,15,0,0"  VerticalAlignment="Top" Width="226"/>
                                             <ComboBox HorizontalAlignment="Left" Margin="147,73,0,0" Name="comboVisitOutCome" VerticalAlignment="Top" Width="226" FontWeight="Bold">
-                                                <ComboBoxItem Name="visit1">Away</ComboBoxItem>
-                                                <ComboBoxItem Name="visit2">Deceased</ComboBoxItem>
+                                                <ComboBoxItem Name="visit1">Deceased</ComboBoxItem>
+                                                <ComboBoxItem Name="visit2">Discharged</ComboBoxItem>
+                                                <ComboBoxItem Name="visit3">Refused</ComboBoxItem>
+                                                <ComboBoxItem Name="visit4">Moved</ComboBoxItem>
                                             </ComboBox>
                                             <Label Content="Epilepsy" HorizontalAlignment="Left" Margin="10,208,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <Label Content="HIV" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top" FontWeight="Bold"/>

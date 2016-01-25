@@ -26,14 +26,26 @@ namespace Impilo_App.Views.FollowUpVisit
     public partial class FollowUp : UserControl
     {
         static string sconn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-        //SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=impilo;Integrated Security=True;");
-        SqlConnection conn = new SqlConnection(sconn);
-
+        SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=impilo;Integrated Security=True;");
+        //SqlConnection conn = new SqlConnection(sconn);
+        Impilo_App.LocalModels.Client currentClient;
         //DAL da = new DAL();
         public FollowUp()
         {
             InitializeComponent();
-        }
+
+            Impilo_App.LocalModels.Client currentClient = new LocalModels.Client();
+
+
+            txtFollowUpIDNumber.Text = currentClient.ClientID;
+            txtDateofScreen.Text = DateTime.Now.ToString("dd MMMM yyyy h:mm");
+            txtName.Text = currentClient.FirstName;
+            txtSurname.Text = currentClient.LastName;
+
+            //txtIDNumber.Text = cl.IDNo;
+            //txtDateofScreen.Text = DateTime.Now.ToString("dd MMMM yyyy h:mm");
+
+         }
       
         private void btnCreateFollowUp_Click(object sender, RoutedEventArgs e)
         {
@@ -1706,6 +1718,8 @@ namespace Impilo_App.Views.FollowUpVisit
             #region Hypertension
 
             Impilo_App.LocalModels.FollowUpHypertension folHyp = new Impilo_App.LocalModels.FollowUpHypertension();
+            Impilo_App.LocalModels.FollowUpHypertensionMedication folHypTreat = new Impilo_App.LocalModels.FollowUpHypertensionMedication();
+
             folHyp.fuhID = 0;
             folHyp.EncounterID = 0;
             folHyp.fuhHiEHWentToClinic = (HyperWentToClinic1Yes.IsChecked == true) ? true : false;
@@ -1725,6 +1739,10 @@ namespace Impilo_App.Views.FollowUpVisit
             folHyp.fuhAlreadyOnTreatmentFollowUpTestReading = txtHyperFollowUpTestReading.Text;
             folHyp.fuhDoorToDoorCheckReading = txtHyperCheckReading.Text;
             //folHyp.fuhMedication = (ComboBoxItem)comboHyperMedication.SelectedItem).Content.ToString();
+
+            folHypTreat.fuhmID = 0;
+            folHypTreat.fuhID = 0;
+            folHypTreat.fuhmName = ((ComboBoxItem)comboHyperMedication.SelectedItem).Content.ToString();
 
 
             try
@@ -1752,6 +1770,16 @@ namespace Impilo_App.Views.FollowUpVisit
                 com.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReading", folHyp.fuhAlreadyOnTreatmentFollowUpTestReading);
                 com.Parameters.AddWithValue("@fuhDoorToDoorCheckReading", folHyp.fuhDoorToDoorCheckReading);
                 com.Parameters.AddWithValue("@fuhMedication", folHyp.fuhMedication);
+
+                //Hypertension Meds
+
+                storedProcedure = "AddFollowUpHypertensionMedication";
+                conn.Open();
+                //SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@fuhmID", folHypTreat.fuhmID);
+                com.Parameters.AddWithValue("@fuhID", folHypTreat.fuhID);
+                com.Parameters.AddWithValue("@fuhmName", folHypTreat.fuhmName);
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -1883,7 +1911,9 @@ namespace Impilo_App.Views.FollowUpVisit
 
             #region Asthma
 
-            Impilo_App.LocalModels.FollowUpAsthma folAst = new Impilo_App.LocalModels.FollowUpAsthma();
+            FollowUpAsthma folAst = new FollowUpAsthma();
+            FollowUpAsthmaMedication folAstTreat = new FollowUpAsthmaMedication();
+
 
             folAst.fuaID = 0;
             folAst.EncounterID = 0;
@@ -1902,7 +1932,11 @@ namespace Impilo_App.Views.FollowUpVisit
             //folAst.fuaMedication = (ComboBoxItem)comboAsMedication.SelectedItem.Content.ToString();
 
 
+            //Asthma Medication
 
+            folAstTreat.fuamID = 0;
+            folAstTreat.fuaID = 0;
+            folAstTreat.fuamName = ((ComboBoxItem)comboAsMedication.SelectedItem).Content.ToString();
 
 
 
@@ -1926,7 +1960,14 @@ namespace Impilo_App.Views.FollowUpVisit
                 com.Parameters.AddWithValue("@fuaOTIncreasedNoOfAsthmaAttacks", folAst.fuaOTIncreasedNoOfAsthmaAttacks);
                 com.Parameters.AddWithValue("@fuaOTReReferToClinic", folAst.fuaOTReReferToClinic);
                 com.Parameters.AddWithValue("@fuaOTRefNo", folAst.fuaOTRefNo);
-                com.Parameters.AddWithValue("@fuaMedication", folAst.fuaMedication);
+                //com.Parameters.AddWithValue("@fuaMedication", folAst.fuaMedication);
+
+                //Asthma Medication
+
+                com.Parameters.AddWithValue("@fuamID", folAstTreat.fuamID);
+                com.Parameters.AddWithValue("@fuaID", folAstTreat.fuaID);
+                com.Parameters.AddWithValue("@fuamName", folAstTreat.fuamName);
+
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -2155,7 +2196,10 @@ namespace Impilo_App.Views.FollowUpVisit
 
             #region Child Health
 
-            Impilo_App.LocalModels.FollowUpChildHealth folCh = new Impilo_App.LocalModels.FollowUpChildHealth();
+            FollowUpChildHealth folCh = new FollowUpChildHealth();
+            FollowUpChildHealthConcerns folChCon = new FollowUpChildHealthConcerns();
+            FollowUpChildHealthImmunisationsOutstanding folChImm = new FollowUpChildHealthImmunisationsOutstanding();
+
 
             folCh.fuchID = 0;
             folCh.EncounterID = 0;
@@ -2190,6 +2234,12 @@ namespace Impilo_App.Views.FollowUpVisit
             folCh.fuchCurSocDevReferToSD = (ChildreferToSD1.IsChecked == true) ? true : false;
             folCh.fuchCurSocDevRefNo = txtChildReferralNo4.Text;
 
+            // Concerns
+
+            folChCon.fuchcID = 0;
+            folChCon.fuchID = 0;
+            //folChCon.fuchcName = ; 
+             
             try
             {
                 storedProcedure = "AddFollowUpOther";
@@ -2228,6 +2278,12 @@ namespace Impilo_App.Views.FollowUpVisit
                 com.Parameters.AddWithValue("@fuchCurSocDevReferToSD", folCh.fuchCurSocDevReferToSD);
                 com.Parameters.AddWithValue("@fuchCurSocDevRefNo", folCh.fuchCurSocDevRefNo);
 
+                //Concerns
+
+
+
+                //immunistations
+
 
 
                 com.ExecuteNonQuery();//execute command
@@ -2247,6 +2303,7 @@ namespace Impilo_App.Views.FollowUpVisit
             #region Other
 
             Impilo_App.LocalModels.FollowUpOther folOth = new Impilo_App.LocalModels.FollowUpOther();
+            
 
             folOth.fuoID = 0;
             folOth.EncounterID = 0;
