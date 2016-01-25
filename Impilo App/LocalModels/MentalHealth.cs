@@ -8,7 +8,7 @@ namespace Impilo_App.LocalModels
 {
     class MentalHealth
     {
-        public string ScreeningID { get; set; }
+        public int EncounterID { get; set; }
 
         public bool PregnantBefore { get; set; }
 
@@ -22,9 +22,9 @@ namespace Impilo_App.LocalModels
 
         public bool BabyUnder2_5Kgs { get; set; }
 
-        public string ChildrenDiedUnder1Year { get; set; }
+        public bool ChildrenDiedUnder1Year { get; set; }
 
-        public string ChildrenDiedBetween1to5Years { get; set; }
+        public bool ChildrenDiedBetween1to5Years { get; set; }
 
         public bool PAPSmearInLast5Years { get; set; }
 
@@ -46,5 +46,7 @@ namespace Impilo_App.LocalModels
 
         public bool IntendBreastFeed { get; set; }
         public bool RegisteredOnMomConnect { get; set; }
+
+        public string BreastFeedHowLong { get; set; }
     }
 }

@@ -7,8 +7,36 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <TabControl Height="602" HorizontalAlignment="Left" Margin="10,0,-915,-302" x:Name="RugbyTabControl" VerticalAlignment="Top" Width="1205" Background="{x:Null}" BorderThickness="0" >
+            <TabControl.Resources>
+                <Style TargetType="TabPanel">
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="VerticalAlignment" Value="Bottom"/>
+                    <Setter Property="Height" Value="25"/>
 
-            <TabItem Header="Biography" x:Name="tabBiography" Width="88">
+                </Style>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+
+                                <Grid Name="Panel">
+                                    <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,4" ContentSource="Header"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Panel" Property="Background" Value="LightSkyBlue"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Panel" Property="Background" Value="Gray"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Biography" x:Name="tabBiography" Width="88" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <Grid Margin="0,0,-0.2,0">
                     <Border BorderThickness="8" Height="497" HorizontalAlignment="Left" Margin="0,10,0,0" x:Name="border1" VerticalAlignment="Top" Width="1191" CornerRadius="10">
                         <!--<Border.Background>
@@ -55,7 +83,7 @@
                     </LinearGradientBrush>
                 </TabItem.Background>-->
             </TabItem>
-            <TabItem Header="Visit Details" x:Name="tabVisitDetails" Width="88">
+            <TabItem Header="Visit Details" x:Name="tabVisitDetails" Width="88" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <Border BorderThickness="8" HorizontalAlignment="Left" Margin="0,10,0,59.6" x:Name="border1_Copy" Width="1194" CornerRadius="10">
                     <!--<Border.Background>
                             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
@@ -140,7 +168,7 @@
                     </LinearGradientBrush>
                 </TabItem.Background>-->
             </TabItem>
-            <TabItem Header="Hypertension" x:Name="tabHypertension" Width="88">
+            <TabItem Header="Hypertension" x:Name="tabHypertension" Width="88" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#8E000000" Offset="1" />
@@ -255,7 +283,7 @@
                 </TabControl>
 
             </TabItem>
-            <TabItem Header="Diabetes" x:Name="tabDiabetes" Width="88">
+            <TabItem Header="Diabetes" x:Name="tabDiabetes" Width="88" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <Grid Margin="0,0,-0.2,0">
                     <Border BorderThickness="8" Height="427" HorizontalAlignment="Left" Margin="14,18,0,0" x:Name="bordes2r1" VerticalAlignment="Top" Width="416" CornerRadius="10"/>
                     <Border BorderThickness="8" Height="427" HorizontalAlignment="Left" Margin="445,18,0,0" x:Name="borsde2r5" VerticalAlignment="Top" Width="608" CornerRadius="10"/>
@@ -358,7 +386,7 @@
                     </LinearGradientBrush>
                 </TabItem.Background>-->
             </TabItem>
-            <TabItem Header="HIV" x:Name="tabHiv" Width="88" >
+            <TabItem Header="HIV" x:Name="tabHiv" Width="88" Margin="0,0,0,0" Height="25" VerticalAlignment="Top" >
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#8E000000" Offset="1" />
@@ -511,7 +539,7 @@
                     </Border>
                 </Grid>
             </TabItem>
-            <TabItem Header="TB" x:Name="tabTb" Width="88">
+            <TabItem Header="TB" x:Name="tabTb" Width="88" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#8E000000" Offset="1" />
@@ -632,7 +660,7 @@
                     </Border>
                 </Grid>
             </TabItem>
-            <TabItem Header="Asthma" x:Name="tabAsthma" Width="88">
+            <TabItem Header="Asthma" x:Name="tabAsthma" Width="88" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#8E000000" Offset="1" />
@@ -726,7 +754,7 @@
                     </Border>
                 </Grid>
             </TabItem>
-            <TabItem Header="Epilepsy" x:Name="tabEpilepsy" Width="88">
+            <TabItem Header="Epilepsy" x:Name="tabEpilepsy" Width="88" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#8E000000" Offset="1" />
@@ -815,7 +843,7 @@
                     </Border>
                 </Grid>
             </TabItem>
-            <TabItem Header="Maternal Health" x:Name="tabMatHealth" Width="98">
+            <TabItem Header="Maternal Health" x:Name="tabMatHealth" Width="98" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#8E000000" Offset="1" />
@@ -927,7 +955,7 @@
                     </Border>
                 </Grid>
             </TabItem>
-            <TabItem Header="Child Health" x:Name="tabChildHealth" Width="88">
+            <TabItem Header="Child Health" x:Name="tabChildHealth" Width="88" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#8E000000" Offset="1" />
@@ -1103,7 +1131,7 @@
                     </Border>
                 </Grid>
             </TabItem>
-            <TabItem Header="Other" x:Name="tabOther" Width="88">
+            <TabItem Header="Other" x:Name="tabOther" Width="88" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#8E000000" Offset="1" />
@@ -1170,7 +1198,7 @@
                     </Border>
                 </Grid>
             </TabItem>
-            <TabItem Header="Finish Screening" x:Name="tabFinish" Width="98" RenderTransformOrigin="0.926,0.633">
+            <TabItem Header="Finish Visit" x:Name="tabFinish" Width="98" RenderTransformOrigin="0.926,0.633" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#8E000000" Offset="1" />
@@ -1200,7 +1228,7 @@
                                 </LinearGradientBrush>
                             </Border.BorderBrush>
                             <Grid x:Name="grid22" Margin="6,6,14.4,18">
-                                <Label Content="Finish screening" Height="28" HorizontalAlignment="Left" Margin="289,10,0,0" x:Name="label29" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="-1.286,-0.543" />
+                                <Label Content="Finish visit" Height="28" HorizontalAlignment="Left" Margin="289,10,0,0" x:Name="label29" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="-1.286,-0.543" />
                                 <Button Content="Save" Height="36" HorizontalAlignment="Left" Margin="243,52,0,0" x:Name="btnCreateFollowUp" VerticalAlignment="Top" Width="182" FontSize="16" FontWeight="Bold" Click="btnCreateFollowUp_Click" >
                                     <Button.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
