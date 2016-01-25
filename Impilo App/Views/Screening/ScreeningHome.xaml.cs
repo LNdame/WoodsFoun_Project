@@ -890,7 +890,7 @@ namespace Impilo_App.Views.Screening
             BloodSuger bs = new BloodSuger
             {
                 ScreeningID = scrID,
-                OnMeds = (redCurMedsBs.IsChecked == true) ? true : false,
+                OnMeds = (redCurMedsBs.IsChecked == true) ? true : false, //will 
                 NotOnMedsBSReadings = decimal.Parse(numBsReading.Text),// ((ComboBoxItem)cboBSreading.SelectedItem).Content.ToString(),numBsReading
 
                 ReferToCHOWs = (radrefCHowBS.IsChecked == true) ? true : false,
@@ -1078,8 +1078,8 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@sgBPReferToClinic", bpr.ReferToClinic);//param
                 com.Parameters.AddWithValue("@sgBPRefNo", bpr.ReferralNo);//param
                 //Blood Sugar Reading+
-                com.Parameters.AddWithValue("@sgBSOnMeds", bs.OnMeds);//param
-                com.Parameters.AddWithValue("@sgBSNotOnMedsBSReading", bs.NotOnMedsBSReadings);//param
+                com.Parameters.AddWithValue("@sgBSOnMeds", ( bs.OnMeds==true) ? bs.NotOnMedsBSReadings : 0);//param  ///will change to a decimal????(curhpt.OnMeds == true) ? false : true
+                com.Parameters.AddWithValue("@sgBSNotOnMedsBSReading", ( bs.OnMeds==false) ? bs.NotOnMedsBSReadings : 0);//param
                 com.Parameters.AddWithValue("@sgBSReferToChow", bs.ReferToCHOWs);//param
                 com.Parameters.AddWithValue("@sgBSReferToClinic", bs.ReferToClinic);//param
                 com.Parameters.AddWithValue("@sgBSRefNo", bs.ReferralNo);//param
