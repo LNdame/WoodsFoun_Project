@@ -5,46 +5,54 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Border BorderThickness="8" Height="458" HorizontalAlignment="Left" Margin="0,10,-707,-168" x:Name="border1" VerticalAlignment="Top" Width="1007" CornerRadius="10">
-            <!--<Border.Background>
+    <Grid Margin="-87,-150,-910,-290">
+        <Grid Margin="94,80,-57,-164">
+            <Border BorderThickness="8" Height="458" HorizontalAlignment="Left" Margin="0,2,0,21" x:Name="border1" VerticalAlignment="Top" Width="1033" CornerRadius="10" Grid.ColumnSpan="3">
+                <!--<Border.Background>
                             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                 <GradientStop Color="#4D000000" Offset="0" />
                                 <GradientStop Color="White" Offset="1" />
                             </LinearGradientBrush>
                         </Border.Background>-->
-            <Border.BorderBrush>
-                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                    <GradientStop Color="#BA000000" Offset="0" />
-                    <GradientStop Color="White" Offset="1" />
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-           
-
-              
-                    <Grid Margin="-439,-208,439,208">
-                <Label Content="Format 2 Report" Height="49" HorizontalAlignment="Left" Margin="470,220,0,0" x:Name="label1_Copy" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" />
-                <Label Content="Start date:" HorizontalAlignment="Left" Margin="470,281,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
-                        <DatePicker HorizontalAlignment="Left" Height="23" Margin="655,281,0,0" x:Name="dpStartDate" VerticalAlignment="Top" Width="126"/>
-                <Label Content="End date:" HorizontalAlignment="Left" Margin="470,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
-                <DatePicker HorizontalAlignment="Left" Height="23" Margin="655,311,0,0" x:Name="dpEndDate" VerticalAlignment="Top" Width="126"/>
-                <Button Content="Generate" Height="36" HorizontalAlignment="Left" Margin="599,354,0,0" x:Name="btnGenerate" VerticalAlignment="Top" Width="182" FontSize="16" FontWeight="Bold" Click="btnGenerate_Click" >
-                    <Button.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#82000000" Offset="0.035" />
-                            <GradientStop Color="White" Offset="1" />
-                            <GradientStop Color="#9E393939" Offset="0.169" />
-                            <GradientStop Color="#9D373737" Offset="0.901" />
-                            <GradientStop Color="#992F2F2F" Offset="0.75" />
-                            <GradientStop Color="#E5CBCBCB" Offset="0.459" />
+                <Border.BorderBrush>
+                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                        <GradientStop Color="#BA000000" Offset="0" />
+                        <GradientStop Color="White" Offset="1" />
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <Border BorderThickness="4" Height="416" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="border4" VerticalAlignment="Top" Width="989" CornerRadius="8">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                            <GradientStop Color="#82000000" Offset="0" />
+                            <GradientStop Color="#FFEBE8E8" Offset="1" />
                         </LinearGradientBrush>
-                    </Button.Background>
-                </Button>
+                    </Border.BorderBrush>
 
-            </Grid>
-                  
-              
-           
-        </Border>
+
+                    <Grid Margin="-439,-208,439,208">
+                        <Label Content="Format 2 Report" Height="49" HorizontalAlignment="Left" Margin="470,220,0,0" x:Name="label1_Copy" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" />
+                        <Label Content="Start date:" HorizontalAlignment="Left" Margin="470,281,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
+                        <DatePicker HorizontalAlignment="Left" Height="23" Margin="655,281,0,0" x:Name="dpStartDate" VerticalAlignment="Top" Width="126"/>
+                        <Label Content="End date:" HorizontalAlignment="Left" Margin="470,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
+                        <DatePicker HorizontalAlignment="Left" Height="23" Margin="655,311,0,0" x:Name="dpEndDate" VerticalAlignment="Top" Width="126"/>
+                        <Button Content="Generate" Height="36" HorizontalAlignment="Left" Margin="599,354,0,0" x:Name="btnGenerate" VerticalAlignment="Top" Width="182" FontSize="16" FontWeight="Bold" Click="btnGenerate_Click" >
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#82000000" Offset="0.035" />
+                                    <GradientStop Color="White" Offset="1" />
+                                    <GradientStop Color="#9E393939" Offset="0.169" />
+                                    <GradientStop Color="#9D373737" Offset="0.901" />
+                                    <GradientStop Color="#992F2F2F" Offset="0.75" />
+                                    <GradientStop Color="#E5CBCBCB" Offset="0.459" />
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+
+                    </Grid>
+
+                </Border>
+
+            </Border>
+        </Grid>
     </Grid>
 </UserControl>
