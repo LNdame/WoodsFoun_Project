@@ -8,7 +8,7 @@ namespace Impilo_App.LocalModels
 {
     class Environmental
     {
-        public string ScreeningId { get; set; }
+        public int EncounterID { get; set; }
 
         public int NoOfHouseholdCurrent { get; set; }
 
