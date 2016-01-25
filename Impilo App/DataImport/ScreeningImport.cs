@@ -18,8 +18,7 @@ namespace Impilo_App.DataImport
         public static string GetCellValue(ICell Target)
         {
             string ReturnValue = "";
-
-
+            
             try
             {
                 ReturnValue = Target.StringCellValue;
@@ -66,7 +65,10 @@ namespace Impilo_App.DataImport
                         //Notes:  Did not make provisions for multiple Clinics, Schools or Grades - Client must confirm if it is necessary
                         string BioChowName = GetCellValue (MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(0));
                         string BioUniqueID = GetCellValue (MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(1));
-                        string BioDateOfScreen = GetCellValue (MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(2));
+                        //string BioDateOfScreen = GetCellValue (MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(2));
+                        string BioDateOfScreen = MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(2).DateCellValue.ToString();
+                        if (BioDateOfScreen == "0001/01/01 12:00:00 AM")
+                            BioDateOfScreen = "";
                         string BioHeadOfHousehold = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(3));
                         string BioName = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(4));
                         string BioSurname = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(5));
@@ -74,7 +76,9 @@ namespace Impilo_App.DataImport
                         string BioGPSLong = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(7));
                         string BioIDNum = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(8));
                         string BioClinicUsed = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(9));
-                        string BioDateOfBirth = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(10));
+                        string BioDateOfBirth = MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(10).DateCellValue.ToString();
+                        if (BioDateOfBirth == "0001/01/01 12:00:00 AM")
+                            BioDateOfBirth = "";
                         string BioMale = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(11));
                         string BioFemale = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(12));
                         string BioAttendingSchool = GetCellValue(MyWorkbook.GetSheet("Biographical").GetRow(4).GetCell(13));
@@ -135,6 +139,10 @@ namespace Impilo_App.DataImport
                         string EnDisposeWaste = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(4).GetCell(20));
                         string EnDisposeWaste1 = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(5).GetCell(20));
                         string EnSourceIncomeHousehold = GetCellValue (MyWorkbook.GetSheet("Environmental").GetRow(4).GetCell(21));
+                        string EnSourceIncomeHousehold2 = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(5).GetCell(21));
+                        string EnSourceIncomeHousehold3 = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(6).GetCell(21));
+                        string EnSourceIncomeHousehold4 = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(7).GetCell(21));
+                        string EnSourceIncomeHousehold5 = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(8).GetCell(21));
                         string EnFoodParcel = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(4).GetCell(22));
                         #endregion
 
@@ -150,7 +158,9 @@ namespace Impilo_App.DataImport
                         string GenCurrentHPTListMeds3 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(6).GetCell(9));
                         string GenCurrentHPTListMeds4 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(7).GetCell(9));
                         string GenCurrentHPTListMeds5 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(8).GetCell(9));
-                        string GenCurrentHPTStartDate = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(10));
+                        string GenCurrentHPTStartDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(10).DateCellValue.ToString();
+                        if (GenCurrentHPTStartDate == "0001/01/01 12:00:00 AM")
+                            GenCurrentHPTStartDate = "";
                         string GenCurrentHPTDefaulting = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(11));
                         string GenCurrentHPTReferClinic = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(12));
                         string GenCurrentHPTReferNo = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(13));
@@ -160,7 +170,9 @@ namespace Impilo_App.DataImport
                         string GenCurrentDiabetesListMeds3 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(6).GetCell(16));
                         string GenCurrentDiabetesListMeds4 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(7).GetCell(16));
                         string GenCurrentDiabetesListMeds5 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(8).GetCell(16));
-                        string GenCurrentDiabetesStartDate = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(17));
+                        string GenCurrentDiabetesStartDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(17).DateCellValue.ToString();
+                        if (GenCurrentDiabetesStartDate == "0001/01/01 12:00:00 AM")
+                            GenCurrentDiabetesStartDate = "";
                         string GenCurrentDiabetesDefaulting = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(18));
                         string GenCurrentDiabetesReferClinic = GetCellValue(MyWorkbook.GetSheet("General").GetRow(4).GetCell(19));
                         string GenCurrentDiabetesReferNo = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(20));
@@ -170,27 +182,33 @@ namespace Impilo_App.DataImport
                         string GenCurrentEpilepsyListMeds3 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(6).GetCell(23));
                         string GenCurrentEpilepsyListMeds4 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(7).GetCell(23));
                         string GenCurrentEpilepsyListMeds5 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(8).GetCell(23));
-                        string GenCurrentEpilepsyStartDate = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(24));
+                        string GenCurrentEpilepsyStartDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(24).DateCellValue.ToString();
+                        if (GenCurrentEpilepsyStartDate == "0001/01/01 12:00:00 AM")
+                            GenCurrentEpilepsyStartDate = "";
                         string GenCurrentEpilepsyDefaulting = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(25));
                         string GenCurrentEpilepsyReferClinic = GetCellValue(MyWorkbook.GetSheet("General").GetRow(4).GetCell(26));
                         string GenCurrentEpilepsyReferNo = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(27));
                         string GenCurrentAsthma = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(29));
                         string GenCurrentAsthmaListMeds1 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(4).GetCell(30));
-                        string GenCurrentAsthmaListMeds2 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(5).GetCell(30));
+                        string GenCurrentAsthmaListMeds2 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(5).GetCell(30));
                         string GenCurrentAsthmaListMeds3 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(6).GetCell(30));
-                        string GenCurrentAsthmaListMeds4 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(7).GetCell(30));
+                        string GenCurrentAsthmaListMeds4 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(7).GetCell(30));
                         string GenCurrentAsthmaListMeds5 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(8).GetCell(30));
-                        string GenCurrentAsthmaStartDate = GetCellValue(MyWorkbook.GetSheet("General").GetRow(4).GetCell(31));
+                        string GenCurrentAsthmaStartDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(31).DateCellValue.ToString();
+                        if (GenCurrentAsthmaStartDate == "0001/01/01 12:00:00 AM")
+                            GenCurrentAsthmaStartDate = "";
                         string GenCurrentAsthmaDefaulting = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(32));
                         string GenCurrentAsthmaReferClinic = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(33));
                         string GenCurrentAsthmaReferNo = GetCellValue(MyWorkbook.GetSheet("General").GetRow(4).GetCell(34));
                         string GenCurrentOther = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(36));
                         string GenCurrentOtherListMeds1 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(4).GetCell(37));
-                        string GenCurrentOtherListMeds2 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(5).GetCell(37));
+                        string GenCurrentOtherListMeds2 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(5).GetCell(37));
                         string GenCurrentOtherListMeds3 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(6).GetCell(37));
-                        string GenCurrentOtherListMeds4 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(7).GetCell(37));
-                        string GenCurrentOtherListMeds5 = GetCellValue (MyWorkbook.GetSheet("General").GetRow(8).GetCell(37));
-                        string GenCurrentOtherStartDate = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(38));
+                        string GenCurrentOtherListMeds4 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(7).GetCell(37));
+                        string GenCurrentOtherListMeds5 = GetCellValue(MyWorkbook.GetSheet("General").GetRow(8).GetCell(37));
+                        string GenCurrentOtherStartDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(38).DateCellValue.ToString();
+                        if (GenCurrentOtherStartDate == "0001/01/01 12:00:00 AM")
+                            GenCurrentOtherStartDate = "";
                         string GenCurrentOtherDefaulting = GetCellValue(MyWorkbook.GetSheet("General").GetRow(4).GetCell(39));
                         string GenCurrentOtherReferClinic = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(40));
                         string GenCurrentOtherReferNo = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(41));
@@ -222,7 +240,9 @@ namespace Impilo_App.DataImport
 
                         string GenPregCurrently = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(68));
                         string GenPregPossible = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(69));
-                        string GenPregTestDate = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(70));
+                        string GenPregTestDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(70).DateCellValue.ToString();
+                        if (GenPregTestDate == "0001/01/01 12:00:00 AM")
+                            GenPregTestDate = "";
                         string GenPregResult = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(71));
                         string GenPregReferClinic = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(72));
                         string GenPregReferNo = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(73));
@@ -327,12 +347,20 @@ namespace Impilo_App.DataImport
                         string MHChildrenDied15 = GetCellValue(MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(9));
                         string MHPAPSmear = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(10));
                         string MHBloodResult = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(11));
-                        string MHFirstANCDate = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(13));
-                        string MHLastANCDate = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(14));
+                        string MHFirstANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(13).DateCellValue.ToString();
+                        if (MHFirstANCDate == "0001/01/01 12:00:00 AM")
+                            MHFirstANCDate = "";
+                        string MHLastANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(14).DateCellValue.ToString();
+                        if (MHLastANCDate == "0001/01/01 12:00:00 AM")
+                            MHLastANCDate = "";
                         string MHReferClinic = GetCellValue(MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(15));
                         string MHReferNo = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(16));
-                        string MHNextANCDate = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(17));
-                        string MHExpectedDeliverDate = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(18));
+                        string MHNextANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(17).DateCellValue.ToString();
+                        if (MHNextANCDate == "0001/01/01 12:00:00 AM")
+                            MHNextANCDate = "";
+                        string MHExpectedDeliverDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(18).DateCellValue.ToString();
+                        if (MHExpectedDeliverDate == "0001/01/01 12:00:00 AM")
+                            MHExpectedDeliverDate = "";
                         string MHBreastfeed = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(19));
                         string MHFormula = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(20));
                         string MHRegisteredMomConnect = GetCellValue(MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(21));
@@ -393,6 +421,31 @@ namespace Impilo_App.DataImport
 
                         // Queries here
                         string ScreeningID = Utilities.GenerateScreeningID(BioName, BioSurname);
+                        int ClinicID = -1;
+                        int EncounterID = -1;
+                        int tempID = -1;
+                        int tempIDGen = -1;
+                        int tempIDHIV = -1;
+                        int tempIDChild = -1;
+
+                        #region Find Clinic ID
+                        int Errors = 0;
+                        SqlConnection tempConnectionFindClinic = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                        try
+                        {
+                            tempConnectionFindClinic.Open();
+                            SqlCommand tempCommand = new SqlCommand("FindClinicID", tempConnectionFindClinic);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@ClinicName", BioClinicUsed);
+
+                            ClinicID = (int)tempCommand.ExecuteScalar();
+                        }
+                        catch (Exception ex) { }
+                        finally
+                        {
+                            tempConnectionFindClinic.Close();
+                        }
+                        #endregion
 
                         #region Biographical
                         SqlConnection tempConnectionBio = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -400,26 +453,23 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionBio.Open();
-                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertBiographical", tempConnectionBio);
+                            SqlCommand tempCommand = new SqlCommand("AddClient", tempConnectionBio);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
-                            tempCommand.Parameters.AddWithValue("@BioChowName", BioChowName);
-                            tempCommand.Parameters.AddWithValue("@BioUniqueID", BioUniqueID);
-                            tempCommand.Parameters.AddWithValue("@BioDateOfScreen", BioDateOfScreen);
-                            tempCommand.Parameters.AddWithValue("@BioHeadOfHousehold", BioHeadOfHousehold);
-                            tempCommand.Parameters.AddWithValue("@BioName", BioName);
-                            tempCommand.Parameters.AddWithValue("@BioSurname", BioSurname);
-                            tempCommand.Parameters.AddWithValue("@BioGPSLat", BioGPSLat);
-                            tempCommand.Parameters.AddWithValue("@BioGPSLong", BioGPSLong);
-                            tempCommand.Parameters.AddWithValue("@BioIDNum", BioIDNum);
-                            tempCommand.Parameters.AddWithValue("@BioClinicUsed", BioClinicUsed);
-                            tempCommand.Parameters.AddWithValue("@BioDateOfBirth", BioDateOfBirth);
-                            tempCommand.Parameters.AddWithValue("@BioMale", BioMale);
-                            tempCommand.Parameters.AddWithValue("@BioFemale", BioFemale);
-                            tempCommand.Parameters.AddWithValue("@BioAttendingSchool", BioAttendingSchool);
-                            tempCommand.Parameters.AddWithValue("@BioSchoolName", BioSchoolName);
-                            tempCommand.Parameters.AddWithValue("@BioGrade", BioGrade);
-
+                            tempCommand.Parameters.AddWithValue("@ClientID", ScreeningID);
+                            tempCommand.Parameters.AddWithValue("@HeadOfHousehold", BioHeadOfHousehold);
+                            tempCommand.Parameters.AddWithValue("@FirstName", BioName);
+                            tempCommand.Parameters.AddWithValue("@BLastName", BioSurname);
+                            tempCommand.Parameters.AddWithValue("@GPSLatitude", BioGPSLat);
+                            tempCommand.Parameters.AddWithValue("@GPSLongtitude", BioGPSLong);
+                            tempCommand.Parameters.AddWithValue("@IDNo", BioIDNum);
+                            tempCommand.Parameters.AddWithValue("@ClinicID", ClinicID);
+                            tempCommand.Parameters.AddWithValue("@DateOfBirth", BioDateOfBirth);
+                            tempCommand.Parameters.AddWithValue("@Gender", BioMale);
+                            tempCommand.Parameters.AddWithValue("@AttendingSchool", BioAttendingSchool);
+                            tempCommand.Parameters.AddWithValue("@Grade", BioGrade);
+                            tempCommand.Parameters.AddWithValue("@NameOfSchool", BioSchoolName);
+                            tempCommand.Parameters.AddWithValue("@Area", "");
+                                                
                             tempCommand.ExecuteNonQuery();
                         }
                         catch { }
@@ -429,72 +479,245 @@ namespace Impilo_App.DataImport
                         }
                         #endregion
 
+                        #region Encounters
+                        SqlConnection tempConnectionEncounter = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                        try
+                        {
+                            tempConnectionEncounter.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddEncounters", tempConnectionEncounter);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+                            tempCommand.Parameters.AddWithValue("@EncounterDate", BioDateOfScreen);
+                            tempCommand.Parameters.AddWithValue("@ClientID", BioUniqueID);
+                            tempCommand.Parameters.AddWithValue("@EncounterType", 1);
+                            tempCommand.Parameters.AddWithValue("@EncounterCapturedBy", BioChowName);
+
+                            EncounterID = (int)((decimal)tempCommand.ExecuteScalar());
+                        }
+                        catch (Exception ex) { System.Windows.MessageBox.Show(ex.ToString()); }
+                        finally
+                        {
+                            tempConnectionEncounter.Close();
+                        }
+
+                        #endregion
+
                         #region Environmental
                         SqlConnection tempConnectionEnv = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
                         try
                         {
                             tempConnectionEnv.Open();
-                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertEnvironmental", tempConnectionEnv);
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningEnvironmental", tempConnectionEnv);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
-                            tempCommand.Parameters.AddWithValue("@EnNoOfPeople", EnNoOfPeople);
-                            tempCommand.Parameters.AddWithValue("@EnNoLiveAway", EnNoLiveAway);
-                            tempCommand.Parameters.AddWithValue("@EnListWhere0", EnListWhere0);
-                            tempCommand.Parameters.AddWithValue("@EnListWhere1", EnListWhere1);
-                            tempCommand.Parameters.AddWithValue("@EnListWhere2", EnListWhere2);
-                            tempCommand.Parameters.AddWithValue("@EnListWhere3", EnListWhere3);
-                            tempCommand.Parameters.AddWithValue("@EnListWhere4", EnListWhere4);
-                            tempCommand.Parameters.AddWithValue("@EnFamilyLastVisit0", EnFamilyLastVisit0);
-                            tempCommand.Parameters.AddWithValue("@EnFamilyLastVisit1", EnFamilyLastVisit1);
-                            tempCommand.Parameters.AddWithValue("@EnFamilyLastVisit2", EnFamilyLastVisit2);
-                            tempCommand.Parameters.AddWithValue("@EnFamilyLastVisit3", EnFamilyLastVisit3);
-                            tempCommand.Parameters.AddWithValue("@EnFamilyLastVisit4", EnFamilyLastVisit4);
-                            tempCommand.Parameters.AddWithValue("@EnWhichClinic", EnWhichClinic);
-                            tempCommand.Parameters.AddWithValue("@EnMainHutStructure", EnMainHutStructure);
-                            tempCommand.Parameters.AddWithValue("@EnMainHutTypeRoof", EnMainHutTypeRoof);
-                            tempCommand.Parameters.AddWithValue("@EnMainHutVentilation", EnMainHutVentilation);
-                            tempCommand.Parameters.AddWithValue("@EnMainHutTotalRooms", EnMainHutTotalRooms);
-                            tempCommand.Parameters.AddWithValue("@EnHut2Structure", EnHut2Structure);
-                            tempCommand.Parameters.AddWithValue("@EnHut2TypeRoof", EnHut2TypeRoof);
-                            tempCommand.Parameters.AddWithValue("@EnHut2Ventilation", EnHut2Ventilation);
-                            tempCommand.Parameters.AddWithValue("@EnHut2TotalRooms", EnHut2TotalRooms);
-                            tempCommand.Parameters.AddWithValue("@EnHut3Structure", EnHut3Structure);
-                            tempCommand.Parameters.AddWithValue("@EnHut3TypeRoof", EnHut3TypeRoof);
-                            tempCommand.Parameters.AddWithValue("@EnHut3Ventilation", EnHut3Ventilation);
-                            tempCommand.Parameters.AddWithValue("@EnHut3TotalRooms", EnHut3TotalRooms);
-                            tempCommand.Parameters.AddWithValue("@EnHut4Structure", EnHut4Structure);
-                            tempCommand.Parameters.AddWithValue("@EnHut4TypeRoof", EnHut4TypeRoof);
-                            tempCommand.Parameters.AddWithValue("@EnHut4Ventilation", EnHut4Ventilation);
-                            tempCommand.Parameters.AddWithValue("@EnHut4TotalRooms", EnHut4TotalRooms);
-                            tempCommand.Parameters.AddWithValue("@EnHut5Structure", EnHut5Structure);
-                            tempCommand.Parameters.AddWithValue("@EnHut5TypeRoof", EnHut5TypeRoof);
-                            tempCommand.Parameters.AddWithValue("@EnHut5Ventilation", EnHut5Ventilation);
-                            tempCommand.Parameters.AddWithValue("@EnHut5TotalRooms", EnHut5TotalRooms);
-                            tempCommand.Parameters.AddWithValue("@EnNoSleepingInOneRoom", EnNoSleepingInOneRoom);
-                            tempCommand.Parameters.AddWithValue("@EnNoOfStructures", EnNoOfStructures);
-                            tempCommand.Parameters.AddWithValue("@EnRainWaterCollection", EnRainWaterCollection);
-                            tempCommand.Parameters.AddWithValue("@EnWaterSupply", EnWaterSupply);
-                            tempCommand.Parameters.AddWithValue("@EnWaterSupply1", EnWaterSupply1);
-                            tempCommand.Parameters.AddWithValue("@EnWalkingDistanceWater", EnWalkingDistanceWater);
-                            tempCommand.Parameters.AddWithValue("@EnTreatWater", EnTreatWater);
-                            tempCommand.Parameters.AddWithValue("@EnHutElectricity", EnHutElectricity);
-                            tempCommand.Parameters.AddWithValue("@EnFridge", EnFridge);
-                            tempCommand.Parameters.AddWithValue("@EnUseForCooking", EnUseForCooking);
-                            tempCommand.Parameters.AddWithValue("@EnUseForCooking1", EnUseForCooking1);
-                            tempCommand.Parameters.AddWithValue("@EnUseForCooking2", EnUseForCooking2);
-                            tempCommand.Parameters.AddWithValue("@EnTypeToilet", EnTypeToilet);
-                            tempCommand.Parameters.AddWithValue("@EnDisposeWaste", EnDisposeWaste);
-                            tempCommand.Parameters.AddWithValue("@EnDisposeWaste1", EnDisposeWaste1);
-                            tempCommand.Parameters.AddWithValue("@EnSourceIncomeHousehold", EnSourceIncomeHousehold);
-                            tempCommand.Parameters.AddWithValue("@EnFoodParcel", EnFoodParcel);
+                            tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                            tempCommand.Parameters.AddWithValue("@seNoPeopleInHousehold", EnNoOfPeople);
+                            tempCommand.Parameters.AddWithValue("@seNoLivingAwayFromHousehold", EnNoLiveAway);
 
-                            tempCommand.ExecuteScalar();
+                            tempCommand.Parameters.AddWithValue("@seWhenDidYouOrMemberLastVisit", EnFamilyLastVisit0);
+                            //tempCommand.Parameters.AddWithValue("@EnFamilyLastVisit1", EnFamilyLastVisit1);
+                            //tempCommand.Parameters.AddWithValue("@EnFamilyLastVisit2", EnFamilyLastVisit2);
+                            //tempCommand.Parameters.AddWithValue("@EnFamilyLastVisit3", EnFamilyLastVisit3);
+                            //tempCommand.Parameters.AddWithValue("@EnFamilyLastVisit4", EnFamilyLastVisit4);
+                            tempCommand.Parameters.AddWithValue("@cID", ClinicID);
+                            tempCommand.Parameters.AddWithValue("@seTotalNumberSleepingInOneRoomInMainHut", EnNoSleepingInOneRoom);
+                            tempCommand.Parameters.AddWithValue("@seTotalNoStructures", EnNoOfStructures);
+                            tempCommand.Parameters.AddWithValue("@seRainWaterCollection", EnRainWaterCollection);
+                            tempCommand.Parameters.AddWithValue("@seWaterSupply", EnWaterSupply);
+                            tempCommand.Parameters.AddWithValue("@seWalkingDistanceFromWaterSupply", EnWalkingDistanceWater);
+                            tempCommand.Parameters.AddWithValue("@seTreatWaterBeforeDrinking", EnTreatWater);
+                            tempCommand.Parameters.AddWithValue("@seElectricityInAnyHut", EnHutElectricity);
+                            tempCommand.Parameters.AddWithValue("@seWorkingFridge", EnFridge);
+                            tempCommand.Parameters.AddWithValue("@seCookingMethod", EnUseForCooking);
+                            tempCommand.Parameters.AddWithValue("@seToiletType", EnTypeToilet);
+                            tempCommand.Parameters.AddWithValue("@seWasteDisposalType", EnDisposeWaste);
+                            tempCommand.Parameters.AddWithValue("@seFoodParcelInLast6Months", EnFoodParcel);
+                                                       
+                            // tempCommand.Parameters.AddWithValue("@EnWaterSupply1", EnWaterSupply1);
+                            //tempCommand.Parameters.AddWithValue("@EnUseForCooking1", EnUseForCooking1);
+                            //tempCommand.Parameters.AddWithValue("@EnUseForCooking2", EnUseForCooking2);
+                            //tempCommand.Parameters.AddWithValue("@EnDisposeWaste1", EnDisposeWaste1);
+                            tempID = (int)(tempCommand.ExecuteScalar());
+                            
                         }
                         catch { }
                         finally
                         {
                             tempConnectionEnv.Close();
+                        }
+                        #endregion
+
+                        #region Environmental Huts
+                        SqlConnection tempConnectionEnvHut = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionEnvHut.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningEnvironmentHuts", tempConnectionEnvHut);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 huts
+
+                            tempCommand.Parameters.AddWithValue("@seID", tempID);
+                            tempCommand.Parameters.AddWithValue("@sehutStructure", EnMainHutStructure);
+                            tempCommand.Parameters.AddWithValue("@sehutTypeOfRoof", EnMainHutTypeRoof);
+                            tempCommand.Parameters.AddWithValue("@sehutVentilation", EnMainHutVentilation);
+                            tempCommand.Parameters.AddWithValue("@sehutNumberOfRooms", EnMainHutTotalRooms);
+                            tempCommand.Parameters.AddWithValue("@sehutMain", true);
+                            tempCommand.ExecuteScalar();
+
+                            if (EnHut2Structure != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@sehutStructure", EnHut2Structure);
+                                tempCommand.Parameters.AddWithValue("@sehutTypeOfRoof", EnHut2TypeRoof);
+                                tempCommand.Parameters.AddWithValue("@sehutVentilation", EnHut2Ventilation);
+                                tempCommand.Parameters.AddWithValue("@sehutNumberOfRooms", EnHut2TotalRooms);
+                                tempCommand.Parameters.AddWithValue("@sehutMain", false);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (EnHut3Structure != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@sehutStructure", EnHut3Structure);
+                                tempCommand.Parameters.AddWithValue("@sehutTypeOfRoof", EnHut3TypeRoof);
+                                tempCommand.Parameters.AddWithValue("@sehutVentilation", EnHut3Ventilation);
+                                tempCommand.Parameters.AddWithValue("@sehutNumberOfRooms", EnHut3TotalRooms);
+                                tempCommand.Parameters.AddWithValue("@sehutMain", false);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (EnHut4Structure != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@sehutStructure", EnHut4Structure);
+                                tempCommand.Parameters.AddWithValue("@sehutTypeOfRoof", EnHut4TypeRoof);
+                                tempCommand.Parameters.AddWithValue("@sehutVentilation", EnHut4Ventilation);
+                                tempCommand.Parameters.AddWithValue("@sehutNumberOfRooms", EnHut4TotalRooms);
+                                tempCommand.Parameters.AddWithValue("@sehutMain", false);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (EnHut5Structure != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@sehutStructure", EnHut5Structure);
+                                tempCommand.Parameters.AddWithValue("@sehutTypeOfRoof", EnHut5TypeRoof);
+                                tempCommand.Parameters.AddWithValue("@sehutVentilation", EnHut5Ventilation);
+                                tempCommand.Parameters.AddWithValue("@sehutNumberOfRooms", EnHut5TotalRooms);
+                                tempCommand.Parameters.AddWithValue("@sehutMain", false);
+                                tempCommand.ExecuteScalar();
+                            }
+                            
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionEnvHut.Close();
+                        }
+                        #endregion
+
+                        #region Environmental Income
+                        SqlConnection tempConnectionEnvIncome = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionEnvIncome.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningEnvironmentalIncomeSources", tempConnectionEnvIncome);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 Income sources
+
+                            tempCommand.Parameters.AddWithValue("@seID", tempID);
+                            tempCommand.Parameters.AddWithValue("@seisName", EnSourceIncomeHousehold);
+
+                            tempCommand.ExecuteScalar();
+
+                            if (EnSourceIncomeHousehold2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@seisName", EnSourceIncomeHousehold2);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (EnSourceIncomeHousehold3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@seisName", EnSourceIncomeHousehold3);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (EnSourceIncomeHousehold4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@seisName", EnSourceIncomeHousehold4);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (EnSourceIncomeHousehold5 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@seisName", EnSourceIncomeHousehold5);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionEnvIncome.Close();
+                        }
+                        #endregion
+
+                        #region Environmental Living Away
+                        SqlConnection tempConnectionEnvLive = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionEnvLive.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningEnvironmentalLivingAway", tempConnectionEnvLive);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 Income sources
+
+                            tempCommand.Parameters.AddWithValue("@seID", tempID);
+                            tempCommand.Parameters.AddWithValue("@selaName", EnListWhere0);
+
+                            tempCommand.ExecuteScalar();
+
+                            if (EnListWhere1 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@selaName", EnListWhere1);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (EnListWhere2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@selaName", EnListWhere2);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (EnListWhere3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@selaName", EnListWhere3);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (EnListWhere4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@seID", tempID);
+                                tempCommand.Parameters.AddWithValue("@selaName", EnListWhere4);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionEnvLive.Close();
                         }
                         #endregion
 
@@ -504,143 +727,115 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionGen.Open();
-                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertGeneral", tempConnectionGen);
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningGeneral", tempConnectionGen);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
-                            tempCommand.Parameters.AddWithValue("@GenWeight", GenWeight);
-                            tempCommand.Parameters.AddWithValue("@GenHeight", GenHeight);
-                            tempCommand.Parameters.AddWithValue("@GenBMI", GenBMI);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentOnMeds", GenCurrentOnMeds);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentNotOnMeds", GenCurrentNotOnMeds);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentHPT", GenCurrentHPT);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentHPTListMeds1", GenCurrentHPTListMeds1);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentHPTListMeds2", GenCurrentHPTListMeds2);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentHPTListMeds3", GenCurrentHPTListMeds3);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentHPTListMeds4", GenCurrentHPTListMeds4);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentHPTListMeds5", GenCurrentHPTListMeds5);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentHPTStartDate", GenCurrentHPTStartDate);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentHPTDefaulting", GenCurrentHPTDefaulting);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentHPTReferClinic", GenCurrentHPTReferClinic);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentHPTReferNo", GenCurrentHPTReferNo);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentDiabetes", GenCurrentDiabetes);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentDiabetesListMeds1", GenCurrentDiabetesListMeds1);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentDiabetesListMeds2", GenCurrentDiabetesListMeds2);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentDiabetesListMeds3", GenCurrentDiabetesListMeds3);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentDiabetesListMeds4", GenCurrentDiabetesListMeds4);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentDiabetesListMeds5", GenCurrentDiabetesListMeds5);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentDiabetesStartDate", GenCurrentDiabetesStartDate);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentDiabetesDefaulting", GenCurrentDiabetesDefaulting);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentDiabetesReferClinic", GenCurrentDiabetesReferClinic);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentDiabetesReferNo", GenCurrentDiabetesReferNo);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentEpilepsy", GenCurrentEpilepsy);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentEpilepsyListMeds1", GenCurrentEpilepsyListMeds1);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentEpilepsyListMeds2", GenCurrentEpilepsyListMeds2);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentEpilepsyListMeds3", GenCurrentEpilepsyListMeds3);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentEpilepsyListMeds4", GenCurrentEpilepsyListMeds4);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentEpilepsyListMeds5", GenCurrentEpilepsyListMeds5);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentEpilepsyStartDate", GenCurrentEpilepsyStartDate);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentEpilepsyDefaulting", GenCurrentEpilepsyDefaulting);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentEpilepsyReferClinic", GenCurrentEpilepsyReferClinic);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentEpilepsyReferNo", GenCurrentEpilepsyReferNo);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentAsthma", GenCurrentAsthma);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentAsthmaListMeds1", GenCurrentAsthmaListMeds1);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentAsthmaListMeds2", GenCurrentAsthmaListMeds2);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentAsthmaListMeds3", GenCurrentAsthmaListMeds3);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentAsthmaListMeds4", GenCurrentAsthmaListMeds4);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentAsthmaListMeds5", GenCurrentAsthmaListMeds5);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentAsthmaStartDate", GenCurrentAsthmaStartDate);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentAsthmaDefaulting", GenCurrentAsthmaDefaulting);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentAsthmaReferClinic", GenCurrentAsthmaReferClinic);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentAsthmaReferNo", GenCurrentAsthmaReferNo);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentOther", GenCurrentOther);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentOtherListMeds1", GenCurrentOtherListMeds1);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentOtherListMeds2", GenCurrentOtherListMeds2);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentOtherListMeds3", GenCurrentOtherListMeds3);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentOtherListMeds4", GenCurrentOtherListMeds4);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentOtherListMeds5", GenCurrentOtherListMeds5);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentOtherStartDate", GenCurrentOtherStartDate);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentOtherDefaulting", GenCurrentOtherDefaulting);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentOtherReferClinic", GenCurrentOtherReferClinic);
-                            tempCommand.Parameters.AddWithValue("@GenCurrentOtherReferNo", GenCurrentOtherReferNo);
+                            tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                            tempCommand.Parameters.AddWithValue("@sgWeight", GenWeight);
+                            tempCommand.Parameters.AddWithValue("@sgHeight", GenHeight);
+                            tempCommand.Parameters.AddWithValue("@sgBMI", GenBMI);
+                            tempCommand.Parameters.AddWithValue("@sgOnMeds", GenCurrentOnMeds);
+                            tempCommand.Parameters.AddWithValue("@sgNotOnMeds", GenCurrentNotOnMeds);
+                            tempCommand.Parameters.AddWithValue("@sgHypertension", GenCurrentHPT);
+                            tempCommand.Parameters.AddWithValue("@sgHypertensionStartDate", GenCurrentHPTStartDate);
+                            tempCommand.Parameters.AddWithValue("@sgHypertensionDefaulting", GenCurrentHPTDefaulting);
+                            tempCommand.Parameters.AddWithValue("@sgHypertensionReferToClinic", GenCurrentHPTReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgHypertensionRefNo", GenCurrentHPTReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgDiabetes", GenCurrentDiabetes);
+                            tempCommand.Parameters.AddWithValue("@sgDiabetesStartDate", GenCurrentDiabetesStartDate);
+                            tempCommand.Parameters.AddWithValue("@sgDiabetesDefaulting", GenCurrentDiabetesDefaulting);
+                            tempCommand.Parameters.AddWithValue("@sgDiabetesReferToClinic", GenCurrentDiabetesReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgDiabetesRefNo", GenCurrentDiabetesReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsy", GenCurrentEpilepsy);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsyStartDate", GenCurrentEpilepsyStartDate);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsyDefaulting", GenCurrentEpilepsyDefaulting);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsyReferToClinic", GenCurrentEpilepsyReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsyRefNo", GenCurrentEpilepsyReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgAsthma", GenCurrentAsthma);
+                            tempCommand.Parameters.AddWithValue("@sgAsthmaStartDate", GenCurrentAsthmaStartDate);
+                            tempCommand.Parameters.AddWithValue("@sgAsthmaDefaulting", GenCurrentAsthmaDefaulting);
+                            tempCommand.Parameters.AddWithValue("@sgAsthmaReferToClinic", GenCurrentAsthmaReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgAsthmaRefNo", GenCurrentAsthmaReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgOther", GenCurrentOther);
+                            tempCommand.Parameters.AddWithValue("@sgOtherStartDate", GenCurrentOtherStartDate);
+                            tempCommand.Parameters.AddWithValue("@sgOtherDefaulting", GenCurrentOtherDefaulting);
+                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic", GenCurrentOtherReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgOtherRefNo", GenCurrentOtherReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@GenBPOnMedsSystolic", GenBPOnMedsSystolic);
-                            tempCommand.Parameters.AddWithValue("@GenBPOnMedsDiatolic", GenBPOnMedsDiatolic);
-                            tempCommand.Parameters.AddWithValue("@GenBPNotOnMedsSystolic", GenBPNotOnMedsSystolic);
-                            tempCommand.Parameters.AddWithValue("@GenBPNotOnMedsDiatolic", GenBPNotOnMedsDiatolic);
-                            tempCommand.Parameters.AddWithValue("@GenBPReferCHOW", GenBPReferCHOW);
-                            tempCommand.Parameters.AddWithValue("@GenBPReferClinic", GenBPReferClinic);
-                            tempCommand.Parameters.AddWithValue("@GenBPReferNo", GenBPReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgBPOnMedsSystolic", GenBPOnMedsSystolic);
+                            tempCommand.Parameters.AddWithValue("@sgBPOnMedsDiastolic", GenBPOnMedsDiatolic);
+                            tempCommand.Parameters.AddWithValue("@sgBPNotOnMedsSystolic", GenBPNotOnMedsSystolic);
+                            tempCommand.Parameters.AddWithValue("@sgBPNotOnMedsDiastolic", GenBPNotOnMedsDiatolic);
+                            tempCommand.Parameters.AddWithValue("@sgBPReferToCHOW", GenBPReferCHOW);
+                            tempCommand.Parameters.AddWithValue("@sgBPReferToClinic", GenBPReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgBPRefNo", GenBPReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@GenBSOnMeds", GenBSOnMeds);
-                            tempCommand.Parameters.AddWithValue("@GenBSNotOnMeds", GenBSNotOnMeds);
-                            tempCommand.Parameters.AddWithValue("@GenBSReferChow", GenBSReferChow);
-                            tempCommand.Parameters.AddWithValue("@GenBSReferClinic", GenBSReferClinic);
-                            tempCommand.Parameters.AddWithValue("@GenBSReferNo", GenBSReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgBSOnMeds", GenBSOnMeds);
+                            tempCommand.Parameters.AddWithValue("@sgBSNotOnMedsBSReading", GenBSNotOnMeds);
+                            tempCommand.Parameters.AddWithValue("@sgBSReferToChow", GenBSReferChow);
+                            tempCommand.Parameters.AddWithValue("@sgBSReferToClinic", GenBSReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgBSRefNo", GenBSReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@GenEPFitsMonth", GenEPFitsMonth);
-                            tempCommand.Parameters.AddWithValue("@GenEPReferClinic", GenEPReferClinic);
-                            tempCommand.Parameters.AddWithValue("@GenEPReferNo", GenEPReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsyFitsInLastMonth", GenEPFitsMonth);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsyReferToClinic2", GenEPReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsyRefNo2", GenEPReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@GenHIVPosStatus", GenHIVPosStatus);
-                            tempCommand.Parameters.AddWithValue("@GenHIVNegStatus", GenHIVNegStatus);
-                            tempCommand.Parameters.AddWithValue("@GenHIVTestDone", GenHIVTestDone);
-                            tempCommand.Parameters.AddWithValue("@GenHIVResult", GenHIVResult);
-                            tempCommand.Parameters.AddWithValue("@GenHIVReferClinic", GenHIVReferClinic);
-                            tempCommand.Parameters.AddWithValue("@GenHIVReferNo", GenHIVReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgHIVKnownPosStatus", GenHIVPosStatus);
+                            tempCommand.Parameters.AddWithValue("@sgHIVKnownNegStatus", GenHIVNegStatus);
+                            tempCommand.Parameters.AddWithValue("@sgHIVTestDone", GenHIVTestDone);
+                            tempCommand.Parameters.AddWithValue("@sgHIVResult", GenHIVResult);
+                            tempCommand.Parameters.AddWithValue("@sgHIVReferToClinic", GenHIVReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgHIVRefNo", GenHIVReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@GenPregCurrently", GenPregCurrently);
-                            tempCommand.Parameters.AddWithValue("@GenPregPossible", GenPregPossible);
-                            tempCommand.Parameters.AddWithValue("@GenPregTestDate", GenPregTestDate);
-                            tempCommand.Parameters.AddWithValue("@GenPregResult", GenPregResult);
-                            tempCommand.Parameters.AddWithValue("@GenPregReferClinic", GenPregReferClinic);
-                            tempCommand.Parameters.AddWithValue("@GenPregReferNo", GenPregReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgPregnancyCurrentlyPregnant", GenPregCurrently);
+                            tempCommand.Parameters.AddWithValue("@sgPregnancyPossibleThatPregnant", GenPregPossible);
+                            tempCommand.Parameters.AddWithValue("@sgPregnancyTestDone", GenPregTestDate);
+                            tempCommand.Parameters.AddWithValue("@sgPregnancyResult", GenPregResult);
+                            tempCommand.Parameters.AddWithValue("@sgPregnancyReferToClinic", GenPregReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgPregancyRefNo", GenPregReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@GenTBCurrentHave", GenTBCurrentHave);
-                            tempCommand.Parameters.AddWithValue("@GenTBCurrentMeds1", GenTBCurrentMeds1);
-                            tempCommand.Parameters.AddWithValue("@GenTBCurrentMeds2", GenTBCurrentMeds2);
-                            tempCommand.Parameters.AddWithValue("@GenTBCurrentMeds3", GenTBCurrentMeds3);
-                            tempCommand.Parameters.AddWithValue("@GenTBCurrentMeds4", GenTBCurrentMeds4);
-                            tempCommand.Parameters.AddWithValue("@GenTBCurrentMeds5", GenTBCurrentMeds5);
-                            tempCommand.Parameters.AddWithValue("@GenTBCurrentDefaulting", GenTBCurrentDefaulting);
-                            tempCommand.Parameters.AddWithValue("@GenTBSymtomWeightLoss", GenTBSymtomWeightLoss);
-                            tempCommand.Parameters.AddWithValue("@GenTBSymtomSweat", GenTBSymtomSweat);
-                            tempCommand.Parameters.AddWithValue("@GenTBSymtomFeaver", GenTBSymtomFeaver);
-                            tempCommand.Parameters.AddWithValue("@GenTBSymtomCough", GenTBSymtomCough);
-                            tempCommand.Parameters.AddWithValue("@GenTBSymtomApetite", GenTBSymtomApetite);
-                            tempCommand.Parameters.AddWithValue("@GenTBSymtomReferClininc", GenTBSymtomReferClininc);
-                            tempCommand.Parameters.AddWithValue("@GenTBSymtomReferNo", GenTBSymtomReferNo);
-                            tempCommand.Parameters.AddWithValue("@GenTBTraceHousholdOnMeds", GenTBTraceHousholdOnMeds);
-                            tempCommand.Parameters.AddWithValue("@GenTBTraceReferClininc", GenTBTraceReferClininc);
-                            tempCommand.Parameters.AddWithValue("@GenTBTraceReferNo", GenTBTraceReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgTBCurrentlyHaveTB", GenTBCurrentHave);
+                            tempCommand.Parameters.AddWithValue("@sgTBDefaulting", GenTBCurrentDefaulting);
+                            tempCommand.Parameters.AddWithValue("@sgTBRecentUnplannedWeightLoss", GenTBSymtomWeightLoss);
+                            tempCommand.Parameters.AddWithValue("@sgTBExcessiveSweatingAtNight", GenTBSymtomSweat);
+                            tempCommand.Parameters.AddWithValue("@sgTBFeverOver2Weeks", GenTBSymtomFeaver);
+                            tempCommand.Parameters.AddWithValue("@sgTBCoughMoreThan2Weeks", GenTBSymtomCough);
+                            tempCommand.Parameters.AddWithValue("@sgTBLossOfApetite", GenTBSymtomApetite);
+                            tempCommand.Parameters.AddWithValue("@sgTBReferToClinic", GenTBSymtomReferClininc);
+                            tempCommand.Parameters.AddWithValue("@sgTBRefNo", GenTBSymtomReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgTBContactTracingHouseholdMemberOnMeds", GenTBTraceHousholdOnMeds);
+                            tempCommand.Parameters.AddWithValue("@sgTBContactTracingReferToClinic", GenTBTraceReferClininc);
+                            tempCommand.Parameters.AddWithValue("@sgTBContactTracingRefNo", GenTBTraceReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgTBHouseholdMemberOnTBMeds", null);
 
-                            tempCommand.Parameters.AddWithValue("@GenOtherBloodUrine", GenOtherBloodUrine);
-                            tempCommand.Parameters.AddWithValue("@GenOtherReferClinic1", GenOtherReferClinic1);
-                            tempCommand.Parameters.AddWithValue("@GenOtherReferNo1", GenOtherReferNo1);
-                            tempCommand.Parameters.AddWithValue("@GenOtherSmoking", GenOtherSmoking);
-                            tempCommand.Parameters.AddWithValue("@GenOtherAlcohol", GenOtherAlcohol);
-                            tempCommand.Parameters.AddWithValue("@GenOtherDiarrhoea", GenOtherDiarrhoea);
-                            tempCommand.Parameters.AddWithValue("@GenOtherReferClinic2", GenOtherReferClinic2);
-                            tempCommand.Parameters.AddWithValue("@GenOtherReferNo2", GenOtherReferNo2);
-                            tempCommand.Parameters.AddWithValue("@GenOtherInitiationSchool", GenOtherInitiationSchool);
-                            tempCommand.Parameters.AddWithValue("@GenOtherLegCramps", GenOtherLegCramps);
-                            tempCommand.Parameters.AddWithValue("@GenOtherLegNumb", GenOtherLegNumb);
-                            tempCommand.Parameters.AddWithValue("@GenOtherFootUlcer", GenOtherFootUlcer);
-                            tempCommand.Parameters.AddWithValue("@GenOtherReferClinic3", GenOtherReferClinic3);
-                            tempCommand.Parameters.AddWithValue("@GenOtherReferNo3", GenOtherReferNo3);
+                            tempCommand.Parameters.AddWithValue("@sgOtherBloodInUrine", GenOtherBloodUrine);
+                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic2", GenOtherReferClinic1);
+                            tempCommand.Parameters.AddWithValue("@sgOtherRefNo2", GenOtherReferNo1);
+                            tempCommand.Parameters.AddWithValue("@sgOtherSmoking", GenOtherSmoking);
+                            tempCommand.Parameters.AddWithValue("@sgOtherAlcoholUnitsPerWeek", GenOtherAlcohol);
+                            tempCommand.Parameters.AddWithValue("@sgOtherDiarrhoeaOver3Days", GenOtherDiarrhoea);
+                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic3", GenOtherReferClinic2);
+                            tempCommand.Parameters.AddWithValue("@sgOtherRefNo3", GenOtherReferNo2);
+                            tempCommand.Parameters.AddWithValue("@sgOtherAttendedInitiationSchool", GenOtherInitiationSchool);
+                            tempCommand.Parameters.AddWithValue("@sgOtherLegCrampsOver2Weeks", GenOtherLegCramps);
+                            tempCommand.Parameters.AddWithValue("@sgOtherLegNumbnessOver2Weeks", GenOtherLegNumb);
+                            tempCommand.Parameters.AddWithValue("@sgOtherFootUlcer", GenOtherFootUlcer);
+                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic4", GenOtherReferClinic3);
+                            tempCommand.Parameters.AddWithValue("@sgOtherRefNo4", GenOtherReferNo3);
 
-                            tempCommand.Parameters.AddWithValue("@GenElderAmputation", GenElderAmputation);
-                            tempCommand.Parameters.AddWithValue("@GenElderVision", GenElderVision);
-                            tempCommand.Parameters.AddWithValue("@GenElderBedridden", GenElderBedridden);
-                            tempCommand.Parameters.AddWithValue("@GenElderMovingAid", GenElderMovingAid);
-                            tempCommand.Parameters.AddWithValue("@GenElderWash", GenElderWash);
-                            tempCommand.Parameters.AddWithValue("@GenElderFeed", GenElderFeed);
-                            tempCommand.Parameters.AddWithValue("@GenElderDress", GenElderDress);
-                            tempCommand.Parameters.AddWithValue("@GenElderReferClinic", GenElderReferClinic);
-                            tempCommand.Parameters.AddWithValue("@GenElderReferNo", GenElderReferNo);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyAmputation", GenElderAmputation);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyPassVisionTest", GenElderVision);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyBedridden", GenElderBedridden);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyUseAidToMove", GenElderMovingAid);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyWashYourself", GenElderWash);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyFeedYourself", GenElderFeed);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyDressYourself", GenElderDress);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyReferToClinic", GenElderReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyRefNo", GenElderReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@GenFamilyPlan", GenFamilyPlan);
+                            tempCommand.Parameters.AddWithValue("@sgFamilyPlanningAdviceGiven", GenFamilyPlan);
                             
-                            tempCommand.ExecuteNonQuery();
+                            tempIDGen = (int)(tempCommand.ExecuteScalar());
+
                         }
                         catch { }
                         finally
@@ -649,27 +844,371 @@ namespace Impilo_App.DataImport
                         }
                         #endregion
 
+                        #region General HPT Meds
+                        SqlConnection tempConnectionGenHPTMeds = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionGenHPTMeds.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningGeneralMedicalConditionsMeds", tempConnectionGenHPTMeds);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 Meds
+
+                            tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentHPTListMeds1);
+                            tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                            tempCommand.Parameters.AddWithValue("@mcID", 1);  //Hypertention
+
+                            tempCommand.ExecuteScalar();
+
+                            if (GenCurrentHPTListMeds2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentHPTListMeds2);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 1);  //Hypertention
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentHPTListMeds3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentHPTListMeds3);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 1);  //Hypertention
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentHPTListMeds4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentHPTListMeds4);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 1);  //Hypertention
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentHPTListMeds5 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentHPTListMeds5);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 1);  //Hypertention;
+                                tempCommand.ExecuteScalar();
+                            }
+
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionGenHPTMeds.Close();
+                        }
+                        #endregion
+
+                        #region General Diabetes Meds
+                        SqlConnection tempConnectionGenDiabetesMeds = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionGenDiabetesMeds.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningGeneralMedicalConditionsMeds", tempConnectionGenDiabetesMeds);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 Meds
+
+                            tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentDiabetesListMeds1);
+                            tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                            tempCommand.Parameters.AddWithValue("@mcID", 2);  //Diabetes
+
+                            tempCommand.ExecuteScalar();
+
+                            if (GenCurrentDiabetesListMeds2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentDiabetesListMeds2);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 2);  
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentDiabetesListMeds3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentDiabetesListMeds3);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 2);  
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentDiabetesListMeds4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentDiabetesListMeds4);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 2);  
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentDiabetesListMeds5 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentDiabetesListMeds5);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 2);  
+                                tempCommand.ExecuteScalar();
+                            }
+
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionGenDiabetesMeds.Close();
+                        }
+                        #endregion
+
+                        #region General Epi Meds
+                        SqlConnection tempConnectionGenEpiMeds = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionGenEpiMeds.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningGeneralMedicalConditionsMeds", tempConnectionGenEpiMeds);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 Meds
+
+                            tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentEpilepsyListMeds1);
+                            tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                            tempCommand.Parameters.AddWithValue("@mcID", 3);  //Epilepsy
+
+                            tempCommand.ExecuteScalar();
+
+                            if (GenCurrentEpilepsyListMeds2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentEpilepsyListMeds2);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 3);  
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentEpilepsyListMeds3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentEpilepsyListMeds2);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 3);  
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentEpilepsyListMeds4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentEpilepsyListMeds2);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 3);  
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentEpilepsyListMeds5 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentEpilepsyListMeds2);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 3);  
+                                tempCommand.ExecuteScalar();
+                            }
+
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionGenEpiMeds.Close();
+                        }
+                        #endregion
+
+                        #region General Asthma Meds
+                        SqlConnection tempConnectionGenAsthmaMeds = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionGenAsthmaMeds.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningGeneralMedicalConditionsMeds", tempConnectionGenAsthmaMeds);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 Meds
+
+                            tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentAsthmaListMeds1);
+                            tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                            tempCommand.Parameters.AddWithValue("@mcID", 4);  //Asthma
+
+                            tempCommand.ExecuteScalar();
+
+                            if (GenCurrentAsthmaListMeds2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentAsthmaListMeds2);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 4);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentAsthmaListMeds3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentAsthmaListMeds3);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 4);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentAsthmaListMeds4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentAsthmaListMeds4);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 4);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentAsthmaListMeds5 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentAsthmaListMeds5);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 4);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionGenAsthmaMeds.Close();
+                        }
+                        #endregion
+
+                        #region General Other Meds
+                        SqlConnection tempConnectionGenOtherMeds = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionGenOtherMeds.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningGeneralMedicalConditionsMeds", tempConnectionGenOtherMeds);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 Meds
+
+                            tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentOtherListMeds1);
+                            tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                            tempCommand.Parameters.AddWithValue("@mcID", 9);  //Other
+
+                            tempCommand.ExecuteScalar();
+
+                            if (GenCurrentOtherListMeds2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentOtherListMeds2);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 9);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentOtherListMeds3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentOtherListMeds3);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 9);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentOtherListMeds4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentOtherListMeds4);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 9);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenCurrentOtherListMeds5 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenCurrentOtherListMeds5);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 9);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionGenOtherMeds.Close();
+                        }
+                        #endregion
+
+                        #region General TB Meds
+                        SqlConnection tempConnectionGenTBMeds = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionGenTBMeds.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningGeneralMedicalConditionsMeds", tempConnectionGenTBMeds);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 Meds
+
+                            tempCommand.Parameters.AddWithValue("@sgmcmName", GenTBCurrentMeds1);
+                            tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                            tempCommand.Parameters.AddWithValue("@mcID", 6);  //TB
+
+                            tempCommand.ExecuteScalar();
+
+                            if (GenTBCurrentMeds2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenTBCurrentMeds2);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 6);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenTBCurrentMeds3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenTBCurrentMeds3);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 6);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenTBCurrentMeds4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenTBCurrentMeds4);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 6);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (GenTBCurrentMeds5 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@sgmcmName", GenTBCurrentMeds5);
+                                tempCommand.Parameters.AddWithValue("@sgID", tempIDGen);
+                                tempCommand.Parameters.AddWithValue("@mcID", 6);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionGenTBMeds.Close();
+                        }
+                        #endregion
+
+
                         #region Hypertention
                         SqlConnection tempConnectionHyp = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
                         try
                         {
                             tempConnectionHyp.Open();
-                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertHypertention", tempConnectionHyp);
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningHypertension", tempConnectionHyp);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
-                            tempCommand.Parameters.AddWithValue("@HypYear", HypYear);
-                            tempCommand.Parameters.AddWithValue("@HypHeadache", HypHeadache);
-                            tempCommand.Parameters.AddWithValue("@HypVision", HypVision);
-                            tempCommand.Parameters.AddWithValue("@HypShortBreath", HypShortBreath);
-                            tempCommand.Parameters.AddWithValue("@HypConfusion", HypConfusion);
-                            tempCommand.Parameters.AddWithValue("@HypChestPain", HypChestPain);
-                            tempCommand.Parameters.AddWithValue("@HypReferClinic", HypReferClinic);
-                            tempCommand.Parameters.AddWithValue("@HypReferNo", HypReferNo);
-                            tempCommand.Parameters.AddWithValue("@HypHadStroke", HypHadStroke);
-                            tempCommand.Parameters.AddWithValue("@HypHadStrokeYear", HypHadStrokeYear);
-                            tempCommand.Parameters.AddWithValue("@HypFamilyOnMeds", HypFamilyOnMeds);
-                            tempCommand.Parameters.AddWithValue("@HypFamilyStroke", HypFamilyStroke);        
+                            tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                            tempCommand.Parameters.AddWithValue("@shYearOfDiagnosis", HypYear);
+                            tempCommand.Parameters.AddWithValue("@shShortnessOfBreath", HypShortBreath);
+                            tempCommand.Parameters.AddWithValue("@shChestPain", HypChestPain);
+                            tempCommand.Parameters.AddWithValue("@shReferralToClinic", HypReferClinic);
+                            tempCommand.Parameters.AddWithValue("@shRefNo", HypReferNo);
+                            tempCommand.Parameters.AddWithValue("@shEverHadAStroke", HypHadStroke);
+                            tempCommand.Parameters.AddWithValue("@shYearOfStroke", HypHadStrokeYear);
+                            tempCommand.Parameters.AddWithValue("@shHowManyInFamilyOnMedsForHypertension", HypFamilyOnMeds);
+                            tempCommand.Parameters.AddWithValue("@shAnyoneInFamilyHadStroke", HypFamilyStroke);        
+
+                            //tempCommand.Parameters.AddWithValue("@HypHeadache", HypHeadache);
+                            //tempCommand.Parameters.AddWithValue("@HypVision", HypVision);
+                            //tempCommand.Parameters.AddWithValue("@HypConfusion", HypConfusion);
 
                             tempCommand.ExecuteNonQuery();
                         }
@@ -686,20 +1225,20 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionDia.Open();
-                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertDiabetes", tempConnectionDia);
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningDiabetes", tempConnectionDia);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
-                            tempCommand.Parameters.AddWithValue("@DYear", DYear);
-                            tempCommand.Parameters.AddWithValue("@DThirsty", DThirsty);
-                            tempCommand.Parameters.AddWithValue("@DWeightloss", DWeightloss);
-                            tempCommand.Parameters.AddWithValue("@DVision", DVision);
-                            tempCommand.Parameters.AddWithValue("@DUrinate", DUrinate);
-                            tempCommand.Parameters.AddWithValue("@DNausea", DNausea);
-                            tempCommand.Parameters.AddWithValue("@DFoot", DFoot);
-                            tempCommand.Parameters.AddWithValue("@DReferClinic", DReferClinic);
-                            tempCommand.Parameters.AddWithValue("@DReferNo", DReferNo);
-                            tempCommand.Parameters.AddWithValue("@DFamilyMember", DFamilyMember);
-
+                            tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                            tempCommand.Parameters.AddWithValue("@sdYearOfDiagnosis", DYear);
+                            tempCommand.Parameters.AddWithValue("@sdWeightLost", DWeightloss);
+                            tempCommand.Parameters.AddWithValue("@sdUrinatingMore", DUrinate);
+                            tempCommand.Parameters.AddWithValue("@sdNauseaOrVomiting", DNausea);
+                            tempCommand.Parameters.AddWithValue("@sdReferralToClinic", DReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sdRefNo", DReferNo);
+                            tempCommand.Parameters.AddWithValue("@sdFamilyMemberWith", DFamilyMember);
+                            tempCommand.Parameters.AddWithValue("@sdBlurredVision", DVision);
+                            tempCommand.Parameters.AddWithValue("@sdFootExamResult", DFoot);
+                            //tempCommand.Parameters.AddWithValue("@DThirsty", DThirsty);
+                                                        
                             tempCommand.ExecuteNonQuery();
                         }
                         catch { }
@@ -715,27 +1254,75 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionHIV.Open();
-                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertHIV", tempConnectionHIV);
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningHIV", tempConnectionHIV);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
-                            tempCommand.Parameters.AddWithValue("@HIVYear", HIVYear);
-                            tempCommand.Parameters.AddWithValue("@HIVOnMeds", HIVOnMeds);
-                            tempCommand.Parameters.AddWithValue("@HIVListMeds1", HIVListMeds1);
-                            tempCommand.Parameters.AddWithValue("@HIVListMeds2", HIVListMeds2);
-                            tempCommand.Parameters.AddWithValue("@HIVListMeds3", HIVListMeds3);
-                            tempCommand.Parameters.AddWithValue("@HIVListMeds4", HIVListMeds4);
-                            tempCommand.Parameters.AddWithValue("@HIVListMeds5", HIVListMeds5);
-                            tempCommand.Parameters.AddWithValue("@HIVAdherence", HIVAdherence);
-                            tempCommand.Parameters.AddWithValue("@HIVReferClinic", HIVReferClinic);
-                            tempCommand.Parameters.AddWithValue("@HIVReferNo", HIVReferNo);
-                            tempCommand.Parameters.AddWithValue("@HIVARVNo", HIVARVNo);
+                            tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                            tempCommand.Parameters.AddWithValue("@shivYearOfDiagnosis", HIVYear);
+                            tempCommand.Parameters.AddWithValue("@shivOnMeds", HIVOnMeds);
+                            tempCommand.Parameters.AddWithValue("@shivAdherenceOK", HIVAdherence);
+                            tempCommand.Parameters.AddWithValue("@shivReferToClinic", HIVReferClinic);
+                            tempCommand.Parameters.AddWithValue("@shivRefNo", HIVReferNo);
+                            tempCommand.Parameters.AddWithValue("@shivARVFileNo", HIVARVNo);
 
-                            tempCommand.ExecuteNonQuery();
+                            tempIDHIV = (int)(tempCommand.ExecuteScalar());
                         }
                         catch { }
                         finally
                         {
                             tempConnectionHIV.Close();
+                        }
+                        #endregion
+
+                        #region HIV Meds
+                        SqlConnection tempConnectionHIVMeds = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionHIVMeds.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningHIVMeds", tempConnectionHIVMeds);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 Meds
+
+                            tempCommand.Parameters.AddWithValue("@shivmName", HIVListMeds1);
+                            tempCommand.Parameters.AddWithValue("@shivID", tempIDHIV);
+                            
+                            tempCommand.ExecuteScalar();
+
+                            if (HIVListMeds2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@shivmName", HIVListMeds2);
+                                tempCommand.Parameters.AddWithValue("@shivID", tempIDHIV);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (HIVListMeds3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@shivmName", HIVListMeds3);
+                                tempCommand.Parameters.AddWithValue("@shivID", tempIDHIV);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (HIVListMeds4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@shivmName", HIVListMeds4);
+                                tempCommand.Parameters.AddWithValue("@shivID", tempIDHIV);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (HIVListMeds5 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@shivmName", HIVListMeds5);
+                                tempCommand.Parameters.AddWithValue("@shivID", tempIDHIV);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionHIVMeds.Close();
                         }
                         #endregion
 
@@ -745,28 +1332,28 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionMat.Open();
-                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertMaternalHealth", tempConnectionMat);
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningMaternalHealth", tempConnectionMat);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
-                            tempCommand.Parameters.AddWithValue("@MHPregnantBefore", MHPregnantBefore);
-                            tempCommand.Parameters.AddWithValue("@MHNoPregnant", MHNoPregnant);
-                            tempCommand.Parameters.AddWithValue("@MHNOSuccessful", MHNOSuccessful);
-                            tempCommand.Parameters.AddWithValue("@MHWhereDeliveredLast", MHWhereDeliveredLast);
-                            tempCommand.Parameters.AddWithValue("@MHCaesarian", MHCaesarian);
-                            tempCommand.Parameters.AddWithValue("@MHBabyUnder25", MHBabyUnder25);
-                            tempCommand.Parameters.AddWithValue("@MHChildrenDied1", MHChildrenDied1);
-                            tempCommand.Parameters.AddWithValue("@MHChildrenDied15", MHChildrenDied15);
-                            tempCommand.Parameters.AddWithValue("@MHPAPSmear", MHPAPSmear);
-                            tempCommand.Parameters.AddWithValue("@MHBloodResult", MHBloodResult);
-                            tempCommand.Parameters.AddWithValue("@MHFirstANCDate", MHFirstANCDate);
-                            tempCommand.Parameters.AddWithValue("@MHLastANCDate", MHLastANCDate);
-                            tempCommand.Parameters.AddWithValue("@MHReferClinic", MHReferClinic);
-                            tempCommand.Parameters.AddWithValue("@MHReferNo", MHReferNo);
-                            tempCommand.Parameters.AddWithValue("@MHNextANCDate", MHNextANCDate);
-                            tempCommand.Parameters.AddWithValue("@MHExpectedDeliverDate", MHExpectedDeliverDate);
-                            tempCommand.Parameters.AddWithValue("@MHBreastfeed", MHBreastfeed);
-                            tempCommand.Parameters.AddWithValue("@MHFormula", MHFormula);
-                            tempCommand.Parameters.AddWithValue("@MHRegisteredMomConnect", MHRegisteredMomConnect);
+                            tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                            tempCommand.Parameters.AddWithValue("@smhPregnantBefore", MHPregnantBefore);
+                            tempCommand.Parameters.AddWithValue("@smhNoOfPregnancies", MHNoPregnant);
+                            tempCommand.Parameters.AddWithValue("@smhHowManySuccessful", MHNOSuccessful);
+                            tempCommand.Parameters.AddWithValue("@smhWhereDeliveredLastBaby", MHWhereDeliveredLast);
+                            tempCommand.Parameters.AddWithValue("@smhCaesarian", MHCaesarian);
+                            tempCommand.Parameters.AddWithValue("@smhBabyUnder2KG", MHBabyUnder25);
+                            tempCommand.Parameters.AddWithValue("@smhChildrenDiedUnder1Year", MHChildrenDied1);
+                            tempCommand.Parameters.AddWithValue("@smhChildrenDiedBetween1To5Years", MHChildrenDied15);
+                            tempCommand.Parameters.AddWithValue("@smhPAPSmearInLast5Years", MHPAPSmear);
+                            tempCommand.Parameters.AddWithValue("@smhLastBloodTestResult", MHBloodResult);
+                            tempCommand.Parameters.AddWithValue("@smhCurrentDateOfFirstANC", MHFirstANCDate);
+                            tempCommand.Parameters.AddWithValue("@smhCurrentDateOfLastANC", MHLastANCDate);
+                            tempCommand.Parameters.AddWithValue("@smhReferredToClinic", MHReferClinic);
+                            tempCommand.Parameters.AddWithValue("@smhRefNo", MHReferNo);
+                            tempCommand.Parameters.AddWithValue("@smhDateOfNextANC", MHNextANCDate);
+                            tempCommand.Parameters.AddWithValue("@smhExpectedDeliveryDate", MHExpectedDeliverDate);
+                            tempCommand.Parameters.AddWithValue("@smhIntendBreastfeed", MHBreastfeed);
+                            tempCommand.Parameters.AddWithValue("@smhIntendFormulaFeed", MHFormula);
+                            tempCommand.Parameters.AddWithValue("@smhRegisteredOnMomConnect", MHRegisteredMomConnect);
 
                             tempCommand.ExecuteNonQuery();
                         }
@@ -783,47 +1370,143 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionChild.Open();
-                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertChildHealth", tempConnectionChild);
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningChildHealth", tempConnectionChild);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
-                            tempCommand.Parameters.AddWithValue("@CHNameMother", CHNameMother);
-                            tempCommand.Parameters.AddWithValue("@CHChildRTHC", CHChildRTHC);
-                            tempCommand.Parameters.AddWithValue("@CHReferClinic1", CHReferClinic1);
-                            tempCommand.Parameters.AddWithValue("@CHReferNo1", CHReferNo1);
-                            tempCommand.Parameters.AddWithValue("@CHMotherHIV", CHMotherHIV);
-                            tempCommand.Parameters.AddWithValue("@CHChildBreastfeed", CHChildBreastfeed);
-                            tempCommand.Parameters.AddWithValue("@CHHowLong", CHHowLong);
-                            tempCommand.Parameters.AddWithValue("@CHChildOnNevirapine", CHChildOnNevirapine);
-                            tempCommand.Parameters.AddWithValue("@CHPCR", CHPCR);
-                            tempCommand.Parameters.AddWithValue("@CHPCRResult", CHPCRResult);
-                            tempCommand.Parameters.AddWithValue("@CHReferClininc2", CHReferClininc2);
-                            tempCommand.Parameters.AddWithValue("@CHReferNo2", CHReferNo2);
-                            tempCommand.Parameters.AddWithValue("@CHImmunisationUpToDate", CHImmunisationUpToDate);
-                            tempCommand.Parameters.AddWithValue("@CHImmunisationOutstanding1", CHImmunisationOutstanding1);
-                            tempCommand.Parameters.AddWithValue("@CHImmunisationOutstanding2", CHImmunisationOutstanding2);
-                            tempCommand.Parameters.AddWithValue("@CHImmunisationOutstanding3", CHImmunisationOutstanding3);
-                            tempCommand.Parameters.AddWithValue("@CHImmunisationOutstanding4", CHImmunisationOutstanding4);
-                            tempCommand.Parameters.AddWithValue("@CHImmunisationOutstanding5", CHImmunisationOutstanding5);
-                            tempCommand.Parameters.AddWithValue("@CHReferClinic3", CHReferClinic3);
-                            tempCommand.Parameters.AddWithValue("@CHReferNo3", CHReferNo3);
-                            tempCommand.Parameters.AddWithValue("@CHMedsGiven", CHMedsGiven);
-                            tempCommand.Parameters.AddWithValue("@CHWalkAppropriate", CHWalkAppropriate);
-                            tempCommand.Parameters.AddWithValue("@CHTalkAppropriate", CHTalkAppropriate);
-                            tempCommand.Parameters.AddWithValue("@CHChildConcerns1", CHChildConcerns1);
-                            tempCommand.Parameters.AddWithValue("@CHChildConcerns2", CHChildConcerns2);
-                            tempCommand.Parameters.AddWithValue("@CHChildConcerns3", CHChildConcerns3);
-                            tempCommand.Parameters.AddWithValue("@CHChildConcerns4", CHChildConcerns4);
-                            tempCommand.Parameters.AddWithValue("@CHChildConcerns5", CHChildConcerns5);
-                            tempCommand.Parameters.AddWithValue("@CHReferClinic4", CHReferClinic4);
-                            tempCommand.Parameters.AddWithValue("@CHReferOVC", CHReferOVC);
-                            tempCommand.Parameters.AddWithValue("@CHReferNo4", CHReferNo4);                            
+                            tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                            tempCommand.Parameters.AddWithValue("@schNameOfMother", CHNameMother);
+                            tempCommand.Parameters.AddWithValue("@schChildWithRTHC", CHChildRTHC);
+                            tempCommand.Parameters.AddWithValue("@schReferToClinic", CHReferClinic1);
+                            tempCommand.Parameters.AddWithValue("@schRefNo", CHReferNo1);
+                            tempCommand.Parameters.AddWithValue("@schMotherHIVPos", CHMotherHIV);
+                            tempCommand.Parameters.AddWithValue("@schChildBreastfed", CHChildBreastfeed);
+                            tempCommand.Parameters.AddWithValue("@schHowLong", CHHowLong);
+                            tempCommand.Parameters.AddWithValue("@schChildEverOnNevirapine", CHChildOnNevirapine);
+                            tempCommand.Parameters.AddWithValue("@schPCRDone", CHPCR);
+                            tempCommand.Parameters.AddWithValue("@schPCRResult", CHPCRResult);
+                            tempCommand.Parameters.AddWithValue("@schReferToClinic2", CHReferClininc2);
+                            tempCommand.Parameters.AddWithValue("@schRefNo2", CHReferNo2);
+                            tempCommand.Parameters.AddWithValue("@schImmunisationUpToDate", CHImmunisationUpToDate);
+                            tempCommand.Parameters.AddWithValue("@schReferToClinic3", CHReferClinic3);
+                            tempCommand.Parameters.AddWithValue("@schRefNo3", CHReferNo3);
+                            tempCommand.Parameters.AddWithValue("@schVitAAndWormMedsGivenEachMonth", CHMedsGiven);
+                            tempCommand.Parameters.AddWithValue("@schWalkAppropriateForAge", CHWalkAppropriate);
+                            tempCommand.Parameters.AddWithValue("@schTalkAppropriateForAge", CHTalkAppropriate);
+                            tempCommand.Parameters.AddWithValue("@schReferToClinic4", CHReferClinic4);
+                            tempCommand.Parameters.AddWithValue("@schReferToOVC", CHReferOVC);
+                            tempCommand.Parameters.AddWithValue("@schRefNo4", CHReferNo4);
 
-                            tempCommand.ExecuteNonQuery();
+                            tempIDChild = (int)(tempCommand.ExecuteScalar());
                         }
                         catch { }
                         finally
                         {
                             tempConnectionChild.Close();
+                        }
+                        #endregion
+
+                        #region Child Health Immunisations
+                        SqlConnection tempConnectionChildImm = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionChildImm.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningChildHealthImmunisationsOutstanding", tempConnectionChildImm);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 Immunisations
+
+                            tempCommand.Parameters.AddWithValue("@schioName", CHImmunisationOutstanding1);
+                            tempCommand.Parameters.AddWithValue("@schID", tempIDChild);
+
+                            tempCommand.ExecuteScalar();
+
+                            if (CHImmunisationOutstanding2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@schioName", CHImmunisationOutstanding2);
+                                tempCommand.Parameters.AddWithValue("@schID", tempIDChild);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (CHImmunisationOutstanding3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@schioName", CHImmunisationOutstanding3);
+                                tempCommand.Parameters.AddWithValue("@schID", tempIDChild);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (CHImmunisationOutstanding4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@schioName", CHImmunisationOutstanding4);
+                                tempCommand.Parameters.AddWithValue("@schID", tempIDChild);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (CHImmunisationOutstanding5 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@schioName", CHImmunisationOutstanding5);
+                                tempCommand.Parameters.AddWithValue("@schID", tempIDChild);
+                                tempCommand.ExecuteScalar();
+                            }
+
+
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionChildImm.Close();
+                        }
+                        #endregion
+
+                        #region Child Health Concerns
+                        SqlConnection tempConnectionChildCon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                        try
+                        {
+                            tempConnectionChildCon.Open();
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningChildHealthConcerns", tempConnectionChildCon);
+                            tempCommand.CommandType = CommandType.StoredProcedure;
+
+                            //Provision for 5 Immunisations
+
+                            tempCommand.Parameters.AddWithValue("@schcName", CHChildConcerns1);
+                            tempCommand.Parameters.AddWithValue("@schID", tempIDChild);
+
+                            tempCommand.ExecuteScalar();
+
+                            if (CHChildConcerns2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@schcName", CHChildConcerns2);
+                                tempCommand.Parameters.AddWithValue("@schID", tempIDChild);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (CHChildConcerns3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@schcName", CHChildConcerns3);
+                                tempCommand.Parameters.AddWithValue("@schID", tempIDChild);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (CHChildConcerns4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@schcName", CHChildConcerns4);
+                                tempCommand.Parameters.AddWithValue("@schID", tempIDChild);
+                                tempCommand.ExecuteScalar();
+                            }
+
+                            if (CHChildConcerns5 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@schcName", CHChildConcerns5);
+                                tempCommand.Parameters.AddWithValue("@schID", tempIDChild);
+                                tempCommand.ExecuteScalar();
+                            }
+
+
+                        }
+                        catch { }
+                        finally
+                        {
+                            tempConnectionChildCon.Close();
                         }
                         #endregion
 
@@ -833,24 +1516,41 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionOther.Open();
-                            SqlCommand tempCommand = new SqlCommand("ScreeningImportInsertOther", tempConnectionOther);
+                            SqlCommand tempCommand = new SqlCommand("AddScreeningOther", tempConnectionOther);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@ScreeningID", ScreeningID);
-                            tempCommand.Parameters.AddWithValue("@OCondition1", OCondition1);
-                            tempCommand.Parameters.AddWithValue("@OReferClinic1", OReferClinic1);
-                            tempCommand.Parameters.AddWithValue("@OReferNo1", OReferNo1);
-                            tempCommand.Parameters.AddWithValue("@OCondition2", OCondition2);
-                            tempCommand.Parameters.AddWithValue("@OReferClinic2", OReferClinic2);
-                            tempCommand.Parameters.AddWithValue("@OReferNo2", OReferNo2);
-                            tempCommand.Parameters.AddWithValue("@OCondition3", OCondition3);
-                            tempCommand.Parameters.AddWithValue("@OReferClinic3", OReferClinic3);
-                            tempCommand.Parameters.AddWithValue("@OReferNo3", OReferNo3);
-                            tempCommand.Parameters.AddWithValue("@OCondition4", OCondition4);
-                            tempCommand.Parameters.AddWithValue("@OReferClinic4", OReferClinic4);
-                            tempCommand.Parameters.AddWithValue("@OReferNo4", OReferNo4);
-                            tempCommand.Parameters.AddWithValue("@OCondition5", OCondition5);
-                            tempCommand.Parameters.AddWithValue("@OReferClinic5", OReferClinic5);
-                            tempCommand.Parameters.AddWithValue("@OReferNo5", OReferNo5);
+                            tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                            tempCommand.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", OCondition1);
+                            tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic1);
+                            tempCommand.Parameters.AddWithValue("@schRefNo", OReferNo1);
+
+                            if (OCondition2 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", OCondition2);
+                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic2);
+                                tempCommand.Parameters.AddWithValue("@schRefNo", OReferNo2);
+                            }
+                            if (OCondition3 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", OCondition3);
+                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic3);
+                                tempCommand.Parameters.AddWithValue("@schRefNo", OReferNo3);
+                            }
+                            if (OCondition4 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", OCondition4);
+                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic4);
+                                tempCommand.Parameters.AddWithValue("@schRefNo", OReferNo4);
+                            }
+                            if (OCondition5 != "")
+                            {
+                                tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                                tempCommand.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", OCondition5);
+                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic5);
+                                tempCommand.Parameters.AddWithValue("@schRefNo", OReferNo5);
+                            }
 
                             tempCommand.ExecuteNonQuery();
                         }
