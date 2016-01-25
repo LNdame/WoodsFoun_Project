@@ -90,6 +90,75 @@ namespace Impilo_App.Views.Reports
             Spots.Add(new IndicatorSpot(17, 7, 18, 7)); //17
             Spots.Add(new IndicatorSpot(17, 11, 18, 11)); //18
             Spots.Add(new IndicatorSpot(17, 12, 18, 12)); //19
+            Spots.Add(new IndicatorSpot(20, 12, 21, 12)); //19a
+            Spots.Add(new IndicatorSpot(20, 13, 21, 13)); //19b
+            Spots.Add(new IndicatorSpot(17, 16, 18, 16)); //20
+            Spots.Add(new IndicatorSpot(20, 16, 21, 16)); //20a
+            Spots.Add(new IndicatorSpot(20, 17, 21, 17)); //20b
+            Spots.Add(new IndicatorSpot(17, 18, 18, 18)); //21
+            Spots.Add(new IndicatorSpot(20, 18, 21, 18)); //21a
+            Spots.Add(new IndicatorSpot(20, 19, 21, 19)); //21b
+            Spots.Add(new IndicatorSpot(17, 20, 18, 20)); //22
+            Spots.Add(new IndicatorSpot(20, 20, 21, 20)); //22a
+            Spots.Add(new IndicatorSpot(20, 21, 21, 21)); //22b
+            Spots.Add(new IndicatorSpot(17, 22, 18, 22)); //23
+            Spots.Add(new IndicatorSpot(24, 3, 25, 3)); //24
+            Spots.Add(new IndicatorSpot(24, 4, 25, 4)); //25
+            Spots.Add(new IndicatorSpot(24, 5, 25, 5)); //26
+            Spots.Add(new IndicatorSpot(24, 6, 25, 6)); //27
+            Spots.Add(new IndicatorSpot(24, 7, 25, 7)); //28
+            Spots.Add(new IndicatorSpot(24, 8, 25, 8)); //29
+            Spots.Add(new IndicatorSpot(24, 9, 25, 9)); //30
+            Spots.Add(new IndicatorSpot(24, 11, 25, 11)); //31
+            Spots.Add(new IndicatorSpot(24, 12, 25, 12)); //32
+            Spots.Add(new IndicatorSpot(27, 12, 28, 12)); //32a
+            Spots.Add(new IndicatorSpot(27, 13, 28, 13)); //32b
+            Spots.Add(new IndicatorSpot(27, 14, 28, 14)); //32c
+            Spots.Add(new IndicatorSpot(27, 15, 28, 15)); //32d
+            Spots.Add(new IndicatorSpot(24, 16, 25, 16)); //33
+            Spots.Add(new IndicatorSpot(27, 16, 28, 16)); //33a
+            Spots.Add(new IndicatorSpot(27, 17, 28, 17)); //33b
+            Spots.Add(new IndicatorSpot(24, 18, 25, 18)); //34
+            Spots.Add(new IndicatorSpot(27, 18, 28, 18)); //34a
+            Spots.Add(new IndicatorSpot(27, 19, 28, 19)); //34b
+            Spots.Add(new IndicatorSpot(24, 20, 25, 20)); //35
+            Spots.Add(new IndicatorSpot(27, 20, 28, 20)); //35a
+            Spots.Add(new IndicatorSpot(27, 21, 28, 21)); //35b
+            Spots.Add(new IndicatorSpot(24, 22, 25, 22)); //36
+            Spots.Add(new IndicatorSpot(31, 3, 32, 3)); //37
+            Spots.Add(new IndicatorSpot(31, 4, 32, 4)); //38
+            Spots.Add(new IndicatorSpot(31, 5, 32, 5)); //39
+            Spots.Add(new IndicatorSpot(31, 6, 32, 6)); //40
+            Spots.Add(new IndicatorSpot(31, 7, 32, 7)); //41
+            Spots.Add(new IndicatorSpot(31, 8, 32, 8)); //42
+            Spots.Add(new IndicatorSpot(31, 9, 32, 9)); //43
+            Spots.Add(new IndicatorSpot(31, 11, 32, 11)); //44
+            Spots.Add(new IndicatorSpot(31, 12, 32, 12)); //45
+            Spots.Add(new IndicatorSpot(34, 12, 35, 12)); //45a
+            Spots.Add(new IndicatorSpot(34, 13, 35, 13)); //45b
+            Spots.Add(new IndicatorSpot(34, 14, 35, 14)); //45c
+            Spots.Add(new IndicatorSpot(34, 15, 35, 15)); //45d
+            Spots.Add(new IndicatorSpot(31, 16, 32, 16)); //46
+            Spots.Add(new IndicatorSpot(34, 16, 35, 16)); //46a
+            Spots.Add(new IndicatorSpot(34, 17, 35, 17)); //46b
+            Spots.Add(new IndicatorSpot(31, 18, 32, 18)); //47
+            Spots.Add(new IndicatorSpot(34, 18, 35, 18)); //47a
+            Spots.Add(new IndicatorSpot(34, 19, 35, 19)); //47b
+            Spots.Add(new IndicatorSpot(31, 20, 32, 20)); //48
+            Spots.Add(new IndicatorSpot(34, 20, 35, 20)); //48a
+            Spots.Add(new IndicatorSpot(34, 21, 35, 21)); //48b
+            Spots.Add(new IndicatorSpot(31, 22, 32, 22)); //49
+            Spots.Add(new IndicatorSpot(39, 3, 40, 3)); //50
+            Spots.Add(new IndicatorSpot(39, 4, 40, 4)); //50a
+            Spots.Add(new IndicatorSpot(39, 5, 40, 5)); //50b
+            Spots.Add(new IndicatorSpot(39, 6, 40, 6)); //50c
+            Spots.Add(new IndicatorSpot(39, 7, 40, 7)); //51
+            Spots.Add(new IndicatorSpot(39, 8, 40, 8)); //52
+            Spots.Add(new IndicatorSpot(42, 4, 43, 4)); //10di
+            Spots.Add(new IndicatorSpot(42, 5, 43, 5)); //32di
+            Spots.Add(new IndicatorSpot(42, 6, 43, 6)); //19bi
+            Spots.Add(new IndicatorSpot(42, 7, 43, 7)); //51a
+            Spots.Add(new IndicatorSpot(42, 8, 43, 8)); //52a
         }
 
         private void btnGenerate_Click(object sender, RoutedEventArgs e)
@@ -108,286 +177,6 @@ namespace Impilo_App.Views.Reports
             {
                 MyWorkbook = new XSSFWorkbook(file);
             }
-            
-            //if (radDiabetes.IsChecked == true)
-            //{
-            //    using (FileStream file = new FileStream(Directory.GetCurrentDirectory() + "\\Templates\\Format2Diabetes.xlsx", FileMode.Open, FileAccess.Read))
-            //    {
-            //        MyWorkbook = new XSSFWorkbook(file);
-            //    }
-
-            //    dlg.FileName = "Format2Diabetes - " + DateTime.Now.ToShortDateString();
-
-            //    #region Top Group 1 - 19
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(2).SetCellValue(Diabetes1());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(3).SetCellValue(Diabetes2());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(4).SetCellValue(Diabetes3());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(5).SetCellValue(Diabetes4());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(6).SetCellValue(Diabetes5());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(7).SetCellValue(Diabetes6());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(8).SetCellValue(Diabetes7());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(8).SetCellValue(Diabetes7a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(9).SetCellValue(Diabetes7a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(10).SetCellValue(Diabetes8());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(11).SetCellValue(Diabetes9());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(11).SetCellValue(Diabetes9a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(12).SetCellValue(Diabetes9b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(13).SetCellValue(Diabetes9c());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(14).SetCellValue(Diabetes9d());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(15).SetCellValue(Diabetes10());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(15).SetCellValue(Diabetes10a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(16).SetCellValue(Diabetes10b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(17).SetCellValue(Diabetes11());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(17).SetCellValue(Diabetes11a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(18).SetCellValue(Diabetes11b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(19).SetCellValue(Diabetes12());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(19).SetCellValue(Diabetes12a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(20).SetCellValue(Diabetes12b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(21).SetCellValue(Diabetes13());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(22).SetCellValue(Diabetes14());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(22).SetCellValue(Diabetes14a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(23).SetCellValue(Diabetes14b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(24).SetCellValue(Diabetes15());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(24).SetCellValue(Diabetes15a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(25).SetCellValue(Diabetes15b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(26).SetCellValue(Diabetes16());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(26).SetCellValue(Diabetes16a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(27).SetCellValue(Diabetes16b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(28).SetCellValue(Diabetes17());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(28).SetCellValue(Diabetes17a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(29).SetCellValue(Diabetes17b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(30).SetCellValue(Diabetes18());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(30).SetCellValue(Diabetes18a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(31).SetCellValue(Diabetes18b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(32).SetCellValue(Diabetes19());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(32).SetCellValue(Diabetes19a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(33).SetCellValue(Diabetes19b());
-            //    #endregion
-
-            //    #region Middle Group 20 - 33
-
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(2).SetCellValue(Diabetes13());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(6).SetCellValue(Diabetes20());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(7).SetCellValue(Diabetes21());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(8).SetCellValue(Diabetes22());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(8).SetCellValue(Diabetes22a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(9).SetCellValue(Diabetes22b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(10).SetCellValue(Diabetes23());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(11).SetCellValue(Diabetes24());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(11).SetCellValue(Diabetes24a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(12).SetCellValue(Diabetes24b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(13).SetCellValue(Diabetes24c());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(14).SetCellValue(Diabetes24d());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(15).SetCellValue(Diabetes25());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(15).SetCellValue(Diabetes25a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(16).SetCellValue(Diabetes25b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(17).SetCellValue(Diabetes26());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(17).SetCellValue(Diabetes26a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(18).SetCellValue(Diabetes26b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(19).SetCellValue(Diabetes27());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(19).SetCellValue(Diabetes27a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(20).SetCellValue(Diabetes27b());
-
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(22).SetCellValue(Diabetes28());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(22).SetCellValue(Diabetes28a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(23).SetCellValue(Diabetes28b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(24).SetCellValue(Diabetes29());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(24).SetCellValue(Diabetes29a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(25).SetCellValue(Diabetes29b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(26).SetCellValue(Diabetes30());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(26).SetCellValue(Diabetes30a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(27).SetCellValue(Diabetes30b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(28).SetCellValue(Diabetes31());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(28).SetCellValue(Diabetes31a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(29).SetCellValue(Diabetes31b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(30).SetCellValue(Diabetes32());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(30).SetCellValue(Diabetes32a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(31).SetCellValue(Diabetes32b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(32).SetCellValue(Diabetes33());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(32).SetCellValue(Diabetes33a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(33).SetCellValue(Diabetes33b());
-            //    #endregion
-
-            //    #region Bottom Group 34 - 48
-
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(2).SetCellValue(Diabetes34());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(3).SetCellValue(Diabetes35());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(6).SetCellValue(Diabetes36());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(10).SetCellValue(Diabetes37());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(11).SetCellValue(Diabetes38());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(11).SetCellValue(Diabetes38a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(12).SetCellValue(Diabetes38b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(15).SetCellValue(Diabetes39());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(15).SetCellValue(Diabetes39a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(16).SetCellValue(Diabetes39b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(17).SetCellValue(Diabetes40());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(17).SetCellValue(Diabetes40a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(18).SetCellValue(Diabetes40b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(19).SetCellValue(Diabetes41());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(19).SetCellValue(Diabetes41a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(20).SetCellValue(Diabetes41b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(21).SetCellValue(Diabetes42());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(22).SetCellValue(Diabetes43());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(22).SetCellValue(Diabetes43a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(23).SetCellValue(Diabetes43b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(24).SetCellValue(Diabetes44());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(24).SetCellValue(Diabetes44a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(25).SetCellValue(Diabetes44b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(26).SetCellValue(Diabetes45());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(26).SetCellValue(Diabetes45a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(27).SetCellValue(Diabetes45b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(28).SetCellValue(Diabetes46());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(28).SetCellValue(Diabetes46a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(29).SetCellValue(Diabetes46b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(30).SetCellValue(Diabetes47());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(30).SetCellValue(Diabetes47a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(31).SetCellValue(Diabetes47b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(32).SetCellValue(Diabetes48());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(32).SetCellValue(Diabetes48a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(33).SetCellValue(Diabetes48b());
-
-            //    #endregion
-            //}
-
-            //if (radHypertension.IsChecked == true)
-            //{
-            //    using (FileStream file = new FileStream(Directory.GetCurrentDirectory() + "\\Templates\\Format2Hypertension.xlsx", FileMode.Open, FileAccess.Read))
-            //    {
-            //        MyWorkbook = new XSSFWorkbook(file);
-            //    }
-
-            //    #region Top Group 1 - 19
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(2).SetCellValue(Hypertension1());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(3).SetCellValue(Hypertension2());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(4).SetCellValue(Hypertension3());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(5).SetCellValue(Hypertension4());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(6).SetCellValue(Hypertension5());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(7).SetCellValue(Hypertension6());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(8).SetCellValue(Hypertension7());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(8).SetCellValue(Hypertension7a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(9).SetCellValue(Hypertension7a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(10).SetCellValue(Hypertension8());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(11).SetCellValue(Hypertension9());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(11).SetCellValue(Hypertension9a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(12).SetCellValue(Hypertension9b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(13).SetCellValue(Hypertension9c());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(14).SetCellValue(Hypertension9d());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(15).SetCellValue(Hypertension10());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(15).SetCellValue(Hypertension10a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(16).SetCellValue(Hypertension10b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(17).SetCellValue(Hypertension11());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(17).SetCellValue(Hypertension11a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(18).SetCellValue(Hypertension11b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(19).SetCellValue(Hypertension12());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(19).SetCellValue(Hypertension12a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(20).SetCellValue(Hypertension12b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(21).SetCellValue(Hypertension13());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(22).SetCellValue(Hypertension14());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(22).SetCellValue(Hypertension14a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(23).SetCellValue(Hypertension14b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(24).SetCellValue(Hypertension15());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(24).SetCellValue(Hypertension15a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(25).SetCellValue(Hypertension15b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(26).SetCellValue(Hypertension16());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(26).SetCellValue(Hypertension16a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(27).SetCellValue(Hypertension16b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(28).SetCellValue(Hypertension17());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(28).SetCellValue(Hypertension17a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(29).SetCellValue(Hypertension17b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(30).SetCellValue(Hypertension18());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(30).SetCellValue(Hypertension18a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(31).SetCellValue(Hypertension18b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(4).GetCell(32).SetCellValue(Hypertension19());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(32).SetCellValue(Hypertension19a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(6).GetCell(33).SetCellValue(Hypertension19b());
-            //    #endregion
-
-            //    #region Middle Group 20 - 33
-
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(2).SetCellValue(Hypertension13());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(6).SetCellValue(Hypertension20());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(7).SetCellValue(Hypertension21());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(8).SetCellValue(Hypertension22());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(8).SetCellValue(Hypertension22a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(9).SetCellValue(Hypertension22b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(10).SetCellValue(Hypertension23());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(11).SetCellValue(Hypertension24());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(11).SetCellValue(Hypertension24a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(12).SetCellValue(Hypertension24b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(13).SetCellValue(Hypertension24c());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(14).SetCellValue(Hypertension24d());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(15).SetCellValue(Hypertension25());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(15).SetCellValue(Hypertension25a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(16).SetCellValue(Hypertension25b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(17).SetCellValue(Hypertension26());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(17).SetCellValue(Hypertension26a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(18).SetCellValue(Hypertension26b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(19).SetCellValue(Hypertension27());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(19).SetCellValue(Hypertension27a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(20).SetCellValue(Hypertension27b());
-
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(22).SetCellValue(Hypertension28());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(22).SetCellValue(Hypertension28a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(23).SetCellValue(Hypertension28b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(24).SetCellValue(Hypertension29());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(24).SetCellValue(Hypertension29a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(25).SetCellValue(Hypertension29b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(26).SetCellValue(Hypertension30());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(26).SetCellValue(Hypertension30a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(27).SetCellValue(Hypertension30b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(28).SetCellValue(Hypertension31());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(28).SetCellValue(Hypertension31a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(29).SetCellValue(Hypertension31b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(30).SetCellValue(Hypertension32());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(30).SetCellValue(Hypertension32a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(31).SetCellValue(Hypertension32b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(11).GetCell(32).SetCellValue(Hypertension33());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(32).SetCellValue(Hypertension33a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(13).GetCell(33).SetCellValue(Hypertension33b());
-            //    #endregion
-
-            //    #region Bottom Group 34 - 48
-
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(2).SetCellValue(Hypertension34());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(3).SetCellValue(Hypertension35());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(6).SetCellValue(Hypertension36());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(10).SetCellValue(Hypertension37());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(11).SetCellValue(Hypertension38());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(11).SetCellValue(Hypertension38a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(12).SetCellValue(Hypertension38b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(15).SetCellValue(Hypertension39());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(15).SetCellValue(Hypertension39a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(16).SetCellValue(Hypertension39b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(17).SetCellValue(Hypertension40());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(17).SetCellValue(Hypertension40a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(18).SetCellValue(Hypertension40b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(19).SetCellValue(Hypertension41());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(19).SetCellValue(Hypertension41a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(20).SetCellValue(Hypertension41b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(21).SetCellValue(Hypertension42());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(22).SetCellValue(Hypertension43());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(22).SetCellValue(Hypertension43a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(23).SetCellValue(Hypertension43b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(24).SetCellValue(Hypertension44());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(24).SetCellValue(Hypertension44a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(25).SetCellValue(Hypertension44b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(26).SetCellValue(Hypertension45());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(26).SetCellValue(Hypertension45a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(27).SetCellValue(Hypertension45b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(28).SetCellValue(Hypertension46());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(28).SetCellValue(Hypertension46a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(29).SetCellValue(Hypertension46b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(30).SetCellValue(Hypertension47());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(30).SetCellValue(Hypertension47a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(31).SetCellValue(Hypertension47b());
-            //    MyWorkbook.GetSheetAt(0).GetRow(17).GetCell(32).SetCellValue(Hypertension48());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(32).SetCellValue(Hypertension48a());
-            //    MyWorkbook.GetSheetAt(0).GetRow(19).GetCell(33).SetCellValue(Hypertension48b());
-
-            //    #endregion
-
-            //    dlg.FileName = "Format2Hypertension - " + DateTime.Now.ToShortDateString();
-            //}  
 
             dlg.FileName = "Format 2 Report - " + DateTime.Now.ToShortDateString();
 
