@@ -43,12 +43,23 @@ namespace Impilo_App
         {
              AddNewClient newPage  = new AddNewClient();
             pageTransitionControl.ShowPage(newPage);
+
+            //Change Background
+            btnNewClient.Background = Brushes.LightGray;
+            btnScreening.Background = Brushes.White;
+            btnFollowUp.Background = Brushes.White;
+            button_Copy2.Background = Brushes.White;
         }
 
         private void btnScreening_Click(object sender, RoutedEventArgs e)
         {
             ScreeningHome home = new ScreeningHome();
             pageTransitionControl.ShowPage(home);
+            //Change Background
+            btnNewClient.Background = Brushes.White;
+            btnScreening.Background = Brushes.LightGray;
+            btnFollowUp.Background = Brushes.White;
+            button_Copy2.Background = Brushes.White;
         }
 
         private void button_Copy2_Click(object sender, RoutedEventArgs e)
@@ -56,12 +67,22 @@ namespace Impilo_App
             ClinicVisit clinic = new ClinicVisit();
             
             pageTransitionControl.ShowPage(clinic);
+            //Change Background
+            btnNewClient.Background = Brushes.White;
+            btnScreening.Background = Brushes.White;
+            btnFollowUp.Background = Brushes.White;
+            button_Copy2.Background = Brushes.LightGray;
         }
 
         private void btnFollowUp_Click(object sender, RoutedEventArgs e)
         {
             FollowUp follow = new FollowUp();
             pageTransitionControl.ShowPage(follow);
+            //Change Background
+            btnNewClient.Background = Brushes.White;
+            btnScreening.Background = Brushes.White;
+            btnFollowUp.Background = Brushes.LightGray;
+            button_Copy2.Background = Brushes.White;
         }
 
         private void AddChow_Click(object sender, RoutedEventArgs e)
