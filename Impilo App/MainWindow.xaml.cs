@@ -39,29 +39,56 @@ namespace Impilo_App
             lbTime.Content = DateTime.Now.ToString("hh:mm:ss tt");
         }
 
+        public static int launcherFlag = 0; //1 for follow up 2 for clinic visit//
         private void btnNewClient_Click(object sender, RoutedEventArgs e)
         {
              AddNewClient newPage  = new AddNewClient();
             pageTransitionControl.ShowPage(newPage);
+
+            //Change Background
+            btnNewClient.Background = Brushes.LightGray;
+            btnScreening.Background = Brushes.White;
+            btnFollowUp.Background = Brushes.White;
+            button_Copy2.Background = Brushes.White;
         }
 
         private void btnScreening_Click(object sender, RoutedEventArgs e)
         {
             ScreeningHome home = new ScreeningHome();
             pageTransitionControl.ShowPage(home);
+            //Change Background
+            btnNewClient.Background = Brushes.White;
+            btnScreening.Background = Brushes.LightGray;
+            btnFollowUp.Background = Brushes.White;
+            button_Copy2.Background = Brushes.White;
         }
 
         private void button_Copy2_Click(object sender, RoutedEventArgs e)
         {
-            ClinicVisit clinic = new ClinicVisit();
+           // ClinicVisit clinic = new ClinicVisit();///that may come back
+            launcherFlag = 2;
+            ListClients newPage = new ListClients(launcherFlag);
             
-            pageTransitionControl.ShowPage(clinic);
+            pageTransitionControl.ShowPage(newPage); // to comment
+            //Change Background
+            btnNewClient.Background = Brushes.White;
+            btnScreening.Background = Brushes.White;
+            btnFollowUp.Background = Brushes.White;
+            button_Copy2.Background = Brushes.LightGray;
         }
 
         private void btnFollowUp_Click(object sender, RoutedEventArgs e)
         {
-            FollowUp follow = new FollowUp();
-            pageTransitionControl.ShowPage(follow);
+          //  FollowUp follow = new FollowUp();
+            launcherFlag = 1;
+            ListClients newPage = new ListClients(launcherFlag);
+            
+            pageTransitionControl.ShowPage(newPage); // to comment
+            //Change Background
+            btnNewClient.Background = Brushes.White;
+            btnScreening.Background = Brushes.White;
+            btnFollowUp.Background = Brushes.LightGray;
+            button_Copy2.Background = Brushes.White;
         }
 
         private void AddChow_Click(object sender, RoutedEventArgs e)

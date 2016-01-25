@@ -64,6 +64,8 @@ namespace Impilo_App.Views.Screening
             {
                 rdoFemale.IsChecked = true;
             }
+
+            cboChow.SelectedIndex = 0;
         }
         public ScreeningHome(string ID)
         {
@@ -87,17 +89,38 @@ namespace Impilo_App.Views.Screening
             string name = currentClient.FirstName, surname = currentClient.LastName; 
             string scrID = Utilities.GenerateScreeningID(name, surname); // it is first use as the client id 
             string storedProcedure = "";
-                /*
+               
             //saving the sreening first encouter EncounterID
             #region SaveScreening +
 
-            Impilo_App.LocalModels.Screening newSCreen = new Impilo_App.LocalModels.Screening
-            {
-                ScreeningID = "",
-                ScreeningDate = DateTime.Now,
-                ClientId = currentClient.ClientID
-            };
 
+            Impilo_App.LocalModels.Screening newSCreen;
+
+            bool goforEncouter = false;
+            try
+            {
+                newSCreen = new Impilo_App.LocalModels.Screening
+                {
+                    ScreeningID = "",
+                    ScreeningDate = DateTime.Now,
+                    ClientId = currentClient.ClientID,
+                    EncounterCapturedBy = ((ComboBoxItem)cboChow.SelectedItem).Content.ToString()
+                };
+
+                goforEncouter = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Currently Screened Tab" ,MessageBoxButton.OK,MessageBoxImage.Warning );
+                throw;
+            }
+
+
+
+            if (goforEncouter)
+            {
+                
+            
 
             //sp place
             //connection
@@ -112,9 +135,9 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@EncounterDate", newSCreen.ScreeningDate);//param
 
                 com.Parameters.AddWithValue("@EncounterType", 1);//param
-                com.Parameters.AddWithValue("@EncounterCapturedBy", " ");
+                com.Parameters.AddWithValue("@EncounterCapturedBy", newSCreen.EncounterCapturedBy);
 
-                encounterID =(int) com.ExecuteScalar();
+                encounterID =(int)((decimal) com.ExecuteScalar());
                 //com.ExecuteNonQuery();//execute command
            
                 MessageBox.Show(encounterID.ToString());
@@ -128,17 +151,622 @@ namespace Impilo_App.Views.Screening
             {
                 conn.Close();
             }
-
+            }
             scrID = encounterID.ToString();
             #endregion
-                */
+               
 
 
-            encounterID = 3;
+           // encounterID = 134; //test under
 
 
-            //start of general
-            #region General +-
+            #region Environmental +- Tested+
+
+
+            bool goforEnvironmental = false;
+
+            Environmental environment = new Environmental();
+            EnvironmentalExtra environmentExtra = new EnvironmentalExtra();
+
+            try
+            {
+                environment.EncounterID = encounterID;
+                environment.NoOfHouseholdCurrent = int.Parse(numCurrentHousehold.Text);
+                environment.NoOfHouseholdAway = int.Parse(numAwayHousehold.Text);
+                environment.ListWhere = ((ComboBoxItem)cboListWhere.SelectedItem).Content.ToString(); //----ListWhere missing from the db
+                environment.WhenLastClinicVisit = ((ComboBoxItem)cboLastVisit.SelectedItem).Content.ToString();
+                environment.WhichClinic = 1;// int.Parse(((ComboBoxItem)cboClinic.SelectedItem).Content.ToString());
+
+
+
+                environmentExtra.ScreeningID = scrID;
+                environmentExtra.NoOfPeopleInOneRoomMainHut = int.Parse(((ComboBoxItem)cboNoPeople.SelectedItem).Content.ToString());
+                environmentExtra.NoOfStructuresInHomeStead = int.Parse(((ComboBoxItem)cboNoStructure.SelectedItem).Content.ToString());
+                environmentExtra.RainWaterCollection = (rdoYesRain.IsChecked == true) ? true : false;
+                environmentExtra.WaterSupply = ((ComboBoxItem)cboWaterSupply.SelectedItem).Content.ToString();
+                environmentExtra.WalkingDistanceFromWhaterSupply = ((ComboBoxItem)cboWalkingDistanceWater.SelectedItem).Content.ToString();
+                environmentExtra.TreatWaterBeforeDrinking = (rdoTreatWater.IsChecked == true) ? true : false;
+                environmentExtra.ElectricityInAnyHut = (rdoElectricityYes.IsChecked == true) ? true : false;
+                environmentExtra.HaveWorkingFridge = (rdoYesFridge.IsChecked == true) ? true : false;
+                environmentExtra.UseForCooking = ((ComboBoxItem)cboUseForCooking.SelectedItem).Content.ToString();
+                environmentExtra.TypeOfToilet = ((ComboBoxItem)cboTypeOfToilet.SelectedItem).Content.ToString();
+                environmentExtra.DisposeWaste = ((ComboBoxItem)cboDisposeWaste.SelectedItem).Content.ToString();
+                environmentExtra.SourceOfIncome = ((ComboBoxItem)cboSourceOfIncome.SelectedItem).Content.ToString(); //----SourceOfIncome missing from the db
+                environmentExtra.RecievedFoodPacelIn6Month = (cboFoodParcel.IsChecked == true) ? true : false;
+
+                goforEnvironmental = true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Environmental Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }
+
+
+            if (goforEnvironmental)
+            {
+                
+            
+            try
+            {
+                storedProcedure = "AddScreeningEnvironmental";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+
+                com.Parameters.AddWithValue("@EncounterID", environment.EncounterID);//param
+                com.Parameters.AddWithValue("@seNoPeopleInHousehold", environment.NoOfHouseholdCurrent);//param
+                com.Parameters.AddWithValue("@seNoLivingAwayFromHousehold", environment.NoOfHouseholdAway);//param
+                com.Parameters.AddWithValue("@seWhenDidYouOrMemberLastVisit", environment.WhenLastClinicVisit);//param
+                com.Parameters.AddWithValue("@cID", environment.WhichClinic);//param
+                // com.Parameters.AddWithValue("@cID", 1);//param
+
+                com.Parameters.AddWithValue("@seTotalNumberSleepingInOneRoomInMainHut", environmentExtra.NoOfPeopleInOneRoomMainHut);//param
+                com.Parameters.AddWithValue("@seTotalNoStructures", environmentExtra.NoOfStructuresInHomeStead);//param
+                com.Parameters.AddWithValue("@seRainWaterCollection", environmentExtra.RainWaterCollection);//param
+                com.Parameters.AddWithValue("@seWaterSupply", environmentExtra.WaterSupply);//param
+                com.Parameters.AddWithValue("@seWalkingDistanceFromWaterSupply", environmentExtra.WalkingDistanceFromWhaterSupply);//param
+
+                com.Parameters.AddWithValue("@seTreatWaterBeforeDrinking", environmentExtra.TreatWaterBeforeDrinking);//param
+                com.Parameters.AddWithValue("@seElectricityInAnyHut", environmentExtra.ElectricityInAnyHut);//param
+                com.Parameters.AddWithValue("@seWorkingFridge", environmentExtra.HaveWorkingFridge);//param
+                com.Parameters.AddWithValue("@seCookingMethod", environmentExtra.UseForCooking);//param
+                com.Parameters.AddWithValue("@seToiletType", environmentExtra.TypeOfToilet);//param
+                com.Parameters.AddWithValue("@seWasteDisposalType", environmentExtra.DisposeWaste);//param
+                // com.Parameters.AddWithValue("@seSourceOfIncome", environmentExtra.SourceOfIncome);//param
+                com.Parameters.AddWithValue("@seFoodParcelInLast6Months", environmentExtra.RecievedFoodPacelIn6Month);//param
+
+
+                int lastestID = (int)((decimal)com.ExecuteScalar()); //execute command transform to exec scalar
+
+                //adding huts
+                if (_listofHut.Count>0)
+                {
+                    conn.Close();
+                
+                foreach (var hut in _listofHut)
+                {
+                    try
+                    {
+                        storedProcedure = "AddScreeningEnvironmentHuts";// name of sp
+                        conn.Open();
+                        SqlCommand tempcom = new SqlCommand(storedProcedure, conn);
+                        tempcom.CommandType = CommandType.StoredProcedure;
+                        tempcom.Parameters.AddWithValue("@seID", lastestID);//param
+                        tempcom.Parameters.AddWithValue("@sehutStructure", hut.HutStracture);//param
+                        tempcom.Parameters.AddWithValue("@sehutTypeOfRoof", hut.TypeOfRoof);//param
+                        tempcom.Parameters.AddWithValue("@sehutVentilation", hut.Ventilation);//param
+                        tempcom.Parameters.AddWithValue("@sehutNumberOfRooms", hut.TotalNoOfRooms);//param
+                        tempcom.Parameters.AddWithValue("@sehutMain", hut.isMainHut);//param
+                        tempcom.ExecuteNonQuery();//execute command
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString() + "Hut not added");
+                    }
+
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+            }
+
+            #endregion
+
+            #region Hypertension ++ Tested+
+
+            bool goforHypertension = false;
+
+            Hypertension hyper = new Hypertension();
+
+            try
+            {
+                hyper.ScreeningID = scrID;
+                hyper.YearOfDiagnosis = ((ComboBoxItem)cboDiaYear.SelectedItem).Content.ToString();
+
+                // hyper.BlurredVision = (blurvYes.IsChecked == true) ? true : false;
+                hyper.ShortnessOfBreath = (shortYes.IsChecked == true) ? true : false;
+                hyper.ChestPain = (chestYes.IsChecked == true) ? true : false;
+
+                hyper.ReferralToClinic = (refYes.IsChecked == true) ? true : false; ;
+                hyper.ReferalNo = txthyperRef.Text;
+                hyper.EverHadStroke = (stroYes.IsChecked == true) ? true : false; ;
+                hyper.YearOfStroke = ((ComboBoxItem)cboStrokeYear.SelectedItem).Content.ToString();
+                hyper.AnyOneInFamilyHadStroke = (anyYes.IsChecked == true) ? true : false; ;
+                hyper.HowManyInFamilyOnMedsForHypertension = int.Parse(numHPT.Text);
+
+                goforHypertension = true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Hypertension Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                throw;
+            }
+            
+            //sp place
+            //connection 
+
+
+
+            if (goforHypertension)
+            {
+                
+           
+            try
+            {
+                storedProcedure = "AddScreeningHypertension";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@EncounterID", encounterID);//param
+                com.Parameters.AddWithValue("@shYearOfDiagnosis", hyper.YearOfDiagnosis);//param
+                //com.Parameters.AddWithValue("@shHeadache", hyper.Headache);//param
+                //com.Parameters.AddWithValue("@shBlurredVision", hyper.BlurredVision);//param
+                com.Parameters.AddWithValue("@shShortnessOfBreath", hyper.ShortnessOfBreath);//param
+                // com.Parameters.AddWithValue("@shConfusion", hyper.Confusion);//param
+                com.Parameters.AddWithValue("@shChestPain", hyper.ChestPain);//param
+                com.Parameters.AddWithValue("@shReferralToClinic", hyper.ReferralToClinic);//param
+                com.Parameters.AddWithValue("@shRefNo", hyper.ReferalNo);//param
+                com.Parameters.AddWithValue("@shEverHadAStroke", hyper.EverHadStroke);//param
+                com.Parameters.AddWithValue("@shYearOfStroke", int.Parse(hyper.YearOfStroke));//param
+                com.Parameters.AddWithValue("@shHowManyInFamilyOnMedsForHypertension", hyper.HowManyInFamilyOnMedsForHypertension);//param
+                com.Parameters.AddWithValue("@shAnyoneInFamilyHadStroke", hyper.AnyOneInFamilyHadStroke);//param
+
+                int i = com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            }
+
+            #endregion
+
+
+            #region Diabetes ++ Tested +
+            bool goforDiabetes = false;
+            Diabetes dia;
+
+            try
+            {
+
+                 dia = new Diabetes
+                {
+                    EncounterID = encounterID,
+                    BlurredVision = (blurvYes.IsChecked == true) ? true : false,
+                    YearOfDiagnosis = ((ComboBoxItem)cboDiabeYear.SelectedItem).Content.ToString(),
+
+                    WeightLoss = (lossYes.IsChecked == true) ? true : false,
+                    UrinatingMore = (uriYes.IsChecked == true) ? true : false,
+                    NauseaOrVomitting = (nauYes.IsChecked == true) ? true : false,
+                    FootExamResult = ((ComboBoxItem)cboFootExam.SelectedItem).Content.ToString(),
+                    ReferralToClinic = (refdiaYes.IsChecked == true) ? true : false,
+                    ReferralNo = txtdiaRef.Text,
+                    FamilyMemberWith = (famYes.IsChecked == true) ? true : false
+
+                };
+                goforDiabetes = true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Diabetes Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                throw;
+            }
+
+            //sp place
+            //connection
+
+            if (goforDiabetes)
+            {
+                
+           
+            try
+            {
+                storedProcedure = "AddScreeningDiabetes";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+
+
+                com.Parameters.AddWithValue("@EncounterID", dia.EncounterID);//param
+                com.Parameters.AddWithValue("@sdYearOfDiagnosis", dia.YearOfDiagnosis);//param
+
+                com.Parameters.AddWithValue("@sdWeightLost", dia.WeightLoss);//param
+                com.Parameters.AddWithValue("@sdUrinatingMore", dia.UrinatingMore);//param
+                com.Parameters.AddWithValue("@sdNauseaOrVomiting", dia.NauseaOrVomitting);//param
+                com.Parameters.AddWithValue("@sdFootExamResult", dia.FootExamResult);//param-
+                com.Parameters.AddWithValue("@sdBlurredVision", dia.BlurredVision);//param-
+                com.Parameters.AddWithValue("@sdReferralToClinic", dia.ReferralToClinic);//param
+                com.Parameters.AddWithValue("@sdRefNo", dia.ReferralNo);//param
+                com.Parameters.AddWithValue("@sdFamilyMemberWith", dia.FamilyMemberWith);//param
+
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+            }
+            #endregion
+
+
+
+            #region HIV ++ Tested +
+
+            bool goforHIV = false;
+
+
+            HIV_Tab hivTab;
+
+            try
+            {
+               hivTab = new HIV_Tab
+            {
+                ScreeningID = scrID,
+                YearOfDiagnosis = ((ComboBoxItem)cboDiaHivYear.SelectedItem).Content.ToString(),
+                OnMeds = (radonMeds.IsChecked == true) ? true : false,
+                AdherenceOK = (radadh.IsChecked == true) ? true : false,
+                ReferToClinic = (hivref.IsChecked == true) ? true : false,
+                ReferralNo = txtHIVRef.Text,
+                ARVFileNo = txtARVFile.Text,
+
+            };
+
+               goforHIV = true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "HIV Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                throw;
+            }
+
+            //sp place
+            //connection
+
+            if (goforHIV)
+            {
+                
+           
+            try
+            {
+                storedProcedure = "AddScreeningHIV";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@EncounterID", encounterID);//param
+                com.Parameters.AddWithValue("@shivYearOfDiagnosis", hivTab.YearOfDiagnosis);//param
+                com.Parameters.AddWithValue("@shivOnMeds", hivTab.OnMeds);//param
+                com.Parameters.AddWithValue("@shivAdherenceOK", hivTab.AdherenceOK);//param
+                com.Parameters.AddWithValue("@shivReferToClinic", hivTab.ReferToClinic);//param
+                com.Parameters.AddWithValue("@shivRefNo", hivTab.ReferralNo);//param
+                com.Parameters.AddWithValue("@shivARVFileNo", hivTab.ARVFileNo);//param
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+            }
+            #endregion
+
+
+            #region Maternal Health ++- Tested +
+
+            bool goforMaternal = false;
+            MentalHealth materHealth;
+            try
+            {
+               materHealth = new MentalHealth
+            {
+                EncounterID = encounterID,
+                PregnantBefore = (radprebef.IsChecked == true) ? true : false,
+                NoOfPregnancies = numPregnacies.Text,
+                HowManySuccessful = numPregnSuc.Text,
+                WhereDeliveredLasBaby = ((ComboBoxItem)cboDelplace.SelectedItem).Content.ToString(),
+                Caesarian = (radcae.IsChecked == true) ? true : false,
+                BabyUnder2_5Kgs = (radbabyunder2.IsChecked == true) ? true : false,
+                ChildrenDiedUnder1Year = (radCHilDied1.IsChecked == true) ? true : false,
+                ChildrenDiedBetween1to5Years = (radCHilDied1_5.IsChecked == true) ? true : false,
+                PAPSmearInLast5Years = (radpap.IsChecked == true) ? true : false,
+                LastBloodTestResult = ((ComboBoxItem)cboBloodExam.SelectedItem).Content.ToString(),
+                DateOfFirstANC = (DateTime)txtDate1ANC.SelectedDate,
+                DateOfLastANC = (DateTime)txtDatelastANC.SelectedDate,
+                ReferredToClinic = (refMatyes.IsChecked == true) ? true : false,
+                ReferralNo = txtMatref.Text,
+                DateOfNextANC = (DateTime)txtDateNextANC.SelectedDate,
+                ExpectedDateOfDelivery = (DateTime)txtDateDelivery.SelectedDate,
+                IntendFormulaFeed = (radintformula.IsChecked == true) ? true : false,
+                IntendBreastFeed = (radintbreas.IsChecked == true) ? true : false,
+                RegisteredOnMomConnect = (radintbreas.IsChecked == true) ? true : false,
+
+
+            };
+                goforMaternal = true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Maternal Health Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                throw;
+            }
+            //sp place
+            //connection
+
+            if (goforMaternal)
+            {
+                
+            
+
+            try
+            {
+                storedProcedure = "AddScreeningMaternalHealth";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@EncounterID", encounterID);//param
+                com.Parameters.AddWithValue("@smhPregnantBefore", materHealth.PregnantBefore);//param
+                com.Parameters.AddWithValue("@smhNoOfPregnancies", materHealth.NoOfPregnancies);//param
+                com.Parameters.AddWithValue("@smhHowManySuccessful", materHealth.HowManySuccessful);//param
+                com.Parameters.AddWithValue("@smhWhereDeliveredLastBaby", materHealth.WhereDeliveredLasBaby);//param
+                com.Parameters.AddWithValue("@smhCaesarian", materHealth.Caesarian);//param
+                com.Parameters.AddWithValue("@smhBabyUnder2KG", materHealth.BabyUnder2_5Kgs);//param
+                com.Parameters.AddWithValue("@smhChildrenDiedUnder1Year", materHealth.ChildrenDiedUnder1Year);//param
+                com.Parameters.AddWithValue("@smhChildrenDiedBetween1To5Years", materHealth.ChildrenDiedBetween1to5Years);//param
+                com.Parameters.AddWithValue("@smhPAPSmearInLast5Years", materHealth.PAPSmearInLast5Years);//param
+                com.Parameters.AddWithValue("@smhLastBloodTestResult", materHealth.LastBloodTestResult);//param
+                com.Parameters.AddWithValue("@smhCurrentDateOfFirstANC", materHealth.DateOfFirstANC);//param
+                com.Parameters.AddWithValue("@smhCurrentDateOfLastANC", materHealth.DateOfLastANC);//param
+                com.Parameters.AddWithValue("@smhReferredToClinic", materHealth.ReferredToClinic);//param
+                com.Parameters.AddWithValue("@smhRefNo", materHealth.ReferralNo);//param
+                com.Parameters.AddWithValue("@smhDateOfNextANC", materHealth.DateOfNextANC);//param
+                com.Parameters.AddWithValue("@smhExpectedDeliveryDate", materHealth.ExpectedDateOfDelivery);//param
+                com.Parameters.AddWithValue("@smhIntendFormulaFeed", materHealth.IntendFormulaFeed);//param
+                com.Parameters.AddWithValue("@smhIntendBreastfeed", materHealth.IntendBreastFeed);//param this could superfluu
+                com.Parameters.AddWithValue("@smhRegisteredOnMomConnect", materHealth.RegisteredOnMomConnect);//param
+
+
+
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+            }
+            #endregion    
+                
+            #region Child Health +-+ Tested+
+
+            bool goforChild = false;
+
+            ChildHealth childh;
+
+           
+            try
+            {
+                childh = new ChildHealth
+                {
+                    EncounterID = encounterID,
+                    NameOfMother = txtNaMother.Text,
+                    ChildWithRTHC = (radrthc.IsChecked == true) ? true : false,
+                    ReferToClinic = (radref.IsChecked == true) ? true : false,
+                    ReferalNo = txtref.Text,
+                    ListConcernsReChild = txtConRechild.Text,
+                    ReferToClinic2 = (radref1.IsChecked == true) ? true : false,
+                    ReferToOVC = (radrefovc.IsChecked == true) ? true : false,
+                    ReferralNo2 = txtref1.Text,
+                    MotherHIVPlus = (radMohiv.IsChecked == true) ? true : false,
+                    ChildBreastFed = (radbreast.IsChecked == true) ? true : false,
+                    Howlong = ((ComboBoxItem)cboChBreastFedlong.SelectedItem).Content.ToString(),
+                    ChildEverOnNevirapine = (radnev.IsChecked == true) ? true : false,
+                    PCRDone = (radpcr.IsChecked == true) ? true : false,
+                    PCRResults = ((ComboBoxItem)cboPCR.SelectedItem).Content.ToString(),
+                    ReferToClinic3 = (radref2.IsChecked == true) ? true : false,
+                    ReferalNo3 = txtref2.Text,
+                    ImmunisationUpToDate = (radimm.IsChecked == true) ? true : false,
+
+                    ReferToClinic4 = (radref3.IsChecked == true) ? true : false,
+                    ReferralNo4 = txtref3.Text,
+                    WalkAppropriateForAge = (radwalk.IsChecked == true) ? true : false,
+                    TalkAppropriateForAge = (radtalk.IsChecked == true) ? true : false,
+                    VITAandWarmMedsGivenEachMonth = (radvita.IsChecked == true) ? true : false
+
+                };
+
+                childh.WhichImmunisatationsOutStanding = "";
+
+                goforChild = true;
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Child Health Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                throw;
+            }
+
+            if (goforChild)
+            {
+                
+           
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "AddScreeningChildHealth";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@EncounterID", childh.EncounterID);//param
+                com.Parameters.AddWithValue("@schNameOfMother", childh.NameOfMother);//param
+                com.Parameters.AddWithValue("@schChildWithRTHC", childh.ChildWithRTHC);//param
+                com.Parameters.AddWithValue("@schReferToClinic", childh.ReferToClinic);//param
+                com.Parameters.AddWithValue("@schRefNo", childh.ReferalNo);//param
+
+                com.Parameters.AddWithValue("@schMotherHIVPos", childh.MotherHIVPlus);//param
+                com.Parameters.AddWithValue("@schChildBreastfed", childh.ChildBreastFed);//param
+                com.Parameters.AddWithValue("@schHowLong", childh.Howlong);//param
+                com.Parameters.AddWithValue("@schChildEverOnNevirapine", childh.ChildEverOnNevirapine);//param
+                com.Parameters.AddWithValue("@schPCRDone", childh.PCRDone);//param
+                com.Parameters.AddWithValue("@schPCRResult", childh.PCRResults);//param                
+                com.Parameters.AddWithValue("@schReferToClinic2", childh.ReferToClinic2);//param
+                com.Parameters.AddWithValue("@schRefNo2", childh.ReferralNo2);//param
+                //  com.Parameters.AddWithValue("@ListConcernsReChild", childh.ListConcernsReChild);//param
+
+                com.Parameters.AddWithValue("@schImmunisationUpToDate", childh.ImmunisationUpToDate);//param
+
+
+                com.Parameters.AddWithValue("@schReferToClinic3", childh.ReferToClinic3);//param
+                com.Parameters.AddWithValue("@schRefNo3", childh.ReferalNo3);//param
+
+                //   com.Parameters.AddWithValue("@WhichImmunisatationsOutStanding", childh.WhichImmunisatationsOutStanding);//param
+
+                com.Parameters.AddWithValue("@schVitAAndWormMedsGivenEachMonth", childh.VITAandWarmMedsGivenEachMonth);//param
+                com.Parameters.AddWithValue("@schWalkAppropriateForAge", childh.WalkAppropriateForAge);//param
+                com.Parameters.AddWithValue("@schTalkAppropriateForAge", childh.TalkAppropriateForAge);//param
+                com.Parameters.AddWithValue("@schReferToClinic4", childh.ReferToClinic4);//param
+                com.Parameters.AddWithValue("@schReferToOVC", childh.ReferToOVC);//param
+                com.Parameters.AddWithValue("@schRefNo4", childh.ReferralNo4);//param
+
+
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+            }
+            #endregion    
+                
+                
+                  
+            #region otherTab + tested+
+
+            bool goforOther = false;
+
+            Other_Tab ottab;
+
+            try
+            {
+                 ottab = new Other_Tab
+            {
+                EncounterID = encounterID,
+                ReferralNo = txtOtherRef.Text,
+                ReferToClinic = (radOtherRef.IsChecked == true) ? true : false,
+                OtherConditionFound = txtOtherCon.Text
+
+            };
+                 goforOther = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Other Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                throw;
+            }
+            if (goforOther)
+            {
+                
+           
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "AddScreeningOther";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@EncounterID", ottab.EncounterID);//param
+                com.Parameters.AddWithValue("@schReferredToClinic", ottab.ReferToClinic);//param
+                com.Parameters.AddWithValue("@schRefNo", ottab.ReferralNo);//param
+                com.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", ottab.OtherConditionFound);//param
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            }
+            #endregion    
+                
+                
+            
+
+  //start of general
+            #region General +-+ Tested +
+
+            bool goforGeneral = false;
 
             #region Measurement
             General genMeasurement = new General
@@ -162,10 +790,12 @@ namespace Impilo_App.Views.Screening
             {
                 ScreeningID = scrID,
                 DiseaseID = 1,
-                StartDate = (DateTime)txtDateNextANC.SelectedDate,
-                Defaulting = false,
-                ReferToClinic = false,
-                ReferralNo = ""
+                IsSick = (radHPT.IsChecked == true) ? true : false,
+                OnMeds = (radOnMedsHPT.IsChecked == true) ? true : false,
+                StartDate = (DateTime)dateStartHPT.SelectedDate,
+                Defaulting = (radDefauHPT.IsChecked == true) ? true : false,
+                ReferToClinic = (radRefHPT.IsChecked == true) ? true : false,
+                ReferralNo = txtCurHPTRef.Text
 
 
             };
@@ -179,10 +809,11 @@ namespace Impilo_App.Views.Screening
             {
                 ScreeningID = scrID,
                 DiseaseID = 1,
-                StartDate = (DateTime)txtDateNextANC.SelectedDate,
-                Defaulting = false,
-                ReferToClinic = false,
-                ReferralNo = ""
+                IsSick = (radEpi.IsChecked == true) ? true : false,
+                StartDate = (DateTime)dateStartepy.SelectedDate,
+                Defaulting = (radDefauEpi.IsChecked == true) ? true : false,
+                ReferToClinic = (radRefEpi.IsChecked == true) ? true : false,
+                ReferralNo = txtCurEpiRef.Text
 
 
             };
@@ -195,10 +826,11 @@ namespace Impilo_App.Views.Screening
             {
                 ScreeningID = scrID,
                 DiseaseID = 1,
-                StartDate = (DateTime)txtDateNextANC.SelectedDate,
-                Defaulting = false,
-                ReferToClinic = false,
-                ReferralNo = ""
+                IsSick = (radOnMedsDia.IsChecked == true) ? true : false,
+                StartDate = (DateTime)dateStartDiabets.SelectedDate,
+                Defaulting = (radDefauDia.IsChecked == true) ? true : false,
+                ReferToClinic = (radRefDia.IsChecked == true) ? true : false,
+                ReferralNo = txtCurDiaRef.Text
 
 
             };
@@ -210,10 +842,11 @@ namespace Impilo_App.Views.Screening
             {
                 ScreeningID = scrID,
                 DiseaseID = 1,
-                StartDate = (DateTime)txtDateNextANC.SelectedDate,
-                Defaulting = false,
-                ReferToClinic = false,
-                ReferralNo = ""
+                IsSick = (radAsth.IsChecked == true) ? true : false,
+                StartDate = (DateTime)dateStartAthsma.SelectedDate,
+                Defaulting = (radDefauAsth.IsChecked == true) ? true : false,
+                ReferToClinic = (radRefAsth.IsChecked == true) ? true : false,
+                ReferralNo = txtCurAstRef.Text
 
 
             };
@@ -226,10 +859,11 @@ namespace Impilo_App.Views.Screening
             {
                 ScreeningID = scrID,
                 DiseaseID = 1,
-                StartDate = (DateTime)txtDateNextANC.SelectedDate,
-                Defaulting = false,
-                ReferToClinic = false,
-                ReferralNo = ""
+                IsSick = (radAsth.IsChecked == true) ? true : false,
+
+                Defaulting = (radDefauOt.IsChecked == true) ? true : false,
+                ReferToClinic = (radRefOt.IsChecked == true) ? true : false,
+                ReferralNo = txtCurOthRef.Text
 
 
             };
@@ -244,8 +878,8 @@ namespace Impilo_App.Views.Screening
             {
                 ScreeningID = scrID,
                 OnMeds = (redCurMedsBP.IsChecked == true) ? true : false,
-                Systolic = 133,// decimal.Parse( ((ComboBoxItem)cbosys.SelectedItem).Content.ToString()),
-                Diastolic = 74,//decimal.Parse(((ComboBoxItem)cboDiasto.SelectedItem).Content.ToString()),
+                Systolic =decimal.Parse(numBPSystolic.Text),// decimal.Parse( ((ComboBoxItem)cbosys.SelectedItem).Content.ToString()),
+                Diastolic = decimal.Parse(numBPDiastolic.Text),//decimal.Parse(((ComboBoxItem)cboDiasto.SelectedItem).Content.ToString()),
                 ReferToCHOWs = (radrefCHowBP.IsChecked == true) ? true : false,
                 ReferToClinic = (radrefBP.IsChecked == true) ? true : false,
                 ReferralNo = txtrefBP.Text,
@@ -257,7 +891,7 @@ namespace Impilo_App.Views.Screening
             {
                 ScreeningID = scrID,
                 OnMeds = (redCurMedsBs.IsChecked == true) ? true : false,
-                NotOnMedsBSReadings =64,// ((ComboBoxItem)cboBSreading.SelectedItem).Content.ToString(),
+                NotOnMedsBSReadings = decimal.Parse(numBsReading.Text),// ((ComboBoxItem)cboBSreading.SelectedItem).Content.ToString(),numBsReading
 
                 ReferToCHOWs = (radrefCHowBS.IsChecked == true) ? true : false,
                 ReferToClinic = (radrefBS.IsChecked == true) ? true : false,
@@ -296,8 +930,8 @@ namespace Impilo_App.Views.Screening
                 CurrentlyPregnant = (radpregpos.IsChecked == true) ? true : false,
                 PregnancyTestDone = (radpretest.IsChecked == true) ? true : false,
                 Results = ((ComboBoxItem)cboPreres.SelectedItem).Content.ToString(),
-                ReferToClinic = (radrefHIV.IsChecked == true) ? true : false,
-                ReferralNo = txtrefHIV.Text,
+                ReferToClinic = (radrefpreg.IsChecked == true) ? true : false,
+                ReferralNo = txtCCpregref.Text,
             };
 
 
@@ -310,9 +944,10 @@ namespace Impilo_App.Views.Screening
             {
                 ScreeningID = scrID,
                 HaveTubercolosis = (radhasTB.IsChecked == true) ? true : false,
-                LossWeight = (radhasTB.IsChecked == true) ? true : false,
-                SweatingAtNight = (radhasTB.IsChecked == true) ? true : false,
                 Defaulting = (radDefaulting.IsChecked == true) ? true : false,
+                LossWeight = (radhasTB.IsChecked == true) ? true : false,
+                SweatingAtNight = (radExcSweat.IsChecked == true) ? true : false,
+                
                 FeverOver2Weeks = (radFever2.IsChecked == true) ? true : false,
                 CoughMoreThan2Weeks = (radCough2.IsChecked == true) ? true : false,
                 LossOfApetite = (radlossapp.IsChecked == true) ? true : false,
@@ -344,7 +979,7 @@ namespace Impilo_App.Views.Screening
                 ReferralNo = txtRefOtc.Text,
                 Smoking = (radotsmoke.IsChecked == true) ? true : false,
                 Drinking = (radotdrink.IsChecked == true) ? true : false,
-                DrinkAlchoholUnitsPerWeek = ((ComboBoxItem)cboBeerUnit.SelectedItem).Content.ToString(),
+               // DrinkAlchoholUnitsPerWeek = ((ComboBoxItem)cboBeerUnit.SelectedItem).Content.ToString(),
                 DiarrhoeaOver3Days = (radotdiarhoea.IsChecked == true) ? true : false,
                 ReferToClinic2 = (radotref2.IsChecked == true) ? true : false,
                 AttendedInitiationSchool = (radotinit.IsChecked == true) ? true : false,
@@ -398,7 +1033,7 @@ namespace Impilo_App.Views.Screening
 
                 //Current Medication HPT+
                 com.Parameters.AddWithValue("@sgOnMeds", curhpt.OnMeds);//param
-                com.Parameters.AddWithValue("@sgNotOnMeds", (curhpt.OnMeds==true)?false:true);//param
+                com.Parameters.AddWithValue("@sgNotOnMeds", (curhpt.OnMeds == true) ? false : true);//param
                 com.Parameters.AddWithValue("@sgHypertension", curhpt.IsSick);//param
                 com.Parameters.AddWithValue("@sgHypertensionStartDate", curhpt.StartDate);//param
                 com.Parameters.AddWithValue("@sgHypertensionDefaulting", curhpt.Defaulting);//param
@@ -427,8 +1062,8 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@sgAsthmaRefNo", curAsthma.ReferralNo);//param
 
                 //Other   +
-                com.Parameters.AddWithValue("@sgOther", curOther.IsSick);//param
-                com.Parameters.AddWithValue("@sgOtherStartDate", curOther.StartDate);//param
+                com.Parameters.AddWithValue("@sgOther", txtCMOther.Text);//param I didnt want to do that but
+                com.Parameters.AddWithValue("@sgOtherStartDate", curAsthma.StartDate);//param
                 com.Parameters.AddWithValue("@sgOtherDefaulting", curOther.Defaulting);//param
                 com.Parameters.AddWithValue("@sgOtherReferToClinic", curOther.ReferToClinic);//param
                 com.Parameters.AddWithValue("@sgOtherRefNo", curOther.ReferralNo);//param
@@ -463,7 +1098,8 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@sgPregnancyCurrentlyPregnant", preg.CurrentlyPregnant);//param
                 com.Parameters.AddWithValue("@sgPregnancyPossibleThatPregnant", preg.CurrentlyPregnant);//param-
                 com.Parameters.AddWithValue("@sgPregnancyTestDone", preg.PregnancyTestDone);//param
-                com.Parameters.AddWithValue("@sgPregnancyResult", preg.Results);//param
+             com.Parameters.AddWithValue("@sgPregnancyResult", preg.Results);//param
+               // com.Parameters.AddWithValue("@sgPregnancyResult", false);//param ---must be changed
                 com.Parameters.AddWithValue("@sgPregnancyReferToClinic", preg.ReferToClinic);//param
                 com.Parameters.AddWithValue("@sgPregancyRefNo", preg.ReferralNo);//param
                 //Tuberculosis+-
@@ -477,7 +1113,7 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@sgTBLossOfApetite", tb.LossOfApetite);//param
                 com.Parameters.AddWithValue("@sgTBReferToClinic", tb.ReferToClinic);//param
                 com.Parameters.AddWithValue("@sgTBRefNo", tb.ReferralNo);//param
-                com.Parameters.AddWithValue("@HouseholdMemberONTBMeds", tb.HouseholdMemberONTBMeds);//param
+                com.Parameters.AddWithValue("@sgTBHouseholdMemberOnTBMeds", tb.HouseholdMemberONTBMeds);//param
 
                 com.Parameters.AddWithValue("@sgTBContactTracingHouseholdMemberOnMeds", tbc.HouseHoldOnTBMeds);//param
                 com.Parameters.AddWithValue("@sgTBContactTracingReferToClinic", tbc.ReferToClinic);//param
@@ -488,8 +1124,8 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@sgOtherReferToClinic2", otc.ReferToClinic);//param
                 com.Parameters.AddWithValue("@sgOtherRefNo2", otc.ReferralNo);//param
                 com.Parameters.AddWithValue("@sgOtherSmoking", otc.Smoking);//param
-                  com.Parameters.AddWithValue("@sgOtherAlcoholUnitsPerWeek", otc.Drinking);//param
-               // com.Parameters.AddWithValue("@sgOtherAlcoholUnitsPerWeek", otc.DrinkAlchoholUnitsPerWeek);//param
+                com.Parameters.AddWithValue("@sgOtherAlcoholUnitsPerWeek", otc.Drinking);//param
+                // com.Parameters.AddWithValue("@sgOtherAlcoholUnitsPerWeek", otc.DrinkAlchoholUnitsPerWeek);//param
                 com.Parameters.AddWithValue("@sgOtherDiarrhoeaOver3Days", otc.DiarrhoeaOver3Days);//param
                 com.Parameters.AddWithValue("@sgOtherReferToClinic3", otc.ReferToClinic2);//param
                 com.Parameters.AddWithValue("@sgOtherRefNo3", otc.ReferralNo2);//param
@@ -503,6 +1139,7 @@ namespace Impilo_App.Views.Screening
 
                 //Eldery+
                 com.Parameters.AddWithValue("@sgElderlyAmputation", eld.LegFootArmHanAmputation);//param
+                com.Parameters.AddWithValue("@sgElderlyPassVisionTest", eld.LegFootArmHanAmputation);//param  sgElderlyPassVisionTest
                 com.Parameters.AddWithValue("@sgElderlyBedridden", eld.Bedridden);//param
                 com.Parameters.AddWithValue("@sgElderlyUseAidToMove", eld.UseAidToMove);//param
                 com.Parameters.AddWithValue("@sgElderlyWashYourself", eld.WashYourself);//param
@@ -517,7 +1154,7 @@ namespace Impilo_App.Views.Screening
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString()+"General not saved");
             }
             finally
             {
@@ -529,442 +1166,7 @@ namespace Impilo_App.Views.Screening
 
                 //end of general
 
-
-            #region Not tested right now
-
-                /*
-            #region Hypertension ++ Tested+
-
-            Hypertension hyper = new Hypertension();
-            hyper.ScreeningID = scrID;
-            hyper.YearOfDiagnosis = ((ComboBoxItem)cboDiaYear.SelectedItem).Content.ToString();
-            hyper.Headache = (headYes.IsChecked == true) ? true : false;
-            hyper.BlurredVision = (blurvYes.IsChecked == true) ? true : false;
-            hyper.ShortnessOfBreath = (shortYes.IsChecked == true) ? true : false;
-            hyper.ChestPain = (chestYes.IsChecked == true) ? true : false;
-            hyper.Confusion = (confYes.IsChecked == true) ? true : false;
-            hyper.ReferralToClinic = (refYes.IsChecked == true) ? true : false; ;
-            hyper.ReferalNo = txthyperRef.Text;
-            hyper.EverHadStroke = (stroYes.IsChecked == true) ? true : false; ;
-            hyper.YearOfStroke = ((ComboBoxItem)cboStrokeYear.SelectedItem).Content.ToString();
-            hyper.AnyOneInFamilyHadStroke = (anyYes.IsChecked == true) ? true : false; ;
-            hyper.HowManyInFamilyOnMedsForHypertension = int.Parse(numHPT.Text);
-            //sp place
-            //connection 
-            try
-            {
-                storedProcedure = "AddScreeningHypertension";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@EncounterID", encounterID);//param
-                com.Parameters.AddWithValue("@shYearOfDiagnosis", int.Parse(hyper.YearOfDiagnosis));//param
-                com.Parameters.AddWithValue("@shHeadache", hyper.Headache);//param
-                com.Parameters.AddWithValue("@shBlurredVision", hyper.BlurredVision);//param
-                com.Parameters.AddWithValue("@shShortnessOfBreath", hyper.ShortnessOfBreath);//param
-                com.Parameters.AddWithValue("@shConfusion", hyper.Confusion);//param
-                com.Parameters.AddWithValue("@shChestPain", hyper.ChestPain);//param
-                com.Parameters.AddWithValue("@shReferralToClinic", hyper.ReferralToClinic);//param
-                com.Parameters.AddWithValue("@shRefNo", hyper.ReferalNo);//param
-                com.Parameters.AddWithValue("@shEverHadAStroke", hyper.EverHadStroke);//param
-                com.Parameters.AddWithValue("@shYearOfStroke", int.Parse(hyper.YearOfStroke));//param
-                com.Parameters.AddWithValue("@shHowManyInFamilyOnMedsForHypertension", hyper.HowManyInFamilyOnMedsForHypertension);//param
-                com.Parameters.AddWithValue("@shAnyoneInFamilyHadStroke", hyper.AnyOneInFamilyHadStroke);//param
-
-                int i = com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-
-
-            #endregion
-
-
-
-            #region Diabetes ++ Tested +
-
-            Diabetes dia = new Diabetes
-            {
-                ScreeningID = scrID,
-                BlurredVision = (blurvYes.IsChecked == true) ? true : false,
-                YearOfDiagnosis = ((ComboBoxItem)cboDiabeYear.SelectedItem).Content.ToString(),
-                regularlyThirsty = (regYes.IsChecked == true) ? true : false,
-                WeightLoss = (lossYes.IsChecked == true) ? true : false,
-                UrinatingMore = (uriYes.IsChecked == true) ? true : false,
-                NauseaOrVomitting = (nauYes.IsChecked == true) ? true : false,
-                FootExamResult = ((ComboBoxItem)cboFootExam.SelectedItem).Content.ToString(),
-                ReferralToClinic = (refdiaYes.IsChecked == true) ? true : false,
-                ReferralNo = txtdiaRef.Text,
-                FamilyMemberWith = (famYes.IsChecked == true) ? true : false
-
-            };
-
-            //sp place
-            //connection
-            try
-            {
-                storedProcedure = "AddScreeningDiabetes";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-
-
-                com.Parameters.AddWithValue("@EncounterID", encounterID);//param
-                com.Parameters.AddWithValue("@sdYearOfDiagnosis", int.Parse(dia.YearOfDiagnosis));//param
-                com.Parameters.AddWithValue("@sdRegularlyThirsty", dia.regularlyThirsty);//param
-                com.Parameters.AddWithValue("@sdWeightLost", dia.WeightLoss);//param
-                com.Parameters.AddWithValue("@sdUrinatingMore", dia.UrinatingMore);//param
-                com.Parameters.AddWithValue("@sdNauseaOrVomiting", dia.NauseaOrVomitting);//param
-                com.Parameters.AddWithValue("@sdFootExamResult", dia.FootExamResult);//param-
-                com.Parameters.AddWithValue("@sdBlurredVision", dia.BlurredVision);//param-
-                com.Parameters.AddWithValue("@sdReferralToClinic", dia.ReferralToClinic);//param
-                com.Parameters.AddWithValue("@sdRefNo", dia.ReferralNo);//param
-                com.Parameters.AddWithValue("@sdFamilyMemberWith", dia.FamilyMemberWith);//param
-
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-            #endregion
-
-          
-                  #region HIV ++ Tested +
-            HIV_Tab hivTab = new HIV_Tab
-            {
-                ScreeningID = scrID,
-                YearOfDiagnosis = ((ComboBoxItem)cboDiaHivYear.SelectedItem).Content.ToString(),
-                OnMeds = (radonMeds.IsChecked == true) ? true : false,
-                AdherenceOK = (radadh.IsChecked == true) ? true : false,
-                ReferToClinic = (hivref.IsChecked == true) ? true : false,
-                ReferralNo = txtHIVRef.Text,
-                ARVFileNo = txtARVFile.Text,
-
-            };
-
-            //missing the list of meds
-
-            //sp place
-            //connection
-            try
-            {
-                storedProcedure = "AddScreeningHIV";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@EncounterID", encounterID);//param
-                com.Parameters.AddWithValue("@shivYearOfDiagnosis", int.Parse(hivTab.YearOfDiagnosis));//param
-                com.Parameters.AddWithValue("@shivOnMeds", hivTab.OnMeds);//param
-                com.Parameters.AddWithValue("@shivAdherenceOK", hivTab.AdherenceOK);//param
-                com.Parameters.AddWithValue("@shivReferToClinic", hivTab.ReferToClinic);//param
-                com.Parameters.AddWithValue("@shivRefNo", hivTab.ReferralNo);//param
-                com.Parameters.AddWithValue("@shivARVFileNo", hivTab.ARVFileNo);//param
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-            #endregion
-          
-
-           
-              
-            #region Maternal Health ++ Tested +
-
-            MentalHealth materHealth = new MentalHealth
-            {
-                ScreeningID = scrID,
-                PregnantBefore = false,
-                NoOfPregnancies = numPregnacies.Text,
-                HowManySuccessful = numPregnSuc.Text,
-                WhereDeliveredLasBaby = txtdelplace.Text,
-                Caesarian = (radcae.IsChecked == true)  ? true : false,
-                BabyUnder2_5Kgs = (radbabyunder2.IsChecked == true) ? true : false,
-                ChildrenDiedUnder1Year = numchild1died.Text,
-                ChildrenDiedBetween1to5Years = numchild5died.Text,
-                PAPSmearInLast5Years = (radpap.IsChecked == true) ? true : false,
-                LastBloodTestResult = ((ComboBoxItem)cboBloodExam.SelectedItem).Content.ToString(),
-                DateOfFirstANC = (DateTime)txtDate1ANC.SelectedDate,
-                DateOfLastANC = (DateTime)txtDatelastANC.SelectedDate,
-                ReferredToClinic = (refMatyes.IsChecked == true) ? true : false,
-                ReferralNo = txtMatref.Text,
-                DateOfNextANC = (DateTime)txtDateNextANC.SelectedDate,
-                ExpectedDateOfDelivery = (DateTime)txtDateDelivery.SelectedDate,
-                IntendFormulaFeed = (radintformula.IsChecked == true) ? true : false,
-                IntendBreastFeed = (radintbreas.IsChecked == true) ? true : false,
-                RegisteredOnMomConnect = (radintbreas.IsChecked == true) ? true : false
-
-
-            };
-
-            //sp place
-            //connection
-            try
-            {
-                storedProcedure = "AddScreeningMaternalHealth";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@EncounterID", encounterID);//param
-                com.Parameters.AddWithValue("@smhPregnantBefore", materHealth.PregnantBefore);//param
-                com.Parameters.AddWithValue("@smhNoOfPregnancies", materHealth.NoOfPregnancies);//param
-                com.Parameters.AddWithValue("@smhHowManySuccessful", materHealth.HowManySuccessful);//param
-                com.Parameters.AddWithValue("@smhWhereDeliveredLastBaby", materHealth.WhereDeliveredLasBaby);//param
-                com.Parameters.AddWithValue("@smhCaesarian", materHealth.Caesarian);//param
-                com.Parameters.AddWithValue("@smhBabyUnder2KG", materHealth.BabyUnder2_5Kgs);//param
-                com.Parameters.AddWithValue("@smhChildrenDiedUnder1Year", materHealth.ChildrenDiedUnder1Year);//param
-                com.Parameters.AddWithValue("@smhChildrenDiedBetween1To5Years", materHealth.ChildrenDiedBetween1to5Years);//param
-                com.Parameters.AddWithValue("@smhPAPSmearInLast5Years", materHealth.PAPSmearInLast5Years);//param
-                com.Parameters.AddWithValue("@smhLastBloodTestResult", materHealth.LastBloodTestResult);//param
-                com.Parameters.AddWithValue("@smhCurrentDateOfFirstANC", materHealth.DateOfFirstANC);//param
-                com.Parameters.AddWithValue("@smhCurrentDateOfLastANC", materHealth.DateOfLastANC);//param
-                com.Parameters.AddWithValue("@smhReferredToClinic", materHealth.ReferredToClinic);//param
-                com.Parameters.AddWithValue("@smhRefNo", materHealth.ReferralNo);//param
-                com.Parameters.AddWithValue("@smhDateOfNextANC", materHealth.DateOfNextANC);//param
-                com.Parameters.AddWithValue("@smhExpectedDeliveryDate", materHealth.ExpectedDateOfDelivery);//param
-                com.Parameters.AddWithValue("@smhIntendFormulaFeed", materHealth.IntendFormulaFeed);//param
-                com.Parameters.AddWithValue("@smhIntendBreastfeed", materHealth.IntendBreastFeed);//param this could superfluu
-                com.Parameters.AddWithValue("@smhRegisteredOnMomConnect", materHealth.RegisteredOnMomConnect);//param
-
-
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            #endregion
-          
-                 * 
-                 * 
-                 * 
-                
-            #region Child Health +-+ Tested+
-
-            ChildHealth childh = new ChildHealth
-            {
-                EncounterID = encounterID,
-                NameOfMother = txtNaMother.Text,
-                ChildWithRTHC = (radrthc.IsChecked == true) ? true : false,
-                ReferToClinic = (radref.IsChecked == true) ? true : false,
-                ReferalNo = txtref.Text,
-                ListConcernsReChild = txtConRechild.Text,
-                ReferToClinic2 = (radref1.IsChecked == true) ? true : false,
-                ReferToOVC = (radrefovc.IsChecked == true) ? true : false,
-                ReferralNo2 = txtref1.Text,
-                MotherHIVPlus = (radMohiv.IsChecked == true) ? true : false,
-                ChildBreastFed = (radbreast.IsChecked == true) ? true : false,
-                Howlong = ((ComboBoxItem)cbolong.SelectedItem).Content.ToString(),
-                ChildEverOnNevirapine = false,
-                PCRDone = (radpcr.IsChecked == true) ? true : false,
-                PCRResults = ((ComboBoxItem)cboPCR.SelectedItem).Content.ToString(),
-                ReferToClinic3 = (radref2.IsChecked == true) ? true : false,
-                ReferalNo3 = txtref2.Text,
-                ImmunisationUpToDate = (radimm.IsChecked == true) ? true : false,
-
-                ReferToClinic4 = (radref3.IsChecked == true) ? true : false,
-                ReferralNo4 = txtref3.Text,
-                WalkAppropriateForAge = (radwalk.IsChecked == true) ? true : false,
-                TalkAppropriateForAge = (radtalk.IsChecked == true) ? true : false,
-                VITAandWarmMedsGivenEachMonth = false
-
-            };
-
-            childh.WhichImmunisatationsOutStanding = "";
-
-            //sp place
-            //connection
-            try
-            {
-                storedProcedure = "AddScreeningChildHealth";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@EncounterID", childh.EncounterID);//param
-                com.Parameters.AddWithValue("@schNameOfMother", childh.NameOfMother);//param
-                com.Parameters.AddWithValue("@schChildWithRTHC", childh.ChildWithRTHC);//param
-                com.Parameters.AddWithValue("@schReferToClinic", childh.ReferToClinic);//param
-                com.Parameters.AddWithValue("@schRefNo", childh.ReferalNo);//param
-
-                com.Parameters.AddWithValue("@schMotherHIVPos", childh.MotherHIVPlus);//param
-                com.Parameters.AddWithValue("@schChildBreastfed", childh.ChildBreastFed);//param
-                com.Parameters.AddWithValue("@schHowLong", childh.Howlong);//param
-                com.Parameters.AddWithValue("@schChildEverOnNevirapine", childh.ChildEverOnNevirapine);//param
-                com.Parameters.AddWithValue("@schPCRDone", childh.PCRDone);//param
-                com.Parameters.AddWithValue("@schPCRResult", childh.PCRResults);//param                
-                com.Parameters.AddWithValue("@schReferToClinic2", childh.ReferToClinic2);//param
-                com.Parameters.AddWithValue("@schRefNo2", childh.ReferralNo2);//param
-                //  com.Parameters.AddWithValue("@ListConcernsReChild", childh.ListConcernsReChild);//param
-
-                com.Parameters.AddWithValue("@schImmunisationUpToDate", childh.ImmunisationUpToDate);//param
-
-                
-                com.Parameters.AddWithValue("@schReferToClinic3", childh.ReferToClinic3);//param
-                com.Parameters.AddWithValue("@schRefNo3", childh.ReferalNo3);//param
-                
-             //   com.Parameters.AddWithValue("@WhichImmunisatationsOutStanding", childh.WhichImmunisatationsOutStanding);//param
-               
-                com.Parameters.AddWithValue("@schVitAAndWormMedsGivenEachMonth", childh.VITAandWarmMedsGivenEachMonth);//param
-                com.Parameters.AddWithValue("@schWalkAppropriateForAge", childh.WalkAppropriateForAge);//param
-                com.Parameters.AddWithValue("@schTalkAppropriateForAge", childh.TalkAppropriateForAge);//param
-                com.Parameters.AddWithValue("@schReferToClinic4", childh.ReferToClinic4);//param
-                com.Parameters.AddWithValue("@schReferToOVC", childh.ReferToOVC);//param
-                com.Parameters.AddWithValue("@schRefNo4", childh.ReferralNo4);//param
-
-
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            #endregion
-
-           
-     
-        
-
-            #region otherTab +
-
-            Other_Tab ottab = new Other_Tab {
-                ScreeningID = scrID,
-                ReferralNo= txtOtherRef.Text,
-                ReferToClinic = (radOtherRef.IsChecked == true) ? true : false,
-                OtherConditionFound = txtOtherCon.Text
-            
-            };
-
-
-            //sp place
-            //connection
-            try
-            {
-                storedProcedure = "AddScreeningOther";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@EncounterID", ottab.ScreeningID);//param
-                com.Parameters.AddWithValue("@schReferredToClinic", ottab.ReferToClinic);//param
-                com.Parameters.AddWithValue("@schRefNo", ottab.ReferralNo);//param
-                com.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", ottab.OtherConditionFound);//param
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-            #endregion
-
-            #region Environmental +-
-
-            Environmental environment = new Environmental();
-            environment.ScreeningId = scrID;
-            environment.NoOfHouseholdCurrent = int.Parse(numCurrentHousehold.Text);
-            environment.NoOfHouseholdAway = int.Parse(numAwayHousehold.Text);
-            environment.ListWhere = ((ComboBoxItem)cboListWhere.SelectedItem).Content.ToString(); //----ListWhere missing from the db
-            environment.WhenLastClinicVisit = ((ComboBoxItem)cboLastVisit.SelectedItem).Content.ToString();
-            environment.WhichClinic = int.Parse(((ComboBoxItem)cboClinic.SelectedItem).Content.ToString());
-
-           
-            EnvironmentalExtra environmentExtra = new EnvironmentalExtra();
-            environmentExtra.ScreeningID = scrID;
-            environmentExtra.NoOfPeopleInOneRoomMainHut = int.Parse(((ComboBoxItem)cboNoPeople.SelectedItem).Content.ToString());
-            environmentExtra.NoOfStructuresInHomeStead = int.Parse(((ComboBoxItem)cboNoStructure.SelectedItem).Content.ToString());
-            environmentExtra.RainWaterCollection = (rdoYesRain.IsChecked == true) ? true : false;
-            environmentExtra.WaterSupply = ((ComboBoxItem)cboWaterSupply.SelectedItem).Content.ToString();
-           environmentExtra.WalkingDistanceFromWhaterSupply = ((ComboBoxItem)cboWalkingDistanceWater.SelectedItem).Content.ToString();
-            environmentExtra.TreatWaterBeforeDrinking = (rdoTreatWater.IsChecked == true) ? true : false;
-            environmentExtra.ElectricityInAnyHut = (rdoElectricityYes.IsChecked == true) ? true : false;
-            environmentExtra.HaveWorkingFridge = (rdoYesFridge.IsChecked == true) ? true : false;
-            environmentExtra.UseForCooking = ((ComboBoxItem)cboUseForCooking.SelectedItem).Content.ToString();
-            environmentExtra.TypeOfToilet = ((ComboBoxItem)cboTypeOfToilet.SelectedItem).Content.ToString();
-            environmentExtra.DisposeWaste = ((ComboBoxItem)cboDisposeWaste.SelectedItem).Content.ToString();
-            environmentExtra.SourceOfIncome = ((ComboBoxItem)cboSourceOfIncome.SelectedItem).Content.ToString(); //----SourceOfIncome missing from the db
-            environmentExtra.RecievedFoodPacelIn6Month = (cboFoodParcel.IsChecked == true) ? true : false;
-
-            try
-            {
-                storedProcedure = "";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-
-                com.Parameters.AddWithValue("@EncounterID", environment.ScreeningId);//param
-                com.Parameters.AddWithValue("@seNoPeopleInHousehold", environment.NoOfHouseholdCurrent);//param
-                com.Parameters.AddWithValue("@seNoLivingAwayFromHousehold", environment.NoOfHouseholdAway);//param
-                com.Parameters.AddWithValue("@seWhenDidYouOrMemberLastVisit", environment.WhenLastClinicVisit);//param
-                com.Parameters.AddWithValue("@cID", environment.WhichClinic);//param
-
-                com.Parameters.AddWithValue("@seTotalNumberSleepingInOneRoomInMainHut", environmentExtra.NoOfPeopleInOneRoomMainHut);//param
-                com.Parameters.AddWithValue("@seTotalNoStructures", environmentExtra.NoOfStructuresInHomeStead);//param
-                com.Parameters.AddWithValue("@seRainWaterCollection", environmentExtra.RainWaterCollection);//param
-                com.Parameters.AddWithValue("@seWaterSupply", environmentExtra.WaterSupply);//param
-                com.Parameters.AddWithValue("@seWatlkingDistanceFromWaterSupply", environmentExtra.WalkingDistanceFromWhaterSupply);//param
-                com.Parameters.AddWithValue("@seTreatWaterBeforeDrinking", environmentExtra.TreatWaterBeforeDrinking);//param
-                com.Parameters.AddWithValue("@seElectricityInAnyHut", environmentExtra.ElectricityInAnyHut);//param
-                com.Parameters.AddWithValue("@seWorkingFridge", environmentExtra.HaveWorkingFridge);//param
-                com.Parameters.AddWithValue("@seCookingMethod", environmentExtra.UseForCooking);//param
-                com.Parameters.AddWithValue("@seToiletType", environmentExtra.TypeOfToilet);//param
-                com.Parameters.AddWithValue("@seWasteDisposalType", environmentExtra.DisposeWaste);//param
-               // com.Parameters.AddWithValue("@seSourceOfIncome", environmentExtra.SourceOfIncome);//param
-                com.Parameters.AddWithValue("@seFoodParcelInLast6Months", environmentExtra.RecievedFoodPacelIn6Month);//param
-
-
-                com.ExecuteNonQuery();//execute command
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-
-            finally
-            {
-                conn.Close();
-            }
-
-
-            #endregion
-
-                */
-            #endregion //end not tested now
+                          
 
             }//end of if
 
@@ -975,52 +1177,34 @@ namespace Impilo_App.Views.Screening
         }
 
         #region SaveHut
+        List<Hut> _listofHut = new List<Hut>();
         private void btnSaveHut_Click(object sender, RoutedEventArgs e)
         {
-            string scrID = ""; // 
-            string storedProcedure = "";
+            
+            
             //this thing is missing encouter id so it doesnt reflect to the client
-
-            if (int.Parse(cboNoOfHuts.SelectedItem.ToString()) > 1)
+            int huttotal = int.Parse(numNoOfHuts.Text);
+            if (HutCounter > 1)
             {
-                int MaxNoHuts = int.Parse(cboNoOfHuts.SelectedItem.ToString());
 
-                while (HutCounter <= MaxNoHuts)
+
+                if (HutCounter <= huttotal)
                 {
                     Hut hut = new Hut();
                     hut.HutId = HutCounter;
                     hut.HutStracture = ((ComboBoxItem)cboHutStructure.SelectedItem).Content.ToString();
                     hut.TypeOfRoof = ((ComboBoxItem)cboTypeOfRoof.SelectedItem).Content.ToString();
                     hut.Ventilation = ((ComboBoxItem)cboVentilation.SelectedItem).Content.ToString();
-                    hut.TotalNoOfRooms = int.Parse(((ComboBoxItem)cboNoRooms.SelectedItem).Content.ToString());
-                    hut.isMainHut = false;
-                    try
-                    {
-                        storedProcedure = "AddScreeningEnvironmentHuts";// name of sp
-                        conn.Open();
-                        SqlCommand com = new SqlCommand(storedProcedure, conn);
-                        com.CommandType = CommandType.StoredProcedure;
-                        com.Parameters.AddWithValue("@seID", hut.HutId);//param
-                        com.Parameters.AddWithValue("@sehutStructure", hut.HutStracture);//param
-                        com.Parameters.AddWithValue("@sehutTypeOfRoof", hut.TypeOfRoof);//param
-                        com.Parameters.AddWithValue("@sehutVentilation", hut.Ventilation);//param
-                        com.Parameters.AddWithValue("@sehutNumberOfRooms", hut.TotalNoOfRooms);//param
-                        com.Parameters.AddWithValue("@sehutMain", hut.isMainHut);//param
-                        com.ExecuteNonQuery();//execute command
-                    }
+                    hut.TotalNoOfRooms = int.Parse(numNoOfRooms.Text);
+                    hut.isMainHut = (rdoYesMainHut.IsChecked == true) ? true : false;//rdoYesMainHut
 
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message.ToString());
-                    }
+                    _listofHut.Add(hut);
 
-                    finally
-                    {
-                        conn.Close();
-                    }
-
+                    lblHutCount.Content = "Already Added(" + HutCounter + ")";
                     HutCounter++;
+
                 }
+                else { MessageBox.Show("Number of Hut max out!"); }
             }
 
             else
@@ -1030,28 +1214,13 @@ namespace Impilo_App.Views.Screening
                 hut.HutStracture = ((ComboBoxItem)cboHutStructure.SelectedItem).Content.ToString();
                 hut.TypeOfRoof = ((ComboBoxItem)cboTypeOfRoof.SelectedItem).Content.ToString();
                 hut.Ventilation = ((ComboBoxItem)cboVentilation.SelectedItem).Content.ToString();
-                hut.TotalNoOfRooms = int.Parse(((ComboBoxItem)cboNoRooms.SelectedItem).Content.ToString());
+                hut.TotalNoOfRooms = int.Parse(numNoOfRooms.Text);
+                hut.isMainHut = (rdoYesMainHut.IsChecked == true) ? true : false;//rdoYesMainHut
+                _listofHut.Add(hut);
+                HutCounter++;
+                lblHutCount.Content = "Already Added(1)";
 
-                try
-                {
-                    storedProcedure = "";// name of sp
-                    conn.Open();
-                    SqlCommand com = new SqlCommand(storedProcedure, conn);
-
-                    com.Parameters.AddWithValue("@", hut.HutId);//param
-
-                    com.ExecuteNonQuery();//execute command
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                }
-
-                finally
-                {
-                    conn.Close();
-                }
+                
             }
         }
 

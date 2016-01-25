@@ -13,5 +13,7 @@ namespace Impilo_App.LocalModels
         public DateTime ScreeningDate { get; set; }
 
         public string ClientId { get; set; }
+
+        public string EncounterCapturedBy { get; set; }
     }
 }

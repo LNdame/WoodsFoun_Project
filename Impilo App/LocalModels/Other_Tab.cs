@@ -8,7 +8,7 @@ namespace Impilo_App.LocalModels
 {
     class Other_Tab
     {
-        public string ScreeningID { get; set; }
+        public int EncounterID { get; set; }
 
         public string OtherID { get; set; }
 

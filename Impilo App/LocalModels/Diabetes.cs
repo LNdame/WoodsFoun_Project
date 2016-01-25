@@ -8,7 +8,7 @@ namespace Impilo_App.LocalModels
 {
     class Diabetes
     {
-        public string ScreeningID { get; set; }
+        public int EncounterID { get; set; }
 
         public string YearOfDiagnosis { get; set; }
 

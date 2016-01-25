@@ -18,6 +18,6 @@
             <DataGrid AutoGenerateColumns="True" Height="359" HorizontalAlignment="Left" Margin="-8,0,-900,-277" Name="mydatagrid" VerticalAlignment="Top" Width="1089" Grid.ColumnSpan="2" SelectionChanged="mydatagrid_SelectionChanged" />
             <!--<DataGrid x:Name="mydatagrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="181" Height="82"/>-->
         </Grid>
-        <Label Content="List of clients" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="List of clients" HorizontalAlignment="Left" Height="49" FontSize="28" Margin="10,-8,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
     </Grid>
 </UserControl>
