@@ -17,6 +17,8 @@ using System.Windows.Shapes;
 //using Repository;
 using WpfPageTransitions;
 using Impilo_App.Views.Screening;
+using Impilo_App.Views.FollowUpVisit;
+using Impilo_App.Views.ClinicData;
 using System.Configuration;
 
 
@@ -34,6 +36,14 @@ namespace Impilo_App.Views.Home
         public ListClients()
         {
             InitializeComponent();
+            BindMyData();
+        }
+
+        int lflag;//1 for follow up 2 for clinic visit//
+        public ListClients(int launcherFlag)
+        {
+            InitializeComponent();
+            lflag = launcherFlag;
             BindMyData();
         }
         DataTable dt = new DataTable();
@@ -86,10 +96,21 @@ namespace Impilo_App.Views.Home
 
 
 
+                switch (lflag)
+                {
+                    case 1: FollowUp newPage = new FollowUp();
+                        var a = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition; 
+                        a.ShowPage(newPage);break;
+                    case 2: ClinicVisit clinicV = new ClinicVisit();
+                        var c = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
+                        c.ShowPage(clinicV);break;
 
-                ScreeningHome newPage = new ScreeningHome(id,selectClient);
-                var a = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
-                a.ShowPage(newPage);
+                    default: FollowUp defaultfup= new FollowUp();
+                        var d = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
+                        d.ShowPage(defaultfup);break;
+                }
+
+               
             }
         }
        

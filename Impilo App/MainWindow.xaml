@@ -108,7 +108,7 @@
             <Button x:Name="btnFollowUp" Style="{StaticResource BaseButtonStyle}" Content="Follow-Up Visit" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Bottom" Width="141" Height="34" FontSize="16" Click="btnFollowUp_Click" Grid.Column="2" />
             <Button x:Name="btnScreening" Style="{StaticResource BaseButtonStyle}" Content="Screening" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Bottom" Width="141" Height="34" FontSize="16" Click="btnScreening_Click" RenderTransformOrigin="0.485,-0.165" Grid.Column="1" />
             <Button x:Name="button_Copy2" Style="{StaticResource BaseButtonStyle}" Content="Clinic Visit" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Bottom" Width="141" Height="34" FontSize="16" Click="button_Copy2_Click" Grid.Column="3" />
-            <Button x:Name="button_Copy3" Style="{StaticResource BaseButtonStyle}" Content="Household Info" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Bottom" Width="141" Height="34" FontSize="16" Grid.Column="4"/>
+            <Button x:Name="button_Copy3" Style="{StaticResource BaseButtonStyle}" Content="Household Info" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Bottom" Width="141" Height="34" FontSize="16" Grid.Column="4" Visibility="Hidden"/>
 
 
         </Grid>
