@@ -19,22 +19,41 @@ namespace Impilo_App.DataImport
         {
             string ReturnValue = "";
 
-            
-            try
-            {                
-                ReturnValue = Target.StringCellValue;
-            }
-            catch
+            if (Target.CellType == CellType.String)
             {
-                try
-                {
-                    ReturnValue = Target.NumericCellValue.ToString();
-                }
-                catch
-                {
-                    ReturnValue = Target.DateCellValue.ToString();
-                }
+                ReturnValue = Target.StringCellValue;                
             }
+
+            if (Target.CellType == CellType.Numeric)
+            {
+                if (DateUtil.IsCellDateFormatted(Target))
+                    ReturnValue = Target.DateCellValue.ToString();
+                else
+                    ReturnValue = Target.NumericCellValue.ToString();
+            }
+            
+            //try
+            //{                
+            //    ReturnValue = Target.StringCellValue;
+            //}
+            //catch
+            //{
+            //    try
+            //    {
+                    
+            //        DateTime TestDate = new DateTime(1900, 1, 1);
+            //        DateTime.TryParse(Target.DateCellValue.ToString(), out TestDate);
+
+            //        if (TestDate > new DateTime(1900,1,1))
+            //            ReturnValue = TestDate.ToString();
+            //        else
+            //            ReturnValue = Target.NumericCellValue.ToString();
+            //    }
+            //    catch
+            //    {
+            //        ReturnValue = Target.NumericCellValue.ToString();
+            //    }
+            //}
 
             if (ReturnValue == "01-01-0001 12:00:00 AM")
                 ReturnValue = "";
@@ -43,7 +62,7 @@ namespace Impilo_App.DataImport
         }
         public static bool Import(string TargetFolder)
         {
-            bool Success = true;
+            bool Success = true;            
 
             string[] Files = Directory.GetFiles(TargetFolder);
             List<string> ErrorList = new List<string>();
@@ -225,8 +244,9 @@ namespace Impilo_App.DataImport
                                 string TheDate = "";
 
                                 TheDate = GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(0));
+                                DateTime.TryParse(TheDate, out TestDate);
                                
-                                if (DateTime.TryParse(TheDate,out TestDate))
+                                if (TestDate > new DateTime(1900,1,1))
                                 {
                                     AtLeastOneLine = true;
 
@@ -255,14 +275,28 @@ namespace Impilo_App.DataImport
 
                                 if (AtLeastOneLine)
                                 {
-                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(14)));
-                                    Row++;
+                                    try
+                                    {
+                                        string Treatment = GetCellValue(MyWorkbook.GetSheet("Hypertension").GetRow(Row).GetCell(14));
+
+                                        if (Treatment.Trim() != "")
+                                        {
+                                            Treatments.Add(Treatment.Trim());
+                                            Row++;
+                                        }
+                                        else AtLeastOneLine = false;
+                                    }
+                                    catch
+                                    {
+                                        AtLeastOneLine = false;
+                                        Row++;
+                                    }
                                 }
                                 else
                                     bContinue = false;
                             }
 
-                            if (HypertensionEntriesCurrent.Count > 0 && AtLeastOneLine)
+                            if (HypertensionEntriesCurrent.Count > 0)
                             {
                                 HypertensionEntriesCurrent.Add(Treatments);
                                 HypertensionEntries.Add(HypertensionEntriesCurrent);
@@ -319,8 +353,9 @@ namespace Impilo_App.DataImport
                                 //
 
                                 string TheDate = GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(0));
+                                DateTime.TryParse(TheDate, out TestDate);
 
-                                if (DateTime.TryParse(TheDate,out TestDate))
+                                if (TestDate > new DateTime(1900, 1, 1))
                                 {
                                     AtLeastOneLine = true;
 
@@ -345,20 +380,35 @@ namespace Impilo_App.DataImport
                                     DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(13)));
                                     DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(14)));
                                    
-                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(16)));
-                                    DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(17)));
+                                    //DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(16)));
+                                    //DiabetesEntriesCurrent.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(17)));
                                 }
 
                                 if (AtLeastOneLine)
                                 {
-                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(18)));
-                                    Row++;
+                                    try
+                                    { 
+                                        string Treatment = GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(Row).GetCell(15));
+
+                                        if (Treatment.Trim() != "")
+                                        {
+                                            Treatments.Add(Treatment.Trim());
+                                            Row++;
+                                        }
+                                        else 
+                                            AtLeastOneLine = false;
+                                    }
+                                    catch
+                                    {
+                                        AtLeastOneLine = false;
+                                        Row++;
+                                    }
                                 }
                                 else
                                     bContinue = false;
                             }
 
-                            if (DiabetesEntriesCurrent.Count > 0 && AtLeastOneLine)
+                            if (DiabetesEntriesCurrent.Count > 0)
                             {
                                 DiabetesEntriesCurrent.Add(Treatments);
                                 DiabetesEntries.Add(DiabetesEntriesCurrent);
@@ -409,7 +459,9 @@ namespace Impilo_App.DataImport
 
                                 string TheDate = GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(0));
 
-                                if (DateTime.TryParse(TheDate, out TestDate))
+                                DateTime.TryParse(TheDate, out TestDate);
+
+                                if (TestDate > new DateTime(1900, 1, 1))
                                 {
                                     AtLeastOneLine = true;
                                     if (EpilepsyEntriesCurrent.Count > 0)
@@ -430,13 +482,27 @@ namespace Impilo_App.DataImport
 
                                 if (AtLeastOneLine)
                                 {
-                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(8)));
-                                    Row++;
+                                    try
+                                    {
+                                        string Treatment = GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(Row).GetCell(8));
+
+                                        if (Treatment.Trim() != "")
+                                        {
+                                            Treatments.Add(Treatment.Trim());
+                                            Row++;
+                                        }
+                                        else AtLeastOneLine = false;
+                                    }
+                                    catch
+                                    {
+                                        AtLeastOneLine = false;
+                                        Row++;
+                                    }
                                 }
                                 else bContinue = false;
                             }
 
-                            if (EpilepsyEntriesCurrent.Count > 0 && AtLeastOneLine)
+                            if (EpilepsyEntriesCurrent.Count > 0)
                             {
                                 EpilepsyEntriesCurrent.Add(Treatments);
                                 EpilepsyEntries.Add(EpilepsyEntriesCurrent);
@@ -480,7 +546,9 @@ namespace Impilo_App.DataImport
 
                                 string TheDate = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(0));
 
-                                if (DateTime.TryParse(TheDate,out TestDate))
+                                DateTime.TryParse(TheDate, out TestDate);
+
+                                if (TestDate > new DateTime(1900, 1, 1))
                                 {
                                     AtLeastOneLine = true;
                                     if(AsthmaEntriesCurrent.Count > 0)
@@ -501,15 +569,28 @@ namespace Impilo_App.DataImport
 
                                 if (AtLeastOneLine)
                                 {
-                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(6)));
+                                    try
+                                    {
+                                        string Treatment = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(Row).GetCell(6));
 
-                                    Row++;
+                                        if (Treatment.Trim() != "")
+                                        {
+                                            Treatments.Add(Treatment.Trim());
+                                            Row++;
+                                        }
+                                        else AtLeastOneLine = false;
+                                    }
+                                    catch
+                                    {
+                                        AtLeastOneLine = false;
+                                        Row++;
+                                    }
                                 }
                                 else
                                     bContinue = false;
                             }
 
-                            if (AsthmaEntriesCurrent.Count > 0 && AtLeastOneLine)
+                            if (AsthmaEntriesCurrent.Count > 0)
                             {
                                 AsthmaEntriesCurrent.Add(Treatments);
                                 AsthmaEntries.Add(AsthmaEntriesCurrent);
@@ -552,9 +633,11 @@ namespace Impilo_App.DataImport
                                 // 5 - Systolic	
                                 // 6 - Diastolic  
 
-                                string TheData = GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(0));
+                                string TheDate = GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(0));
 
-                                if (DateTime.TryParse(TheData,out TestDate))
+                                DateTime.TryParse(TheDate, out TestDate);
+
+                                if (TestDate > new DateTime(1900, 1, 1))
                                 {
                                     AtLeastOneLine = true;
                                     if (HIVEntriesCurrent.Count > 0)
@@ -576,14 +659,28 @@ namespace Impilo_App.DataImport
 
                                 if (AtLeastOneLine)
                                 {
-                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(4)));
-                                    Row++;
+                                    try
+                                    {
+                                        string Treatment = GetCellValue(MyWorkbook.GetSheet("HIV").GetRow(Row).GetCell(4));
+
+                                        if (Treatment.Trim() != "")
+                                        {
+                                            Treatments.Add(Treatment.Trim());
+                                            Row++;
+                                        }
+                                        else AtLeastOneLine = false;
+                                    }
+                                    catch
+                                    {
+                                        AtLeastOneLine = false;
+                                        Row++;
+                                    }
                                 }
                                 else
                                     bContinue = false;
                             }
 
-                            if (HIVEntriesCurrent.Count > 0 && AtLeastOneLine)
+                            if (HIVEntriesCurrent.Count > 0)
                             {
                                 HIVEntriesCurrent.Add(Treatments);
                                 HIVEntries.Add(HIVEntriesCurrent);
@@ -628,7 +725,9 @@ namespace Impilo_App.DataImport
 
                                 string TheDate = GetCellValue(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(0));
 
-                                if (DateTime.TryParse(TheDate,out TestDate))
+                                DateTime.TryParse(TheDate, out TestDate);
+
+                                if (TestDate > new DateTime(1900, 1, 1))
                                 {
                                     AtLeastOneLine = true;
 
@@ -650,14 +749,28 @@ namespace Impilo_App.DataImport
 
                                 if (AtLeastOneLine)
                                 {
-                                    Treatments.Add(GetCellValue(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(7)));
-                                    Row++;
+                                    try
+                                    { 
+                                        string Treatment = GetCellValue(MyWorkbook.GetSheet("TB").GetRow(Row).GetCell(7));
+                                    
+                                        if (Treatment.Trim() != "")
+                                        {
+                                            Treatments.Add(Treatment.Trim());
+                                            Row++;
+                                        }
+                                        else AtLeastOneLine = false;
+                                    }
+                                    catch
+                                    {
+                                        AtLeastOneLine = false;
+                                        Row++;
+                                    }
                                 }
                                 else
                                     bContinue = false;
                             }
 
-                            if (TBEntriesCurrent.Count > 0 && AtLeastOneLine)
+                            if (TBEntriesCurrent.Count > 0)
                             {
                                 TBEntriesCurrent.Add(Treatments);
                                 TBEntries.Add(TBEntriesCurrent);
@@ -991,15 +1104,15 @@ namespace Impilo_App.DataImport
                                     CurrentDate = new DateTime(1800, 1, 1);
                                     DateTime.TryParse((string)Current[4], out CurrentDate);
                                     tempCommand.Parameters.AddWithValue("@NextVisitDate", DateTime.Parse((string)Current[4]));
-                                    tempCommand.Parameters.AddWithValue("@Hypertension", (string)Current[5] == "Yes" || (string)Current[5] == "1" ? 1 : 0);
-                                    tempCommand.Parameters.AddWithValue("@Diabetes", (string)Current[6] == "Yes" || (string)Current[6] == "1" ? 1 : 0);
-                                    tempCommand.Parameters.AddWithValue("@Epilepsy", (string)Current[7] == "Yes" || (string)Current[7] == "1" ? 1 : 0);
-                                    tempCommand.Parameters.AddWithValue("@Asthma", (string)Current[8] == "Yes" || (string)Current[8] == "1" ? 1 : 0);
-                                    tempCommand.Parameters.AddWithValue("@HIV", (string)Current[9] == "Yes" || (string)Current[9] == "1" ? 1 : 0);
-                                    tempCommand.Parameters.AddWithValue("@TB", (string)Current[10] == "Yes" || (string)Current[10] == "1" ? 1 : 0);
-                                    tempCommand.Parameters.AddWithValue("@MaternalHealth", (string)Current[11] == "Yes" || (string)Current[11] == "1" ? 1 : 0);
-                                    tempCommand.Parameters.AddWithValue("@ChildHealth", (string)Current[12] == "Yes" || (string)Current[12] == "1" ? 1 : 0);
-                                    tempCommand.Parameters.AddWithValue("@Other", (string)Current[14] == "Yes" || (string)Current[14] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@Hypertension", ((string)Current[5]).ToLower() == "yes" || (string)Current[5] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@Diabetes", ((string)Current[6]).ToLower() == "yes" || (string)Current[6] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@Epilepsy", ((string)Current[7]).ToLower() == "yes" || (string)Current[7] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@Asthma", ((string)Current[8]).ToLower() == "yes" || (string)Current[8] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@HIV", ((string)Current[9]).ToLower() == "yes" || (string)Current[9] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@TB", ((string)Current[10]).ToLower() == "yes" || (string)Current[10] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@MaternalHealth", ((string)Current[11]).ToLower() == "yes" || (string)Current[11] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@ChildHealth", ((string)Current[12]).ToLower() == "yes" || (string)Current[12] == "1" ? 1 : 0);
+                                    tempCommand.Parameters.AddWithValue("@Other", ((string)Current[14]).ToLower() == "yes" || (string)Current[14] == "1" ? 1 : 0);
 
                                     tempCommand.ExecuteNonQuery();
                                 }
@@ -1044,7 +1157,7 @@ namespace Impilo_App.DataImport
                                     DateTime CurrentDate = new DateTime(1800, 1, 1);
                                     DateTime.TryParse((string)Current[0], out CurrentDate);
                                     tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
-                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[10] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", ((string)Current[1]).ToLower() == "yes" || (string)Current[10] == "1" ? true : false);
                                     tempCommand.Parameters.AddWithValue("@DiagAndTreatSystolic", decimal.TryParse((string)Current[2],out TheValue)?TheValue:-1);
                                     tempCommand.Parameters.AddWithValue("@DiagAndTreatDiastolic", decimal.TryParse((string)Current[3], out TheValue) ? TheValue : -1);
                                     tempCommand.Parameters.AddWithValue("@NotOnMedsSystolic", decimal.TryParse((string)Current[4], out TheValue) ? TheValue : -1);
@@ -1071,7 +1184,7 @@ namespace Impilo_App.DataImport
                                     }
                                 }     
                             }
-                            catch (Exception ex) { }
+                            catch (Exception ex) { /*System.Windows.MessageBox.Show(ex.Message);*/ }
                             finally
                             {
                                 tempConnection.Close();
@@ -1119,8 +1232,8 @@ namespace Impilo_App.DataImport
                                     DateTime CurrentDate = new DateTime(1800, 1, 1);
                                     DateTime.TryParse((string)Current[0], out CurrentDate);
                                     tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
-                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                    tempCommand.Parameters.AddWithValue("@DiagnosedAndGivenTreatment", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", ((string)Current[1]).ToLower() == "yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@DiagnosedAndGivenTreatment", ((string)Current[2]).ToLower() == "yes" || (string)Current[2] == "1" ? true : false);
                                     tempCommand.Parameters.AddWithValue("@NotOnMedsBSLevel", decimal.TryParse((string)Current[3], out TheValue) ? TheValue : -1);
                                     CurrentDate = new DateTime(1800, 1, 1);
                                     DateTime.TryParse((string)Current[4], out CurrentDate);
@@ -1133,14 +1246,16 @@ namespace Impilo_App.DataImport
                                     tempCommand.Parameters.AddWithValue("@Cholesterol", (string)Current[10]);
                                     tempCommand.Parameters.AddWithValue("@FootExam", (string)Current[11]);
                                     tempCommand.Parameters.AddWithValue("@EyeTest", (string)Current[12]);
-                                    tempCommand.Parameters.AddWithValue("@ReferToClinic", (string)Current[13] == "Yes" || (string)Current[13] == "1" ? true : false);
-                                    int TempValue = -1;                                    
-                                    tempCommand.Parameters.AddWithValue("@ReferralNo", int.TryParse((string)Current[14], out TempValue)?TempValue:-1);
+                                    tempCommand.Parameters.AddWithValue("@ReferToClinic", false);
+                                    tempCommand.Parameters.AddWithValue("@ReferralNo", -1);
+                                    //tempCommand.Parameters.AddWithValue("@ReferToClinic", ((string)Current[13]).ToLower() == "yes" || (string)Current[13] == "1" ? true : false);
+                                    //int TempValue = -1;
+                                    //tempCommand.Parameters.AddWithValue("@ReferralNo", int.TryParse((string)Current[14], out TempValue) ? TempValue : -1);
                                     //tempCommand.Parameters.AddWithValue("@Treatment",  (string)Current[15]);
 
                                     tempID = (int)((decimal)tempCommand.ExecuteScalar());
 
-                                    foreach (string CurrentTreatment in (List<string>)Current[15])
+                                    foreach (string CurrentTreatment in (List<string>)Current[13])
                                     {
                                         tempCommand = new SqlCommand("AddClinicDiabetesTreatment", tempConnection);
                                         tempCommand.CommandType = CommandType.StoredProcedure;
@@ -1150,7 +1265,7 @@ namespace Impilo_App.DataImport
                                     }
                                 }
                             }
-                            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
+                            catch (Exception ex) { /*System.Windows.MessageBox.Show(ex.Message);*/ }
                             finally
                             {
                                 tempConnection.Close();
@@ -1188,9 +1303,9 @@ namespace Impilo_App.DataImport
                                     DateTime CurrentDate = new DateTime(1800, 1, 1);
                                     DateTime.TryParse((string)Current[0], out CurrentDate);
                                     tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
-                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                    tempCommand.Parameters.AddWithValue("@NoOfFitsInLastMonth", int.TryParse((string)Current[2], out intValue) ? intValue : -1);
-                                    tempCommand.Parameters.AddWithValue("@DrugSideEffectsIfAny", (string)Current[3]);
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", ((string)Current[1]).ToLower() == "yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@NoFitsInLastMonth", int.TryParse((string)Current[2], out intValue) ? intValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@DrugSideEffects", (string)Current[3]);
                                     tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.TryParse((string)Current[4], out TheValue) ? TheValue : -1);
                                     tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.TryParse((string)Current[5], out TheValue) ? TheValue : -1);
                                     //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[6]);
@@ -1207,7 +1322,7 @@ namespace Impilo_App.DataImport
                                     }
                                 }
                             }
-                            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
+                            catch (Exception ex) {/* System.Windows.MessageBox.Show(ex.Message);*/ }
                             finally
                             {
                                 tempConnection.Close();
@@ -1244,8 +1359,8 @@ namespace Impilo_App.DataImport
                                     DateTime CurrentDate = new DateTime(1800, 1, 1);
                                     DateTime.TryParse((string)Current[0], out CurrentDate);
                                     tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
-                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                    tempCommand.Parameters.AddWithValue("@PeakExpiratoryFlowRate", (string)Current[2]);
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", ((string)Current[1]).ToLower() == "yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@PeakRespiratoryFlowRate", (string)Current[2]);
                                     tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.TryParse((string)Current[3], out TheValue) ? TheValue : -1);
                                     tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.TryParse((string)Current[4], out TheValue) ? TheValue : -1);
                                     //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[5]);
@@ -1262,7 +1377,7 @@ namespace Impilo_App.DataImport
                                     }
                                 }
                             }
-                            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
+                            catch (Exception ex) { /*System.Windows.MessageBox.Show(ex.Message);*/ }
                             finally
                             {
                                 tempConnection.Close();
@@ -1300,16 +1415,16 @@ namespace Impilo_App.DataImport
                                     DateTime CurrentDate = new DateTime(1800, 1, 1);
                                     DateTime.TryParse((string)Current[0], out CurrentDate);
                                     tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
-                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", ((string)Current[1]).ToLower() == "yes" || (string)Current[1] == "1" ? true : false);
                                     tempCommand.Parameters.AddWithValue("@CD4", decimal.TryParse((string)Current[2], out TheValue) ? TheValue : -1);
                                     tempCommand.Parameters.AddWithValue("@ViralLoad", decimal.TryParse((string)Current[3], out TheValue) ? TheValue : -1);
                                     //tempCommand.Parameters.AddWithValue("@Treatment", (string)Current[4]);
-                                    tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.TryParse((string)Current[5], out TheValue) ? TheValue : -1);
-                                    tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.TryParse((string)Current[6], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.TryParse((string)Current[4], out TheValue) ? TheValue : -1);
+                                    tempCommand.Parameters.AddWithValue("@BPDiastolic", decimal.TryParse((string)Current[5], out TheValue) ? TheValue : -1);
 
                                     tempID = (int)((decimal)tempCommand.ExecuteScalar());
 
-                                    foreach (string CurrentTreatment in (List<string>)Current[4])
+                                    foreach (string CurrentTreatment in (List<string>)Current[6])
                                     {
                                         tempCommand = new SqlCommand("AddClinicHIVTreatment", tempConnection);
                                         tempCommand.CommandType = CommandType.StoredProcedure;
@@ -1319,7 +1434,7 @@ namespace Impilo_App.DataImport
                                     }
                                 }
                             }
-                            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
+                            catch (Exception ex) { /*System.Windows.MessageBox.Show(ex.Message);*/ }
                             finally
                             {
                                 tempConnection.Close();
@@ -1357,8 +1472,8 @@ namespace Impilo_App.DataImport
                                     DateTime CurrentDate = new DateTime(1800, 1, 1);
                                     DateTime.TryParse((string)Current[0], out CurrentDate);
                                     tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
-                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                    tempCommand.Parameters.AddWithValue("@SputumTaken", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", ((string)Current[1]).ToLower() == "yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@SputumTaken", ((string)Current[2]).ToLower() == "yes" || (string)Current[2] == "1" ? true : false);
                                     CurrentDate = new DateTime(1800, 1, 1);
                                     DateTime.TryParse((string)Current[3], out CurrentDate);
                                     tempCommand.Parameters.AddWithValue("@TestResultsReviewDate", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
@@ -1378,7 +1493,7 @@ namespace Impilo_App.DataImport
                                     }
                                 }
                             }
-                            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
+                            catch (Exception ex) { /*System.Windows.MessageBox.Show(ex.Message);*/ }
                             finally
                             {
                                 tempConnection.Close();
@@ -1415,12 +1530,12 @@ namespace Impilo_App.DataImport
                                     DateTime CurrentDate = new DateTime(1800, 1, 1);
                                     DateTime.TryParse((string)Current[0], out CurrentDate);
                                     tempCommand.Parameters.AddWithValue("@DateOfVisit", CurrentDate > new DateTime(1800, 1, 1) ? CurrentDate : new DateTime(1800, 1, 1));
-                                    tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                                    tempCommand.Parameters.AddWithValue("@MomConnectRegistered", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@DWFReferral", ((string)Current[1]).ToLower() == "yes" || (string)Current[1] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@MomConnectRegistered", ((string)Current[2]).ToLower() == "yes" || (string)Current[2] == "1" ? true : false);
                                     tempCommand.Parameters.AddWithValue("@ANCVisitNo", (string)Current[3]);
-                                    tempCommand.Parameters.AddWithValue("@PNC1Week", (string)Current[4] == "Yes" || (string)Current[4] == "1" ? true : false);
-                                    tempCommand.Parameters.AddWithValue("@PCRDone", (string)Current[5] == "Yes" || (string)Current[5] == "1" ? true : false);
-                                    tempCommand.Parameters.AddWithValue("@PNC6Week", (string)Current[6] == "Yes" || (string)Current[6] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@PNC1Week", ((string)Current[4]).ToLower() == "yes" || (string)Current[4] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@PCRDone", ((string)Current[5]).ToLower() == "yes" || (string)Current[5] == "1" ? true : false);
+                                    tempCommand.Parameters.AddWithValue("@PNC6Week", ((string)Current[6]).ToLower() == "yes" || (string)Current[6] == "1" ? true : false);
 
                                     tempCommand.ExecuteNonQuery();
                                 }
@@ -1452,10 +1567,10 @@ namespace Impilo_App.DataImport
                         //        tempCommand.CommandType = CommandType.StoredProcedure;
                         //        tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                         //        tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                        //        tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
-                        //        tempCommand.Parameters.AddWithValue("@PCRDone", (string)Current[2] == "Yes" || (string)Current[2] == "1" ? true : false);
-                        //        tempCommand.Parameters.AddWithValue("@CurrentRTHC", (string)Current[3] == "Yes" || (string)Current[3] == "1" ? true : false);
-                        //        tempCommand.Parameters.AddWithValue("@VaccinationsUpToDate", (string)Current[4] == "Yes" || (string)Current[4] == "1" ? true : false);
+                        //        tempCommand.Parameters.AddWithValue("@DWFReferral", ((string)Current[1]).ToLower() == "yes" || (string)Current[1] == "1" ? true : false);
+                        //        tempCommand.Parameters.AddWithValue("@PCRDone", ((string)Current[2]).ToLower() == "yes" || (string)Current[2] == "1" ? true : false);
+                        //        tempCommand.Parameters.AddWithValue("@CurrentRTHC", ((string)Current[3]).ToLower() == "yes" || (string)Current[3] == "1" ? true : false);
+                        //        tempCommand.Parameters.AddWithValue("@VaccinationsUpToDate", ((string)Current[4]).ToLower() == "yes" || (string)Current[4] == "1" ? true : false);
 
                         //        tempCommand.ExecuteNonQuery();
                         //    }
@@ -1489,7 +1604,7 @@ namespace Impilo_App.DataImport
                         //        tempCommand.CommandType = CommandType.StoredProcedure;
                         //        tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                         //        tempCommand.Parameters.AddWithValue("@DateOfVisit", DateTime.Parse((string)Current[0]));
-                        //        tempCommand.Parameters.AddWithValue("@DWFReferral", (string)Current[1] == "Yes" || (string)Current[1] == "1" ? true : false);
+                        //        tempCommand.Parameters.AddWithValue("@DWFReferral", ((string)Current[1]).ToLower() == "yes" || (string)Current[1] == "1" ? true : false);
                         //        tempCommand.Parameters.AddWithValue("@Condition", (string)Current[2]);
                         //        tempCommand.Parameters.AddWithValue("@Outcome", (string)Current[3]);
                         //        tempCommand.Parameters.AddWithValue("@BPSystolic", decimal.Parse((string)Current[4]));
