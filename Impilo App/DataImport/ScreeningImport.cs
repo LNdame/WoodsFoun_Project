@@ -464,8 +464,8 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@IDNo", BioIDNum);
                             tempCommand.Parameters.AddWithValue("@ClinicID", ClinicID);
                             tempCommand.Parameters.AddWithValue("@DateOfBirth", BioDateOfBirth);
-                            tempCommand.Parameters.AddWithValue("@Gender", BioMale);
-                            tempCommand.Parameters.AddWithValue("@AttendingSchool", BioAttendingSchool);
+                            tempCommand.Parameters.AddWithValue("@Gender", BioMale.ToLower() == "yes" || BioMale == "1" ? "Male" : "Female");
+                            tempCommand.Parameters.AddWithValue("@AttendingSchool", BioAttendingSchool == "Yes" || BioAttendingSchool == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@Grade", BioGrade);
                             tempCommand.Parameters.AddWithValue("@NameOfSchool", BioSchoolName);
                             tempCommand.Parameters.AddWithValue("@Area", "");
@@ -521,16 +521,16 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@cID", ClinicID);
                             tempCommand.Parameters.AddWithValue("@seTotalNumberSleepingInOneRoomInMainHut", EnNoSleepingInOneRoom);
                             tempCommand.Parameters.AddWithValue("@seTotalNoStructures", EnNoOfStructures);
-                            tempCommand.Parameters.AddWithValue("@seRainWaterCollection", EnRainWaterCollection);
+                            tempCommand.Parameters.AddWithValue("@seRainWaterCollection", EnRainWaterCollection == "Yes" || EnRainWaterCollection == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@seWaterSupply", EnWaterSupply);
                             tempCommand.Parameters.AddWithValue("@seWalkingDistanceFromWaterSupply", EnWalkingDistanceWater);
-                            tempCommand.Parameters.AddWithValue("@seTreatWaterBeforeDrinking", EnTreatWater);
-                            tempCommand.Parameters.AddWithValue("@seElectricityInAnyHut", EnHutElectricity);
-                            tempCommand.Parameters.AddWithValue("@seWorkingFridge", EnFridge);
+                            tempCommand.Parameters.AddWithValue("@seTreatWaterBeforeDrinking", EnTreatWater == "Yes" || EnTreatWater == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@seElectricityInAnyHut", EnHutElectricity == "Yes" || EnHutElectricity == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@seWorkingFridge", EnFridge == "Yes" || EnFridge == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@seCookingMethod", EnUseForCooking);
                             tempCommand.Parameters.AddWithValue("@seToiletType", EnTypeToilet);
                             tempCommand.Parameters.AddWithValue("@seWasteDisposalType", EnDisposeWaste);
-                            tempCommand.Parameters.AddWithValue("@seFoodParcelInLast6Months", EnFoodParcel);
+                            tempCommand.Parameters.AddWithValue("@seFoodParcelInLast6Months", EnFoodParcel == "Yes" || EnFoodParcel == "1" ? 1 : 0);
                                                        
                             // tempCommand.Parameters.AddWithValue("@EnWaterSupply1", EnWaterSupply1);
                             //tempCommand.Parameters.AddWithValue("@EnUseForCooking1", EnUseForCooking1);
@@ -733,106 +733,106 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@sgWeight", GenWeight);
                             tempCommand.Parameters.AddWithValue("@sgHeight", GenHeight);
                             tempCommand.Parameters.AddWithValue("@sgBMI", GenBMI);
-                            tempCommand.Parameters.AddWithValue("@sgOnMeds", GenCurrentOnMeds);
-                            tempCommand.Parameters.AddWithValue("@sgNotOnMeds", GenCurrentNotOnMeds);
-                            tempCommand.Parameters.AddWithValue("@sgHypertension", GenCurrentHPT);
+                            tempCommand.Parameters.AddWithValue("@sgOnMeds", GenCurrentOnMeds == "Yes" || GenCurrentOnMeds == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgNotOnMeds", GenCurrentNotOnMeds == "Yes" || GenCurrentNotOnMeds == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgHypertension", GenCurrentHPT == "Yes" || GenCurrentHPT == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgHypertensionStartDate", GenCurrentHPTStartDate);
-                            tempCommand.Parameters.AddWithValue("@sgHypertensionDefaulting", GenCurrentHPTDefaulting);
-                            tempCommand.Parameters.AddWithValue("@sgHypertensionReferToClinic", GenCurrentHPTReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgHypertensionDefaulting", GenCurrentHPTDefaulting == "Yes" || GenCurrentHPTDefaulting == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgHypertensionReferToClinic", GenCurrentHPTReferClinic == "Yes" || GenCurrentHPTReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgHypertensionRefNo", GenCurrentHPTReferNo);
-                            tempCommand.Parameters.AddWithValue("@sgDiabetes", GenCurrentDiabetes);
+                            tempCommand.Parameters.AddWithValue("@sgDiabetes", GenCurrentDiabetes == "Yes" || GenCurrentDiabetes == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgDiabetesStartDate", GenCurrentDiabetesStartDate);
-                            tempCommand.Parameters.AddWithValue("@sgDiabetesDefaulting", GenCurrentDiabetesDefaulting);
-                            tempCommand.Parameters.AddWithValue("@sgDiabetesReferToClinic", GenCurrentDiabetesReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgDiabetesDefaulting", GenCurrentDiabetesDefaulting == "Yes" || GenCurrentDiabetesDefaulting == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgDiabetesReferToClinic", GenCurrentDiabetesReferClinic == "Yes" || GenCurrentDiabetesReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgDiabetesRefNo", GenCurrentDiabetesReferNo);
-                            tempCommand.Parameters.AddWithValue("@sgEpilepsy", GenCurrentEpilepsy);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsy", GenCurrentEpilepsy == "Yes" || GenCurrentEpilepsy == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgEpilepsyStartDate", GenCurrentEpilepsyStartDate);
-                            tempCommand.Parameters.AddWithValue("@sgEpilepsyDefaulting", GenCurrentEpilepsyDefaulting);
-                            tempCommand.Parameters.AddWithValue("@sgEpilepsyReferToClinic", GenCurrentEpilepsyReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsyDefaulting", GenCurrentEpilepsyDefaulting == "Yes" || GenCurrentEpilepsyDefaulting == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsyReferToClinic", GenCurrentEpilepsyReferClinic == "Yes" || GenCurrentEpilepsyReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgEpilepsyRefNo", GenCurrentEpilepsyReferNo);
-                            tempCommand.Parameters.AddWithValue("@sgAsthma", GenCurrentAsthma);
+                            tempCommand.Parameters.AddWithValue("@sgAsthma", GenCurrentAsthma == "Yes" || GenCurrentAsthma == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgAsthmaStartDate", GenCurrentAsthmaStartDate);
-                            tempCommand.Parameters.AddWithValue("@sgAsthmaDefaulting", GenCurrentAsthmaDefaulting);
-                            tempCommand.Parameters.AddWithValue("@sgAsthmaReferToClinic", GenCurrentAsthmaReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgAsthmaDefaulting", GenCurrentAsthmaDefaulting == "Yes" || GenCurrentAsthmaDefaulting == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgAsthmaReferToClinic", GenCurrentAsthmaReferClinic == "Yes" || GenCurrentAsthmaReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgAsthmaRefNo", GenCurrentAsthmaReferNo);
                             tempCommand.Parameters.AddWithValue("@sgOther", GenCurrentOther);
                             tempCommand.Parameters.AddWithValue("@sgOtherStartDate", GenCurrentOtherStartDate);
-                            tempCommand.Parameters.AddWithValue("@sgOtherDefaulting", GenCurrentOtherDefaulting);
-                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic", GenCurrentOtherReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgOtherDefaulting", GenCurrentOtherDefaulting == "Yes" || GenCurrentOtherDefaulting == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic", GenCurrentOtherReferClinic == "Yes" || GenCurrentOtherReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgOtherRefNo", GenCurrentOtherReferNo);
 
                             tempCommand.Parameters.AddWithValue("@sgBPOnMedsSystolic", GenBPOnMedsSystolic);
                             tempCommand.Parameters.AddWithValue("@sgBPOnMedsDiastolic", GenBPOnMedsDiatolic);
                             tempCommand.Parameters.AddWithValue("@sgBPNotOnMedsSystolic", GenBPNotOnMedsSystolic);
                             tempCommand.Parameters.AddWithValue("@sgBPNotOnMedsDiastolic", GenBPNotOnMedsDiatolic);
-                            tempCommand.Parameters.AddWithValue("@sgBPReferToCHOW", GenBPReferCHOW);
-                            tempCommand.Parameters.AddWithValue("@sgBPReferToClinic", GenBPReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgBPReferToCHOW", GenBPReferCHOW == "Yes" || GenBPReferCHOW == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgBPReferToClinic", GenBPReferClinic == "Yes" || GenBPReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgBPRefNo", GenBPReferNo);
 
                             tempCommand.Parameters.AddWithValue("@sgBSOnMeds", GenBSOnMeds);
                             tempCommand.Parameters.AddWithValue("@sgBSNotOnMedsBSReading", GenBSNotOnMeds);
-                            tempCommand.Parameters.AddWithValue("@sgBSReferToChow", GenBSReferChow);
-                            tempCommand.Parameters.AddWithValue("@sgBSReferToClinic", GenBSReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgBSReferToChow", GenBSReferChow == "Yes" || GenBSReferChow == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgBSReferToClinic", GenBSReferClinic == "Yes" || GenBSReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgBSRefNo", GenBSReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@sgEpilepsyFitsInLastMonth", GenEPFitsMonth);
-                            tempCommand.Parameters.AddWithValue("@sgEpilepsyReferToClinic2", GenEPReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsyFitsInLastMonth", GenEPFitsMonth == "Yes" || GenEPFitsMonth == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgEpilepsyReferToClinic2", GenEPReferClinic == "Yes" || GenEPReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgEpilepsyRefNo2", GenEPReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@sgHIVKnownPosStatus", GenHIVPosStatus);
-                            tempCommand.Parameters.AddWithValue("@sgHIVKnownNegStatus", GenHIVNegStatus);
-                            tempCommand.Parameters.AddWithValue("@sgHIVTestDone", GenHIVTestDone);
+                            tempCommand.Parameters.AddWithValue("@sgHIVKnownPosStatus", GenHIVPosStatus == "Yes" || GenHIVPosStatus == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgHIVKnownNegStatus", GenHIVNegStatus == "Yes" || GenHIVNegStatus == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgHIVTestDone", GenHIVTestDone == "Yes" || GenHIVTestDone == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgHIVResult", GenHIVResult);
-                            tempCommand.Parameters.AddWithValue("@sgHIVReferToClinic", GenHIVReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgHIVReferToClinic", GenHIVReferClinic == "Yes" || GenHIVReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgHIVRefNo", GenHIVReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@sgPregnancyCurrentlyPregnant", GenPregCurrently);
-                            tempCommand.Parameters.AddWithValue("@sgPregnancyPossibleThatPregnant", GenPregPossible);
-                            tempCommand.Parameters.AddWithValue("@sgPregnancyTestDone", GenPregTestDate);
+                            tempCommand.Parameters.AddWithValue("@sgPregnancyCurrentlyPregnant", GenPregCurrently == "Yes" || GenPregCurrently == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgPregnancyPossibleThatPregnant", GenPregPossible == "Yes" || GenPregPossible == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgPregnancyTestDone", GenPregTestDate == "Yes" || GenPregTestDate == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgPregnancyResult", GenPregResult);
-                            tempCommand.Parameters.AddWithValue("@sgPregnancyReferToClinic", GenPregReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgPregnancyReferToClinic", GenPregReferClinic == "Yes" || GenPregReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgPregancyRefNo", GenPregReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@sgTBCurrentlyHaveTB", GenTBCurrentHave);
-                            tempCommand.Parameters.AddWithValue("@sgTBDefaulting", GenTBCurrentDefaulting);
-                            tempCommand.Parameters.AddWithValue("@sgTBRecentUnplannedWeightLoss", GenTBSymtomWeightLoss);
-                            tempCommand.Parameters.AddWithValue("@sgTBExcessiveSweatingAtNight", GenTBSymtomSweat);
-                            tempCommand.Parameters.AddWithValue("@sgTBFeverOver2Weeks", GenTBSymtomFeaver);
-                            tempCommand.Parameters.AddWithValue("@sgTBCoughMoreThan2Weeks", GenTBSymtomCough);
-                            tempCommand.Parameters.AddWithValue("@sgTBLossOfApetite", GenTBSymtomApetite);
-                            tempCommand.Parameters.AddWithValue("@sgTBReferToClinic", GenTBSymtomReferClininc);
+                            tempCommand.Parameters.AddWithValue("@sgTBCurrentlyHaveTB", GenTBCurrentHave == "Yes" || GenTBCurrentHave == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgTBDefaulting", GenTBCurrentDefaulting == "Yes" || GenTBCurrentDefaulting == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgTBRecentUnplannedWeightLoss", GenTBSymtomWeightLoss == "Yes" || GenTBSymtomWeightLoss == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgTBExcessiveSweatingAtNight", GenTBSymtomSweat == "Yes" || GenTBSymtomSweat == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgTBFeverOver2Weeks", GenTBSymtomFeaver == "Yes" || GenTBSymtomFeaver == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgTBCoughMoreThan2Weeks", GenTBSymtomCough == "Yes" || GenTBSymtomCough == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgTBLossOfApetite", GenTBSymtomApetite == "Yes" || GenTBSymtomApetite == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgTBReferToClinic", GenTBSymtomReferClininc == "Yes" || GenTBSymtomReferClininc == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgTBRefNo", GenTBSymtomReferNo);
                             tempCommand.Parameters.AddWithValue("@sgTBContactTracingHouseholdMemberOnMeds", GenTBTraceHousholdOnMeds);
                             tempCommand.Parameters.AddWithValue("@sgTBContactTracingReferToClinic", GenTBTraceReferClininc);
                             tempCommand.Parameters.AddWithValue("@sgTBContactTracingRefNo", GenTBTraceReferNo);
                             tempCommand.Parameters.AddWithValue("@sgTBHouseholdMemberOnTBMeds", null);
 
-                            tempCommand.Parameters.AddWithValue("@sgOtherBloodInUrine", GenOtherBloodUrine);
+                            tempCommand.Parameters.AddWithValue("@sgOtherBloodInUrine", GenOtherBloodUrine == "Yes" || GenOtherBloodUrine == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic2", GenOtherReferClinic1);
                             tempCommand.Parameters.AddWithValue("@sgOtherRefNo2", GenOtherReferNo1);
-                            tempCommand.Parameters.AddWithValue("@sgOtherSmoking", GenOtherSmoking);
-                            tempCommand.Parameters.AddWithValue("@sgOtherAlcoholUnitsPerWeek", GenOtherAlcohol);
-                            tempCommand.Parameters.AddWithValue("@sgOtherDiarrhoeaOver3Days", GenOtherDiarrhoea);
-                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic3", GenOtherReferClinic2);
+                            tempCommand.Parameters.AddWithValue("@sgOtherSmoking", GenOtherSmoking == "Yes" || GenOtherSmoking == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgOtherAlcoholUnitsPerWeek", GenOtherAlcohol == "Yes" || GenOtherAlcohol == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgOtherDiarrhoeaOver3Days", GenOtherDiarrhoea == "Yes" || GenOtherDiarrhoea == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic3", GenOtherReferClinic2 == "Yes" || GenOtherReferClinic2 == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgOtherRefNo3", GenOtherReferNo2);
-                            tempCommand.Parameters.AddWithValue("@sgOtherAttendedInitiationSchool", GenOtherInitiationSchool);
-                            tempCommand.Parameters.AddWithValue("@sgOtherLegCrampsOver2Weeks", GenOtherLegCramps);
-                            tempCommand.Parameters.AddWithValue("@sgOtherLegNumbnessOver2Weeks", GenOtherLegNumb);
-                            tempCommand.Parameters.AddWithValue("@sgOtherFootUlcer", GenOtherFootUlcer);
-                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic4", GenOtherReferClinic3);
+                            tempCommand.Parameters.AddWithValue("@sgOtherAttendedInitiationSchool", GenOtherInitiationSchool == "Yes" || GenOtherInitiationSchool == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgOtherLegCrampsOver2Weeks", GenOtherLegCramps == "Yes" || GenOtherLegCramps == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgOtherLegNumbnessOver2Weeks", GenOtherLegNumb == "Yes" || GenOtherLegNumb == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgOtherFootUlcer", GenOtherFootUlcer == "Yes" || GenOtherFootUlcer == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic4", GenOtherReferClinic3 == "Yes" || GenOtherReferClinic3 == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgOtherRefNo4", GenOtherReferNo3);
 
-                            tempCommand.Parameters.AddWithValue("@sgElderlyAmputation", GenElderAmputation);
-                            tempCommand.Parameters.AddWithValue("@sgElderlyPassVisionTest", GenElderVision);
-                            tempCommand.Parameters.AddWithValue("@sgElderlyBedridden", GenElderBedridden);
-                            tempCommand.Parameters.AddWithValue("@sgElderlyUseAidToMove", GenElderMovingAid);
-                            tempCommand.Parameters.AddWithValue("@sgElderlyWashYourself", GenElderWash);
-                            tempCommand.Parameters.AddWithValue("@sgElderlyFeedYourself", GenElderFeed);
-                            tempCommand.Parameters.AddWithValue("@sgElderlyDressYourself", GenElderDress);
-                            tempCommand.Parameters.AddWithValue("@sgElderlyReferToClinic", GenElderReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyAmputation", GenElderAmputation == "Yes" || GenElderAmputation == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyPassVisionTest", GenElderVision == "Yes" || GenElderVision == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyBedridden", GenElderBedridden == "Yes" || GenElderBedridden == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyUseAidToMove", GenElderMovingAid == "Yes" || GenElderMovingAid == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyWashYourself", GenElderWash == "Yes" || GenElderWash == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyFeedYourself", GenElderFeed == "Yes" || GenElderFeed == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyDressYourself", GenElderDress == "Yes" || GenElderDress == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgElderlyReferToClinic", GenElderReferClinic == "Yes" || GenElderReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgElderlyRefNo", GenElderReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@sgFamilyPlanningAdviceGiven", GenFamilyPlan);
+                            tempCommand.Parameters.AddWithValue("@sgFamilyPlanningAdviceGiven", GenFamilyPlan == "Yes" || GenFamilyPlan == "1" ? 1 : 0);
                             
                             tempIDGen = (int)(tempCommand.ExecuteScalar());
 
@@ -1197,14 +1197,14 @@ namespace Impilo_App.DataImport
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                             tempCommand.Parameters.AddWithValue("@shYearOfDiagnosis", HypYear);
-                            tempCommand.Parameters.AddWithValue("@shShortnessOfBreath", HypShortBreath);
-                            tempCommand.Parameters.AddWithValue("@shChestPain", HypChestPain);
-                            tempCommand.Parameters.AddWithValue("@shReferralToClinic", HypReferClinic);
+                            tempCommand.Parameters.AddWithValue("@shShortnessOfBreath", HypShortBreath == "Yes" || HypShortBreath == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@shChestPain", HypChestPain == "Yes" || HypChestPain == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@shReferralToClinic", HypReferClinic == "Yes" || HypReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@shRefNo", HypReferNo);
-                            tempCommand.Parameters.AddWithValue("@shEverHadAStroke", HypHadStroke);
+                            tempCommand.Parameters.AddWithValue("@shEverHadAStroke", HypHadStroke == "Yes" || HypHadStroke == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@shYearOfStroke", HypHadStrokeYear);
                             tempCommand.Parameters.AddWithValue("@shHowManyInFamilyOnMedsForHypertension", HypFamilyOnMeds);
-                            tempCommand.Parameters.AddWithValue("@shAnyoneInFamilyHadStroke", HypFamilyStroke);        
+                            tempCommand.Parameters.AddWithValue("@shAnyoneInFamilyHadStroke", HypFamilyStroke == "Yes" || HypFamilyStroke == "1" ? 1 : 0);      
 
                             //tempCommand.Parameters.AddWithValue("@HypHeadache", HypHeadache);
                             //tempCommand.Parameters.AddWithValue("@HypVision", HypVision);
@@ -1229,13 +1229,13 @@ namespace Impilo_App.DataImport
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                             tempCommand.Parameters.AddWithValue("@sdYearOfDiagnosis", DYear);
-                            tempCommand.Parameters.AddWithValue("@sdWeightLost", DWeightloss);
-                            tempCommand.Parameters.AddWithValue("@sdUrinatingMore", DUrinate);
-                            tempCommand.Parameters.AddWithValue("@sdNauseaOrVomiting", DNausea);
-                            tempCommand.Parameters.AddWithValue("@sdReferralToClinic", DReferClinic);
+                            tempCommand.Parameters.AddWithValue("@sdWeightLost", DWeightloss == "Yes" || DWeightloss == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sdUrinatingMore", DUrinate == "Yes" || DUrinate == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sdNauseaOrVomiting", DNausea == "Yes" || DNausea == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sdReferralToClinic", DReferClinic == "Yes" || DReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sdRefNo", DReferNo);
-                            tempCommand.Parameters.AddWithValue("@sdFamilyMemberWith", DFamilyMember);
-                            tempCommand.Parameters.AddWithValue("@sdBlurredVision", DVision);
+                            tempCommand.Parameters.AddWithValue("@sdFamilyMemberWith", DFamilyMember == "Yes" || DFamilyMember == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sdBlurredVision", DVision == "Yes" || DVision == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sdFootExamResult", DFoot);
                             //tempCommand.Parameters.AddWithValue("@DThirsty", DThirsty);
                                                         
@@ -1258,9 +1258,9 @@ namespace Impilo_App.DataImport
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                             tempCommand.Parameters.AddWithValue("@shivYearOfDiagnosis", HIVYear);
-                            tempCommand.Parameters.AddWithValue("@shivOnMeds", HIVOnMeds);
+                            tempCommand.Parameters.AddWithValue("@shivOnMeds", HIVOnMeds == "Yes" || HIVOnMeds == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@shivAdherenceOK", HIVAdherence);
-                            tempCommand.Parameters.AddWithValue("@shivReferToClinic", HIVReferClinic);
+                            tempCommand.Parameters.AddWithValue("@shivReferToClinic", HIVReferClinic == "Yes" || HIVReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@shivRefNo", HIVReferNo);
                             tempCommand.Parameters.AddWithValue("@shivARVFileNo", HIVARVNo);
 
@@ -1335,25 +1335,25 @@ namespace Impilo_App.DataImport
                             SqlCommand tempCommand = new SqlCommand("AddScreeningMaternalHealth", tempConnectionMat);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                            tempCommand.Parameters.AddWithValue("@smhPregnantBefore", MHPregnantBefore);
+                            tempCommand.Parameters.AddWithValue("@smhPregnantBefore", MHPregnantBefore == "Yes" || MHPregnantBefore == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@smhNoOfPregnancies", MHNoPregnant);
-                            tempCommand.Parameters.AddWithValue("@smhHowManySuccessful", MHNOSuccessful);
+                            tempCommand.Parameters.AddWithValue("@smhHowManySuccessful", MHNOSuccessful == "Yes" || MHNOSuccessful == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@smhWhereDeliveredLastBaby", MHWhereDeliveredLast);
-                            tempCommand.Parameters.AddWithValue("@smhCaesarian", MHCaesarian);
-                            tempCommand.Parameters.AddWithValue("@smhBabyUnder2KG", MHBabyUnder25);
-                            tempCommand.Parameters.AddWithValue("@smhChildrenDiedUnder1Year", MHChildrenDied1);
-                            tempCommand.Parameters.AddWithValue("@smhChildrenDiedBetween1To5Years", MHChildrenDied15);
+                            tempCommand.Parameters.AddWithValue("@smhCaesarian", MHCaesarian == "Yes" || MHCaesarian == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@smhBabyUnder2KG", MHBabyUnder25 == "Yes" || MHBabyUnder25 == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@smhChildrenDiedUnder1Year", MHChildrenDied1 == "Yes" || MHChildrenDied1 == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@smhChildrenDiedBetween1To5Years", MHChildrenDied15 == "Yes" || MHChildrenDied15 == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@smhPAPSmearInLast5Years", MHPAPSmear);
                             tempCommand.Parameters.AddWithValue("@smhLastBloodTestResult", MHBloodResult);
                             tempCommand.Parameters.AddWithValue("@smhCurrentDateOfFirstANC", MHFirstANCDate);
                             tempCommand.Parameters.AddWithValue("@smhCurrentDateOfLastANC", MHLastANCDate);
-                            tempCommand.Parameters.AddWithValue("@smhReferredToClinic", MHReferClinic);
+                            tempCommand.Parameters.AddWithValue("@smhReferredToClinic", MHReferClinic == "Yes" || MHReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@smhRefNo", MHReferNo);
                             tempCommand.Parameters.AddWithValue("@smhDateOfNextANC", MHNextANCDate);
                             tempCommand.Parameters.AddWithValue("@smhExpectedDeliveryDate", MHExpectedDeliverDate);
-                            tempCommand.Parameters.AddWithValue("@smhIntendBreastfeed", MHBreastfeed);
-                            tempCommand.Parameters.AddWithValue("@smhIntendFormulaFeed", MHFormula);
-                            tempCommand.Parameters.AddWithValue("@smhRegisteredOnMomConnect", MHRegisteredMomConnect);
+                            tempCommand.Parameters.AddWithValue("@smhIntendBreastfeed", MHBreastfeed == "Yes" || MHBreastfeed == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@smhIntendFormulaFeed", MHFormula == "Yes" || MHFormula == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@smhRegisteredOnMomConnect", MHRegisteredMomConnect == "Yes" || MHRegisteredMomConnect == "1" ? 1 : 0);
 
                             tempCommand.ExecuteNonQuery();
                         }
@@ -1374,25 +1374,25 @@ namespace Impilo_App.DataImport
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                             tempCommand.Parameters.AddWithValue("@schNameOfMother", CHNameMother);
-                            tempCommand.Parameters.AddWithValue("@schChildWithRTHC", CHChildRTHC);
-                            tempCommand.Parameters.AddWithValue("@schReferToClinic", CHReferClinic1);
+                            tempCommand.Parameters.AddWithValue("@schChildWithRTHC", CHChildRTHC == "Yes" || CHChildRTHC == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@schReferToClinic", CHReferClinic1 == "Yes" || CHReferClinic1 == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@schRefNo", CHReferNo1);
-                            tempCommand.Parameters.AddWithValue("@schMotherHIVPos", CHMotherHIV);
-                            tempCommand.Parameters.AddWithValue("@schChildBreastfed", CHChildBreastfeed);
+                            tempCommand.Parameters.AddWithValue("@schMotherHIVPos", CHMotherHIV == "Yes" || CHMotherHIV == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@schChildBreastfed", CHChildBreastfeed == "Yes" || CHChildBreastfeed == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@schHowLong", CHHowLong);
-                            tempCommand.Parameters.AddWithValue("@schChildEverOnNevirapine", CHChildOnNevirapine);
-                            tempCommand.Parameters.AddWithValue("@schPCRDone", CHPCR);
+                            tempCommand.Parameters.AddWithValue("@schChildEverOnNevirapine", CHChildOnNevirapine == "Yes" || CHChildOnNevirapine == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@schPCRDone", CHPCR == "Yes" || CHPCR == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@schPCRResult", CHPCRResult);
-                            tempCommand.Parameters.AddWithValue("@schReferToClinic2", CHReferClininc2);
+                            tempCommand.Parameters.AddWithValue("@schReferToClinic2", CHReferClininc2 == "Yes" || CHReferClininc2 == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@schRefNo2", CHReferNo2);
-                            tempCommand.Parameters.AddWithValue("@schImmunisationUpToDate", CHImmunisationUpToDate);
-                            tempCommand.Parameters.AddWithValue("@schReferToClinic3", CHReferClinic3);
+                            tempCommand.Parameters.AddWithValue("@schImmunisationUpToDate", CHImmunisationUpToDate == "Yes" || CHImmunisationUpToDate == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@schReferToClinic3", CHReferClinic3 == "Yes" || CHReferClinic3 == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@schRefNo3", CHReferNo3);
-                            tempCommand.Parameters.AddWithValue("@schVitAAndWormMedsGivenEachMonth", CHMedsGiven);
-                            tempCommand.Parameters.AddWithValue("@schWalkAppropriateForAge", CHWalkAppropriate);
-                            tempCommand.Parameters.AddWithValue("@schTalkAppropriateForAge", CHTalkAppropriate);
-                            tempCommand.Parameters.AddWithValue("@schReferToClinic4", CHReferClinic4);
-                            tempCommand.Parameters.AddWithValue("@schReferToOVC", CHReferOVC);
+                            tempCommand.Parameters.AddWithValue("@schVitAAndWormMedsGivenEachMonth", CHMedsGiven == "Yes" || CHMedsGiven == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@schWalkAppropriateForAge", CHWalkAppropriate == "Yes" || CHWalkAppropriate == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@schTalkAppropriateForAge", CHTalkAppropriate == "Yes" || CHTalkAppropriate == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@schReferToClinic4", CHReferClinic4 == "Yes" || CHReferClinic4 == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@schReferToOVC", CHReferOVC == "Yes" || CHReferOVC == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@schRefNo4", CHReferNo4);
 
                             tempIDChild = (int)(tempCommand.ExecuteScalar());
@@ -1520,35 +1520,35 @@ namespace Impilo_App.DataImport
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                             tempCommand.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", OCondition1);
-                            tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic1);
+                            tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic1 == "Yes" || OReferClinic1 == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@schRefNo", OReferNo1);
 
                             if (OCondition2 != "")
                             {
                                 tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                                 tempCommand.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", OCondition2);
-                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic2);
+                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic2 == "Yes" || OReferClinic2 == "1" ? 1 : 0);
                                 tempCommand.Parameters.AddWithValue("@schRefNo", OReferNo2);
                             }
                             if (OCondition3 != "")
                             {
                                 tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                                 tempCommand.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", OCondition3);
-                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic3);
+                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic3 == "Yes" || OReferClinic3 == "1" ? 1 : 0);
                                 tempCommand.Parameters.AddWithValue("@schRefNo", OReferNo3);
                             }
                             if (OCondition4 != "")
                             {
                                 tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                                 tempCommand.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", OCondition4);
-                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic4);
+                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic4 == "Yes" || OReferClinic4 == "1" ? 1 : 0);
                                 tempCommand.Parameters.AddWithValue("@schRefNo", OReferNo4);
                             }
                             if (OCondition5 != "")
                             {
                                 tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                                 tempCommand.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", OCondition5);
-                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic5);
+                                tempCommand.Parameters.AddWithValue("@schReferredToClinic", OReferClinic5 == "Yes" || OReferClinic5 == "1" ? 1 : 0);
                                 tempCommand.Parameters.AddWithValue("@schRefNo", OReferNo5);
                             }
 
