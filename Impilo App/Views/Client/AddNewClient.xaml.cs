@@ -41,65 +41,41 @@ namespace Impilo_App.Views.Client
         private void btnAddCountry_Click(object sender, RoutedEventArgs e)
         {
             Impilo_App.LocalModels.Client newClient = new LocalModels.Client();
-            newClient.ClientID = Utilities.GenerateClientID();
-            newClient.FirstName = txtFirstName.Text;
-            newClient.LastName = txtLastName.Text;
-            newClient.HeadOfHousehold = (radioHHYes.IsChecked == true) ? "yes" : "no";
-            newClient.GPSLatitude = txtLatitude.Text;
-            newClient.GPSLongitude = txtLongitude.Text;
-            newClient.IDNo = txtIDNo.Text;
-            newClient.ClinicUsed = ((ComboBoxItem)ClinicUsed.SelectedItem).Content.ToString();
-            newClient.DateOfBirth = DateTime.Parse(txtDateofBirth.Text);
-            newClient.NameofSchool = ((ComboBoxItem)NameofSchool.SelectedItem).Content.ToString();
-            newClient.Gender = (radioMale.IsChecked == true) ? "Male" : "Female";
-            newClient.AttendingSchool = (radioAttYes.IsChecked == true) ? true : false;
+
+            try
+            {
+                newClient.ClientID = Utilities.GenerateClientID();
+                newClient.FirstName = txtFirstName.Text;
+                newClient.LastName = txtLastName.Text;
+                newClient.HeadOfHousehold = (radioHHYes.IsChecked == true) ? "yes" : "no";
+                newClient.GPSLatitude = txtLatitude.Text;
+                newClient.GPSLongitude = txtLongitude.Text;
+                newClient.IDNo = txtIDNo.Text;
+                newClient.ClinicUsed = ((ComboBoxItem)ClinicUsed.SelectedItem).Content.ToString();
+                newClient.DateOfBirth = DateTime.Parse(txtDateofBirth.Text);
+                newClient.NameofSchool = ((ComboBoxItem)NameofSchool.SelectedItem).Content.ToString();
+                newClient.Gender = (radioMale.IsChecked == true) ? "Male" : "Female";
+                newClient.AttendingSchool = (radioAttYes.IsChecked == true) ? true : false;
+
+                newClient.Grade = ((ComboBoxItem)Grade.SelectedItem).Content.ToString();
+
+                JumptoScreening(newClient);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "New Client", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return; throw;
+            }
+            
+            
+
+
+
+            //string storedProcedure = "AddClient";
+
            
-            newClient.Grade = ((ComboBoxItem)Grade.SelectedItem).Content.ToString();
-
-
-
-            string storedProcedure = "AddClient";
-
-
-              try
-            {
-                storedProcedure = "AddClient";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ClientID", newClient.ClientID);//param
-                com.Parameters.AddWithValue("@HeadOfHousehold", newClient.HeadOfHousehold);//param
-                com.Parameters.AddWithValue("@FirstName", newClient.FirstName);//param
-                com.Parameters.AddWithValue("@LastName", newClient.LastName);//param
-
-                com.Parameters.AddWithValue("@GPSLatitude", newClient.GPSLatitude);//param
-                com.Parameters.AddWithValue("@GPSLongitude", newClient.GPSLongitude);//param
-                com.Parameters.AddWithValue("@IDNo", newClient.IDNo);//param
-                com.Parameters.AddWithValue("@ClinicID", 1);//param dummy value added to be changed
-                com.Parameters.AddWithValue("@DateOfBirth", newClient.DateOfBirth);//param
-                com.Parameters.AddWithValue("@Gender", newClient.Gender);//param
-                com.Parameters.AddWithValue("@AttendingSchool", newClient.AttendingSchool);//param
-                com.Parameters.AddWithValue("@Grade", newClient.Grade);//param
-                com.Parameters.AddWithValue("@NameofSchool", newClient.NameofSchool);//param
-                com.Parameters.AddWithValue("@Area", " ");//param
-
-                int i = 0;
-              i =  com.ExecuteNonQuery();//execute command
-              if (i!=0)
-              {
-                  MessageBox.Show("New Client Added Successfully");
-                  JumptoScreening(newClient);
-              }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+          
            
             //Users user = new Users();
             //user.FirstName = txtFirstName.Text;

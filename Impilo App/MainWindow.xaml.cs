@@ -54,7 +54,7 @@ namespace Impilo_App
 
         private void btnScreening_Click(object sender, RoutedEventArgs e)
         {
-            ScreeningHome home = new ScreeningHome();
+            AddNewClient home = new AddNewClient();
             pageTransitionControl.ShowPage(home);
             //Change Background
             btnNewClient.Background = Brushes.White;

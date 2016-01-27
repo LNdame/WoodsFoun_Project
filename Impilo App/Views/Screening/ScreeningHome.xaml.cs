@@ -65,6 +65,15 @@ namespace Impilo_App.Views.Screening
                 rdoFemale.IsChecked = true;
             }
 
+            if (cl.HeadOfHousehold=="yes")
+            {
+                rdohYes.IsChecked = true;
+            }
+            else
+            {
+                rdoHNo.IsChecked = true;
+            }
+
             cboChow.SelectedIndex = 0;
         }
         public ScreeningHome(string ID)
@@ -117,52 +126,21 @@ namespace Impilo_App.Views.Screening
 
 
 
-            if (goforEncouter)
-            {
-                
-            
-
-            //sp place
-            //connection
-            try
-            {
-                storedProcedure = "AddEncounters";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-               
-                com.Parameters.AddWithValue("@ClientID", newSCreen.ClientId);//param
-                com.Parameters.AddWithValue("@EncounterDate", newSCreen.ScreeningDate);//param
-
-                com.Parameters.AddWithValue("@EncounterType", 1);//param
-                com.Parameters.AddWithValue("@EncounterCapturedBy", newSCreen.EncounterCapturedBy);
-
-                encounterID =(int)((decimal) com.ExecuteScalar());
-                //com.ExecuteNonQuery();//execute command
            
-                MessageBox.Show(encounterID.ToString());
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-            }
-            scrID = encounterID.ToString();
             #endregion
-               
 
 
-           // encounterID = 134; //test under
+            /*
+ * This code will be divided into 2 logical part the first part will check that all the fields have been properply filled 
+ * and secondly if it is a "GO" for all fields then the SPs will be fired sequentially
+ * 
+ */
 
 
-            #region Environmental +- Tested+
 
+            #region Field Check
 
+            #region Environmental Fields
             bool goforEnvironmental = false;
 
             Environmental environment = new Environmental();
@@ -200,8 +178,619 @@ namespace Impilo_App.Views.Screening
             {
 
                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Environmental Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                throw;
+                //return;
+            }
+            #endregion
+
+            #region Hypertension Fields
+            bool goforHypertension = false;
+
+            Hypertension hyper = new Hypertension();
+
+            try
+            {
+                hyper.ScreeningID = scrID;
+                hyper.YearOfDiagnosis = ((ComboBoxItem)cboDiaYear.SelectedItem).Content.ToString();
+
+                // hyper.BlurredVision = (blurvYes.IsChecked == true) ? true : false;
+                hyper.ShortnessOfBreath = (shortYes.IsChecked == true) ? true : false;
+                hyper.ChestPain = (chestYes.IsChecked == true) ? true : false;
+
+                hyper.ReferralToClinic = (refYes.IsChecked == true) ? true : false; ;
+                hyper.ReferalNo = txthyperRef.Text;
+                hyper.EverHadStroke = (stroYes.IsChecked == true) ? true : false; ;
+                hyper.YearOfStroke = ((ComboBoxItem)cboStrokeYear.SelectedItem).Content.ToString();
+                hyper.AnyOneInFamilyHadStroke = (anyYes.IsChecked == true) ? true : false; ;
+                hyper.HowManyInFamilyOnMedsForHypertension = int.Parse(numHPT.Text);
+
+                goforHypertension = true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Hypertension Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                throw;
+            }
+            #endregion
+
+            #region Diabetes Fields
+            bool goforDiabetes = false;
+            Diabetes dia;
+
+            try
+            {
+
+                dia = new Diabetes
+                {
+                    EncounterID = encounterID,
+                    BlurredVision = (blurvYes.IsChecked == true) ? true : false,
+                    YearOfDiagnosis = ((ComboBoxItem)cboDiabeYear.SelectedItem).Content.ToString(),
+
+                    WeightLoss = (lossYes.IsChecked == true) ? true : false,
+                    UrinatingMore = (uriYes.IsChecked == true) ? true : false,
+                    NauseaOrVomitting = (nauYes.IsChecked == true) ? true : false,
+                    FootExamResult = ((ComboBoxItem)cboFootExam.SelectedItem).Content.ToString(),
+                    ReferralToClinic = (refdiaYes.IsChecked == true) ? true : false,
+                    ReferralNo = txtdiaRef.Text,
+                    FamilyMemberWith = (famYes.IsChecked == true) ? true : false
+
+                };
+                goforDiabetes = true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Diabetes Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                throw;
+            }
+
+            #endregion
+
+            #region HIV Fields
+            bool goforHIV = false;
+
+
+            HIV_Tab hivTab;
+
+            try
+            {
+                hivTab = new HIV_Tab
+                {
+                    ScreeningID = scrID,
+                    YearOfDiagnosis = ((ComboBoxItem)cboDiaHivYear.SelectedItem).Content.ToString(),
+                    OnMeds = (radonMeds.IsChecked == true) ? true : false,
+                    AdherenceOK = (radadh.IsChecked == true) ? true : false,
+                    ReferToClinic = (hivref.IsChecked == true) ? true : false,
+                    ReferralNo = txtHIVRef.Text,
+                    ARVFileNo = txtARVFile.Text,
+
+                };
+
+                goforHIV = true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "HIV Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                throw;
+            }
+            #endregion
+
+            #region Maternal Health Fields
+            bool goforMaternal = false;
+            MentalHealth materHealth;
+            try
+            {
+                materHealth = new MentalHealth
+                {
+                    EncounterID = encounterID,
+                    PregnantBefore = (radprebef.IsChecked == true) ? true : false,
+                    NoOfPregnancies = numPregnacies.Text,
+                    HowManySuccessful = numPregnSuc.Text,
+                    WhereDeliveredLasBaby = ((ComboBoxItem)cboDelplace.SelectedItem).Content.ToString(),
+                    Caesarian = (radcae.IsChecked == true) ? true : false,
+                    BabyUnder2_5Kgs = (radbabyunder2.IsChecked == true) ? true : false,
+                    ChildrenDiedUnder1Year = (radCHilDied1.IsChecked == true) ? true : false,
+                    ChildrenDiedBetween1to5Years = (radCHilDied1_5.IsChecked == true) ? true : false,
+                    PAPSmearInLast5Years = (radpap.IsChecked == true) ? true : false,
+                    LastBloodTestResult = ((ComboBoxItem)cboBloodExam.SelectedItem).Content.ToString(),
+                    DateOfFirstANC = (DateTime)txtDate1ANC.SelectedDate,
+                    DateOfLastANC = (DateTime)txtDatelastANC.SelectedDate,
+                    ReferredToClinic = (refMatyes.IsChecked == true) ? true : false,
+                    ReferralNo = txtMatref.Text,
+                    DateOfNextANC = (DateTime)txtDateNextANC.SelectedDate,
+                    ExpectedDateOfDelivery = (DateTime)txtDateDelivery.SelectedDate,
+                    IntendFormulaFeed = (radintformula.IsChecked == true) ? true : false,
+                    IntendBreastFeed = (radintbreas.IsChecked == true) ? true : false,
+                    RegisteredOnMomConnect = (radintbreas.IsChecked == true) ? true : false,
+
+
+                };
+                goforMaternal = true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Maternal Health Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                throw;
+            }
+            #endregion
+
+            #region Child Health Fields
+
+            bool goforChild = false;
+
+            ChildHealth childh;
+
+            List<String> outImmList = null;
+            try
+            {
+                childh = new ChildHealth
+                {
+                    EncounterID = encounterID,
+                    NameOfMother = txtNaMother.Text,
+                    ChildWithRTHC = (radrthc.IsChecked == true) ? true : false,
+                    ReferToClinic = (radref.IsChecked == true) ? true : false,
+                    ReferalNo = txtref.Text,
+                    ListConcernsReChild = txtConRechild.Text,
+                    ReferToClinic2 = (radref1.IsChecked == true) ? true : false,
+                    ReferToOVC = (radrefovc.IsChecked == true) ? true : false,
+                    ReferralNo2 = txtref1.Text,
+                    MotherHIVPlus = (radMohiv.IsChecked == true) ? true : false,
+                    ChildBreastFed = (radbreast.IsChecked == true) ? true : false,
+                    Howlong = ((ComboBoxItem)cboChBreastFedlong.SelectedItem).Content.ToString(),
+                    ChildEverOnNevirapine = (radnev.IsChecked == true) ? true : false,
+                    PCRDone = (radpcr.IsChecked == true) ? true : false,
+                    PCRResults = ((ComboBoxItem)cboPCR.SelectedItem).Content.ToString(),
+                    ReferToClinic3 = (radref2.IsChecked == true) ? true : false,
+                    ReferalNo3 = txtref2.Text,
+                    ImmunisationUpToDate = (radimm.IsChecked == true) ? true : false,
+
+                    ReferToClinic4 = (radref3.IsChecked == true) ? true : false,
+                    ReferralNo4 = txtref3.Text,
+                    WalkAppropriateForAge = (radwalk.IsChecked == true) ? true : false,
+                    TalkAppropriateForAge = (radtalk.IsChecked == true) ? true : false,
+                    VITAandWarmMedsGivenEachMonth = (radvita.IsChecked == true) ? true : false
+
+                };
+
+
+                //check for outstanding Immunisatoion
+               
+                if (!childh.ImmunisationUpToDate)
+                {
+                    outImmList = new List<string>();
+                    string listVacinne = datasource.SelectedImmunisationOutText;
+                    outImmList = listVacinne.Split(',').ToList();
+                }
+
+                
+
+                childh.WhichImmunisatationsOutStanding = "";
+
+                goforChild = true;
 
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Child Health Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                throw;
+            }
+            #endregion
+
+            #region OtherTab Fields
+
+            bool goforOther = false;
+
+            Other_Tab ottab;
+
+            try
+            {
+                ottab = new Other_Tab
+                {
+                    EncounterID = encounterID,
+                    ReferralNo = txtOtherRef.Text,
+                    ReferToClinic = (radOtherRef.IsChecked == true) ? true : false,
+                    OtherConditionFound = txtOtherCon.Text
+
+                };
+                goforOther = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Other Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                throw;
+            }
+            #endregion
+
+            #region General Fields
+            bool goforGeneral = false;
+
+//The object involved
+            ElderlyCareAssessment eld;
+            General genMeasurement;
+            CurrentMedications curhpt;
+            CurrentMedications curEpi;
+            CurrentMedications curDiabetes;
+            CurrentMedications curAsthma;
+            CurrentMedications curOther;
+            BPReading bpr;
+            BloodSuger bs;
+            Epilepsy ep;
+            HIV hiv;
+            Pregnancy preg;
+            Tubercolosis tb;
+            TBContactTracing tbc;
+            OtherCondition otc;
+
+        try{ // this a massive try
+            #region Measurement
+
+          genMeasurement = new General
+            {
+                ScreeningID = scrID,
+                Weight = decimal.Parse(txtWeight.Text),
+                Height = decimal.Parse(txtheight.Text),
+                BMI = decimal.Parse(txtBMI.Text)
+            };
+
+
+            #endregion
+
+            #region CurrentMedications
+            //HPT
+
+            List<CurrentMedications> medsList = new List<CurrentMedications>();
+
+
+        curhpt = new CurrentMedications
+            {
+                ScreeningID = scrID,
+                DiseaseID = 1,
+                IsSick = (radHPT.IsChecked == true) ? true : false,
+                OnMeds = (radOnMedsHPT.IsChecked == true) ? true : false,
+                StartDate = (DateTime)dateStartHPT.SelectedDate,
+                Defaulting = (radDefauHPT.IsChecked == true) ? true : false,
+                ReferToClinic = (radRefHPT.IsChecked == true) ? true : false,
+                ReferralNo = txtCurHPTRef.Text
+
+
+            };
+
+            // medsList.Add(curhpt);
+
+
+            //epilepsy
+
+           curEpi = new CurrentMedications
+            {
+                ScreeningID = scrID,
+                DiseaseID = 1,
+                IsSick = (radEpi.IsChecked == true) ? true : false,
+                StartDate = (DateTime)dateStartepy.SelectedDate,
+                Defaulting = (radDefauEpi.IsChecked == true) ? true : false,
+                ReferToClinic = (radRefEpi.IsChecked == true) ? true : false,
+                ReferralNo = txtCurEpiRef.Text
+
+
+            };
+            //  medsList.Add(curEpi);
+
+
+            //Diabetes
+
+          curDiabetes = new CurrentMedications
+            {
+                ScreeningID = scrID,
+                DiseaseID = 1,
+                IsSick = (radOnMedsDia.IsChecked == true) ? true : false,
+                StartDate = (DateTime)dateStartDiabets.SelectedDate,
+                Defaulting = (radDefauDia.IsChecked == true) ? true : false,
+                ReferToClinic = (radRefDia.IsChecked == true) ? true : false,
+                ReferralNo = txtCurDiaRef.Text
+
+
+            };
+            // medsList.Add(curDiabetes);
+
+            //Asthma
+
+            curAsthma = new CurrentMedications
+            {
+                ScreeningID = scrID,
+                DiseaseID = 1,
+                IsSick = (radAsth.IsChecked == true) ? true : false,
+                StartDate = (DateTime)dateStartAthsma.SelectedDate,
+                Defaulting = (radDefauAsth.IsChecked == true) ? true : false,
+                ReferToClinic = (radRefAsth.IsChecked == true) ? true : false,
+                ReferralNo = txtCurAstRef.Text
+
+
+            };
+            // medsList.Add(curAsthma);
+
+
+            //oral thrush
+
+         curOther = new CurrentMedications
+            {
+                ScreeningID = scrID,
+                DiseaseID = 1,
+                IsSick = (radAsth.IsChecked == true) ? true : false,
+
+                Defaulting = (radDefauOt.IsChecked == true) ? true : false,
+                ReferToClinic = (radRefOt.IsChecked == true) ? true : false,
+                ReferralNo = txtCurOthRef.Text
+
+
+            };
+
+
+
+            #endregion
+
+            #region CurrentConditons
+            //BP Reading
+            bpr = new BPReading
+            {
+                ScreeningID = scrID,
+                OnMeds = (redCurMedsBP.IsChecked == true) ? true : false,
+                Systolic = decimal.Parse(numBPSystolic.Text),// decimal.Parse( ((ComboBoxItem)cbosys.SelectedItem).Content.ToString()),
+                Diastolic = decimal.Parse(numBPDiastolic.Text),//decimal.Parse(((ComboBoxItem)cboDiasto.SelectedItem).Content.ToString()),
+                ReferToCHOWs = (radrefCHowBP.IsChecked == true) ? true : false,
+                ReferToClinic = (radrefBP.IsChecked == true) ? true : false,
+                ReferralNo = txtrefBP.Text,
+            };
+
+
+            //Blood sugar
+            bs = new BloodSuger
+            {
+                ScreeningID = scrID,
+                OnMeds = (redCurMedsBs.IsChecked == true) ? true : false, //will 
+                NotOnMedsBSReadings = decimal.Parse(numBsReading.Text),// ((ComboBoxItem)cboBSreading.SelectedItem).Content.ToString(),numBsReading
+
+                ReferToCHOWs = (radrefCHowBS.IsChecked == true) ? true : false,
+                ReferToClinic = (radrefBS.IsChecked == true) ? true : false,
+                ReferralNo = txtrefBS.Text,
+
+            };
+
+
+            //Epilepsy
+            ep = new Epilepsy
+            {
+                ScreeningID = scrID,
+                FitsInLastMonth = (radlastfit.IsChecked == true) ? true : false,
+                ReferToClinic = (radrefepi.IsChecked == true) ? true : false,
+                ReferralNo = txtrefEpi.Text,
+            };
+
+
+
+            //HIV
+       hiv = new HIV
+            {
+                ScreeningID = scrID,
+                KnownHIVPosStatus = (radhivknown.IsChecked == true) ? true : false,
+                HIVTestDone = (radhivtest.IsChecked == true) ? true : false,
+                Result = ((ComboBoxItem)cboHIVres.SelectedItem).Content.ToString(),
+                ReferToClinic = (radrefHIV.IsChecked == true) ? true : false,
+                ReferralNo = txtrefHIV.Text,
+            };
+
+
+            //Pregnancy
+          preg = new Pregnancy
+            {
+                ScreeningID = scrID,
+                CurrentlyPregnant = (radpregpos.IsChecked == true) ? true : false,
+                PregnancyTestDone = (radpretest.IsChecked == true) ? true : false,
+                Results = ((ComboBoxItem)cboPreres.SelectedItem).Content.ToString(),
+                ReferToClinic = (radrefpreg.IsChecked == true) ? true : false,
+                ReferralNo = txtCCpregref.Text,
+            };
+
+
+
+            #endregion
+
+            #region Tuberculosis
+
+            tb = new Tubercolosis
+            {
+                ScreeningID = scrID,
+                HaveTubercolosis = (radhasTB.IsChecked == true) ? true : false,
+                Defaulting = (radDefaulting.IsChecked == true) ? true : false,
+                LossWeight = (radhasTB.IsChecked == true) ? true : false,
+                SweatingAtNight = (radExcSweat.IsChecked == true) ? true : false,
+
+                FeverOver2Weeks = (radFever2.IsChecked == true) ? true : false,
+                CoughMoreThan2Weeks = (radCough2.IsChecked == true) ? true : false,
+                LossOfApetite = (radlossapp.IsChecked == true) ? true : false,
+
+                ReferToClinic = (radrefTBSymp.IsChecked == true) ? true : false,
+                ReferralNo = txtRefTBsymp.Text,
+            };
+            tb.WhatMedsAreYouOn = "";
+
+            tbc = new TBContactTracing
+            {
+                ScreeningID = scrID,
+                HouseHoldOnTBMeds = (radhouseTb.IsChecked == true) ? true : false,
+                ReferToClinic = (radrefTbCon.IsChecked == true) ? true : false,
+                ReferralNo = txtTBContract.Text,
+            };
+
+
+            #endregion
+
+
+            #region Other Conditon and eldery care
+
+             otc = new OtherCondition
+            {
+                ScreeningID = scrID,
+                BloodInUrine = (radelpassvision.IsChecked == true) ? true : false,
+                ReferToClinic = (radotref.IsChecked == true) ? true : false,
+                ReferralNo = txtRefOtc.Text,
+                Smoking = (radotsmoke.IsChecked == true) ? true : false,
+                Drinking = (radotdrink.IsChecked == true) ? true : false,
+                // DrinkAlchoholUnitsPerWeek = ((ComboBoxItem)cboBeerUnit.SelectedItem).Content.ToString(),
+                DiarrhoeaOver3Days = (radotdiarhoea.IsChecked == true) ? true : false,
+                ReferToClinic2 = (radotref2.IsChecked == true) ? true : false,
+                AttendedInitiationSchool = (radotinit.IsChecked == true) ? true : false,
+                LagCrampsOver2Weeks = (radotcramps.IsChecked == true) ? true : false,
+                LagNumbnessOver2Weeks = (radotnumb.IsChecked == true) ? true : false,
+                FootUlcer = (radotulcer.IsChecked == true) ? true : false,
+                ReferToClinic3 = (radotref3.IsChecked == true) ? true : false,
+
+                FamilyPlanningAdvice = (radotFam.IsChecked == true) ? true : false,
+                ReferralNo2 = txtRefOtc2.Text,
+                ReferalNo3 = txtRefOtc3.Text
+            };
+
+
+
+            eld = new ElderlyCareAssessment
+            {
+                ScreeningID = scrID,
+                LegFootArmHanAmputation = (radelamp.IsChecked == true) ? true : false,
+                PassVisionTest = (radelpassvision.IsChecked == true) ? true : false,
+                Bedridden = (radelBed.IsChecked == true) ? true : false,
+                UseAidToMove = (radelmove.IsChecked == true) ? true : false,
+                WashYourself = (radelwash.IsChecked == true) ? true : false,
+                FeedYourSelf = (radelfeed.IsChecked == true) ? true : false,
+                DressYourSelf = (radeldress.IsChecked == true) ? true : false,
+                ReferToClinic = (radelref.IsChecked == true) ? true : false,
+                ReferralNo = txtRefEld.Text
+
+            };
+
+}
+            catch (Exception)
+            {
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "General - Current Conditons Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                throw;
+            }
+
+            #endregion
+
+
+            #endregion //end of General Fields
+
+
+
+
+                // Check the if
+
+
+            #endregion //end check fields
+
+
+
+
+            #region SPs Execution
+
+
+        #region Save new Client
+        try
+        {
+            storedProcedure = "AddClient";// name of sp
+            conn.Open();
+            SqlCommand com = new SqlCommand(storedProcedure, conn);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@ClientID", currentClient.ClientID);//param
+            com.Parameters.AddWithValue("@HeadOfHousehold", currentClient.HeadOfHousehold);//param
+            com.Parameters.AddWithValue("@FirstName", currentClient.FirstName);//param
+            com.Parameters.AddWithValue("@LastName", currentClient.LastName);//param
+
+            com.Parameters.AddWithValue("@GPSLatitude", currentClient.GPSLatitude);//param
+            com.Parameters.AddWithValue("@GPSLongitude", currentClient.GPSLongitude);//param
+            com.Parameters.AddWithValue("@IDNo", currentClient.IDNo);//param
+            com.Parameters.AddWithValue("@ClinicID", 1);//param dummy value added to be changed
+            com.Parameters.AddWithValue("@DateOfBirth", currentClient.DateOfBirth);//param
+            com.Parameters.AddWithValue("@Gender", currentClient.Gender);//param
+            com.Parameters.AddWithValue("@AttendingSchool", currentClient.AttendingSchool);//param
+            com.Parameters.AddWithValue("@Grade", currentClient.Grade);//param
+            com.Parameters.AddWithValue("@NameofSchool", currentClient.NameofSchool);//param
+            com.Parameters.AddWithValue("@Area", " ");//param
+
+            int i = 0;
+            i = com.ExecuteNonQuery();//execute command
+            if (i != 0)
+            {
+                MessageBox.Show("New Client Added Successfully","Screening", MessageBoxButton.OK, MessageBoxImage.Information);
+                
+            }
+        }
+        catch (Exception ex)
+        {
+
+            MessageBox.Show(ex.Message.ToString());
+        }
+        finally
+        {
+            conn.Close();
+        }
+
+        #endregion
+
+
+
+
+        #region Save Encounter
+
+        if (goforEncouter)
+        {
+
+
+
+            //sp place
+            //connection
+            try
+            {
+                storedProcedure = "AddEncounters";// name of sp
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+
+                com.Parameters.AddWithValue("@ClientID", newSCreen.ClientId);//param
+                com.Parameters.AddWithValue("@EncounterDate", newSCreen.ScreeningDate);//param
+
+                com.Parameters.AddWithValue("@EncounterType", 1);//param
+                com.Parameters.AddWithValue("@EncounterCapturedBy", newSCreen.EncounterCapturedBy);
+
+                encounterID = (int)((decimal)com.ExecuteScalar());
+                //com.ExecuteNonQuery();//execute command
+
+                MessageBox.Show(encounterID.ToString()); //to erase
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        scrID = encounterID.ToString();
+#endregion 
+            // encounterID = 134; //test under
+
+
+
+
+            #region Environmental +- Tested+
+
+
+           
 
 
             if (goforEnvironmental)
@@ -291,34 +880,7 @@ namespace Impilo_App.Views.Screening
 
             #region Hypertension ++ Tested+
 
-            bool goforHypertension = false;
-
-            Hypertension hyper = new Hypertension();
-
-            try
-            {
-                hyper.ScreeningID = scrID;
-                hyper.YearOfDiagnosis = ((ComboBoxItem)cboDiaYear.SelectedItem).Content.ToString();
-
-                // hyper.BlurredVision = (blurvYes.IsChecked == true) ? true : false;
-                hyper.ShortnessOfBreath = (shortYes.IsChecked == true) ? true : false;
-                hyper.ChestPain = (chestYes.IsChecked == true) ? true : false;
-
-                hyper.ReferralToClinic = (refYes.IsChecked == true) ? true : false; ;
-                hyper.ReferalNo = txthyperRef.Text;
-                hyper.EverHadStroke = (stroYes.IsChecked == true) ? true : false; ;
-                hyper.YearOfStroke = ((ComboBoxItem)cboStrokeYear.SelectedItem).Content.ToString();
-                hyper.AnyOneInFamilyHadStroke = (anyYes.IsChecked == true) ? true : false; ;
-                hyper.HowManyInFamilyOnMedsForHypertension = int.Parse(numHPT.Text);
-
-                goforHypertension = true;
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Hypertension Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-                throw;
-            }
+          
             
             //sp place
             //connection 
@@ -367,36 +929,7 @@ namespace Impilo_App.Views.Screening
 
 
             #region Diabetes ++ Tested +
-            bool goforDiabetes = false;
-            Diabetes dia;
-
-            try
-            {
-
-                 dia = new Diabetes
-                {
-                    EncounterID = encounterID,
-                    BlurredVision = (blurvYes.IsChecked == true) ? true : false,
-                    YearOfDiagnosis = ((ComboBoxItem)cboDiabeYear.SelectedItem).Content.ToString(),
-
-                    WeightLoss = (lossYes.IsChecked == true) ? true : false,
-                    UrinatingMore = (uriYes.IsChecked == true) ? true : false,
-                    NauseaOrVomitting = (nauYes.IsChecked == true) ? true : false,
-                    FootExamResult = ((ComboBoxItem)cboFootExam.SelectedItem).Content.ToString(),
-                    ReferralToClinic = (refdiaYes.IsChecked == true) ? true : false,
-                    ReferralNo = txtdiaRef.Text,
-                    FamilyMemberWith = (famYes.IsChecked == true) ? true : false
-
-                };
-                goforDiabetes = true;
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Diabetes Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-                throw;
-            }
-
+           
             //sp place
             //connection
 
@@ -442,33 +975,7 @@ namespace Impilo_App.Views.Screening
 
             #region HIV ++ Tested +
 
-            bool goforHIV = false;
-
-
-            HIV_Tab hivTab;
-
-            try
-            {
-               hivTab = new HIV_Tab
-            {
-                ScreeningID = scrID,
-                YearOfDiagnosis = ((ComboBoxItem)cboDiaHivYear.SelectedItem).Content.ToString(),
-                OnMeds = (radonMeds.IsChecked == true) ? true : false,
-                AdherenceOK = (radadh.IsChecked == true) ? true : false,
-                ReferToClinic = (hivref.IsChecked == true) ? true : false,
-                ReferralNo = txtHIVRef.Text,
-                ARVFileNo = txtARVFile.Text,
-
-            };
-
-               goforHIV = true;
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "HIV Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-                throw;
-            }
+          
 
             //sp place
             //connection
@@ -507,43 +1014,7 @@ namespace Impilo_App.Views.Screening
 
             #region Maternal Health ++- Tested +
 
-            bool goforMaternal = false;
-            MentalHealth materHealth;
-            try
-            {
-               materHealth = new MentalHealth
-            {
-                EncounterID = encounterID,
-                PregnantBefore = (radprebef.IsChecked == true) ? true : false,
-                NoOfPregnancies = numPregnacies.Text,
-                HowManySuccessful = numPregnSuc.Text,
-                WhereDeliveredLasBaby = ((ComboBoxItem)cboDelplace.SelectedItem).Content.ToString(),
-                Caesarian = (radcae.IsChecked == true) ? true : false,
-                BabyUnder2_5Kgs = (radbabyunder2.IsChecked == true) ? true : false,
-                ChildrenDiedUnder1Year = (radCHilDied1.IsChecked == true) ? true : false,
-                ChildrenDiedBetween1to5Years = (radCHilDied1_5.IsChecked == true) ? true : false,
-                PAPSmearInLast5Years = (radpap.IsChecked == true) ? true : false,
-                LastBloodTestResult = ((ComboBoxItem)cboBloodExam.SelectedItem).Content.ToString(),
-                DateOfFirstANC = (DateTime)txtDate1ANC.SelectedDate,
-                DateOfLastANC = (DateTime)txtDatelastANC.SelectedDate,
-                ReferredToClinic = (refMatyes.IsChecked == true) ? true : false,
-                ReferralNo = txtMatref.Text,
-                DateOfNextANC = (DateTime)txtDateNextANC.SelectedDate,
-                ExpectedDateOfDelivery = (DateTime)txtDateDelivery.SelectedDate,
-                IntendFormulaFeed = (radintformula.IsChecked == true) ? true : false,
-                IntendBreastFeed = (radintbreas.IsChecked == true) ? true : false,
-                RegisteredOnMomConnect = (radintbreas.IsChecked == true) ? true : false,
-
-
-            };
-                goforMaternal = true;
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Maternal Health Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-                throw;
-            }
+           
             //sp place
             //connection
 
@@ -597,53 +1068,7 @@ namespace Impilo_App.Views.Screening
                 
             #region Child Health +-+ Tested+
 
-            bool goforChild = false;
-
-            ChildHealth childh;
-
            
-            try
-            {
-                childh = new ChildHealth
-                {
-                    EncounterID = encounterID,
-                    NameOfMother = txtNaMother.Text,
-                    ChildWithRTHC = (radrthc.IsChecked == true) ? true : false,
-                    ReferToClinic = (radref.IsChecked == true) ? true : false,
-                    ReferalNo = txtref.Text,
-                    ListConcernsReChild = txtConRechild.Text,
-                    ReferToClinic2 = (radref1.IsChecked == true) ? true : false,
-                    ReferToOVC = (radrefovc.IsChecked == true) ? true : false,
-                    ReferralNo2 = txtref1.Text,
-                    MotherHIVPlus = (radMohiv.IsChecked == true) ? true : false,
-                    ChildBreastFed = (radbreast.IsChecked == true) ? true : false,
-                    Howlong = ((ComboBoxItem)cboChBreastFedlong.SelectedItem).Content.ToString(),
-                    ChildEverOnNevirapine = (radnev.IsChecked == true) ? true : false,
-                    PCRDone = (radpcr.IsChecked == true) ? true : false,
-                    PCRResults = ((ComboBoxItem)cboPCR.SelectedItem).Content.ToString(),
-                    ReferToClinic3 = (radref2.IsChecked == true) ? true : false,
-                    ReferalNo3 = txtref2.Text,
-                    ImmunisationUpToDate = (radimm.IsChecked == true) ? true : false,
-
-                    ReferToClinic4 = (radref3.IsChecked == true) ? true : false,
-                    ReferralNo4 = txtref3.Text,
-                    WalkAppropriateForAge = (radwalk.IsChecked == true) ? true : false,
-                    TalkAppropriateForAge = (radtalk.IsChecked == true) ? true : false,
-                    VITAandWarmMedsGivenEachMonth = (radvita.IsChecked == true) ? true : false
-
-                };
-
-                childh.WhichImmunisatationsOutStanding = "";
-
-                goforChild = true;
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Child Health Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                throw;
-            }
 
             if (goforChild)
             {
@@ -689,7 +1114,41 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@schRefNo4", childh.ReferralNo4);//param
 
 
-                com.ExecuteNonQuery();//execute command
+               // com.ExecuteNonQuery();//execute command //should become a scalar
+              int lastestChID = (int)((decimal)com.ExecuteScalar());
+
+                //adding outstanding immunisation added (27 01) --
+                //outImmList
+                if (outImmList !=null && outImmList.Count>=1)
+                {
+                     conn.Close();
+                     foreach (var imm in outImmList)
+                     {
+                          try
+                    {
+                        storedProcedure = "AddScreeningChildHealthImmunisationsOutstanding";// name of sp
+                        conn.Open();
+                        SqlCommand tempcom = new SqlCommand(storedProcedure, conn);
+                        tempcom.CommandType = CommandType.StoredProcedure;
+                        tempcom.Parameters.AddWithValue("@seID", lastestChID);//param
+                        tempcom.Parameters.AddWithValue("@schioName", imm);//param
+                       
+                        tempcom.ExecuteNonQuery();//execute command
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString() + "Immunisation not added");
+                    }
+
+                    finally
+                    {
+                        conn.Close();
+                    }
+                     }
+
+                }
+                
             }
             catch (Exception ex)
             {
@@ -705,30 +1164,9 @@ namespace Impilo_App.Views.Screening
                 
                 
                   
-            #region otherTab + tested+
+            #region OtherTab + tested+
 
-            bool goforOther = false;
-
-            Other_Tab ottab;
-
-            try
-            {
-                 ottab = new Other_Tab
-            {
-                EncounterID = encounterID,
-                ReferralNo = txtOtherRef.Text,
-                ReferToClinic = (radOtherRef.IsChecked == true) ? true : false,
-                OtherConditionFound = txtOtherCon.Text
-
-            };
-                 goforOther = true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Other Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                throw;
-            }
+            
             if (goforOther)
             {
                 
@@ -763,258 +1201,10 @@ namespace Impilo_App.Views.Screening
                 
             
 
-  //start of general
+    //start of general
             #region General +-+ Tested +
 
-            bool goforGeneral = false;
-
-            #region Measurement
-            General genMeasurement = new General
-            {
-                ScreeningID = scrID,
-                Weight = decimal.Parse(txtWeight.Text),
-                Height = decimal.Parse(txtheight.Text),
-                BMI = decimal.Parse(txtBMI.Text)
-            };
-
-
-            #endregion
-
-            #region CurrentMedications
-            //HPT
-
-            List<CurrentMedications> medsList = new List<CurrentMedications>();
-
-
-            CurrentMedications curhpt = new CurrentMedications
-            {
-                ScreeningID = scrID,
-                DiseaseID = 1,
-                IsSick = (radHPT.IsChecked == true) ? true : false,
-                OnMeds = (radOnMedsHPT.IsChecked == true) ? true : false,
-                StartDate = (DateTime)dateStartHPT.SelectedDate,
-                Defaulting = (radDefauHPT.IsChecked == true) ? true : false,
-                ReferToClinic = (radRefHPT.IsChecked == true) ? true : false,
-                ReferralNo = txtCurHPTRef.Text
-
-
-            };
-
-            // medsList.Add(curhpt);
-
-
-            //epilepsy
-
-            CurrentMedications curEpi = new CurrentMedications
-            {
-                ScreeningID = scrID,
-                DiseaseID = 1,
-                IsSick = (radEpi.IsChecked == true) ? true : false,
-                StartDate = (DateTime)dateStartepy.SelectedDate,
-                Defaulting = (radDefauEpi.IsChecked == true) ? true : false,
-                ReferToClinic = (radRefEpi.IsChecked == true) ? true : false,
-                ReferralNo = txtCurEpiRef.Text
-
-
-            };
-            //  medsList.Add(curEpi);
-
-
-            //Diabetes
-
-            CurrentMedications curDiabetes = new CurrentMedications
-            {
-                ScreeningID = scrID,
-                DiseaseID = 1,
-                IsSick = (radOnMedsDia.IsChecked == true) ? true : false,
-                StartDate = (DateTime)dateStartDiabets.SelectedDate,
-                Defaulting = (radDefauDia.IsChecked == true) ? true : false,
-                ReferToClinic = (radRefDia.IsChecked == true) ? true : false,
-                ReferralNo = txtCurDiaRef.Text
-
-
-            };
-            // medsList.Add(curDiabetes);
-
-            //Asthma
-
-            CurrentMedications curAsthma = new CurrentMedications
-            {
-                ScreeningID = scrID,
-                DiseaseID = 1,
-                IsSick = (radAsth.IsChecked == true) ? true : false,
-                StartDate = (DateTime)dateStartAthsma.SelectedDate,
-                Defaulting = (radDefauAsth.IsChecked == true) ? true : false,
-                ReferToClinic = (radRefAsth.IsChecked == true) ? true : false,
-                ReferralNo = txtCurAstRef.Text
-
-
-            };
-            // medsList.Add(curAsthma);
-
-
-            //oral thrush
-
-            CurrentMedications curOther = new CurrentMedications
-            {
-                ScreeningID = scrID,
-                DiseaseID = 1,
-                IsSick = (radAsth.IsChecked == true) ? true : false,
-
-                Defaulting = (radDefauOt.IsChecked == true) ? true : false,
-                ReferToClinic = (radRefOt.IsChecked == true) ? true : false,
-                ReferralNo = txtCurOthRef.Text
-
-
-            };
-
-
-
-            #endregion
-
-            #region CurrentConditons
-            //BP Reading
-            BPReading bpr = new BPReading
-            {
-                ScreeningID = scrID,
-                OnMeds = (redCurMedsBP.IsChecked == true) ? true : false,
-                Systolic =decimal.Parse(numBPSystolic.Text),// decimal.Parse( ((ComboBoxItem)cbosys.SelectedItem).Content.ToString()),
-                Diastolic = decimal.Parse(numBPDiastolic.Text),//decimal.Parse(((ComboBoxItem)cboDiasto.SelectedItem).Content.ToString()),
-                ReferToCHOWs = (radrefCHowBP.IsChecked == true) ? true : false,
-                ReferToClinic = (radrefBP.IsChecked == true) ? true : false,
-                ReferralNo = txtrefBP.Text,
-            };
-
-
-            //Blood sugar
-            BloodSuger bs = new BloodSuger
-            {
-                ScreeningID = scrID,
-                OnMeds = (redCurMedsBs.IsChecked == true) ? true : false, //will 
-                NotOnMedsBSReadings = decimal.Parse(numBsReading.Text),// ((ComboBoxItem)cboBSreading.SelectedItem).Content.ToString(),numBsReading
-
-                ReferToCHOWs = (radrefCHowBS.IsChecked == true) ? true : false,
-                ReferToClinic = (radrefBS.IsChecked == true) ? true : false,
-                ReferralNo = txtrefBS.Text,
-
-            };
-
-
-            //Epilepsy
-            Epilepsy ep = new Epilepsy
-            {
-                ScreeningID = scrID,
-                FitsInLastMonth = (radlastfit.IsChecked == true) ? true : false,
-                ReferToClinic = (radrefepi.IsChecked == true) ? true : false,
-                ReferralNo = txtrefEpi.Text,
-            };
-
-
-
-            //HIV
-            HIV hiv = new HIV
-            {
-                ScreeningID = scrID,
-                KnownHIVPosStatus = (radhivknown.IsChecked == true) ? true : false,
-                HIVTestDone = (radhivtest.IsChecked == true) ? true : false,
-                Result = ((ComboBoxItem)cboHIVres.SelectedItem).Content.ToString(),
-                ReferToClinic = (radrefHIV.IsChecked == true) ? true : false,
-                ReferralNo = txtrefHIV.Text,
-            };
-
-
-            //Pregnancy
-            Pregnancy preg = new Pregnancy
-            {
-                ScreeningID = scrID,
-                CurrentlyPregnant = (radpregpos.IsChecked == true) ? true : false,
-                PregnancyTestDone = (radpretest.IsChecked == true) ? true : false,
-                Results = ((ComboBoxItem)cboPreres.SelectedItem).Content.ToString(),
-                ReferToClinic = (radrefpreg.IsChecked == true) ? true : false,
-                ReferralNo = txtCCpregref.Text,
-            };
-
-
-
-            #endregion
-
-            #region Tuberculosis
-
-            Tubercolosis tb = new Tubercolosis
-            {
-                ScreeningID = scrID,
-                HaveTubercolosis = (radhasTB.IsChecked == true) ? true : false,
-                Defaulting = (radDefaulting.IsChecked == true) ? true : false,
-                LossWeight = (radhasTB.IsChecked == true) ? true : false,
-                SweatingAtNight = (radExcSweat.IsChecked == true) ? true : false,
-                
-                FeverOver2Weeks = (radFever2.IsChecked == true) ? true : false,
-                CoughMoreThan2Weeks = (radCough2.IsChecked == true) ? true : false,
-                LossOfApetite = (radlossapp.IsChecked == true) ? true : false,
-
-                ReferToClinic = (radrefTBSymp.IsChecked == true) ? true : false,
-                ReferralNo = txtRefTBsymp.Text,
-            };
-            tb.WhatMedsAreYouOn = "";
-
-            TBContactTracing tbc = new TBContactTracing
-            {
-                ScreeningID = scrID,
-                HouseHoldOnTBMeds = (radhouseTb.IsChecked == true) ? true : false,
-                ReferToClinic = (radrefTbCon.IsChecked == true) ? true : false,
-                ReferralNo = txtTBContract.Text,
-            };
-
-
-            #endregion
-
-
-            #region Other Conditon and eldery care
-
-            OtherCondition otc = new OtherCondition
-            {
-                ScreeningID = scrID,
-                BloodInUrine = (radelpassvision.IsChecked == true) ? true : false,
-                ReferToClinic = (radotref.IsChecked == true) ? true : false,
-                ReferralNo = txtRefOtc.Text,
-                Smoking = (radotsmoke.IsChecked == true) ? true : false,
-                Drinking = (radotdrink.IsChecked == true) ? true : false,
-               // DrinkAlchoholUnitsPerWeek = ((ComboBoxItem)cboBeerUnit.SelectedItem).Content.ToString(),
-                DiarrhoeaOver3Days = (radotdiarhoea.IsChecked == true) ? true : false,
-                ReferToClinic2 = (radotref2.IsChecked == true) ? true : false,
-                AttendedInitiationSchool = (radotinit.IsChecked == true) ? true : false,
-                LagCrampsOver2Weeks = (radotcramps.IsChecked == true) ? true : false,
-                LagNumbnessOver2Weeks = (radotnumb.IsChecked == true) ? true : false,
-                FootUlcer = (radotulcer.IsChecked == true) ? true : false,
-                ReferToClinic3 = (radotref3.IsChecked == true) ? true : false,
-
-                FamilyPlanningAdvice = (radotFam.IsChecked == true) ? true : false,
-                ReferralNo2 = txtRefOtc2.Text,
-                ReferalNo3 = txtRefOtc3.Text
-            };
-
-
-
-            ElderlyCareAssessment eld = new ElderlyCareAssessment
-            {
-                ScreeningID = scrID,
-                LegFootArmHanAmputation = (radelamp.IsChecked == true) ? true : false,
-                PassVisionTest = (radelpassvision.IsChecked == true) ? true : false,
-                Bedridden = (radelBed.IsChecked == true) ? true : false,
-                UseAidToMove = (radelmove.IsChecked == true) ? true : false,
-                WashYourself = (radelwash.IsChecked == true) ? true : false,
-                FeedYourSelf = (radelfeed.IsChecked == true) ? true : false,
-                DressYourSelf = (radeldress.IsChecked == true) ? true : false,
-                ReferToClinic = (radelref.IsChecked == true) ? true : false,
-                ReferralNo = txtRefEld.Text
-
-            };
-
-
-
-            #endregion
-
-
+           
 
 
             //sp place this is a massive store pro cross finger
@@ -1166,7 +1356,7 @@ namespace Impilo_App.Views.Screening
 
                 //end of general
 
-                          
+            #endregion //End of Fired SPs
 
             }//end of if
 
@@ -1281,7 +1471,7 @@ namespace Impilo_App.Views.Screening
 
         private void btnCCmsb_Click(object sender, RoutedEventArgs e)
         {
-            string msg = datasource.SelectedHivMedsText;
+            string msg = datasource.SelectedHivMedsText; 
             MessageBox.Show(msg);
         }
 

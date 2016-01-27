@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Impilo_App.Views.Client"
+              xmlns:sys="clr-namespace:System;assembly=mscorlib" 
              mc:Ignorable="d" 
              d:DesignHeight="548" d:DesignWidth="1119">
     <Border BorderThickness="8" Height="458" HorizontalAlignment="Left" Margin="0,10,0,0" x:Name="border1" VerticalAlignment="Top" Width="1007" CornerRadius="10">
@@ -49,7 +50,7 @@
                     <Label Content="Date of birth" Height="28" HorizontalAlignment="Left" Margin="487,101,0,0" x:Name="label1_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
                     <Label Content="Gender" Height="28" HorizontalAlignment="Left" Margin="487,136,0,0" x:Name="label2_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
 
-                    <DatePicker  x:Name="txtDateofBirth" VerticalAlignment="Top" Height="23" Width="253" FontWeight="Bold" HorizontalAlignment="Left" Margin="658,106,0,0" />
+                    <DatePicker  x:Name="txtDateofBirth" VerticalAlignment="Top" Height="23" Width="253" FontWeight="Bold" HorizontalAlignment="Left" Margin="658,106,0,0" SelectedDate="{x:Static sys:DateTime.Today}"/>
                     <RadioButton Content="Male" HorizontalAlignment="Left" Name="radioMale" Margin="658,141,0,0" GroupName="gender" VerticalAlignment="Top" FontWeight="Bold"/>
                     <RadioButton Content="Female" HorizontalAlignment="Left" Name="radioFemale" Margin="751,144,0,0" GroupName="gender" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="Currently attending school?" Height="28" HorizontalAlignment="Left" Margin="487,188,0,0" x:Name="label1_Copy4" VerticalAlignment="Top" FontWeight="Bold" />
