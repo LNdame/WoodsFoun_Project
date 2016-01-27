@@ -442,7 +442,7 @@ namespace Impilo_App.DataImport
                             tempConnectionFindClinic.Open();
                             SqlCommand tempCommand = new SqlCommand("FindClinicID", tempConnectionFindClinic);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@ClinicName", BioClinicUsed);
+                            tempCommand.Parameters.AddWithValue("@ClinicName", BioClinic);
 
                             ClinicID = (int)tempCommand.ExecuteScalar();
                         }
