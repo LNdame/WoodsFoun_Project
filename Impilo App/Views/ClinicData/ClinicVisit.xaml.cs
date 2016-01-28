@@ -29,9 +29,33 @@ namespace Impilo_App.Views.ClinicData
         //SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=impilo;Integrated Security=True;");
         SqlConnection conn = new SqlConnection(sconn);
 
-        public ClinicVisit()
+        public ClinicVisit(Impilo_App.LocalModels.Client client)
         {
             InitializeComponent();
+
+            Impilo_App.LocalModels.Client cl = client;
+
+            lblIdentity.Content = cl.ClientID;
+            txtBioName.Text = cl.FirstName;
+            txtBioSurname.Text = cl.LastName;
+            txtBioLatitude.Text = cl.GPSLatitude;
+            txtBioLongitude.Text = cl.GPSLongitude;
+            cboBioClinic.SelectedItem = cl.ClinicUsed;
+            txtBioIDNo.Text = cl.IDNo;
+            dpBioDOB.Text = cl.DateOfBirth.ToString();
+            
+            //txtDateOfScreening.Text = DateTime.Now.ToString("dd MMMM yyyy h:mm");
+
+            if (cl.Gender == "Male" || cl.Gender == "male")
+            {
+                radGendMale.IsChecked = true;
+            }
+            else
+            {
+                radGendFemale.IsChecked = true;
+            }
+
+            txtBioCapturer.SelectedIndex = 0;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

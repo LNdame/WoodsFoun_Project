@@ -22,7 +22,7 @@ namespace Impilo_App.LocalModels
 
         public string IDNo { get; set; }
 
-        public string ClinicUsed { get; set; }
+        public int ClinicUsed { get; set; }
 
         public DateTime DateOfBirth { get; set; }
 

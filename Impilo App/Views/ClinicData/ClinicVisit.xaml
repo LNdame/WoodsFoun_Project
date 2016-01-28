@@ -75,28 +75,30 @@
                                     </LinearGradientBrush>
                                 </Border.BorderBrush>
                                 <Grid x:Name="grid4" Margin="6,6,6.6,18">
-                                    <Label Content="Date of Birth" Height="28" HorizontalAlignment="Left" Margin="17,326,0,0" x:Name="label3" VerticalAlignment="Top" FontWeight="Bold" />
-                                    <DatePicker Height="23" HorizontalAlignment="Left" Margin="143,331,0,0" x:Name="dpBioDOB" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                                    <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="19,246,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
-                                    <Label Content="Gender" Height="28" HorizontalAlignment="Left" Margin="19,366,0,-10" x:Name="label2_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
-                                    <RadioButton Content="Male" HorizontalAlignment="Left" Margin="145,372,0,-4" Name="radGendMale" VerticalAlignment="Top"/>
-                                    <RadioButton Content="Female" HorizontalAlignment="Left" Margin="226,372,0,-4" Name="radGendFemale" VerticalAlignment="Top" RenderTransformOrigin="-8.546,9.539" FontWeight="Bold"/>
-                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="147,60,0,0" x:Name="txtBioName" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                                    <TextBox HorizontalAlignment="Left" Margin="145,246,0,0" Name="txtBioIDNo" VerticalAlignment="Top" Width="253" FontWeight="Bold"/>
+                                    <Label Content="Unique Identifier" Height="28" Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Left" Margin="21,-5,0,0" x:Name="label1_Copy20" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Width="138" />
+                                    <Label Content="XXXXXXXXXXXXXXXX" Height="28"  Grid.Row="0" HorizontalAlignment="Left" Margin="235,-5,0,0" x:Name="lblIdentity" VerticalAlignment="Top" FontWeight="SemiBold" FontSize="16" Width="178" />
+                                    <Label Content="Date of Birth" Height="28" HorizontalAlignment="Left" Margin="17,336,0,0" x:Name="label3" VerticalAlignment="Top" FontWeight="Bold" />
+                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="143,341,0,0" x:Name="dpBioDOB" VerticalAlignment="Top" Width="253" FontWeight="Bold" IsEnabled="False" />
+                                    <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="19,256,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
+                                    <Label Content="Gender" Height="28" HorizontalAlignment="Left" Margin="19,376,0,-20" x:Name="label2_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
+                                    <RadioButton Content="Male" HorizontalAlignment="Left" Margin="145,382,0,-13" Name="radGendMale" VerticalAlignment="Top"/>
+                                    <RadioButton Content="Female" HorizontalAlignment="Left" Margin="226,382,0,-13" Name="radGendFemale" VerticalAlignment="Top" RenderTransformOrigin="-8.546,9.539" FontWeight="Bold"/>
+                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="147,80,0,0" x:Name="txtBioName" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                                    <TextBox HorizontalAlignment="Left" Margin="145,256,0,0" Name="txtBioIDNo" VerticalAlignment="Top" Width="253" Height="23" FontWeight="Bold"/>
 
-                                    <Label Content="Surname" Height="28" HorizontalAlignment="Left" Margin="19,98,0,0" x:Name="label3_Copy5" VerticalAlignment="Top" FontWeight="Bold" />
-                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="145,104,0,0" x:Name="txtBioSurname" VerticalAlignment="Top" Width="253" />
+                                    <Label Content="Surname" Height="28" HorizontalAlignment="Left" Margin="19,116,0,0" x:Name="label3_Copy5" VerticalAlignment="Top" FontWeight="Bold" />
+                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="145,122,0,0" x:Name="txtBioSurname" VerticalAlignment="Top" Width="253" />
                                 </Grid>
                             </Border>
-                            <Label Content="Name" Height="28" HorizontalAlignment="Left" Margin="42,76,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontWeight="Bold" />
-                            <Label Content="Latitude" Height="28" HorizontalAlignment="Left" Margin="38,167,0,0" x:Name="label3_Copy" VerticalAlignment="Top" FontWeight="Bold" />
-                            <TextBox Height="23" HorizontalAlignment="Left" Margin="164,173,0,0" x:Name="txtBioLatitude" VerticalAlignment="Top" Width="253" />
-                            <Label Content="Longitude" Height="28" HorizontalAlignment="Left" Margin="38,217,0,0" x:Name="label3_Copy1" VerticalAlignment="Top" FontWeight="Bold" />
-                            <TextBox Height="23" HorizontalAlignment="Left" Margin="164,223,0,0" x:Name="txtBioLongitude" VerticalAlignment="Top" Width="253" />
-                            <Label Content="Data Capturer" Height="28" HorizontalAlignment="Left" Margin="39,30,0,0" x:Name="label3_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
-                            <ComboBox Height="23" HorizontalAlignment="Left" Margin="167,36,0,0" x:Name="txtBioCapturer" VerticalAlignment="Top" Width="253" />
-                            <Label Content="Clinic" Height="28" HorizontalAlignment="Left" Margin="37,305,0,0" x:Name="label3_Copy7" VerticalAlignment="Top" FontWeight="Bold" />
-                            <ComboBox Height="23" HorizontalAlignment="Left" Margin="165,307,0,0" x:Name="cboBioClinic" VerticalAlignment="Top" Width="253" />
+                            <Label Content="Name" Height="28" HorizontalAlignment="Left" Margin="40,96,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontWeight="Bold" />
+                            <Label Content="Latitude" Height="28" HorizontalAlignment="Left" Margin="38,177,0,0" x:Name="label3_Copy" VerticalAlignment="Top" FontWeight="Bold" />
+                            <TextBox Height="23" HorizontalAlignment="Left" Margin="164,183,0,0" x:Name="txtBioLatitude" VerticalAlignment="Top" Width="253" />
+                            <Label Content="Longitude" Height="28" HorizontalAlignment="Left" Margin="38,227,0,0" x:Name="label3_Copy1" VerticalAlignment="Top" FontWeight="Bold" />
+                            <TextBox Height="23" HorizontalAlignment="Left" Margin="164,233,0,0" x:Name="txtBioLongitude" VerticalAlignment="Top" Width="253" />
+                            <Label Content="Data Capturer" Height="28" HorizontalAlignment="Left" Margin="39,56,0,0" x:Name="label3_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
+                            <ComboBox Height="23" HorizontalAlignment="Left" Margin="167,62,0,0" x:Name="txtBioCapturer" VerticalAlignment="Top" Width="253" />
+                            <Label Content="Clinic" Height="28" HorizontalAlignment="Left" Margin="37,315,0,0" x:Name="label3_Copy7" VerticalAlignment="Top" FontWeight="Bold" />
+                            <ComboBox Height="23" HorizontalAlignment="Left" Margin="165,317,0,0" x:Name="cboBioClinic" VerticalAlignment="Top" Width="253" />
                             <Label Content="Contact Number" Height="28" HorizontalAlignment="Left" Margin="473,30,0,0" x:Name="label3_Copy8" VerticalAlignment="Top" FontWeight="Bold" />
                             <TextBox Height="23" HorizontalAlignment="Left" Margin="630,36,0,0" x:Name="txtBioContactNo" VerticalAlignment="Top" Width="253" />
                             <Label Content="Next of Kin Tel. Number" Height="28" HorizontalAlignment="Left" Margin="473,173,0,0" x:Name="label3_Copy12" VerticalAlignment="Top" FontWeight="Bold" />

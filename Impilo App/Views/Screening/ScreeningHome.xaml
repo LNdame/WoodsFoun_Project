@@ -245,7 +245,7 @@
                                             <Grid >
                                                 <Label Content="No. of people living &#xD;&#xA;in household currently"
                 									HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,0" Height="42" FontWeight="Bold"/>
-                                                <Label Content="No. living away from&#xD;&#xA;household long tern" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" Height="44" FontWeight="Bold"/>
+                                                <Label Content="No. living away from&#xD;&#xA;household long term" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" Height="44" FontWeight="Bold"/>
                                                 <Label Content="List Where" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
                                                 <Label Content="When did you or &#xD;&#xA;household member &#xD;&#xA;last visit the clinic" HorizontalAlignment="Right" Margin="0,108,178,0" VerticalAlignment="Top" Height="61" FontWeight="Bold" Width="141"/>
 
@@ -1378,7 +1378,7 @@
                                                 <RadioButton x:Name="nauYes"  Content="Yes" GroupName="reg4" HorizontalAlignment="Left" Margin="11,36,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" />
                                                 <RadioButton Content="No" GroupName="reg4" HorizontalAlignment="Left" Margin="71,31,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" />
 
-                                                <ComboBox x:Name="cboFootExam" HorizontalAlignment="Left" Margin="10,10,-30,0" VerticalAlignment="Top" Width="188" FontWeight="Bold" Grid.Column="3">
+                                                <ComboBox x:Name="cboFootExam" HorizontalAlignment="Left" Margin="10,10,-30,0" VerticalAlignment="Top" Width="188" Grid.Column="3">
                                                     <ComboBoxItem ContentStringFormat="Name"/>
                                                     <ComboBoxItem x:Name="r1" Content="Normal"/>
                                                     <ComboBoxItem x:Name="r2" Content="Abnormal"/>

@@ -121,7 +121,7 @@ namespace Impilo_App.Views.Screening
             catch (Exception)
             {
                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Currently Screened Tab" ,MessageBoxButton.OK,MessageBoxImage.Warning );
-                throw;
+                return;
             }
 
 
@@ -178,7 +178,7 @@ namespace Impilo_App.Views.Screening
             {
 
                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Environmental Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-                throw;
+                return;
                 //return;
             }
             #endregion
@@ -242,7 +242,7 @@ namespace Impilo_App.Views.Screening
             {
 
                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Diabetes Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-                throw;
+                return; 
             }
 
             #endregion
@@ -273,7 +273,7 @@ namespace Impilo_App.Views.Screening
             {
 
                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "HIV Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-                throw;
+                return; 
             }
             #endregion
 
@@ -313,7 +313,7 @@ namespace Impilo_App.Views.Screening
             {
 
                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Maternal Health Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-                throw;
+                return;
             }
             #endregion
 
@@ -376,7 +376,7 @@ namespace Impilo_App.Views.Screening
             {
                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Child Health Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-                throw;
+                return; 
             }
             #endregion
 
@@ -401,8 +401,8 @@ namespace Impilo_App.Views.Screening
             catch (Exception)
             {
                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Other Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                throw;
+                return;
+                
             }
             #endregion
 
@@ -668,17 +668,19 @@ namespace Impilo_App.Views.Screening
                 ReferToClinic = (radelref.IsChecked == true) ? true : false,
                 ReferralNo = txtRefEld.Text
 
-            };
+            }; 
+            #endregion
 
+            goforGeneral = true;
 }
             catch (Exception)
             {
                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "General - Current Conditons Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                throw;
+                return;
+               
             }
 
-            #endregion
+           
 
 
             #endregion //end of General Fields
@@ -696,6 +698,7 @@ namespace Impilo_App.Views.Screening
 
             #region SPs Execution
 
+        bool hasFiredCorrect = false;
 
         #region Save new Client
         try
@@ -712,7 +715,7 @@ namespace Impilo_App.Views.Screening
             com.Parameters.AddWithValue("@GPSLatitude", currentClient.GPSLatitude);//param
             com.Parameters.AddWithValue("@GPSLongitude", currentClient.GPSLongitude);//param
             com.Parameters.AddWithValue("@IDNo", currentClient.IDNo);//param
-            com.Parameters.AddWithValue("@ClinicID", 1);//param dummy value added to be changed
+            com.Parameters.AddWithValue("@ClinicID", currentClient.ClinicUsed);//param dummy value added to be changed
             com.Parameters.AddWithValue("@DateOfBirth", currentClient.DateOfBirth);//param
             com.Parameters.AddWithValue("@Gender", currentClient.Gender);//param
             com.Parameters.AddWithValue("@AttendingSchool", currentClient.AttendingSchool);//param
@@ -768,7 +771,7 @@ namespace Impilo_App.Views.Screening
                 encounterID = (int)((decimal)com.ExecuteScalar());
                 //com.ExecuteNonQuery();//execute command
 
-                MessageBox.Show(encounterID.ToString()); //to erase
+               // MessageBox.Show(encounterID.ToString()); //to erase
             }
             catch (Exception ex)
             {
@@ -780,9 +783,9 @@ namespace Impilo_App.Views.Screening
                 conn.Close();
             }
         }
-        scrID = encounterID.ToString();
+        
 #endregion 
-            // encounterID = 134; //test under
+           
 
 
 
@@ -804,7 +807,7 @@ namespace Impilo_App.Views.Screening
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
 
-                com.Parameters.AddWithValue("@EncounterID", environment.EncounterID);//param
+                com.Parameters.AddWithValue("@EncounterID", encounterID);//param
                 com.Parameters.AddWithValue("@seNoPeopleInHousehold", environment.NoOfHouseholdCurrent);//param
                 com.Parameters.AddWithValue("@seNoLivingAwayFromHousehold", environment.NoOfHouseholdAway);//param
                 com.Parameters.AddWithValue("@seWhenDidYouOrMemberLastVisit", environment.WhenLastClinicVisit);//param
@@ -862,12 +865,14 @@ namespace Impilo_App.Views.Screening
                     }
                 }
                 }
-
+                hasFiredCorrect = true;
             }
 
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+
+                hasFiredCorrect = false;
             }
 
             finally
@@ -912,11 +917,13 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@shAnyoneInFamilyHadStroke", hyper.AnyOneInFamilyHadStroke);//param
 
                 int i = com.ExecuteNonQuery();//execute command
+                hasFiredCorrect = true;
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message.ToString());
+                hasFiredCorrect = false;
             }
             finally
             {
@@ -925,50 +932,6 @@ namespace Impilo_App.Views.Screening
 
             }
 
-            #endregion
-
-
-            #region Diabetes ++ Tested +
-           
-            //sp place
-            //connection
-
-            if (goforDiabetes)
-            {
-                
-           
-            try
-            {
-                storedProcedure = "AddScreeningDiabetes";// name of sp
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-
-
-                com.Parameters.AddWithValue("@EncounterID", dia.EncounterID);//param
-                com.Parameters.AddWithValue("@sdYearOfDiagnosis", dia.YearOfDiagnosis);//param
-
-                com.Parameters.AddWithValue("@sdWeightLost", dia.WeightLoss);//param
-                com.Parameters.AddWithValue("@sdUrinatingMore", dia.UrinatingMore);//param
-                com.Parameters.AddWithValue("@sdNauseaOrVomiting", dia.NauseaOrVomitting);//param
-                com.Parameters.AddWithValue("@sdFootExamResult", dia.FootExamResult);//param-
-                com.Parameters.AddWithValue("@sdBlurredVision", dia.BlurredVision);//param-
-                com.Parameters.AddWithValue("@sdReferralToClinic", dia.ReferralToClinic);//param
-                com.Parameters.AddWithValue("@sdRefNo", dia.ReferralNo);//param
-                com.Parameters.AddWithValue("@sdFamilyMemberWith", dia.FamilyMemberWith);//param
-
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-            }
             #endregion
 
 
@@ -998,10 +961,11 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@shivRefNo", hivTab.ReferralNo);//param
                 com.Parameters.AddWithValue("@shivARVFileNo", hivTab.ARVFileNo);//param
                 com.ExecuteNonQuery();//execute command
+                hasFiredCorrect = true;
             }
             catch (Exception ex)
             {
-
+                hasFiredCorrect = false;
                 MessageBox.Show(ex.Message.ToString());
             }
             finally
@@ -1053,10 +1017,11 @@ namespace Impilo_App.Views.Screening
 
 
                 com.ExecuteNonQuery();//execute command
+                hasFiredCorrect = true;
             }
             catch (Exception ex)
             {
-
+                hasFiredCorrect = false;
                 MessageBox.Show(ex.Message.ToString());
             }
             finally
@@ -1065,6 +1030,9 @@ namespace Impilo_App.Views.Screening
             }
             }
             #endregion    
+
+
+
                 
             #region Child Health +-+ Tested+
 
@@ -1082,7 +1050,7 @@ namespace Impilo_App.Views.Screening
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@EncounterID", childh.EncounterID);//param
+                com.Parameters.AddWithValue("@EncounterID", encounterID);//param
                 com.Parameters.AddWithValue("@schNameOfMother", childh.NameOfMother);//param
                 com.Parameters.AddWithValue("@schChildWithRTHC", childh.ChildWithRTHC);//param
                 com.Parameters.AddWithValue("@schReferToClinic", childh.ReferToClinic);//param
@@ -1148,11 +1116,11 @@ namespace Impilo_App.Views.Screening
                      }
 
                 }
-                
+                hasFiredCorrect = true;
             }
             catch (Exception ex)
             {
-
+                hasFiredCorrect = false;
                 MessageBox.Show(ex.Message.ToString());
             }
             finally
@@ -1161,8 +1129,52 @@ namespace Impilo_App.Views.Screening
             }
             }
             #endregion    
-                
-                
+             
+            #region Diabetes ++ Tested +
+
+            //sp place
+            //connection
+
+            if (goforDiabetes)
+            {
+
+
+                try
+                {
+                    storedProcedure = "AddScreeningDiabetes";// name of sp
+                    conn.Open();
+                    SqlCommand com = new SqlCommand(storedProcedure, conn);
+                    com.CommandType = CommandType.StoredProcedure;
+
+
+                    com.Parameters.AddWithValue("@EncounterID", encounterID);//param
+                    com.Parameters.AddWithValue("@sdYearOfDiagnosis", dia.YearOfDiagnosis);//param
+
+                    com.Parameters.AddWithValue("@sdWeightLost", dia.WeightLoss);//param
+                    com.Parameters.AddWithValue("@sdUrinatingMore", dia.UrinatingMore);//param
+                    com.Parameters.AddWithValue("@sdNauseaOrVomiting", dia.NauseaOrVomitting);//param
+                    com.Parameters.AddWithValue("@sdFootExamResult", dia.FootExamResult);//param-
+                    com.Parameters.AddWithValue("@sdBlurredVision", dia.BlurredVision);//param-
+                    com.Parameters.AddWithValue("@sdReferralToClinic", dia.ReferralToClinic);//param
+                    com.Parameters.AddWithValue("@sdRefNo", dia.ReferralNo);//param
+                    com.Parameters.AddWithValue("@sdFamilyMemberWith", dia.FamilyMemberWith);//param
+
+                    com.ExecuteNonQuery();//execute command
+                    hasFiredCorrect = true;
+                }
+                catch (Exception ex)
+                {
+                    hasFiredCorrect = false;
+                    MessageBox.Show(ex.Message.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            #endregion
+
+                 
                   
             #region OtherTab + tested+
 
@@ -1179,15 +1191,16 @@ namespace Impilo_App.Views.Screening
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@EncounterID", ottab.EncounterID);//param
+                com.Parameters.AddWithValue("@EncounterID", encounterID);//param
                 com.Parameters.AddWithValue("@schReferredToClinic", ottab.ReferToClinic);//param
                 com.Parameters.AddWithValue("@schRefNo", ottab.ReferralNo);//param
                 com.Parameters.AddWithValue("@schOtherConditionFoundThatRequiredReferral", ottab.OtherConditionFound);//param
                 com.ExecuteNonQuery();//execute command
+                hasFiredCorrect = true;
             }
             catch (Exception ex)
             {
-
+                hasFiredCorrect = false;
                 MessageBox.Show(ex.Message.ToString());
             }
             finally
@@ -1204,6 +1217,9 @@ namespace Impilo_App.Views.Screening
     //start of general
             #region General +-+ Tested +
 
+            if (goforGeneral)
+            {
+                
            
 
 
@@ -1340,23 +1356,31 @@ namespace Impilo_App.Views.Screening
 
                 //Fiiirrred
                 com.ExecuteNonQuery();//execute command
+                hasFiredCorrect = true;
             }
             catch (Exception ex)
             {
-
+                hasFiredCorrect = false;
                 MessageBox.Show(ex.Message.ToString()+"General not saved");
             }
             finally
             {
                 conn.Close();
             }
-
+            }
 
             #endregion
 
                 //end of general
 
             #endregion //End of Fired SPs
+
+            if (hasFiredCorrect)
+            {
+                MessageBox.Show("Screening data inserted succesfully.", "Screenig", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else { MessageBox.Show("Screening Data not or partially Inserted.", "Screening", MessageBoxButton.OK, MessageBoxImage.Warning); }
+
 
             }//end of if
 

@@ -35,31 +35,31 @@
                     <Label Content="Name" Height="28" HorizontalAlignment="Left" Margin="21,106,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontWeight="Bold" />
                     <Label Content="Surname" Height="28" HorizontalAlignment="Left" Margin="21,146,0,0" x:Name="label3_Copy" VerticalAlignment="Top" FontWeight="Bold" />
 
-                    <RadioButton Content="Yes" HorizontalAlignment="Left" Name="radioHHYes" Margin="146,65,0,0" GroupName="Head" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <RadioButton Content="No" HorizontalAlignment="Left" Name="radioHHNo" Margin="240,65,0,0" GroupName="Head" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <RadioButton Content="Yes" HorizontalAlignment="Left" Name="radioHHYes" Margin="146,65,0,0" GroupName="Head" VerticalAlignment="Top"/>
+                    <RadioButton Content="No" HorizontalAlignment="Left" Name="radioHHNo" Margin="240,65,0,0" GroupName="Head" VerticalAlignment="Top"/>
 
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,106,0,0" x:Name="txtFirstName" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,146,0,0" x:Name="txtLastName" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,106,0,0" x:Name="txtFirstName" VerticalAlignment="Top" Width="253" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,146,0,0" x:Name="txtLastName" VerticalAlignment="Top" Width="253" />
                     <Label Content="GPS Latitute" Height="28" HorizontalAlignment="Left" Margin="20,183,0,0" x:Name="label1_Copy1" VerticalAlignment="Top" FontWeight="Bold" />
                     <Label Content="GPS Longitude" Height="28" HorizontalAlignment="Left" Margin="20,230,0,0" x:Name="label2_Copy1" VerticalAlignment="Top" FontWeight="Bold" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,183,0,0" x:Name="txtLatitude" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,230,0,0" x:Name="txtLongitude" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,183,0,0" x:Name="txtLatitude" VerticalAlignment="Top" Width="253" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,230,0,0" x:Name="txtLongitude" VerticalAlignment="Top" Width="253" />
                     <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="21,280,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
                     <Label Content="Clinic used" Height="28" HorizontalAlignment="Left" Margin="487,53,0,0" x:Name="label2_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,280,0,0" x:Name="txtIDNo" VerticalAlignment="Top" Width="253" FontWeight="Bold" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="146,280,0,0" x:Name="txtIDNo" VerticalAlignment="Top" Width="253" />
                     <Label Content="Date of birth" Height="28" HorizontalAlignment="Left" Margin="487,101,0,0" x:Name="label1_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
                     <Label Content="Gender" Height="28" HorizontalAlignment="Left" Margin="487,136,0,0" x:Name="label2_Copy3" VerticalAlignment="Top" FontWeight="Bold" />
 
-                    <DatePicker  x:Name="txtDateofBirth" VerticalAlignment="Top" Height="23" Width="253" FontWeight="Bold" HorizontalAlignment="Left" Margin="658,106,0,0" SelectedDate="{x:Static sys:DateTime.Today}"/>
-                    <RadioButton Content="Male" HorizontalAlignment="Left" Name="radioMale" Margin="658,141,0,0" GroupName="gender" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <RadioButton Content="Female" HorizontalAlignment="Left" Name="radioFemale" Margin="751,144,0,0" GroupName="gender" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <DatePicker  x:Name="txtDateofBirth" VerticalAlignment="Top" Height="23" Width="253" HorizontalAlignment="Left" Margin="658,106,0,0" SelectedDate="{x:Static sys:DateTime.Today}"/>
+                    <RadioButton Content="Male" HorizontalAlignment="Left" Name="radioMale" Margin="658,141,0,0" GroupName="gender" VerticalAlignment="Top"/>
+                    <RadioButton Content="Female" HorizontalAlignment="Left" Name="radioFemale" Margin="751,144,0,0" GroupName="gender" VerticalAlignment="Top"/>
                     <Label Content="Currently attending school?" Height="28" HorizontalAlignment="Left" Margin="487,188,0,0" x:Name="label1_Copy4" VerticalAlignment="Top" FontWeight="Bold" />
                     <Label Content="Name of school" Height="28" HorizontalAlignment="Left" Margin="487,230,0,0" x:Name="label2_Copy4" VerticalAlignment="Top" FontWeight="Bold" />
-                    <RadioButton Content="Yes" HorizontalAlignment="Left" Name="radioAttYes" Margin="658,195,0,0" GroupName="attendance" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <RadioButton Content="No" HorizontalAlignment="Left" Name="radioAttNo" Margin="774,198,0,0" GroupName="attendance" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <RadioButton Content="Yes" HorizontalAlignment="Left" Name="radioAttYes" Margin="658,195,0,0" GroupName="attendance" VerticalAlignment="Top"/>
+                    <RadioButton Content="No" HorizontalAlignment="Left" Name="radioAttNo" Margin="774,198,0,0" GroupName="attendance" VerticalAlignment="Top"/>
 
                     <Label Content="Grade" Height="28" HorizontalAlignment="Left" Margin="487,280,0,0" x:Name="label1_Copy5" VerticalAlignment="Top" FontWeight="Bold" />
-                    <ComboBox HorizontalAlignment="Left" Margin="658,284,0,0" VerticalAlignment="Top" Name="Grade" Width="253" FontWeight="Bold">
+                    <ComboBox HorizontalAlignment="Left" Margin="658,284,0,0" VerticalAlignment="Top" Name="Grade" Width="253">
                         <ComboBoxItem ContentStringFormat="Name"/>
 
                         <ComboBoxItem Name="gr">Grade R</ComboBoxItem>
@@ -78,7 +78,7 @@
                         <ComboBoxItem Name="gother">Other</ComboBoxItem>
                     </ComboBox>
 
-                    <ComboBox HorizontalAlignment="Left" Margin="658,234,0,0" Name="NameofSchool" VerticalAlignment="Top" Width="253" FontWeight="Bold">
+                    <ComboBox HorizontalAlignment="Left" Margin="658,234,0,0" Name="NameofSchool" VerticalAlignment="Top" Width="253">
                         <ComboBoxItem ContentStringFormat="Name"/>
                         <ComboBoxItem Name="s1">Elliotdale Tech SSS</ComboBoxItem>
                         <ComboBoxItem Name="s2">Ngonyama JP</ComboBoxItem>
@@ -103,18 +103,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <ComboBox HorizontalAlignment="Left" Margin="658,57,0,0" Name="ClinicUsed" VerticalAlignment="Top" Width="253" FontWeight="Bold">
-                        <ComboBoxItem ContentStringFormat="Name"/>
-                        <ComboBoxItem Name="cb1">Hobeni</ComboBoxItem>
-                        <ComboBoxItem Name="cb2">Bomvana</ComboBoxItem>
-                        <ComboBoxItem Name="cb3">Vukukhanye</ComboBoxItem>
-                        <ComboBoxItem Name="cb4">Soga</ComboBoxItem>
-                        <ComboBoxItem Name="cb5">Nkanya</ComboBoxItem>
-                        <ComboBoxItem Name="cb6">Xhora</ComboBoxItem>
-                        <ComboBoxItem Name="cb7">Melitafa</ComboBoxItem>
-                        <ComboBoxItem Name="cb8">Private</ComboBoxItem>
-                        <ComboBoxItem Name="cb9">Other</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox HorizontalAlignment="Left" Margin="658,57,0,0" Name="ClinicUsed" DisplayMemberPath="ClinicName" SelectedValuePath="ClinicID" VerticalAlignment="Top" Width="253"/>
 
                 </Grid>
             </Border>

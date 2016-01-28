@@ -24,9 +24,9 @@ namespace Impilo_App.LocalModels
 
         public DateTime fuhHiEHStartDate { get; set; }
 
-        public string fuhHiEHBPScreeningSystolic { get; set; }
+        public decimal fuhHiEHBPScreeningSystolic { get; set; }
 
-        public string fuhHiEHBPScreeningDiastolic { get; set; }
+        public decimal fuhHiEHBPScreeningDiastolic { get; set; }
 
         public decimal fuhHiEHBPTodaySystolic { get; set; }
 
@@ -45,5 +45,7 @@ namespace Impilo_App.LocalModels
         public string fuhDoorToDoorCheckReading { get; set; }
 
         public string fuhMedication { get; set; }
+        public decimal fuhDoorToDoorCheckReadingSys { get; set; }
+        public decimal fuhDoorToDoorCheckReadingDia { get; set; }
     }
 }

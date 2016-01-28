@@ -36,7 +36,31 @@ namespace Impilo_App.Views.Client
         public AddNewClient()
         {
             InitializeComponent();
+            bindClinicCBO();
         }
+
+        public void bindClinicCBO()
+        {
+            try
+            {
+                conn.Open();
+                SqlCommand comm = new SqlCommand("SELECT * FROM Clinic", conn);
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(comm);
+                da.Fill(ds);
+              //  dt = ds.Tables[0];
+                ClinicUsed.ItemsSource = ds.Tables[0].DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
 
         private void btnAddCountry_Click(object sender, RoutedEventArgs e)
         {
@@ -51,7 +75,7 @@ namespace Impilo_App.Views.Client
                 newClient.GPSLatitude = txtLatitude.Text;
                 newClient.GPSLongitude = txtLongitude.Text;
                 newClient.IDNo = txtIDNo.Text;
-                newClient.ClinicUsed = ((ComboBoxItem)ClinicUsed.SelectedItem).Content.ToString();
+                newClient.ClinicUsed = int.Parse(ClinicUsed.SelectedValue.ToString());
                 newClient.DateOfBirth = DateTime.Parse(txtDateofBirth.Text);
                 newClient.NameofSchool = ((ComboBoxItem)NameofSchool.SelectedItem).Content.ToString();
                 newClient.Gender = (radioMale.IsChecked == true) ? "Male" : "Female";
@@ -60,6 +84,8 @@ namespace Impilo_App.Views.Client
                 newClient.Grade = ((ComboBoxItem)Grade.SelectedItem).Content.ToString();
 
                 JumptoScreening(newClient);
+
+              //  MessageBox.Show(newClient.ClinicUsed.ToString());
 
             }
             catch (Exception)

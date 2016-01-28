@@ -86,7 +86,7 @@ namespace Impilo_App.Views.Home
                     GPSLatitude = dt.Rows[i]["GPSLatitude"].ToString(),
                     GPSLongitude = dt.Rows[i]["GPSLongitude"].ToString(),
                     IDNo = dt.Rows[i]["IDNo"].ToString(),
-                    ClinicUsed = dt.Rows[i]["ClinicID"].ToString(),
+                    ClinicUsed =int.Parse( dt.Rows[i]["ClinicID"].ToString()),
                    // DateOfBirth = DateTime.Parse( dt.Rows[i]["IDNo"].ToString()),
                     Gender = dt.Rows[i]["Gender"].ToString(),
                   //  AttendingSchool = dt.Rows[i]["AttendingSchool"].ToString(),
@@ -98,16 +98,16 @@ namespace Impilo_App.Views.Home
 
                 switch (lflag)
                 {
-                    case 1: FollowUp newPage = new FollowUp();
-                        var a = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition; 
-                        a.ShowPage(newPage);break;
-                    case 2: ClinicVisit clinicV = new ClinicVisit();
+                    case 1: FollowUp newPage = new FollowUp(selectClient);
+                        var a = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
+                        a.ShowPage(newPage); break;
+                    case 2: ClinicVisit clinicV = new ClinicVisit(selectClient);
                         var c = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
-                        c.ShowPage(clinicV);break;
+                        c.ShowPage(clinicV); break;
 
-                    default: FollowUp defaultfup= new FollowUp();
+                    default: FollowUp defaultfup = new FollowUp(selectClient);
                         var d = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
-                        d.ShowPage(defaultfup);break;
+                        d.ShowPage(defaultfup); break;
                 }
 
                

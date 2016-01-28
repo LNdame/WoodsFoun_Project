@@ -112,25 +112,25 @@
 
 
         </Grid>
-        <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="1328" Margin="0,0,-0.2,0" Name="mnuMain">
+        <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top"  Width="1328" Margin="0,0,-0.2,0" Name="mnuMain">
             <MenuItem Header="Home" Name="HomePage" Click="HomePage_Click_1"/>
             <MenuItem Header="CHOW">
                 <MenuItem Name="AddChow" Click="AddChow_Click" Header="Add a CHOW" HorizontalAlignment="Left" Width="165" Margin="0,0,-25.8,0"/>
                 <MenuItem Name="ViewChow" Click="ViewChow_Click" Header="View CHOW" HorizontalAlignment="Left" Width="158" Margin="0,0,-18.8,0"/>
             </MenuItem>
             <MenuItem Header="Visits" Height="20">
-                <MenuItem Header="Screening" Name="Screening" HorizontalAlignment="Left" Width="139.2"/>
-                <MenuItem Header="Follow-Up" Name="FollowUp" HorizontalAlignment="Left" Width="139.2"/>
-                <MenuItem Header="Clinic Visit" Name="Clinic" HorizontalAlignment="Left" Width="139.2"/>
-                <MenuItem Header="Reports" Name="Reports" HorizontalAlignment="Left" Width="139.2"/>
+                <MenuItem Header="Screening" Name="Screening" HorizontalAlignment="Left" Margin="0"/>
+                <MenuItem Header="Follow-Up" Name="FollowUp" HorizontalAlignment="Left" />
+                <MenuItem Header="Clinic Visit" Name="Clinic" HorizontalAlignment="Left" />
+                <MenuItem Header="Reports" Name="Reports" HorizontalAlignment="Left" />
             </MenuItem>
             <MenuItem Header="Reports" Height="20">
-                <MenuItem Header="Format 2" Name="Format2" Click="Format2_Click" HorizontalAlignment="Left" Width="139.2"/>
+                <MenuItem Header="Format 2" Name="Format2" Click="Format2_Click" HorizontalAlignment="Left" />
             </MenuItem>
             <MenuItem Header="Data Import" Height="20">
-                <MenuItem Header="Screening" Name="ScreeningImport" Click="ScreeningImport_Click" HorizontalAlignment="Left" Width="139.2"/>
-                <MenuItem Header="Follow-up" Name="FollowupImport" Click="FollowupImport_Click" HorizontalAlignment="Left" Width="139.2"/>
-                <MenuItem Header="Clinic" Name="ClinicImport" Click="ClinicImport_Click" HorizontalAlignment="Left" Width="139.2"/>
+                <MenuItem Header="Screening" Name="ScreeningImport" Click="ScreeningImport_Click" HorizontalAlignment="Left" />
+                <MenuItem Header="Follow-up " Name="FollowupImport" Click="FollowupImport_Click" HorizontalAlignment="Left" />
+                <MenuItem Header="Clinic" Name="ClinicImport" Click="ClinicImport_Click" HorizontalAlignment="Left" />
             </MenuItem>
         </Menu>
 
