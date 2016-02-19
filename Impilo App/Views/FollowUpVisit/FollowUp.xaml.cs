@@ -67,13 +67,10 @@ namespace Impilo_App.Views.FollowUpVisit
 
         private void btnCreateFollowUp_Click(object sender, RoutedEventArgs e)
         {
-            #region old code
-
-
-            #endregion
-
             string storedProcedure = "";
 
+            #region SaveEncounters
+            
             Impilo_App.LocalModels.Screening newSCreen;
 
             bool goforEncouter = false;
@@ -92,7 +89,7 @@ namespace Impilo_App.Views.FollowUpVisit
             catch (Exception)
             {
                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "Currently Screened Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-                throw;
+                return;
             }
 
 
@@ -120,7 +117,9 @@ namespace Impilo_App.Views.FollowUpVisit
                     encounterID = (int)((decimal)com.ExecuteScalar());
                     //com.ExecuteNonQuery();//execute command
 
-                    MessageBox.Show(encounterID.ToString());
+                   // MessageBox.Show(encounterID.ToString());
+                   
+
                 }
                 catch (Exception ex)
                 {
@@ -133,75 +132,24 @@ namespace Impilo_App.Views.FollowUpVisit
                 }
 
             }
+            
+            #endregion
+
+            
+            #region Testing area
+
+            #endregion
 
 
-            #region Biographical
-            /*
-
-            //Not needed as clients already exists in the DB
-
-            //clinBio.ccbioID = 0;
-            //clinBio.ClinicID = 0;
-            //clinBio.ClientID = "";
-            //clinBio.ccbioContactNo = txtBioContactNo.Text;
-            //clinBio.ccbioFileNo = txtBioFileNo.Text;
-            //clinBio.ccbioNextOfKinRelationship = txtBioKinRelation.Text;
-            //clinBio.ccbioNextOfKinName = txtBioKinName.Text;
-            //clinBio.ccbioNextOfKinTelNo = txtBioKinContactNo.Text;
-            //clinBio.ccbioDoDHypertension = (DateTime)dpBioHptDiagDate.SelectedDate;
-            //clinBio.ccbioDoDDiabetes = (DateTime)dpBioDiaDiagDate.SelectedDate;
-            //clinBio.ccbioDoDEpilepsy = (DateTime)dpBioEpiDiagDate.SelectedDate;
-            //clinBio.ccbioDoDAsthma = (DateTime)dpBioAstDiagDate.SelectedDate;
-            //clinBio.ccbioDoDHIV = (DateTime)dpBioHivDiagDate.SelectedDate;
-            //clinBio.ccbioDoDTB = (DateTime)dpBioTbDiagDate.SelectedDate;
-            //clinBio.ccbioDoDMaternalHealth = (DateTime)dpBioMatDiagDate.SelectedDate;
-            //clinBio.ccbioDoDChildHealth = (DateTime)dpBioChDiagDate.SelectedDate;
-            //clinBio.ccbioOther = (DateTime)dpBioOtherDiagDate.SelectedDate;
-
-
-            try
-            {
-                storedProcedure = "AddClinicClientBiographical";
-                conn.Open();
-                SqlCommand com = new SqlCommand(storedProcedure, conn);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@ccbioID", clinBio.ccbioID);
-                com.Parameters.AddWithValue("@ClinicID", clinBio.ClinicID);
-                com.Parameters.AddWithValue("@ClientID", clinBio.ClientID);
-                com.Parameters.AddWithValue("@ccbioContactNo", clinBio.ccbioContactNo);
-                com.Parameters.AddWithValue("@ccbioFileNo", clinBio.ccbioFileNo);
-                com.Parameters.AddWithValue("@ccbioNextOfKinRelationship", clinBio.ccbioNextOfKinRelationship);
-                com.Parameters.AddWithValue("@ccbioNextOfKinName", clinBio.ccbioNextOfKinName);
-                com.Parameters.AddWithValue("@ccbioNextOfKinTelNo", clinBio.ccbioNextOfKinTelNo);
-                com.Parameters.AddWithValue("@ccbioDoDHypertension", clinBio.ccbioDoDHypertension);
-                com.Parameters.AddWithValue("@ccbioDoDDiabetes", clinBio.ccbioDoDDiabetes);
-                com.Parameters.AddWithValue("@ccbioDoDEpilepsy", clinBio.ccbioDoDEpilepsy);
-                com.Parameters.AddWithValue("@ccbioDoDAsthma", clinBio.ccbioDoDAsthma);
-                com.Parameters.AddWithValue("@ccbioDoDHIV", clinBio.ccbioDoDHIV);
-                com.Parameters.AddWithValue("@ccbioDoDTB", clinBio.ccbioDoDTB);
-                com.Parameters.AddWithValue("@ccbioDoDMaternalHealth", clinBio.ccbioDoDMaternalHealth);
-                com.Parameters.AddWithValue("@ccbioDoDChildHealth", clinBio.ccbioDoDChildHealth);
-                com.Parameters.AddWithValue("@ccbioOther", clinBio.ccbioOther);
-
-                com.ExecuteNonQuery();//execute command
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }*/
-
-            #endregion // not needed in follow up
-
-            #region Visit Details
+            #region Not being tested right now
+            
+            
+            #region Visit Details + tested +
 
             Impilo_App.LocalModels.FollowUpVisitDetails folVD = new Impilo_App.LocalModels.FollowUpVisitDetails();
+            Random rnd = new Random();
 
-            folVD.fuvdID = 0;
+            folVD.fuvdID = rnd.Next(1,1000000);
             folVD.EncounterID = 0;
             folVD.fuvdVisitDate = DateTime.Now;
             folVD.fuvdNextVisitDate = (DateTime)dpVisitNextVisit.SelectedDate;
@@ -219,17 +167,17 @@ namespace Impilo_App.Views.FollowUpVisit
 
             try
             {
-                storedProcedure = "AddFollowUpVisitData";
+                storedProcedure = "AddFollowUpVisitDetails";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@duvdID", folVD.fuvdID);
-                com.Parameters.AddWithValue("@EncounterID", folVD.EncounterID);
+                com.Parameters.AddWithValue("@fuvdID", folVD.fuvdID);
+                com.Parameters.AddWithValue("@EncounterID", encounterID);
                 com.Parameters.AddWithValue("@fuvdVisitDate", folVD.fuvdVisitDate);
                 com.Parameters.AddWithValue("@fuvdNextVisitDate", folVD.fuvdNextVisitDate);
                 com.Parameters.AddWithValue("@duvdOutcome", folVD.duvdOutcome);
                 com.Parameters.AddWithValue("@duvdHypertension", folVD.duvdHypertension);
-                com.Parameters.AddWithValue("@duvdHypertension", folVD.duvdHypertension);
+                
                 com.Parameters.AddWithValue("@duvdDiabetes", folVD.duvdDiabetes);
                 com.Parameters.AddWithValue("@duvdEpilepsy", folVD.duvdEpilepsy);
                 //com.Parameters.AddWithValue("@duvdAsthma", folVD.duvdAsthma);
@@ -237,7 +185,7 @@ namespace Impilo_App.Views.FollowUpVisit
                 com.Parameters.AddWithValue("@duvdTB", folVD.duvdTB);
                 com.Parameters.AddWithValue("@duvdMaternalHealth", folVD.duvdMaternalHealth);
                 com.Parameters.AddWithValue("@duvdChildHealth", folVD.duvdChildHealth);
-                com.Parameters.AddWithValue("@duvdOther", folVD.duvdOther);
+                com.Parameters.AddWithValue("@duvdOther", false); //assigned abitrally to be resived asap
                 com.Parameters.AddWithValue("@duvdDoorDoor", folVD.duvdDoorDoor);
                 com.ExecuteNonQuery();//execute command
             }
@@ -253,7 +201,9 @@ namespace Impilo_App.Views.FollowUpVisit
 
             #endregion
 
-            #region Hypertension
+            
+             
+            #region Hypertension UI Fields needs attention intupdown tested+-
 
             bool hypFollow = false;
             Impilo_App.LocalModels.FollowUpHypertension folHyp = new Impilo_App.LocalModels.FollowUpHypertension();
@@ -283,9 +233,9 @@ namespace Impilo_App.Views.FollowUpVisit
 
                 //folHyp.fuhMedication = (ComboBoxItem)comboHyperMedication.SelectedItem).Content.ToString();
 
-              //  folHypMed.fuhmName = ((ComboBoxItem)comboHyperMedication.SelectedItem).Content.ToString();
+                //  folHypMed.fuhmName = ((ComboBoxItem)comboHyperMedication.SelectedItem).Content.ToString();
 
-               hypFollow = true;
+                hypFollow = true;
             }
 
             catch (Exception)
@@ -305,7 +255,7 @@ namespace Impilo_App.Views.FollowUpVisit
                     SqlCommand com = new SqlCommand(storedProcedure, conn);
                     com.CommandType = CommandType.StoredProcedure;
                     //com.Parameters.AddWithValue("@fuhID", folHyp.fuhID);
-                    com.Parameters.AddWithValue("@EncounterID", folHyp.EncounterID);
+                    com.Parameters.AddWithValue("@EncounterID", encounterID);
                     com.Parameters.AddWithValue("@fuhHiEHWentToClinic", folHyp.fuhHiEHWentToClinic);
                     com.Parameters.AddWithValue("@fuhDateOfVisit", folHyp.fuhDateOfVisit);
                     com.Parameters.AddWithValue("@fuhHiEHReReferToClinic", folHyp.fuhHiEHReReferToClinic);
@@ -320,9 +270,10 @@ namespace Impilo_App.Views.FollowUpVisit
                     com.Parameters.AddWithValue("@fuhHiEHRefNo2", folHyp.fuhHiEHRefNo2);
                     com.Parameters.AddWithValue("@fuhCRReReferToClinic", folHyp.fuhCRReReferToClinic);
                     com.Parameters.AddWithValue("@fuhCRRefNo", folHyp.fuhCRRefNo);
-                    com.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReading", folHyp.fuhAlreadyOnTreatmentFollowUpTestReading);
-                    com.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingSys", folHyp.fuhDoorToDoorCheckReadingSys);
-                    com.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingDia", folHyp.fuhDoorToDoorCheckReadingDia);
+                    com.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReadingSystolic",70);
+                    com.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReadingDiastolic", 110);
+                    com.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingSystolic", folHyp.fuhDoorToDoorCheckReadingSys);
+                    com.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingDiastolic", folHyp.fuhDoorToDoorCheckReadingDia);
                     //com.Parameters.AddWithValue("@fuhMedication", folHyp.fuhMedication);
 
                     int lastestHypID = (int)((decimal)com.ExecuteScalar());
@@ -372,7 +323,10 @@ namespace Impilo_App.Views.FollowUpVisit
 
             #endregion
 
-            #region Diabetes
+           
+
+           
+            #region Diabetes same issue s as hypertension tested+ 
 
             bool diaFollow = false;
 
@@ -394,9 +348,9 @@ namespace Impilo_App.Views.FollowUpVisit
                 folDia.fudClinicRefReferToClinic = (DiaReReferToClinic31.IsChecked == true) ? true : false;
                 folDia.fudClinicRefRefNo = txtDiaReferralNo3.Text;
                 folDia.fudAlreadyOnTreatmentFollowUpTestReading = decimal.Parse(txtDiaFollowUpTestReading3.Text);
-                folDia.fudDoorDoor = decimal.Parse(txtDiaCheckReading.Text);
+                folDia.fudDoorDoor = txtDiaCheckReading.Text;
 
-                folDiaMed.fudmName = ((ComboBoxItem)comboDiaMedication.SelectedItem).Content.ToString();
+                diaFollow = true;
 
             }
             catch (Exception)
@@ -410,12 +364,12 @@ namespace Impilo_App.Views.FollowUpVisit
 
                 try
                 {
-                    storedProcedure = "AddFollowUpDiabetesMedication";
+                    storedProcedure = "AddFollowUpDiabetes";
                     conn.Open();
                     SqlCommand com = new SqlCommand(storedProcedure, conn);
                     com.CommandType = CommandType.StoredProcedure;
                     //com.Parameters.AddWithValue("@fudID", folDia.fudID);
-                    com.Parameters.AddWithValue("@EncounterID", folDia.EncounterID);
+                    com.Parameters.AddWithValue("@EncounterID", encounterID);
                     com.Parameters.AddWithValue("@fudDateOfVisit", folDia.fudDateOfVisit);
                     com.Parameters.AddWithValue("@fudHiEHWentToClinic", folDia.fudHiEHWentToClinic);
                     com.Parameters.AddWithValue("@fudHiEHReReferToClinic", folDia.fudHiEHReReferToClinic);
@@ -476,8 +430,137 @@ namespace Impilo_App.Views.FollowUpVisit
                 }
             }
             #endregion
+          
+           
+            #region HIV
 
-            #region Epilepsy
+            bool hivFollow = false;
+
+            Impilo_App.LocalModels.FollowUpHIV folHiv = new Impilo_App.LocalModels.FollowUpHIV();
+            Impilo_App.LocalModels.FollowUpHIVMedication folHivMed = new Impilo_App.LocalModels.FollowUpHIVMedication();
+
+            try
+            {
+                //folHiv.fuhivID = 0;
+                folHiv.EncounterID = encounterID;
+                folHiv.fuhivDateOfVisit = (DateTime)txtHIVDateOfVisit.SelectedDate;
+                folHiv.fuhivHiEHWentToClinic = (HIVWentToClinic1.IsChecked == true) ? true : false;
+                folHiv.fuhivHiEHReReferToClinic = (HIVReReferToClinic1.IsChecked == true) ? true : false;
+                folHiv.fuhivHiEHRefNo = txtHIVReferralNo1.Text;
+                folHiv.fuhivCRReferToClinic = (HIVReferToClinic11.IsChecked == true) ? true : false;
+                folHiv.fuhivCRRefNo = txtHIVReferralNo2.Text;
+                folHiv.fuhHIVStatus = ((ComboBoxItem)comboHIVStatus.SelectedItem).Content.ToString(); 
+                folHiv.fuhivIPOnARV = (HIVOnARVs1.IsChecked == true) ? true : false;
+                folHiv.fuhivIPStartDate = (DateTime)txtHIVStartDate1.SelectedDate;
+                folHiv.fuhivIPAdherenceOK = (HIVAdherenceOK1.IsChecked == true) ? true : false;
+                folHiv.fuhivIPConcerns = (HIVConcerns1.IsChecked == true) ? true : false;
+                folHiv.fuhivIPReferToClinic = (HIVReferToClinic21.IsChecked == true) ? true : false;
+                folHiv.fuhivIPRefNo = txtHIVReferralNo3.Text;
+                folHiv.fuhivIPNotOnARV = (HIVARVsConcerns1.IsChecked == true) ? true : false;
+                folHiv.fuhivIPReferToClinic2 = (HIVReferToClinic31.IsChecked == true) ? true : false;
+                folHiv.fuhivIPRefNo2 = txtHIVReferralNo4.Text;
+                folHiv.fuhivINCounsellingDone = (HIVCounsellingDone1.IsChecked == true) ? true : false;
+                folHiv.fuhivIUHIVTestDone = (HIVTestingDone1.IsChecked == true) ? true : false;
+                folHiv.fuhivHIVTestResults = txtHIVTestResults.Text;
+                folHiv.fuhivHIVTestReferToClinic = (HIVReferToClinic41.IsChecked == true) ? true : false;
+                folHiv.fuhivHIVRefNo = txtHIVReferralNo5.Text;
+
+            
+                hivFollow = true;
+            }
+
+            catch (Exception)
+            {
+
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "HIV Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }
+
+            if (hivFollow)
+            {
+                try
+                {
+                    storedProcedure = "AddFollowUpHIV";
+                    conn.Open();
+                    SqlCommand com = new SqlCommand(storedProcedure, conn);
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    //com.Parameters.AddWithValue("@fuhivID", folHiv.fuhivID);
+                    com.Parameters.AddWithValue("@EncounterID", folHiv.EncounterID);
+                    com.Parameters.AddWithValue("@fuhivDateOfVisit", folHiv.fuhivDateOfVisit);
+                    com.Parameters.AddWithValue("@fuhivHiEHWentToClinic", folHiv.fuhivHiEHWentToClinic);
+                    com.Parameters.AddWithValue("@fuhivHiEHReReferToClinic", folHiv.fuhivHiEHReReferToClinic);
+                    com.Parameters.AddWithValue("@fuhivHiEHRefNo", folHiv.fuhivHiEHRefNo);
+                    com.Parameters.AddWithValue("@fuhivCRReferToClinic", folHiv.fuhivCRReferToClinic);
+                    com.Parameters.AddWithValue("@fuhivCRRefNo", folHiv.fuhivCRRefNo);
+                    com.Parameters.AddWithValue("@fuhivHIVStatus", folHiv.fuhivHIVStatus);
+                   // com.Parameters.AddWithValue("@fuhivHIVStatus", folHiv.fuhivHIVStatus);
+                    com.Parameters.AddWithValue("@fuhivIPOnARV", folHiv.fuhivIPOnARV);
+                    com.Parameters.AddWithValue("@fuhivIPStartDate", folHiv.fuhivIPStartDate);
+                    com.Parameters.AddWithValue("@fuhivIPAdherenceOK", folHiv.fuhivIPAdherenceOK);
+                    com.Parameters.AddWithValue("@fuhivIPConcerns", folHiv.fuhivIPConcerns);
+                    com.Parameters.AddWithValue("@fuhivIPReferToClinic", folHiv.fuhivIPReferToClinic);
+                    com.Parameters.AddWithValue("@fuhivIPRefNo", folHiv.fuhivIPRefNo);
+                    com.Parameters.AddWithValue("@fuhivIPNotOnARV", folHiv.fuhivIPNotOnARV);
+                    com.Parameters.AddWithValue("@fuhivIPReferToClinic2", folHiv.fuhivIPReferToClinic2);
+                    com.Parameters.AddWithValue("@fuhivIPRefNo2", folHiv.fuhivIPRefNo2);
+                    com.Parameters.AddWithValue("@fuhivINCounsellingDone", folHiv.fuhivINCounsellingDone);
+                    com.Parameters.AddWithValue("@fuhivIUHIVTestDone", folHiv.fuhivIUHIVTestDone);
+                    com.Parameters.AddWithValue("@fuhivHIVTestResults", folHiv.fuhivHIVTestResults);
+                    com.Parameters.AddWithValue("@fuhivHIVTestReferToClinic", folHiv.fuhivHIVTestReferToClinic);
+                    com.Parameters.AddWithValue("@fuhivHIVRefNo", folHiv.fuhivHIVRefNo);
+                  
+
+                    int lastestID = (int)((decimal)com.ExecuteScalar());
+
+                    //adding Medication
+
+                    if (listofHIVMeds.Count > 0)
+                    {
+                        conn.Close();
+
+                        foreach (var hivmed in listofHIVMeds)
+                        {
+                            try
+                            {
+                                storedProcedure = "AddFollowUpHIVMedication";// name of sp
+                                conn.Open();
+                                SqlCommand tempcom = new SqlCommand(storedProcedure, conn);
+                                tempcom.CommandType = CommandType.StoredProcedure;
+                                tempcom.Parameters.AddWithValue("@fuhivID", lastestID);//param
+                                tempcom.Parameters.AddWithValue("@fuhivmName", folHivMed.fuhivmName);
+
+
+                                tempcom.ExecuteNonQuery();//execute command
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message.ToString() + "Meds not added");
+                            }
+
+                            //com.ExecuteNonQuery();//execute command
+                        }
+
+                    }
+                }
+
+                catch (Exception ex)
+                {
+
+                   // MessageBox.Show(ex.Message.ToString()); // comment this secton at production
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+            #endregion
+           
+           
+            
+            #region Epilepsy tested +
 
             bool epiFollow = false;
 
@@ -500,7 +583,7 @@ namespace Impilo_App.Views.FollowUpVisit
                 folEpi.fueOnTreatmentReReferToClinic = (EpiReReferToClinic21.IsChecked == true) ? true : false;
                 folEpi.fueOnTreatmentRefNo = txtEpiReferralNo2.Text;
 
-                folEpiMed.fuemName = ((ComboBoxItem)comboEpiMedication.SelectedItem).Content.ToString();
+               // folEpiMed.fuemName = ((ComboBoxItem)comboEpiMedication.SelectedItem).Content.ToString();
 
                 epiFollow = true;
             }
@@ -583,7 +666,9 @@ namespace Impilo_App.Views.FollowUpVisit
 
             #endregion
 
-            #region Asthma
+             
+           
+                #region Asthma tested+
 
             FollowUpAsthma folAst = new FollowUpAsthma();
             FollowUpAsthmaMedication folAstMed = new FollowUpAsthmaMedication();
@@ -609,7 +694,7 @@ namespace Impilo_App.Views.FollowUpVisit
                 folAst.fuaOTRefNo = txtAsReferralNo3.Text;
                 //folAst.fuaMedication = (ComboBoxItem)comboAsMedication.SelectedItem.Content.ToString();
 
-                folAstMed.fuamName = ((ComboBoxItem)comboAsMedication.SelectedItem).Content.ToString();
+               // folAstMed.fuamName = ((ComboBoxItem)comboAsMedication.SelectedItem).Content.ToString();
                 astFollow = true;
 
             }
@@ -694,134 +779,11 @@ namespace Impilo_App.Views.FollowUpVisit
                 }
             }
             #endregion
+           
 
-            #region HIV 
-
-            bool hivFollow = false;
-
-            Impilo_App.LocalModels.FollowUpHIV folHiv = new Impilo_App.LocalModels.FollowUpHIV();
-            Impilo_App.LocalModels.FollowUpHIVMedication folHivMed = new Impilo_App.LocalModels.FollowUpHIVMedication();
-
-            try
-            {
-                //folHiv.fuhivID = 0;
-                folHiv.EncounterID = encounterID;
-                folHiv.fuhivDateOfVisit = (DateTime)txtHIVDateOfVisit.SelectedDate;
-                folHiv.fuhivHiEHWentToClinic = (HIVWentToClinic1.IsChecked == true) ? true : false;
-                folHiv.fuhivHiEHReReferToClinic = (HIVReReferToClinic1.IsChecked == true) ? true : false;
-                folHiv.fuhivHiEHRefNo = txtHIVReferralNo1.Text;
-                folHiv.fuhivCRReferToClinic = (HIVReferToClinic11.IsChecked == true) ? true : false;
-                folHiv.fuhivCRRefNo = txtHIVReferralNo2.Text;
-                //folHiv.fuhHIVStatus = (ComboBoxItem)comboHIVStatus.SelectedItem.Content.ToString(); 
-                folHiv.fuhivIPOnARV = (HIVOnARVs1.IsChecked == true) ? true : false;
-                folHiv.fuhivIPStartDate = (DateTime)txtHIVStartDate1.SelectedDate;
-                folHiv.fuhivIPAdherenceOK = (HIVAdherenceOK1.IsChecked == true) ? true : false;
-                folHiv.fuhivIPConcerns = (HIVConcerns1.IsChecked == true) ? true : false;
-                folHiv.fuhivIPReferToClinic = (HIVReferToClinic21.IsChecked == true) ? true : false;
-                folHiv.fuhivIPRefNo = txtHIVReferralNo3.Text;
-                folHiv.fuhivIPNotOnARV = (HIVARVsConcerns1.IsChecked == true) ? true : false;
-                folHiv.fuhivIPReferToClinic2 = (HIVReferToClinic31.IsChecked == true) ? true : false;
-                folHiv.fuhivIPRefNo2 = txtHIVReferralNo4.Text;
-                folHiv.fuhivINCounsellingDone = (HIVCounsellingDone1.IsChecked == true) ? true : false;
-                folHiv.fuhivIUHIVTestDone = (HIVTestingDone1.IsChecked == true) ? true : false;
-                folHiv.fuhivHIVTestResults = txtHIVTestResults.Text;
-                folHiv.fuhivHIVTestReferToClinic = (HIVReferToClinic41.IsChecked == true) ? true : false;
-                folHiv.fuhivHIVRefNo = txtHIVReferralNo5.Text;
-
-                folHivMed.fuhivmName = ((ComboBoxItem)HIVMedication.SelectedItem).Content.ToString();
-
-                hivFollow = true;
-            }
-
-            catch (Exception)
-            {
-
-                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "HIV Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-            }
-
-            if (hivFollow)
-            {
-                try
-                {
-                    storedProcedure = "AddFollowUpHIV";
-                    conn.Open();
-                    SqlCommand com = new SqlCommand(storedProcedure, conn);
-                    com.CommandType = CommandType.StoredProcedure;
-
-                    //com.Parameters.AddWithValue("@fuhivID", folHiv.fuhivID);
-                    com.Parameters.AddWithValue("@EncounterID", folHiv.EncounterID);
-                    com.Parameters.AddWithValue("@fuhivDateOfVisit", folHiv.fuhivDateOfVisit);
-                    com.Parameters.AddWithValue("@fuhivHiEHWentToClinic", folHiv.fuhivHiEHWentToClinic);
-                    com.Parameters.AddWithValue("@fuhivHiEHReReferToClinic", folHiv.fuhivHiEHReReferToClinic);
-                    com.Parameters.AddWithValue("@fuhivHiEHRefNo", folHiv.fuhivHiEHRefNo);
-                    com.Parameters.AddWithValue("@fuhivCRReferToClinic", folHiv.fuhivCRReferToClinic);
-                    com.Parameters.AddWithValue("@fuhivCRRefNo", folHiv.fuhivCRRefNo);
-                    com.Parameters.AddWithValue("@fuhivHIVStatus", folHiv.fuhivHIVStatus);
-                    com.Parameters.AddWithValue("@fuhivIPOnARV", folHiv.fuhivIPOnARV);
-                    com.Parameters.AddWithValue("@fuhivIPStartDate", folHiv.fuhivIPStartDate);
-                    com.Parameters.AddWithValue("@fuhivIPAdherenceOK", folHiv.fuhivIPAdherenceOK);
-                    com.Parameters.AddWithValue("@fuhivIPConcerns", folHiv.fuhivIPConcerns);
-                    com.Parameters.AddWithValue("@fuhivIPReferToClinic", folHiv.fuhivIPReferToClinic);
-                    com.Parameters.AddWithValue("@fuhivIPRefNo", folHiv.fuhivIPRefNo);
-                    com.Parameters.AddWithValue("@fuhivIPNotOnARV", folHiv.fuhivIPNotOnARV);
-                    com.Parameters.AddWithValue("@fuhivIPReferToClinic2", folHiv.fuhivIPReferToClinic2);
-                    com.Parameters.AddWithValue("@fuhivIPRefNo2", folHiv.fuhivIPRefNo2);
-                    com.Parameters.AddWithValue("@fuhivINCounsellingDone", folHiv.fuhivINCounsellingDone);
-                    com.Parameters.AddWithValue("@fuhivIUHIVTestDone", folHiv.fuhivIUHIVTestDone);
-                    com.Parameters.AddWithValue("@fuhivHIVTestResults", folHiv.fuhivHIVTestResults);
-                    com.Parameters.AddWithValue("@fuhivHIVTestReferToClinic", folHiv.fuhivHIVTestReferToClinic);
-                    com.Parameters.AddWithValue("@fuhivHIVRefNo", folHiv.fuhivHIVRefNo);
-                    //com.Parameters.AddWithValue("@fuhivmHIVMedication", folHiv.fuhivHIVMedication);
-
-                    int lastestID = (int)((decimal)com.ExecuteScalar());
-
-                    //adding Medication
-
-                    if (listofHIVMeds.Count > 0)
-                    {
-                        conn.Close();
-
-                        foreach (var hivmed in listofHIVMeds)
-                        {
-                            try
-                            {
-                                storedProcedure = "AddFollowUpHIVMedication";// name of sp
-                                conn.Open();
-                                SqlCommand tempcom = new SqlCommand(storedProcedure, conn);
-                                tempcom.CommandType = CommandType.StoredProcedure;
-                                tempcom.Parameters.AddWithValue("@fuhivID", lastestID);//param
-                                tempcom.Parameters.AddWithValue("@fuhivmName", folHivMed.fuhivmName);
-
-
-                                tempcom.ExecuteNonQuery();//execute command
-                            }
-
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message.ToString() + "Meds not added");
-                            }
-
-                            //com.ExecuteNonQuery();//execute command
-                        }
-
-                    }
-                }
-
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message.ToString());
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-
-            #endregion
-
-            #region TB
+         
+            
+            #region TB tested+
 
             bool tbFollow = false;
             Impilo_App.LocalModels.FollowUpTB folTb = new Impilo_App.LocalModels.FollowUpTB();
@@ -854,7 +816,7 @@ namespace Impilo_App.Views.FollowUpVisit
                 folTb.futbTBOTReferToClinic = (TBReferToClinic31.IsChecked == true) ? true : false;
                 folTb.futbTBOTRefNo = txtTBReferralNo3.Text;
 
-                folTbMed.futbmName = ((ComboBoxItem)comboTBMedication.SelectedItem).Content.ToString();
+                //folTbMed.futbmName = ((ComboBoxItem)comboTBMedication.SelectedItem).Content.ToString();
 
                 tbFollow = true;
             }
@@ -878,7 +840,7 @@ namespace Impilo_App.Views.FollowUpVisit
                     com.Parameters.AddWithValue("@futbDateOfVisit", folTb.futbDateOfVisit);
                     com.Parameters.AddWithValue("@futbHiEHWentToClinic", folTb.futbHiEHWentToClinic);
                     com.Parameters.AddWithValue("@futbHiEHReReferToClinic", folTb.futbHiEHReReferToClinic);
-                    com.Parameters.AddWithValue("@futbHiHRefNo", folTb.futbHiEHRefNo);
+                    com.Parameters.AddWithValue("@futbHiEHRefNo", folTb.futbHiEHRefNo);
                     com.Parameters.AddWithValue("@futbTBSRecentUnplannedLoseOfWeight", folTb.futbTBSRecentUnplannedLoseOfWeight);
                     com.Parameters.AddWithValue("@futbTBSExcessiveSweatingAtNight", folTb.futbTBSExcessiveSweatingAtNight);
                     com.Parameters.AddWithValue("@futbTBSFeverOver2Weeks", folTb.futbTBSFeverOver2Weeks);
@@ -943,8 +905,10 @@ namespace Impilo_App.Views.FollowUpVisit
                 }
             }
             #endregion
+          
 
-            #region Maternal health
+         
+            #region Maternal health tested+
             Impilo_App.LocalModels.FollowUpMaternalHealth folMat = new Impilo_App.LocalModels.FollowUpMaternalHealth();
 
             //folMat.fumhID = 0;
@@ -976,12 +940,12 @@ namespace Impilo_App.Views.FollowUpVisit
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@fumhID", folMat.fumhID);
-                com.Parameters.AddWithValue("@EncounterID", folMat.EncounterID);
+                
+                com.Parameters.AddWithValue("@EncounterID", encounterID);
                 com.Parameters.AddWithValue("@fumhDateOfVisit", folMat.fumhDateOfVisit);
                 com.Parameters.AddWithValue("@fumhHiEHWentToClinic", folMat.fumhHiEHWentToClinic);
                 com.Parameters.AddWithValue("@fumhHiEHReReferToClinic", folMat.fumhHiEHReReferToClinic);
-                com.Parameters.AddWithValue("@fumhHiHRefNo", folMat.fumhHiEHRefNo);
+                com.Parameters.AddWithValue("@fumhHiEHRefNo", folMat.fumhHiEHRefNo);
                 com.Parameters.AddWithValue("@fumhCPDateOfFirstANC", folMat.fumhCPDateOfFirstANC);
                 com.Parameters.AddWithValue("@fumhCPDateOfLastANC", folMat.fumhCPDateOfLastANC);
                 com.Parameters.AddWithValue("@fumhCPReferToClinic", folMat.fumhCPReferToClinic);
@@ -997,7 +961,7 @@ namespace Impilo_App.Views.FollowUpVisit
                 com.Parameters.AddWithValue("@fumhPPTestDone", folMat.fumhPPTestDone);
                 com.Parameters.AddWithValue("@fumhPPResult", folMat.fumhPPResult);
                 com.Parameters.AddWithValue("@fumhPPReferToClinic", folMat.fumhPPReferToClinic);
-                com.Parameters.AddWithValue("@ffumhPPRefNo", folMat.fumhPPRefNo);
+                com.Parameters.AddWithValue("@fumhPPRefNo", folMat.fumhPPRefNo);
 
                 com.ExecuteNonQuery();//execute command
             }
@@ -1012,7 +976,9 @@ namespace Impilo_App.Views.FollowUpVisit
             }
             #endregion
 
-            #region Child Health
+
+           
+            #region Child Health tested+
 
             FollowUpChildHealth folCh = new FollowUpChildHealth();
             FollowUpChildHealthConcerns folChCon = new FollowUpChildHealthConcerns();
@@ -1060,12 +1026,12 @@ namespace Impilo_App.Views.FollowUpVisit
 
             try
             {
-                storedProcedure = "AddFollowUpOther";
+                storedProcedure = "AddFollowUpChildHealth";
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@fuoID", folCh.fuchID);
-                com.Parameters.AddWithValue("@EncounterID", folCh.EncounterID);
+              
+                com.Parameters.AddWithValue("@EncounterID", encounterID);
                 com.Parameters.AddWithValue("@fuchDateOfVisit", folCh.fuchDateOfVisit);
                 com.Parameters.AddWithValue("@fuchHiEHWentToClinic", folCh.fuchHiEHWentToClinic);
                 com.Parameters.AddWithValue("@fuchHiEHReReferToClinic", folCh.fuchHiEHReReferToClinic);
@@ -1075,6 +1041,7 @@ namespace Impilo_App.Views.FollowUpVisit
                 com.Parameters.AddWithValue("@fuchNewRefNo", folCh.fuchNewRefNo);
                 com.Parameters.AddWithValue("@fuchNewMotherHIVPos", folCh.fuchNewMotherHIVPos);
                 com.Parameters.AddWithValue("@fuchNewChildBreastfed", folCh.fuchNewChildBreastfed);
+                com.Parameters.AddWithValue("@fuchNewHowLong", folCh.fuchNewHowLong);
                 com.Parameters.AddWithValue("@fuchNewChildEverOnNevirapine", folCh.fuchNewChildEverOnNevirapine);
                 com.Parameters.AddWithValue("@fuchNewReferToClinic2", folCh.fuchNewReferToClinic2);
                 com.Parameters.AddWithValue("@fuchNewRefNo2", folCh.fuchNewRefNo2);
@@ -1086,7 +1053,7 @@ namespace Impilo_App.Views.FollowUpVisit
                 com.Parameters.AddWithValue("@fuchNewReferToClinic4", folCh.fuchNewReferToClinic4);
                 com.Parameters.AddWithValue("@fuchNewRefNo4", folCh.fuchNewRefNo4);
                 com.Parameters.AddWithValue("@fuchCDevWalkAppropriatelyForAge", folCh.fuchCDevWalkAppropriatelyForAge);
-                com.Parameters.AddWithValue("@fuchCDevTalkAppropriateForAg", folCh.fuchCDevTalkAppropriateForAge);
+                com.Parameters.AddWithValue("@fuchCDevTalkAppropriateForAge", folCh.fuchCDevTalkAppropriateForAge);
                 com.Parameters.AddWithValue("@fuchCDevReferToClinic", folCh.fuchCDevReferToClinic);
                 com.Parameters.AddWithValue("@fuchCDevRefNo", folCh.fuchCDevRefNo);
                 com.Parameters.AddWithValue("@fuchSocDevChildAssisted", folCh.fuchSocDevChildAssisted);
@@ -1116,8 +1083,9 @@ namespace Impilo_App.Views.FollowUpVisit
                 conn.Close();
             }
             #endregion
+        
 
-            #region Other
+             #region Other tested+
 
             Impilo_App.LocalModels.FollowUpOther folOth = new Impilo_App.LocalModels.FollowUpOther();
 
@@ -1139,8 +1107,8 @@ namespace Impilo_App.Views.FollowUpVisit
                 conn.Open();
                 SqlCommand com = new SqlCommand(storedProcedure, conn);
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@fuoID", folOth.fuoID);
-                com.Parameters.AddWithValue("@EncounterID", folOth.EncounterID);
+
+                com.Parameters.AddWithValue("@EncounterID", encounterID);
                 com.Parameters.AddWithValue("@fuoDateOfVisit", folOth.fuoDateOfVisit);
                 com.Parameters.AddWithValue("@fuoHiEHWentToClinic", folOth.fuoHiEHWentToClinic);
                 com.Parameters.AddWithValue("@fuoHiEHReReferToClinic", folOth.fuoHiEHReReferToClinic);
@@ -1162,6 +1130,15 @@ namespace Impilo_App.Views.FollowUpVisit
                 conn.Close();
             }
             #endregion
+       
+            
+            #endregion
+
+
+
+
+
+
         }
 
             
@@ -1180,7 +1157,7 @@ namespace Impilo_App.Views.FollowUpVisit
 
         }
 
-        List<FollowUpAsthmaMedication> listofAstMeds = new List<FollowUpAsthmaMedication>();
+        List<string> listofAstMeds = new List<string>();
 
         private void btnSaveAstMed_Click(object sender, RoutedEventArgs e)
         {
@@ -1191,26 +1168,92 @@ namespace Impilo_App.Views.FollowUpVisit
 
        
 
-        List<FollowUpDiabetesMedication> listofDiaMeds = new List<FollowUpDiabetesMedication>();
+        List<string> listofDiaMeds = new List<string>();
         private void btnSaveDiaMed_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        List<FollowUpTBMedication> listofTbMeds = new List<FollowUpTBMedication>();
+        List<string> listofTbMeds = new List<string>();
         private void btnSaveTbMed_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        List<FollowUpEpilepsyMedication> listofEpiMeds = new List<FollowUpEpilepsyMedication>();
+        List<string> listofEpiMeds = new List<string>();
         private void btnSaveEpiMed_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        List<FollowUpHIVMedication> listofHIVMeds = new List<FollowUpHIVMedication>();
+        List<string> listofHIVMeds = new List<string>();
        
     }
 }
 #endregion
+
+
+
+
+
+#region Biographical
+/*
+
+            //Not needed as clients already exists in the DB
+
+            //clinBio.ccbioID = 0;
+            //clinBio.ClinicID = 0;
+            //clinBio.ClientID = "";
+            //clinBio.ccbioContactNo = txtBioContactNo.Text;
+            //clinBio.ccbioFileNo = txtBioFileNo.Text;
+            //clinBio.ccbioNextOfKinRelationship = txtBioKinRelation.Text;
+            //clinBio.ccbioNextOfKinName = txtBioKinName.Text;
+            //clinBio.ccbioNextOfKinTelNo = txtBioKinContactNo.Text;
+            //clinBio.ccbioDoDHypertension = (DateTime)dpBioHptDiagDate.SelectedDate;
+            //clinBio.ccbioDoDDiabetes = (DateTime)dpBioDiaDiagDate.SelectedDate;
+            //clinBio.ccbioDoDEpilepsy = (DateTime)dpBioEpiDiagDate.SelectedDate;
+            //clinBio.ccbioDoDAsthma = (DateTime)dpBioAstDiagDate.SelectedDate;
+            //clinBio.ccbioDoDHIV = (DateTime)dpBioHivDiagDate.SelectedDate;
+            //clinBio.ccbioDoDTB = (DateTime)dpBioTbDiagDate.SelectedDate;
+            //clinBio.ccbioDoDMaternalHealth = (DateTime)dpBioMatDiagDate.SelectedDate;
+            //clinBio.ccbioDoDChildHealth = (DateTime)dpBioChDiagDate.SelectedDate;
+            //clinBio.ccbioOther = (DateTime)dpBioOtherDiagDate.SelectedDate;
+
+
+            try
+            {
+                storedProcedure = "AddClinicClientBiographical";
+                conn.Open();
+                SqlCommand com = new SqlCommand(storedProcedure, conn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@ccbioID", clinBio.ccbioID);
+                com.Parameters.AddWithValue("@ClinicID", clinBio.ClinicID);
+                com.Parameters.AddWithValue("@ClientID", clinBio.ClientID);
+                com.Parameters.AddWithValue("@ccbioContactNo", clinBio.ccbioContactNo);
+                com.Parameters.AddWithValue("@ccbioFileNo", clinBio.ccbioFileNo);
+                com.Parameters.AddWithValue("@ccbioNextOfKinRelationship", clinBio.ccbioNextOfKinRelationship);
+                com.Parameters.AddWithValue("@ccbioNextOfKinName", clinBio.ccbioNextOfKinName);
+                com.Parameters.AddWithValue("@ccbioNextOfKinTelNo", clinBio.ccbioNextOfKinTelNo);
+                com.Parameters.AddWithValue("@ccbioDoDHypertension", clinBio.ccbioDoDHypertension);
+                com.Parameters.AddWithValue("@ccbioDoDDiabetes", clinBio.ccbioDoDDiabetes);
+                com.Parameters.AddWithValue("@ccbioDoDEpilepsy", clinBio.ccbioDoDEpilepsy);
+                com.Parameters.AddWithValue("@ccbioDoDAsthma", clinBio.ccbioDoDAsthma);
+                com.Parameters.AddWithValue("@ccbioDoDHIV", clinBio.ccbioDoDHIV);
+                com.Parameters.AddWithValue("@ccbioDoDTB", clinBio.ccbioDoDTB);
+                com.Parameters.AddWithValue("@ccbioDoDMaternalHealth", clinBio.ccbioDoDMaternalHealth);
+                com.Parameters.AddWithValue("@ccbioDoDChildHealth", clinBio.ccbioDoDChildHealth);
+                com.Parameters.AddWithValue("@ccbioOther", clinBio.ccbioOther);
+
+                com.ExecuteNonQuery();//execute command
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }*/
+
+#endregion // not needed in follow up

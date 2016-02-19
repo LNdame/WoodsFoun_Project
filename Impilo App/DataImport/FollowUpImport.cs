@@ -17,27 +17,29 @@ namespace Impilo_App.DataImport
         public static string GetCellValue(ICell Target)
         {
             string ReturnValue = "";
-
-
-            try
-            {
-                ReturnValue = Target.StringCellValue;
-            }
-            catch
+            if (Target != null)
             {
                 try
                 {
-                    ReturnValue = Target.NumericCellValue.ToString();
+                    ReturnValue = Target.StringCellValue;
                 }
                 catch
                 {
-                    ReturnValue = Target.DateCellValue.ToString();
+                    try
+                    {
+                        ReturnValue = Target.NumericCellValue.ToString();
+                    }
+                    catch
+                    {
+                        ReturnValue = Target.DateCellValue.ToString();
+                    }
                 }
+
+                if (ReturnValue == "01-01-0001 12:00:00 AM")
+                    ReturnValue = "";
             }
-
-            if (ReturnValue == "01-01-0001 12:00:00 AM")
+            else
                 ReturnValue = "";
-
             return ReturnValue;
         }
         public static bool Import(string TargetFolder)
@@ -175,9 +177,9 @@ namespace Impilo_App.DataImport
                         //HiEHRef = HiEH Referral
                         //CurrentRef = Current Referral
                         //OT = On Treatment
-                        string EpilepsyDateOfVisit = MyWorkbook.GetSheet("Epilepsy").GetRow(5).GetCell(0).DateCellValue.ToString();
-                        if (EpilepsyDateOfVisit == "0001/01/01 12:00:00 AM")
-                            EpilepsyDateOfVisit = "";
+                        string EpilepsyDateOfVisit = GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(5).GetCell(0));
+                        //if (EpilepsyDateOfVisit == "0001/01/01 12:00:00 AM")
+                            //EpilepsyDateOfVisit = "";
 
                         string Epilepsy_HiEHRef_WentToClinic = GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(5).GetCell(1));
                         string Epilepsy_HiEHRef_ReReferToClinic = GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(5).GetCell(2));
@@ -189,8 +191,8 @@ namespace Impilo_App.DataImport
 
                         string Epilepsy_OT_CurrentlyOnMeds = GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(5).GetCell(9));
                         string Epilepsy_OT_StartDate = MyWorkbook.GetSheet("Epilepsy").GetRow(5).GetCell(10).DateCellValue.ToString();
-                        if (EpilepsyDateOfVisit == "0001/01/01 12:00:00 AM")
-                            EpilepsyDateOfVisit = "";
+                        if (Epilepsy_OT_StartDate == "0001/01/01 12:00:00 AM")
+                            Epilepsy_OT_StartDate = "";
                         string Epilepsy_OT_MoreThanThreeFitsInLastMonth = GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(5).GetCell(11));
                         string Epilepsy_OT_ReRefToClinic = GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(5).GetCell(12));
                         string Epilepsy_OT_ReRefNum = GetCellValue(MyWorkbook.GetSheet("Epilepsy").GetRow(5).GetCell(13));
@@ -204,27 +206,27 @@ namespace Impilo_App.DataImport
                         //HiEHRef = HiEH Referral
                         //CurrentRef = Current Referral
                         //OT = On Treatment
-                        string AsthmaDateOfVisit = MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(0).DateCellValue.ToString();
-                        if (AsthmaDateOfVisit == "0001/01/01 12:00:00 AM")
-                            AsthmaDateOfVisit = "";
+                        //string AsthmaDateOfVisit = MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(0).DateCellValue.ToString();
+                        //if (AsthmaDateOfVisit == "0001/01/01 12:00:00 AM")
+                        //    AsthmaDateOfVisit = "";
 
-                        string Asthma_HiEHRef_WentToClinic = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(1));
-                        string Asthma_HiEHRef_ReReferToClinic = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(2));
-                        string Asthma_HiEHRef_ReRefNum = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(3));
+                        //string Asthma_HiEHRef_WentToClinic = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(1));
+                        //string Asthma_HiEHRef_ReReferToClinic = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(2));
+                        //string Asthma_HiEHRef_ReRefNum = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(3));
 
-                        string Asthma_CurrentRef_DifficultyBreathing = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(5));
-                        string Asthma_CurrentRef_RefToClinic = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(6));
-                        string Asthma_CurrentRef_RefNum = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(7));
+                        //string Asthma_CurrentRef_DifficultyBreathing = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(5));
+                        //string Asthma_CurrentRef_RefToClinic = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(6));
+                        //string Asthma_CurrentRef_RefNum = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(7));
 
-                        string Asthma_OT_CurrentlyOnMeds = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(9));
-                        string Asthma_OT_StartDate = MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(10).DateCellValue.ToString();
-                        if (Asthma_OT_StartDate == "0001/01/01 12:00:00 AM")
-                            Asthma_OT_StartDate = "";
-                        string Asthma_OT_IncreaseInAttacks = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(11));
-                        string Asthma_OT_ReRefToClinic = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(12));
-                        string Asthma_OT_ReRefNum = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(13));
+                        //string Asthma_OT_CurrentlyOnMeds = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(9));
+                        //string Asthma_OT_StartDate = MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(10).DateCellValue.ToString();
+                        //if (Asthma_OT_StartDate == "0001/01/01 12:00:00 AM")
+                        //    Asthma_OT_StartDate = "";
+                        //string Asthma_OT_IncreaseInAttacks = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(11));
+                        //string Asthma_OT_ReRefToClinic = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(12));
+                        //string Asthma_OT_ReRefNum = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(13));
 
-                        string Asthma_Medication = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(14));
+                        //string Asthma_Medication = GetCellValue(MyWorkbook.GetSheet("Asthma").GetRow(4).GetCell(14));
 
                         #endregion
                        
@@ -276,9 +278,9 @@ namespace Impilo_App.DataImport
                        
 
                         //HiEHRef = HiEH Referral
-                        string TBDateOfVisit = MyWorkbook.GetSheet("TB").GetRow(5).GetCell(0).DateCellValue.ToString();
-                        if (TBDateOfVisit == "0001/01/01 12:00:00 AM")
-                            TBDateOfVisit = "";
+                        string TBDateOfVisit = GetCellValue(MyWorkbook.GetSheet("TB").GetRow(5).GetCell(0));
+                       // if (TBDateOfVisit == "0001/01/01 12:00:00 AM")
+                       //     TBDateOfVisit = "";
 
                         string TB_HiEHRef_WentToClinic = GetCellValue(MyWorkbook.GetSheet("TB").GetRow(5).GetCell(1));
                         string TB_HiEHRef_ReReferToClinic = GetCellValue(MyWorkbook.GetSheet("TB").GetRow(5).GetCell(2));
@@ -407,9 +409,9 @@ namespace Impilo_App.DataImport
 
                         //HiEHRef = HiEH Referral
                         //OC = Other Condition
-                        string OCDateOfVisit = MyWorkbook.GetSheet("Other").GetRow(5).GetCell(0).DateCellValue.ToString();
-                        if (OCDateOfVisit == "0001/01/01 12:00:00 AM")
-                            OCDateOfVisit = "";
+                        string OCDateOfVisit = GetCellValue(MyWorkbook.GetSheet("Other").GetRow(5).GetCell(0));
+                        //if (OCDateOfVisit == "0001/01/01 12:00:00 AM")
+                         //   OCDateOfVisit = "";
 
                         string OC_HiEHRef_WentToClinic = GetCellValue(MyWorkbook.GetSheet("Other").GetRow(5).GetCell(1));
                         string OC_HiEHRef_ReRefToClinic = GetCellValue(MyWorkbook.GetSheet("Other").GetRow(5).GetCell(2));
@@ -469,11 +471,11 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@GPSLongitude", BioGPSLongitude);
                             tempCommand.Parameters.AddWithValue("@IDNo", BioIDNumber);
                             tempCommand.Parameters.AddWithValue("@ClinicID", ClinicID);
-                            tempCommand.Parameters.AddWithValue("@DateOfBirth", null);
-                            tempCommand.Parameters.AddWithValue("@Gender", null);
-                            tempCommand.Parameters.AddWithValue("@AttendingSchool", null);
-                            tempCommand.Parameters.AddWithValue("@Grade", null);
-                            tempCommand.Parameters.AddWithValue("@NameofSchool", null);
+                            tempCommand.Parameters.AddWithValue("@DateOfBirth", "");
+                            tempCommand.Parameters.AddWithValue("@Gender", "");
+                            tempCommand.Parameters.AddWithValue("@AttendingSchool", "");
+                            tempCommand.Parameters.AddWithValue("@Grade", "");
+                            tempCommand.Parameters.AddWithValue("@NameofSchool", "");
                             tempCommand.Parameters.AddWithValue("@Area", BioArea);
 
                             tempCommand.ExecuteNonQuery();
@@ -492,8 +494,8 @@ namespace Impilo_App.DataImport
                             tempConnectionEncounter.Open();
                             SqlCommand tempCommand = new SqlCommand("AddEncounters", tempConnectionEncounter);
                             tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@EncounterDate", null);
-                            tempCommand.Parameters.AddWithValue("@ClientID", BioUniqueID);
+                            tempCommand.Parameters.AddWithValue("@EncounterDate", "");
+                            tempCommand.Parameters.AddWithValue("@ClientID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@EncounterType", 2);
                             tempCommand.Parameters.AddWithValue("@EncounterCapturedBy", BioChowName);
 
@@ -554,20 +556,20 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@fuhHiEHRefNo", Hyper_HiEHRef_ReRefNum);
                             tempCommand.Parameters.AddWithValue("@fuhHiEHCurrentlyOnMeds", Hyper_HiEHRef_OnMeds == "Yes" || Hyper_HiEHRef_OnMeds == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@fuhHiEHStartDate", Hyper_HiEHRef_StartDate);
-                            tempCommand.Parameters.AddWithValue("@fuhHiEHBPScreeningSystolic", Hyper_HiEHRef_BPReading);
-                            tempCommand.Parameters.AddWithValue("@fuhHiEHBPScreeningDiastolic", Hyper_HiEHRef_BPReading);
-                            tempCommand.Parameters.AddWithValue("@fuhHiEHBPTodaySystolic", Hyper_HiEHRef_TodayReadingTop);
-                            tempCommand.Parameters.AddWithValue("@fuhHiEHBPTodayDiastolic", Hyper_HiEHRef_TodayReadingBottom);
+                            tempCommand.Parameters.AddWithValue("@fuhHiEHBPScreeningSystolic", Hyper_HiEHRef_BPReading == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(Hyper_HiEHRef_BPReading));
+                            tempCommand.Parameters.AddWithValue("@fuhHiEHBPScreeningDiastolic", Hyper_HiEHRef_BPReading == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(Hyper_HiEHRef_BPReading));
+                            tempCommand.Parameters.AddWithValue("@fuhHiEHBPTodaySystolic", Hyper_HiEHRef_TodayReadingTop == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(Hyper_HiEHRef_TodayReadingTop));
+                            tempCommand.Parameters.AddWithValue("@fuhHiEHBPTodayDiastolic", Hyper_HiEHRef_TodayReadingBottom == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(Hyper_HiEHRef_TodayReadingBottom));
                             tempCommand.Parameters.AddWithValue("@fuhHiEHReferToClinic", Hyper_HiEHRef_ReferToClinic == "Yes" || Hyper_HiEHRef_ReferToClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@fuhHiEHRefNo2", Hyper_HiEHRef_RefNum);
                             tempCommand.Parameters.AddWithValue("@fuhCRReReferToClinic", Hyper_ClinicRef_ReReferToClinic == "Yes" || Hyper_ClinicRef_ReReferToClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@fuhCRRefNo", Hyper_ClinicRef_ReRefNum);
-                            tempCommand.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReadingSystolic", Hyper_AOT_FollowUpReading);
-                            tempCommand.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReadingDiastolic", Hyper_AOT_FollowUpReading);
-                            tempCommand.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingSystolic", Hyper_DoorToDoorReading_CheckReading);
-                            tempCommand.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingDiastolic", Hyper_DoorToDoorReading_CheckReading);
+                            tempCommand.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReadingSystolic", Hyper_AOT_FollowUpReading == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(Hyper_AOT_FollowUpReading));
+                            tempCommand.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReadingDiastolic", Hyper_AOT_FollowUpReading == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(Hyper_AOT_FollowUpReading));
+                            tempCommand.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingSystolic", Hyper_DoorToDoorReading_CheckReading == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(Hyper_DoorToDoorReading_CheckReading));
+                            tempCommand.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingDiastolic", Hyper_DoorToDoorReading_CheckReading == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(Hyper_DoorToDoorReading_CheckReading));
 
-                            tempIDHyp = (int)(tempCommand.ExecuteScalar());
+                            tempIDHyp = (int)((decimal)(tempCommand.ExecuteScalar()));
                         }
                         catch { }
                         finally
@@ -611,16 +613,16 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@fudHiEHRefNo", Diabetes_HiEHRef_ReRefNum);
                             tempCommand.Parameters.AddWithValue("@fudHiEHCurrentlyOnMeds", Diabetes_HiEHRef_OnMeds == "Yes" || Diabetes_HiEHRef_OnMeds == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@fudHiEHStartDate", Diabetes_HiEHRef_StartDate);
-                            tempCommand.Parameters.AddWithValue("@fudHiEHFollowUpTestReading", Diabetes_HiEHRef_FollowUpTestReading);
+                            tempCommand.Parameters.AddWithValue("@fudHiEHFollowUpTestReading", Diabetes_HiEHRef_FollowUpTestReading == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(Diabetes_HiEHRef_FollowUpTestReading));
                             tempCommand.Parameters.AddWithValue("@fudHiEHReferToClinic2", Diabetes_HiEHRef_ReferToClinic == "Yes" || Diabetes_HiEHRef_ReferToClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@fudHiEHRefNo2", Diabetes_HiEHRef_RefNum);
                             tempCommand.Parameters.AddWithValue("@fudClinicRefReferToClinic", Diabetes_ClinicRef_ReReferToClinic);
                             tempCommand.Parameters.AddWithValue("@fudClinicRefRefNo", Diabetes_ClinicRef_ReRefNum);
-                            tempCommand.Parameters.AddWithValue("@Diabetes_AOT_FollowUpReading", Diabetes_AOT_FollowUpReading);
-                            tempCommand.Parameters.AddWithValue("@fudAlreadyOnTreatmentFollowUpTestReading", Diabetes_DoorToDoorReading_CheckReading);
+                            //tempCommand.Parameters.AddWithValue("@Diabetes_AOT_FollowUpReading", Diabetes_AOT_FollowUpReading);
+                            tempCommand.Parameters.AddWithValue("@fudAlreadyOnTreatmentFollowUpTestReading", Diabetes_DoorToDoorReading_CheckReading == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(Diabetes_DoorToDoorReading_CheckReading));
                             tempCommand.Parameters.AddWithValue("@fudDoorDoor", "");
                             
-                            tempIDDia = (int)(tempCommand.ExecuteScalar());
+                            tempIDDia = (int)((decimal)(tempCommand.ExecuteScalar()));
                         }
                         catch { }
                         finally
@@ -671,7 +673,7 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@fueOnTreatmentReReferToClinic", Epilepsy_OT_ReRefToClinic == "Yes" || Epilepsy_OT_ReRefToClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@fueOnTreatmentRefNo", Epilepsy_OT_ReRefNum);
 
-                            tempIDEpi = (int)(tempCommand.ExecuteScalar());
+                            tempIDEpi = (int)((decimal)(tempCommand.ExecuteScalar()));
                             
                         }
                         catch { }
@@ -702,54 +704,54 @@ namespace Impilo_App.DataImport
                         #endregion
 
                         #region Asthma
-                        SqlConnection tempConnectionAst = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                        //SqlConnection tempConnectionAst = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
-                        try
-                        {
-                            tempConnectionAst.Open();
-                            SqlCommand tempCommand = new SqlCommand("AddFollowUpAsthma", tempConnectionAst);
-                            tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                            tempCommand.Parameters.AddWithValue("@fuaDateOfVisit", AsthmaDateOfVisit);
-                            tempCommand.Parameters.AddWithValue("@fuaHiEHWentToClinic", Asthma_HiEHRef_WentToClinic == "Yes" || Asthma_HiEHRef_WentToClinic == "1" ? 1 : 0);
-                            tempCommand.Parameters.AddWithValue("@fuaHiEHReReferToClinic", Asthma_HiEHRef_ReReferToClinic == "Yes" || Asthma_HiEHRef_ReReferToClinic == "1" ? 1 : 0);
-                            tempCommand.Parameters.AddWithValue("@fuaHiHRefNo", Asthma_HiEHRef_ReRefNum);
-                            tempCommand.Parameters.AddWithValue("@fuaCRDifficultyBreathingAndWheezing", Asthma_CurrentRef_DifficultyBreathing == "Yes" || Asthma_CurrentRef_DifficultyBreathing == "1" ? 1 : 0);
-                            tempCommand.Parameters.AddWithValue("@fuaCRReferToClinic", Asthma_CurrentRef_RefToClinic == "Yes" || Asthma_CurrentRef_RefToClinic == "1" ? 1 : 0);
-                            tempCommand.Parameters.AddWithValue("@fuaCRRefNo", Asthma_CurrentRef_RefNum);
-                            tempCommand.Parameters.AddWithValue("@fuaOTCurrentlyOnMeds", Asthma_OT_CurrentlyOnMeds == "Yes" || Asthma_OT_CurrentlyOnMeds == "1" ? 1 : 0);
-                            tempCommand.Parameters.AddWithValue("@fuaOTStartDate", Asthma_OT_StartDate);
-                            tempCommand.Parameters.AddWithValue("@fuaOTIncreasedNoOfAsthmaAttacks", Asthma_OT_IncreaseInAttacks == "Yes" || Asthma_OT_IncreaseInAttacks == "1" ? 1 : 0);
-                            tempCommand.Parameters.AddWithValue("@fuaOTReReferToClinic", Asthma_OT_ReRefToClinic == "Yes" || Asthma_OT_ReRefToClinic == "1" ? 1 : 0);
-                            tempCommand.Parameters.AddWithValue("@fuaOTRefNo", Asthma_OT_ReRefNum);
+                        //try
+                        //{
+                        //    tempConnectionAst.Open();
+                        //    SqlCommand tempCommand = new SqlCommand("AddFollowUpAsthma", tempConnectionAst);
+                        //    tempCommand.CommandType = CommandType.StoredProcedure;
+                        //    tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
+                        //    tempCommand.Parameters.AddWithValue("@fuaDateOfVisit", AsthmaDateOfVisit);
+                        //    tempCommand.Parameters.AddWithValue("@fuaHiEHWentToClinic", Asthma_HiEHRef_WentToClinic == "Yes" || Asthma_HiEHRef_WentToClinic == "1" ? 1 : 0);
+                        //    tempCommand.Parameters.AddWithValue("@fuaHiEHReReferToClinic", Asthma_HiEHRef_ReReferToClinic == "Yes" || Asthma_HiEHRef_ReReferToClinic == "1" ? 1 : 0);
+                        //    tempCommand.Parameters.AddWithValue("@fuaHiHRefNo", Asthma_HiEHRef_ReRefNum);
+                        //    tempCommand.Parameters.AddWithValue("@fuaCRDifficultyBreathingAndWheezing", Asthma_CurrentRef_DifficultyBreathing == "Yes" || Asthma_CurrentRef_DifficultyBreathing == "1" ? 1 : 0);
+                        //    tempCommand.Parameters.AddWithValue("@fuaCRReferToClinic", Asthma_CurrentRef_RefToClinic == "Yes" || Asthma_CurrentRef_RefToClinic == "1" ? 1 : 0);
+                        //    tempCommand.Parameters.AddWithValue("@fuaCRRefNo", Asthma_CurrentRef_RefNum);
+                        //    tempCommand.Parameters.AddWithValue("@fuaOTCurrentlyOnMeds", Asthma_OT_CurrentlyOnMeds == "Yes" || Asthma_OT_CurrentlyOnMeds == "1" ? 1 : 0);
+                        //    tempCommand.Parameters.AddWithValue("@fuaOTStartDate", Asthma_OT_StartDate);
+                        //    tempCommand.Parameters.AddWithValue("@fuaOTIncreasedNoOfAsthmaAttacks", Asthma_OT_IncreaseInAttacks == "Yes" || Asthma_OT_IncreaseInAttacks == "1" ? 1 : 0);
+                        //    tempCommand.Parameters.AddWithValue("@fuaOTReReferToClinic", Asthma_OT_ReRefToClinic == "Yes" || Asthma_OT_ReRefToClinic == "1" ? 1 : 0);
+                        //    tempCommand.Parameters.AddWithValue("@fuaOTRefNo", Asthma_OT_ReRefNum);
 
-                            tempIDAs = (int)(tempCommand.ExecuteScalar());
-                        }
-                        catch { }
-                        finally
-                        {
-                            tempConnectionAst.Close();
-                        }
+                        //    tempIDAs = (int)(tempCommand.ExecuteScalar());
+                        //}
+                        //catch { }
+                        //finally
+                        //{
+                        //    tempConnectionAst.Close();
+                        //}
                         #endregion
 
                         #region Asthma Meds
-                        SqlConnection tempConnectionAstMeds = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                        //SqlConnection tempConnectionAstMeds = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
-                        try
-                        {
-                            tempConnectionAstMeds.Open();
-                            SqlCommand tempCommand = new SqlCommand("AddFollowUpAsthmaMedication", tempConnectionAstMeds);
-                            tempCommand.CommandType = CommandType.StoredProcedure;
-                            tempCommand.Parameters.AddWithValue("@fuaID", tempIDAs);
-                            tempCommand.Parameters.AddWithValue("@fuamName", Asthma_Medication);
+                        //try
+                        //{
+                        //    tempConnectionAstMeds.Open();
+                        //    SqlCommand tempCommand = new SqlCommand("AddFollowUpAsthmaMedication", tempConnectionAstMeds);
+                        //    tempCommand.CommandType = CommandType.StoredProcedure;
+                        //    tempCommand.Parameters.AddWithValue("@fuaID", tempIDAs);
+                        //    tempCommand.Parameters.AddWithValue("@fuamName", Asthma_Medication);
 
-                            tempCommand.ExecuteNonQuery();
-                        }
-                        catch { }
-                        finally
-                        {
-                            tempConnectionAstMeds.Close();
-                        }
+                        //    tempCommand.ExecuteNonQuery();
+                        //}
+                        //catch { }
+                        //finally
+                        //{
+                        //    tempConnectionAstMeds.Close();
+                        //}
                         #endregion
 
                         #region HIV
@@ -783,7 +785,7 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@fuhivHIVTestReferToClinic", HIV_HIVTest_ReferToClinic == "Yes" || HIV_HIVTest_ReferToClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@fuhivHIVRefNo", HIV_HIVTest_RefNum);
 
-                            tempIDHIV = (int)(tempCommand.ExecuteScalar());
+                            tempIDHIV = (int)((decimal)(tempCommand.ExecuteScalar()));
                         }
                         catch { }
                         finally
@@ -842,7 +844,7 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@futbTBOTReferToClinic", TB_Treatment_RefToClinic == "Yes" || TB_Treatment_RefToClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@futbTBOTRefNo", TB_Treatment_RefNum);
 
-                            tempIDTB = (int)(tempCommand.ExecuteScalar());
+                            tempIDTB = (int)((decimal)(tempCommand.ExecuteScalar()));
 
                         }
                         catch { }
@@ -878,7 +880,7 @@ namespace Impilo_App.DataImport
                         try
                         {
                             tempConnectionMat.Open();
-                            SqlCommand tempCommand = new SqlCommand("FollowUpImportMaternal", tempConnectionMat);
+                            SqlCommand tempCommand = new SqlCommand("AddFollowUpMaternalHealth", tempConnectionMat);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
                             tempCommand.Parameters.AddWithValue("@fumhDateOfVisit", MatHealthDateOfVisit);

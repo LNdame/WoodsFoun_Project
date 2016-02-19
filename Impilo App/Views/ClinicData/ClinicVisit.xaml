@@ -129,6 +129,7 @@
                             <DatePicker HorizontalAlignment="Left" Height="23" Margin="785,271,0,0" x:Name="dpBioAstDiagDate" VerticalAlignment="Top" Width="126"/>
                             <Label Content="Next Of Kin Name" Height="28" HorizontalAlignment="Left" Margin="473,138,0,0" x:Name="label3_Copy65" VerticalAlignment="Top" FontWeight="Bold" />
                             <TextBox Height="23" HorizontalAlignment="Left" Margin="630,144,0,0" x:Name="txtBioKinName" VerticalAlignment="Top" Width="253" />
+                            <Label Content="Diabetes" HorizontalAlignment="Left" Margin="468,304,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
                         </Grid>
                     </Border>
                 </Grid>

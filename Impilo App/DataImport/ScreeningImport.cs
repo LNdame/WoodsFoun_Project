@@ -18,26 +18,29 @@ namespace Impilo_App.DataImport
         public static string GetCellValue(ICell Target)
         {
             string ReturnValue = "";
-            
-            try
-            {
-                ReturnValue = Target.StringCellValue;
-            }
-            catch
+            if (Target != null)
             {
                 try
                 {
-                    ReturnValue = Target.NumericCellValue.ToString();
+                    ReturnValue = Target.StringCellValue;
                 }
                 catch
                 {
-                    ReturnValue = Target.DateCellValue.ToString();
+                    try
+                    {
+                        ReturnValue = Target.NumericCellValue.ToString();
+                    }
+                    catch
+                    {
+                        ReturnValue = Target.DateCellValue.ToString();
+                    }
                 }
+
+                if (ReturnValue == "01-01-0001 12:00:00 AM")
+                    ReturnValue = "";
             }
-
-            if (ReturnValue == "01-01-0001 12:00:00 AM")
+            else
                 ReturnValue = "";
-
             return ReturnValue;
         }
 
@@ -115,14 +118,14 @@ namespace Impilo_App.DataImport
                         string EnHut3TypeRoof = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(13).GetCell(7));
                         string EnHut3Ventilation = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(13).GetCell(8));
                         string EnHut3TotalRooms = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(13).GetCell(9));
-                        string EnHut4Structure = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(18).GetCell(6));
-                        string EnHut4TypeRoof = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(18).GetCell(7));
-                        string EnHut4Ventilation = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(18).GetCell(8));
-                        string EnHut4TotalRooms = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(18).GetCell(9));
-                        string EnHut5Structure = GetCellValue (MyWorkbook.GetSheet("Environmental").GetRow(22).GetCell(6));
-                        string EnHut5TypeRoof = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(22).GetCell(7));
-                        string EnHut5Ventilation = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(22).GetCell(8));
-                        string EnHut5TotalRooms = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(22).GetCell(9));
+                        string EnHut4Structure = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(17).GetCell(6));
+                        string EnHut4TypeRoof = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(17).GetCell(7));
+                        string EnHut4Ventilation = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(17).GetCell(8));
+                        string EnHut4TotalRooms = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(17).GetCell(9));
+                        string EnHut5Structure = GetCellValue (MyWorkbook.GetSheet("Environmental").GetRow(21).GetCell(6));
+                        string EnHut5TypeRoof = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(21).GetCell(7));
+                        string EnHut5Ventilation = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(21).GetCell(8));
+                        string EnHut5TotalRooms = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(21).GetCell(9));
                         string EnNoSleepingInOneRoom = GetCellValue (MyWorkbook.GetSheet("Environmental").GetRow(4).GetCell(10));
                         string EnNoOfStructures = GetCellValue(MyWorkbook.GetSheet("Environmental").GetRow(4).GetCell(11)); 
                         string EnRainWaterCollection = GetCellValue (MyWorkbook.GetSheet("Environmental").GetRow(4).GetCell(12));
@@ -240,9 +243,7 @@ namespace Impilo_App.DataImport
 
                         string GenPregCurrently = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(68));
                         string GenPregPossible = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(69));
-                        string GenPregTestDate = MyWorkbook.GetSheet("General").GetRow(4).GetCell(70).DateCellValue.ToString();
-                        if (GenPregTestDate == "0001/01/01 12:00:00 AM")
-                            GenPregTestDate = "";
+                        string GenPregTestDate = GetCellValue(MyWorkbook.GetSheet("General").GetRow(4).GetCell(70));
                         string GenPregResult = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(71));
                         string GenPregReferClinic = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(72));
                         string GenPregReferNo = GetCellValue (MyWorkbook.GetSheet("General").GetRow(4).GetCell(73));
@@ -295,31 +296,31 @@ namespace Impilo_App.DataImport
                         #endregion
 
                         #region Hypertention
-                        string HypYear = GetCellValue(MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(1));
-                        string HypHeadache = GetCellValue (MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(3));
-                        string HypVision = GetCellValue(MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(4));
-                        string HypShortBreath = GetCellValue (MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(5));
-                        string HypConfusion = GetCellValue (MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(6));
-                        string HypChestPain = GetCellValue (MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(7));
-                        string HypReferClinic = GetCellValue (MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(8));
-                        string HypReferNo = GetCellValue (MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(9));
-                        string HypHadStroke = GetCellValue (MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(11));
-                        string HypHadStrokeYear = GetCellValue (MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(12));
-                        string HypFamilyOnMeds = GetCellValue(MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(13));
-                        string HypFamilyStroke = GetCellValue (MyWorkbook.GetSheet("Hypertention").GetRow(3).GetCell(14));
+                        string HypYear = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(1));
+                        string HypHeadache = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(3));
+                        string HypVision = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(4));
+                        string HypShortBreath = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(5));
+                        string HypConfusion = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(6));
+                        string HypChestPain = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(7));
+                        string HypReferClinic = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(8));
+                        string HypReferNo = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(9));
+                        string HypHadStroke = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(11));
+                        string HypHadStrokeYear = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(12));
+                        string HypFamilyOnMeds = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(13));
+                        string HypFamilyStroke = GetCellValue(MyWorkbook.GetSheet("Hypertension ").GetRow(3).GetCell(14));
                         #endregion
 
                         #region Diabetes
-                        string DYear = GetCellValue (MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(1));
-                        string DThirsty = GetCellValue (MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(3));
-                        string DWeightloss = GetCellValue (MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(4));
-                        string DVision = GetCellValue (MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(5));
-                        string DUrinate = GetCellValue (MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(6));
-                        string DNausea = GetCellValue (MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(7));
-                        string DFoot = GetCellValue (MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(8));
-                        string DReferClinic = GetCellValue (MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(9));
-                        string DReferNo = GetCellValue (MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(10));
-                        string DFamilyMember = GetCellValue(MyWorkbook.GetSheet("Diabetes").GetRow(3).GetCell(12));
+                        string DYear = GetCellValue (MyWorkbook.GetSheet("Diabetes ").GetRow(3).GetCell(1));
+                        string DThirsty = GetCellValue (MyWorkbook.GetSheet("Diabetes ").GetRow(3).GetCell(3));
+                        string DWeightloss = GetCellValue (MyWorkbook.GetSheet("Diabetes ").GetRow(3).GetCell(4));
+                        string DVision = GetCellValue (MyWorkbook.GetSheet("Diabetes ").GetRow(3).GetCell(5));
+                        string DUrinate = GetCellValue (MyWorkbook.GetSheet("Diabetes ").GetRow(3).GetCell(6));
+                        string DNausea = GetCellValue (MyWorkbook.GetSheet("Diabetes ").GetRow(3).GetCell(7));
+                        string DFoot = GetCellValue (MyWorkbook.GetSheet("Diabetes ").GetRow(3).GetCell(8));
+                        string DReferClinic = GetCellValue (MyWorkbook.GetSheet("Diabetes ").GetRow(3).GetCell(9));
+                        string DReferNo = GetCellValue (MyWorkbook.GetSheet("Diabetes ").GetRow(3).GetCell(10));
+                        string DFamilyMember = GetCellValue(MyWorkbook.GetSheet("Diabetes ").GetRow(3).GetCell(12));
                         #endregion
                         
                         #region HIV
@@ -337,67 +338,67 @@ namespace Impilo_App.DataImport
                         #endregion
 
                         #region Maternal Health
-                        string MHPregnantBefore = GetCellValue(MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(1));
-                        string MHNoPregnant = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(2));
-                        string MHNOSuccessful = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(3));
-                        string MHWhereDeliveredLast = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(4));
-                        string MHCaesarian = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(5));
-                        string MHBabyUnder25 = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(6));
-                        string MHChildrenDied1 = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(8));
-                        string MHChildrenDied15 = GetCellValue(MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(9));
-                        string MHPAPSmear = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(10));
-                        string MHBloodResult = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(11));
-                        string MHFirstANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(13).DateCellValue.ToString();
+                        string MHPregnantBefore = GetCellValue(MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(1));
+                        string MHNoPregnant = GetCellValue (MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(2));
+                        string MHNOSuccessful = GetCellValue (MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(3));
+                        string MHWhereDeliveredLast = GetCellValue (MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(4));
+                        string MHCaesarian = GetCellValue (MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(5));
+                        string MHBabyUnder25 = GetCellValue (MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(6));
+                        string MHChildrenDied1 = GetCellValue (MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(8));
+                        string MHChildrenDied15 = GetCellValue(MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(9));
+                        string MHPAPSmear = GetCellValue (MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(10));
+                        string MHBloodResult = GetCellValue (MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(11));
+                        string MHFirstANCDate = MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(13).DateCellValue.ToString();
                         if (MHFirstANCDate == "0001/01/01 12:00:00 AM")
                             MHFirstANCDate = "";
-                        string MHLastANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(14).DateCellValue.ToString();
+                        string MHLastANCDate = MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(14).DateCellValue.ToString();
                         if (MHLastANCDate == "0001/01/01 12:00:00 AM")
                             MHLastANCDate = "";
-                        string MHReferClinic = GetCellValue(MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(15));
-                        string MHReferNo = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(16));
-                        string MHNextANCDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(17).DateCellValue.ToString();
+                        string MHReferClinic = GetCellValue(MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(15));
+                        string MHReferNo = GetCellValue (MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(16));
+                        string MHNextANCDate = MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(17).DateCellValue.ToString();
                         if (MHNextANCDate == "0001/01/01 12:00:00 AM")
                             MHNextANCDate = "";
-                        string MHExpectedDeliverDate = MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(18).DateCellValue.ToString();
+                        string MHExpectedDeliverDate = MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(18).DateCellValue.ToString();
                         if (MHExpectedDeliverDate == "0001/01/01 12:00:00 AM")
                             MHExpectedDeliverDate = "";
-                        string MHBreastfeed = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(19));
-                        string MHFormula = GetCellValue (MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(20));
-                        string MHRegisteredMomConnect = GetCellValue(MyWorkbook.GetSheet("Maternal health").GetRow(3).GetCell(21));
+                        string MHBreastfeed = GetCellValue (MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(19));
+                        string MHFormula = GetCellValue (MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(20));
+                        string MHRegisteredMomConnect = GetCellValue(MyWorkbook.GetSheet("Maternal health ").GetRow(3).GetCell(21));
                         #endregion
 
                         #region Child Health
-                        string CHNameMother = GetCellValue(MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(1));
-                        string CHChildRTHC = GetCellValue(MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(3));
-                        string CHReferClinic1 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(4));
-                        string CHReferNo1 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(5));
-                        string CHMotherHIV = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(7));
-                        string CHChildBreastfeed = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(8));
-                        string CHHowLong = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(9));
-                        string CHChildOnNevirapine = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(10));
-                        string CHPCR = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(11));
-                        string CHPCRResult = GetCellValue(MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(12));
-                        string CHReferClininc2 = GetCellValue(MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(13));
-                        string CHReferNo2 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(14));
-                        string CHImmunisationUpToDate = GetCellValue(MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(15));
-                        string CHImmunisationOutstanding1 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(16));
-                        string CHImmunisationOutstanding2 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(3).GetCell(16));
-                        string CHImmunisationOutstanding3 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(4).GetCell(16));
-                        string CHImmunisationOutstanding4 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(5).GetCell(16));
-                        string CHImmunisationOutstanding5 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(6).GetCell(16));
-                        string CHReferClinic3 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(17));
-                        string CHReferNo3 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(18));
-                        string CHMedsGiven = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(19));
-                        string CHWalkAppropriate = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(21));
-                        string CHTalkAppropriate = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(22));
-                        string CHChildConcerns1 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(24));
-                        string CHChildConcerns2 = GetCellValue(MyWorkbook.GetSheet("Child health").GetRow(3).GetCell(24));
-                        string CHChildConcerns3 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(4).GetCell(24));
-                        string CHChildConcerns4 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(5).GetCell(24));
-                        string CHChildConcerns5 = GetCellValue(MyWorkbook.GetSheet("Child health").GetRow(6).GetCell(24));
-                        string CHReferClinic4 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(25));
-                        string CHReferOVC = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(26));
-                        string CHReferNo4 = GetCellValue (MyWorkbook.GetSheet("Child health").GetRow(2).GetCell(27));
+                        string CHNameMother = GetCellValue(MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(1));
+                        string CHChildRTHC = GetCellValue(MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(3));
+                        string CHReferClinic1 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(4));
+                        string CHReferNo1 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(5));
+                        string CHMotherHIV = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(7));
+                        string CHChildBreastfeed = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(8));
+                        string CHHowLong = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(9));
+                        string CHChildOnNevirapine = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(10));
+                        string CHPCR = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(11));
+                        string CHPCRResult = GetCellValue(MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(12));
+                        string CHReferClininc2 = GetCellValue(MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(13));
+                        string CHReferNo2 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(14));
+                        string CHImmunisationUpToDate = GetCellValue(MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(15));
+                        string CHImmunisationOutstanding1 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(16));
+                        string CHImmunisationOutstanding2 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(3).GetCell(16));
+                        string CHImmunisationOutstanding3 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(4).GetCell(16));
+                        string CHImmunisationOutstanding4 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(5).GetCell(16));
+                        string CHImmunisationOutstanding5 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(6).GetCell(16));
+                        string CHReferClinic3 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(17));
+                        string CHReferNo3 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(18));
+                        string CHMedsGiven = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(19));
+                        string CHWalkAppropriate = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(21));
+                        string CHTalkAppropriate = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(22));
+                        string CHChildConcerns1 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(24));
+                        string CHChildConcerns2 = GetCellValue(MyWorkbook.GetSheet("Child health ").GetRow(3).GetCell(24));
+                        string CHChildConcerns3 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(4).GetCell(24));
+                        string CHChildConcerns4 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(5).GetCell(24));
+                        string CHChildConcerns5 = GetCellValue(MyWorkbook.GetSheet("Child health ").GetRow(6).GetCell(24));
+                        string CHReferClinic4 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(25));
+                        string CHReferOVC = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(26));
+                        string CHReferNo4 = GetCellValue (MyWorkbook.GetSheet("Child health ").GetRow(2).GetCell(27));
                         #endregion
 
                         #region Other
@@ -458,9 +459,9 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@ClientID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@HeadOfHousehold", BioHeadOfHousehold);
                             tempCommand.Parameters.AddWithValue("@FirstName", BioName);
-                            tempCommand.Parameters.AddWithValue("@BLastName", BioSurname);
+                            tempCommand.Parameters.AddWithValue("@LastName", BioSurname);
                             tempCommand.Parameters.AddWithValue("@GPSLatitude", BioGPSLat);
-                            tempCommand.Parameters.AddWithValue("@GPSLongtitude", BioGPSLong);
+                            tempCommand.Parameters.AddWithValue("@GPSLongitude", BioGPSLong);
                             tempCommand.Parameters.AddWithValue("@IDNo", BioIDNum);
                             tempCommand.Parameters.AddWithValue("@ClinicID", ClinicID);
                             tempCommand.Parameters.AddWithValue("@DateOfBirth", BioDateOfBirth);
@@ -487,7 +488,7 @@ namespace Impilo_App.DataImport
                             SqlCommand tempCommand = new SqlCommand("AddEncounters", tempConnectionEncounter);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@EncounterDate", BioDateOfScreen);
-                            tempCommand.Parameters.AddWithValue("@ClientID", BioUniqueID);
+                            tempCommand.Parameters.AddWithValue("@ClientID", ScreeningID);
                             tempCommand.Parameters.AddWithValue("@EncounterType", 1);
                             tempCommand.Parameters.AddWithValue("@EncounterCapturedBy", BioChowName);
 
@@ -536,7 +537,7 @@ namespace Impilo_App.DataImport
                             //tempCommand.Parameters.AddWithValue("@EnUseForCooking1", EnUseForCooking1);
                             //tempCommand.Parameters.AddWithValue("@EnUseForCooking2", EnUseForCooking2);
                             //tempCommand.Parameters.AddWithValue("@EnDisposeWaste1", EnDisposeWaste1);
-                            tempID = (int)(tempCommand.ExecuteScalar());
+                            tempID = (int)((decimal)tempCommand.ExecuteScalar());
                             
                         }
                         catch { }
@@ -730,9 +731,9 @@ namespace Impilo_App.DataImport
                             SqlCommand tempCommand = new SqlCommand("AddScreeningGeneral", tempConnectionGen);
                             tempCommand.CommandType = CommandType.StoredProcedure;
                             tempCommand.Parameters.AddWithValue("@EncounterID", EncounterID);
-                            tempCommand.Parameters.AddWithValue("@sgWeight", GenWeight);
-                            tempCommand.Parameters.AddWithValue("@sgHeight", GenHeight);
-                            tempCommand.Parameters.AddWithValue("@sgBMI", GenBMI);
+                            tempCommand.Parameters.AddWithValue("@sgWeight", Convert.ToDecimal(GenWeight));
+                            tempCommand.Parameters.AddWithValue("@sgHeight", Convert.ToDecimal(GenHeight));
+                            tempCommand.Parameters.AddWithValue("@sgBMI", GenBMI == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(GenBMI));
                             tempCommand.Parameters.AddWithValue("@sgOnMeds", GenCurrentOnMeds == "Yes" || GenCurrentOnMeds == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgNotOnMeds", GenCurrentNotOnMeds == "Yes" || GenCurrentNotOnMeds == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgHypertension", GenCurrentHPT == "Yes" || GenCurrentHPT == "1" ? 1 : 0);
@@ -761,16 +762,16 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic", GenCurrentOtherReferClinic == "Yes" || GenCurrentOtherReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgOtherRefNo", GenCurrentOtherReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@sgBPOnMedsSystolic", GenBPOnMedsSystolic);
-                            tempCommand.Parameters.AddWithValue("@sgBPOnMedsDiastolic", GenBPOnMedsDiatolic);
-                            tempCommand.Parameters.AddWithValue("@sgBPNotOnMedsSystolic", GenBPNotOnMedsSystolic);
-                            tempCommand.Parameters.AddWithValue("@sgBPNotOnMedsDiastolic", GenBPNotOnMedsDiatolic);
+                            tempCommand.Parameters.AddWithValue("@sgBPOnMedsSystolic", GenBPOnMedsSystolic == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(GenBPOnMedsSystolic));
+                            tempCommand.Parameters.AddWithValue("@sgBPOnMedsDiastolic", GenBPOnMedsDiatolic == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(GenBPOnMedsDiatolic));
+                            tempCommand.Parameters.AddWithValue("@sgBPNotOnMedsSystolic", GenBPNotOnMedsSystolic == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(GenBPNotOnMedsSystolic));
+                            tempCommand.Parameters.AddWithValue("@sgBPNotOnMedsDiastolic", GenBPNotOnMedsDiatolic == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(GenBPNotOnMedsDiatolic));
                             tempCommand.Parameters.AddWithValue("@sgBPReferToCHOW", GenBPReferCHOW == "Yes" || GenBPReferCHOW == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgBPReferToClinic", GenBPReferClinic == "Yes" || GenBPReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgBPRefNo", GenBPReferNo);
 
-                            tempCommand.Parameters.AddWithValue("@sgBSOnMeds", GenBSOnMeds);
-                            tempCommand.Parameters.AddWithValue("@sgBSNotOnMedsBSReading", GenBSNotOnMeds);
+                            tempCommand.Parameters.AddWithValue("@sgBSOnMeds", GenBSOnMeds == "Yes" || GenBSOnMeds == "1" ? 1 : 0);
+                            tempCommand.Parameters.AddWithValue("@sgBSNotOnMedsBSReading", GenBSNotOnMeds == "" ? Convert.ToDecimal("-1") : Convert.ToDecimal(GenBSNotOnMeds));
                             tempCommand.Parameters.AddWithValue("@sgBSReferToChow", GenBSReferChow == "Yes" || GenBSReferChow == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgBSReferToClinic", GenBSReferClinic == "Yes" || GenBSReferClinic == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgBSRefNo", GenBSReferNo);
@@ -808,7 +809,7 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@sgTBHouseholdMemberOnTBMeds", null);
 
                             tempCommand.Parameters.AddWithValue("@sgOtherBloodInUrine", GenOtherBloodUrine == "Yes" || GenOtherBloodUrine == "1" ? 1 : 0);
-                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic2", GenOtherReferClinic1);
+                            tempCommand.Parameters.AddWithValue("@sgOtherReferToClinic2", GenOtherReferClinic1 == "Yes" || GenOtherReferClinic1 == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgOtherRefNo2", GenOtherReferNo1);
                             tempCommand.Parameters.AddWithValue("@sgOtherSmoking", GenOtherSmoking == "Yes" || GenOtherSmoking == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@sgOtherAlcoholUnitsPerWeek", GenOtherAlcohol == "Yes" || GenOtherAlcohol == "1" ? 1 : 0);
@@ -1264,7 +1265,7 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@shivRefNo", HIVReferNo);
                             tempCommand.Parameters.AddWithValue("@shivARVFileNo", HIVARVNo);
 
-                            tempIDHIV = (int)(tempCommand.ExecuteScalar());
+                            tempIDHIV = (int)((decimal)(tempCommand.ExecuteScalar()));
                         }
                         catch { }
                         finally
@@ -1395,7 +1396,7 @@ namespace Impilo_App.DataImport
                             tempCommand.Parameters.AddWithValue("@schReferToOVC", CHReferOVC == "Yes" || CHReferOVC == "1" ? 1 : 0);
                             tempCommand.Parameters.AddWithValue("@schRefNo4", CHReferNo4);
 
-                            tempIDChild = (int)(tempCommand.ExecuteScalar());
+                            tempIDChild = (int)((decimal)(tempCommand.ExecuteScalar()));
                         }
                         catch { }
                         finally

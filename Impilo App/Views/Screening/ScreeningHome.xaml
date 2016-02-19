@@ -84,6 +84,15 @@
                                         <Trigger Property="IsSelected" Value="False">
                                             <Setter TargetName="Panel" Property="Background" Value="Gray"/>
                                         </Trigger>
+                                        
+                                        <Trigger Property="IsEnabled" Value="True">
+                                            <Setter TargetName="Panel" Property="Background" Value="Gray" />
+                                        </Trigger>
+
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter TargetName="Panel" Property="Background" Value="LightGray" />
+                                        </Trigger>
+                                        
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </Setter.Value>
@@ -153,6 +162,7 @@
                                                 <Label Content="Head Of Household" Grid.Row="7" Grid.Column="0" Height="28" HorizontalAlignment="Left" Margin="5" x:Name="label2_Copy2" VerticalAlignment="Top" FontWeight="Bold" Width="121" />
                                                 <ComboBox x:Name="cboChow" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Width="251"  Height="22" SelectedIndex="0" IsSynchronizedWithCurrentItem="True" Grid.ColumnSpan="2">
                                                     <ComboBoxItem ContentStringFormat="Name"/>
+                                                    <ComboBoxItem x:Name="ch23" Content="Athule Msindwana"/>
                                                     <ComboBoxItem x:Name="ch1" Content="Linette Mawela"/>
                                                     <ComboBoxItem x:Name="ch2" Content="Vuyelwa Breakfast"/>
                                                     <ComboBoxItem x:Name="ch3" Content="Bulelwa Tsaliphike"/>
@@ -175,8 +185,7 @@
                                                     <ComboBoxItem x:Name="ch20" Content="Nomampondomise Gabada"/>
                                                     <ComboBoxItem x:Name="ch21" Content="Nobesuthu Ngalwa"/>
                                                     <ComboBoxItem x:Name="ch22" Content="Ntomboxolo Sabulala"/>
-
-                                                    <ComboBoxItem x:Name="ch23" Content="Athule Msindwana"/>
+                                                    <ComboBoxItem x:Name="ch24" Content="Nontembeko Sicaphuko"/>
 
 
                                                 </ComboBox>
@@ -186,8 +195,14 @@
                                                 <TextBox TabIndex="3" Grid.Row="5" Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="5" x:Name="txtLastName" VerticalAlignment="Top" Width="253" IsEnabled="False" Grid.ColumnSpan="2" />
                                                 <RadioButton x:Name="rdoMale" Grid.Row="6" GroupName="m1" Grid.Column="1" TabIndex="4" Content="Male" HorizontalAlignment="Left" Margin="5,12.72,0,0" VerticalAlignment="Top"  Height="16" Width="44"/>
                                                 <RadioButton x:Name="rdoFemale" Grid.Row="6" GroupName="m1" Grid.Column="1" TabIndex="5" Content="Female" HorizontalAlignment="Right" Margin="0,12.72,129,0" VerticalAlignment="Top" RenderTransformOrigin="-8.546,9.539"  Height="16" Width="56" />
-                                                <RadioButton x:Name="rdohYes" Grid.Row="7" GroupName="m2" Grid.Column="1" TabIndex="4" Content="Yes" HorizontalAlignment="Left" Margin="5,12.72,0,0" VerticalAlignment="Top"  Checked="rdoMale_Copy_Checked" Height="16" Width="35"/>
+                                                <RadioButton x:Name="rdohYes" Grid.Row="7" GroupName="m2" Grid.Column="1" TabIndex="4" Content="Yes" HorizontalAlignment="Left" Margin="5,12.72,0,0" VerticalAlignment="Top"   Height="16" Width="35" Checked="rdohYes_Checked"/>
                                                 <RadioButton x:Name="rdoHNo" Grid.Row="7" GroupName="m2" Grid.Column="1" TabIndex="5" Content="No" HorizontalAlignment="Right" Margin="0,12.34,152,0" VerticalAlignment="Top" RenderTransformOrigin="-8.546,9.539"  Height="16"  Width="33" />
+                                                <TextBox TabIndex="0" Grid.Row="2" Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="373,5,-314,0" 
+                                                         x:Name="txtIDNumber_Copy" VerticalAlignment="Top" Width="253"  IsEnabled="True" Text="{Binding FallbackValue, ElementName= _maskedTextBox, ValidatesOnExceptions=True}" />
+
+                                                <StackPanel Margin="439,5,-218,0" Grid.Column="1">
+                                                    <xctk:MaskedTextBox x:Name="_maskedTextBox" Mask="(000) 000-0000" ValueDataType="{x:Type sys:String}"/>
+                                                </StackPanel>
 
 
 
@@ -261,6 +276,7 @@
                                                     <ComboBoxItem Name="s6">Limpopo</ComboBoxItem>
                                                     <ComboBoxItem Name="s7">Mpumalanga</ComboBoxItem>
                                                     <ComboBoxItem Name="s8">Northern Cape</ComboBoxItem>
+                                                    <ComboBoxItem Name="s9">Not applicable</ComboBoxItem>
                                                 </ComboBox>
                                                 <ComboBox x:Name="cboLastVisit" HorizontalAlignment="Left" Margin="163,125,0,0" VerticalAlignment="Top" Width="132">
                                                     <ComboBoxItem ContentStringFormat="Name"/>
@@ -285,6 +301,7 @@
                                                     <ComboBoxItem Name="cb7">Melitafa</ComboBoxItem>
                                                     <ComboBoxItem Name="cb8">Private</ComboBoxItem>
                                                     <ComboBoxItem Name="cb9">Other</ComboBoxItem>
+                                                    <ComboBoxItem Name="cb10">not applicable</ComboBoxItem>
                                                 </ComboBox>
                                             </Grid>
                                         </GroupBox>
@@ -407,7 +424,7 @@
                                                 <ComboBox x:Name="cboSourceOfIncome" HorizontalAlignment="Left" Margin="9,14,0,0" VerticalAlignment="Top" Width="132" Grid.Row="2" Grid.Column="3">
                                                     <ComboBoxItem ContentStringFormat="Name"/>
                                                     <ComboBoxItem >No Income</ComboBoxItem>
-                                                    <ComboBoxItem >Wages earnt locally</ComboBoxItem>
+                                                    <ComboBoxItem >Wages earned locally</ComboBoxItem>
                                                     <ComboBoxItem >Social Grant</ComboBoxItem>
                                                     <ComboBoxItem >Own Business</ComboBoxItem>
                                                 </ComboBox>
@@ -614,12 +631,12 @@
 
                                                         <DatePicker  x:Name="dateStartHPT"  Grid.Row="2"	 Grid.Column="1" VerticalAlignment="Top" Height="25" Width="131"  HorizontalAlignment="Left" Margin="5" SelectedDate="{x:Static sys:DateTime.Today}"/>
                                                         <Button x:Name="btnCurRef" Grid.Row="4"	 Grid.Column="0" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="88,236,0,0" VerticalAlignment="Top" Width="35" ToolTip="Duplicate ref no all accross" Click="DuplicateRefNo_Click"/>
-                                                        <TextBox x:Name="txtCurHPTRef" Grid.Row="5"	 Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                                                        <TextBox x:Name="txtCurHPTRef" Grid.Row="5"	 Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
                                                         <Label Grid.Row="3"	 Grid.Column="0" Content="Defaulting" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Grid.Row="4"	 Grid.Column="0" Content="Refer to clinic" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Grid.Row="5"	 Grid.Column="0" Content="Referral no." HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                        <RadioButton Grid.Row="0"	 Grid.Column="1" x:Name="radOnMedsHPT" Content="Yes" GroupName="cmrad1" HorizontalAlignment="Right" Margin="0,15,94,0" VerticalAlignment="Top" />
-                                                        <RadioButton Grid.Row="0"	 Grid.Column="1" Content="No" GroupName="cmrad1" HorizontalAlignment="Left" Margin="76.5,15,0,0" VerticalAlignment="Top" />
+                                                        <RadioButton Grid.Row="0"	 Grid.Column="1" x:Name="radOnMedsHPT" Content="Yes" GroupName="cmrad1" HorizontalAlignment="Right" Margin="0,15,102,0" VerticalAlignment="Top" />
+                                                        <RadioButton Grid.Row="0"	 Grid.Column="1" Content="No" GroupName="cmrad1" HorizontalAlignment="Left" Margin="66,15,0,0" VerticalAlignment="Top" />
                                                         <RadioButton Grid.Row="1"	 Grid.Column="1" x:Name="radHPT"  Content="Yes" GroupName="cmrad2" HorizontalAlignment="Left" Margin="5.5,9.566,0,0" VerticalAlignment="Top" />
                                                         <RadioButton Grid.Row="1"	 Grid.Column="1" Content="No" GroupName="cmrad2" HorizontalAlignment="Left" Margin="69.5,10.566,0,0" VerticalAlignment="Top" />
                                                         <RadioButton Grid.Row="3"	 Grid.Column="1" x:Name="radDefauHPT" Content="Yes" GroupName="cmrad3" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" />
@@ -803,11 +820,11 @@
 
                                                         <RadioButton x:Name="radrefCHowBP" GroupName="ccrad2" Content="Yes" HorizontalAlignment="Left" Margin="125,125,0,0" VerticalAlignment="Top"/>
                                                         <RadioButton Content="No" GroupName="ccrad2" HorizontalAlignment="Left" Margin="190,125,0,0" VerticalAlignment="Top"/>
-                                                        <xctk:DecimalUpDown x:Name="numBPSystolic" Height="25" Width="131" Margin="126,47,1,304" DefaultValue="120" Text="120" Increment=".5" Minimum="0" Maximum="200" FormatString="F2"  />
-                                                        <xctk:DecimalUpDown x:Name="numBPDiastolic" Height="25" Width="131" Margin="126,87,1,264" DefaultValue="90" Text="90" Increment=".5" Minimum="0" Maximum="200" FormatString="F2"  />
+                                                        <xctk:DecimalUpDown x:Name="numBPSystolic" Height="25" Width="131" Margin="126,47,1,304" DefaultValue="120" Text="120" Increment="1" Minimum="0" Maximum="200"   />
+                                                        <xctk:DecimalUpDown x:Name="numBPDiastolic" Height="25" Width="131" Margin="126,87,1,264" DefaultValue="90" Text="90" Increment="1" Minimum="0" Maximum="200"   />
 
 
-                                                        <Label Content="Not on treatment&#xA;Upper limit of normal: 140/90&#xD;&#xA;Refer to CHOWs: 141-159/91-99&#xA;Refer to clinic: above 160/100&#xA; &#xA;" HorizontalAlignment="Left" Margin="10,227,0,0" Background="LightBlue" VerticalAlignment="Top" FontWeight="Bold" Width="212" Height="83"/>
+                                                        <Label Content="Not on treatment:&#xA;Upper limit of normal: 140/90&#xD;&#xA;Refer to CHOWs: 141-159/91-99&#xA;Refer to clinic: above 160/100&#xA; &#xA;" HorizontalAlignment="Left" Margin="10,227,0,0" Background="LightBlue" VerticalAlignment="Top" Width="212" Height="83" FontWeight="Bold"/>
                                                         <Label Content="On treatment:&#xA;Upper limit of normal: 140/90&#xD;&#xA;Refer to CHOWs: 141-180/91-119&#xD;&#xA;Refer to clinic: above 181-220/120" HorizontalAlignment="Left" Margin="10,296,0,0" Background="LightBlue" VerticalAlignment="Top" FontWeight="Bold" Height="80" Width="212"/>
                                                     </Grid>
                                                 </GroupBox>
@@ -860,9 +877,9 @@
                                                             <ComboBoxItem Name="hv1">Reactive</ComboBoxItem>
                                                             <ComboBoxItem Name="hv2">Non-reactive</ComboBoxItem>
                                                             <ComboBoxItem Name="hv3">Not clear</ComboBoxItem>
-
+                                                            <ComboBoxItem Name="hv4">Not applicable</ComboBoxItem>
                                                         </ComboBox>
-                                                        <TextBox x:Name="txtrefHIV" HorizontalAlignment="Left" Height="23" Margin="139,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                                                        <TextBox x:Name="txtrefHIV" HorizontalAlignment="Left" Height="23" Margin="139,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
                                                         <Label Content="Refer to clinic"  HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="11,133,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <RadioButton x:Name="radhivknown" GroupName="ccrad9" Content="Yes" HorizontalAlignment="Left" Margin="141,10,0,0" VerticalAlignment="Top"/>
@@ -885,9 +902,9 @@
                                                             <ComboBoxItem Name="pg1">Reactive</ComboBoxItem>
                                                             <ComboBoxItem Name="pg2">Non-reactive</ComboBoxItem>
                                                             <ComboBoxItem Name="pg3">Not clear</ComboBoxItem>
-
+                                                            <ComboBoxItem Name="pg4">Not applicable</ComboBoxItem>
                                                         </ComboBox>
-                                                        <TextBox x:Name="txtCCpregref" HorizontalAlignment="Left" Height="23" Margin="135,155,-9,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontWeight="Bold"/>
+                                                        <TextBox x:Name="txtCCpregref" HorizontalAlignment="Left" Height="23" Margin="135,155,-9,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
                                                         <Label Content="Result" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                         <Label Content="Referral no." HorizontalAlignment="Left" Margin="11,152,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -1270,6 +1287,7 @@
                                                     <ComboBoxItem x:Name="y7" Content="2014"/>
                                                     <ComboBoxItem x:Name="y8" Content="2015"/>
                                                     <ComboBoxItem x:Name="y9" Content="Can not remember"/>
+                                                    <ComboBoxItem x:Name="y10" Content="Not applicable"/>
                                                 </ComboBox>
                                                 <Label Content="Ever had a stroke?"  Grid.Row="0" Grid.Column="2" Height="28" HorizontalAlignment="Left" Margin="5" x:Name="label1_Copy19" VerticalAlignment="Top" FontWeight="Bold" />
                                                 <Label Content="Year of stroke"  Grid.Row="1" Grid.Column="2" Height="28" HorizontalAlignment="Left" Margin="5" x:Name="label2_Copy16" VerticalAlignment="Top" FontWeight="Bold"  />
@@ -1287,6 +1305,7 @@
                                                     <ComboBoxItem x:Name="y26" Content="2013"/>
                                                     <ComboBoxItem x:Name="y27" Content="2014"/>
                                                     <ComboBoxItem x:Name="y28" Content="2015"/>
+                                                    <ComboBoxItem x:Name="y29" Content="Not applicable"/>
                                                 </ComboBox>
                                                 <xctk:IntegerUpDown x:Name="numHPT" Height="30" Width="188" Margin="10,15,57,14" DefaultValue="0" Text="0" Increment="1" Minimum="0" Maximum="30" Grid.Row="2" Grid.Column="3"  />
                                                 <RadioButton x:Name="anyYes" Content="Yes" GroupName="hype5" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top"  Grid.Row="3" Grid.Column="3"/>
@@ -1352,7 +1371,7 @@
                                                 <Label Content="Weight loss" Height="28" HorizontalAlignment="Left" Margin="10,13,0,0" x:Name="label1_Copy29" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1" />
                                                 <Label Content="Blurred vision" Height="28" HorizontalAlignment="Left" Margin="10,5,0,0" x:Name="label2_Copy24" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="2" />
                                                 <Label Content="Urinating more" Height="28" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="label3_Copy4" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="3" />
-                                                <Label Content="Nausea or vomitting" Height="28" HorizontalAlignment="Left" Margin="0,31,0,0" x:Name="label1_Copy24" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="4" />
+                                                <Label Content="Nausea or vomiting" Height="28" HorizontalAlignment="Left" Margin="0,22,0,0" x:Name="label1_Copy24" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="4" />
                                                 <Label Content="Foot exam result" Height="28" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="label2_Copy20" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="2" Grid.Column="2" />
                                                 <Label Content="Refer to clinic" Height="28" HorizontalAlignment="Left" Margin="10,13,0,0" x:Name="label1_Copy25" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="1" />
                                                 <Label Content="Referral no" Height="28" HorizontalAlignment="Left" Margin="10,5,0,0" x:Name="label2_Copy21" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="2" />
@@ -1368,6 +1387,7 @@
                                                     <ComboBoxItem x:Name="yd7" Content="2014"/>
                                                     <ComboBoxItem x:Name="yd8" Content="2015"/>
                                                     <ComboBoxItem x:Name="yd9" Content="Can not remember"/>
+                                                    <ComboBoxItem x:Name="yd10" Content="Not applicable"/>
                                                 </ComboBox>
                                                 <RadioButton x:Name="lossYes"  Content="Yes" GroupName="reg1" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top"  Grid.Column="1" Grid.Row="1"/>
                                                 <RadioButton Content="No" GroupName="reg1" HorizontalAlignment="Left" Margin="71,18,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" />
@@ -1375,8 +1395,8 @@
                                                 <RadioButton Content="No" GroupName="reg2" HorizontalAlignment="Left" Margin="71,17,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.597,0.566" Grid.Column="1" Grid.Row="2" />
                                                 <RadioButton x:Name="uriYes"  Content="Yes" GroupName="reg3" HorizontalAlignment="Left" Margin="11,15,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3"/>
                                                 <RadioButton Content="No" GroupName="reg3" HorizontalAlignment="Left" Margin="71,18,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" />
-                                                <RadioButton x:Name="nauYes"  Content="Yes" GroupName="reg4" HorizontalAlignment="Left" Margin="11,36,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" />
-                                                <RadioButton Content="No" GroupName="reg4" HorizontalAlignment="Left" Margin="71,31,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" />
+                                                <RadioButton x:Name="nauYes"  Content="Yes" GroupName="reg4" HorizontalAlignment="Left" Margin="11,27,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" />
+                                                <RadioButton Content="No" GroupName="reg4" HorizontalAlignment="Left" Margin="71,28,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" />
 
                                                 <ComboBox x:Name="cboFootExam" HorizontalAlignment="Left" Margin="10,10,-30,0" VerticalAlignment="Top" Width="188" Grid.Column="3">
                                                     <ComboBoxItem ContentStringFormat="Name"/>
@@ -1469,6 +1489,7 @@
                                                     <ComboBoxItem x:Name="yh7" Content="2014"/>
                                                     <ComboBoxItem x:Name="yh8" Content="2015"/>
                                                     <ComboBoxItem x:Name="yh9" Content="Can not remember"/>
+                                                    <ComboBoxItem x:Name="yh10" Content="Not applicable"/>
                                                 </ComboBox>
                                                 <RadioButton x:Name="radonMeds" Content="Yes" GroupName="hiv" HorizontalAlignment="Left" Margin="25,18,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" />
                                                 <RadioButton Content="No" GroupName="hiv" HorizontalAlignment="Left" Margin="110,18,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
@@ -1556,6 +1577,7 @@
                                                     <ComboBoxItem x:Name="del2" Content="Hospital"/>
                                                     <ComboBoxItem x:Name="del3" Content="Home"/>
                                                     <ComboBoxItem x:Name="del4" Content="Private Doctor"/>
+                                                    <ComboBoxItem x:Name="del5" Content="Not applicable"/>
                                                 </ComboBox>
                                                 <RadioButton x:Name="radcae" Content="Yes" GroupName="hi15" HorizontalAlignment="Left" Margin="10,18.968,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" />
                                                 <RadioButton x:Name="radCHilDied1" Content="Yes" GroupName="hi75" HorizontalAlignment="Left" Margin="10,20.992,0,0" VerticalAlignment="Top" Grid.Column="3" Grid.Row="1" />
@@ -1615,8 +1637,8 @@
                                                 <RadioButton Content="No" GroupName="hi3" HorizontalAlignment="Left" Margin="115.217,8.323,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="6" />
                                                 <RadioButton x:Name="radintbreas" Content="Yes" GroupName="hi4" HorizontalAlignment="Left" Margin="12.217,12.482,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="7" />
                                                 <RadioButton Content="No" GroupName="hi4" HorizontalAlignment="Left" Margin="115.217,10.482,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="7" />
-                                                <RadioButton x:Name="radregcon" Content="Yes" GroupName="hi5" HorizontalAlignment="Left" Margin="10,7.364,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="8" />
-                                                <RadioButton Content="No" GroupName="hi5" HorizontalAlignment="Left" Margin="115,10.364,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="8" />
+                                                <RadioButton x:Name="radregcon" Content="Yes" GroupName="hi95" HorizontalAlignment="Left" Margin="10,7.364,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="8" />
+                                                <RadioButton Content="No" GroupName="hi95" HorizontalAlignment="Left" Margin="115,10.364,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="8" />
                                                 <DatePicker  x:Name="txtDatelastANC" VerticalAlignment="Top" Height="25" Width="150"  HorizontalAlignment="Left" Margin="5" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1" Grid.Row="1" />
 
                                             </Grid>
@@ -1627,7 +1649,7 @@
                         </Border>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Child Health" x:Name="tabCountdry2_Copy1" Width="100" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
+                <TabItem Header="Child Health" x:Name="tabChildHealth" Width="100" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                     <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#8E000000" Offset="1" />
@@ -1635,9 +1657,7 @@
                     </LinearGradientBrush>
                 </TabItem.Background>-->
                     <Grid Margin="0,0,-0.2,0">
-                        <Border BorderThickness="8" Height="427" HorizontalAlignment="Left" Margin="14,18,0,0" x:Name="borded2r3" VerticalAlignment="Top" Width="416" CornerRadius="10"/>
-                        <Border BorderThickness="8" Height="427" HorizontalAlignment="Left" Margin="445,18,0,0" x:Name="bordde2r2" VerticalAlignment="Top" Width="608" CornerRadius="10"/>
-                        <Border BorderThickness="8" HorizontalAlignment="Left" Margin="0,10,0,118.2" x:Name="border1_Copy6" Width="1020" CornerRadius="10">
+                        <Border BorderThickness="8" HorizontalAlignment="Left" Margin="0,10,0,118.2" x:Name="border1_Copy6" Width="1133" CornerRadius="10">
                             <!--<Border.Background>
                             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                 <GradientStop Color="#4D000000" Offset="0" />
@@ -1652,7 +1672,7 @@
                             </Border.BorderBrush>
                             <Grid x:Name="grid15" Margin="0,0,0.2,-7.8">
 
-                                <Border BorderThickness="4" Height="416" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="border9" VerticalAlignment="Top" Width="989" CornerRadius="8">
+                                <Border BorderThickness="4" Height="416" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="border9" VerticalAlignment="Top" Width="1056" CornerRadius="8">
                                     <Border.BorderBrush>
                                         <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                             <GradientStop Color="#82000000" Offset="0" />
@@ -1741,7 +1761,7 @@
                                                         <ComboBoxItem x:Name="h13" Content="2 years"/>
                                                         <ComboBoxItem x:Name="h14" Content="3 years"/>
                                                         <ComboBoxItem x:Name="h15" Content="4 years"/>
-
+                                                        <ComboBoxItem x:Name="h16" Content="Not applicable"/>
                                                     </ComboBox>
 
                                                     <RadioButton x:Name="radMohiv" Content="Yes" GroupName="par4" HorizontalAlignment="Left" Margin="125,15,0,0" VerticalAlignment="Top"/>
@@ -1757,9 +1777,8 @@
                                                 </Grid>
                                             </GroupBox>
                                             <GroupBox Header="" HorizontalAlignment="Left" Margin="642,10,0,0"
-                                            	VerticalAlignment="Top" Height="361" Width="316">
-                                                <Grid HorizontalAlignment="Left" Height="331" VerticalAlignment="Top"
-                                            		Width="289" Margin="10,10,0,-1.8">
+                                            	VerticalAlignment="Top" Height="361" Width="367">
+                                                <Grid>
                                                     <Label Content="Immunisation up-to-date"
                                             			HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" FontWeight="Bold"/>
                                                     <Label Content="Which immunisations &#xD;&#xA;outstanding" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" Height="41" FontWeight="Bold"/>
@@ -1769,14 +1788,14 @@
                                                     <RadioButton Content="No" GroupName="par9" HorizontalAlignment="Left" Margin="215,13,0,0" VerticalAlignment="Top"/>
 
 
-                                                    <RadioButton  x:Name="radref3" Content="Yes" GroupName="par9" HorizontalAlignment="Left" Margin="156,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.165,0.329" />
-                                                    <RadioButton Content="No" GroupName="par9" HorizontalAlignment="Left" Margin="215,93,0,0" VerticalAlignment="Top" />
-                                                    <TextBox   x:Name="txtref3" HorizontalAlignment="Left" Height="23" Margin="156,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" />
+                                                    <RadioButton  x:Name="radref3" Content="Yes" GroupName="par89" HorizontalAlignment="Left" Margin="156,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.165,0.329" />
+                                                    <RadioButton Content="No" GroupName="par89" HorizontalAlignment="Left" Margin="215,93,0,0" VerticalAlignment="Top" />
+                                                    <TextBox   x:Name="txtref3" HorizontalAlignment="Left" Height="23" Margin="156,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" />
                                                     <Label Content="VIT A &amp; Worm meds &#xD;&#xA;given each month" HorizontalAlignment="Left" Margin="0,177,0,0" VerticalAlignment="Top" Height="51" FontWeight="Bold"/>
                                                     <Label Content="Walk appropriate for age" HorizontalAlignment="Left" Margin="0,233,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                                     <Label Content="Talk appropriate for age" HorizontalAlignment="Left" Margin="0,274,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                                                   
-                                                    <src:MultiComboBox  x:Name="cboImm"  HorizontalAlignment="Left" Margin="156,50,-113,0" VerticalAlignment="Top" Width="123" SelectionMode="Multiple" 
+
+                                                    <src:MultiComboBox  x:Name="cboImm"  HorizontalAlignment="Left" Margin="156,50,0,0" VerticalAlignment="Top" Width="175" SelectionMode="Multiple" 
                                           
                                                             IsCreateNewEnabled="False"
                                                              DisplaySeparator=", "

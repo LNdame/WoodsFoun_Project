@@ -31,11 +31,14 @@ namespace Impilo_App.Views.Client
        // DAL da = new DAL();
 
         static string sconn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-       
+       Impilo_App.Views.Client.Datasource datasource = null;
         SqlConnection conn = new SqlConnection(sconn);
         public AddNewClient()
         {
             InitializeComponent();
+
+            datasource = new Datasource();
+            this.DataContext = datasource;
             bindClinicCBO();
         }
 
@@ -148,6 +151,24 @@ namespace Impilo_App.Views.Client
             ScreeningHome newPage = new ScreeningHome(addedClient.IDNo, addedClient);
             var a = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
             a.ShowPage(newPage);
+        }
+
+        private void radioAttNo_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rad = sender as RadioButton;
+            if (rad.Name == "radioAttNo") //radioAttYes  radioAttNo
+            {
+                if (rad.IsChecked == true)
+                {
+                    NameofSchool.IsEnabled = false;
+                }
+
+            }
+            else {
+                NameofSchool.IsEnabled = true;
+            }
+               
+            
         }
        
     }

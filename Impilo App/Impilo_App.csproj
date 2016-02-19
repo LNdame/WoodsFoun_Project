@@ -423,6 +423,7 @@
     <Compile Include="Views\Client\AddNewClient.xaml.cs">
       <DependentUpon>AddNewClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Client\Datasource.cs" />
     <Compile Include="Views\ClinicData\ClinicVisit.xaml.cs">
       <DependentUpon>ClinicVisit.xaml</DependentUpon>
     </Compile>

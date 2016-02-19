@@ -68,10 +68,12 @@ namespace Impilo_App.Views.Screening
             if (cl.HeadOfHousehold=="yes")
             {
                 rdohYes.IsChecked = true;
+                (tabEnvironmental as TabItem).IsEnabled = true;
             }
             else
             {
                 rdoHNo.IsChecked = true;
+                (tabEnvironmental as TabItem).IsEnabled =false;
             }
 
             cboChow.SelectedIndex = 0;
@@ -426,9 +428,9 @@ namespace Impilo_App.Views.Screening
             TBContactTracing tbc;
             OtherCondition otc;
 
-        try{ // this a massive try
+       // try{ // this a massive try  break it up
             #region Measurement
-
+             try{
           genMeasurement = new General
             {
                 ScreeningID = scrID,
@@ -437,6 +439,15 @@ namespace Impilo_App.Views.Screening
                 BMI = decimal.Parse(txtBMI.Text)
             };
 
+          goforGeneral = true;
+             }
+
+             catch (Exception)
+             {
+                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "General - Measurement Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                 return;
+
+             }
 
             #endregion
 
@@ -445,7 +456,7 @@ namespace Impilo_App.Views.Screening
 
             List<CurrentMedications> medsList = new List<CurrentMedications>();
 
-
+             try{
         curhpt = new CurrentMedications
             {
                 ScreeningID = scrID,
@@ -528,11 +539,23 @@ namespace Impilo_App.Views.Screening
 
             };
 
+         goforGeneral = true;
+             }
 
+
+
+             catch (Exception)
+             {
+                 goforGeneral = false;
+                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "General - Current Medications Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                 return;
+
+             }
 
             #endregion
 
             #region CurrentConditons
+             try{
             //BP Reading
             bpr = new BPReading
             {
@@ -595,11 +618,23 @@ namespace Impilo_App.Views.Screening
             };
 
 
+          goforGeneral = true;
+             }
+
+
+
+             catch (Exception)
+             {
+                 goforGeneral = false;
+                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "General - Current Conditons Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                 return;
+
+             }
 
             #endregion
-
+           
             #region Tuberculosis
-
+             try{
             tb = new Tubercolosis
             {
                 ScreeningID = scrID,
@@ -626,11 +661,26 @@ namespace Impilo_App.Views.Screening
             };
 
 
-            #endregion
 
+
+            goforGeneral = true;
+             }
+
+
+             catch (Exception)
+             {
+                 goforGeneral = false;
+                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "General - Tuberculosis Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                 return;
+
+             }
+
+            #endregion
+            
 
             #region Other Conditon and eldery care
-
+             try
+             {
              otc = new OtherCondition
             {
                 ScreeningID = scrID,
@@ -669,26 +719,26 @@ namespace Impilo_App.Views.Screening
                 ReferralNo = txtRefEld.Text
 
             }; 
-            #endregion
 
+
+          
             goforGeneral = true;
-}
-            catch (Exception)
-            {
-                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "General - Current Conditons Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-               
             }
+                catch (Exception)
+            {
+                goforGeneral = false;
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "General - Other Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
 
-           
-
+            }
+            #endregion
 
             #endregion //end of General Fields
 
 
 
 
-                // Check the if
+             // Check the if
 
 
             #endregion //end check fields
@@ -912,7 +962,7 @@ namespace Impilo_App.Views.Screening
                 com.Parameters.AddWithValue("@shReferralToClinic", hyper.ReferralToClinic);//param
                 com.Parameters.AddWithValue("@shRefNo", hyper.ReferalNo);//param
                 com.Parameters.AddWithValue("@shEverHadAStroke", hyper.EverHadStroke);//param
-                com.Parameters.AddWithValue("@shYearOfStroke", int.Parse(hyper.YearOfStroke));//param
+                com.Parameters.AddWithValue("@shYearOfStroke", hyper.YearOfStroke);//param
                 com.Parameters.AddWithValue("@shHowManyInFamilyOnMedsForHypertension", hyper.HowManyInFamilyOnMedsForHypertension);//param
                 com.Parameters.AddWithValue("@shAnyoneInFamilyHadStroke", hyper.AnyOneInFamilyHadStroke);//param
 
@@ -1098,7 +1148,7 @@ namespace Impilo_App.Views.Screening
                         conn.Open();
                         SqlCommand tempcom = new SqlCommand(storedProcedure, conn);
                         tempcom.CommandType = CommandType.StoredProcedure;
-                        tempcom.Parameters.AddWithValue("@seID", lastestChID);//param
+                        tempcom.Parameters.AddWithValue("@schID", lastestChID);//param
                         tempcom.Parameters.AddWithValue("@schioName", imm);//param
                        
                         tempcom.ExecuteNonQuery();//execute command
@@ -1501,6 +1551,91 @@ namespace Impilo_App.Views.Screening
 
         private void rdoMale_Copy_Checked(object sender, RoutedEventArgs e)
         {
+          //  if (sender is RadioButton) { }
+            if(sender.GetType()== typeof(RadioButton))
+            {
+               
+               
+               // (refYes.IsChecked == true) ? true : false; ;
+            }
+        }
+
+        //int en = 2;
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (en % 2 == 0)
+        //    {
+        //        (tabEnvironmental as TabItem).IsEnabled = true;
+        //       // (tabEnvironmental as TabItem).Background = Brushes.Gray;
+        //    }
+        //    else {
+        //        (tabEnvironmental as TabItem).IsEnabled = false;
+        //       // (tabEnvironmental as TabItem).Background = new SolidColorBrush(Colors.Blue);
+        //    }
+
+        //    en++;
+        //}
+
+        /*
+         *this method will handle disabling the non necessary item on the screening section 
+         */
+        public void greatDisabler(Impilo_App.LocalModels.Client currentClient)
+        {
+            //enviromental tab
+            if (currentClient.HeadOfHousehold == "yes")
+            {               
+                (tabEnvironmental as TabItem).IsEnabled = true;
+            }
+            else
+            {           
+                (tabEnvironmental as TabItem).IsEnabled = false;
+            }
+
+            //Get Client age some change must happen if the person is over 12 or male or female
+            string gender = currentClient.Gender;
+            int age = 0;
+            try
+            {
+                DateTime today = DateTime.Today;
+                age = today.Year - currentClient.DateOfBirth.Year;
+                if (currentClient.DateOfBirth > today.AddYears(-age)) age--;
+            }
+            catch (Exception)
+            {         }
+            
+
+
+            //Maternal Health tab
+            if (age > 12 && gender.Equals("male", StringComparison.InvariantCultureIgnoreCase))
+            {
+                (tabMaternalHealth as TabItem).IsEnabled = false;
+ 
+            }else{
+            
+            (tabMaternalHealth as TabItem).IsEnabled = true;}
+            //ChildHealth tab
+            if (age > 12)
+            { 
+                (tabChildHealth as TabItem).IsEnabled = false;
+      
+            }else{
+            (tabChildHealth as TabItem).IsEnabled = true;
+            }
+
+        }
+
+        private void rdohYes_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rad = sender as RadioButton;
+
+            if (rad.IsChecked == true)
+            {
+                (tabEnvironmental as TabItem).IsEnabled = true;
+            }
+            else
+            {
+                (tabEnvironmental as TabItem).IsEnabled = false;
+            }
 
         }
     }
