@@ -30,7 +30,7 @@
                         <GradientStop Color="#FFEBE8E8" Offset="1" />
                     </LinearGradientBrush>
                 </Border.BorderBrush>
-                <Grid x:Name="grid4" Margin="6,18,6,6">
+                <Grid x:Name="grid4" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="46*"/>
                         <RowDefinition Height="46*"/>
@@ -42,47 +42,49 @@
                         <RowDefinition Height="65*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="139*"/>
-                        <ColumnDefinition Width="327*"/>
-                        <ColumnDefinition Width="185*"/>
-                        <ColumnDefinition Width="300*"/>
+                        <ColumnDefinition Width="192*"/>
+                        <ColumnDefinition Width="273*"/>
+                        <ColumnDefinition Width="214*"/>
+                        <ColumnDefinition Width="284*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Head of household" Height="28" HorizontalAlignment="Left" Margin="21,14,0,0" x:Name="label12_Copy" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1" />
-                    <Label Content="Biographical Details" Height="49" HorizontalAlignment="Left" Margin="21,-9,0,0" x:Name="label1_Copy" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" Grid.ColumnSpan="2" />
-                    <Label Content="Name" Height="28" HorizontalAlignment="Left" Margin="21,14,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="2" />
-                    <Label Content="Surname" Height="28" HorizontalAlignment="Left" Margin="21,10,0,0" x:Name="label3_Copy" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="3" Grid.RowSpan="2" />
+                    <Label Content="Head of household" Height="28" HorizontalAlignment="Left" Margin="21,14,0,0" x:Name="label12_Copy" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1" Width="117" />
+                    <Label Content="Biographical Details" Height="49" HorizontalAlignment="Left" Margin="21,-9,0,0" x:Name="label1_Copy" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" Grid.ColumnSpan="2" Width="273" />
+                    <Label Content="Name" Height="28" HorizontalAlignment="Left" Margin="21,14,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="2" Width="43" />
+                    <Label Content="Surname" Height="28" HorizontalAlignment="Left" Margin="21,10,0,0" x:Name="label3_Copy" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="3" Width="60" />
 
-                    <RadioButton Content="Yes" HorizontalAlignment="Left" Name="radioHHYes" Margin="7,19,0,0" GroupName="Head" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
-                    <RadioButton Content="No" HorizontalAlignment="Left" Name="radioHHNo" Margin="101,19,0,0" GroupName="Head" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+                    <RadioButton Content="Yes" HorizontalAlignment="Left" Name="radioHHYes" Margin="7,19,0,0" GroupName="Head" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Height="16" Width="34"/>
+                    <RadioButton Content="No" HorizontalAlignment="Left" Name="radioHHNo" Margin="101,19,0,0" GroupName="Head" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Height="16" Width="32"/>
 
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="7,14,0,0" x:Name="txtFirstName" VerticalAlignment="Top" Width="253" Grid.Row="2" Grid.Column="1" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="7,10,0,0" x:Name="txtLastName" VerticalAlignment="Top" Width="253" Grid.Row="3" Grid.Column="1" />
-                    <Label Content="GPS Latitute" Height="28" HorizontalAlignment="Left" Margin="20,10,0,0" x:Name="label1_Copy1" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="4" />
-                    <Label Content="GPS Longitude" Height="28" HorizontalAlignment="Left" Margin="20,10,0,0" x:Name="label2_Copy1" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="5" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="7,10,0,0" x:Name="txtLatitude" VerticalAlignment="Top" Width="253" Grid.Row="4" Grid.Column="1" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="7,10,0,0" x:Name="txtLongitude" VerticalAlignment="Top" Width="253" Grid.Row="5" Grid.Column="1" />
-                    <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="21,15,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="6" />
-                    <Label Content="Clinic used" Height="28" HorizontalAlignment="Left" Margin="21,7,0,0" x:Name="label2_Copy2" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="1" />
+                    <TextBox Height="24" HorizontalAlignment="Left" Margin="10,12,0,11" x:Name="txtFirstName" VerticalAlignment="Center" Width="243" Grid.Row="2" Grid.Column="1" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="10,8,0,8" x:Name="txtLastName" VerticalAlignment="Center" Width="243" Grid.Row="3" Grid.Column="1" />
+                    <Label Content="GPS Latitute" Height="28" HorizontalAlignment="Left" Margin="21,14,0,8" x:Name="label1_Copy1" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="4" Width="80" />
+                    <Label Content="GPS Longitude" Height="28" HorizontalAlignment="Left" Margin="21,5,0,0" x:Name="label2_Copy1" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="5" Width="93" />
+                    <xctk:MaskedTextBox x:Name="txtLatitude" Margin="10,14,0,14" Mask="S00.00000" Height="22" Width="243" ValueDataType="{x:Type sys:String}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <xctk:MaskedTextBox x:Name="txtLongitude" Margin="10,12,0,14" Mask="E000.00000" Height="22" Width="243" ValueDataType="{x:Type sys:String}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 
-                    <xctk:MaskedTextBox x:Name="txtIDNo" Margin="7,15,67,11" Mask="0000000000000" Height="28" Width="253" ValueDataType="{x:Type sys:String}" Grid.Row="6" Grid.Column="1"/>
-                    <Label Content="Date of birth" Height="28" HorizontalAlignment="Left" Margin="21,9,0,0" x:Name="label1_Copy3" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="2" />
-                    <Label Content="Gender" Height="28" HorizontalAlignment="Left" Margin="21,0,0,0" x:Name="label2_Copy3" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="3" />
+
+                    <Label Content="ID No" Height="28" HorizontalAlignment="Left" Margin="21,15,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="6" Width="43" />
+                    <Label Content="Clinic used" Height="28" HorizontalAlignment="Left" Margin="21,7,0,0" x:Name="label2_Copy2" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="1" Width="71" />
+
+                    <xctk:MaskedTextBox x:Name="txtIDNo" Margin="10,16,0,17" Mask="0000000000000" Height="24" Width="243" ValueDataType="{x:Type sys:String}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Label Content="Date of birth" Height="28" HorizontalAlignment="Left" Margin="21,9,0,0" x:Name="label1_Copy3" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="2" Width="83" />
+                    <Label Content="Gender" Height="28" HorizontalAlignment="Left" Margin="21,0,0,0" x:Name="label2_Copy3" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="3" Width="51" />
 
                     <DatePicker  x:Name="txtDateofBirth" VerticalAlignment="Top" Height="25" Width="253" HorizontalAlignment="Left" Margin="7,14,0,0" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="3" Grid.Row="2"/>
-                    <RadioButton Content="Male" HorizontalAlignment="Left" Name="radioMale" Margin="7,8,0,0" GroupName="gender" VerticalAlignment="Top" Grid.Column="3" Grid.Row="3"/>
-                    <RadioButton Content="Female" HorizontalAlignment="Left" Name="radioFemale" Margin="100,8,0,0" GroupName="gender" VerticalAlignment="Top" Grid.Column="3" Grid.Row="3"/>
-                    <Label Content="Currently attending school?" Height="28" HorizontalAlignment="Left" Margin="21,15,0,0" x:Name="label1_Copy4" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" />
-                    <Label Content="Name of school" Height="28" HorizontalAlignment="Left" Margin="21,10,0,0" x:Name="label2_Copy4" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="5" />
-                    <RadioButton Content="Yes" HorizontalAlignment="Left" Name="radioAttYes" Margin="7,22,0,0" GroupName="attendance" VerticalAlignment="Top" Grid.Column="3" Grid.Row="4" Checked="radioAttNo_Checked"/>
-                    <RadioButton Content="No" HorizontalAlignment="Left" Name="radioAttNo" Margin="101,23,0,0" GroupName="attendance" VerticalAlignment="Top" Grid.Column="3" Grid.Row="4" Checked="radioAttNo_Checked"/>
+                    <RadioButton Content="Male" HorizontalAlignment="Left" Name="radioMale" Margin="7,8,0,0" GroupName="gender" VerticalAlignment="Top" Grid.Column="3" Grid.Row="3" Height="16" Width="42"/>
+                    <RadioButton Content="Female" HorizontalAlignment="Left" Name="radioFemale" Margin="100,8,0,0" GroupName="gender" VerticalAlignment="Top" Grid.Column="3" Grid.Row="3" Height="16" Width="54"/>
+                    <Label Content="Currently attending school?" Height="28" HorizontalAlignment="Left" Margin="21,15,0,0" x:Name="label1_Copy4" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="4" Width="166" />
+                    <Label Content="Name of school" Height="28" HorizontalAlignment="Left" Margin="21,10,0,0" x:Name="label2_Copy4" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="5" Width="98" />
+                    <RadioButton Content="Yes" HorizontalAlignment="Left" Name="radioAttYes" Margin="7,22,0,0" GroupName="attendance" VerticalAlignment="Top" Grid.Column="3" Grid.Row="4" Checked="radioAttNo_Checked" Height="16" Width="34"/>
+                    <RadioButton Content="No" HorizontalAlignment="Left" Name="radioAttNo" Margin="101,23,0,0" GroupName="attendance" VerticalAlignment="Top" Grid.Column="3" Grid.Row="4" Checked="radioAttNo_Checked" Height="16" Width="32"/>
 
-                    <Label Content="Grade" Height="28" HorizontalAlignment="Left" Margin="21,15,0,0" x:Name="label1_Copy5" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="6" />
-                    <ComboBox HorizontalAlignment="Left" Margin="7,19,0,0" VerticalAlignment="Top" Name="Grade" Width="253" Grid.Column="3" Grid.Row="6" ItemsSource="{Binding Grade}" SelectedIndex="14">
-                        
+                    <Label Content="Grade" Height="28" HorizontalAlignment="Left" Margin="21,15,0,0" x:Name="label1_Copy5" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Grid.Row="6" Width="44" />
+                    <ComboBox HorizontalAlignment="Left" Margin="7,19,0,0" VerticalAlignment="Top" Name="Grade" Width="253" Grid.Column="3" Grid.Row="6" ItemsSource="{Binding Grade}" SelectedIndex="14" Height="22">
+
                     </ComboBox>
 
-                    <ComboBox HorizontalAlignment="Left" Margin="7,14,0,0" Name="NameofSchool" VerticalAlignment="Top" Width="253" Grid.Column="3" Grid.Row="5" ItemsSource="{Binding SchoolName}" SelectedItem="{Binding SelectedSchool}" SelectedIndex="9" />
-                       
+                    <ComboBox HorizontalAlignment="Left" Margin="7,14,0,0" Name="NameofSchool" VerticalAlignment="Top" Width="253" Grid.Column="3" Grid.Row="5" ItemsSource="{Binding SchoolName}" SelectedValuePath="SchoolName" SelectedItem="{Binding SelectedSchool}" SelectedIndex="9" Height="22" />
+
                     <Button Content="Add" Height="36" HorizontalAlignment="Left" Margin="78,9,0,0" x:Name="btnAddCountry" VerticalAlignment="Top" Width="182" FontSize="16" FontWeight="Bold" Click="btnAddCountry_Click" Grid.Column="3" Grid.Row="7" >
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -95,7 +97,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <ComboBox HorizontalAlignment="Left" Margin="7,11,0,0" Name="ClinicUsed" DisplayMemberPath="ClinicName" SelectedValuePath="ClinicID" VerticalAlignment="Top" Width="253" Grid.Column="3" Grid.Row="1"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="7,11,0,0" Name="ClinicUsed" SelectedIndex="0" DisplayMemberPath="ClinicName" SelectedValuePath="ClinicID" VerticalAlignment="Top" Width="253" Grid.Column="3" Grid.Row="1" Height="22"/>
 
                 </Grid>
             </Border>

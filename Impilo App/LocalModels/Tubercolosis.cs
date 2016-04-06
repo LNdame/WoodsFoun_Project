@@ -10,15 +10,20 @@ namespace Impilo_App.LocalModels
     {
         public string ScreeningID { get; set; }
 
+        public bool LossWeight { get; set; }
+
+
         public bool HaveTubercolosis { get; set; }
 
         public string WhatMedsAreYouOn { get; set; }
 
         public bool Defaulting { get; set; }
 
-        public bool LossWeight { get; set; }
+       
+       
 
-        public bool SweatingAtNight { get; set; }
+
+        public bool ExcessiveSweating { get; set; }
 
         public bool FeverOver2Weeks { get; set; }
 
@@ -31,6 +36,20 @@ namespace Impilo_App.LocalModels
         public string ReferralNo { get; set; }
 
         public bool HouseholdMemberONTBMeds { get; set; }
+
+        public bool ReferToClinic2 { get; set; }
+
+        public string ReferralNo2 { get; set; }
+
+        public bool Sputum2Months { get; set; }
+
+        public bool Sputum5Months { get; set; }
+
+        public bool ReferToClinic3 { get; set; }
+
+        public string ReferralNo3 { get; set; }
+
+
 
 
     }

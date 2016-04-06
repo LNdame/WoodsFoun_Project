@@ -67,10 +67,35 @@ namespace Impilo_App.Views.Client
 
         private void btnAddCountry_Click(object sender, RoutedEventArgs e)
         {
+          
+            
+            
+            
             Impilo_App.LocalModels.Client newClient = new LocalModels.Client();
 
             try
             {
+                
+
+                if (!txtIDNo.IsMaskFull)
+                {
+                    MessageBox.Show("Please check the ID Number", "New Client", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                if (!txtLatitude.IsMaskFull)
+                {
+                    MessageBox.Show("Please check the latitude", "New Client", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+
+                if (!txtLongitude.IsMaskFull)
+                {
+                    MessageBox.Show("Please check the longitude", "New Client", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 newClient.ClientID = Utilities.GenerateClientID();
                 newClient.FirstName = txtFirstName.Text;
                 newClient.LastName = txtLastName.Text;
@@ -80,21 +105,21 @@ namespace Impilo_App.Views.Client
                 newClient.IDNo = txtIDNo.Text;
                 newClient.ClinicUsed = int.Parse(ClinicUsed.SelectedValue.ToString());
                 newClient.DateOfBirth = DateTime.Parse(txtDateofBirth.Text);
-                newClient.NameofSchool = ((ComboBoxItem)NameofSchool.SelectedItem).Content.ToString();
+                newClient.NameofSchool = NameofSchool.SelectedItem.ToString();//((ComboBoxItem)NameofSchool.SelectedItem).Content.ToString();NameofSchool.SelectedValue.ToString()
                 newClient.Gender = (radioMale.IsChecked == true) ? "Male" : "Female";
                 newClient.AttendingSchool = (radioAttYes.IsChecked == true) ? true : false;
 
-                newClient.Grade = ((ComboBoxItem)Grade.SelectedItem).Content.ToString();
+                newClient.Grade = Grade.SelectedItem.ToString();
 
                 JumptoScreening(newClient);
 
               //  MessageBox.Show(newClient.ClinicUsed.ToString());
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Some fields are missing data or were filled with incorrect data", "New Client", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return; throw;
+                return; 
             }
             
             
@@ -160,12 +185,16 @@ namespace Impilo_App.Views.Client
             {
                 if (rad.IsChecked == true)
                 {
+                    NameofSchool.SelectedIndex = 9;
+                    Grade.SelectedIndex = 14;
                     NameofSchool.IsEnabled = false;
+                    Grade.IsEnabled = false;
                 }
 
             }
             else {
                 NameofSchool.IsEnabled = true;
+                Grade.IsEnabled = true;
             }
                
             

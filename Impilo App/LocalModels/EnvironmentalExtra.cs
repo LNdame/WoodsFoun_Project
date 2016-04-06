@@ -16,6 +16,9 @@ namespace Impilo_App.LocalModels
 
         public bool RainWaterCollection { get; set; }
 
+
+        public bool OwnorRentHome { get; set; }
+
         public string WaterSupply { get; set; }
 
         public string WalkingDistanceFromWhaterSupply { get; set; }
@@ -32,7 +35,7 @@ namespace Impilo_App.LocalModels
 
         public string DisposeWaste { get; set; }
 
-        public string SourceOfIncome { get; set; }
+        public List<String> SourceOfIncome { get; set; }
 
         public bool RecievedFoodPacelIn6Month { get; set; }
     }

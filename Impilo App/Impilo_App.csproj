@@ -145,6 +145,7 @@
     <Compile Include="LocalModels\BloodSuger.cs" />
     <Compile Include="LocalModels\BPReading.cs" />
     <Compile Include="LocalModels\ChildHealth.cs" />
+    <Compile Include="LocalModels\ChildHealth5_12.cs" />
     <Compile Include="LocalModels\Chow.cs" />
     <Compile Include="LocalModels\Client.cs" />
     <Compile Include="LocalModels\ClientOld.cs" />
@@ -201,7 +202,7 @@
     <Compile Include="LocalModels\Hut.cs" />
     <Compile Include="LocalModels\Hypertension.cs" />
     <Compile Include="LocalModels\Medication.cs" />
-    <Compile Include="LocalModels\MentalHealth.cs" />
+    <Compile Include="LocalModels\MaternalHealth.cs" />
     <Compile Include="LocalModels\OtherCondition.cs" />
     <Compile Include="LocalModels\Other_Tab.cs" />
     <Compile Include="LocalModels\Pregnancy.cs" />
@@ -424,6 +425,9 @@
       <DependentUpon>AddNewClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Client\Datasource.cs" />
+    <Compile Include="Views\ClinicData\AddClinic.xaml.cs">
+      <DependentUpon>AddClinic.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ClinicData\ClinicVisit.xaml.cs">
       <DependentUpon>ClinicVisit.xaml</DependentUpon>
     </Compile>
@@ -465,6 +469,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Client\AddNewClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClinicData\AddClinic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Impilo_App.LocalModels
 {
-    class ChildHealth
+    class ChildHealth5_12
     {
         public int EncounterID { get; set; }
 
@@ -47,7 +47,7 @@ namespace Impilo_App.LocalModels
         //--
 
 
-       
+
         public string ImmunisationUpToDate { get; set; }
 
         public List<string> WhichImmunisatationsOutStanding { get; set; }
@@ -71,6 +71,5 @@ namespace Impilo_App.LocalModels
         public bool ReferToClinic6 { get; set; }
 
         public string ReferralNo6 { get; set; }
-
     }
 }

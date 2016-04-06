@@ -52,12 +52,26 @@ namespace Impilo_App.Views.Home
             try
             {
                 conn.Open();
-                SqlCommand comm = new SqlCommand("SELECT * FROM Client", conn);
+                string SQL = "Select ClientID as 'Unique Identifier',HeadOfHousehold as 'Head of Household',FirstName as 'First Name',LastName as 'Last Name',CONVERT(VARCHAR(11),DateOfBirth,106) as 'Date of Birth',GPSLatitude as 'GPS Latitude',GPSLongitude as 'GPS Longitude',IDNo as 'RSA ID Number',Clinic.ClinicID as 'Clinic ID',Clinic.ClinicName as 'Clinic Name',Gender,Grade as 'Grade in School',NameOfSchool as 'Name of School',AttendingSchool as 'Attending School'";
+                SQL += ",(Select Count(EncounterID) from Encounters where ClientID = Client.ClientID and etID='1') as Screenings";
+                SQL += ",(Select Count(EncounterID) from Encounters where ClientID = Client.ClientID and etID='2') as 'Follow-Ups'";
+                SQL += ",(Select Count(EncounterID) from Encounters where ClientID = Client.ClientID and etID='3') as 'Clinic Visits'";
+                SQL += " FROM Client";
+                SQL += " Inner Join Clinic on Client.ClinicID = Clinic.ClinicID";
+
+                if (txtSearch.Text.Trim() != "")
+                {
+                    SQL += " where " + (string)((ComboBoxItem)ddlSearch.SelectedValue).Tag + " like '%" + txtSearch.Text + "%'";
+                }
+
+                SQL += " Order by 'Unique Identifier', 'Last Name', 'First Name'";
+
+                SqlCommand comm = new SqlCommand(SQL, conn);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(comm);
                 da.Fill(ds);
                 dt = ds.Tables[0];
-                mydatagrid.ItemsSource = ds.Tables[0].DefaultView;
+                mydatagrid.ItemsSource = ds.Tables[0].DefaultView;                  
             }
             catch (Exception ex)
             {
@@ -75,23 +89,23 @@ namespace Impilo_App.Views.Home
 
             if (i >= 0 && i < mydatagrid.Items.Count - 1)
             {
-                var id = dt.Rows[i]["IDNo"].ToString();
+                var id = dt.Rows[i]["RSA ID Number"].ToString();              
 
                 Impilo_App.LocalModels.Client selectClient = new Impilo_App.LocalModels.Client
                 {
-                    ClientID = dt.Rows[i]["ClientID"].ToString(),
-                    HeadOfHousehold = dt.Rows[i]["HeadOfHousehold"].ToString(),
-                    FirstName = dt.Rows[i]["FirstName"].ToString(),
-                    LastName = dt.Rows[i]["LastName"].ToString(),
-                    GPSLatitude = dt.Rows[i]["GPSLatitude"].ToString(),
-                    GPSLongitude = dt.Rows[i]["GPSLongitude"].ToString(),
-                    IDNo = dt.Rows[i]["IDNo"].ToString(),
-                    ClinicUsed =int.Parse( dt.Rows[i]["ClinicID"].ToString()),
-                   // DateOfBirth = DateTime.Parse( dt.Rows[i]["IDNo"].ToString()),
+                    ClientID = dt.Rows[i]["Unique Identifier"].ToString(),
+                    HeadOfHousehold = dt.Rows[i]["Head of Household"].ToString(),
+                    FirstName = dt.Rows[i]["First Name"].ToString(),
+                    LastName = dt.Rows[i]["Last Name"].ToString(),
+                    GPSLatitude = dt.Rows[i]["GPS Latitude"].ToString(),
+                    GPSLongitude = dt.Rows[i]["GPS Longitude"].ToString(),
+                    IDNo = dt.Rows[i]["RSA ID Number"].ToString(),
+                    ClinicUsed =int.Parse( dt.Rows[i]["Clinic ID"].ToString()),
+                    DateOfBirth = DateTime.Parse( dt.Rows[i]["Date of Birth"].ToString()),
                     Gender = dt.Rows[i]["Gender"].ToString(),
-                  //  AttendingSchool = dt.Rows[i]["AttendingSchool"].ToString(),
-                    Grade = dt.Rows[i]["Grade"].ToString(),
-                    NameofSchool = dt.Rows[i]["NameofSchool"].ToString()
+                    AttendingSchool = dt.Rows[i]["Attending School"].ToString() == "1"?true:false,
+                    Grade = dt.Rows[i]["Grade in School"].ToString(),
+                    NameofSchool = dt.Rows[i]["Name of School"].ToString()
                 };
 
 
@@ -99,20 +113,29 @@ namespace Impilo_App.Views.Home
                 switch (lflag)
                 {
                     case 1: FollowUp newPage = new FollowUp(selectClient);
-                        var a = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
-                        a.ShowPage(newPage); break;
+                        var a = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition; 
+                        a.ShowPage(newPage);break;
                     case 2: ClinicVisit clinicV = new ClinicVisit(selectClient);
                         var c = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
-                        c.ShowPage(clinicV); break;
+                        c.ShowPage(clinicV);break;
 
-                    default: FollowUp defaultfup = new FollowUp(selectClient);
+                    default: FollowUp defaultfup= new FollowUp(selectClient);
                         var d = Application.Current.MainWindow.FindName("pageTransitionControl") as PageTransition;
-                        d.ShowPage(defaultfup); break;
+                        d.ShowPage(defaultfup);break;
                 }
 
                
             }
         }
-       
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            BindMyData();
+        }
+
+        private void ddlSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BindMyData();
+        }
     }
 }

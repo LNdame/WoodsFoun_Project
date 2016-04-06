@@ -98,7 +98,11 @@ namespace Impilo_App
             pageTransitionControl.ShowPage(chow);
         }
 
-      
+        private void AddClinic_Click(object sender, RoutedEventArgs e)
+        {
+            AddClinic clinic = new AddClinic();
+            pageTransitionControl.ShowPage(clinic);
+        }
 
         private void ViewChow_Click(object sender, RoutedEventArgs e)
         {
@@ -158,6 +162,22 @@ namespace Impilo_App
                 mnuMain.IsEnabled = true;
                 Cursor = Cursors.Arrow;
             }
+        }
+
+        private void Screening_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FollowUp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        private void Clinic_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
       

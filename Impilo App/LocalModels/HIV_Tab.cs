@@ -11,7 +11,7 @@ namespace Impilo_App.LocalModels
         public string ScreeningID { get; set; }
 
         public string YearOfDiagnosis { get; set; }
-        public bool OnMeds { get; set; }
+        public bool Complication { get; set; }
 
         public string ListMeds { get; set; }
 

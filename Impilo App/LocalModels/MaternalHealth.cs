@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Impilo_App.LocalModels
 {
-    class MentalHealth
+    class MaternalHealth
     {
         public int EncounterID { get; set; }
 
@@ -17,6 +17,8 @@ namespace Impilo_App.LocalModels
         public string HowManySuccessful { get; set; }
 
         public string WhereDeliveredLasBaby { get; set; }
+
+
 
         public bool Caesarian { get; set; }
 
@@ -30,9 +32,25 @@ namespace Impilo_App.LocalModels
 
         public string LastBloodTestResult { get; set; }
 
+        public DateTime DateOfLastDelivery { get; set; }
+
+        public string ApgarScore1Min { get; set; }
+
+        public string ApgarScore5Min { get; set; }
+        public bool PNC6Days { get; set; }
+        public bool PNC6Weeks { get; set; }
+
+        public bool ReferredToClinic1 { get; set; }
+
+        public string ReferralNo1 { get; set; }
+
+        //part two
         public DateTime DateOfFirstANC { get; set; }
 
         public DateTime DateOfLastANC { get; set; }
+
+        public bool GoneforANC1 { get; set; }
+        public bool GoneforANC2 { get; set; }
 
         public bool ReferredToClinic { get; set; }
 
@@ -47,6 +65,6 @@ namespace Impilo_App.LocalModels
         public bool IntendBreastFeed { get; set; }
         public bool RegisteredOnMomConnect { get; set; }
 
-        public string BreastFeedHowLong { get; set; }
+        public string BreastFeedHowLong { get; set; }//not  needed
     }
 }

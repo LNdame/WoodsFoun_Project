@@ -10,7 +10,7 @@ namespace Impilo_App.LocalModels
     {
         public string ScreeningID { get; set; }
 
-        public bool CurrentlyPregnant { get; set; }
+        public string CurrentlyPregnant { get; set; }
 
         public bool PossiblePregnant { get; set; }
 

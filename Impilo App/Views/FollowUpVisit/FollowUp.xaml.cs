@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 //using Repository;
 using Impilo_App.LocalModels;
 using System.Configuration;
+using Impilo_App.Views.Screening;
 
 namespace Impilo_App.Views.FollowUpVisit
 {
@@ -28,45 +29,100 @@ namespace Impilo_App.Views.FollowUpVisit
         static string sconn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         // SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=impilo;Integrated Security=True;");
         SqlConnection conn = new SqlConnection(sconn);
-        Impilo_App.LocalModels.Client cl;
+        Impilo_App.LocalModels.Client currentClient;
         int encounterID = 0;
-
-
+        DataSet ds = null;
+        DataSource datasource = null;
 
         public FollowUp(Impilo_App.LocalModels.Client client)
         {
             InitializeComponent();
 
-            cl = client;
+          ///  Activve the button
+           // Window parent = Window.GetWindow(this);
+           // MainWindow parent =(MainWindow) VisualTreeHelper.GetParent(this);
+           // parent.btnFollowUp.Background = Brushes.Black;
+            currentClient = client;
+            datasource = new DataSource();
+            this.DataContext = datasource;
 
+            loadBio();
+            bindClinicCBO();
 
-            lblIdentity.Content = cl.ClientID;
-            txtName.Text = cl.FirstName;
-            txtSurname.Text = cl.LastName;
-            txtFolLatitude.Text = cl.GPSLatitude;
-            txtFolLongitude.Text = cl.GPSLongitude;
-            dpFolDOB.Text = cl.DateOfBirth.ToString();
-            txtFollowUpIDNumber.Text = cl.IDNo;
+        }
 
-            //txtDateofVisit.Text = (DateTime)
-
-            //txtDateOfScreening.Text = DateTime.Now.ToString("dd MMMM yyyy h:mm");
-
-            if (cl.Gender == "Male" || cl.Gender == "male")
+        public void bindClinicCBO()
+        {
+            try
             {
-                radGendMale.IsChecked = true;
+                conn.Open();
+                SqlCommand comm = new SqlCommand("SELECT * FROM Clinic", conn);
+                ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(comm);
+                da.Fill(ds);
+                //  dt = ds.Tables[0];
+                ClinicUsed.ItemsSource = ds.Tables[0].DefaultView;
+               // cboClinic.ItemsSource = ds.Tables[0].DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public void loadBio()
+        {
+            lblIdentity.Content = currentClient.ClientID;
+
+            txtName.Text = currentClient.FirstName;
+            txtLastName.Text = currentClient.LastName;
+            txtIDNumber.Text = currentClient.IDNo;
+            txtDateOfScreening.Text = DateTime.Now.ToString("dd MMMM yyyy h:mm");
+            //txtDateofBirth.DisplayDate = currentClient.DateOfBirth;
+            txtDateofBirth.SelectedDate = currentClient.DateOfBirth;
+            txtLatitude.Text = currentClient.GPSLatitude;
+            txtLongitude.Text = currentClient.GPSLongitude;
+
+
+            if (currentClient.Gender == "Male" || currentClient.Gender == "male")
+            {
+                rdoMale.IsChecked = true;
             }
             else
             {
-                radGendFemale.IsChecked = true;
+                rdoFemale.IsChecked = true;
             }
 
-            txtFolCapturer.SelectedIndex = 0;
+            if (currentClient.HeadOfHousehold == "yes")
+            {
+                rdohYes.IsChecked = true;
+                
+            }
+            else
+            {
+                rdoHNo.IsChecked = true;
+                
+            }
 
+
+            if (currentClient.AttendingSchool)
+            {
+                radioAttYes.IsChecked = true;
+            }
+            else radioAttNo.IsChecked = true;
+
+            NameofSchool.SelectedIndex = NameofSchool.Items.IndexOf(currentClient.NameofSchool);
+            Grade.SelectedIndex = Grade.Items.IndexOf(currentClient.Grade);
+            grpBio.IsEnabled = false;
         }
 
         private void btnCreateFollowUp_Click(object sender, RoutedEventArgs e)
         {
+
+            
             string storedProcedure = "";
 
             #region SaveEncounters
@@ -80,8 +136,8 @@ namespace Impilo_App.Views.FollowUpVisit
                 {
                     ScreeningID = "",
                     ScreeningDate = DateTime.Now,
-                    ClientId = cl.ClientID,
-                    EncounterCapturedBy = ((ComboBoxItem)txtFolCapturer.SelectedItem).Content.ToString()
+                    ClientId = currentClient.ClientID,
+                    EncounterCapturedBy = ((ComboBoxItem)cboChow.SelectedItem).Content.ToString()
                 };
 
                 goforEncouter = true;
@@ -338,17 +394,17 @@ namespace Impilo_App.Views.FollowUpVisit
                 folDia.EncounterID = encounterID;
                 folDia.fudDateOfVisit = DateTime.Now;
                 folDia.fudHiEHWentToClinic = (DaiWentToClinic1.IsChecked == true) ? true : false;
-                folDia.fudHiEHReReferToClinic = (DiaReReferToClinic11.IsChecked == true) ? true : false;
-                folDia.fudHiEHRefNo = txtDiaReferralNo1.Text;
+               // folDia.fudHiEHReReferToClinic = (DiaReReferToClinic11.IsChecked == true) ? true : false;
+               // folDia.fudHiEHRefNo = txtDiaReferralNo1.Text;
                 folDia.fudHiEHCurrentlyOnMeds = (DiaCurrentlyOnMeds1.IsChecked == true) ? true : false;
                 folDia.fudHiEHStartDate = (DateTime)DiaStartDate.SelectedDate;
                 folDia.fudHiEHFollowUpTestReading = decimal.Parse(txtDiaFollowUpTestReading1.Text);
                 folDia.fudHiEHReferToClinic2 = (DiaReferToClinic21.IsChecked == true) ? true : false;
                 folDia.fudHiEHRefNo2 = txtDiaReferralNo2.Text;
-                folDia.fudClinicRefReferToClinic = (DiaReReferToClinic31.IsChecked == true) ? true : false;
-                folDia.fudClinicRefRefNo = txtDiaReferralNo3.Text;
-                folDia.fudAlreadyOnTreatmentFollowUpTestReading = decimal.Parse(txtDiaFollowUpTestReading3.Text);
-                folDia.fudDoorDoor = txtDiaCheckReading.Text;
+               // folDia.fudClinicRefReferToClinic = (DiaReReferToClinic31.IsChecked == true) ? true : false;
+               // folDia.fudClinicRefRefNo = txtDiaReferralNo3.Text;
+               // folDia.fudAlreadyOnTreatmentFollowUpTestReading = decimal.Parse(txtDiaFollowUpTestReading3.Text);
+               // folDia.fudDoorDoor = txtDiaCheckReading.Text;
 
                 diaFollow = true;
 
@@ -443,25 +499,25 @@ namespace Impilo_App.Views.FollowUpVisit
             {
                 //folHiv.fuhivID = 0;
                 folHiv.EncounterID = encounterID;
-                folHiv.fuhivDateOfVisit = (DateTime)txtHIVDateOfVisit.SelectedDate;
+             //   folHiv.fuhivDateOfVisit = (DateTime)txtHIVDateOfVisit.SelectedDate;
                 folHiv.fuhivHiEHWentToClinic = (HIVWentToClinic1.IsChecked == true) ? true : false;
-                folHiv.fuhivHiEHReReferToClinic = (HIVReReferToClinic1.IsChecked == true) ? true : false;
-                folHiv.fuhivHiEHRefNo = txtHIVReferralNo1.Text;
+               // folHiv.fuhivHiEHReReferToClinic = (HIVReReferToClinic1.IsChecked == true) ? true : false;
+              //  folHiv.fuhivHiEHRefNo = txtHIVReferralNo1.Text;
                 folHiv.fuhivCRReferToClinic = (HIVReferToClinic11.IsChecked == true) ? true : false;
                 folHiv.fuhivCRRefNo = txtHIVReferralNo2.Text;
                 folHiv.fuhHIVStatus = ((ComboBoxItem)comboHIVStatus.SelectedItem).Content.ToString(); 
                 folHiv.fuhivIPOnARV = (HIVOnARVs1.IsChecked == true) ? true : false;
                 folHiv.fuhivIPStartDate = (DateTime)txtHIVStartDate1.SelectedDate;
                 folHiv.fuhivIPAdherenceOK = (HIVAdherenceOK1.IsChecked == true) ? true : false;
-                folHiv.fuhivIPConcerns = (HIVConcerns1.IsChecked == true) ? true : false;
-                folHiv.fuhivIPReferToClinic = (HIVReferToClinic21.IsChecked == true) ? true : false;
-                folHiv.fuhivIPRefNo = txtHIVReferralNo3.Text;
+              //  folHiv.fuhivIPConcerns = (HIVConcerns1.IsChecked == true) ? true : false;
+               /// folHiv.fuhivIPReferToClinic = (HIVReferToClinic21.IsChecked == true) ? true : false;
+             //   folHiv.fuhivIPRefNo = txtHIVReferralNo3.Text;
                 folHiv.fuhivIPNotOnARV = (HIVARVsConcerns1.IsChecked == true) ? true : false;
-                folHiv.fuhivIPReferToClinic2 = (HIVReferToClinic31.IsChecked == true) ? true : false;
-                folHiv.fuhivIPRefNo2 = txtHIVReferralNo4.Text;
-                folHiv.fuhivINCounsellingDone = (HIVCounsellingDone1.IsChecked == true) ? true : false;
-                folHiv.fuhivIUHIVTestDone = (HIVTestingDone1.IsChecked == true) ? true : false;
-                folHiv.fuhivHIVTestResults = txtHIVTestResults.Text;
+             //   folHiv.fuhivIPReferToClinic2 = (HIVReferToClinic31.IsChecked == true) ? true : false;
+             //   folHiv.fuhivIPRefNo2 = txtHIVReferralNo4.Text;
+             //   folHiv.fuhivINCounsellingDone = (HIVCounsellingDone1.IsChecked == true) ? true : false;
+             //   folHiv.fuhivIUHIVTestDone = (HIVTestingDone1.IsChecked == true) ? true : false;
+            //    folHiv.fuhivHIVTestResults = txtHIVTestResults.Text;
                 folHiv.fuhivHIVTestReferToClinic = (HIVReferToClinic41.IsChecked == true) ? true : false;
                 folHiv.fuhivHIVRefNo = txtHIVReferralNo5.Text;
 
@@ -668,7 +724,7 @@ namespace Impilo_App.Views.FollowUpVisit
 
              
            
-                #region Asthma tested+
+            #region Asthma tested+
 
             FollowUpAsthma folAst = new FollowUpAsthma();
             FollowUpAsthmaMedication folAstMed = new FollowUpAsthmaMedication();
@@ -687,7 +743,7 @@ namespace Impilo_App.Views.FollowUpVisit
                 folAst.fuaCRDifficultyBreathingAndWheezing = (AsFitInLastMonth1.IsChecked == true) ? true : false;
                 folAst.fuaCRReferToClinic = (AsReferToClinic1.IsChecked == true) ? true : false;
                 folAst.fuaCRRefNo = txtAsReferralNo2.Text;
-                folAst.fuaOTCurrentlyOnMeds = (AsCurrentlyOnMeds1.IsChecked == true) ? true : false;
+                folAst.fuaOTCurrentlyOnMeds = (AsCurrentlyOnMedsYes.IsChecked == true) ? true : false;
                 folAst.fuaOTStartDate = (DateTime)txtAsStartDate.SelectedDate;
                 folAst.fuaOTIncreasedNoOfAsthmaAttacks = (AsIncreasedNoOfAsthmaAttacks1.IsChecked == true) ? true : false;
                 folAst.fuaOTReReferToClinic = (AsReReferToClinic21.IsChecked == true) ? true : false;
@@ -795,10 +851,10 @@ namespace Impilo_App.Views.FollowUpVisit
             {
                 //folTb.futID = 0;
                 folTb.EncounterID = encounterID;
-                folTb.futbDateOfVisit = (DateTime)txtTBDateOfVisit.SelectedDate;
+              //  folTb.futbDateOfVisit = (DateTime)txtTBDateOfVisit.SelectedDate;
                 folTb.futbHiEHWentToClinic = (TBWentToClinic1.IsChecked == true) ? true : false;
-                folTb.futbHiEHReReferToClinic = (TBReferToClinic11.IsChecked == true) ? true : false;
-                folTb.futbHiEHRefNo = txtTBReferralNo1.Text;
+             //   folTb.futbHiEHReReferToClinic = (TBReferToClinic11.IsChecked == true) ? true : false;
+            //    folTb.futbHiEHRefNo = txtTBReferralNo1.Text;
                 folTb.futbTBSRecentUnplannedLoseOfWeight = (TBRecentUnplannedLoseOfWeight1.IsChecked == true) ? true : false;
                 folTb.futbTBSExcessiveSweatingAtNight = (TBExcessiveSweatingAtNight1.IsChecked == true) ? true : false;
                 folTb.futbTBSFeverOver2Weeks = (TBFeverOver2Weeks1.IsChecked == true) ? true : false;
@@ -813,8 +869,8 @@ namespace Impilo_App.Views.FollowUpVisit
                 folTb.futbTBOTPreviouslyOnMeds = (TBPreviouslyOnMeds1.IsChecked == true) ? true : false;
                 folTb.futbTBOTFinishDate = (DateTime)txtTBFinishDate.SelectedDate;
                 folTb.futbTBOTConcerns = (TBConcerns1.IsChecked == true) ? true : false;
-                folTb.futbTBOTReferToClinic = (TBReferToClinic31.IsChecked == true) ? true : false;
-                folTb.futbTBOTRefNo = txtTBReferralNo3.Text;
+             //  folTb.futbTBOTReferToClinic = (TBReferToClinic31.IsChecked == true) ? true : false;
+               // folTb.futbTBOTRefNo = txtTBReferralNo3.Text;
 
                 //folTbMed.futbmName = ((ComboBoxItem)comboTBMedication.SelectedItem).Content.ToString();
 
@@ -1187,6 +1243,154 @@ namespace Impilo_App.Views.FollowUpVisit
         }
 
         List<string> listofHIVMeds = new List<string>();
+
+        private void AsCurrentlyOnMedsYes_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rad = sender as RadioButton;
+
+            if (rad.Name == "AsCurrentlyOnMedsYes") //radioAttYes  radioAttNo
+            {
+
+                if (rad.IsChecked == true)
+                {
+                    grpOnTreatment.IsEnabled = true;
+                   
+                }
+            }
+            else {
+                grpOnTreatment.IsEnabled = false;
+            }
+
+        }
+
+        private void MatIsItPosibleYouArePregnent1_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rad = sender as RadioButton;
+
+            if (rad.Name == "MatIsItPosibleYouArePregnent1") //radioAttYes  radioAttNo
+            {
+
+                if (rad.IsChecked == true)
+                {
+                    grpCurPreg.IsEnabled = true;
+
+                }
+            }
+            else
+            {
+                grpCurPreg.IsEnabled = false;
+            }
+        }
+
+        private void EpiCurrentlyOnMeds1_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rad = sender as RadioButton;
+
+            if (rad.Name == "EpiCurrentlyOnMeds1") //radioAttYes  radioAttNo
+            {
+
+                if (rad.IsChecked == true)
+                {
+                    grpEplOntreatMent.IsEnabled = true;
+
+                }
+            }
+            else
+            {
+                grpEplOntreatMent.IsEnabled = false;
+            }
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentClient == null)
+            {
+                MessageBox.Show("Oups! No Client was created in the new Client section prior to starting the screening");
+                return;
+            }
+
+            Button edit = sender as Button;
+
+            string content = edit.Content.ToString();
+
+            if (content.Equals("Edit Bio", StringComparison.InvariantCultureIgnoreCase))
+            {
+                grpBio.IsEnabled = true;
+                // ClinicUsed.SelectedIndex = (int.Parse( currentClient.ClientID))-1;
+                DataTable dt = ds.Tables[0];
+                DataRow[] dr = dt.Select(" ClinicID = '" + currentClient.ClinicUsed + "'");
+                int index = dt.Rows.IndexOf(dr[0]);
+                ClinicUsed.SelectedIndex = index;
+
+
+                NameofSchool.SelectedIndex = NameofSchool.Items.IndexOf(currentClient.NameofSchool);
+                Grade.SelectedIndex = Grade.Items.IndexOf(currentClient.Grade);
+
+                edit.Content = "Stop Editing";
+            }
+            else
+            {
+
+                try
+                {
+
+
+                    if (!txtIDNumber.IsMaskFull)
+                    {
+                        MessageBox.Show("Please check the ID Number", "Current Client Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    if (!txtLatitude.IsMaskFull)
+                    {
+                        MessageBox.Show("Please check the latitude", "Current Client Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+
+                    if (!txtLongitude.IsMaskFull)
+                    {
+                        MessageBox.Show("Please check the longitude", "Current Client Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+
+                    currentClient.FirstName = txtName.Text;
+                    currentClient.LastName = txtLastName.Text;
+                    currentClient.HeadOfHousehold = (rdohYes.IsChecked == true) ? "yes" : "no";
+                    currentClient.GPSLatitude = txtLatitude.Text;
+                    currentClient.GPSLongitude = txtLongitude.Text;
+                    currentClient.IDNo = txtIDNumber.Text;
+                    currentClient.ClinicUsed = int.Parse(ClinicUsed.SelectedValue.ToString());
+                    currentClient.DateOfBirth = DateTime.Parse(txtDateofBirth.Text);
+                    currentClient.NameofSchool = NameofSchool.SelectedItem.ToString();//((ComboBoxItem)NameofSchool.SelectedItem).Content.ToString();NameofSchool.SelectedValue.ToString()
+                    currentClient.Gender = (rdoMale.IsChecked == true) ? "Male" : "Female";
+                    currentClient.AttendingSchool = (radioAttYes.IsChecked == true) ? true : false;
+
+                    currentClient.Grade = Grade.SelectedItem.ToString();
+
+
+
+                    //  MessageBox.Show(newClient.ClinicUsed.ToString());
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Some fields are missing data or were filled with incorrect data", "New Client", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+
+                grpBio.IsEnabled = false;
+                edit.Content = "Edit Bio";
+            }
+
+        }
+
+        private void radioAttNo_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
        
     }
 }
