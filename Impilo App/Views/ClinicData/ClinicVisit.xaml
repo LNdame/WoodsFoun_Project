@@ -2,7 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-         
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -129,7 +129,7 @@
                     </LinearGradientBrush>
                 </TabItem.Background>-->
             </TabItem>
-            <TabItem Header="Visit Data" x:Name="VisitData" Width="88" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
+            <TabItem Header="Visit Data" x:Name="VisitData" Width="88" Margin="0,0,0,0">
                 <Border BorderThickness="8" Height="458" HorizontalAlignment="Left" x:Name="border1_Copy" VerticalAlignment="Top" Width="1078" CornerRadius="10">
                     <!--<Border.Background>
                             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
@@ -144,8 +144,12 @@
                         </LinearGradientBrush>
                     </Border.BorderBrush>
                     <Grid x:Name="grid2" Margin="8,0,-8,-8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="109*"/>
+                            <ColumnDefinition Width="422*"/>
+                        </Grid.ColumnDefinitions>
 
-                        <Border BorderThickness="4" Height="416" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="border2" VerticalAlignment="Top" Width="458" CornerRadius="8">
+                        <Border BorderThickness="4" Height="416" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="border2" VerticalAlignment="Top" Width="458" CornerRadius="8" Grid.ColumnSpan="2">
                             <Border.BorderBrush>
                                 <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                     <GradientStop Color="#82000000" Offset="0" />
@@ -153,24 +157,24 @@
                                 </LinearGradientBrush>
                             </Border.BorderBrush>
                             <Grid x:Name="grid3" Margin="6,6,6.6,18">
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="145,55,0,0" x:Name="txtVdWeight" VerticalAlignment="Top" Width="134" FontWeight="Bold" />
+                                <xctk:IntegerUpDown Height="23" HorizontalAlignment="Left" Margin="145,55,0,0" x:Name="txtVdWeight" VerticalAlignment="Top" Width="130" FontWeight="Bold" />
                                 <Label Content="Height" Height="28" HorizontalAlignment="Left" Margin="19,85,0,0" x:Name="label3_Copy9" VerticalAlignment="Top" FontWeight="Bold" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="145,91,0,0" x:Name="txtVdHeight" VerticalAlignment="Top" Width="136" />
+                                <xctk:IntegerUpDown Height="23" HorizontalAlignment="Left" Margin="145,91,0,0" x:Name="txtVdHeight" VerticalAlignment="Top" Width="130" />
                                 <Label Content="Today BP Reading" HorizontalAlignment="Left" Margin="15,181,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold"/>
-                                <Label Content="Systolic" Height="28" HorizontalAlignment="Left" Margin="146,183,0,0" x:Name="label3_Copy11" VerticalAlignment="Top" FontWeight="Bold" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="202,185,0,0" x:Name="txtVdBpSys" VerticalAlignment="Top" Width="50" />
-                                <Label Content="Diastolic" Height="28" HorizontalAlignment="Left" Margin="296,184,0,0" x:Name="label3_Copy69" VerticalAlignment="Top" FontWeight="Bold" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="355,186,0,0" x:Name="txtVdBpDia" VerticalAlignment="Top" Width="50" />
-                                <Label Content="Blood Sugar Level" Height="28" HorizontalAlignment="Left" Margin="14,233,0,0" x:Name="label3_Copy70" VerticalAlignment="Top" FontWeight="Bold" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="152,238,0,0" x:Name="txtVdBloodSugarLevel" VerticalAlignment="Top" Width="253" />
+                                <Label Content="Systolic" Height="28" HorizontalAlignment="Left" Margin="156,183,0,0" x:Name="label3_Copy11" VerticalAlignment="Top" FontWeight="Bold" />
+                                <xctk:IntegerUpDown Height="23" HorizontalAlignment="Left" Margin="212,185,0,0" x:Name="txtVdBpSys" VerticalAlignment="Top" Width="60" />
+                                <Label Content="Diastolic" Height="28" HorizontalAlignment="Left" Margin="150,218,0,0" x:Name="label3_Copy69" VerticalAlignment="Top" FontWeight="Bold" />
+                                <xctk:IntegerUpDown Height="23" HorizontalAlignment="Left" Margin="213,220,0,0" x:Name="txtVdBpDia" VerticalAlignment="Top" Width="60" />
+                                <Label Content="Blood Sugar Level" Height="28" HorizontalAlignment="Left" Margin="14,268,0,0" x:Name="label3_Copy70" VerticalAlignment="Top" FontWeight="Bold" />
+                                <xctk:IntegerUpDown Height="23" HorizontalAlignment="Left" Margin="147,273,0,0" x:Name="txtVdBloodSugarLevel" VerticalAlignment="Top" Width="130" />
                             </Grid>
                         </Border>
                         <Label Content="Weight" Height="28" HorizontalAlignment="Left" Margin="40,71,0,0" x:Name="label2_Copy2" VerticalAlignment="Top" FontWeight="Bold" />
                         <Label Content="BMI" Height="28" HorizontalAlignment="Left" Margin="38,144,0,0" x:Name="label3_Copy10" VerticalAlignment="Top" FontWeight="Bold" />
-                        <TextBox Height="23" HorizontalAlignment="Left" Margin="164,150,0,0" x:Name="txtVdBmi" VerticalAlignment="Top" Width="131" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="166,150,0,0" x:Name="txtVdBmi" VerticalAlignment="Top" Width="130" IsEnabled="False" Grid.ColumnSpan="2" />
                         <Label Content="Date of Visit" Height="28" HorizontalAlignment="Left" Margin="39,30,0,0" x:Name="label3_Copy15" VerticalAlignment="Top" FontWeight="Bold" />
-                        <DatePicker Height="23" HorizontalAlignment="Left" Margin="167,36,0,0" x:Name="dpVdVisDt" VerticalAlignment="Top" Width="253" />
-                        <Border BorderThickness="4" Height="416" HorizontalAlignment="Left" Margin="490,10,0,0" x:Name="border2_Copy" VerticalAlignment="Top" Width="458" CornerRadius="8">
+                        <DatePicker Height="23" HorizontalAlignment="Left" Margin="167,36,0,0" x:Name="dpVdVisDt" VerticalAlignment="Top" Width="253" Grid.ColumnSpan="2" />
+                        <Border BorderThickness="4" Height="416" HorizontalAlignment="Left" Margin="271.717,10,0,0" x:Name="border2_Copy" VerticalAlignment="Top" Width="458" CornerRadius="8" Grid.Column="1">
                             <Border.BorderBrush>
                                 <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                     <GradientStop Color="#82000000" Offset="0" />
@@ -379,13 +383,13 @@
                                 <TextBox Height="23" HorizontalAlignment="Left" Margin="93,-1,0,0" x:Name="txtDiaCholesterol" VerticalAlignment="Top" Width="106" />
                                 <Label Content="Foot exam" Height="28" HorizontalAlignment="Left" Margin="211,-2,0,0" x:Name="label3_Copy38" VerticalAlignment="Top" FontWeight="Bold" />
                                 <Label Content="Cholesterol" Height="28" HorizontalAlignment="Left" Margin="10,-2,0,0" x:Name="label3_Copy39" VerticalAlignment="Top" FontWeight="Bold" />
-                                <TextBox Height="22" HorizontalAlignment="Left" Margin="94,-34,0,0" x:Name="txtDiaHbAc1" VerticalAlignment="Top" Width="106" />
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="94,-34,0,0" x:Name="txtDiaHbAc1" VerticalAlignment="Top" Width="106" />
                                 <Label Content="Creatinine" Height="28" HorizontalAlignment="Left" Margin="212,-36,0,0" x:Name="label3_Copy31" VerticalAlignment="Top" FontWeight="Bold" />
                                 <Label Content="HbA1C" Height="28" HorizontalAlignment="Left" Margin="10,-36,0,0" x:Name="label3_Copy34" VerticalAlignment="Top" FontWeight="Bold" />
                                 <TextBox Height="23" HorizontalAlignment="Left" Margin="93,32,0,-23" x:Name="txtDiaEyeTest" VerticalAlignment="Top" Width="106" />
                                 <Label Content="Eye test" Height="28" HorizontalAlignment="Left" Margin="10,31,0,-27" x:Name="label3_Copy35" VerticalAlignment="Top" FontWeight="Bold" />
                                 <TextBox Height="23" HorizontalAlignment="Left" Margin="284,-1,0,0" x:Name="txtDiaFootExam" VerticalAlignment="Top" Width="106" />
-                                <TextBox Height="22" HorizontalAlignment="Left" Margin="284,-34,0,0" x:Name="txtDiaCreatinine" VerticalAlignment="Top" Width="106" />
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="284,-34,0,0" x:Name="txtDiaCreatinine" VerticalAlignment="Top" Width="106" />
                             </Grid>
                         </Grid>
                         <Border BorderThickness="4" Height="416" HorizontalAlignment="Left" Margin="496,10,0,0" x:Name="border3_Copy1" VerticalAlignment="Top" Width="458" CornerRadius="8">
