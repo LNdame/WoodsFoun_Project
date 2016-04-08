@@ -40,12 +40,19 @@ namespace Impilo_App.LocalModels
 
         public string fuhCRRefNo { get; set; }
 
-        public string fuhAlreadyOnTreatmentFollowUpTestReading { get; set; }
+        public string fuhHiEHNextVisit { get;set; }
 
-        public string fuhDoorToDoorCheckReading { get; set; }
+        public string fuhHiEHOutcomes { get; set; }
 
-        public string fuhMedication { get; set; }
-        public decimal fuhDoorToDoorCheckReadingSys { get; set; }
-        public decimal fuhDoorToDoorCheckReadingDia { get; set; }
+
+
+
+        //public string fuhAlreadyOnTreatmentFollowUpTestReading { get; set; }
+
+        // public string fuhDoorToDoorCheckReading { get; set; }
+
+        // public string fuhMedication { get; set; }
+        //public decimal fuhDoorToDoorCheckReadingSys { get; set; }
+        //public decimal fuhDoorToDoorCheckReadingDia { get; set; }
     }
 }

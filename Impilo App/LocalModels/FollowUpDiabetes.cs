@@ -16,7 +16,7 @@ namespace Impilo_App.LocalModels
 
         public bool fudHiEHWentToClinic { get; set; }
 
-        public bool fudHiEHReReferToClinic { get; set; }
+        public bool fudHiEHReferToClinic { get; set; }
 
         public string fudHiEHRefNo { get; set; }
 
@@ -26,18 +26,22 @@ namespace Impilo_App.LocalModels
 
         public decimal fudHiEHFollowUpTestReading { get; set; }
 
-        public bool fudHiEHReferToClinic2 { get; set; }
+        //public bool fudHiEHReferToClinic2 { get; set; }
 
-        public string fudHiEHRefNo2 { get; set; }
+        //public string fudHiEHRefNo2 { get; set; }
 
-        public bool fudClinicRefReferToClinic { get; set; }
+        public bool fudHiEHReReferToClinic { get; set; }
 
-        public string fudClinicRefRefNo { get; set; }
+        public string fudHiEHReRefNo { get; set; }
 
-        public decimal fudAlreadyOnTreatmentFollowUpTestReading { get; set; }
+        //public decimal fudAlreadyOnTreatmentFollowUpTestReading { get; set; }
 
-        public string fudDoorDoor { get; set; }
+        //public string fudDoorDoor { get; set; }
 
-        public string fudMedication { get; set; }
+        //public string fudMedication { get; set; }
+
+        public string fudHiEHNextVisit { get; set; }
+
+        public string fudHiEHOutcomes { get; set; }
     }
 }

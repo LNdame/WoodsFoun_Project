@@ -259,7 +259,7 @@ namespace Impilo_App.Views.FollowUpVisit
 
             
              
-            #region Hypertension UI Fields needs attention intupdown tested+-
+            #region Hypertension UI Fields needs attention intupdown tested+- [repairs done, not tested]
 
             bool hypFollow = false;
             Impilo_App.LocalModels.FollowUpHypertension folHyp = new Impilo_App.LocalModels.FollowUpHypertension();
@@ -271,21 +271,26 @@ namespace Impilo_App.Views.FollowUpVisit
                 folHyp.EncounterID = encounterID;
                 folHyp.fuhHiEHWentToClinic = (HyperWentToClinic1Yes.IsChecked == true) ? true : false;
                 folHyp.fuhDateOfVisit = DateTime.Now;
-                folHyp.fuhHiEHReReferToClinic = (HyperReReferToClinic1Yes.IsChecked == true) ? true : false;
-                folHyp.fuhHiEHRefNo = txtHyperReferralNo1.Text;
+                folHyp.fuhHiEHReferToClinic = (HyperReferToClinicYes.IsChecked == true) ? true : false;
+                folHyp.fuhHiEHRefNo2 = txtHyperReferralNo.Text;
                 folHyp.fuhHiEHCurrentlyOnMeds = (HyperCurrentlyOnMedsYes.IsChecked == true) ? true : false;
                 folHyp.fuhHiEHStartDate = (DateTime)dpHyperStartDate.SelectedDate;
                 folHyp.fuhHiEHBPScreeningSystolic = decimal.Parse(txtHyperBPReadingSystolic.Text);
                 folHyp.fuhHiEHBPScreeningDiastolic = decimal.Parse(txtHyperBPReadingDiastolic.Text);
                 folHyp.fuhHiEHBPTodaySystolic = decimal.Parse(txtHyperTodayTestReadingSystolic.Text);
                 folHyp.fuhHiEHBPTodayDiastolic = decimal.Parse(txtHyperTodayTestReadingDiastolic.Text);
-                folHyp.fuhHiEHReferToClinic = (HyperReReferToClinic21.IsChecked == true) ? true : false;
-                folHyp.fuhHiEHRefNo2 = txtHyperReferralNo2.Text;
-                folHyp.fuhCRReReferToClinic = (HyperReReferToClinic31.IsChecked == true) ? true : false;
-                folHyp.fuhCRRefNo = txtHyperReferralNo3.Text;
-                folHyp.fuhAlreadyOnTreatmentFollowUpTestReading = txtHyperFollowUpTestReading.Text;
-                folHyp.fuhDoorToDoorCheckReadingSys = decimal.Parse(txtDoortoDoorCheckReadingSys.Text);
-                folHyp.fuhDoorToDoorCheckReadingDia = decimal.Parse(txtDoortoDoorCheckReadingDia.Text);
+                //folHyp.fuhHiEHReReferToClinic = (HyperReferToClinicYes.IsChecked == true) ? true : false;
+                //folHyp.fuhHiEHRefNo = txtHyperReferralNo.Text;
+                //folHyp.fuhHiEHReferToClinic = (HyperReReferToClinicYes.IsChecked == true) ? true : false;
+                //folHyp.fuhHiEHRefNo2 = txtHyperReReferralNo.Text;
+                folHyp.fuhCRReReferToClinic = (HyperReReferToClinicYes.IsChecked == true) ? true : false;
+                folHyp.fuhCRRefNo = txtHyperReReferralNo.Text;
+                folHyp.fuhHiEHNextVisit = ((ComboBoxItem)comboHyperRevisit.SelectedItem).Content.ToString();
+                folHyp.fuhHiEHOutcomes = ((ComboBoxItem)comboHypVisitOutCome.SelectedItem).Content.ToString();
+                    
+                //folHyp.fuhAlreadyOnTreatmentFollowUpTestReading = txtHyperFollowUpTestReading.Text;
+                //folHyp.fuhDoorToDoorCheckReadingSys = decimal.Parse(txtDoortoDoorCheckReadingSys.Text);
+                //folHyp.fuhDoorToDoorCheckReadingDia = decimal.Parse(txtDoortoDoorCheckReadingDia.Text);
 
                 //folHyp.fuhMedication = (ComboBoxItem)comboHyperMedication.SelectedItem).Content.ToString();
 
@@ -314,7 +319,7 @@ namespace Impilo_App.Views.FollowUpVisit
                     com.Parameters.AddWithValue("@EncounterID", encounterID);
                     com.Parameters.AddWithValue("@fuhHiEHWentToClinic", folHyp.fuhHiEHWentToClinic);
                     com.Parameters.AddWithValue("@fuhDateOfVisit", folHyp.fuhDateOfVisit);
-                    com.Parameters.AddWithValue("@fuhHiEHReReferToClinic", folHyp.fuhHiEHReReferToClinic);
+                    com.Parameters.AddWithValue("@fuhHiEHReferToClinic", folHyp.fuhHiEHReferToClinic);
                     com.Parameters.AddWithValue("@fuhHiEHRefNo", folHyp.fuhHiEHRefNo);
                     com.Parameters.AddWithValue("@fuhHiEHCurrentlyOnMeds", folHyp.fuhHiEHCurrentlyOnMeds);
                     com.Parameters.AddWithValue("@fuhHiEHStartDate", folHyp.fuhHiEHStartDate);
@@ -322,14 +327,16 @@ namespace Impilo_App.Views.FollowUpVisit
                     com.Parameters.AddWithValue("@fuhHiEHBPScreeningDiastolic", folHyp.fuhHiEHBPScreeningDiastolic);
                     com.Parameters.AddWithValue("@fuhHiEHBPTodaySystolic", folHyp.fuhHiEHBPTodaySystolic);
                     com.Parameters.AddWithValue("@fuhHiEHBPTodayDiastolic", folHyp.fuhHiEHBPTodayDiastolic);
-                    com.Parameters.AddWithValue("@fuhHiEHReferToClinic", folHyp.fuhHiEHReferToClinic);
-                    com.Parameters.AddWithValue("@fuhHiEHRefNo2", folHyp.fuhHiEHRefNo2);
+                    //com.Parameters.AddWithValue("@fuhHiEHReReferToClinic", folHyp.fuhHiEHReReferToClinic);
+                    //com.Parameters.AddWithValue("@fuhHiEHReRefNo2", folHyp.fuhHiEHReRefNo2);
                     com.Parameters.AddWithValue("@fuhCRReReferToClinic", folHyp.fuhCRReReferToClinic);
                     com.Parameters.AddWithValue("@fuhCRRefNo", folHyp.fuhCRRefNo);
-                    com.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReadingSystolic",70);
-                    com.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReadingDiastolic", 110);
-                    com.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingSystolic", folHyp.fuhDoorToDoorCheckReadingSys);
-                    com.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingDiastolic", folHyp.fuhDoorToDoorCheckReadingDia);
+                    com.Parameters.AddWithValue("@fuhHiEHNextVisit", folHyp.fuhHiEHNextVisit);
+                    com.Parameters.AddWithValue("@fuhHiEHOutcomes", folHyp.fuhHiEHOutcomes);
+                    //com.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReadingSystolic",70);
+                    //com.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReadingDiastolic", 110);
+                    //com.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingSystolic", folHyp.fuhDoorToDoorCheckReadingSys);
+                    //com.Parameters.AddWithValue("@fuhDoorToDoorCheckReadingDiastolic", folHyp.fuhDoorToDoorCheckReadingDia);
                     //com.Parameters.AddWithValue("@fuhMedication", folHyp.fuhMedication);
 
                     int lastestHypID = (int)((decimal)com.ExecuteScalar());
@@ -377,12 +384,12 @@ namespace Impilo_App.Views.FollowUpVisit
                 }
             }
 
-            #endregion
+            #endregion 
 
            
 
            
-            #region Diabetes same issue s as hypertension tested+ 
+            #region Diabetes same issue s as hypertension tested+ [repairs done, not tested]
 
             bool diaFollow = false;
 
@@ -399,12 +406,16 @@ namespace Impilo_App.Views.FollowUpVisit
                 folDia.fudHiEHCurrentlyOnMeds = (DiaCurrentlyOnMeds1.IsChecked == true) ? true : false;
                 folDia.fudHiEHStartDate = (DateTime)DiaStartDate.SelectedDate;
                 folDia.fudHiEHFollowUpTestReading = decimal.Parse(txtDiaFollowUpTestReading1.Text);
-                folDia.fudHiEHReferToClinic2 = (DiaReferToClinic21.IsChecked == true) ? true : false;
-                folDia.fudHiEHRefNo2 = txtDiaReferralNo2.Text;
-               // folDia.fudClinicRefReferToClinic = (DiaReReferToClinic31.IsChecked == true) ? true : false;
-               // folDia.fudClinicRefRefNo = txtDiaReferralNo3.Text;
-               // folDia.fudAlreadyOnTreatmentFollowUpTestReading = decimal.Parse(txtDiaFollowUpTestReading3.Text);
-               // folDia.fudDoorDoor = txtDiaCheckReading.Text;
+                folDia.fudHiEHReferToClinic = (DiaReferToClinicYes.IsChecked == true) ? true : false;
+                folDia.fudHiEHRefNo = txtDiaReferralNo.Text;
+                folDia.fudHiEHReReferToClinic = (DiaReReferToClinicYes.IsChecked == true) ? true : false;
+                folDia.fudHiEHReRefNo = txtDiaReReferralNo.Text;
+                folDia.fudHiEHNextVisit = ((ComboBoxItem)comboDiaRevisit.SelectedItem).Content.ToString();
+                folDia.fudHiEHOutcomes = ((ComboBoxItem)comboDiaVisitOutCome.SelectedItem).Content.ToString();
+
+
+                // folDia.fudAlreadyOnTreatmentFollowUpTestReading = decimal.Parse(txtDiaFollowUpTestReading3.Text);
+                // folDia.fudDoorDoor = txtDiaCheckReading.Text;
 
                 diaFollow = true;
 
@@ -428,17 +439,20 @@ namespace Impilo_App.Views.FollowUpVisit
                     com.Parameters.AddWithValue("@EncounterID", encounterID);
                     com.Parameters.AddWithValue("@fudDateOfVisit", folDia.fudDateOfVisit);
                     com.Parameters.AddWithValue("@fudHiEHWentToClinic", folDia.fudHiEHWentToClinic);
-                    com.Parameters.AddWithValue("@fudHiEHReReferToClinic", folDia.fudHiEHReReferToClinic);
-                    com.Parameters.AddWithValue("@fudHiEHRefNo", folDia.fudHiEHRefNo);
+                    //com.Parameters.AddWithValue("@fudHiEHReReferToClinic", folDia.fudHiEHReReferToClinic);
+                    //com.Parameters.AddWithValue("@fudHiEHRefNo", folDia.fudHiEHRefNo);
                     com.Parameters.AddWithValue("@fudHiEHCurrentlyOnMeds", folDia.fudHiEHCurrentlyOnMeds);
                     com.Parameters.AddWithValue("@fudHiEHStartDate", folDia.fudHiEHStartDate);
                     com.Parameters.AddWithValue("@fudHiEHFollowUpTestReading", folDia.fudHiEHFollowUpTestReading);
-                    com.Parameters.AddWithValue("@fudHiEHReferToClinic2", folDia.fudHiEHReferToClinic2);
-                    com.Parameters.AddWithValue("@fudHiEHRefNo2", folDia.fudHiEHRefNo2);
-                    com.Parameters.AddWithValue("@fudClinicRefReferToClinic", folDia.fudClinicRefReferToClinic);
-                    com.Parameters.AddWithValue("@fudClinicRefRefNo", folDia.fudClinicRefRefNo);
-                    com.Parameters.AddWithValue("@fudAlreadyOnTreatmentFollowUpTestReading", folDia.fudAlreadyOnTreatmentFollowUpTestReading);
-                    com.Parameters.AddWithValue("@fudDoorDoor", folDia.fudDoorDoor);
+                    com.Parameters.AddWithValue("@fudHiEHReferToClinic2", folDia.fudHiEHReferToClinic);
+                    com.Parameters.AddWithValue("@fudHiEHRefNo2", folDia.fudHiEHRefNo);
+                    com.Parameters.AddWithValue("@fudClinicRefReferToClinic", folDia.fudHiEHReReferToClinic);
+                    com.Parameters.AddWithValue("@fudClinicRefRefNo", folDia.fudHiEHReRefNo);
+                    com.Parameters.AddWithValue("@fudHiEHNextVisit", folDia.fudHiEHNextVisit);
+                    com.Parameters.AddWithValue("@fudHiEHOutcomes", folDia.fudHiEHOutcomes);
+
+                    // com.Parameters.AddWithValue("@fudAlreadyOnTreatmentFollowUpTestReading", folDia.fudAlreadyOnTreatmentFollowUpTestReading);
+                    // com.Parameters.AddWithValue("@fudDoorDoor", folDia.fudDoorDoor);
                     //com.Parameters.AddWithValue("@fudMedication", folDia.fudMedication);
 
                     int lastestDiaID = (int)((decimal)com.ExecuteScalar());
@@ -1391,7 +1405,11 @@ namespace Impilo_App.Views.FollowUpVisit
         {
 
         }
-       
+
+        private void HyperWentToClinic1Yes_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 #endregion
