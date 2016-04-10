@@ -570,34 +570,39 @@
 										VerticalAlignment="Top" Height="397" Width="365" Margin="0,0,0,-0.8">
                                         <Grid >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="106*"/>
-                                                <ColumnDefinition Width="247*"/>
+                                                <ColumnDefinition Width="116*"/>
+                                                <ColumnDefinition Width="237*"/>
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="54*"/>
+                                                <RowDefinition Height="66*"/>
+                                                <RowDefinition Height="61*"/>
+                                                <RowDefinition Height="60*"/>
+                                                <RowDefinition Height="59*"/>
+                                                <RowDefinition Height="75*"/>
                                             </Grid.RowDefinitions>
                                             <Label Content="Went to clinic"
-												HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold"/>
-                                            <Label Content="HIV Status" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.077,0.383" FontWeight="Bold" Grid.Row="3"/>
-                                            <RadioButton GroupName="ep" x:Name="HIVWentToClinic1" Content="Yes" HorizontalAlignment="Left" Margin="11,0,0,0" VerticalAlignment="Center" Grid.Column="1"/>
-                                            <RadioButton GroupName="ep" x:Name="HIVWentToClinic2" Content="No" HorizontalAlignment="Left" Margin="76,0,0,0" VerticalAlignment="Center" Grid.Column="1"/>
-                                            <TextBox HorizontalAlignment="Left" x:Name="txtHIVReferralNo2" Height="24" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" FontWeight="Bold" Grid.Row="2" Grid.Column="1"/>
-                                            <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="1"/>
-                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="2"/>
-                                            <RadioButton Content="Yes" x:Name="HIVReferToClinic11" HorizontalAlignment="Left" Margin="11,0,0,0" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
-                                            <RadioButton Content="No" x:Name="HIVReferToClinic12" HorizontalAlignment="Left" Margin="76,0,0,0" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
-                                            <ComboBox HorizontalAlignment="Left" x:Name="comboHIVStatus" Height="24" Margin="11,0,0,0" VerticalAlignment="Center" Width="188" Grid.Row="3" Grid.Column="1">
+												HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,11,0,17" FontWeight="Bold" Height="26" Width="88"/>
+                                            <Label Content="HIV Status" HorizontalAlignment="Left" Margin="10,18,0,22" VerticalAlignment="Center" RenderTransformOrigin="0.077,0.383" FontWeight="Bold" Grid.Row="1" Height="26" Width="69"/>
+                                            <RadioButton GroupName="ep" x:Name="HIVWentToClinicYes" Content="Yes" HorizontalAlignment="Left" Margin="11,17,0,21" VerticalAlignment="Center" Grid.Column="1" Height="16" Width="36"/>
+                                            <RadioButton GroupName="ep" x:Name="HIVWentToClinicNo" Content="No" HorizontalAlignment="Left" Margin="76,17,0,21" VerticalAlignment="Center" Grid.Column="1" Height="16" Width="35"/>
+                                            <TextBox HorizontalAlignment="Left" x:Name="txtHIVReferralNo" Height="24" Margin="10,19,0,17" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" FontWeight="Bold" Grid.Row="3" Grid.Column="1"/>
+                                            <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,15,0,20" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="2" Height="26" Width="87"/>
+                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,17,0,17" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="3" Height="26" Width="76"/>
+                                            <RadioButton Content="Yes" x:Name="HIVReferToClinicYes" HorizontalAlignment="Left" Margin="11,19,0,26" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Height="16" Width="36"/>
+                                            <RadioButton Content="No" x:Name="HIVReferToClinicNo" HorizontalAlignment="Left" Margin="76,19,0,26" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Height="16" Width="35"/>
+                                            <ComboBox HorizontalAlignment="Left" x:Name="comboHIVStatus" Height="24" Margin="11,18,0,24" VerticalAlignment="Center" Width="188" Grid.Row="1" Grid.Column="1">
                                                 <ComboBoxItem x:Name="hivstatus1" Content="Positive"/>
                                                 <ComboBoxItem x:Name="hivstatus2" Content="Negative"/>
                                                 <ComboBoxItem x:Name="hivstatus3" Content="Unclear"/>
 
                                             </ComboBox>
-                                            <ComboBox HorizontalAlignment="Left" x:Name="comboHivRevisit" Height="23" Margin="11,0,0,0" VerticalAlignment="Center" Width="188" Grid.Row="4" Grid.Column="1"/>
-                                            <Label Content="Re-visit." HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="4"/>
+                                            <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="10,16,0,17" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="4" Height="26" Width="106"/>
+                                            <RadioButton Content="Yes" x:Name="HIVReReferToClinicYes" HorizontalAlignment="Left" Margin="11,20,0,23" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" Height="16" Width="36"/>
+                                            <RadioButton Content="No" x:Name="HIVReReferToClinicNo" HorizontalAlignment="Left" Margin="76,20,0,23" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" Height="16" Width="35"/>
+                                            <TextBox HorizontalAlignment="Left" x:Name="txtHIVReReferralNo" Height="24" Margin="10,22,0,29" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" FontWeight="Bold" Grid.Row="5" Grid.Column="1"/>
+                                            <Label Content="Re-referral no." HorizontalAlignment="Left" Margin="10,18,0,31" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="5" Height="26" Width="96"/>
+
                                         </Grid>
                                     </GroupBox>
                                     <GroupBox Header="if negative and unknown" HorizontalAlignment="Left"
@@ -613,8 +618,8 @@
                                             </Grid.RowDefinitions>
                                             <Label Content="Counselling given"
 												HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,17,0,22" FontWeight="Bold" Height="26" Width="110"/>
-                                            <RadioButton Content="Yes" x:Name="HIVHIVTestDone1_Copy" HorizontalAlignment="Left" Margin="32,21,0,28" VerticalAlignment="Center" Grid.Column="1" Height="16" Width="36"/>
-                                            <RadioButton Content="No" x:Name="HIVHIVTestDone2_Copy" HorizontalAlignment="Left" Margin="97,21,0,28" VerticalAlignment="Center" Grid.Column="1" Height="16" Width="35"/>
+                                            <RadioButton Content="Yes" x:Name="HIVCounsellingGivenYes" HorizontalAlignment="Left" Margin="32,21,0,28" VerticalAlignment="Center" Grid.Column="1" Height="16" Width="36"/>
+                                            <RadioButton Content="No" x:Name="HIVCounsellingGivenNo" HorizontalAlignment="Left" Margin="97,21,0,28" VerticalAlignment="Center" Grid.Column="1" Height="16" Width="35"/>
                                         </Grid>
                                     </GroupBox>
                                     <GroupBox Header="HIV test" HorizontalAlignment="Left"
@@ -633,24 +638,17 @@
                                             </Grid.RowDefinitions>
                                             <Label Content="HIV test results"
 												HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,7" FontWeight="Bold"/>
-                                            <ComboBox HorizontalAlignment="Left" x:Name="txtHIVTestResults" Height="24" Margin="27,8,0,8" VerticalAlignment="Center" Width="188" Grid.Column="1">
+                                            <ComboBox HorizontalAlignment="Left" x:Name="comboHIVTestResults" Height="24" Margin="27,8,0,8" VerticalAlignment="Center" Width="188" Grid.Column="1">
                                                 <ComboBoxItem x:Name="positive" />
                                                 <ComboBoxItem x:Name="negative" />
                                                 <ComboBoxItem x:Name="unclear" />
                                             </ComboBox>
                                             <Label Content="Refer to clinic"
 												HorizontalAlignment="Left" VerticalAlignment="Center" Margin="9,0,0,8" FontWeight="Bold" Grid.Row="1" Height="23"/>
-                                            <RadioButton Content="Yes" x:Name="HIVReferToClinic41" HorizontalAlignment="Left" Margin="48,0,0,0" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
-                                            <RadioButton Content="No" x:Name="HIVReferToClinic42" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
-                                            <TextBox HorizontalAlignment="Left" x:Name="txtHIVReferralNo5" Height="23" Margin="27,8,0,8" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" Grid.Row="2" Grid.Column="1"/>
+                                            <RadioButton Content="Yes" x:Name="HIVReferToClinic2Yes" HorizontalAlignment="Left" Margin="48,0,0,0" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+                                            <RadioButton Content="No" x:Name="HIVReferToClinic2No" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+                                            <TextBox HorizontalAlignment="Left" x:Name="txtHIVReferralNo2" Height="23" Margin="27,8,0,8" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" Grid.Row="2" Grid.Column="1"/>
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,0,0,5" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="2"/>
-
-                                            <src:MultiComboBox  x:Name="cboHIVMedication"  HorizontalAlignment="Left" Margin="27,13,0,0" VerticalAlignment="Top" Width="188" SelectionMode="Multiple" 
-                                          
-												IsCreateNewEnabled="False"
-												DisplaySeparator=", "
-												ItemsSource="{Binding HIVMeds}"
-												Grid.Column="1" Grid.Row="3" Height="29"/>
 
                                             <ComboBox HorizontalAlignment="Left" x:Name="HIVMedication" Margin="48,0,0,0" VerticalAlignment="Center" Width="146" Grid.Row="3" Grid.Column="1" Visibility="Hidden">
                                                 <ComboBoxItem x:Name="hivmedi1" Content="FDC, TFE"/>
@@ -663,15 +661,16 @@
                                                 <ComboBoxItem x:Name="hivmedi8" Content="Lpv/r, Kaletra, Aluvia"/>
                                                 <ComboBoxItem x:Name="hivmedi9" Content="AZT"/>
                                             </ComboBox>
-                                            <Label Content="Medication" HorizontalAlignment="Left" Margin="12,16,0,14" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="3"/>
                                             <Button x:Name="btnSaveHivMed" Style="{StaticResource BaseButtonStyle}" Content="Save and Add more Meds" HorizontalAlignment="Left" Margin="27,6,0,0" VerticalAlignment="Top" Width="198" Height="25" Grid.Row="4" Grid.Column="1" Visibility="Hidden" />
-                                            <Label Content="Outcome" HorizontalAlignment="Left" Margin="14,14,0,19" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="4"/>
-                                            <ComboBox HorizontalAlignment="Left" Margin="27,17,0,0" x:Name="comboHivVisitOutCome1_Copy" Height="24" VerticalAlignment="Top" Width="188" FontWeight="Bold" Grid.Column="1" Grid.Row="4">
+                                            <Label Content="Outcome" HorizontalAlignment="Left" Margin="14,16,0,16" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="3"/>
+                                            <ComboBox HorizontalAlignment="Left" Margin="27,19,0,0" x:Name="comboHivVisitOutCome" Height="24" VerticalAlignment="Top" Width="188" FontWeight="Bold" Grid.Column="1" Grid.Row="3">
                                                 <ComboBoxItem x:Name="hout9" Content="Deceased"/>
                                                 <ComboBoxItem x:Name="hout10" Content="Discharged"/>
                                                 <ComboBoxItem x:Name="hout11" Content="Refused"/>
                                                 <ComboBoxItem x:Name="hout12" Content="Moved"/>
                                             </ComboBox>
+                                            <ComboBox HorizontalAlignment="Left" x:Name="comboHivRevisit" Height="23" VerticalAlignment="Center" Width="188" Grid.Row="4" Grid.Column="1" Margin="28,17,0,17"/>
+                                            <Label Content="Revisit in:" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="4" Margin="16,16,0,15"/>
                                         </Grid>
                                     </GroupBox>
                                     <GroupBox Header="if positive" HorizontalAlignment="Left"
@@ -691,17 +690,14 @@
                                             </Grid.RowDefinitions>
                                             <Label Content="Start Date"
 												HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,18,0,0" FontWeight="Bold" Grid.Row="1"/>
-                                            <Label Content="ARVs concern" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.077,0.383" FontWeight="Bold" Grid.Row="3"/>
                                             <Label Content="Adherence OK" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="2"/>
-                                            <RadioButton GroupName="ep" x:Name="HIVOnARVs1" Content="Yes" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Column="1"/>
-                                            <RadioButton GroupName="ep" x:Name="HIVOnARVs2" Content="No" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Center" Grid.Column="1"/>
-                                            <RadioButton GroupName="ep1" x:Name="HIVAdherenceOK1" Content="Yes" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
-                                            <RadioButton GroupName="ep1" x:Name="HIVAdherenceOK2" Content="No" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
-                                            <RadioButton Content="Yes" x:Name="HIVARVsConcerns1" HorizontalAlignment="Left" Margin="11,0,0,0" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"/>
-                                            <RadioButton Content="No" x:Name="HIVARVsConcerns2" HorizontalAlignment="Left" Margin="76,0,0,0" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"/>
+                                            <RadioButton GroupName="ep" x:Name="HIVOnARVsYes" Content="Yes" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Column="1"/>
+                                            <RadioButton GroupName="ep" x:Name="HIVOnARVsNo" Content="No" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Center" Grid.Column="1"/>
+                                            <RadioButton GroupName="ep1" x:Name="HIVAdherenceOKYes" Content="Yes" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+                                            <RadioButton GroupName="ep1" x:Name="HIVAdherenceOKNo" Content="No" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
                                             <Label Content="On ARVs"
 												HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold"/>
-                                            <DatePicker HorizontalAlignment="Left" x:Name="txtHIVStartDate1" Height="24" Margin="12,18,0,0"  VerticalAlignment="Top" Width="188" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Row="1" Grid.Column="1"/>
+                                            <DatePicker HorizontalAlignment="Left" x:Name="txtHIVStartDate" Height="24" Margin="12,18,0,0"  VerticalAlignment="Top" Width="188" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Row="1" Grid.Column="1"/>
                                         </Grid>
                                     </GroupBox>
                                 </Grid>
@@ -911,9 +907,9 @@
                                         <GradientStop Color="#FFEBE8E8" Offset="1" />
                                     </LinearGradientBrush>
                                 </Border.BorderBrush>
-                                <Grid x:Name="gridgeneral1s3" Margin="6,6,6.2,5.8">
+                                <Grid x:Name="gridgeneral1s3" Margin="6">
                                     <GroupBox Header="HiEH" HorizontalAlignment="Left"
-										VerticalAlignment="Top" Height="425" Width="471">
+										VerticalAlignment="Top" Height="433" Width="471">
                                         <Grid >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="0"/>
@@ -932,29 +928,24 @@
                                             </Grid.ColumnDefinitions>
                                             <Label Content="Went to clinic"
 												HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,14,0,13" FontWeight="Bold" Grid.Row="1" Height="26" Width="88"/>
-                                            <Label Content="Asthma attacks&#xA;in last month" HorizontalAlignment="Left" Margin="10,5,0,6" VerticalAlignment="Center" RenderTransformOrigin="0.077,0.383" FontWeight="Bold" Height="40" Grid.Row="4" Width="96"/>
-                                            <TextBox HorizontalAlignment="Left" x:Name="txtAsReferralNo1" Height="22" Margin="27,19,0,15" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" Grid.Column="1" Grid.Row="3"/>
-                                            <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="10,13,0,13" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="2" Height="26" Width="104"/>
-                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,17,0,13" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="3" Height="26" Width="76"/>
+                                            <Label Content="Asthma attacks&#xA;in last month" HorizontalAlignment="Left" Margin="10,8,0,5" VerticalAlignment="Center" RenderTransformOrigin="0.077,0.383" FontWeight="Bold" Height="40" Grid.Row="2" Width="96"/>
+                                            <TextBox HorizontalAlignment="Left" x:Name="txtAsReferralNo1" Height="22" Margin="27,19,0,17" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" Grid.Column="1" Grid.Row="6"/>
+                                            <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="10,16,0,13" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="5" Height="26" Width="104"/>
+                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,17,0,15" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="6" Height="26" Width="76"/>
                                             <RadioButton GroupName="ep" x:Name="AsWentToClinic1" Content="Yes" HorizontalAlignment="Left" Margin="27,20,0,19" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Height="14" Width="36"/>
                                             <RadioButton GroupName="ep" x:Name="AsWentToClinic2" Content="No" HorizontalAlignment="Left" Margin="92,20,0,19" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Height="14" Width="35"/>
-                                            <RadioButton GroupName="ep1" x:Name="AsReReferToClinic11" Content="Yes" HorizontalAlignment="Left" Margin="27,19,0,17" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="16" Width="36"/>
-                                            <RadioButton GroupName="ep1" x:Name="AsReReferToClinic12" Content="No" HorizontalAlignment="Left" Margin="92,19,0,17" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="16" Width="35"/>
-                                            <RadioButton GroupName="ep2" x:Name="AsReferToClinic1" Content="Yes" HorizontalAlignment="Left" Margin="27,16,0,22" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" Height="16" Width="36"/>
-                                            <RadioButton GroupName="ep2" x:Name="AsReferToClinic2" Content="No" HorizontalAlignment="Left" Margin="92,16,0,22" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" Height="16" Width="35"/>
-                                            <TextBox HorizontalAlignment="Left" x:Name="txtAsReferralNo2" Height="24" Margin="31,16,0,17" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" Grid.Column="1" Grid.Row="6"/>
-                                            <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,12,0,16" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="5" Height="26" Width="87"/>
-                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,14,0,17" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="6" Height="26" Width="76"/>
-                                            <RadioButton Content="Yes" x:Name="AsFitInLastMonth1" HorizontalAlignment="Left" Margin="27,17,0,18" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" Height="16" Width="36"/>
-                                            <RadioButton Content="No" x:Name="AsFitInLastMonth2" HorizontalAlignment="Left" Margin="92,17,0,18" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" Height="16" Width="35"/>
+                                            <RadioButton GroupName="ep1" x:Name="AsReReferToClinic11" Content="Yes" HorizontalAlignment="Left" Margin="27,22,0,17" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" Height="16" Width="36"/>
+                                            <RadioButton GroupName="ep1" x:Name="AsReReferToClinic12" Content="No" HorizontalAlignment="Left" Margin="92,22,0,17" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" Height="16" Width="35"/>
+                                            <RadioButton GroupName="ep2" x:Name="AsReferToClinic1" Content="Yes" HorizontalAlignment="Left" Margin="27,17,0,24" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" Height="16" Width="36"/>
+                                            <RadioButton GroupName="ep2" x:Name="AsReferToClinic2" Content="No" HorizontalAlignment="Left" Margin="92,17,0,24" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" Height="16" Width="35"/>
+                                            <TextBox HorizontalAlignment="Left" x:Name="txtAsReferralNo2" Height="24" Margin="25,16,0,12" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" Grid.Column="1" Grid.Row="4"/>
+                                            <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,13,0,18" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="3" Height="26" Width="87"/>
+                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,14,0,12" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="4" Height="26" Width="76"/>
+                                            <RadioButton Content="Yes" x:Name="AsAttInLastMonthYes" HorizontalAlignment="Left" Margin="27,20,0,17" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="16" Width="36"/>
+                                            <RadioButton Content="No" x:Name="AsAttInLastMonthNo" HorizontalAlignment="Left" Margin="92,20,0,17" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="16" Width="35"/>
                                             <Label Content="Date of visit"
 												HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontWeight="Bold" Height="0" Grid.RowSpan="2" Width="78"/>
                                             <DatePicker HorizontalAlignment="Left" x:Name="txtAsDateOfVisit" Height="23" Margin="27,10,0,0"  VerticalAlignment="Top" Width="256" Visibility="Hidden" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1" Grid.RowSpan="2"/>
-                                            <RadioButton GroupName="ep2" x:Name="AsReferToClinic1_Copy" Content="Yes" HorizontalAlignment="Left" Margin="27,15,0,18" VerticalAlignment="Center" Grid.Column="1" Grid.Row="7" Height="16" Width="36"/>
-                                            <RadioButton GroupName="ep2" x:Name="AsReferToClinic2_Copy" Content="No" HorizontalAlignment="Left" Margin="92,15,0,18" VerticalAlignment="Center" Grid.Column="1" Grid.Row="7" Height="16" Width="35"/>
-                                            <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,11,0,12" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="7" Height="26" Width="87"/>
-                                            <TextBox HorizontalAlignment="Left" x:Name="txtAsReferralNo2_Copy" Height="24" Margin="31,7,0,1" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" Grid.Column="1" Grid.Row="8"/>
-                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,5,0,1" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="8" Height="26" Width="76"/>
                                         </Grid>
                                     </GroupBox>
 
@@ -982,8 +973,8 @@
                                                         <ColumnDefinition Width="311*"/>
                                                     </Grid.ColumnDefinitions>
 
-                                                    <DatePicker HorizontalAlignment="Left" x:Name="txtAsStartDate" Height="22" Margin="14,21,0,21"  VerticalAlignment="Center" Width="188" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1" Grid.Row="1"/>
-                                                    <Label Content="Start date" HorizontalAlignment="Left" Margin="16,19,0,19" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="1" Height="26" Width="66"/>
+                                                    <DatePicker HorizontalAlignment="Left" x:Name="txtAsStartDate" Height="22" Margin="26,21,0,21"  VerticalAlignment="Center" Width="188" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1" Grid.Row="1"/>
+                                                    <Label Content="Start date" HorizontalAlignment="Left" Margin="22,19,0,19" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="1" Height="26" Width="66"/>
 
                                                     <src:MultiComboBox  x:Name="cboAsthMeds"  HorizontalAlignment="Left" Margin="14,20,0,19" VerticalAlignment="Center" Width="263" SelectionMode="Multiple" 
                                           
@@ -1003,6 +994,11 @@
                                                     <Label Content="Increased no. &#xA;of fit" HorizontalAlignment="Left" Margin="21,6,0,12" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="2" Height="42" Width="88"/>
                                                     <RadioButton GroupName="ep6" x:Name="AsIncreasedNoOfAsthmaAttacks1" Content="Yes" HorizontalAlignment="Left" Margin="25,22,0,22" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="16" Width="36"/>
                                                     <RadioButton GroupName="ep6" x:Name="AsIncreasedNoOfAsthmaAttacks2" Content="No" HorizontalAlignment="Left" Margin="90,22,0,22" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="16" Width="35"/>
+                                                    <Label Content="Revisit in:" HorizontalAlignment="Left" Margin="21,12,0,4" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="3" Height="36" Width="88"/>
+
+                                                    <Label Content="Outcomes" HorizontalAlignment="Left" Margin="21,16,0,7" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="4" Height="36" Width="88"/>
+                                                    <ComboBox x:Name="comboAstRevisit" Grid.Column="1" HorizontalAlignment="Left" Margin="25,18,0,0" Grid.Row="4" VerticalAlignment="Top" Width="188"/>
+                                                    <ComboBox x:Name="comboAstOutcomes" Grid.Column="1" HorizontalAlignment="Left" Margin="25,14,0,0" Grid.Row="3" VerticalAlignment="Top" Width="188"/>
                                                 </Grid>
                                             </GroupBox>
                                             <RadioButton GroupName="ep4" x:Name="AsCurrentlyOnMedsYes" Content="Yes" HorizontalAlignment="Left" Margin="167,16,0,0" VerticalAlignment="Top" Checked="AsCurrentlyOnMedsYes_Checked" />
@@ -1048,8 +1044,8 @@
                                 </Border.BorderBrush>
                                 <Grid x:Name="gridgeneral1s2" Margin="6,6,6.2,5.8">
                                     <GroupBox Header="HiEH" HorizontalAlignment="Left"
-										VerticalAlignment="Top" Height="370" Width="423" Margin="10,5,0,0">
-                                        <Grid >
+										VerticalAlignment="Top" Height="450" Width="423" Margin="10,5,0,0">
+                                        <Grid Margin="0,0,0,6" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="60*"/>
                                                 <RowDefinition Height="64*"/>
@@ -1070,10 +1066,10 @@
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="3" Height="0" Width="76"/>
                                             <RadioButton GroupName="ep" Content="Yes" x:Name="EpiWentToClinic1" HorizontalAlignment="Left" Margin="38,22,0,22" VerticalAlignment="Center" Grid.Column="1" Height="16" Width="36"/>
                                             <RadioButton GroupName="ep" Content="No" x:Name="EpiWentToClinic2" HorizontalAlignment="Left" Margin="103,22,0,22" VerticalAlignment="Center" Grid.Column="1" Height="16" Width="35"/>
-                                            <RadioButton GroupName="ep1" Content="Yes" x:Name="EpiReReferToClinic11" HorizontalAlignment="Left" Margin="38,13,0,26" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" Height="14" Width="36"/>
-                                            <RadioButton GroupName="ep1" Content="No" x:Name="EpiReReferToClinic12" HorizontalAlignment="Left" Margin="103,17,0,20" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" Height="16" Width="35"/>
-                                            <RadioButton GroupName="ep2" Content="Yes" x:Name="EpiReferToClinic1" HorizontalAlignment="Left" Margin="38,21,0,24" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="15" Width="36"/>
-                                            <RadioButton GroupName="ep2" Content="No" x:Name="EpiReferToClinic2" HorizontalAlignment="Left" Margin="103,21,0,24" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="15" Width="35"/>
+                                            <RadioButton GroupName="ep1" Content="Yes" x:Name="EpiReReferToClinicYes" HorizontalAlignment="Left" Margin="38,13,0,26" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" Height="14" Width="36"/>
+                                            <RadioButton GroupName="ep1" Content="No" x:Name="EpiReReferToClinicNo" HorizontalAlignment="Left" Margin="103,17,0,20" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" Height="16" Width="35"/>
+                                            <RadioButton GroupName="ep2" Content="Yes" x:Name="EpiReferToClinicYes" HorizontalAlignment="Left" Margin="38,21,0,24" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="15" Width="36"/>
+                                            <RadioButton GroupName="ep2" Content="No" x:Name="EpiReferToClinicNo" HorizontalAlignment="Left" Margin="103,21,0,24" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="15" Width="35"/>
                                             <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,16,0,18" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="2" Height="26" Width="87"/>
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,13,0,-13" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="6" Height="0" Width="76"/>
                                             <RadioButton Content="Yes" x:Name="EpiFitInLastMonth1" HorizontalAlignment="Left" GroupName="ep3" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="38,19,0,27" Height="18" Width="36"/>
@@ -1081,14 +1077,14 @@
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,16,0,18" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="3" Height="26" Width="87"/>
                                             <TextBox HorizontalAlignment="Left" x:Name="txtEpiRefNo" Height="24" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" Margin="35,18,0,18" Grid.Row="3" Grid.Column="1"/>
                                             <Label Content="Re-referral no." HorizontalAlignment="Left" Margin="10,11,0,15" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="5" Height="26" Width="87"/>
-                                            <TextBox HorizontalAlignment="Left" x:Name="txtEpiRefNo_Copy" Height="24" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" Margin="35,13,0,15" Grid.Row="5" Grid.Column="1"/>
+                                            <TextBox HorizontalAlignment="Left" x:Name="txtEpiReRefNo" Height="24" TextWrapping="Wrap" VerticalAlignment="Center" Width="188" Margin="35,13,0,15" Grid.Row="5" Grid.Column="1"/>
                                         </Grid>
                                     </GroupBox>
                                     <GroupBox Header="On treatment" HorizontalAlignment="Left"
-										VerticalAlignment="Top" Height="371" Width="506" Margin="469,4,0,0">
+										VerticalAlignment="Top" Height="451" Width="506" Margin="469,4,0,0">
                                         <Grid>
                                             <GroupBox Header="On treatment" HorizontalAlignment="Left" x:Name="grpEplOntreatMent"
-												VerticalAlignment="Top" Height="272" Width="440" Margin="8,63,0,0">
+												VerticalAlignment="Top" Height="356" Width="440" Margin="8,63,0,0">
                                                 <Grid >
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="139*"/>
@@ -1112,19 +1108,21 @@
                                                         <ComboBoxItem x:Name="epimedi5" Content="SiLamotriginemvistatin"/>
                                                     </ComboBox>
                                                     <Label Content="More than 3 fits&#xA;in last month" HorizontalAlignment="Left" Margin="16,13,0,11" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="2" Height="42" Width="100"/>
-                                                    <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="16,23,0,20" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="3" Height="26" Width="104"/>
                                                     <Label Content="Referral no." HorizontalAlignment="Left" Margin="16,9,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="4" Height="0" Width="76"/>
                                                     <Label Content="Medication" HorizontalAlignment="Left" Margin="16,10,0,-10" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="5" Height="0" Width="74"/>
                                                     <RadioButton GroupName="ep5" x:Name="EpiMoreThan3FitsInLastMonth1" Content="Yes" HorizontalAlignment="Left" Margin="9,25,0,25" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="16" Width="36"/>
                                                     <RadioButton GroupName="ep5" x:Name="EpiMoreThan3FitsInLastMonth2" Content="No" HorizontalAlignment="Left" Margin="74,25,0,25" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="16" Width="35"/>
-                                                    <RadioButton GroupName="ep6" x:Name="EpiReReferToClinic21" Content="Yes" HorizontalAlignment="Left" Margin="9,27,0,26" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" Height="16" Width="36"/>
-                                                    <RadioButton GroupName="ep6" x:Name="EpiReReferToClinic22" Content="No" HorizontalAlignment="Left" Margin="74,27,0,26" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" Height="16" Width="35"/>
+                                                    <Label Content="Revisit in:" HorizontalAlignment="Left" Margin="21,12,0,4" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="3" Height="36" Width="88"/>
+
+                                                    <Label Content="Outcomes" HorizontalAlignment="Left" Margin="21,16,0,7" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="4" Height="36" Width="88"/>
+                                                    <ComboBox x:Name="comboEpiRevisit" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Top" Width="188" Margin="8,16,0,0"/>
+                                                    <ComboBox x:Name="comboEpiOutcomes" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="188" Margin="8,38,0,0"/>
                                                 </Grid>
                                             </GroupBox>
                                             <Label Content="Currently on meds"
-												HorizontalAlignment="Left" VerticalAlignment="Center" Margin="14,18,0,299" FontWeight="Bold" Height="32"/>
-                                            <RadioButton GroupName="ep4" x:Name="EpiCurrentlyOnMeds1" Content="Yes" HorizontalAlignment="Left" Margin="163,27,0,306" VerticalAlignment="Center" RenderTransformOrigin="1.176,-2.5" Height="16" Checked="EpiCurrentlyOnMeds1_Checked"/>
-                                            <RadioButton GroupName="ep4" x:Name="EpiCurrentlyOnMeds2" Content="No" HorizontalAlignment="Left" Margin="225,29,0,306" VerticalAlignment="Center" Height="14" Checked="EpiCurrentlyOnMeds1_Checked"/>
+												HorizontalAlignment="Left" VerticalAlignment="Center" Margin="14,20,0,377" FontWeight="Bold" Height="32"/>
+                                            <RadioButton GroupName="ep4" x:Name="EpiCurrentlyOnMeds1" Content="Yes" HorizontalAlignment="Left" Margin="163,29,0,384" VerticalAlignment="Center" RenderTransformOrigin="1.176,-2.5" Height="16" Checked="EpiCurrentlyOnMeds1_Checked"/>
+                                            <RadioButton GroupName="ep4" x:Name="EpiCurrentlyOnMeds2" Content="No" HorizontalAlignment="Left" Margin="225,31,0,384" VerticalAlignment="Center" Height="14" Checked="EpiCurrentlyOnMeds1_Checked"/>
 
 
                                         </Grid>

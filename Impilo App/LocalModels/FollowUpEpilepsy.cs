@@ -33,5 +33,9 @@ namespace Impilo_App.LocalModels
         public bool fueOnTreatmentReReferToClinic { get; set; }
 
         public string fueOnTreatmentRefNo { get; set; }
+
+        public string fueHiEHRevisit { get; set; }
+
+        public string fueHiEHOutcomes { get; set; }
     }
 }
