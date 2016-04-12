@@ -796,10 +796,10 @@
                                             <Label Content="Results" HorizontalAlignment="Left" Margin="10,-66,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                                             <RadioButton Content="Yes" x:Name="TBRecentUnplannedLoseOfWeight1" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                                             <RadioButton Content="No" x:Name="TBRecentUnplannedLoseOfWeight2" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                                            <ComboBox HorizontalAlignment="Left" x:Name="txtHyperReferralNo2_Copy3" Height="23" Margin="5,7,0,0" VerticalAlignment="Top" Width="188" Grid.Column="1" Grid.Row="8"/>
+                                            <ComboBox HorizontalAlignment="Left" x:Name="txtTBReReferralNo" Height="23" Margin="5,7,0,0" VerticalAlignment="Top" Width="188" Grid.Column="1" Grid.Row="8"/>
                                             <Label Content="Re-referral no." HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="8"/>
-                                            <RadioButton GroupName="ep2" x:Name="TBReferredToClinic21_Copy" Content="Yes" HorizontalAlignment="Left" Margin="5,9,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="7"/>
-                                            <RadioButton GroupName="ep2" x:Name="TBReferredToClinic22_Copy" Content="No" HorizontalAlignment="Left" Margin="70,9,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="7"/>
+                                            <RadioButton GroupName="ep2" x:Name="TBReReferredToClinicYes" Content="Yes" HorizontalAlignment="Left" Margin="5,9,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="7"/>
+                                            <RadioButton GroupName="ep2" x:Name="TBReReferredToClinicNo" Content="No" HorizontalAlignment="Left" Margin="70,9,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="7"/>
                                             <Label Content="Re-referred to clinic" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="7"/>
                                         </Grid>
                                     </GroupBox>

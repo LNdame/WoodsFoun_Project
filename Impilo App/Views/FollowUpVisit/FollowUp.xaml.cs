@@ -269,8 +269,8 @@ namespace Impilo_App.Views.FollowUpVisit
 
                 //folHyp.fuhID = 0; //remove
                 folHyp.EncounterID = encounterID;
-                folHyp.fuhHiEHWentToClinic = (HyperWentToClinic1Yes.IsChecked == true) ? true : false;
                 folHyp.fuhDateOfVisit = DateTime.Now;
+                folHyp.fuhHiEHWentToClinic = (HyperWentToClinic1Yes.IsChecked == true) ? true : false;
                 folHyp.fuhHiEHReferToClinic = (HyperReferToClinicYes.IsChecked == true) ? true : false;
                 folHyp.fuhHiEHRefNo2 = txtHyperReferralNo.Text;
                 folHyp.fuhHiEHCurrentlyOnMeds = (HyperCurrentlyOnMedsYes.IsChecked == true) ? true : false;
@@ -279,9 +279,9 @@ namespace Impilo_App.Views.FollowUpVisit
                 folHyp.fuhHiEHBPScreeningDiastolic = decimal.Parse(txtHyperBPReadingDiastolic.Text);
                 folHyp.fuhHiEHBPTodaySystolic = decimal.Parse(txtHyperTodayTestReadingSystolic.Text);
                 folHyp.fuhHiEHBPTodayDiastolic = decimal.Parse(txtHyperTodayTestReadingDiastolic.Text);
-                folHyp.fuhHiEHReReferToClinic = (HyperReferToClinicYes.IsChecked == true) ? true : false;
+                folHyp.fuhHiEHReferToClinic = (HyperReferToClinicYes.IsChecked == true) ? true : false;
                 folHyp.fuhHiEHRefNo = txtHyperReReferralNo.Text;
-                folHyp.fuhHiEHReferToClinic =  (HyperReReferToClinicYes.IsChecked == true) ? true : false;
+                folHyp.fuhHiEHReReferToClinic =  (HyperReReferToClinicYes.IsChecked == true) ? true : false;
                 folHyp.fuhHiEHRefNo2 =txtHyperReReferralNo.Text; 
                 //folHyp.fuhCRReReferToClinic =
                // folHyp.fuhCRRefNo = 
@@ -443,11 +443,12 @@ namespace Impilo_App.Views.FollowUpVisit
                     //com.Parameters.AddWithValue("@fudHiEHRefNo", folDia.fudHiEHRefNo);
                     com.Parameters.AddWithValue("@fudHiEHCurrentlyOnMeds", folDia.fudHiEHCurrentlyOnMeds);
                     com.Parameters.AddWithValue("@fudHiEHStartDate", folDia.fudHiEHStartDate);
+                    com.Parameters.AddWithValue("@fudStartDateUnknown", folDia.fudStartDateUnknown);
                     com.Parameters.AddWithValue("@fudHiEHFollowUpTestReading", folDia.fudHiEHFollowUpTestReading);
-                    com.Parameters.AddWithValue("@fudHiEHReferToClinic2", folDia.fudHiEHReferToClinic);
-                    com.Parameters.AddWithValue("@fudHiEHRefNo2", folDia.fudHiEHRefNo);
-                    com.Parameters.AddWithValue("@fudClinicRefReferToClinic", folDia.fudHiEHReReferToClinic);
-                    com.Parameters.AddWithValue("@fudClinicRefRefNo", folDia.fudHiEHReRefNo);
+                    com.Parameters.AddWithValue("@fudHiEHReferToClinic", folDia.fudHiEHReferToClinic);
+                    com.Parameters.AddWithValue("@fudHiEHRefNo", folDia.fudHiEHRefNo);
+                    com.Parameters.AddWithValue("@fudHiEHReReferToClinic", folDia.fudHiEHReReferToClinic);
+                    com.Parameters.AddWithValue("@fudHiEHReRefNo", folDia.fudHiEHReRefNo);
                     com.Parameters.AddWithValue("@fudHiEHNextVisit", folDia.fudHiEHNextVisit);
                     com.Parameters.AddWithValue("@fudHiEHOutcomes", folDia.fudHiEHOutcomes);
 
@@ -885,8 +886,8 @@ namespace Impilo_App.Views.FollowUpVisit
                 folTb.EncounterID = encounterID;
               //  folTb.futbDateOfVisit = (DateTime)txtTBDateOfVisit.SelectedDate;
                 folTb.futbHiEHWentToClinic = (TBWentToClinic1.IsChecked == true) ? true : false;
-             //   folTb.futbHiEHReReferToClinic = (TBReferToClinic11.IsChecked == true) ? true : false;
-            //    folTb.futbHiEHRefNo = txtTBReferralNo1.Text;
+                folTb.futbTBSResults = ((ComboBoxItem)comboTBResult.SelectedItem).Content.ToString();
+                //   
                 folTb.futbTBSRecentUnplannedLoseOfWeight = (TBRecentUnplannedLoseOfWeight1.IsChecked == true) ? true : false;
                 folTb.futbTBSExcessiveSweatingAtNight = (TBExcessiveSweatingAtNight1.IsChecked == true) ? true : false;
                 folTb.futbTBSFeverOver2Weeks = (TBFeverOver2Weeks1.IsChecked == true) ? true : false;
@@ -894,7 +895,8 @@ namespace Impilo_App.Views.FollowUpVisit
                 folTb.futbTBSLossOfApetite = (TBLossOfApetite1.IsChecked == true) ? true : false;
                 folTb.futbTBSReferToClinic = (TBReferredToClinic21.IsChecked == true) ? true : false;
                 folTb.futbTBSRefNo = txtTBReferralNo2.Text;
-                folTb.futbTBSResults = ((ComboBoxItem)comboTBResult.SelectedItem).Content.ToString();
+                folTb.futbHiEHReReferToClinic = (TBReReferredToClinicYes.IsChecked == true) ? true : false;
+                folTb.futbHiEHRefNo = txtTBReReferralNo.Text;
                 folTb.futbTBOTNewlyDiagnosedInLastMonth = (TBNewlyDiagnosed1.IsChecked == true) ? true : false;
                 folTb.futbTBOTStartDate = (DateTime)txtTBStartDate.SelectedDate;
                 folTb.futbTBOTReferTBContactsToClinic = (TBReferTBContactsToClinic1.IsChecked == true) ? true : false;
