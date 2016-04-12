@@ -43,5 +43,7 @@ namespace Impilo_App.LocalModels
         public string fudHiEHNextVisit { get; set; }
 
         public string fudHiEHOutcomes { get; set; }
+
+        public bool fudStartDateUnknown { get; set; }
     }
 }

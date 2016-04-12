@@ -279,12 +279,12 @@ namespace Impilo_App.Views.FollowUpVisit
                 folHyp.fuhHiEHBPScreeningDiastolic = decimal.Parse(txtHyperBPReadingDiastolic.Text);
                 folHyp.fuhHiEHBPTodaySystolic = decimal.Parse(txtHyperTodayTestReadingSystolic.Text);
                 folHyp.fuhHiEHBPTodayDiastolic = decimal.Parse(txtHyperTodayTestReadingDiastolic.Text);
-                //folHyp.fuhHiEHReReferToClinic = (HyperReferToClinicYes.IsChecked == true) ? true : false;
-                //folHyp.fuhHiEHRefNo = txtHyperReferralNo.Text;
-                //folHyp.fuhHiEHReferToClinic = (HyperReReferToClinicYes.IsChecked == true) ? true : false;
-                //folHyp.fuhHiEHRefNo2 = txtHyperReReferralNo.Text;
-                folHyp.fuhCRReReferToClinic = (HyperReReferToClinicYes.IsChecked == true) ? true : false;
-                folHyp.fuhCRRefNo = txtHyperReReferralNo.Text;
+                folHyp.fuhHiEHReReferToClinic = (HyperReferToClinicYes.IsChecked == true) ? true : false;
+                folHyp.fuhHiEHRefNo = txtHyperReReferralNo.Text;
+                folHyp.fuhHiEHReferToClinic =  (HyperReReferToClinicYes.IsChecked == true) ? true : false;
+                folHyp.fuhHiEHRefNo2 =txtHyperReReferralNo.Text; 
+                //folHyp.fuhCRReReferToClinic =
+               // folHyp.fuhCRRefNo = 
                 folHyp.fuhHiEHNextVisit = ((ComboBoxItem)comboHyperRevisit.SelectedItem).Content.ToString();
                 folHyp.fuhHiEHOutcomes = ((ComboBoxItem)comboHypVisitOutCome.SelectedItem).Content.ToString();
                     
@@ -327,10 +327,10 @@ namespace Impilo_App.Views.FollowUpVisit
                     com.Parameters.AddWithValue("@fuhHiEHBPScreeningDiastolic", folHyp.fuhHiEHBPScreeningDiastolic);
                     com.Parameters.AddWithValue("@fuhHiEHBPTodaySystolic", folHyp.fuhHiEHBPTodaySystolic);
                     com.Parameters.AddWithValue("@fuhHiEHBPTodayDiastolic", folHyp.fuhHiEHBPTodayDiastolic);
-                    //com.Parameters.AddWithValue("@fuhHiEHReReferToClinic", folHyp.fuhHiEHReReferToClinic);
-                    //com.Parameters.AddWithValue("@fuhHiEHReRefNo2", folHyp.fuhHiEHReRefNo2);
-                    com.Parameters.AddWithValue("@fuhCRReReferToClinic", folHyp.fuhCRReReferToClinic);
-                    com.Parameters.AddWithValue("@fuhCRRefNo", folHyp.fuhCRRefNo);
+                    com.Parameters.AddWithValue("@fuhHiEHReReferToClinic", folHyp.fuhHiEHReReferToClinic);
+                    com.Parameters.AddWithValue("@fuhHiEHReRefNo2", folHyp.fuhHiEHRefNo2);
+                    //com.Parameters.AddWithValue("@fuhCRReReferToClinic", folHyp.fuhCRReReferToClinic);
+                    //com.Parameters.AddWithValue("@fuhCRRefNo", folHyp.fuhCRRefNo);
                     com.Parameters.AddWithValue("@fuhHiEHNextVisit", folHyp.fuhHiEHNextVisit);
                     com.Parameters.AddWithValue("@fuhHiEHOutcomes", folHyp.fuhHiEHOutcomes);
                     //com.Parameters.AddWithValue("@fuhAlreadyOnTreatmentFollowUpTestReadingSystolic",70);
@@ -901,6 +901,7 @@ namespace Impilo_App.Views.FollowUpVisit
                 folTb.futbTBOTPreviouslyOnMeds = (TBPreviouslyOnMeds1.IsChecked == true) ? true : false;
                 folTb.futbTBOTFinishDate = (DateTime)txtTBFinishDate.SelectedDate;
                 folTb.futbTBOTConcerns = (TBConcerns1.IsChecked == true) ? true : false;
+                folTb.futbHiEHOutcomes =((ComboBoxItem)comboTbVisitOutCome.SelectedItem).Content.ToString();
              //  folTb.futbTBOTReferToClinic = (TBReferToClinic31.IsChecked == true) ? true : false;
                // folTb.futbTBOTRefNo = txtTBReferralNo3.Text;
 
@@ -943,9 +944,9 @@ namespace Impilo_App.Views.FollowUpVisit
                     com.Parameters.AddWithValue("@futbTBOTPreviouslyOnMeds", folTb.futbTBOTPreviouslyOnMeds);
                     com.Parameters.AddWithValue("@futbTBOTFinishDate", folTb.futbTBOTFinishDate);
                     com.Parameters.AddWithValue("@futbTBOTConcerns", folTb.futbTBOTConcerns);
-                    com.Parameters.AddWithValue("@futbTBOTReferToClinic", folTb.futbTBOTReferToClinic);
-                    com.Parameters.AddWithValue("@futbTBOTRefNo", folTb.futbTBOTRefNo);
-
+                    //com.Parameters.AddWithValue("@futbTBOTReferToClinic", folTb.futbTBOTReferToClinic);
+                    //com.Parameters.AddWithValue("@futbTBOTRefNo", folTb.futbTBOTRefNo);
+                    com.Parameters.AddWithValue("@futbHiEHOutcomes", folTb.futbHiEHOutcomes);
 
 
                     int lastestTbID = (int)((decimal)com.ExecuteScalar());
@@ -1240,7 +1241,7 @@ namespace Impilo_App.Views.FollowUpVisit
         {
             FollowUpHypertensionMedication folHypMed = new FollowUpHypertensionMedication();
 
-            folHypMed.fuhmName = ((ComboBoxItem)comboHyperMedication.SelectedItem).Content.ToString();
+           // folHypMed.fuhmName = ((ComboBoxItem)comboHyperMedication.SelectedItem).Content.ToString();
          //   listofHypMeds.Add(hypmed);
 
         }

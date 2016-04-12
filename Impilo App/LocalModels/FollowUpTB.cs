@@ -51,5 +51,7 @@ namespace Impilo_App.LocalModels
         public bool futbTBOTReferToClinic { get; set; }
 
         public string futbTBOTRefNo { get; set; }
+
+        public string futbHiEHOutcomes { get; set; }
     }
 }
