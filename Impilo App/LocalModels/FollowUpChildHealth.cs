@@ -67,7 +67,7 @@ namespace Impilo_App.LocalModels
         public string fuchSocDevRefNo { get; set; }
 
        // public string fuchSocDevConcern { get; set } //this goes to child health concerns
-
+        public List<string> WhichImmunisatationsOutStanding { get; set; }
         public bool fuchCurSocDevReferToClinic { get; set; }
 
         public bool fuchCurSocDevReferToSD { get; set; }

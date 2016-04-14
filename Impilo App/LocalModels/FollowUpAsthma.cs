@@ -36,6 +36,12 @@ namespace Impilo_App.LocalModels
 
         public string fuaOTRefNo { get; set; }
 
+        public bool fuaAttacksLastMonth { get; set; }
+
+        public string fuaHiEHRevisit { get; set; }
+
+        public string fuaHiEHOutcomes{ get; set; }
+
         //public string fuaMedication { get; set; }
     }
 }

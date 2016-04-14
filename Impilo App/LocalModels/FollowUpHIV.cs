@@ -55,5 +55,9 @@ namespace Impilo_App.LocalModels
         public bool fuhivHIVTestReferToClinic { get; set; }
 
         public string fuhivHIVRefNo { get; set; }
+
+        public string fuhivHiEHOutcomes { get; set; }
+
+        public string fuhivHiEHRevisit { get; set; }
     }
 }
