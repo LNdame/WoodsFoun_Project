@@ -40,11 +40,11 @@ namespace Impilo_App.LocalModels
 
         public string fuhCRRefNo { get; set; }
 
-<<<<<<< HEAD
+
         public string fuhHiEHNextVisit { get; set; }
-=======
-        public string fuhHiEHNextVisit { get;set; }
->>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
+
+      
+
 
         public string fuhHiEHOutcomes { get; set; }
 
