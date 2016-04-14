@@ -244,7 +244,7 @@ namespace Impilo_App.Views.Screening
                     environmentExtra.ScreeningID = scrID;
                     environmentExtra.NoOfPeopleInOneRoomMainHut = int.Parse(((ComboBoxItem)cboNoPeople.SelectedItem).Content.ToString());
                     environmentExtra.NoOfStructuresInHomeStead = int.Parse(numNoOfHuts.Text);
-                    environmentExtra.OwnorRentHome = (radYesOwnRent.IsChecked == true) ? true : false;
+                    environmentExtra.OwnorRentHome = ((ComboBoxItem)cboOwnorRent.SelectedItem).Content.ToString();//Need to change (radYesOwnRent.IsChecked == true) ? true : false
                     environmentExtra.RainWaterCollection = (rdoYesRain.IsChecked == true) ? true : false;
                     environmentExtra.WaterSupply = ((ComboBoxItem)cboWaterSupply.SelectedItem).Content.ToString();
                     environmentExtra.WalkingDistanceFromWhaterSupply = cboWalkingDistanceWater.SelectedItem.ToString();

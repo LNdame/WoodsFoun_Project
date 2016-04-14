@@ -17,7 +17,7 @@ namespace Impilo_App.LocalModels
         public bool RainWaterCollection { get; set; }
 
 
-        public bool OwnorRentHome { get; set; }
+        public string OwnorRentHome { get; set; }
 
         public string WaterSupply { get; set; }
 
