@@ -249,8 +249,8 @@
                                             <Label Content="Outcome" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.077,0.383" Height="28" FontWeight="Bold" Grid.Row="1"/>
                                             <Label Content="HPT" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.806,0.539" FontWeight="Bold" Grid.Row="2"/>
                                             <Label Content="Diabetes" HorizontalAlignment="Left" Margin="8,0,0,15" VerticalAlignment="Center" Height="29" FontWeight="Bold" Grid.Row="3"/>
-                                            <DatePicker HorizontalAlignment="Left" x:Name="dpVisitNextVisit" Height="23" Margin="21,15,0,0"  VerticalAlignment="Top" Width="226" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1"/>
-                                            <ComboBox HorizontalAlignment="Left" Margin="21,15,0,0" x:Name="comboVisitOutCome" VerticalAlignment="Top" Width="226" FontWeight="Bold" Grid.Row="1" Grid.Column="1">
+                                            <DatePicker HorizontalAlignment="Left" x:Name="dpVisitNextVisit" Height="23" Margin="21,15,0,0"  VerticalAlignment="Top" Width="188" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1"/>
+                                            <ComboBox HorizontalAlignment="Left" Margin="21,15,0,0" x:Name="comboVisitOutCome" VerticalAlignment="Top" Width="188" FontWeight="Bold" Grid.Row="1" Grid.Column="1">
                                                 <ComboBoxItem x:Name="visit1" Content="Deceased"/>
                                                 <ComboBoxItem x:Name="visit2" Content="Discharged"/>
                                                 <ComboBoxItem x:Name="visit3" Content="Refused"/>
@@ -279,7 +279,7 @@
                                             <RadioButton GroupName="vi6" Content="No" x:Name="VisitChildHealthNo" HorizontalAlignment="Left" Margin="88,0,0,0" VerticalAlignment="Center" Grid.Row="1" Grid.Column="3"/>
                                             <RadioButton GroupName="vi7" Content="Yes" x:Name="VisitDoortoDoorYes" HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.519,-0.425" Grid.Row="3" Grid.Column="3"/>
                                             <RadioButton GroupName="vi7" Content="No" x:Name="VisitDoortoDoorNo" HorizontalAlignment="Left" Margin="88,0,0,0" VerticalAlignment="Center" Grid.Row="3" Grid.Column="3"/>
-                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="23,14,0,0" x:Name="txtVisitOther" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Grid.Row="2" Grid.Column="3"/>
+                                            <TextBox HorizontalAlignment="Left" Height="23" Margin="23,14,0,0" x:Name="txtVisitOther" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Grid.Row="2" Grid.Column="3"/>
                                         </Grid>
                                     </GroupBox>
                                 </Grid>
@@ -298,6 +298,11 @@
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
             <TabItem Header="Hypertension" x:Name="tabHypertension" Width="92" Margin="0,0,0,0" Height="25" VerticalAlignment="Top">
                 <!--<TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -355,7 +360,11 @@
                                         <Label Content="Currently on meds" HorizontalAlignment="Left" Margin="12,11,0,10" VerticalAlignment="Center" RenderTransformOrigin="0.375,0.843" FontWeight="Bold" Grid.Row="1"/>
                                         <DatePicker HorizontalAlignment="Left" x:Name="dpHyperStartDate" Height="23" Margin="34,12,0,12"  VerticalAlignment="Center"  Width="188" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Row="2" Grid.Column="1" />
                                         <Label Content="Start date" HorizontalAlignment="Left" Margin="10,10,0,11" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.508,2.12" Grid.Row="2"/>
+<<<<<<< HEAD
                                         <RadioButton Content="Yes" GroupName="hyp1" x:Name="HyperWentToClinic1Yes" HorizontalAlignment="Left" Margin="34,16,0,16" VerticalAlignment="Center" Grid.Column="1" />
+=======
+                                        <RadioButton Content="Yes" GroupName="hyp1" x:Name="HyperWentToClinic1Yes" HorizontalAlignment="Left" Margin="34,16,0,16" VerticalAlignment="Center" Grid.Column="1" Checked="HyperWentToClinic1Yes_Checked"/>
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
                                         <RadioButton Content="No" GroupName="hyp1" x:Name="HyperWentToClinic1No" HorizontalAlignment="Left" Margin="99,0,0,0" VerticalAlignment="Center" Grid.Column="1"/>
                                         <RadioButton Content="Yes" GroupName="hyp3" x:Name="HyperCurrentlyOnMedsYes" HorizontalAlignment="Left" Margin="36,16,0,16" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
                                         <RadioButton Content="No" GroupName="hyp3" x:Name="HyperCurrentlyOnMedsNo" HorizontalAlignment="Left" Margin="101,16,0,16" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
@@ -400,10 +409,17 @@
                                         </ComboBox>
                                         <Label Content="Outcome" HorizontalAlignment="Left" Margin="26,14,0,17" VerticalAlignment="Center" FontWeight="Bold"/>
                                         <ComboBox HorizontalAlignment="Left" Margin="21,18,0,0" x:Name="comboHypVisitOutCome" VerticalAlignment="Top" Width="188" FontWeight="Bold" Grid.Column="1">
+<<<<<<< HEAD
                                             <ComboBoxItem x:Name="hout1" Content="Deceased" />
                                             <ComboBoxItem x:Name="hout2" Content="Discharged"/>
                                             <ComboBoxItem x:Name="hout3" Content="Refused"/>
                                             <ComboBoxItem x:Name="hout4" Content="Moved" IsSelected="True"/>
+=======
+                                            <ComboBoxItem x:Name="hout1" Content="Deceased"/>
+                                            <ComboBoxItem x:Name="hout2" Content="Discharged"/>
+                                            <ComboBoxItem x:Name="hout3" Content="Refused"/>
+                                            <ComboBoxItem x:Name="hout4" Content="Moved"/>
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
                                         </ComboBox>
                                     </Grid>
                                 </GroupBox>
@@ -1206,7 +1222,7 @@
                                                 <ColumnDefinition Width="305*"/>
                                             </Grid.ColumnDefinitions>
                                             <Label Content="Pregnancy test done" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.077,0.383" FontWeight="Bold" Grid.Row="1"/>
-                                            <TextBox HorizontalAlignment="Left" x:Name="txtMatReferralNo2" Height="23" Margin="60,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" FontWeight="Bold" Grid.Column="1" Grid.Row="4"/>
+                                            <TextBox HorizontalAlignment="Left" x:Name="txtMatReferralNo2" Height="23" Margin="60,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" FontWeight="Bold" Grid.Column="1" Grid.Row="4"/>
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="4"/>
                                             <RadioButton Content="Yes" x:Name="MatPregnancyTestDone1"  GroupName="mh2" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
                                             <RadioButton Content="No" x:Name="MatPregnancyTestDone2"  GroupName="mh2" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
@@ -1214,8 +1230,13 @@
                                             <RadioButton GroupName="mh3" x:Name="MatReferredToClinic21" Content="Yes"   HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"/>
                                             <RadioButton GroupName="mh3" x:Name="MatReferredToClinic22" Content="No"  HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"/>
                                             <Label Content="Referred to clinic" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="3"/>
+<<<<<<< HEAD
                                             <ComboBox HorizontalAlignment="Left" x:Name="comboMatResult" Margin="60,0,0,0" VerticalAlignment="Center" Width="210" Grid.Column="1" Grid.Row="2">
                                                 <ComboBoxItem x:Name="matresults1" Content="Invalid" IsSelected="True"/>
+=======
+                                            <ComboBox HorizontalAlignment="Left" x:Name="comboMatResult" Margin="60,0,0,0" VerticalAlignment="Center" Width="188" Grid.Column="1" Grid.Row="2">
+                                                <ComboBoxItem x:Name="matresults1" Content="Invalid"/>
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
                                                 <ComboBoxItem x:Name="matresults2" Content="Non-Reactive"/>
                                                 <ComboBoxItem x:Name="matresults3" Content="Reactive"/>
                                             </ComboBox>
@@ -1258,7 +1279,7 @@
                                             <RadioButton Content="No" x:Name="MatReferToClinic2" HorizontalAlignment="Left"  GroupName="mh8" Margin="95,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="6"/>
                                             <Label Content="Date of 1st ANC"
 												HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold"/>
-                                            <DatePicker HorizontalAlignment="Left" Height="25" x:Name="txtMatDateOfLastANC" Margin="30,0,0,0" VerticalAlignment="Center" Width="256" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1" Grid.Row="1"/>
+                                            <DatePicker HorizontalAlignment="Left" Height="25" x:Name="txtMatDateOfLastANC" Margin="30,0,0,0" VerticalAlignment="Center" Width="188" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1" Grid.Row="1"/>
                                             <RadioButton GroupName="mh7" x:Name="MatRegisteredForMoMConnect1" Content="Yes" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"/>
                                             <RadioButton GroupName="mh7" x:Name="MatRegisteredForMoMConnect2" Content="No" HorizontalAlignment="Left" Margin="95,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"/>
                                             <TextBox HorizontalAlignment="Left" x:Name="txtMatReferralNo3" Height="23" Margin="27,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.Column="1" Grid.Row="3" Visibility="Hidden"/>
@@ -1266,11 +1287,12 @@
                                             <Label Content="Expected date of delivery" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="8"/>
                                             <Label Content="Intend breastfeed" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="9"/>
                                             <Label Content="Intend formula feed" HorizontalAlignment="Left" Margin="10,0,0,3" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="10"/>
-                                            <DatePicker HorizontalAlignment="Left" Height="25" x:Name="txtMatExpectedDateOfDelivery" Margin="27,0,0,0" VerticalAlignment="Center" Width="256" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1" Grid.Row="8"/>
+                                            <DatePicker HorizontalAlignment="Left" Height="25" x:Name="txtMatExpectedDateOfDelivery" Margin="27,0,0,0" VerticalAlignment="Center" Width="188" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1" Grid.Row="8"/>
                                             <RadioButton Content="Yes" x:Name="MatIntendBreastfeed1" GroupName="mh9" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="9"/>
                                             <RadioButton Content="No" x:Name="MatIntendBreastfeed2" GroupName="mh9" HorizontalAlignment="Left" Margin="95,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="9"/>
                                             <RadioButton Content="Yes" x:Name="MatIntendFormulaFeed1" GroupName="mh10" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="10"/>
                                             <RadioButton Content="No" x:Name="MatIntendFormulaFeed2" GroupName="mh10" HorizontalAlignment="Left" Margin="95,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="10"/>
+<<<<<<< HEAD
                                             <DatePicker HorizontalAlignment="Left" x:Name="txtMatDateOf1stANC" Height="25" Margin="30,0,0,0"  VerticalAlignment="Center" Width="256" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1"/>
                                             <DatePicker HorizontalAlignment="Left" x:Name="txtMatDateOfNextANC" Height="25" Margin="27,5,0,0" VerticalAlignment="Top" Width="256" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1" Grid.Row="5"/>
                                         </Grid>
@@ -1280,6 +1302,10 @@
                                         <Grid>
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="741,0,0,0" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49"/>
                                             <TextBox HorizontalAlignment="Left" x:Name="txtMatReferral" Height="22" Margin="867,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="182"/>
+=======
+                                            <DatePicker HorizontalAlignment="Left" x:Name="txtMatDateOf1stANC" Height="25" Margin="30,0,0,0"  VerticalAlignment="Center" Width="188" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1"/>
+                                            <DatePicker HorizontalAlignment="Left" x:Name="txtMatDateOfNextANC" Height="25" Margin="27,5,0,0" VerticalAlignment="Top" Width="188" SelectedDate="{x:Static sys:DateTime.Today}" Grid.Column="1" Grid.Row="5"/>
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
                                         </Grid>
                                     </GroupBox>
                                 </Grid>
@@ -1515,10 +1541,17 @@
                                             <TextBox HorizontalAlignment="Left" x:Name="txtChildReferralNo4" Height="21" Margin="9,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182" Grid.Column="3" Grid.Row="1"/>
                                             <Label Content="Refer to clinic" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Height="24" Grid.Row="1" Width="88"/>
                                             <Label Content="Referral no." HorizontalAlignment="Left" Margin="25,6,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="1" Height="35" Width="76" Grid.Column="2"/>
+<<<<<<< HEAD
                                             <RadioButton GroupName="epts" Content="Yes" x:Name="ChildReferToClinic31" HorizontalAlignment="Left" Margin="30,4,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Height="16" Width="34"/>
                                             <RadioButton GroupName="epts" Content="No" x:Name="ChildReferToClinic32" HorizontalAlignment="Left" Margin="95,4,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Height="16" Width="32"/>
                                             <TextBox HorizontalAlignment="Left" x:Name="txtChildListConcernsReChild" Height="23" Margin="20,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182" Grid.Column="1"/>
                                             <Label Content="List concerns re child" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Height="26" Width="128"/>
+=======
+                                            <RadioButton Content="Yes" x:Name="ChildReferToClinic31" HorizontalAlignment="Left" Margin="30,6,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Height="16" Width="34"/>
+                                            <RadioButton Content="No" x:Name="ChildReferToClinic32" HorizontalAlignment="Left" Margin="95,6,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Height="16" Width="32"/>
+                                            <TextBox HorizontalAlignment="Left" x:Name="txtChildListConcernsReChild" Height="23" Margin="20,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182" Grid.Column="1"/>
+                                            <Label Content="List concerns re child" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Height="26" Width="128"/>
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
                                         </Grid>
                                     </GroupBox>
 
@@ -1567,23 +1600,24 @@
                                 <Grid x:Name="gridgeneral1s8" >
                                     <GroupBox Header="HiEH" HorizontalAlignment="Left"
 										VerticalAlignment="Top" Height="362" Width="471" Margin="10,23,0,0">
-                                        <Grid >
+                                        <Grid Margin="10,0,-10,0" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="0"/>
-                                                <RowDefinition Height="65*"/>
-                                                <RowDefinition Height="67*"/>
-                                                <RowDefinition Height="140*"/>
+                                                <RowDefinition Height="65"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="65"/>
+                                                <RowDefinition/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="133*"/>
                                                 <ColumnDefinition Width="326*"/>
                                             </Grid.ColumnDefinitions>
                                             <Label Content="Went to clinic" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.077,0.383" FontWeight="Bold" Grid.Row="1"/>
-                                            <RadioButton GroupName="ep2" x:Name="OtherReReferToClinic1" Content="Yes" HorizontalAlignment="Left" Margin="47,34,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
-                                            <RadioButton GroupName="ep2" x:Name="OtherReReferToClinic2" Content="No" HorizontalAlignment="Left" Margin="112,34,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
-                                            <TextBox HorizontalAlignment="Left" x:Name="txtOtherReferralNo1" Height="23" Margin="37,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.Column="1" Grid.Row="3"/>
-                                            <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="2"/>
-                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="3"/>
+                                            <RadioButton GroupName="ep2" x:Name="OtherReReferToClinic1" Content="Yes" HorizontalAlignment="Left" Margin="47,24,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
+                                            <RadioButton GroupName="ep2" x:Name="OtherReReferToClinic2" Content="No" HorizontalAlignment="Left" Margin="112,24,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
+                                            <TextBox HorizontalAlignment="Left" x:Name="txtOtherReferralNo1" Height="23" Margin="37,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.Column="1" Grid.Row="3"/>
+                                            <Label Content="Re-refer to clinic" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.397,-5.26" Grid.Row="2"/>
+                                            <Label Content="Referral no." HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.472,-0.49" Grid.Row="3"/>
                                             <RadioButton Content="Yes" x:Name="OtherWentToClinic1" HorizontalAlignment="Left" Margin="47,33,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
                                             <RadioButton Content="No" x:Name="OtherWentToClinic2" HorizontalAlignment="Left" Margin="112,33,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
                                            

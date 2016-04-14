@@ -259,8 +259,13 @@ namespace Impilo_App.Views.FollowUpVisit
 
             #endregion
 
+<<<<<<< HEAD
 
 
+=======
+            
+             
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
             #region Hypertension UI Fields needs attention intupdown tested+- [repairs done, not tested]
 
             bool hypFollow = false;
@@ -283,6 +288,7 @@ namespace Impilo_App.Views.FollowUpVisit
                 folHyp.fuhHiEHBPTodayDiastolic = decimal.Parse(txtHyperTodayTestReadingDiastolic.Text);
                 folHyp.fuhHiEHReferToClinic = (HyperReferToClinicYes.IsChecked == true) ? true : false;
                 folHyp.fuhHiEHRefNo = txtHyperReReferralNo.Text;
+<<<<<<< HEAD
                 folHyp.fuhHiEHReReferToClinic = (HyperReReferToClinicYes.IsChecked == true) ? true : false;
                 folHyp.fuhHiEHRefNo2 = txtHyperReReferralNo.Text;
                 //folHyp.fuhCRReReferToClinic =
@@ -290,6 +296,15 @@ namespace Impilo_App.Views.FollowUpVisit
                 folHyp.fuhHiEHNextVisit = ((ComboBoxItem)comboHyperRevisit.SelectedItem).Content.ToString();
                 folHyp.fuhHiEHOutcomes = ((ComboBoxItem)comboHypVisitOutCome.SelectedItem).Content.ToString();
 
+=======
+                folHyp.fuhHiEHReReferToClinic =  (HyperReReferToClinicYes.IsChecked == true) ? true : false;
+                folHyp.fuhHiEHRefNo2 =txtHyperReReferralNo.Text; 
+                //folHyp.fuhCRReReferToClinic =
+               // folHyp.fuhCRRefNo = 
+                folHyp.fuhHiEHNextVisit = ((ComboBoxItem)comboHyperRevisit.SelectedItem).Content.ToString();
+                folHyp.fuhHiEHOutcomes = ((ComboBoxItem)comboHypVisitOutCome.SelectedItem).Content.ToString();
+                    
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
                 //folHyp.fuhAlreadyOnTreatmentFollowUpTestReading = txtHyperFollowUpTestReading.Text;
                 //folHyp.fuhDoorToDoorCheckReadingSys = decimal.Parse(txtDoortoDoorCheckReadingSys.Text);
                 //folHyp.fuhDoorToDoorCheckReadingDia = decimal.Parse(txtDoortoDoorCheckReadingDia.Text);
@@ -389,7 +404,11 @@ namespace Impilo_App.Views.FollowUpVisit
             #endregion 
 
 
+<<<<<<< HEAD
 
+=======
+           
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
             #region Diabetes same issue s as hypertension tested+ [repairs done, not tested]
 
             bool diaFollow = false;
@@ -503,8 +522,12 @@ namespace Impilo_App.Views.FollowUpVisit
             }
             #endregion
           
+<<<<<<< HEAD
 
 
+=======
+           
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
             #region HIV [repairs done - not tested]
 
             bool hivFollow = false;
@@ -521,7 +544,11 @@ namespace Impilo_App.Views.FollowUpVisit
                 folHiv.fuhivCRReferToClinic = (HIVReferToClinicYes.IsChecked == true) ? true : false;
                 folHiv.fuhivCRRefNo = txtHIVReferralNo2.Text;
                 folHiv.fuhivHiEHReReferToClinic = (HIVReReferToClinicYes.IsChecked == true) ? true : false;
+<<<<<<< HEAD
                 folHiv.fuhivHiEHRefNo = txtHIVReReferralNo.Text;
+=======
+                folHiv.fuhivHiEHRefNo = txtHIVReReferralNo.Text;            
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
                 folHiv.fuhivIPOnARV = (HIVOnARVsYes.IsChecked == true) ? true : false;
                 folHiv.fuhivIPStartDate = (DateTime)txtHIVStartDate.SelectedDate;
                 folHiv.fuhivIPAdherenceOK = (HIVAdherenceOKYes.IsChecked == true) ? true : false;
@@ -572,9 +599,15 @@ namespace Impilo_App.Views.FollowUpVisit
                     com.Parameters.AddWithValue("@fuhivCRRefNo", folHiv.fuhivCRRefNo);
                     com.Parameters.AddWithValue("@fuhivHiEHReReferToClinic", folHiv.fuhivHiEHReReferToClinic);
                     com.Parameters.AddWithValue("@fuhivHiEHRefNo", folHiv.fuhivHiEHRefNo);
+<<<<<<< HEAD
 
 
                     // com.Parameters.AddWithValue("@fuhivHIVStatus", folHiv.fuhivHIVStatus);
+=======
+                  
+                    
+                   // com.Parameters.AddWithValue("@fuhivHIVStatus", folHiv.fuhivHIVStatus);
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
                     com.Parameters.AddWithValue("@fuhivIPOnARV", folHiv.fuhivIPOnARV);
                     com.Parameters.AddWithValue("@fuhivIPStartDate", folHiv.fuhivIPStartDate);
                     com.Parameters.AddWithValue("@fuhivIPAdherenceOK", folHiv.fuhivIPAdherenceOK);
@@ -591,7 +624,11 @@ namespace Impilo_App.Views.FollowUpVisit
                     com.Parameters.AddWithValue("@fuhivHIVRefNo", folHiv.fuhivHIVRefNo);
                     com.Parameters.AddWithValue("@fuhivHiEHOutcomes", folHiv.fuhivHiEHOutcomes);
                     com.Parameters.AddWithValue("@fuhivHiEHRevisit", folHiv.fuhivHiEHRevisit);
+<<<<<<< HEAD
 
+=======
+                  
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
 
                     int lastestID = (int)((decimal)com.ExecuteScalar());
 
@@ -639,8 +676,123 @@ namespace Impilo_App.Views.FollowUpVisit
             }
 
             #endregion
+<<<<<<< HEAD
+=======
+           
+           
+            
+            #region Epilepsy tested + [repairs done - not tested]
+
+            bool epiFollow = false;
+
+            Impilo_App.LocalModels.FollowUpEpilepsy folEpi = new Impilo_App.LocalModels.FollowUpEpilepsy();
+            Impilo_App.LocalModels.FollowUpEpilepsyMedication folEpiMed = new Impilo_App.LocalModels.FollowUpEpilepsyMedication();
+
+            try
+            {
+                //folEpi.fueID = 0;
+                folEpi.EncounterID = encounterID;
+                folEpi.fueHiEHWentToClinic = (EpiWentToClinic1.IsChecked == true) ? true : false;
+                folEpi.fueCRFitInLastMonth = (EpiFitInLastMonth1.IsChecked == true) ? true : false;
+                folEpi.fueCRReferToClinic = (EpiReferToClinicYes.IsChecked == true) ? true : false;
+                folEpi.fueCRRefNo = txtEpiRefNo.Text;
+                folEpi.fueHiEHReReferToClinic = (EpiReReferToClinicYes.IsChecked == true) ? true : false;
+                folEpi.fueHiEHRefNo = txtEpiReRefNo.Text;
+                folEpi.fueOnTreatmentCurrentlyOnMeds = (EpiCurrentlyOnMeds1.IsChecked == true) ? true : false;
+                folEpi.fueOnTreatmentStartDate = (DateTime)txtEpiStartDate.SelectedDate;
+                folEpi.fueOnTreatmentMoreThan3FitsSinceLastMonth = (EpiMoreThan3FitsInLastMonth1.IsChecked == true) ? true : false;
+                folEpi.fueHiEHRevisit = ((ComboBoxItem)comboEpiRevisit.SelectedItem).Content.ToString();
+                folEpi.fueHiEHOutcomes = ((ComboBoxItem)comboEpiOutcomes.SelectedItem).Content.ToString();
+
+                epiFollow = true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Some fields are missing data or were filled with incorrect data", "HIV Tab", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }
+            if (epiFollow)
+            {
 
 
+                try
+                {
+                    storedProcedure = "AddFollowUpEpilepsy";
+                    conn.Open();
+                    SqlCommand com = new SqlCommand(storedProcedure, conn);
+                    com.CommandType = CommandType.StoredProcedure;
+                    //com.Parameters.AddWithValue("@fueID", folEpi.fueID);
+                    com.Parameters.AddWithValue("@EncounterID", folEpi.EncounterID);
+                    com.Parameters.AddWithValue("@fueHiEHWentToClinic", folEpi.fueHiEHWentToClinic);
+                    com.Parameters.AddWithValue("@fueCRFitInLastMonth", folEpi.fueCRFitInLastMonth);
+                    com.Parameters.AddWithValue("@fueCRReferToClinic", folEpi.fueCRReferToClinic);
+                    com.Parameters.AddWithValue("@fueCRRefNo", folEpi.fueCRRefNo);
+                    com.Parameters.AddWithValue("@fueHiEHReReferToClinic", folEpi.fueHiEHReReferToClinic);
+                    com.Parameters.AddWithValue("@fueHiEHRefNo", folEpi.fueHiEHRefNo);
+                    com.Parameters.AddWithValue("@fueOnTreatmentCurrentlyOnMeds", folEpi.fueOnTreatmentCurrentlyOnMeds);
+                    com.Parameters.AddWithValue("@fueOnTreatmentStartDate", folEpi.fueOnTreatmentStartDate);
+                    com.Parameters.AddWithValue("@fueOnTreatmentMoreThan3FitsSinceLastMonth", folEpi.fueOnTreatmentMoreThan3FitsSinceLastMonth);
+                   // com.Parameters.AddWithValue("@fueOnTreatmentReReferToClinic", folEpi.fueOnTreatmentReReferToClinic);
+                   // com.Parameters.AddWithValue("@fueOnTreatmentRefNo", folEpi.fueOnTreatmentRefNo);
+                    com.Parameters.AddWithValue("@fueHiEHRevisit", folEpi.fueHiEHRevisit);
+                    com.Parameters.AddWithValue("@fueHiEHOutcomes", folEpi.fueHiEHOutcomes);
+
+
+                    int lastestEpiID = (int)((decimal)com.ExecuteScalar());
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
+
+
+<<<<<<< HEAD
+=======
+                    if (listofEpiMeds.Count > 0)
+                    {
+                        conn.Close();
+
+                        foreach (var epimed in listofEpiMeds)
+                        {
+                            try
+                            {
+                                storedProcedure = "AddFollowUpHIVMedication";// name of sp
+                                conn.Open();
+                                SqlCommand tempcom = new SqlCommand(storedProcedure, conn);
+                                tempcom.CommandType = CommandType.StoredProcedure;
+                                tempcom.Parameters.AddWithValue("@fuemID", lastestEpiID);//param
+                                tempcom.Parameters.AddWithValue("@fuemName", folEpiMed.fuemName);
+
+
+                                tempcom.ExecuteNonQuery();//execute command
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message.ToString() + "Meds not added");
+                            }
+
+                            //com.ExecuteNonQuery();//execute command
+                        }
+
+                    }
+                }
+
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+
+
+            #endregion
+
+             
+           
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
             #region Asthma tested+ [repairs done -not tested]
 
             FollowUpAsthma folAst = new FollowUpAsthma();
@@ -701,12 +853,21 @@ namespace Impilo_App.Views.FollowUpVisit
                     com.Parameters.AddWithValue("@fuaHiEHReReferToClinic", folAst.fuaHiEHReReferToClinic);
                     com.Parameters.AddWithValue("@fuaHiHRefNo", folAst.fuaHiHRefNo);
                     // com.Parameters.AddWithValue("@fuaCRDifficultyBreathingAndWheezing", folAst.fuaCRDifficultyBreathingAndWheezing);
+<<<<<<< HEAD
 
                     com.Parameters.AddWithValue("@fuaOTCurrentlyOnMeds", folAst.fuaOTCurrentlyOnMeds);
                     com.Parameters.AddWithValue("@fuaOTStartDate", folAst.fuaOTStartDate);
                     com.Parameters.AddWithValue("@fuaOTIncreasedNoOfAsthmaAttacks", folAst.fuaOTIncreasedNoOfAsthmaAttacks);
                     // com.Parameters.AddWithValue("@fuaOTReReferToClinic", folAst.fuaOTReReferToClinic);
                     // com.Parameters.AddWithValue("@fuaOTRefNo", folAst.fuaOTRefNo);
+=======
+                    
+                    com.Parameters.AddWithValue("@fuaOTCurrentlyOnMeds", folAst.fuaOTCurrentlyOnMeds);
+                    com.Parameters.AddWithValue("@fuaOTStartDate", folAst.fuaOTStartDate);
+                    com.Parameters.AddWithValue("@fuaOTIncreasedNoOfAsthmaAttacks", folAst.fuaOTIncreasedNoOfAsthmaAttacks);
+                   // com.Parameters.AddWithValue("@fuaOTReReferToClinic", folAst.fuaOTReReferToClinic);
+                   // com.Parameters.AddWithValue("@fuaOTRefNo", folAst.fuaOTRefNo);
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
                     com.Parameters.AddWithValue("@fuaHiEHRevisit", folAst.fuaHiEHRevisit);
                     com.Parameters.AddWithValue("@fuaHiEHOutcomes", folAst.fuaHiEHOutcomes);
 
@@ -795,9 +956,15 @@ namespace Impilo_App.Views.FollowUpVisit
                 folTb.futbTBOTPreviouslyOnMeds = (TBPreviouslyOnMeds1.IsChecked == true) ? true : false;
                 folTb.futbTBOTFinishDate = (DateTime)txtTBFinishDate.SelectedDate;
                 folTb.futbTBOTConcerns = (TBConcerns1.IsChecked == true) ? true : false;
+<<<<<<< HEAD
                 folTb.futbHiEHOutcomes = ((ComboBoxItem)comboTbVisitOutCome.SelectedItem).Content.ToString();
                 //  folTb.futbTBOTReferToClinic = (TBReferToClinic31.IsChecked == true) ? true : false;
                 // folTb.futbTBOTRefNo = txtTBReferralNo3.Text;
+=======
+                folTb.futbHiEHOutcomes =((ComboBoxItem)comboTbVisitOutCome.SelectedItem).Content.ToString();
+             //  folTb.futbTBOTReferToClinic = (TBReferToClinic31.IsChecked == true) ? true : false;
+               // folTb.futbTBOTRefNo = txtTBReferralNo3.Text;
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
 
                 //folTbMed.futbmName = ((ComboBoxItem)comboTBMedication.SelectedItem).Content.ToString();
 
@@ -1010,7 +1177,11 @@ namespace Impilo_App.Views.FollowUpVisit
 
             //folMat.fumhID = 0;
             folMat.EncounterID = 0;
+<<<<<<< HEAD
             folMat.fumhDateOfVisit = DateTime.Now;
+=======
+            //folMat.fumhDateOfVisit = (DateTime)txtMatDateOfVisit.SelectedDate;
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
             folMat.fumhHiEHWentToClinic = (MatWentToClinic11.IsChecked == true) ? true : false;
             folMat.fumhHiEHReReferToClinic = (MatReReferToClinic11.IsChecked == true) ? true : false;
 
@@ -1042,7 +1213,7 @@ namespace Impilo_App.Views.FollowUpVisit
                 com.CommandType = CommandType.StoredProcedure;
 
                 com.Parameters.AddWithValue("@EncounterID", encounterID);
-                com.Parameters.AddWithValue("@fumhDateOfVisit", folMat.fumhDateOfVisit);
+                //com.Parameters.AddWithValue("@fumhDateOfVisit", folMat.fumhDateOfVisit);
                 com.Parameters.AddWithValue("@fumhHiEHWentToClinic", folMat.fumhHiEHWentToClinic);
                 com.Parameters.AddWithValue("@fumhHiEHReReferToClinic", folMat.fumhHiEHReReferToClinic);
                 com.Parameters.AddWithValue("@fumhHiEHRefNo", folMat.fumhHiEHRefNo);
@@ -1238,7 +1409,11 @@ namespace Impilo_App.Views.FollowUpVisit
 
             folOth.fuoID = 0;
             folOth.EncounterID = 0;
+<<<<<<< HEAD
 
+=======
+            //folOth.fuoDateOfVisit = (DateTime)txtOtherDateOfVisit.SelectedDate;
+>>>>>>> a557e6bbbffc20c6fe2fa09707d26b73644f2086
             folOth.fuoHiEHWentToClinic = (OtherWentToClinic1.IsChecked == true) ? true : false;
             folOth.fuoHiEHReReferToClinic = (OtherReReferToClinic1.IsChecked == true) ? true : false;
             folOth.fuoHiEHRefNo = txtOtherReferralNo1.Text;
@@ -1528,7 +1703,11 @@ namespace Impilo_App.Views.FollowUpVisit
         {
 
         }
-       
+
+        private void HyperWentToClinic1Yes_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 #endregion
