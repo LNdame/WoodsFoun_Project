@@ -417,8 +417,8 @@
 
                                                 </ComboBox>
 
-                                                <RadioButton x:Name="radYesOwnRent" Content="Yes" GroupName="en19" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
-                                                <RadioButton Content="No" GroupName="en19" HorizontalAlignment="Left" Margin="66,15,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+                                                <RadioButton x:Name="radYesOwnRent" Visibility="Hidden" Content="Yes" GroupName="en19" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+                                                <RadioButton Content="No" Visibility="Hidden" GroupName="en19" HorizontalAlignment="Left" Margin="66,15,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
 
 
                                                 <ComboBox x:Name="cboNoStructure" HorizontalAlignment="Left" Margin="4,9,0,0" VerticalAlignment="Top" Width="132" Grid.Row="1" Grid.Column="1" Visibility="Hidden">
@@ -437,6 +437,13 @@
                                                 </ComboBox>
                                                 <ComboBox x:Name="cboWalkingDistanceWater" HorizontalAlignment="Left" Margin="4,18,0,0" VerticalAlignment="Top" Width="132" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding DistanceWater}" SelectedIndex="0">
 
+                                                </ComboBox>
+                                                <ComboBox x:Name="cboOwnorRent" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Width="132" Grid.Column="1" Grid.Row="1">
+                                                    <ComboBoxItem ContentStringFormat="Name"/>
+                                                    <ComboBoxItem IsSelected="True" Content="Own" />
+                                                    <ComboBoxItem Content="Rent" />
+                                                    <ComboBoxItem Content="Live with relatives" />
+                                                   
                                                 </ComboBox>
                                             </Grid>
                                         </GroupBox>
@@ -2152,8 +2159,8 @@
                                                             <RadioButton  x:Name="radrefovc5" Content="Yes" GroupName="par3" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.165,0.329" Grid.Row="2" Grid.Column="1" />
                                                             <RadioButton Content="No" GroupName="par2" HorizontalAlignment="Left" Margin="65,9,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" />
                                                             <RadioButton Content="No" GroupName="par3" HorizontalAlignment="Left" Margin="65,10,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1"/>
-                                                            <TextBox   x:Name="txtreftoOVC5" HorizontalAlignment="Left" Height="23" Margin="10,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Row="3" Grid.Column="1" />
-                                                            <Label Content="Referral OVC" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold" Grid.Row="3"/>
+                                                            <TextBox   x:Name="txtreftoOVC5" HorizontalAlignment="Left" Height="23" Margin="10,4,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="150" Grid.Row="3" Grid.Column="1" />
+                                                            <Label Content="Referral No" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.806,0.539" FontWeight="Bold" Grid.Row="3"/>
                                                         </Grid>
                                                     </GroupBox>
                                                     <GroupBox Header="" HorizontalAlignment="Left" Margin="333,3,0,0"
